@@ -1,0 +1,129 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="37B97FDC-1DFC-88B6-7DBD-5E254EC4BC86" name="CLUB">
+<createdBy>jap25</createdBy>
+<createdTime>2019-10-13 04:38:36 UTC</createdTime>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_club" id="E0094462-AE85-0289-274C-E1E32A2DB79D">
+<createdBy>jap25</createdBy>
+<createdTime>2019-10-13 04:40:09 UTC</createdTime>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre" id="F1C1FD3A-DE26-5F3C-55A5-18E26F592F7B">
+<createdBy>jap25</createdBy>
+<createdTime>2019-10-13 04:40:37 UTC</createdTime>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha_inicio" id="E5D08540-F5C2-0FD7-39FF-CA31EB34FDAD">
+<createdBy>jap25</createdBy>
+<createdTime>2019-10-13 05:53:34 UTC</createdTime>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_inst" id="02D287BF-258C-E877-80E0-A94104550F45">
+<createdBy>jap25</createdBy>
+<createdTime>2019-10-13 05:55:09 UTC</createdTime>
+<generatorID>E24A4485-3C36-BCF5-4539-1FFAEF93EF3D</generatorID>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>AE633CFE-D829-CF7A-B75E-36AC3774154F</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_dir" id="89907C2E-08AD-6C7C-82E1-33643B519E54">
+<createdBy>jap25</createdBy>
+<createdTime>2019-10-13 16:40:45 UTC</createdTime>
+<generatorID>BFAC86B0-3425-CC0C-F09A-54384B4AC40E</generatorID>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<referedAttribute>50834F5B-3FE5-4D0E-E9AE-8DAF629C8447</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_aso" id="959A6535-1AF2-1F26-2118-2FBB16B3A933">
+<createdBy>jap25</createdBy>
+<createdTime>2019-10-13 16:54:08 UTC</createdTime>
+<generatorID>4E591245-1A1D-7F3D-36BC-1B950ABFCBFE</generatorID>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>7305228A-F30A-39E7-874F-AB467B751042</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_club1" id="F6B65C7A-30C7-B495-C739-53E666342BC1">
+<createdBy>dani_</createdBy>
+<createdTime>2019-10-25 01:59:45 UTC</createdTime>
+<generatorID>287123E4-E540-7339-2ACF-52583FE5D5D4</generatorID>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>E0094462-AE85-0289-274C-E1E32A2DB79D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="F39F6353-9283-A493-8972-DCE33B4CFACD" name="CLUB PK">
+<createdBy>jap25</createdBy>
+<createdTime>2019-10-13 04:40:51 UTC</createdTime>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>E0094462-AE85-0289-274C-E1E32A2DB79D</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
