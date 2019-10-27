@@ -1,0 +1,71 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="9FDEF00A-5706-64A0-2B59-8353837FCD7D" name="OBRAS_ACTUADAS">
+<createdBy>aayal</createdBy>
+<createdTime>2019-10-27 18:47:35 UTC</createdTime>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_obra" id="E1DB292F-66B2-60DD-591F-8E957E3E252B">
+<createdBy>aayal</createdBy>
+<createdTime>2019-10-27 18:57:41 UTC</createdTime>
+<generatorID>EBB52B1C-17C1-3C9A-6DA6-39D134B6E599</generatorID>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<referedAttribute>CB50DA07-18A2-C547-6A22-399DBCC005AC</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="valoracion_obra" id="71804123-7E4A-F9EC-546A-5802FFAC18EB">
+<createdBy>aayal</createdBy>
+<createdTime>2019-10-27 19:01:27 UTC</createdTime>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_miemb" id="D4894A3E-B9E5-DE3D-8E2E-DCDDDF19ABC9">
+<createdBy>aayal</createdBy>
+<createdTime>2019-10-27 19:06:40 UTC</createdTime>
+<generatorID>DD02B152-3895-E757-514E-7B034AA8798F</generatorID>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<referedAttribute>CF39FBDD-A779-F1CB-4BA2-3A8815948B51</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="entradas_vendidas" id="5B3DEB84-A408-896B-DCE1-C3D4549D0E0D">
+<createdBy>aayal</createdBy>
+<createdTime>2019-10-27 19:11:33 UTC</createdTime>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+</Entity>
