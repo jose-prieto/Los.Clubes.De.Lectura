@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="41ABFAE3-E122-3D9F-3255-85F4B5AC2BD6" name="GRUPO">
-<createdBy>jap25</createdBy>
-<createdTime>2019-10-13 04:54:20 UTC</createdTime>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C30ED983-082B-E1B1-1AA8-2F8582F2D4C7" name="ASISTENCIA">
+<createdBy>dani_</createdBy>
+<createdTime>2019-10-27 00:46:59 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
@@ -15,42 +15,48 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_grup" id="62005DC2-7796-E2D8-E6FF-54DA6C3E72BD">
-<createdBy>jap25</createdBy>
-<createdTime>2019-10-13 04:54:32 UTC</createdTime>
-<ownerDesignName>Proyecto club de lectura</ownerDesignName>
-<engineerTo>
-<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id_club" id="35CD36D1-86D9-98E9-A706-84C878D7C6E9">
-<createdBy>jap25</createdBy>
-<createdTime>2019-10-13 05:00:08 UTC</createdTime>
-<generatorID>8E1CE126-DB1F-E872-2D14-2726AE9BF9E2</generatorID>
-<ownerDesignName>Proyecto club de lectura</ownerDesignName>
-<engineerTo>
-<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
-</engineerTo>
-<referedAttribute>E0094462-AE85-0289-274C-E1E32A2DB79D</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="adulto_joven_niño" id="64434AF3-D7A9-5518-D276-F74B8919E6CD">
+<Attribute name="id_miemb" id="DC8D4BD2-19EC-5301-2CDC-249C0C672EC9">
 <createdBy>dani_</createdBy>
-<createdTime>2019-10-27 00:09:20 UTC</createdTime>
+<createdTime>2019-10-27 00:47:11 UTC</createdTime>
+<generatorID>839ED110-DAC8-4556-41D0-FBBA0A072DD5</generatorID>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<use>0</use>
+<referedAttribute>CF39FBDD-A779-F1CB-4BA2-3A8815948B51</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_reu" id="DD51F6C3-9AD2-B0CB-92AC-807EF919CE78">
+<createdBy>dani_</createdBy>
+<createdTime>2019-10-27 00:47:25 UTC</createdTime>
+<generatorID>C9EB7077-66A0-A23C-952F-6A370CE74477</generatorID>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<referedAttribute>4C2E91D9-B44A-B617-0F99-3BC752514017</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="ABCE3C5E-71D6-421F-185B-BD2704165254" name="ASISTENCIA PK">
+<createdBy>dani_</createdBy>
+<createdTime>2019-10-27 00:47:11 UTC</createdTime>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>DC8D4BD2-19EC-5301-2CDC-249C0C672EC9</attributeRef>
+<attributeRef>DD51F6C3-9AD2-B0CB-92AC-807EF919CE78</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
 </Entity>
