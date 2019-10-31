@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="9FDEF00A-5706-64A0-2B59-8353837FCD7D" name="OBRAS_ACTUADAS">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="9FDEF00A-5706-64A0-2B59-8353837FCD7D" name="FUNC_ACTOR">
 <createdBy>aayal</createdBy>
 <createdTime>2019-10-27 18:47:35 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
@@ -15,27 +15,14 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_obra" id="E1DB292F-66B2-60DD-591F-8E957E3E252B">
-<createdBy>aayal</createdBy>
-<createdTime>2019-10-27 18:57:41 UTC</createdTime>
-<generatorID>EBB52B1C-17C1-3C9A-6DA6-39D134B6E599</generatorID>
-<ownerDesignName>Proyecto club de lectura</ownerDesignName>
-<engineerTo>
-<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
-</engineerTo>
-<referedAttribute>CB50DA07-18A2-C547-6A22-399DBCC005AC</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="valoracion_obra" id="71804123-7E4A-F9EC-546A-5802FFAC18EB">
+<Attribute name="valoracion_actor" id="71804123-7E4A-F9EC-546A-5802FFAC18EB">
 <createdBy>aayal</createdBy>
 <createdTime>2019-10-27 19:01:27 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
 </engineerTo>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
@@ -55,17 +42,34 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="entradas_vendidas" id="5B3DEB84-A408-896B-DCE1-C3D4549D0E0D">
-<createdBy>aayal</createdBy>
-<createdTime>2019-10-27 19:11:33 UTC</createdTime>
+<Attribute name="id_funcion" id="49ADCE17-DF8F-15B8-0F24-EEC6EDBF1E30">
+<createdBy>dani_</createdBy>
+<createdTime>2019-10-30 23:48:24 UTC</createdTime>
+<generatorID>7275D7A8-8343-3E67-2FB5-868C042C797C</generatorID>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
 </engineerTo>
+<referedAttribute>8FB8ECED-AE34-6EFB-3DB3-144A36A7CC91</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="C90FB8CC-8F0D-C156-48D8-C199C24DE6AF" name="OBRAS_ACTUADAS PK">
+<createdBy>dani_</createdBy>
+<createdTime>2019-10-30 23:48:25 UTC</createdTime>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>49ADCE17-DF8F-15B8-0F24-EEC6EDBF1E30</attributeRef>
+<attributeRef>D4894A3E-B9E5-DE3D-8E2E-DCDDDF19ABC9</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
 </Entity>
