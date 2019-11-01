@@ -41,6 +41,34 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="id_club" id="892E5EC5-00B6-C015-368A-99F93C20C62A">
+<createdBy>dani_</createdBy>
+<createdTime>2019-10-27 01:08:18 UTC</createdTime>
+<generatorID>32B2FCEE-F678-8179-BF76-D327024DBAFA</generatorID>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<referedAttribute>E0094462-AE85-0289-274C-E1E32A2DB79D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_auditorio" id="15D3081E-8C85-BACA-E4E7-BCD313E7174E">
+<createdBy>aayal</createdBy>
+<createdTime>2019-10-27 18:55:25 UTC</createdTime>
+<generatorID>7B3E068E-C034-59C8-243A-ABA635148D1C</generatorID>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<referedAttribute>886E1F9B-EED5-82EB-E4C1-1DF2CAE5590B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="duracion" id="DA766BDE-865F-BF87-1C90-A8A1F4CF627D">
 <createdBy>aayal</createdBy>
 <createdTime>2019-10-27 19:16:23 UTC</createdTime>
