@@ -1,19 +1,19 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="ha_pertenecido" directorySegmentName="seg_0" id="E1015F48-268C-41A6-B560-7E8EB49CAA6B">
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="tienev2" directorySegmentName="seg_0" id="1B4FF796-8256-6DC2-0FD6-884265E16B1C">
 <createdBy>dani_</createdBy>
-<createdTime>2019-10-26 03:49:31 UTC</createdTime>
+<createdTime>2019-10-31 00:56:01 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
 </engineerTo>
-<sourcePk>6EE790A5-8BC5-C484-6886-6235DABAC187</sourcePk>
+<sourcePk>086D393C-13DF-59EB-51F9-B10D10BD9BCB</sourcePk>
 <identifying>true</identifying>
-<optionalSource>false</optionalSource>
+<optionalSource>true</optionalSource>
 <optionalTarget>false</optionalTarget>
 <sourceCardinality>1</sourceCardinality>
-<sourceEntity>BC0F26C6-F37D-6AD6-70FA-2BDDD6C9647D</sourceEntity>
+<sourceEntity>2416B745-7E06-9F74-0685-2931C147183F</sourceEntity>
 <targetCardinalityString>*</targetCardinalityString>
-<targetEntity>CD2972DF-8D58-36C0-B55F-61EC5F97A176</targetEntity>
+<targetEntity>50653307-7621-25F6-0BBD-835BFFBF5A24</targetEntity>
 <transferable>true</transferable>
 <deleteRule>NO ACTION</deleteRule>
 </Relation>

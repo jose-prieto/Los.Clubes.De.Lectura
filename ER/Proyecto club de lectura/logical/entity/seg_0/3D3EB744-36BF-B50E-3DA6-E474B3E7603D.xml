@@ -93,6 +93,85 @@
 <logicalDatatype>LOGDT025</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="id_genero" id="79D03C89-33AA-4EC4-452F-D970C1D70E05">
+<createdBy>dani_</createdBy>
+<createdTime>2019-10-31 01:21:16 UTC</createdTime>
+<generatorID>08554338-5E97-C9A5-3EC8-44792580E67E</generatorID>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<referedAttribute>8E103172-1C7E-3E71-63A4-7FDCA7867D79</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="descripcion" id="D788DB7B-060B-88DC-B37E-D04F6DF1ACD8">
+<createdBy>dani_</createdBy>
+<createdTime>2019-10-31 01:35:50 UTC</createdTime>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_editorial" id="77FCA0CA-5D18-7C3F-0DB1-53E93B2D41F8">
+<createdBy>dani_</createdBy>
+<createdTime>2019-10-31 01:41:59 UTC</createdTime>
+<generatorID>1D8FBA70-22B0-9B87-97F8-833F298058B9</generatorID>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<referedAttribute>E6FDCD56-BAC0-363E-79A6-85D58B1480C2</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="anio_publi" id="794609BC-493D-CC32-95A0-3F780FF6418D">
+<createdBy>dani_</createdBy>
+<createdTime>2019-10-31 01:42:39 UTC</createdTime>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="paginas" id="1671A8F8-7B4A-A388-2CEB-97B87DE235B5">
+<createdBy>dani_</createdBy>
+<createdTime>2019-10-31 01:47:17 UTC</createdTime>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_lib1" id="BE2288D1-63EB-12FA-B474-AFE70B03EE9E">
+<createdBy>dani_</createdBy>
+<createdTime>2019-10-31 01:54:25 UTC</createdTime>
+<generatorID>C3E93A2C-BB9A-F083-47AE-4BD265668B27</generatorID>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>31039FAB-ABD4-81A3-8874-ABE59CBFFAA6</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="DC927A7D-E605-CEE4-464D-A85343CDE431" name="LIBRO PK">

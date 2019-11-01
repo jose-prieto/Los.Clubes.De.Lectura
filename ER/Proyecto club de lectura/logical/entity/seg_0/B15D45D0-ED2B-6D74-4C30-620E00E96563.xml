@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="CD2972DF-8D58-36C0-B55F-61EC5F97A176" name="HISTORICO_CLUBES*">
-<createdBy>dani_</createdBy>
-<createdTime>2019-10-26 01:41:25 UTC</createdTime>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="B15D45D0-ED2B-6D74-4C30-620E00E96563" name="AUDITORIO">
+<createdBy>aayal</createdBy>
+<createdTime>2019-10-27 18:26:54 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
@@ -15,54 +15,39 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="fecha_ingreso" id="D883DE06-A99D-4D44-611E-64F7F0662006">
-<createdBy>dani_</createdBy>
-<createdTime>2019-10-26 03:50:14 UTC</createdTime>
+<Attribute name="id_auditorio" id="886E1F9B-EED5-82EB-E4C1-1DF2CAE5590B">
+<createdBy>aayal</createdBy>
+<createdTime>2019-10-27 18:27:09 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
 </engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT007</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="fecha_retiro" id="D44209FD-36E5-DAE0-9D31-F9A930E11047">
-<createdBy>dani_</createdBy>
-<createdTime>2019-10-26 03:50:49 UTC</createdTime>
-<ownerDesignName>Proyecto club de lectura</ownerDesignName>
-<engineerTo>
-<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT007</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id_miemb" id="A33D341F-184E-84CC-39CB-9C8FE4AF38A5">
-<createdBy>dani_</createdBy>
-<createdTime>2019-10-26 17:07:28 UTC</createdTime>
-<generatorID>E1015F48-268C-41A6-B560-7E8EB49CAA6B</generatorID>
-<ownerDesignName>Proyecto club de lectura</ownerDesignName>
-<engineerTo>
-<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
-</engineerTo>
-<referedAttribute>CF39FBDD-A779-F1CB-4BA2-3A8815948B51</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_club" id="0131C5D7-C065-DFEE-5F9E-417016D9EEDF">
-<createdBy>dani_</createdBy>
-<createdTime>2019-10-27 01:14:08 UTC</createdTime>
-<generatorID>7C97C468-4B97-1B97-D783-B4EB0F03FAA6</generatorID>
+<Attribute name="capacidad" id="B01C9D15-7B69-91DA-9E4C-363051904E57">
+<createdBy>aayal</createdBy>
+<createdTime>2019-10-27 18:27:41 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
 </engineerTo>
-<referedAttribute>E0094462-AE85-0289-274C-E1E32A2DB79D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_dir" id="54887D6D-BBCF-ACEB-BEE1-A12C266BA8E1">
+<createdBy>aayal</createdBy>
+<createdTime>2019-10-27 18:32:49 UTC</createdTime>
+<generatorID>2DB683DA-A140-B161-B7DE-12529046A14D</generatorID>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<referedAttribute>50834F5B-3FE5-4D0E-E9AE-8DAF629C8447</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
@@ -70,17 +55,16 @@
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="2C3A0B46-1E9D-E2E2-5CCE-E8F27EE1B3B1" name="HISTORICO_CLUBES* PK">
-<createdBy>dani_</createdBy>
-<createdTime>2019-10-26 03:51:17 UTC</createdTime>
+<identifier id="6B458F00-F0C6-3574-462A-8082BE729CC6" name="AUDITORIO PK">
+<createdBy>aayal</createdBy>
+<createdTime>2019-10-27 18:27:38 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>A33D341F-184E-84CC-39CB-9C8FE4AF38A5</attributeRef>
-<attributeRef>0131C5D7-C065-DFEE-5F9E-417016D9EEDF</attributeRef>
+<attributeRef>886E1F9B-EED5-82EB-E4C1-1DF2CAE5590B</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>
