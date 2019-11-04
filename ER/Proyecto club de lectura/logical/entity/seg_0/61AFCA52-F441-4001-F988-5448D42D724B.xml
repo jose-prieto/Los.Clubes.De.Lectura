@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_lib" id="FC6F2290-12D8-3510-6781-442C1AFB4C6F">
+<Attribute name="lib_id" id="FC6F2290-12D8-3510-6781-442C1AFB4C6F">
 <createdBy>dani_</createdBy>
 <createdTime>2019-11-03 01:12:26 UTC</createdTime>
 <generatorID>32A784CB-D1EB-6A34-74BF-1C247E63C338</generatorID>
@@ -29,7 +29,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_obra" id="0655749F-DECE-1242-2B64-4CE91DDFFAEC">
+<Attribute name="obra_id" id="0655749F-DECE-1242-2B64-4CE91DDFFAEC">
 <createdBy>dani_</createdBy>
 <createdTime>2019-11-03 01:12:42 UTC</createdTime>
 <generatorID>16CC7F01-DB48-AE9D-A918-68011CC29D3D</generatorID>

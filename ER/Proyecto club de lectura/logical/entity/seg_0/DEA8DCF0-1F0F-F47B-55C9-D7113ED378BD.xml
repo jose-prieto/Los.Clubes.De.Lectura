@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_obra" id="C9E766D0-F82B-D40F-E27F-6590490B4942">
+<Attribute name="obra_id" id="C9E766D0-F82B-D40F-E27F-6590490B4942">
 <createdBy>dani_</createdBy>
 <createdTime>2019-10-30 21:30:22 UTC</createdTime>
 <generatorID>031316D8-EF00-8CC7-A125-8A3E9BC301A7</generatorID>
@@ -29,7 +29,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_funcion" id="8FB8ECED-AE34-6EFB-3DB3-144A36A7CC91">
+<Attribute name="fun_id" id="8FB8ECED-AE34-6EFB-3DB3-144A36A7CC91">
 <createdBy>dani_</createdBy>
 <createdTime>2019-10-30 21:31:10 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
@@ -41,7 +41,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="valoracion" id="440DECC0-DF45-B9A7-A452-2306FE7D5358">
+<Attribute name="fun_valoracion" id="440DECC0-DF45-B9A7-A452-2306FE7D5358">
 <createdBy>dani_</createdBy>
 <createdTime>2019-10-30 21:31:31 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
@@ -52,7 +52,7 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="fecha" id="0DCC307F-E1B5-CC9D-B111-091B46420C66">
+<Attribute name="fun_fecha" id="0DCC307F-E1B5-CC9D-B111-091B46420C66">
 <createdBy>dani_</createdBy>
 <createdTime>2019-10-31 00:29:58 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
@@ -64,7 +64,7 @@
 <logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="costo_entrada" id="4DD96359-6BB6-5709-D1D2-CE0AD98000A9">
+<Attribute name="fun_costo_entrada" id="4DD96359-6BB6-5709-D1D2-CE0AD98000A9">
 <createdBy>dani_</createdBy>
 <createdTime>2019-10-31 00:34:36 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
@@ -76,7 +76,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="entradas_vendidas" id="52ACA43E-1BFB-D014-95F7-4CCA963A7859">
+<Attribute name="fun_entradas_vendidas" id="52ACA43E-1BFB-D014-95F7-4CCA963A7859">
 <createdBy>dani_</createdBy>
 <createdTime>2019-10-31 02:05:59 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
@@ -89,7 +89,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_auditorio" id="7208FEED-BFAD-821F-2E55-2F8B0C421135">
+<Attribute name="audi_id" id="7208FEED-BFAD-821F-2E55-2F8B0C421135">
 <createdBy>dani_</createdBy>
 <createdTime>2019-11-01 20:03:56 UTC</createdTime>
 <generatorID>A50B69F6-6BA3-2D83-9F62-F31E611CB2D0</generatorID>

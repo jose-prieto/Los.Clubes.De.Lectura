@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="04C3154B-55BB-A07C-6061-C38FBDAFC1F0" name="DIRECCIÓN">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="D40D8F06-666D-27E8-55CF-C108536BAAF7" name="REPRESENTANTE">
 <createdBy>jap25</createdBy>
-<createdTime>2019-10-13 04:26:22 UTC</createdTime>
+<createdTime>2019-11-04 03:06:15 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
@@ -15,85 +15,81 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="dir_id" id="50834F5B-3FE5-4D0E-E9AE-8DAF629C8447">
+<Attribute name="rep_id" id="70D88960-AD52-401E-6B92-DB53A147C356">
 <createdBy>jap25</createdBy>
-<createdTime>2019-10-13 04:27:35 UTC</createdTime>
+<createdTime>2019-11-04 03:06:25 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
 </engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="dir_tipo" id="A50C8C36-8B46-BFD0-19EA-17DA09A3B704">
+<Attribute name="rep_nombre1" id="D458B5B0-C498-5F42-A928-8804A7C04618">
 <createdBy>jap25</createdBy>
-<createdTime>2019-10-13 04:28:54 UTC</createdTime>
+<createdTime>2019-11-04 03:06:48 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
 </engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT025</logicalDatatype>
-<dataTypeSize>15</dataTypeSize>
-<ownDataTypeParameters>15,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="dir_nombre" id="CF1D544F-D985-983C-DA2E-2746D34904C2">
-<createdBy>jap25</createdBy>
-<createdTime>2019-10-13 04:29:27 UTC</createdTime>
-<ownerDesignName>Proyecto club de lectura</ownerDesignName>
-<engineerTo>
-<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT025</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="dir_zona_postal" id="85B51F05-7116-8AF7-5C81-5AB9FCC739E6">
-<createdBy>jap25</createdBy>
-<createdTime>2019-10-13 04:43:16 UTC</createdTime>
-<ownerDesignName>Proyecto club de lectura</ownerDesignName>
-<engineerTo>
-<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="dir_id1" id="F6FF0D51-1441-4403-0D7C-34C552BEF92B">
+<Attribute name="rep_nombre2" id="3A17A482-6FFC-AB3C-5F8C-53C8ACB6D4B2">
 <createdBy>jap25</createdBy>
-<createdTime>2019-10-13 16:40:19 UTC</createdTime>
-<generatorID>E487D3D2-15BC-96CC-B94E-89D99320301D</generatorID>
+<createdTime>2019-11-04 03:06:59 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
-<referedAttribute>50834F5B-3FE5-4D0E-E9AE-8DAF629C8447</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="rep_ape1" id="94AA162C-9D98-B77F-48D5-48E60A6A0D09">
+<createdBy>jap25</createdBy>
+<createdTime>2019-11-04 03:07:04 UTC</createdTime>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="rep_ape2" id="21C6C213-70A1-F41F-C415-5F0AEACBB910">
+<createdBy>jap25</createdBy>
+<createdTime>2019-11-04 03:07:11 UTC</createdTime>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="rep_genero" id="05AA0AFF-B6D6-B3AE-E11B-389262F15E8B">
+<createdBy>jap25</createdBy>
+<createdTime>2019-11-04 03:07:21 UTC</createdTime>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="CF18F92F-FFE9-8915-90D5-32C4BE960F7D" name="DIRECCIÓN PK">
+<identifier id="68BE20F2-255D-1460-15DC-C659F0804BCF" name="REPRESENTANTE PK">
 <createdBy>jap25</createdBy>
-<createdTime>2019-10-13 04:28:20 UTC</createdTime>
+<createdTime>2019-11-04 03:06:46 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>50834F5B-3FE5-4D0E-E9AE-8DAF629C8447</attributeRef>
+<attributeRef>70D88960-AD52-401E-6B92-DB53A147C356</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

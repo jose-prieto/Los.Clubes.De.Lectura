@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="86723F1C-2A10-AF8A-0573-A1E316B25ACF" name="ENSAYO">
-<createdBy>dani_</createdBy>
-<createdTime>2019-10-31 02:10:36 UTC</createdTime>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="52C8D3F1-9883-4E2B-F383-040E120916B5" name="TELEFONO">
+<createdBy>jap25</createdBy>
+<createdTime>2019-11-04 03:11:52 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
@@ -15,51 +15,47 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_ensayo" id="4D5CA031-59E7-780E-E4D9-FA042F06C346">
-<createdBy>dani_</createdBy>
-<createdTime>2019-10-31 02:10:42 UTC</createdTime>
+<Attribute name="tel_cod" id="18CA861D-E0D1-8AC9-08BD-7B434CC0F9DC">
+<createdBy>jap25</createdBy>
+<createdTime>2019-11-04 03:12:00 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
 </engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="fecha_ensayo" id="BC6569BE-B8DB-88CA-740E-778916730127">
-<createdBy>dani_</createdBy>
-<createdTime>2019-10-31 02:11:16 UTC</createdTime>
+<Attribute name="tel_num" id="8D3F2058-AC17-A38B-F05F-18CC29A4692D">
+<createdBy>jap25</createdBy>
+<createdTime>2019-11-04 03:12:09 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
 </engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT007</logicalDatatype>
+<use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="duracion_ensayo" id="51FBFFF3-7D4A-0E75-A748-E9FFAB6FAABE">
-<createdBy>dani_</createdBy>
-<createdTime>2019-10-31 02:11:55 UTC</createdTime>
+<Attribute name="rep_id" id="719F96EF-C116-6B48-6364-12F73BF637BB">
+<createdBy>jap25</createdBy>
+<createdTime>2019-11-04 03:12:56 UTC</createdTime>
+<generatorID>0FA9020B-2B4B-3592-8E77-A16804C84CE9</generatorID>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
 </engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<referedAttribute>70D88960-AD52-401E-6B92-DB53A147C356</referedAttribute>
+<use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_obra" id="2DBAFB34-FC65-BD99-BF26-9A67C4C382C0">
-<createdBy>dani_</createdBy>
-<createdTime>2019-10-31 02:12:34 UTC</createdTime>
-<generatorID>3F05B4AF-A4C1-AD6E-2FC5-474714605ADB</generatorID>
+<Attribute name="miemb_id" id="3AB66BEF-A955-8F9D-1E28-7F35482BAE9B">
+<createdBy>jap25</createdBy>
+<createdTime>2019-11-04 03:13:06 UTC</createdTime>
+<generatorID>B369A3F1-47E6-0D4C-A0D3-A8BC71C6C2E4</generatorID>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
 </engineerTo>
-<referedAttribute>CB50DA07-18A2-C547-6A22-399DBCC005AC</referedAttribute>
+<referedAttribute>CF39FBDD-A779-F1CB-4BA2-3A8815948B51</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
@@ -67,16 +63,17 @@
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="D420E2F4-DBA7-DC8B-C2DA-F5C112474B37" name="ENSAYO PK">
-<createdBy>dani_</createdBy>
-<createdTime>2019-10-31 02:11:35 UTC</createdTime>
+<identifier id="47211C4C-5772-8277-1FAF-C40E6E8A368C" name="TELEFONO PK">
+<createdBy>jap25</createdBy>
+<createdTime>2019-11-04 03:12:23 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>4D5CA031-59E7-780E-E4D9-FA042F06C346</attributeRef>
+<attributeRef>18CA861D-E0D1-8AC9-08BD-7B434CC0F9DC</attributeRef>
+<attributeRef>8D3F2058-AC17-A38B-F05F-18CC29A4692D</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="5506B07F-D826-37A3-2806-DB385C6AA532" name="LIBRO_GRUPO">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="EB6D615C-081C-B4EA-D5D9-64B010793838" name="LIBROS_PREFERIDOS">
 <createdBy>jap25</createdBy>
-<createdTime>2019-10-13 05:50:17 UTC</createdTime>
+<createdTime>2019-11-04 04:46:45 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
@@ -15,45 +15,49 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="lib_id" id="D9CED364-8AF6-0E81-150A-658FDB2F3BAB">
+<Attribute name="lib_pref_id" id="51FD25EC-4A9B-1617-FD57-FB8A48B840E1">
 <createdBy>jap25</createdBy>
-<createdTime>2019-10-13 05:54:47 UTC</createdTime>
-<generatorID>6031BB3F-7FB0-79BB-CE46-21AC2EAFEB11</generatorID>
+<createdTime>2019-11-04 04:48:42 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
 </engineerTo>
-<referedAttribute>31039FAB-ABD4-81A3-8874-ABE59CBFFAA6</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="valoracion" id="2C4E6085-3D3F-1246-A576-1E69800C8F86">
-<createdBy>dani_</createdBy>
-<createdTime>2019-10-26 02:03:20 UTC</createdTime>
+<Attribute name="lib_pref_nombre" id="99F7D36D-EA27-A42A-93FF-1D5732E1FD13">
+<createdBy>jap25</createdBy>
+<createdTime>2019-11-04 04:51:04 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
 </engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="lib_pref_subge" id="6E51FD44-8C70-8144-A521-EB37F67FA15D">
+<createdBy>jap25</createdBy>
+<createdTime>2019-11-04 04:51:16 UTC</createdTime>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="lib_pref_tipo" id="476D2BE7-5FED-3B2D-A46A-2ED4C3D5D0F9">
+<createdBy>jap25</createdBy>
+<createdTime>2019-11-04 04:51:25 UTC</createdTime>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
-<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="3A3A0B2D-68C0-5B83-27A6-7B1A2E0CAD4E" name="HISTÓRICO PK">
-<createdBy>jap25</createdBy>
-<createdTime>2019-10-13 05:52:13 UTC</createdTime>
-<ownerDesignName>Proyecto club de lectura</ownerDesignName>
-<engineerTo>
-<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
-</engineerTo>
-<pk>true</pk>
-<usedAttributes>
-<attributeRef>D9CED364-8AF6-0E81-150A-658FDB2F3BAB</attributeRef>
-</usedAttributes>
-</identifier>
-</identifiers>
 </Entity>

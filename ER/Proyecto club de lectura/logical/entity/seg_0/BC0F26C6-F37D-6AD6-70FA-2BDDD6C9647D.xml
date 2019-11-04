@@ -15,32 +15,18 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_miemb" id="CF39FBDD-A779-F1CB-4BA2-3A8815948B51">
+<Attribute name="miemb_venc_memb" id="8E1676B7-4EB5-CC1C-0018-08734554B97E">
 <createdBy>jap25</createdBy>
-<createdTime>2019-10-13 04:55:54 UTC</createdTime>
+<createdTime>2019-11-04 03:11:28 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
 </engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="nombre_miemb" id="0F711FA8-1121-5203-145F-308616E563DD">
-<createdBy>jap25</createdBy>
-<createdTime>2019-10-13 04:56:11 UTC</createdTime>
-<ownerDesignName>Proyecto club de lectura</ownerDesignName>
-<engineerTo>
-<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT025</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="nombre2_miemb" id="B356DAE7-E794-384D-6A78-39B8C2D73F20">
+<Attribute name="miemb_nombre2" id="B356DAE7-E794-384D-6A78-39B8C2D73F20">
 <createdBy>jap25</createdBy>
 <createdTime>2019-10-13 04:56:39 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
@@ -54,9 +40,9 @@
 <dataTypeSize>50</dataTypeSize>
 <ownDataTypeParameters>50,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="apellido_miemb" id="90A8ADC6-EEA7-DA4A-3DFC-F29653C4AE4B">
+<Attribute name="miemb_nombre1" id="0F711FA8-1121-5203-145F-308616E563DD">
 <createdBy>jap25</createdBy>
-<createdTime>2019-10-13 04:56:57 UTC</createdTime>
+<createdTime>2019-10-13 04:56:11 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
@@ -67,21 +53,47 @@
 <dataTypeSize>50</dataTypeSize>
 <ownDataTypeParameters>50,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="apellido2_miemb" id="9E9BB545-12BB-C4FA-90CC-52A75CB6758C">
-<createdBy>jap25</createdBy>
-<createdTime>2019-10-13 04:57:33 UTC</createdTime>
+<Attribute name="miemb_moderador" id="5973E8E1-D2A6-ACAD-684D-EB8905BC2EC9">
+<createdBy>dani_</createdBy>
+<createdTime>2019-10-30 21:26:34 UTC</createdTime>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="miemb_id1" id="AF933C1A-CA05-9C1F-DD0B-C0110D821F26">
+<createdBy>dani_</createdBy>
+<createdTime>2019-11-03 00:47:50 UTC</createdTime>
+<generatorID>E412A0B6-12A4-D532-35B0-0E5E4A347035</generatorID>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
+<referedAttribute>CF39FBDD-A779-F1CB-4BA2-3A8815948B51</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT025</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="genero" id="C1B3D934-52E6-73B3-1955-F09D0845C312">
+<Attribute name="miemb_id" id="CF39FBDD-A779-F1CB-4BA2-3A8815948B51">
+<createdBy>jap25</createdBy>
+<createdTime>2019-10-13 04:55:54 UTC</createdTime>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="miemb_genero" id="C1B3D934-52E6-73B3-1955-F09D0845C312">
 <createdBy>dani_</createdBy>
 <createdTime>2019-11-03 00:49:19 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
@@ -94,7 +106,7 @@
 <dataTypeSize>1</dataTypeSize>
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="fecha_nac" id="E1EE82C3-D98D-4623-B703-E62F2F85D810">
+<Attribute name="miemb_fecha_nac" id="E1EE82C3-D98D-4623-B703-E62F2F85D810">
 <createdBy>jap25</createdBy>
 <createdTime>2019-10-13 05:28:18 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
@@ -106,44 +118,7 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="cod_telefono" id="F8887F96-943C-D676-6B2D-1BEAF50C1827">
-<createdBy>jap25</createdBy>
-<createdTime>2019-10-13 05:36:44 UTC</createdTime>
-<ownerDesignName>Proyecto club de lectura</ownerDesignName>
-<engineerTo>
-<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="teléfono" id="A6856CFD-879A-91CF-E8D2-EDF2D5C0E79E">
-<createdBy>jap25</createdBy>
-<createdTime>2019-10-13 05:36:20 UTC</createdTime>
-<ownerDesignName>Proyecto club de lectura</ownerDesignName>
-<engineerTo>
-<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="datos_tarjeta" id="AFE9CD08-2B24-8331-6407-68AA5A7F4DCC">
-<createdBy>dani_</createdBy>
-<createdTime>2019-10-26 01:55:08 UTC</createdTime>
-<ownerDesignName>Proyecto club de lectura</ownerDesignName>
-<engineerTo>
-<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="autorizacion" id="D615BC27-A269-A05A-A876-0422294FD59E">
+<Attribute name="miemb_autorizacion" id="D615BC27-A269-A05A-A876-0422294FD59E">
 <createdBy>dani_</createdBy>
 <createdTime>2019-10-26 23:17:55 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
@@ -157,23 +132,9 @@
 <dataTypeSize>1</dataTypeSize>
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_miembro" id="20AB1184-744B-404A-8B56-D8B55B3456DB">
-<createdBy>dani_</createdBy>
-<createdTime>2019-10-26 23:18:59 UTC</createdTime>
-<generatorID>35AAB4B5-3814-4031-9E73-C545CD0A7E4F</generatorID>
-<ownerDesignName>Proyecto club de lectura</ownerDesignName>
-<engineerTo>
-<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
-</engineerTo>
-<referedAttribute>0631B4FA-0F90-8A10-A6C8-57A7E34C845D</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="moderador" id="5973E8E1-D2A6-ACAD-684D-EB8905BC2EC9">
-<createdBy>dani_</createdBy>
-<createdTime>2019-10-30 21:26:34 UTC</createdTime>
+<Attribute name="miemb_ape2" id="9E9BB545-12BB-C4FA-90CC-52A75CB6758C">
+<createdBy>jap25</createdBy>
+<createdTime>2019-10-13 04:57:33 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
@@ -181,11 +142,24 @@
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT006</logicalDatatype>
-<dataTypeSize>1</dataTypeSize>
-<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_dir" id="CE7DE11B-6EB2-669F-9434-CF7AC997EF2B">
+<Attribute name="miemb_ape1" id="90A8ADC6-EEA7-DA4A-3DFC-F29653C4AE4B">
+<createdBy>jap25</createdBy>
+<createdTime>2019-10-13 04:56:57 UTC</createdTime>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="dir_id" id="CE7DE11B-6EB2-669F-9434-CF7AC997EF2B">
 <createdBy>dani_</createdBy>
 <createdTime>2019-11-01 20:03:30 UTC</createdTime>
 <generatorID>6939E67B-0FE7-7639-41D7-9A3346EC1236</generatorID>
@@ -199,19 +173,17 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_miemb1" id="AF933C1A-CA05-9C1F-DD0B-C0110D821F26">
-<createdBy>dani_</createdBy>
-<createdTime>2019-11-03 00:47:50 UTC</createdTime>
-<generatorID>E412A0B6-12A4-D532-35B0-0E5E4A347035</generatorID>
+<Attribute name="rep_id" id="12A17C9B-0647-F18B-057E-7CF6C24FAC90">
+<createdBy>jap25</createdBy>
+<createdTime>2019-11-04 03:40:37 UTC</createdTime>
+<generatorID>FB244289-6C54-FC67-C590-1F013DB1BF26</generatorID>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
-<referedAttribute>CF39FBDD-A779-F1CB-4BA2-3A8815948B51</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<referedAttribute>70D88960-AD52-401E-6B92-DB53A147C356</referedAttribute>
+<use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>

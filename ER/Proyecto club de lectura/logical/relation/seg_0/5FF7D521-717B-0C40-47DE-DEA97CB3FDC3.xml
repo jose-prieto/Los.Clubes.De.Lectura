@@ -8,12 +8,13 @@
 </engineerTo>
 <sourcePk>F39F6353-9283-A493-8972-DCE33B4CFACD</sourcePk>
 <targetPk>6B458F00-F0C6-3574-462A-8082BE729CC6</targetPk>
+<arc>BBA3D21B-5DA1-7C36-425F-6DC53CB90FB5</arc>
 <identifying>false</identifying>
 <optionalSource>true</optionalSource>
-<optionalTarget>true</optionalTarget>
+<optionalTarget>false</optionalTarget>
 <sourceCardinality>1</sourceCardinality>
 <sourceEntity>37B97FDC-1DFC-88B6-7DBD-5E254EC4BC86</sourceEntity>
-<targetCardinalityString>1</targetCardinalityString>
+<targetCardinalityString>*</targetCardinalityString>
 <targetEntity>B15D45D0-ED2B-6D74-4C30-620E00E96563</targetEntity>
 <transferable>true</transferable>
 <deleteRule>NO ACTION</deleteRule>

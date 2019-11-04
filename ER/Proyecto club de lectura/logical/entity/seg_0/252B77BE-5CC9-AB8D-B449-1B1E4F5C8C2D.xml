@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_genero" id="8E103172-1C7E-3E71-63A4-7FDCA7867D79">
+<Attribute name="genero_id" id="8E103172-1C7E-3E71-63A4-7FDCA7867D79">
 <createdBy>dani_</createdBy>
 <createdTime>2019-10-31 01:15:31 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
@@ -27,7 +27,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="nombre_genero" id="0A73B57F-6434-70BC-1F87-0AF84C34C348">
+<Attribute name="genero_nombre" id="0A73B57F-6434-70BC-1F87-0AF84C34C348">
 <createdBy>dani_</createdBy>
 <createdTime>2019-10-31 01:15:58 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
