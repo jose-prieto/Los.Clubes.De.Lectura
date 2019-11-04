@@ -159,20 +159,6 @@
 <dataTypeSize>50</dataTypeSize>
 <ownDataTypeParameters>50,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="dir_id" id="CE7DE11B-6EB2-669F-9434-CF7AC997EF2B">
-<createdBy>dani_</createdBy>
-<createdTime>2019-11-01 20:03:30 UTC</createdTime>
-<generatorID>6939E67B-0FE7-7639-41D7-9A3346EC1236</generatorID>
-<ownerDesignName>Proyecto club de lectura</ownerDesignName>
-<engineerTo>
-<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
-</engineerTo>
-<referedAttribute>50834F5B-3FE5-4D0E-E9AE-8DAF629C8447</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="rep_id" id="12A17C9B-0647-F18B-057E-7CF6C24FAC90">
 <createdBy>jap25</createdBy>
 <createdTime>2019-11-04 03:40:37 UTC</createdTime>
@@ -184,6 +170,30 @@
 <nullsAllowed>true</nullsAllowed>
 <referedAttribute>70D88960-AD52-401E-6B92-DB53A147C356</referedAttribute>
 <use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="miemb_desuscrip" id="12454E41-235B-8269-0A9B-58041179CFEC">
+<createdBy>jap25</createdBy>
+<createdTime>2019-11-04 17:30:22 UTC</createdTime>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="dir_id" id="0EF55085-F9B5-ADD9-EBBE-6D26E451F497">
+<createdBy>jap25</createdBy>
+<createdTime>2019-11-04 18:02:21 UTC</createdTime>
+<generatorID>6939E67B-0FE7-7639-41D7-9A3346EC1236</generatorID>
+<ownerDesignName>Proyecto club de lectura</ownerDesignName>
+<engineerTo>
+<item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
+</engineerTo>
+<referedAttribute>50834F5B-3FE5-4D0E-E9AE-8DAF629C8447</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>

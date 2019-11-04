@@ -8,6 +8,7 @@
 </engineerTo>
 <sourcePk>F39F6353-9283-A493-8972-DCE33B4CFACD</sourcePk>
 <identifying>false</identifying>
+<nameOnTarget>pertenece</nameOnTarget>
 <optionalSource>true</optionalSource>
 <optionalTarget>false</optionalTarget>
 <sourceCardinality>1</sourceCardinality>

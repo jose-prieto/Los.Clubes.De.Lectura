@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_39" directorySegmentName="seg_0" id="DD02B152-3895-E757-514E-7B034AA8798F">
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="actua" directorySegmentName="seg_0" id="DD02B152-3895-E757-514E-7B034AA8798F">
 <createdBy>aayal</createdBy>
 <createdTime>2019-10-27 19:06:07 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
@@ -8,6 +8,7 @@
 </engineerTo>
 <targetPk>6EE790A5-8BC5-C484-6886-6235DABAC187</targetPk>
 <identifying>true</identifying>
+<nameOnSource>actua</nameOnSource>
 <optionalSource>false</optionalSource>
 <optionalTarget>true</optionalTarget>
 <sourceCardinality>*</sourceCardinality>

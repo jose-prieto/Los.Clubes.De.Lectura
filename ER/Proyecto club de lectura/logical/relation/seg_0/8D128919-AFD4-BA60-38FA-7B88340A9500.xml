@@ -8,6 +8,7 @@
 </engineerTo>
 <sourcePk>CF18F92F-FFE9-8915-90D5-32C4BE960F7D</sourcePk>
 <identifying>false</identifying>
+<nameOnSource>reside</nameOnSource>
 <optionalSource>true</optionalSource>
 <optionalTarget>false</optionalTarget>
 <sourceCardinality>1</sourceCardinality>
