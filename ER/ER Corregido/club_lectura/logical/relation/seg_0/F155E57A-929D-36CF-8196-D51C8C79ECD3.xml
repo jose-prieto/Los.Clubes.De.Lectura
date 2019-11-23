@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_52" directorySegmentName="seg_0" id="F155E57A-929D-36CF-8196-D51C8C79ECD3">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 02:53:42 UTC</createdTime>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<sourcePk>ACFA1336-01D4-CC17-2B55-C299BF8C911B</sourcePk>
+<identifying>true</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>4E340DC6-8BDB-6321-0D26-03BCDBD77198</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>C4F1CC14-EAD5-5D2E-069A-2F8CA882F689</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

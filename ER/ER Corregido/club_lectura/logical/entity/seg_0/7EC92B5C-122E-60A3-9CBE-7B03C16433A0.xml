@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="7EC92B5C-122E-60A3-9CBE-7B03C16433A0" name="AUDITORIO">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:16:37 UTC</createdTime>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="audi_id" id="F4065410-205C-C3CF-6B18-6F94CDC18F3A">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:16:46 UTC</createdTime>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="audi_capacidad" id="EF163CFD-0667-9F71-7E39-17854EB6C860">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:16:46 UTC</createdTime>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="audi_nombre" id="696845DB-B37B-3EB5-C374-E52C610BB734">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:16:48 UTC</createdTime>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="club_id" id="AEE43631-2F99-FF5F-C28F-ADFF5675332A">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 03:35:37 UTC</createdTime>
+<generatorID>5266AB61-45EA-59F5-5FC9-D8152454002C</generatorID>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>5352EDB1-4594-5956-BD02-5F166D5E1453</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="dir_id" id="DDA429E3-D918-5266-BA66-8B4A920B0B2E">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 03:35:46 UTC</createdTime>
+<generatorID>CAC66F09-F406-F828-A817-BDD9CBCEDCC1</generatorID>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>1A5B2B7E-3B99-FD7D-2348-A2E1C28CEC66</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="AA930093-5D91-DA92-C57C-3042C1253215" name="AUDITORIO PK">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:17:10 UTC</createdTime>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>F4065410-205C-C3CF-6B18-6F94CDC18F3A</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

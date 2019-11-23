@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="030F5361-9534-4E24-5DB0-3DE9BA69A9ED" name="REUNIONES">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:53:02 UTC</createdTime>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="reu_fecha" id="72A5CBC2-4CB8-528D-8752-CAAFEBA4E70E">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:53:25 UTC</createdTime>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="reu_conclusiones" id="CF91903C-54D8-FE95-D997-ECBCB6D510EA">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:53:35 UTC</createdTime>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="reu_valoracion" id="F643E6F3-CE09-7F0E-F791-24BA804D86A1">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:53:37 UTC</createdTime>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="grup_id" id="C0771503-2C85-BC58-1D5D-7FFE7C0C7A11">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 03:05:40 UTC</createdTime>
+<generatorID>B57FA7F4-1048-2457-7F57-ED02C23F800F</generatorID>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>936F1118-6E57-58AB-64B9-1096FE48AC77</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="club_id" id="9DB7BA88-306E-EFD5-2BD0-6DBD9A993B75">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 03:05:40 UTC</createdTime>
+<generatorID>B57FA7F4-1048-2457-7F57-ED02C23F800F</generatorID>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>181F5E0D-9187-C11D-5B71-8FE9A45D06CF</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="isbn" id="3CB8E0A8-0FAE-7365-76D0-3F4F519CDF0B">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 03:12:16 UTC</createdTime>
+<generatorID>DACA61B3-A528-6906-F6E3-44FE31F0200C</generatorID>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>83EDC0EE-8678-A967-77FC-F16AB8B80BDA</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="DF5868F1-EE3B-30C7-FE39-F6EE9413D63B" name="REUNION PK">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:53:51 UTC</createdTime>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>72A5CBC2-4CB8-528D-8752-CAAFEBA4E70E</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

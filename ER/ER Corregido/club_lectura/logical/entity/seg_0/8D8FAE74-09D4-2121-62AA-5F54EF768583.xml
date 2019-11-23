@@ -1,0 +1,152 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="8D8FAE74-09D4-2121-62AA-5F54EF768583" name="ACTOR">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 03:43:21 UTC</createdTime>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="fechai_mie" id="A8EAA6EB-CFAE-0F98-B120-261AADF7CB04">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 03:47:04 UTC</createdTime>
+<generatorID>CC0139DB-6D33-74E4-2E4D-B4D9083812E3</generatorID>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>5DD200E3-8BE4-DF78-2973-A9076AC1C308</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="club_id" id="9EDB10C1-0C83-7C03-E58A-F34845230DBC">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 03:47:04 UTC</createdTime>
+<generatorID>CC0139DB-6D33-74E4-2E4D-B4D9083812E3</generatorID>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>1C9BA320-53F6-B1B3-2DEA-BF4EDB1FDF6A</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="doc_id" id="F3B17CD0-6750-E4C0-3557-AF0A391CC2C6">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 03:47:04 UTC</createdTime>
+<generatorID>CC0139DB-6D33-74E4-2E4D-B4D9083812E3</generatorID>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>D52A02D8-AD27-4FA8-51E0-9069E2CC0B17</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="pago_id" id="D80A4EAE-22C0-51E8-6102-ADB793AEFD0A">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 03:47:04 UTC</createdTime>
+<generatorID>CC0139DB-6D33-74E4-2E4D-B4D9083812E3</generatorID>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>D37A0E68-E529-C582-E5B7-3FEF4A3AC3B6</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fun_fecha" id="A1468DAB-E23A-37D4-521C-BB0C7E7DD957">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 03:47:18 UTC</createdTime>
+<generatorID>96B1C500-20F8-1E2B-79DD-26D4413973AD</generatorID>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>30110564-7A0C-E154-77E4-788A0A605318</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="obra_id" id="44470D5F-C34E-76DB-40A2-5F54CC7E74DD">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 03:47:18 UTC</createdTime>
+<generatorID>96B1C500-20F8-1E2B-79DD-26D4413973AD</generatorID>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>F97F6D99-88FE-6013-54DA-DC34D27D912D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="perso_id" id="271D00FF-C201-8E69-3560-67BCD6A6F91E">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 03:53:54 UTC</createdTime>
+<generatorID>CC0139DB-6D33-74E4-2E4D-B4D9083812E3</generatorID>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>DA3CA66B-4FF1-8C81-5FE7-302D36287F58</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="obra_id1" id="9CBA8FA6-3B09-72F5-D649-02D9AF1F4AE6">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 03:53:54 UTC</createdTime>
+<generatorID>CC0139DB-6D33-74E4-2E4D-B4D9083812E3</generatorID>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>4C1E0325-90AF-A47C-EE54-6F03A2F61306</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="9B443A9C-BC1C-947E-F8D1-0068382E3F52" name="ACTOR PK">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 03:47:04 UTC</createdTime>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>A8EAA6EB-CFAE-0F98-B120-261AADF7CB04</attributeRef>
+<attributeRef>9EDB10C1-0C83-7C03-E58A-F34845230DBC</attributeRef>
+<attributeRef>F3B17CD0-6750-E4C0-3557-AF0A391CC2C6</attributeRef>
+<attributeRef>D80A4EAE-22C0-51E8-6102-ADB793AEFD0A</attributeRef>
+<attributeRef>271D00FF-C201-8E69-3560-67BCD6A6F91E</attributeRef>
+<attributeRef>9CBA8FA6-3B09-72F5-D649-02D9AF1F4AE6</attributeRef>
+<attributeRef>A1468DAB-E23A-37D4-521C-BB0C7E7DD957</attributeRef>
+<attributeRef>44470D5F-C34E-76DB-40A2-5F54CC7E74DD</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

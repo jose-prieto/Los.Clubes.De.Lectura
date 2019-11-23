@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A4E6F78F-4869-915D-5D56-F79DC4CA0626" name="CLUB_OBRA">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 01:57:25 UTC</createdTime>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="obra_id" id="1366DE81-68F7-2F7A-654C-FAE4544265F1">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:02:28 UTC</createdTime>
+<generatorID>E727B032-236A-8A67-F3B7-46F7B5F47E59</generatorID>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>EF743E43-BA87-5EF6-B52F-938813146DE6</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="club_id" id="5B7EBA9B-74D2-53E5-2EE5-2ACD36596156">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:02:49 UTC</createdTime>
+<generatorID>F239595C-A50A-9310-CDAF-DE9A270704F6</generatorID>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>5352EDB1-4594-5956-BD02-5F166D5E1453</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="391B12F8-5D33-AE8B-EE9D-C67F35FAA87D" name="CLUB_OBRA PK">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:02:28 UTC</createdTime>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>1366DE81-68F7-2F7A-654C-FAE4544265F1</attributeRef>
+<attributeRef>5B7EBA9B-74D2-53E5-2EE5-2ACD36596156</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

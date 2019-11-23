@@ -1,0 +1,86 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="7D0BA0ED-B017-9FC3-ABF3-52CE05C48E53" name="CAPITULO_OTRO">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 01:29:47 UTC</createdTime>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="cap_id" id="BA920F94-D844-D365-600D-F79AC983E26C">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 01:30:15 UTC</createdTime>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cap_nombre" id="FACD4E9B-00F3-DE99-AD12-CDF35DB6204D">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 01:30:15 UTC</createdTime>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cap_titulo" id="8CE294B4-5D9B-4C85-D46E-B36652235E4A">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 01:30:16 UTC</createdTime>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="isbn" id="17F05901-76AB-39E2-F1D4-4DFA9C2D607A">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 01:35:41 UTC</createdTime>
+<generatorID>EA2E51FF-0B43-993D-2B7E-09FECBF4F1BC</generatorID>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>83EDC0EE-8678-A967-77FC-F16AB8B80BDA</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="32802921-3EA0-0A8C-F72F-F47BB2F144C6" name="CAPITULO_OTRO PK">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 01:30:32 UTC</createdTime>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>BA920F94-D844-D365-600D-F79AC983E26C</attributeRef>
+<attributeRef>17F05901-76AB-39E2-F1D4-4DFA9C2D607A</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
