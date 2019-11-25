@@ -1,6 +1,6 @@
 package OperatorInterfaces.Content;
 
-import DBController.MaterialCRUD;
+import ControladorBD.MaterialCRUD;
 
 public class AddMaterialContentPannel extends javax.swing.JPanel {
     

@@ -1,4 +1,4 @@
-package DBController;
+package ControladorBD;
 
 public class BorrowCRUD {
     

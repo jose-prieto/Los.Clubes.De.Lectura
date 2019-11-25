@@ -1,4 +1,4 @@
-package DBController;
+package ControladorBD;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
