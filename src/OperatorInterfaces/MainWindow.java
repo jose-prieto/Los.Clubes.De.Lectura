@@ -57,11 +57,11 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         borrow.BorrowButton.addActionListener(this);
         
         //action listener de botones de option main pannel
-        option.BorrowButton.addActionListener(this);
-        option.AddButton.addActionListener(this);
+        option.AdmReuniones.addActionListener(this);
+        option.AdmClubes.addActionListener(this);
         option.NotificationButton.addActionListener(this);
         option.QueryButton.addActionListener(this);
-        option.ReportGenButton.addActionListener(this);
+        option.AdmObras.addActionListener(this);
         
         //action listener de depot button
         HomeButton.addActionListener(this);
@@ -108,7 +108,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         HomeButton.setBorder(null);
         HomeButton.setBorderPainted(false);
         HomeButton.setContentAreaFilled(false);
-        HomeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        HomeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         HomeButton.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         HomeButton.setMaximumSize(new java.awt.Dimension(70, 34));
         HomeButton.setMinimumSize(new java.awt.Dimension(70, 34));
@@ -229,7 +229,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         Object evt = ae.getSource();
         
-        if (evt.equals(option.BorrowButton)){
+        if (evt.equals(option.AdmReuniones)){
 
             SetInvisibleTittle();
             SetInvisibleMenu();
@@ -265,7 +265,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
             TitlePannel.add(addname);
             ContentPannel.add(addcontent);
             
-        }else if (evt.equals(option.AddButton)){
+        }else if (evt.equals(option.AdmClubes)){
             
             SetInvisibleTittle();
             SetInvisibleContent();

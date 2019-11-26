@@ -28,103 +28,67 @@ public class MainOptionPannel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BorrowButton = new javax.swing.JButton();
-        AddButton = new javax.swing.JButton();
-        ReportGenButton = new javax.swing.JButton();
-        NotificationButton = new javax.swing.JButton();
-        QueryButton = new javax.swing.JButton();
+        AdmReuniones = new javax.swing.JButton();
+        AdmClubes = new javax.swing.JButton();
+        AdmObras = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 51, 51));
+        setMaximumSize(new java.awt.Dimension(193, 512));
 
-        BorrowButton.setBackground(new java.awt.Color(153, 153, 153));
-        BorrowButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        BorrowButton.setForeground(new java.awt.Color(204, 204, 204));
-        BorrowButton.setText("Gestión de Préstamos");
-        BorrowButton.setContentAreaFilled(false);
-        BorrowButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BorrowButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        AdmReuniones.setBackground(new java.awt.Color(153, 153, 153));
+        AdmReuniones.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        AdmReuniones.setForeground(new java.awt.Color(204, 204, 204));
+        AdmReuniones.setText("Adm. de reuniones");
+        AdmReuniones.setContentAreaFilled(false);
+        AdmReuniones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        AdmReuniones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                BorrowButtonMouseEntered(evt);
+                AdmReunionesMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                BorrowButtonMouseExited(evt);
+                AdmReunionesMouseExited(evt);
             }
         });
-        BorrowButton.addActionListener(new java.awt.event.ActionListener() {
+        AdmReuniones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BorrowButtonActionPerformed(evt);
+                AdmReunionesActionPerformed(evt);
             }
         });
 
-        AddButton.setBackground(new java.awt.Color(51, 51, 51));
-        AddButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        AddButton.setForeground(new java.awt.Color(204, 204, 204));
-        AddButton.setText("Agregar Material");
-        AddButton.setBorder(null);
-        AddButton.setBorderPainted(false);
-        AddButton.setContentAreaFilled(false);
-        AddButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        AddButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        AdmClubes.setBackground(new java.awt.Color(51, 51, 51));
+        AdmClubes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        AdmClubes.setForeground(new java.awt.Color(204, 204, 204));
+        AdmClubes.setText("Adm. de clubes");
+        AdmClubes.setBorder(null);
+        AdmClubes.setBorderPainted(false);
+        AdmClubes.setContentAreaFilled(false);
+        AdmClubes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        AdmClubes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                AddButtonMouseEntered(evt);
+                AdmClubesMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                AddButtonMouseExited(evt);
+                AdmClubesMouseExited(evt);
             }
         });
-        AddButton.addActionListener(new java.awt.event.ActionListener() {
+        AdmClubes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddButtonActionPerformed(evt);
+                AdmClubesActionPerformed(evt);
             }
         });
 
-        ReportGenButton.setBackground(new java.awt.Color(153, 153, 153));
-        ReportGenButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ReportGenButton.setForeground(new java.awt.Color(204, 204, 204));
-        ReportGenButton.setText("Generar Reportes");
-        ReportGenButton.setContentAreaFilled(false);
-        ReportGenButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ReportGenButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        AdmObras.setBackground(new java.awt.Color(153, 153, 153));
+        AdmObras.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        AdmObras.setForeground(new java.awt.Color(204, 204, 204));
+        AdmObras.setText("Adm. de obras actuadas");
+        AdmObras.setContentAreaFilled(false);
+        AdmObras.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        AdmObras.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ReportGenButtonMouseEntered(evt);
+                AdmObrasMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                ReportGenButtonMouseExited(evt);
-            }
-        });
-
-        NotificationButton.setBackground(new java.awt.Color(153, 153, 153));
-        NotificationButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        NotificationButton.setForeground(new java.awt.Color(204, 204, 204));
-        NotificationButton.setText("Notificaciones");
-        NotificationButton.setContentAreaFilled(false);
-        NotificationButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        NotificationButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                NotificationButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                NotificationButtonMouseExited(evt);
-            }
-        });
-
-        QueryButton.setBackground(new java.awt.Color(153, 153, 153));
-        QueryButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        QueryButton.setForeground(new java.awt.Color(204, 204, 204));
-        QueryButton.setText("Consultar Material");
-        QueryButton.setContentAreaFilled(false);
-        QueryButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        QueryButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                QueryButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                QueryButtonMouseExited(evt);
-            }
-        });
-        QueryButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                QueryButtonActionPerformed(evt);
+                AdmObrasMouseExited(evt);
             }
         });
 
@@ -132,103 +96,69 @@ public class MainOptionPannel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(AddButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(BorrowButton, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-            .addComponent(ReportGenButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(NotificationButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(QueryButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(AdmClubes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(AdmReuniones, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+            .addComponent(AdmObras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(AdmClubes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(BorrowButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(AdmReuniones, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(ReportGenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(NotificationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(QueryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(301, Short.MAX_VALUE))
+                .addComponent(AdmObras, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(381, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BorrowButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrowButtonActionPerformed
+    private void AdmReunionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdmReunionesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BorrowButtonActionPerformed
+    }//GEN-LAST:event_AdmReunionesActionPerformed
 
-    private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
+    private void AdmClubesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdmClubesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_AddButtonActionPerformed
+    }//GEN-LAST:event_AdmClubesActionPerformed
 
-    private void QueryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QueryButtonActionPerformed
+    private void AdmClubesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdmClubesMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_QueryButtonActionPerformed
-
-    private void AddButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddButtonMouseEntered
-        // TODO add your handling code here:
-        AddButton.setContentAreaFilled(true);
-        AddButton.setBackground(Color.DARK_GRAY);
+        AdmClubes.setContentAreaFilled(true);
+        AdmClubes.setBackground(Color.DARK_GRAY);
         
-    }//GEN-LAST:event_AddButtonMouseEntered
+    }//GEN-LAST:event_AdmClubesMouseEntered
 
-    private void AddButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddButtonMouseExited
+    private void AdmClubesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdmClubesMouseExited
         // TODO add your handling code here:
-        AddButton.setContentAreaFilled(false);
-    }//GEN-LAST:event_AddButtonMouseExited
+        AdmClubes.setContentAreaFilled(false);
+    }//GEN-LAST:event_AdmClubesMouseExited
 
-    private void BorrowButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BorrowButtonMouseEntered
+    private void AdmReunionesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdmReunionesMouseEntered
         // TODO add your handling code here:
-        BorrowButton.setContentAreaFilled(true);
-        BorrowButton.setBackground(Color.DARK_GRAY);
-    }//GEN-LAST:event_BorrowButtonMouseEntered
+        AdmReuniones.setContentAreaFilled(true);
+        AdmReuniones.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_AdmReunionesMouseEntered
 
-    private void BorrowButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BorrowButtonMouseExited
+    private void AdmReunionesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdmReunionesMouseExited
         // TODO add your handling code here:
-        BorrowButton.setContentAreaFilled(false);
-    }//GEN-LAST:event_BorrowButtonMouseExited
+        AdmReuniones.setContentAreaFilled(false);
+    }//GEN-LAST:event_AdmReunionesMouseExited
 
-    private void ReportGenButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReportGenButtonMouseEntered
+    private void AdmObrasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdmObrasMouseEntered
         // TODO add your handling code here:
-        ReportGenButton.setContentAreaFilled(true);
-        ReportGenButton.setBackground(Color.DARK_GRAY);
-    }//GEN-LAST:event_ReportGenButtonMouseEntered
+        AdmObras.setContentAreaFilled(true);
+        AdmObras.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_AdmObrasMouseEntered
 
-    private void ReportGenButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReportGenButtonMouseExited
+    private void AdmObrasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdmObrasMouseExited
         // TODO add your handling code here:
-        ReportGenButton.setContentAreaFilled(false);
-    }//GEN-LAST:event_ReportGenButtonMouseExited
-
-    private void NotificationButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NotificationButtonMouseEntered
-        // TODO add your handling code here:
-        NotificationButton.setContentAreaFilled(true);
-        NotificationButton.setBackground(Color.DARK_GRAY);
-    }//GEN-LAST:event_NotificationButtonMouseEntered
-
-    private void NotificationButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NotificationButtonMouseExited
-        // TODO add your handling code here:
-        NotificationButton.setContentAreaFilled(false);
-    }//GEN-LAST:event_NotificationButtonMouseExited
-
-    private void QueryButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_QueryButtonMouseEntered
-        // TODO add your handling code here:
-        QueryButton.setContentAreaFilled(true);
-        QueryButton.setBackground(Color.DARK_GRAY);
-    }//GEN-LAST:event_QueryButtonMouseEntered
-
-    private void QueryButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_QueryButtonMouseExited
-        // TODO add your handling code here:
-        QueryButton.setContentAreaFilled(false);
-    }//GEN-LAST:event_QueryButtonMouseExited
+        AdmObras.setContentAreaFilled(false);
+    }//GEN-LAST:event_AdmObrasMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton AddButton;
-    public javax.swing.JButton BorrowButton;
-    public javax.swing.JButton NotificationButton;
-    public javax.swing.JButton QueryButton;
-    public javax.swing.JButton ReportGenButton;
+    public javax.swing.JButton AdmClubes;
+    public javax.swing.JButton AdmObras;
+    public javax.swing.JButton AdmReuniones;
     // End of variables declaration//GEN-END:variables
 }
