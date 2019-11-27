@@ -6,6 +6,7 @@
 package OperatorInterfaces.Options;
 
 import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -28,67 +29,72 @@ public class MainOptionPannel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        AdmReuniones = new javax.swing.JButton();
-        AdmClubes = new javax.swing.JButton();
-        AdmObras = new javax.swing.JButton();
+        Reuniones = new javax.swing.JButton();
+        Clubes = new javax.swing.JButton();
+        Obras = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 51, 51));
         setMaximumSize(new java.awt.Dimension(193, 512));
 
-        AdmReuniones.setBackground(new java.awt.Color(153, 153, 153));
-        AdmReuniones.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        AdmReuniones.setForeground(new java.awt.Color(204, 204, 204));
-        AdmReuniones.setText("Adm. de reuniones");
-        AdmReuniones.setContentAreaFilled(false);
-        AdmReuniones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        AdmReuniones.addMouseListener(new java.awt.event.MouseAdapter() {
+        Reuniones.setBackground(new java.awt.Color(153, 153, 153));
+        Reuniones.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Reuniones.setForeground(new java.awt.Color(204, 204, 204));
+        Reuniones.setText("Reuniones");
+        Reuniones.setContentAreaFilled(false);
+        Reuniones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Reuniones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                AdmReunionesMouseEntered(evt);
+                ReunionesMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                AdmReunionesMouseExited(evt);
+                ReunionesMouseExited(evt);
             }
         });
-        AdmReuniones.addActionListener(new java.awt.event.ActionListener() {
+        Reuniones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AdmReunionesActionPerformed(evt);
+                ReunionesActionPerformed(evt);
             }
         });
 
-        AdmClubes.setBackground(new java.awt.Color(51, 51, 51));
-        AdmClubes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        AdmClubes.setForeground(new java.awt.Color(204, 204, 204));
-        AdmClubes.setText("Adm. de clubes");
-        AdmClubes.setBorder(null);
-        AdmClubes.setBorderPainted(false);
-        AdmClubes.setContentAreaFilled(false);
-        AdmClubes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        AdmClubes.addMouseListener(new java.awt.event.MouseAdapter() {
+        Clubes.setBackground(new java.awt.Color(51, 51, 51));
+        Clubes.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Clubes.setForeground(new java.awt.Color(204, 204, 204));
+        Clubes.setText("Clubes");
+        Clubes.setBorder(null);
+        Clubes.setBorderPainted(false);
+        Clubes.setContentAreaFilled(false);
+        Clubes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Clubes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                AdmClubesMouseEntered(evt);
+                ClubesMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                AdmClubesMouseExited(evt);
+                ClubesMouseExited(evt);
             }
         });
-        AdmClubes.addActionListener(new java.awt.event.ActionListener() {
+        Clubes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AdmClubesActionPerformed(evt);
+                ClubesActionPerformed(evt);
             }
         });
 
-        AdmObras.setBackground(new java.awt.Color(153, 153, 153));
-        AdmObras.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        AdmObras.setForeground(new java.awt.Color(204, 204, 204));
-        AdmObras.setText("Adm. de obras actuadas");
-        AdmObras.setContentAreaFilled(false);
-        AdmObras.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        AdmObras.addMouseListener(new java.awt.event.MouseAdapter() {
+        Obras.setBackground(new java.awt.Color(153, 153, 153));
+        Obras.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Obras.setForeground(new java.awt.Color(204, 204, 204));
+        Obras.setText("Obras");
+        Obras.setContentAreaFilled(false);
+        Obras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Obras.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                AdmObrasMouseEntered(evt);
+                ObrasMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                AdmObrasMouseExited(evt);
+                ObrasMouseExited(evt);
+            }
+        });
+        Obras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ObrasActionPerformed(evt);
             }
         });
 
@@ -96,69 +102,73 @@ public class MainOptionPannel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(AdmClubes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(AdmReuniones, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-            .addComponent(AdmObras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Clubes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Reuniones, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+            .addComponent(Obras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(AdmClubes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Clubes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(AdmReuniones, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Reuniones, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(AdmObras, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Obras, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(381, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AdmReunionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdmReunionesActionPerformed
+    private void ReunionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReunionesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_AdmReunionesActionPerformed
+    }//GEN-LAST:event_ReunionesActionPerformed
 
-    private void AdmClubesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdmClubesActionPerformed
+    private void ClubesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClubesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_AdmClubesActionPerformed
+    }//GEN-LAST:event_ClubesActionPerformed
 
-    private void AdmClubesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdmClubesMouseEntered
+    private void ClubesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClubesMouseEntered
         // TODO add your handling code here:
-        AdmClubes.setContentAreaFilled(true);
-        AdmClubes.setBackground(Color.DARK_GRAY);
+        Clubes.setContentAreaFilled(true);
+        Clubes.setBackground(Color.DARK_GRAY);
         
-    }//GEN-LAST:event_AdmClubesMouseEntered
+    }//GEN-LAST:event_ClubesMouseEntered
 
-    private void AdmClubesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdmClubesMouseExited
+    private void ClubesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClubesMouseExited
         // TODO add your handling code here:
-        AdmClubes.setContentAreaFilled(false);
-    }//GEN-LAST:event_AdmClubesMouseExited
+        Clubes.setContentAreaFilled(false);
+    }//GEN-LAST:event_ClubesMouseExited
 
-    private void AdmReunionesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdmReunionesMouseEntered
+    private void ReunionesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReunionesMouseEntered
         // TODO add your handling code here:
-        AdmReuniones.setContentAreaFilled(true);
-        AdmReuniones.setBackground(Color.DARK_GRAY);
-    }//GEN-LAST:event_AdmReunionesMouseEntered
+        Reuniones.setContentAreaFilled(true);
+        Reuniones.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_ReunionesMouseEntered
 
-    private void AdmReunionesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdmReunionesMouseExited
+    private void ReunionesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReunionesMouseExited
         // TODO add your handling code here:
-        AdmReuniones.setContentAreaFilled(false);
-    }//GEN-LAST:event_AdmReunionesMouseExited
+        Reuniones.setContentAreaFilled(false);
+    }//GEN-LAST:event_ReunionesMouseExited
 
-    private void AdmObrasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdmObrasMouseEntered
+    private void ObrasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ObrasMouseEntered
         // TODO add your handling code here:
-        AdmObras.setContentAreaFilled(true);
-        AdmObras.setBackground(Color.DARK_GRAY);
-    }//GEN-LAST:event_AdmObrasMouseEntered
+        Obras.setContentAreaFilled(true);
+        Obras.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_ObrasMouseEntered
 
-    private void AdmObrasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdmObrasMouseExited
+    private void ObrasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ObrasMouseExited
         // TODO add your handling code here:
-        AdmObras.setContentAreaFilled(false);
-    }//GEN-LAST:event_AdmObrasMouseExited
+        Obras.setContentAreaFilled(false);
+    }//GEN-LAST:event_ObrasMouseExited
+
+    private void ObrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ObrasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ObrasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton AdmClubes;
-    public javax.swing.JButton AdmObras;
-    public javax.swing.JButton AdmReuniones;
+    public javax.swing.JButton Clubes;
+    public javax.swing.JButton Obras;
+    public javax.swing.JButton Reuniones;
     // End of variables declaration//GEN-END:variables
 }
