@@ -9,6 +9,8 @@ import OperatorInterfaces.Options.ReunionesPannel;
 import OperatorInterfaces.Options.MainOptionPannel;
 import OperatorInterfaces.Options.ClubesPannel;
 import OperatorInterfaces.Options.ObrasPannel;
+import OperatorInterfaces.Options.AdmClubesPannel;
+import OperatorInterfaces.Options.MantLibrosPannel;
 
 import OperatorInterfaces.Tittles.AddMaterialNamePannel;
 import OperatorInterfaces.Tittles.BorrowNamePannel;
@@ -39,8 +41,10 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     //Menu pannels
     MainOptionPannel option = new MainOptionPannel();
     ReunionesPannel borrow = new ReunionesPannel();
-    ClubesPannel admclub = new ClubesPannel ();
+    ClubesPannel clubes = new ClubesPannel ();
     ObrasPannel obras = new ObrasPannel ();
+    AdmClubesPannel admclubes = new AdmClubesPannel ();
+    MantLibrosPannel libros = new MantLibrosPannel ();
     
     //Content pannels
     AddMaterialContentPannel addcontent = new AddMaterialContentPannel();
@@ -48,13 +52,15 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     ReturnPannel returncontent = new ReturnPannel();
     ConsultPannel consultcontent = new ConsultPannel();
 
-    public MainWindow() {
-        
+    public MainWindow() {        
         initComponents();
         
         OptionPannel.add(option);
-        TitlePannel.add(addname);
         ContentPannel.add(addcontent);
+        
+        //action listener de botones de clubes
+        clubes.Clubes.addActionListener(this);
+        clubes.Libros.addActionListener(this);
         
         //action listener de botones de borrow manager pannel
         borrow.Asistencias.addActionListener(this);
@@ -86,13 +92,14 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         ContentPannel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Depot");
+        setTitle("Clubes de lectura");
         setBackground(new java.awt.Color(102, 102, 102));
-        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setBounds(new java.awt.Rectangle(102, 102, 102, 102));
         setMaximizedBounds(new java.awt.Rectangle(900, 600, 0, 0));
         setMaximumSize(new java.awt.Dimension(1600, 900));
         setMinimumSize(new java.awt.Dimension(900, 600));
         setSize(new java.awt.Dimension(900, 600));
+        setType(java.awt.Window.Type.UTILITY);
 
         OptionPannel.setBackground(new java.awt.Color(51, 51, 51));
         OptionPannel.setForeground(new java.awt.Color(102, 102, 102));
@@ -148,7 +155,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
             .addGroup(layout.createSequentialGroup()
                 .addComponent(HomeButtonPannel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(OptionPannel, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE))
+                .addComponent(OptionPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(TitlePannel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -225,8 +232,10 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         
         option.setVisible(false);
         borrow.setVisible(false);
-        admclub.setVisible(false);
+        clubes.setVisible(false);
         obras.setVisible(false);
+        admclubes.setVisible(false);
+        libros.setVisible(false);
         
     }
     
@@ -294,7 +303,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
             SetInvisibleMenu();
             SetInvisibleContent();
             
-            admclub.setVisible(true);
+            clubes.setVisible(true);
             borrowname.setVisible(true);
             borrowcontent.setVisible(true);
             
@@ -304,7 +313,43 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
             
             ContentPannel.add(borrowcontent);
             TitlePannel.add(borrowname);
-            OptionPannel.add(admclub);
+            OptionPannel.add(clubes);
+            
+        }else if (evt.equals(clubes.Clubes)){
+            
+            SetInvisibleTittle();
+            SetInvisibleMenu();
+            SetInvisibleContent();
+            
+            admclubes.setVisible(true);
+            borrowname.setVisible(true);
+            borrowcontent.setVisible(true);
+            
+            OptionPannel.validate();
+            TitlePannel.validate();
+            ContentPannel.validate();
+            
+            ContentPannel.add(borrowcontent);
+            TitlePannel.add(borrowname);
+            OptionPannel.add(admclubes);
+            
+        }else if (evt.equals(clubes.Libros)){
+            
+            SetInvisibleTittle();
+            SetInvisibleMenu();
+            SetInvisibleContent();
+            
+            libros.setVisible(true);
+            borrowname.setVisible(true);
+            borrowcontent.setVisible(true);
+            
+            OptionPannel.validate();
+            TitlePannel.validate();
+            ContentPannel.validate();
+            
+            ContentPannel.add(borrowcontent);
+            TitlePannel.add(borrowname);
+            OptionPannel.add(libros);
             
         }else if (evt.equals(borrow.Asistencias)){
             

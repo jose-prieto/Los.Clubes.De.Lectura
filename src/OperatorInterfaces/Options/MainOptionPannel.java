@@ -151,8 +151,10 @@ public class MainOptionPannel extends javax.swing.JPanel {
     }//GEN-LAST:event_ReunionesMouseExited
 
     private void ObrasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ObrasMouseEntered
-        // TODO add your handling code here:
+        // TODO add your handling code here:        
         Obras.setContentAreaFilled(true);
+        Obras.setBorderPainted(true);
+        //Obras.set
         Obras.setBackground(Color.DARK_GRAY);
     }//GEN-LAST:event_ObrasMouseEntered
 
