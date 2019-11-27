@@ -5,8 +5,10 @@
  */
 package OperatorInterfaces;
 
-import OperatorInterfaces.Options.BorrowManagerPannel;
+import OperatorInterfaces.Options.ReunionesPannel;
 import OperatorInterfaces.Options.MainOptionPannel;
+import OperatorInterfaces.Options.ClubesPannel;
+import OperatorInterfaces.Options.ObrasPannel;
 
 import OperatorInterfaces.Tittles.AddMaterialNamePannel;
 import OperatorInterfaces.Tittles.BorrowNamePannel;
@@ -36,7 +38,9 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     
     //Menu pannels
     MainOptionPannel option = new MainOptionPannel();
-    BorrowManagerPannel borrow = new BorrowManagerPannel();
+    ReunionesPannel borrow = new ReunionesPannel();
+    ClubesPannel admclub = new ClubesPannel ();
+    ObrasPannel obras = new ObrasPannel ();
     
     //Content pannels
     AddMaterialContentPannel addcontent = new AddMaterialContentPannel();
@@ -53,15 +57,13 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         ContentPannel.add(addcontent);
         
         //action listener de botones de borrow manager pannel
-        borrow.ReturnButton.addActionListener(this);
-        borrow.BorrowButton.addActionListener(this);
+        borrow.Asistencias.addActionListener(this);
+        borrow.Calendario.addActionListener(this);
         
         //action listener de botones de option main pannel
-        option.BorrowButton.addActionListener(this);
-        option.AddButton.addActionListener(this);
-        option.NotificationButton.addActionListener(this);
-        option.QueryButton.addActionListener(this);
-        option.ReportGenButton.addActionListener(this);
+        option.Reuniones.addActionListener(this);
+        option.Clubes.addActionListener(this);
+        option.Obras.addActionListener(this);
         
         //action listener de depot button
         HomeButton.addActionListener(this);
@@ -207,6 +209,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         returncontent.setVisible(false);
         consultcontent.setVisible(false);
         
+        
     }
     
     public void SetInvisibleTittle(){
@@ -222,6 +225,8 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         
         option.setVisible(false);
         borrow.setVisible(false);
+        admclub.setVisible(false);
+        obras.setVisible(false);
         
     }
     
@@ -229,7 +234,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         Object evt = ae.getSource();
         
-        if (evt.equals(option.BorrowButton)){
+        if (evt.equals(option.Reuniones)){
 
             SetInvisibleTittle();
             SetInvisibleMenu();
@@ -265,35 +270,43 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
             TitlePannel.add(addname);
             ContentPannel.add(addcontent);
             
-        }else if (evt.equals(option.AddButton)){
+        }else if (evt.equals(option.Obras)){
             
             SetInvisibleTittle();
+            SetInvisibleMenu();
             SetInvisibleContent();
             
+            obras.setVisible(true);
             addname.setVisible(true);
             addcontent.setVisible(true);
             
+            OptionPannel.validate();
             TitlePannel.validate();
             ContentPannel.validate();
             
+            OptionPannel.add(obras);
             TitlePannel.add(addname);
             ContentPannel.add(addcontent);
             
-        }else if (evt.equals(option.QueryButton)){
+        }else if (evt.equals(option.Clubes)){
             
             SetInvisibleTittle();
+            SetInvisibleMenu();
             SetInvisibleContent();
             
-            consultname.setVisible(true);
-            consultcontent.setVisible(true);
+            admclub.setVisible(true);
+            borrowname.setVisible(true);
+            borrowcontent.setVisible(true);
             
+            OptionPannel.validate();
             TitlePannel.validate();
             ContentPannel.validate();
             
-            TitlePannel.add(consultname);
-            ContentPannel.add(consultcontent);
+            ContentPannel.add(borrowcontent);
+            TitlePannel.add(borrowname);
+            OptionPannel.add(admclub);
             
-        }else if (evt.equals(borrow.ReturnButton)){
+        }else if (evt.equals(borrow.Asistencias)){
             
             SetInvisibleTittle();
             SetInvisibleContent();
@@ -307,7 +320,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
             TitlePannel.add(returnname);
             ContentPannel.add(returncontent);
             
-        }else if (evt.equals(borrow.BorrowButton)){
+        }else if (evt.equals(borrow.Calendario)){
             
             SetInvisibleTittle();
             SetInvisibleContent();
