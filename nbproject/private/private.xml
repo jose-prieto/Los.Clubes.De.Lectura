@@ -3,18 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/OperatorInterfaces/Options/MantLibrosPannel.java</file>
-            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/OperatorInterfaces/Content/AddMaterialContentPannel.java</file>
-            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/OperatorInterfaces/Content/ConsultPannel.java</file>
-            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/OperatorInterfaces/Content/BorrowContentPannel.java</file>
-            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/OperatorInterfaces/Tittles/AddMaterialNamePannel.java</file>
-            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/OperatorInterfaces/Options/MainOptionPannel.java</file>
-            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/OperatorInterfaces/MainWindow.java</file>
-            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/OperatorInterfaces/Options/ReunionesPannel.java</file>
-            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/OperatorInterfaces/Content/ReturnPannel.java</file>
-            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/OperatorInterfaces/Options/AdmClubesPannel.java</file>
-            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/OperatorInterfaces/Options/ClubesPannel.java</file>
-            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/OperatorInterfaces/Options/ObrasPannel.java</file>
+            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/Interfaces/Menu/MiembrosPannel.java</file>
+            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/Interfaces/MainWindow.java</file>
+            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/Interfaces/Menu/AdmClubesPannel.java</file>
+            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/Interfaces/Menu/MainOptionPannel.java</file>
+            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/Interfaces/Titutos/AddMaterialNamePannel.java</file>
+            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/Interfaces/Menu/ObrasPannel.java</file>
+            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/Interfaces/Menu/ClubesPannel.java</file>
+            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/Interfaces/Menu/MantLibrosPannel.java</file>
+            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/Interfaces/Contenido/ReturnPannel.java</file>
+            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/Interfaces/Contenido/AddMaterialContentPannel.java</file>
+            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/Interfaces/Menu/ReunionesPannel.java</file>
+            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/Interfaces/Contenido/ConsultPannel.java</file>
+            <file>file:/C:/Users/jap25/Documents/GitHub/Los.Clubes.De.Lectura/src/Interfaces/Contenido/BorrowContentPannel.java</file>
         </group>
     </open-files>
 </project-private>

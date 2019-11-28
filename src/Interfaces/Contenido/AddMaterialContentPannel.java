@@ -1,4 +1,4 @@
-package OperatorInterfaces.Content;
+package Interfaces.Contenido;
 
 import ControladorBD.MaterialCRUD;
 

@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package OperatorInterfaces.Tittles;
+package Interfaces.Titutos;
 
 /**
  *
  * @author Jose Prieto
  */
-public class ConsultMaterialNamePannel extends javax.swing.JPanel {
+public class BorrowNamePannel extends javax.swing.JPanel {
 
     /**
-     * Creates new form AddMaterialNAmePannel
+     * Creates new form BorrowNamePannel
      */
-    public ConsultMaterialNamePannel() {
+    public BorrowNamePannel() {
         initComponents();
     }
 
@@ -30,15 +30,12 @@ public class ConsultMaterialNamePannel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(707, 58));
-        setMinimumSize(new java.awt.Dimension(707, 58));
-        setPreferredSize(new java.awt.Dimension(707, 58));
         setLayout(new java.awt.BorderLayout());
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Consultar");
+        jLabel1.setText("Retirar Material");
         add(jLabel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 

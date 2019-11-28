@@ -3,27 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package OperatorInterfaces;
+package Interfaces;
 
-import OperatorInterfaces.Options.ReunionesPannel;
-import OperatorInterfaces.Options.MainOptionPannel;
-import OperatorInterfaces.Options.ClubesPannel;
-import OperatorInterfaces.Options.ObrasPannel;
-import OperatorInterfaces.Options.AdmClubesPannel;
-import OperatorInterfaces.Options.MantLibrosPannel;
+import Interfaces.Menu.AdmClubesPannel;
+import Interfaces.Menu.ClubesPannel;
+import Interfaces.Menu.MainOptionPannel;
+import Interfaces.Menu.MantLibrosPannel;
+import Interfaces.Menu.ObrasPannel;
+import Interfaces.Menu.ReunionesPannel;
+import Interfaces.Menu.MiembrosPannel;
 
-import OperatorInterfaces.Tittles.AddMaterialNamePannel;
-import OperatorInterfaces.Tittles.BorrowNamePannel;
-import OperatorInterfaces.Tittles.ConsultMaterialNamePannel;
-import OperatorInterfaces.Tittles.ReturnMaterialNamePannel;
+import Interfaces.Titutos.AddMaterialNamePannel;
+import Interfaces.Titutos.BorrowNamePannel;
+import Interfaces.Titutos.ConsultMaterialNamePannel;
+import Interfaces.Titutos.ReturnMaterialNamePannel;
 
-import OperatorInterfaces.Content.AddMaterialContentPannel;
-import OperatorInterfaces.Content.BorrowContentPannel;
-import OperatorInterfaces.Content.ReturnPannel;
-import OperatorInterfaces.Content.ConsultPannel;
+import Interfaces.Contenido.AddMaterialContentPannel;
+import Interfaces.Contenido.BorrowContentPannel;
+import Interfaces.Contenido.ReturnPannel;
+import Interfaces.Contenido.ConsultPannel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+//import javax.swing.ImageIcon;
 
 
 /**
@@ -45,6 +48,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     ObrasPannel obras = new ObrasPannel ();
     AdmClubesPannel admclubes = new AdmClubesPannel ();
     MantLibrosPannel libros = new MantLibrosPannel ();
+    MiembrosPannel miembros = new MiembrosPannel ();
     
     //Content pannels
     AddMaterialContentPannel addcontent = new AddMaterialContentPannel();
@@ -55,12 +59,15 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     public MainWindow() {        
         initComponents();
         
+        setIconImage(new ImageIcon(getClass().getResource("../Images/Icono.png")).getImage());
+        
         OptionPannel.add(option);
         ContentPannel.add(addcontent);
         
         //action listener de botones de clubes
         clubes.Clubes.addActionListener(this);
         clubes.Libros.addActionListener(this);
+        clubes.Miembros.addActionListener(this);
         
         //action listener de botones de borrow manager pannel
         borrow.Asistencias.addActionListener(this);
@@ -98,8 +105,8 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         setMaximizedBounds(new java.awt.Rectangle(900, 600, 0, 0));
         setMaximumSize(new java.awt.Dimension(1600, 900));
         setMinimumSize(new java.awt.Dimension(900, 600));
+        setResizable(false);
         setSize(new java.awt.Dimension(900, 600));
-        setType(java.awt.Window.Type.UTILITY);
 
         OptionPannel.setBackground(new java.awt.Color(51, 51, 51));
         OptionPannel.setForeground(new java.awt.Color(102, 102, 102));
@@ -113,7 +120,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
 
         HomeButton.setBackground(new java.awt.Color(255, 255, 255));
         HomeButton.setForeground(new java.awt.Color(255, 255, 255));
-        HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo_depot.png"))); // NOI18N
+        HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Icono.png"))); // NOI18N
         HomeButton.setBorder(null);
         HomeButton.setBorderPainted(false);
         HomeButton.setContentAreaFilled(false);
@@ -121,6 +128,11 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         HomeButton.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         HomeButton.setMaximumSize(new java.awt.Dimension(70, 34));
         HomeButton.setMinimumSize(new java.awt.Dimension(70, 34));
+        HomeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HomeButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout HomeButtonPannelLayout = new javax.swing.GroupLayout(HomeButtonPannel);
         HomeButtonPannel.setLayout(HomeButtonPannelLayout);
@@ -165,6 +177,10 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         setSize(new java.awt.Dimension(916, 639));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void HomeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HomeButtonActionPerformed
     
     /**
      * @param args the command line arguments
@@ -236,6 +252,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         obras.setVisible(false);
         admclubes.setVisible(false);
         libros.setVisible(false);
+        miembros.setVisible(false);
         
     }
     
@@ -332,6 +349,24 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
             ContentPannel.add(borrowcontent);
             TitlePannel.add(borrowname);
             OptionPannel.add(admclubes);
+            
+        }else if (evt.equals(clubes.Miembros)){
+            
+            SetInvisibleTittle();
+            SetInvisibleMenu();
+            SetInvisibleContent();
+            
+            miembros.setVisible(true);
+            borrowname.setVisible(true);
+            borrowcontent.setVisible(true);
+            
+            OptionPannel.validate();
+            TitlePannel.validate();
+            ContentPannel.validate();
+            
+            ContentPannel.add(borrowcontent);
+            TitlePannel.add(borrowname);
+            OptionPannel.add(miembros);
             
         }else if (evt.equals(clubes.Libros)){
             

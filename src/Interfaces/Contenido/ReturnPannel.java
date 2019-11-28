@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package OperatorInterfaces.Content;
+package Interfaces.Contenido;
 
 /**
  *
@@ -53,7 +53,7 @@ public class ReturnPannel extends javax.swing.JPanel {
 
         AcceptButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         AcceptButton.setText("Aceptar");
-        AcceptButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        AcceptButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         AcceptButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AcceptButtonActionPerformed(evt);
@@ -62,7 +62,7 @@ public class ReturnPannel extends javax.swing.JPanel {
 
         CancelButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         CancelButton.setText("Cancelar");
-        CancelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        CancelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         CancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancelButtonActionPerformed(evt);

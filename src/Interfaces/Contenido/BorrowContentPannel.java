@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package OperatorInterfaces.Content;
+package Interfaces.Contenido;
 
 /**
  *
@@ -68,7 +68,7 @@ public class BorrowContentPannel extends javax.swing.JPanel {
 
         QuantitySpinner.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         QuantitySpinner.setAlignmentY(4.0F);
-        QuantitySpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        QuantitySpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         MaterialField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         MaterialField.setAlignmentY(4.0F);
@@ -76,7 +76,7 @@ public class BorrowContentPannel extends javax.swing.JPanel {
         PDFButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         PDFButton.setText("Generar PDF");
         PDFButton.setAlignmentY(4.0F);
-        PDFButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        PDFButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         PDFButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PDFButtonActionPerformed(evt);
@@ -108,7 +108,7 @@ public class BorrowContentPannel extends javax.swing.JPanel {
         CancelButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         CancelButton.setText("Cancelar");
         CancelButton.setAlignmentY(4.0F);
-        CancelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        CancelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         CancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancelButtonActionPerformed(evt);
@@ -118,7 +118,7 @@ public class BorrowContentPannel extends javax.swing.JPanel {
         AcceptButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         AcceptButton.setText("Aceptar");
         AcceptButton.setAlignmentY(4.0F);
-        AcceptButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        AcceptButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         AcceptButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AcceptButtonActionPerformed(evt);

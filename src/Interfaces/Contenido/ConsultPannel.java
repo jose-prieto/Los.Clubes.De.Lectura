@@ -1,4 +1,4 @@
-package OperatorInterfaces.Content;
+package Interfaces.Contenido;
 
 //here is where consult pannel is managed
 public class ConsultPannel extends javax.swing.JPanel {
@@ -67,7 +67,7 @@ public class ConsultPannel extends javax.swing.JPanel {
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setText("Buscar");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
