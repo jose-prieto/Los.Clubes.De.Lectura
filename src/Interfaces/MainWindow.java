@@ -13,15 +13,13 @@ import Interfaces.Menu.ObrasPannel;
 import Interfaces.Menu.ReunionesPannel;
 import Interfaces.Menu.MiembrosPannel;
 
-import Interfaces.Titutos.AddMaterialNamePannel;
-import Interfaces.Titutos.BorrowNamePannel;
-import Interfaces.Titutos.ConsultMaterialNamePannel;
-import Interfaces.Titutos.ReturnMaterialNamePannel;
+import Interfaces.Titulos.BorrowNamePannel;
 
 import Interfaces.Contenido.AddMaterialContentPannel;
 import Interfaces.Contenido.BorrowContentPannel;
 import Interfaces.Contenido.ReturnPannel;
 import Interfaces.Contenido.ConsultPannel;
+import Interfaces.Contenido.NuevoClubContent;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,14 +34,11 @@ import javax.swing.ImageIcon;
 public class MainWindow extends javax.swing.JFrame implements ActionListener{
     
     //Tittle pannels
-    AddMaterialNamePannel addname = new AddMaterialNamePannel();
     BorrowNamePannel borrowname = new BorrowNamePannel();
-    ConsultMaterialNamePannel consultname = new ConsultMaterialNamePannel();
-    ReturnMaterialNamePannel returnname = new ReturnMaterialNamePannel();
     
     //Menu pannels
     MainOptionPannel option = new MainOptionPannel();
-    ReunionesPannel borrow = new ReunionesPannel();
+    ReunionesPannel reuniones = new ReunionesPannel();
     ClubesPannel clubes = new ClubesPannel ();
     ObrasPannel obras = new ObrasPannel ();
     AdmClubesPannel admclubes = new AdmClubesPannel ();
@@ -55,6 +50,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     BorrowContentPannel borrowcontent = new BorrowContentPannel();
     ReturnPannel returncontent = new ReturnPannel();
     ConsultPannel consultcontent = new ConsultPannel();
+    NuevoClubContent nuevoclub = new NuevoClubContent ();
 
     public MainWindow() {        
         initComponents();
@@ -63,15 +59,24 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         
         OptionPannel.add(option);
         ContentPannel.add(addcontent);
+        TitlePannel.add(borrowname);
+        borrowname.jLabel1.setText("Principal");
         
         //action listener de botones de clubes
         clubes.Clubes.addActionListener(this);
         clubes.Libros.addActionListener(this);
         clubes.Miembros.addActionListener(this);
         
+        //action listener de botones de admclubes
+        admclubes.NuevoClub.addActionListener(this);
+        admclubes.ActClub.addActionListener(this);
+        admclubes.FichaClub.addActionListener(this);
+        admclubes.ListaNegra.addActionListener(this);
+        admclubes.EliminarClub.addActionListener(this);
+        
         //action listener de botones de borrow manager pannel
-        borrow.Asistencias.addActionListener(this);
-        borrow.Calendario.addActionListener(this);
+        reuniones.Asistencias.addActionListener(this);
+        reuniones.Calendario.addActionListener(this);
         
         //action listener de botones de option main pannel
         option.Reuniones.addActionListener(this);
@@ -235,19 +240,10 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         
     }
     
-    public void SetInvisibleTittle(){
-        
-        addname.setVisible(false);
-        borrowname.setVisible(false);
-        consultname.setVisible(false);
-        returnname.setVisible(false);
-        
-    }
-    
     public void SetInvisibleMenu(){
         
         option.setVisible(false);
-        borrow.setVisible(false);
+        reuniones.setVisible(false);
         clubes.setVisible(false);
         obras.setVisible(false);
         admclubes.setVisible(false);
@@ -262,157 +258,120 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         
         if (evt.equals(option.Reuniones)){
 
-            SetInvisibleTittle();
             SetInvisibleMenu();
             SetInvisibleContent();
             
-            borrow.setVisible(true);
-            borrowname.setVisible(true);
+            reuniones.setVisible(true);
             borrowcontent.setVisible(true);
             
             OptionPannel.validate();
-            TitlePannel.validate();
             ContentPannel.validate();
             
             ContentPannel.add(borrowcontent);
-            TitlePannel.add(borrowname);
-            OptionPannel.add(borrow);
+            borrowname.jLabel1.setText("Cierre de reunión");
+            OptionPannel.add(reuniones);
 
         }else if (evt.equals(HomeButton)){
             
-            SetInvisibleTittle();
             SetInvisibleMenu();
             SetInvisibleContent();
             
             option.setVisible(true);
-            addname.setVisible(true);
             addcontent.setVisible(true);
             
             OptionPannel.validate();
-            TitlePannel.validate();
             ContentPannel.validate();
             
             OptionPannel.add(option);
-            TitlePannel.add(addname);
+            borrowname.jLabel1.setText("Principal");
             ContentPannel.add(addcontent);
             
         }else if (evt.equals(option.Obras)){
             
-            SetInvisibleTittle();
             SetInvisibleMenu();
             SetInvisibleContent();
             
             obras.setVisible(true);
-            addname.setVisible(true);
             addcontent.setVisible(true);
             
             OptionPannel.validate();
-            TitlePannel.validate();
             ContentPannel.validate();
             
             OptionPannel.add(obras);
-            TitlePannel.add(addname);
+            borrowname.jLabel1.setText("Administración de obras");
             ContentPannel.add(addcontent);
             
         }else if (evt.equals(option.Clubes)){
             
-            SetInvisibleTittle();
             SetInvisibleMenu();
             SetInvisibleContent();
             
             clubes.setVisible(true);
-            borrowname.setVisible(true);
             borrowcontent.setVisible(true);
             
             OptionPannel.validate();
-            TitlePannel.validate();
             ContentPannel.validate();
             
             ContentPannel.add(borrowcontent);
-            TitlePannel.add(borrowname);
+            borrowname.jLabel1.setText("Pagos");
             OptionPannel.add(clubes);
             
         }else if (evt.equals(clubes.Clubes)){
             
-            SetInvisibleTittle();
             SetInvisibleMenu();
             SetInvisibleContent();
             
             admclubes.setVisible(true);
-            borrowname.setVisible(true);
-            borrowcontent.setVisible(true);
+            nuevoclub.setVisible(true);
             
             OptionPannel.validate();
-            TitlePannel.validate();
             ContentPannel.validate();
             
-            ContentPannel.add(borrowcontent);
-            TitlePannel.add(borrowname);
+            ContentPannel.add(nuevoclub);
+            borrowname.jLabel1.setText("Nuevo club");
             OptionPannel.add(admclubes);
             
         }else if (evt.equals(clubes.Miembros)){
             
-            SetInvisibleTittle();
             SetInvisibleMenu();
             SetInvisibleContent();
             
             miembros.setVisible(true);
-            borrowname.setVisible(true);
             borrowcontent.setVisible(true);
             
             OptionPannel.validate();
-            TitlePannel.validate();
             ContentPannel.validate();
             
             ContentPannel.add(borrowcontent);
-            TitlePannel.add(borrowname);
             OptionPannel.add(miembros);
             
         }else if (evt.equals(clubes.Libros)){
             
-            SetInvisibleTittle();
             SetInvisibleMenu();
             SetInvisibleContent();
             
             libros.setVisible(true);
-            borrowname.setVisible(true);
             borrowcontent.setVisible(true);
             
             OptionPannel.validate();
-            TitlePannel.validate();
             ContentPannel.validate();
             
             ContentPannel.add(borrowcontent);
-            TitlePannel.add(borrowname);
             OptionPannel.add(libros);
+        }else if (evt.equals(admclubes.NuevoClub)){
             
-        }else if (evt.equals(borrow.Asistencias)){
-            
-            SetInvisibleTittle();
+            SetInvisibleMenu();
             SetInvisibleContent();
             
-            returncontent.setVisible(true);
-            returnname.setVisible(true);
+            admclubes.setVisible(true);
+            nuevoclub.setVisible(true);
             
-            TitlePannel.validate();
+            OptionPannel.validate();
             ContentPannel.validate();
             
-            TitlePannel.add(returnname);
-            ContentPannel.add(returncontent);
-            
-        }else if (evt.equals(borrow.Calendario)){
-            
-            SetInvisibleTittle();
-            SetInvisibleContent();
-            
-            borrowcontent.setVisible(true);
-            borrowname.setVisible(true);
-            
-            TitlePannel.validate();
-            ContentPannel.validate();
-            
-            TitlePannel.add(borrowname);
-            ContentPannel.add(borrowcontent);
+            ContentPannel.add(nuevoclub);
+            borrowname.jLabel1.setText("Nuevo club");
+            OptionPannel.add(admclubes);
             
         }
     }

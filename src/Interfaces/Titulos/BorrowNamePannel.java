@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaces.Titutos;
+package Interfaces.Titulos;
 
 /**
  *
  * @author Jose Prieto
  */
-public class ReturnMaterialNamePannel extends javax.swing.JPanel {
+public class BorrowNamePannel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ReturnMaterialNamePannel
+     * Creates new form BorrowNamePannel
      */
-    public ReturnMaterialNamePannel() {
+    public BorrowNamePannel() {
         initComponents();
     }
 
@@ -33,14 +33,14 @@ public class ReturnMaterialNamePannel extends javax.swing.JPanel {
         setLayout(new java.awt.BorderLayout());
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Retornar Material");
         add(jLabel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
