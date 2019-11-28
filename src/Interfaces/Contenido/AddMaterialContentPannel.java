@@ -1,6 +1,7 @@
 package Interfaces.Contenido;
 
 import ControladorBD.MaterialCRUD;
+import java.awt.Color;
 
 public class AddMaterialContentPannel extends javax.swing.JPanel {
     
@@ -62,8 +63,8 @@ public class AddMaterialContentPannel extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(707, 541));
         setPreferredSize(new java.awt.Dimension(707, 541));
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Material");
 
         MaterialTextField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -220,7 +221,6 @@ public class AddMaterialContentPannel extends javax.swing.JPanel {
     private void ProviderTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProviderTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ProviderTextFieldActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AcceptButton;

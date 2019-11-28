@@ -50,10 +50,20 @@ public class NuevoClubContent extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         DepartmentTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        MinQuantSpinner = new javax.swing.JSpinner();
         ProviderTextField = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        DepartmentTextField1 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        DepartmentTextField2 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        DepartmentTextField3 = new javax.swing.JTextField();
+        ProviderTextField1 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        DepartmentTextField4 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        MaterialTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(707, 541));
         setMinimumSize(new java.awt.Dimension(707, 541));
@@ -73,11 +83,11 @@ public class NuevoClubContent extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Dirección (*)");
+        jLabel2.setText("País (*)");
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("Codigo postal (*)");
+        jLabel3.setText("Ciudad (*)");
 
         DepartmentTextField.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         DepartmentTextField.setForeground(new java.awt.Color(51, 51, 51));
@@ -91,13 +101,6 @@ public class NuevoClubContent extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Idioma (*)");
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setText("Cuota de membresía");
-
-        MinQuantSpinner.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        MinQuantSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
         ProviderTextField.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         ProviderTextField.setForeground(new java.awt.Color(51, 51, 51));
         ProviderTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -106,38 +109,140 @@ public class NuevoClubContent extends javax.swing.JPanel {
             }
         });
 
-        jComboBox1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(51, 51, 51));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        DepartmentTextField1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        DepartmentTextField1.setForeground(new java.awt.Color(51, 51, 51));
+        DepartmentTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DepartmentTextField1ActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel6.setText("Zona postal (*)");
+
+        DepartmentTextField2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        DepartmentTextField2.setForeground(new java.awt.Color(51, 51, 51));
+        DepartmentTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DepartmentTextField2ActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setText("Instirución asociada");
+
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel9.setText("Cambio (*)");
+
+        DepartmentTextField3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        DepartmentTextField3.setForeground(new java.awt.Color(51, 51, 51));
+        DepartmentTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DepartmentTextField3ActionPerformed(evt);
+            }
+        });
+
+        ProviderTextField1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        ProviderTextField1.setForeground(new java.awt.Color(51, 51, 51));
+        ProviderTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProviderTextField1ActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel7.setText("Nacionalidad (*)");
+
+        DepartmentTextField4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        DepartmentTextField4.setForeground(new java.awt.Color(51, 51, 51));
+        DepartmentTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DepartmentTextField4ActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel10.setText("Moneda (*)");
+
+        MaterialTextField1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        MaterialTextField1.setForeground(new java.awt.Color(51, 51, 51));
+        MaterialTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MaterialTextField1ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton1.setText("Registrar");
+
+        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton2.setText("Reestablecer");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(ProviderTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(DepartmentTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(MinQuantSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(MaterialTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(86, Short.MAX_VALUE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(90, 90, 90)
+                                .addComponent(DepartmentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(44, 44, 44)
+                                .addComponent(ProviderTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(MaterialTextField))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(115, 115, 115)
+                                .addComponent(ProviderTextField))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addGap(55, 55, 55)
+                                        .addComponent(DepartmentTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel10)
+                                        .addGap(83, 83, 83)
+                                        .addComponent(DepartmentTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(DepartmentTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(DepartmentTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(16, 16, 16)
+                                .addComponent(MaterialTextField1)))))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(MaterialTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -147,15 +252,33 @@ public class NuevoClubContent extends javax.swing.JPanel {
                     .addComponent(ProviderTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(DepartmentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel7)
+                    .addComponent(ProviderTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DepartmentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DepartmentTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(MinQuantSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(307, Short.MAX_VALUE))
+                    .addComponent(DepartmentTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DepartmentTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DepartmentTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(MaterialTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -172,17 +295,51 @@ public class NuevoClubContent extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_ProviderTextFieldActionPerformed
 
+    private void DepartmentTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DepartmentTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DepartmentTextField1ActionPerformed
+
+    private void DepartmentTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DepartmentTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DepartmentTextField2ActionPerformed
+
+    private void ProviderTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProviderTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ProviderTextField1ActionPerformed
+
+    private void DepartmentTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DepartmentTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DepartmentTextField3ActionPerformed
+
+    private void DepartmentTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DepartmentTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DepartmentTextField4ActionPerformed
+
+    private void MaterialTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MaterialTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MaterialTextField1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField DepartmentTextField;
+    private javax.swing.JTextField DepartmentTextField1;
+    private javax.swing.JTextField DepartmentTextField2;
+    private javax.swing.JTextField DepartmentTextField3;
+    private javax.swing.JTextField DepartmentTextField4;
     private javax.swing.JTextField MaterialTextField;
-    private javax.swing.JSpinner MinQuantSpinner;
+    private javax.swing.JTextField MaterialTextField1;
     private javax.swing.JTextField ProviderTextField;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextField ProviderTextField1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }

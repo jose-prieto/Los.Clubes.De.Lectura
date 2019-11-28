@@ -16,6 +16,7 @@ import Interfaces.Menu.MiembrosPannel;
 import Interfaces.Titulos.BorrowNamePannel;
 
 import Interfaces.Contenido.AddMaterialContentPannel;
+import Interfaces.Contenido.AsociarClub;
 import Interfaces.Contenido.BorrowContentPannel;
 import Interfaces.Contenido.ReturnPannel;
 import Interfaces.Contenido.ConsultPannel;
@@ -46,6 +47,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     MiembrosPannel miembros = new MiembrosPannel ();
     
     //Content pannels
+    AsociarClub asociarclub = new AsociarClub ();
     AddMaterialContentPannel addcontent = new AddMaterialContentPannel();
     BorrowContentPannel borrowcontent = new BorrowContentPannel();
     ReturnPannel returncontent = new ReturnPannel();
@@ -69,9 +71,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         
         //action listener de botones de admclubes
         admclubes.NuevoClub.addActionListener(this);
-        admclubes.ActClub.addActionListener(this);
-        admclubes.FichaClub.addActionListener(this);
-        admclubes.ListaNegra.addActionListener(this);
+        admclubes.AsociarClub.addActionListener(this);
         admclubes.EliminarClub.addActionListener(this);
         
         //action listener de botones de borrow manager pannel
@@ -187,6 +187,11 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         // TODO add your handling code here:
     }//GEN-LAST:event_HomeButtonActionPerformed
     
+    /*private void HomeButtonMouseEntered(java.awt.event.MouseEvent evt) {                                        
+        // TODO add your handling code here:
+        HomeButton.setBackground(Color.yellow);
+        HomeButton.setBackground(Color.DARK_GRAY);
+    }  */                                     
     /**
      * @param args the command line arguments
      */
@@ -371,6 +376,21 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
             
             ContentPannel.add(nuevoclub);
             borrowname.jLabel1.setText("Nuevo club");
+            OptionPannel.add(admclubes);
+            
+        }else if (evt.equals(admclubes.AsociarClub)){
+            
+            SetInvisibleMenu();
+            SetInvisibleContent();
+            
+            admclubes.setVisible(true);
+            asociarclub.setVisible(true);
+            
+            OptionPannel.validate();
+            ContentPannel.validate();
+            
+            ContentPannel.add(asociarclub);
+            borrowname.jLabel1.setText("Asociación de clubes");
             OptionPannel.add(admclubes);
             
         }
