@@ -2,10 +2,10 @@ package Interfaces.Contenido;
 
 import Interfaces.Menu.ProcedimientosExtra;
 
-
 public class RegistrarLibro extends javax.swing.JPanel {
     
     ProcedimientosExtra listen = new ProcedimientosExtra ();
+    AsociarClub st = new AsociarClub ();
 
     public RegistrarLibro() {
         initComponents();
@@ -45,13 +45,13 @@ public class RegistrarLibro extends javax.swing.JPanel {
         Tema = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         Sinopsis = new javax.swing.JTextArea();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        Label1 = new javax.swing.JLabel();
+        Label2 = new javax.swing.JLabel();
+        Label3 = new javax.swing.JLabel();
+        Label4 = new javax.swing.JLabel();
+        Label6 = new javax.swing.JLabel();
+        Label7 = new javax.swing.JLabel();
+        Label5 = new javax.swing.JLabel();
         Year = new javax.swing.JTextField();
         Pag = new javax.swing.JTextField();
 
@@ -173,33 +173,89 @@ public class RegistrarLibro extends javax.swing.JPanel {
         Sinopsis.setText("Ej. Para entender el argumento de Romeo y Julieta hemos de conocer el concepto de 'tragedia', un género dramático o teatral en el cual los...");
         jScrollPane2.setViewportView(Sinopsis);
 
-        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel13.setText("(*)");
+        Label1.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
+        Label1.setForeground(new java.awt.Color(255, 0, 0));
+        Label1.setText("(*)");
+        Label1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Label1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Label1MouseExited(evt);
+            }
+        });
 
-        jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel14.setText("(*)");
+        Label2.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
+        Label2.setForeground(new java.awt.Color(255, 0, 0));
+        Label2.setText("(*)");
+        Label2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Label2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Label2MouseExited(evt);
+            }
+        });
 
-        jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel15.setText("(*)");
+        Label3.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
+        Label3.setForeground(new java.awt.Color(255, 0, 0));
+        Label3.setText("(*)");
+        Label3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Label3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Label3MouseExited(evt);
+            }
+        });
 
-        jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel16.setText("(*)");
+        Label4.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
+        Label4.setForeground(new java.awt.Color(255, 0, 0));
+        Label4.setText("(*)");
+        Label4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Label4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Label4MouseExited(evt);
+            }
+        });
 
-        jLabel17.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel17.setText("(*)");
+        Label6.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
+        Label6.setForeground(new java.awt.Color(255, 0, 0));
+        Label6.setText("(*)");
+        Label6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Label6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Label6MouseExited(evt);
+            }
+        });
 
-        jLabel18.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel18.setText("(*)");
+        Label7.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
+        Label7.setForeground(new java.awt.Color(255, 0, 0));
+        Label7.setText("(*)");
+        Label7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Label7MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Label7MouseExited(evt);
+            }
+        });
 
-        jLabel19.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel19.setText("(*)");
+        Label5.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
+        Label5.setForeground(new java.awt.Color(255, 0, 0));
+        Label5.setText("(*)");
+        Label5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Label5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Label5MouseExited(evt);
+            }
+        });
 
         Year.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Year.setForeground(new java.awt.Color(204, 204, 255));
@@ -255,7 +311,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Year, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel19)
+                                .addComponent(Label5)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(Tema, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
                             .addComponent(jScrollPane2)))
@@ -266,12 +322,12 @@ public class RegistrarLibro extends javax.swing.JPanel {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel18))
+                    .addComponent(Label1)
+                    .addComponent(Label2)
+                    .addComponent(Label3)
+                    .addComponent(Label4)
+                    .addComponent(Label6)
+                    .addComponent(Label7))
                 .addGap(52, 52, 52))
         );
         layout.setVerticalGroup(
@@ -281,7 +337,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(OriTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
+                    .addComponent(Label1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -290,23 +346,23 @@ public class RegistrarLibro extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NomAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel14))
+                    .addComponent(Label2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ApeAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel15))
+                    .addComponent(Label3))
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel16))
+                    .addComponent(Label4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel19)
+                    .addComponent(Label6)
+                    .addComponent(Label5)
                     .addComponent(Year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Pag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -325,7 +381,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(51, 51, 51)
-                                .addComponent(jLabel18)))
+                                .addComponent(Label7)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -371,11 +427,88 @@ public class RegistrarLibro extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_PagActionPerformed
 
+    private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
+        // TODO add your handling code here:
+        Label1.setText(st.pop);
+    }//GEN-LAST:event_Label1MouseEntered
+
+    private void Label1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseExited
+        // TODO add your handling code here:
+        Label1.setText(st.calm);
+    }//GEN-LAST:event_Label1MouseExited
+
+    private void Label2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label2MouseEntered
+        // TODO add your handling code here:
+        Label2.setText(st.pop);
+    }//GEN-LAST:event_Label2MouseEntered
+
+    private void Label2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label2MouseExited
+        // TODO add your handling code here:
+        Label2.setText(st.calm);
+    }//GEN-LAST:event_Label2MouseExited
+
+    private void Label3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label3MouseEntered
+        // TODO add your handling code here:
+        Label3.setText(st.pop);
+    }//GEN-LAST:event_Label3MouseEntered
+
+    private void Label3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label3MouseExited
+        // TODO add your handling code here:
+        Label3.setText(st.calm);
+    }//GEN-LAST:event_Label3MouseExited
+
+    private void Label4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label4MouseEntered
+        // TODO add your handling code here:
+        Label4.setText(st.pop);
+    }//GEN-LAST:event_Label4MouseEntered
+
+    private void Label4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label4MouseExited
+        // TODO add your handling code here:
+        Label4.setText(st.calm);
+    }//GEN-LAST:event_Label4MouseExited
+
+    private void Label5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label5MouseEntered
+        // TODO add your handling code here:
+        Label5.setText(st.pop);
+    }//GEN-LAST:event_Label5MouseEntered
+
+    private void Label5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label5MouseExited
+        // TODO add your handling code here:
+        Label5.setText(st.calm);
+    }//GEN-LAST:event_Label5MouseExited
+
+    private void Label6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label6MouseEntered
+        // TODO add your handling code here:
+        Label6.setText(st.pop);
+    }//GEN-LAST:event_Label6MouseEntered
+
+    private void Label6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label6MouseExited
+        // TODO add your handling code here:
+        Label6.setText(st.calm);
+    }//GEN-LAST:event_Label6MouseExited
+
+    private void Label7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label7MouseEntered
+        // TODO add your handling code here:
+        Label7.setText(st.pop);
+    }//GEN-LAST:event_Label7MouseEntered
+
+    private void Label7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label7MouseExited
+        // TODO add your handling code here:
+        Label7.setText(st.calm);
+    }//GEN-LAST:event_Label7MouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ApeAutor;
     private javax.swing.JTextField Edit;
     private javax.swing.JTextField EspTitulo;
+    private javax.swing.JLabel Label1;
+    private javax.swing.JLabel Label2;
+    private javax.swing.JLabel Label3;
+    private javax.swing.JLabel Label4;
+    private javax.swing.JLabel Label5;
+    private javax.swing.JLabel Label6;
+    private javax.swing.JLabel Label7;
     private javax.swing.JTextField NomAutor;
     private javax.swing.JTextField OriTitulo;
     private javax.swing.JTextField Pag;
@@ -388,13 +521,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -104,13 +104,13 @@ public class AdmClubesPannel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(15, 15, 15)
                 .addComponent(NuevoClub, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(AsociarClub, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(EliminarClub, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(381, Short.MAX_VALUE))
+                .addContainerGap(377, Short.MAX_VALUE))
         );
 
         NuevoClub.getAccessibleContext().setAccessibleDescription("");
@@ -124,23 +124,27 @@ public class AdmClubesPannel extends javax.swing.JPanel {
         // TODO add your handling code here:
         NuevoClub.setContentAreaFilled(true);
         NuevoClub.setBackground(pro.CasillaSelect);
+        NuevoClub.setForeground(pro.FuenteSelect);
         
     }//GEN-LAST:event_NuevoClubMouseEntered
 
     private void NuevoClubMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevoClubMouseExited
         // TODO add your handling code here:
         NuevoClub.setContentAreaFilled(false);
+        NuevoClub.setForeground(pro.FuenteNoSelect);
     }//GEN-LAST:event_NuevoClubMouseExited
 
     private void EliminarClubMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarClubMouseEntered
         // TODO add your handling code here:
         EliminarClub.setContentAreaFilled(true);
         EliminarClub.setBackground(pro.CasillaSelect);
+        EliminarClub.setForeground(pro.FuenteSelect);
     }//GEN-LAST:event_EliminarClubMouseEntered
 
     private void EliminarClubMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarClubMouseExited
         // TODO add your handling code here:
         EliminarClub.setContentAreaFilled(false);
+        EliminarClub.setForeground(pro.FuenteNoSelect);
     }//GEN-LAST:event_EliminarClubMouseExited
 
     private void EliminarClubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarClubActionPerformed
@@ -151,11 +155,13 @@ public class AdmClubesPannel extends javax.swing.JPanel {
         // TODO add your handling code here:
         AsociarClub.setContentAreaFilled(true);
         AsociarClub.setBackground(pro.CasillaSelect);
+        AsociarClub.setForeground(pro.FuenteSelect);
     }//GEN-LAST:event_AsociarClubMouseEntered
 
     private void AsociarClubMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AsociarClubMouseExited
         // TODO add your handling code here:
         AsociarClub.setContentAreaFilled(false);
+        AsociarClub.setForeground(pro.FuenteNoSelect);
     }//GEN-LAST:event_AsociarClubMouseExited
 
     private void AsociarClubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsociarClubActionPerformed

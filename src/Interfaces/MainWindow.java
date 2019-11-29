@@ -6,6 +6,8 @@ import Interfaces.Menu.MantLibrosPannel;
 import Interfaces.Menu.ObrasPannel;
 import Interfaces.Menu.ReunionesPannel;
 import Interfaces.Menu.MiembrosPannel;
+import Interfaces.Menu.AdmClubesPannel;
+
 
 import Interfaces.Contenido.EmptyPannel;
 import Interfaces.Contenido.AsociarClub;
@@ -27,6 +29,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     ObrasPannel obras = new ObrasPannel ();
     MantLibrosPannel libros = new MantLibrosPannel ();
     MiembrosPannel miembros = new MiembrosPannel ();
+    AdmClubesPannel admclub = new AdmClubesPannel();
     
     //Content pannels
     RegistrarLibro nuevolibro = new RegistrarLibro ();
@@ -48,9 +51,12 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         clubes.Libros.addActionListener(this);
         clubes.Miembros.addActionListener(this);
         clubes.Pagos.addActionListener(this);
-        clubes.AsociarClub.addActionListener(this);
-        clubes.Eliminarclub.addActionListener(this);
-        clubes.NuevoClub.addActionListener(this);
+        clubes.Club.addActionListener(this);
+        
+        //action listener de botones admclub
+        admclub.AsociarClub.addActionListener(this);
+        admclub.EliminarClub.addActionListener(this);
+        admclub.NuevoClub.addActionListener(this);
         
         //action listener de botones de reuniones manager pannel
         reuniones.Asistencias.addActionListener(this);
@@ -74,6 +80,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     private void initComponents() {
 
         OptionPannel = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         TitlePannel = new javax.swing.JPanel();
         Titulo = new javax.swing.JLabel();
         HomeButtonPannel = new javax.swing.JPanel();
@@ -94,6 +101,25 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         OptionPannel.setForeground(new java.awt.Color(102, 102, 102));
         OptionPannel.setLayout(new java.awt.BorderLayout());
 
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(204, 204, 204));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back-icon-500x500.png"))); // NOI18N
+        jButton1.setText("Atras");
+        jButton1.setAlignmentX(2.0F);
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setFocusPainted(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton1.setMargin(new java.awt.Insets(40, 40, 40, 14));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        OptionPannel.add(jButton1, java.awt.BorderLayout.PAGE_END);
+
         TitlePannel.setBackground(new java.awt.Color(255, 255, 255));
         TitlePannel.setLayout(new java.awt.BorderLayout());
 
@@ -106,7 +132,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         HomeButtonPannel.setBackground(new java.awt.Color(51, 51, 51));
         HomeButtonPannel.setPreferredSize(new java.awt.Dimension(210, 210));
 
-        HomeButton.setBackground(new java.awt.Color(255, 255, 255));
+        HomeButton.setBackground(new java.awt.Color(0, 0, 0));
         HomeButton.setForeground(new java.awt.Color(255, 255, 255));
         HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Icono.png"))); // NOI18N
         HomeButton.setBorder(null);
@@ -132,9 +158,8 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         HomeButtonPannelLayout.setVerticalGroup(
             HomeButtonPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HomeButtonPannelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(HomeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 4, Short.MAX_VALUE)
+                .addComponent(HomeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         ContentPannel.setLayout(new java.awt.BorderLayout());
@@ -154,9 +179,9 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(HomeButtonPannel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(HomeButtonPannel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(OptionPannel, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE))
+                .addComponent(OptionPannel, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(TitlePannel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -179,6 +204,10 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         ContentPannel.add(vacio);
     }//GEN-LAST:event_HomeButtonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -195,6 +224,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     public javax.swing.JPanel OptionPannel;
     private javax.swing.JPanel TitlePannel;
     public javax.swing.JLabel Titulo;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 
     public void Alistar (){
@@ -214,6 +244,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         obras.setVisible(false);
         libros.setVisible(false);
         miembros.setVisible(false);
+        admclub.setVisible(false);
         
         //Validsar paneles
         reuniones.validate();
@@ -258,27 +289,27 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
             Titulo.setText("Registrar pago");
             OptionPannel.add(clubes);
             
-        }else if (evt.equals(clubes.NuevoClub)){
+        }else if (evt.equals(admclub.NuevoClub)){
             
             Alistar();
             
-            clubes.setVisible(true);
+            admclub.setVisible(true);
             nuevoclub.setVisible(true);
             
             ContentPannel.add(nuevoclub);
             Titulo.setText("Nuevo club");
-            OptionPannel.add(clubes);
+            OptionPannel.add(admclub);
             
-        }else if (evt.equals(clubes.Eliminarclub)){
+        }else if (evt.equals(admclub.EliminarClub)){
             
             Alistar();
             
-            clubes.setVisible(true);
+            admclub.setVisible(true);
             eliminarclub.setVisible(true);
             
             ContentPannel.add(eliminarclub);
             Titulo.setText("Eliminar club");
-            OptionPannel.add(clubes);
+            OptionPannel.add(admclub);
             
         }else if (evt.equals(clubes.Miembros)){
             
@@ -313,16 +344,27 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
             Titulo.setText("Registrar pago");
             OptionPannel.add(clubes);
             
-        }else if (evt.equals(clubes.AsociarClub)){
+        }else if (evt.equals(clubes.Club)){
             
             Alistar();
             
-            clubes.setVisible(true);
+            admclub.setVisible(true);
+            nuevoclub.setVisible(true);
+            
+            ContentPannel.add(nuevoclub);
+            Titulo.setText("Nuevo club");
+            OptionPannel.add(admclub);
+            
+        }else if (evt.equals(admclub.AsociarClub)){
+            
+            Alistar();
+            
+            admclub.setVisible(true);
             asociarclub.setVisible(true);
                         
             ContentPannel.add(asociarclub);
             Titulo.setText("Asociar clubes");
-            OptionPannel.add(clubes);
+            OptionPannel.add(admclub);
             
         }else if (evt.equals(libros.RegistrarLibro)){
             

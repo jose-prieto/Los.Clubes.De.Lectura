@@ -26,7 +26,7 @@ public class Pagos extends javax.swing.JPanel {
         Club = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
+        Label = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(707, 541));
         setMinimumSize(new java.awt.Dimension(707, 541));
@@ -56,8 +56,18 @@ public class Pagos extends javax.swing.JPanel {
         jButton2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jButton2.setText("Reestablecer");
 
-        jLabel9.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel9.setText("(*)");
+        Label.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
+        Label.setForeground(new java.awt.Color(255, 0, 0));
+        Label.setText("(*)");
+        Label.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Label.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                LabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                LabelMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -75,7 +85,7 @@ public class Pagos extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(Club)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9)
+                .addComponent(Label)
                 .addGap(84, 84, 84))
         );
         layout.setVerticalGroup(
@@ -85,7 +95,7 @@ public class Pagos extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(Club, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                    .addComponent(Label))
                 .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -103,12 +113,22 @@ public class Pagos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void LabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LabelMouseEntered
+        // TODO add your handling code here:
+        Label.setText("Campo oblicatorio");
+    }//GEN-LAST:event_LabelMouseEntered
+
+    private void LabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LabelMouseExited
+        // TODO add your handling code here:
+        Label.setText("(*)");
+    }//GEN-LAST:event_LabelMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Club;
+    private javax.swing.JLabel Label;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }
