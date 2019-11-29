@@ -6,17 +6,16 @@
 package Interfaces.Menu;
 
 import java.awt.Color;
-import javax.swing.border.LineBorder;
 
 /**
  *
  * @author Jose Prieto
  */
-public class MainOptionPannel extends javax.swing.JPanel {
+public class MainPannel extends javax.swing.JPanel {
     /**
      * Creates new form MainOptionPannel
      */
-    public MainOptionPannel() {
+    public MainPannel() {
         initComponents();
     }
 
