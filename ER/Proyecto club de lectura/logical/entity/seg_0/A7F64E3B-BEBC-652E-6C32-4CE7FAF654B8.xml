@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_capitulo" id="55A06820-F6C4-BBDD-4EF6-1D6FF78004AE">
+<Attribute name="cap_id" id="55A06820-F6C4-BBDD-4EF6-1D6FF78004AE">
 <createdBy>dani_</createdBy>
 <createdTime>2019-10-31 01:44:08 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
@@ -27,7 +27,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="nombre_capitulo" id="3947AC49-1BBF-624C-61AC-824394018586">
+<Attribute name="cap_nombre" id="3947AC49-1BBF-624C-61AC-824394018586">
 <createdBy>dani_</createdBy>
 <createdTime>2019-10-31 01:44:18 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
@@ -39,7 +39,7 @@
 <logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_lib" id="96B5BD7E-77C0-C39C-5FE4-F8E5A81C3CCF">
+<Attribute name="lib_id" id="96B5BD7E-77C0-C39C-5FE4-F8E5A81C3CCF">
 <createdBy>dani_</createdBy>
 <createdTime>2019-10-31 01:46:08 UTC</createdTime>
 <generatorID>63616D21-1977-5B96-A883-08A0E1DE9924</generatorID>

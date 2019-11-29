@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_obra" id="CB50DA07-18A2-C547-6A22-399DBCC005AC">
+<Attribute name="obra_id" id="CB50DA07-18A2-C547-6A22-399DBCC005AC">
 <createdBy>dani_</createdBy>
 <createdTime>2019-10-27 01:00:39 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
@@ -27,7 +27,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="duracion" id="DA766BDE-865F-BF87-1C90-A8A1F4CF627D">
+<Attribute name="obra_durac" id="DA766BDE-865F-BF87-1C90-A8A1F4CF627D">
 <createdBy>aayal</createdBy>
 <createdTime>2019-10-27 19:16:23 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
@@ -38,14 +38,13 @@
 <use>1</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="estatus" id="35C26C27-2808-1648-19CC-EE8F4588B087">
+<Attribute name="obra_status" id="35C26C27-2808-1648-19CC-EE8F4588B087">
 <createdBy>dani_</createdBy>
 <createdTime>2019-10-31 02:06:37 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
 <engineerTo>
 <item key="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT006</logicalDatatype>

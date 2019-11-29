@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_tipo" id="830BA5CD-D830-924B-CC06-AECA61EA2B35">
+<Attribute name="tipo_id" id="830BA5CD-D830-924B-CC06-AECA61EA2B35">
 <createdBy>jap25</createdBy>
 <createdTime>2019-10-13 05:14:02 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
@@ -27,7 +27,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="nombre_tipo" id="50947E1C-60D5-AB46-746E-0EF34DFD6CF9">
+<Attribute name="tipo_nombre" id="50947E1C-60D5-AB46-746E-0EF34DFD6CF9">
 <createdBy>jap25</createdBy>
 <createdTime>2019-10-13 05:14:08 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>

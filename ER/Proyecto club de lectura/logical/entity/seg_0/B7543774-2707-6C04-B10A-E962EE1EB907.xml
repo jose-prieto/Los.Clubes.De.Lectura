@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_inst" id="AE633CFE-D829-CF7A-B75E-36AC3774154F">
+<Attribute name="inst_id" id="AE633CFE-D829-CF7A-B75E-36AC3774154F">
 <createdBy>jap25</createdBy>
 <createdTime>2019-10-13 05:12:02 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
@@ -27,7 +27,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="nombre_inst" id="9B34F48C-2423-4DF7-16B0-B73BC76E7F89">
+<Attribute name="inst_nombre" id="9B34F48C-2423-4DF7-16B0-B73BC76E7F89">
 <createdBy>jap25</createdBy>
 <createdTime>2019-10-13 05:12:43 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
@@ -40,7 +40,7 @@
 <dataTypeSize>50</dataTypeSize>
 <ownDataTypeParameters>50,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_tipo" id="1E804564-BBCB-E542-32EF-99CA0F464079">
+<Attribute name="tipo_id" id="1E804564-BBCB-E542-32EF-99CA0F464079">
 <createdBy>jap25</createdBy>
 <createdTime>2019-10-13 05:21:45 UTC</createdTime>
 <generatorID>105419A5-3502-A408-4EBE-2D57A4A11722</generatorID>
@@ -54,7 +54,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_dir" id="0542248D-95A1-084E-4666-CBE2BBB40CE2">
+<Attribute name="dir_id" id="0542248D-95A1-084E-4666-CBE2BBB40CE2">
 <createdBy>jap25</createdBy>
 <createdTime>2019-10-13 16:41:43 UTC</createdTime>
 <generatorID>8D128919-AFD4-BA60-38FA-7B88340A9500</generatorID>

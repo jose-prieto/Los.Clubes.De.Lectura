@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_aso" id="7305228A-F30A-39E7-874F-AB467B751042">
+<Attribute name="aso_id" id="7305228A-F30A-39E7-874F-AB467B751042">
 <createdBy>jap25</createdBy>
 <createdTime>2019-10-13 05:19:35 UTC</createdTime>
 <ownerDesignName>Proyecto club de lectura</ownerDesignName>
