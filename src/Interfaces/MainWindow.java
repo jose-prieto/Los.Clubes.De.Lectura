@@ -8,7 +8,6 @@ import Interfaces.Menu.ReunionesPannel;
 import Interfaces.Menu.MiembrosPannel;
 import Interfaces.Menu.AdmClubesPannel;
 
-
 import Interfaces.Contenido.EmptyPannel;
 import Interfaces.Contenido.AsociarClub;
 import Interfaces.Contenido.NuevoClubContent;
@@ -20,59 +19,61 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 
-public class MainWindow extends javax.swing.JFrame implements ActionListener{
-    
+public class MainWindow extends javax.swing.JFrame implements ActionListener {
+
+    int cond = 1;
+
     //Menu pannels
     MainPannel main = new MainPannel();
     ReunionesPannel reuniones = new ReunionesPannel();
-    ClubesPannel clubes = new ClubesPannel ();
-    ObrasPannel obras = new ObrasPannel ();
-    MantLibrosPannel libros = new MantLibrosPannel ();
-    MiembrosPannel miembros = new MiembrosPannel ();
+    ClubesPannel clubes = new ClubesPannel();
+    ObrasPannel obras = new ObrasPannel();
+    MantLibrosPannel libros = new MantLibrosPannel();
+    MiembrosPannel miembros = new MiembrosPannel();
     AdmClubesPannel admclub = new AdmClubesPannel();
-    
-    //Content pannels
-    RegistrarLibro nuevolibro = new RegistrarLibro ();
-    EliminarClub eliminarclub = new EliminarClub ();
-    NuevoClubContent nuevoclub = new NuevoClubContent ();
-    AsociarClub asociarclub = new AsociarClub ();
-    EmptyPannel vacio = new EmptyPannel();
-    Pagos pago = new Pagos ();
 
-    public MainWindow() {        
+    //Content pannels
+    RegistrarLibro nuevolibro = new RegistrarLibro();
+    EliminarClub eliminarclub = new EliminarClub();
+    NuevoClubContent nuevoclub = new NuevoClubContent();
+    AsociarClub asociarclub = new AsociarClub();
+    EmptyPannel vacio = new EmptyPannel();
+    Pagos pago = new Pagos();
+
+    public MainWindow() {
         initComponents();
-        
+
         setIconImage(new ImageIcon(getClass().getResource("../Images/Icono.png")).getImage());
-        
+
         OptionPannel.add(main);
         ContentPannel.add(vacio);
-        
+
         //action listener de botones de clubes
         clubes.Libros.addActionListener(this);
         clubes.Miembros.addActionListener(this);
         clubes.Pagos.addActionListener(this);
         clubes.Club.addActionListener(this);
-        
+
         //action listener de botones admclub
         admclub.AsociarClub.addActionListener(this);
         admclub.EliminarClub.addActionListener(this);
         admclub.NuevoClub.addActionListener(this);
-        
+
         //action listener de botones de reuniones manager pannel
         reuniones.Asistencias.addActionListener(this);
         reuniones.Calendario.addActionListener(this);
-        
+
         //action listener de botones de option main pannel
         main.Reuniones.addActionListener(this);
         main.Clubes.addActionListener(this);
         main.Obras.addActionListener(this);
-        
+
         //action listener de home button
         HomeButton.addActionListener(this);
-        
+
         //action listener de home button
         libros.RegistrarLibro.addActionListener(this);
-       
+
     }
 
     @SuppressWarnings("unchecked")
@@ -80,7 +81,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     private void initComponents() {
 
         OptionPannel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        Atras = new javax.swing.JButton();
         TitlePannel = new javax.swing.JPanel();
         Titulo = new javax.swing.JLabel();
         HomeButtonPannel = new javax.swing.JPanel();
@@ -101,24 +102,26 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         OptionPannel.setForeground(new java.awt.Color(102, 102, 102));
         OptionPannel.setLayout(new java.awt.BorderLayout());
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(204, 204, 204));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back-icon-500x500.png"))); // NOI18N
-        jButton1.setText("Atras");
-        jButton1.setAlignmentX(2.0F);
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setFocusPainted(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton1.setMargin(new java.awt.Insets(40, 40, 40, 14));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Atras.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        Atras.setForeground(new java.awt.Color(204, 204, 204));
+        Atras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back-icon-500x500.png"))); // NOI18N
+        Atras.setText("Atras");
+        Atras.setAlignmentX(2.0F);
+        Atras.setBorder(null);
+        Atras.setBorderPainted(false);
+        Atras.setContentAreaFilled(false);
+        Atras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Atras.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        Atras.setFocusPainted(false);
+        Atras.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        Atras.setIconTextGap(10);
+        Atras.setMargin(new java.awt.Insets(40, 40, 40, 40));
+        Atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                AtrasActionPerformed(evt);
             }
         });
-        OptionPannel.add(jButton1, java.awt.BorderLayout.PAGE_END);
+        OptionPannel.add(Atras, java.awt.BorderLayout.PAGE_END);
 
         TitlePannel.setBackground(new java.awt.Color(255, 255, 255));
         TitlePannel.setLayout(new java.awt.BorderLayout());
@@ -195,18 +198,43 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     private void HomeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeButtonActionPerformed
 
         Alistar();
-        
+
         main.setVisible(true);
         vacio.setVisible(true);
 
         OptionPannel.add(main);
         Titulo.setText("Inicio");
         ContentPannel.add(vacio);
+
     }//GEN-LAST:event_HomeButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if (cond == 1) {
+
+            Alistar();
+
+            main.setVisible(true);
+            vacio.setVisible(true);
+
+            OptionPannel.add(main);
+            Titulo.setText("Inicio");
+            ContentPannel.add(vacio);
+
+        }else if (cond == 2){
+            
+            Alistar();
+
+            clubes.setVisible(true);
+            pago.setVisible(true);
+
+            ContentPannel.add(pago);
+            Titulo.setText("Registrar pago");
+            OptionPannel.add(clubes);
+            
+            cond = 1;
+        }
+    }//GEN-LAST:event_AtrasActionPerformed
 
     public static void main(String args[]) {
 
@@ -218,17 +246,17 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Atras;
     public javax.swing.JPanel ContentPannel;
     private javax.swing.JButton HomeButton;
     private javax.swing.JPanel HomeButtonPannel;
     public javax.swing.JPanel OptionPannel;
     private javax.swing.JPanel TitlePannel;
     public javax.swing.JLabel Titulo;
-    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 
-    public void Alistar (){
-        
+    public void Alistar() {
+
         //Invisibles contenido
         vacio.setVisible(false);
         asociarclub.setVisible(false);
@@ -236,7 +264,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         nuevoclub.setVisible(false);
         pago.setVisible(false);
         nuevolibro.setVisible(false);
-        
+
         //Invisibles menus
         main.setVisible(false);
         reuniones.setVisible(false);
@@ -245,138 +273,161 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         libros.setVisible(false);
         miembros.setVisible(false);
         admclub.setVisible(false);
-        
+
         //Validsar paneles
         reuniones.validate();
         vacio.validate();
-        
+
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent ae) {
         Object evt = ae.getSource();
-        
-        if (evt.equals(main.Reuniones)){
+
+        if (evt.equals(main.Reuniones)) {
 
             Alistar();
-            
+
             reuniones.setVisible(true);
-            vacio.setVisible(true); 
-            
+            vacio.setVisible(true);
+
             ContentPannel.add(vacio);
             Titulo.setText("Cierre de reunión");
             OptionPannel.add(reuniones);
 
-        }else if (evt.equals(main.Obras)){
-            
+            cond = 1;
+
+        } else if (evt.equals(main.Obras)) {
+
             Alistar();
-            
+
             obras.setVisible(true);
             vacio.setVisible(true);
-            
+
             OptionPannel.add(obras);
             Titulo.setText("Administración de obras");
             ContentPannel.add(vacio);
-            
-        }else if (evt.equals(main.Clubes)){
-            
+
+            cond = 1;
+
+        } else if (evt.equals(main.Clubes)) {
+
             Alistar();
-            
+
             clubes.setVisible(true);
             pago.setVisible(true);
-            
+
             ContentPannel.add(pago);
             Titulo.setText("Registrar pago");
             OptionPannel.add(clubes);
-            
-        }else if (evt.equals(admclub.NuevoClub)){
-            
+
+            cond = 1;
+
+        } else if (evt.equals(clubes.Club)) {
+
             Alistar();
-            
+
             admclub.setVisible(true);
             nuevoclub.setVisible(true);
-            
+
             ContentPannel.add(nuevoclub);
             Titulo.setText("Nuevo club");
             OptionPannel.add(admclub);
-            
-        }else if (evt.equals(admclub.EliminarClub)){
-            
+
+            cond = 2;
+
+        } else if (evt.equals(clubes.Libros)) {
+
             Alistar();
-            
-            admclub.setVisible(true);
-            eliminarclub.setVisible(true);
-            
-            ContentPannel.add(eliminarclub);
-            Titulo.setText("Eliminar club");
-            OptionPannel.add(admclub);
-            
-        }else if (evt.equals(clubes.Miembros)){
-            
+
+            libros.setVisible(true);
+            nuevolibro.setVisible(true);
+
+            ContentPannel.add(nuevolibro);
+            Titulo.setText("Registrar libro");
+            OptionPannel.add(libros);
+
+            cond = 2;
+
+        } else if (evt.equals(clubes.Miembros)) {
+
             Alistar();
-            
+
             miembros.setVisible(true);
             vacio.setVisible(true);
-                        
+
             ContentPannel.add(vacio);
             Titulo.setText("Registrar Miembro");
             OptionPannel.add(miembros);
-            
-        }else if (evt.equals(clubes.Libros)){
-            
+
+            cond = 2;
+
+        } else if (evt.equals(clubes.Pagos)) {
+
             Alistar();
-                        
-            libros.setVisible(true);
-            nuevolibro.setVisible(true);
-                        
-            ContentPannel.add(nuevolibro);
-            Titulo.setText("Registrar libro");
-            OptionPannel.add(libros);
-            
-        }else if (evt.equals(clubes.Pagos)){
-            
-            Alistar();
-            
+
             clubes.setVisible(true);
             pago.setVisible(true);
-                        
+
             ContentPannel.add(pago);
             Titulo.setText("Registrar pago");
             OptionPannel.add(clubes);
-            
-        }else if (evt.equals(clubes.Club)){
-            
+
+        } else if (evt.equals(admclub.NuevoClub)) {
+
             Alistar();
-            
+
             admclub.setVisible(true);
             nuevoclub.setVisible(true);
-            
+
             ContentPannel.add(nuevoclub);
             Titulo.setText("Nuevo club");
             OptionPannel.add(admclub);
-            
-        }else if (evt.equals(admclub.AsociarClub)){
-            
+
+        } else if (evt.equals(admclub.EliminarClub)) {
+
             Alistar();
-            
+
+            admclub.setVisible(true);
+            eliminarclub.setVisible(true);
+
+            ContentPannel.add(eliminarclub);
+            Titulo.setText("Eliminar club");
+            OptionPannel.add(admclub);
+
+        } else if (evt.equals(admclub.AsociarClub)) {
+
+            Alistar();
+
             admclub.setVisible(true);
             asociarclub.setVisible(true);
-                        
+
             ContentPannel.add(asociarclub);
             Titulo.setText("Asociar clubes");
             OptionPannel.add(admclub);
-            
-        }else if (evt.equals(libros.RegistrarLibro)){
-            
+
+        } else if (evt.equals(libros.RegistrarLibro)) {
+
             Alistar();
-            
+
             libros.setVisible(true);
             nuevolibro.setVisible(true);
-            
+
             ContentPannel.add(nuevolibro);
             Titulo.setText("Registrar libro");
             OptionPannel.add(libros);
-            
+
+        } else if (evt.equals(OptionPannel)) {
+
+            Alistar();
+
+            libros.setVisible(true);
+            nuevolibro.setVisible(true);
+
+            ContentPannel.add(nuevolibro);
+            Titulo.setText("Registrar libro");
+            OptionPannel.add(libros);
+
         }
     }
 }
