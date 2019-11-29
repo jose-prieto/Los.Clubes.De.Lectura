@@ -5,7 +5,8 @@
  */
 package Interfaces;
 
-import Interfaces.Menu.AdmClubesPannel;
+import ControladorBD.DBConnection;
+
 import Interfaces.Menu.ClubesPannel;
 import Interfaces.Menu.MainPannel;
 import Interfaces.Menu.MantLibrosPannel;
@@ -32,12 +33,13 @@ import javax.swing.ImageIcon;
  */
 public class MainWindow extends javax.swing.JFrame implements ActionListener{
     
+    DBConnection conexion = new DBConnection ();
+    
     //Menu pannels
     MainPannel option = new MainPannel();
     ReunionesPannel reuniones = new ReunionesPannel();
     ClubesPannel clubes = new ClubesPannel ();
     ObrasPannel obras = new ObrasPannel ();
-    AdmClubesPannel admclubes = new AdmClubesPannel ();
     MantLibrosPannel libros = new MantLibrosPannel ();
     MiembrosPannel miembros = new MiembrosPannel ();
     
@@ -58,15 +60,12 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         ContentPannel.add(vacio);
         
         //action listener de botones de clubes
-        clubes.Clubes.addActionListener(this);
         clubes.Libros.addActionListener(this);
         clubes.Miembros.addActionListener(this);
         clubes.Pagos.addActionListener(this);
-        
-        //action listener de botones de admclubes
-        admclubes.NuevoClub.addActionListener(this);
-        admclubes.AsociarClub.addActionListener(this);
-        admclubes.EliminarClub.addActionListener(this);
+        clubes.AsociarClub.addActionListener(this);
+        clubes.Eliminarclub.addActionListener(this);
+        clubes.NuevoClub.addActionListener(this);
         
         //action listener de botones de reuniones manager pannel
         reuniones.Asistencias.addActionListener(this);
@@ -253,7 +252,6 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         reuniones.setVisible(false);
         clubes.setVisible(false);
         obras.setVisible(false);
-        admclubes.setVisible(false);
         libros.setVisible(false);
         miembros.setVisible(false);
         
@@ -277,6 +275,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
             ContentPannel.add(vacio);
             Titulo.setText("Cierre de reunión");
             OptionPannel.add(reuniones);
+            conexion.getConnection();
 
         }else if (evt.equals(HomeButton)){
             
@@ -323,12 +322,12 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
             Titulo.setText("Registrar pago");
             OptionPannel.add(clubes);
             
-        }else if (evt.equals(clubes.Clubes)){
+        }else if (evt.equals(clubes.NuevoClub)){
             
             SetInvisibleMenu();
             SetInvisibleContent();
             
-            admclubes.setVisible(true);
+            clubes.setVisible(true);
             nuevoclub.setVisible(true);
             
             OptionPannel.validate();
@@ -336,7 +335,22 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
             
             ContentPannel.add(nuevoclub);
             Titulo.setText("Nuevo club");
-            OptionPannel.add(admclubes);
+            OptionPannel.add(clubes);
+            
+        }else if (evt.equals(clubes.Eliminarclub)){
+            
+            SetInvisibleMenu();
+            SetInvisibleContent();
+            
+            clubes.setVisible(true);
+            eliminarclub.setVisible(true);
+            
+            OptionPannel.validate();
+            ContentPannel.validate();
+            
+            ContentPannel.add(eliminarclub);
+            Titulo.setText("Eliminar club");
+            OptionPannel.add(clubes);
             
         }else if (evt.equals(clubes.Miembros)){
             
@@ -383,50 +397,20 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
             Titulo.setText("Registrar pago");
             OptionPannel.add(clubes);
             
-        }else if (evt.equals(admclubes.NuevoClub)){
+        }else if (evt.equals(clubes.AsociarClub)){
             
             SetInvisibleMenu();
             SetInvisibleContent();
             
-            admclubes.setVisible(true);
-            nuevoclub.setVisible(true);
-            
-            OptionPannel.validate();
-            ContentPannel.validate();
-            
-            ContentPannel.add(nuevoclub);
-            Titulo.setText("Nuevo club");
-            OptionPannel.add(admclubes);
-            
-        }else if (evt.equals(admclubes.AsociarClub)){
-            
-            SetInvisibleMenu();
-            SetInvisibleContent();
-            
-            admclubes.setVisible(true);
+            clubes.setVisible(true);
             asociarclub.setVisible(true);
             
             OptionPannel.validate();
             ContentPannel.validate();
             
             ContentPannel.add(asociarclub);
-            Titulo.setText("Asociación de clubes");
-            OptionPannel.add(admclubes);
-            
-        }else if (evt.equals(admclubes.EliminarClub)){
-            
-            SetInvisibleMenu();
-            SetInvisibleContent();
-            
-            admclubes.setVisible(true);
-            eliminarclub.setVisible(true);
-            
-            OptionPannel.validate();
-            ContentPannel.validate();
-            
-            ContentPannel.add(eliminarclub);
-            Titulo.setText("Eliminar club");
-            OptionPannel.add(admclubes);
+            Titulo.setText("Asociar clubes");
+            OptionPannel.add(clubes);
             
         }else if (evt.equals(libros.RegistrarLibro)){
             

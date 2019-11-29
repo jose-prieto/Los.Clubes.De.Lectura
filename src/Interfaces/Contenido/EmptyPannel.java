@@ -1,10 +1,5 @@
 package Interfaces.Contenido;
 
-import ControladorBD.MaterialCRUD;
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
-
 public class EmptyPannel extends javax.swing.JPanel {
 
     /**

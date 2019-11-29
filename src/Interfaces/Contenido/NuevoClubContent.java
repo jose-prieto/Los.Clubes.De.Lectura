@@ -166,6 +166,11 @@ public class NuevoClubContent extends javax.swing.JPanel {
 
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jButton1.setText("Registrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jButton2.setText("Reestablecer");
@@ -372,6 +377,10 @@ public class NuevoClubContent extends javax.swing.JPanel {
     private void Dir2ClubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dir2ClubActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Dir2ClubActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

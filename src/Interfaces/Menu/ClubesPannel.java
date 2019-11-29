@@ -29,10 +29,12 @@ public class ClubesPannel extends javax.swing.JPanel {
     private void initComponents() {
 
         Libros = new javax.swing.JButton();
-        Clubes = new javax.swing.JButton();
         Miembros = new javax.swing.JButton();
         Grupos = new javax.swing.JButton();
         Pagos = new javax.swing.JButton();
+        NuevoClub = new javax.swing.JButton();
+        AsociarClub = new javax.swing.JButton();
+        Eliminarclub = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 51, 51));
         setMaximumSize(new java.awt.Dimension(193, 512));
@@ -54,32 +56,6 @@ public class ClubesPannel extends javax.swing.JPanel {
         Libros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LibrosActionPerformed(evt);
-            }
-        });
-
-        Clubes.setBackground(new java.awt.Color(51, 51, 51));
-        Clubes.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Clubes.setForeground(new java.awt.Color(204, 204, 204));
-        Clubes.setText("Clubes");
-        Clubes.setBorderPainted(false);
-        Clubes.setContentAreaFilled(false);
-        Clubes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Clubes.setIconTextGap(0);
-        Clubes.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        Clubes.setMaximumSize(new java.awt.Dimension(125, 25));
-        Clubes.setMinimumSize(new java.awt.Dimension(125, 25));
-        Clubes.setPreferredSize(new java.awt.Dimension(125, 25));
-        Clubes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ClubesMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ClubesMouseExited(evt);
-            }
-        });
-        Clubes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClubesActionPerformed(evt);
             }
         });
 
@@ -143,21 +119,105 @@ public class ClubesPannel extends javax.swing.JPanel {
             }
         });
 
+        NuevoClub.setBackground(new java.awt.Color(51, 51, 51));
+        NuevoClub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        NuevoClub.setForeground(new java.awt.Color(204, 204, 204));
+        NuevoClub.setText("Nuevo club");
+        NuevoClub.setBorderPainted(false);
+        NuevoClub.setContentAreaFilled(false);
+        NuevoClub.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        NuevoClub.setIconTextGap(0);
+        NuevoClub.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        NuevoClub.setMaximumSize(new java.awt.Dimension(125, 25));
+        NuevoClub.setMinimumSize(new java.awt.Dimension(125, 25));
+        NuevoClub.setPreferredSize(new java.awt.Dimension(125, 25));
+        NuevoClub.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                NuevoClubMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                NuevoClubMouseExited(evt);
+            }
+        });
+        NuevoClub.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NuevoClubActionPerformed(evt);
+            }
+        });
+
+        AsociarClub.setBackground(new java.awt.Color(51, 51, 51));
+        AsociarClub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        AsociarClub.setForeground(new java.awt.Color(204, 204, 204));
+        AsociarClub.setText("Asociar clubes");
+        AsociarClub.setBorderPainted(false);
+        AsociarClub.setContentAreaFilled(false);
+        AsociarClub.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        AsociarClub.setIconTextGap(0);
+        AsociarClub.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        AsociarClub.setMaximumSize(new java.awt.Dimension(125, 25));
+        AsociarClub.setMinimumSize(new java.awt.Dimension(125, 25));
+        AsociarClub.setPreferredSize(new java.awt.Dimension(125, 25));
+        AsociarClub.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AsociarClubMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AsociarClubMouseExited(evt);
+            }
+        });
+        AsociarClub.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AsociarClubActionPerformed(evt);
+            }
+        });
+
+        Eliminarclub.setBackground(new java.awt.Color(51, 51, 51));
+        Eliminarclub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Eliminarclub.setForeground(new java.awt.Color(204, 204, 204));
+        Eliminarclub.setText("Eliminar club");
+        Eliminarclub.setBorderPainted(false);
+        Eliminarclub.setContentAreaFilled(false);
+        Eliminarclub.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Eliminarclub.setIconTextGap(0);
+        Eliminarclub.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        Eliminarclub.setMaximumSize(new java.awt.Dimension(125, 25));
+        Eliminarclub.setMinimumSize(new java.awt.Dimension(125, 25));
+        Eliminarclub.setPreferredSize(new java.awt.Dimension(125, 25));
+        Eliminarclub.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                EliminarclubMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                EliminarclubMouseExited(evt);
+            }
+        });
+        Eliminarclub.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarclubActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Clubes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(Libros, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+            .addComponent(Libros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Miembros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Pagos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Grupos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(NuevoClub, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+            .addComponent(AsociarClub, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Eliminarclub, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Clubes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(NuevoClub, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(AsociarClub, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(Eliminarclub, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(Libros, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -166,31 +226,13 @@ public class ClubesPannel extends javax.swing.JPanel {
                 .addComponent(Grupos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(Pagos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(301, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
-
-        Clubes.getAccessibleContext().setAccessibleDescription("");
     }// </editor-fold>//GEN-END:initComponents
 
     private void LibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LibrosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_LibrosActionPerformed
-
-    private void ClubesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClubesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ClubesActionPerformed
-
-    private void ClubesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClubesMouseEntered
-        // TODO add your handling code here:
-        Clubes.setContentAreaFilled(true);
-        Clubes.setBackground(Color.DARK_GRAY);
-        
-    }//GEN-LAST:event_ClubesMouseEntered
-
-    private void ClubesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClubesMouseExited
-        // TODO add your handling code here:
-        Clubes.setContentAreaFilled(false);
-    }//GEN-LAST:event_ClubesMouseExited
 
     private void LibrosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LibrosMouseEntered
         // TODO add your handling code here:
@@ -248,12 +290,59 @@ public class ClubesPannel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_MiembrosActionPerformed
 
+    private void NuevoClubMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevoClubMouseEntered
+        // TODO add your handling code here:
+        NuevoClub.setContentAreaFilled(true);
+        NuevoClub.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_NuevoClubMouseEntered
+
+    private void NuevoClubMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevoClubMouseExited
+        // TODO add your handling code here:
+        NuevoClub.setContentAreaFilled(false);
+    }//GEN-LAST:event_NuevoClubMouseExited
+
+    private void NuevoClubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoClubActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NuevoClubActionPerformed
+
+    private void AsociarClubMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AsociarClubMouseEntered
+        // TODO add your handling code here:
+        AsociarClub.setContentAreaFilled(true);
+        AsociarClub.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_AsociarClubMouseEntered
+
+    private void AsociarClubMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AsociarClubMouseExited
+        // TODO add your handling code here:
+        AsociarClub.setContentAreaFilled(false);
+    }//GEN-LAST:event_AsociarClubMouseExited
+
+    private void AsociarClubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsociarClubActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AsociarClubActionPerformed
+
+    private void EliminarclubMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarclubMouseEntered
+        // TODO add your handling code here:
+        Eliminarclub.setContentAreaFilled(true);
+        Eliminarclub.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_EliminarclubMouseEntered
+
+    private void EliminarclubMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarclubMouseExited
+        // TODO add your handling code here:
+        Eliminarclub.setContentAreaFilled(false);
+    }//GEN-LAST:event_EliminarclubMouseExited
+
+    private void EliminarclubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarclubActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EliminarclubActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton Clubes;
+    public javax.swing.JButton AsociarClub;
+    public javax.swing.JButton Eliminarclub;
     public javax.swing.JButton Grupos;
     public javax.swing.JButton Libros;
     public javax.swing.JButton Miembros;
+    public javax.swing.JButton NuevoClub;
     public javax.swing.JButton Pagos;
     // End of variables declaration//GEN-END:variables
 }
