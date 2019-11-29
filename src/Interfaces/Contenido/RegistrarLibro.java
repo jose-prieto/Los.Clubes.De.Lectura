@@ -1,9 +1,11 @@
 package Interfaces.Contenido;
 
+import Interfaces.Menu.ProcedimientosExtra;
+
 
 public class RegistrarLibro extends javax.swing.JPanel {
     
-    OpcionesExtra listen = new OpcionesExtra ();
+    ProcedimientosExtra listen = new ProcedimientosExtra ();
 
     public RegistrarLibro() {
         initComponents();

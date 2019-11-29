@@ -1,11 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Interfaces;
-
-import ControladorBD.BDConexion;
 
 import Interfaces.Menu.ClubesPannel;
 import Interfaces.Menu.MainPannel;
@@ -24,19 +17,11 @@ import Interfaces.Contenido.RegistrarLibro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
-//import javax.swing.ImageIcon;
 
-
-/**
- *
- * @author Jose Prieto
- */
 public class MainWindow extends javax.swing.JFrame implements ActionListener{
     
-    BDConexion conexion = new BDConexion ();
-    
     //Menu pannels
-    MainPannel option = new MainPannel();
+    MainPannel main = new MainPannel();
     ReunionesPannel reuniones = new ReunionesPannel();
     ClubesPannel clubes = new ClubesPannel ();
     ObrasPannel obras = new ObrasPannel ();
@@ -56,7 +41,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         
         setIconImage(new ImageIcon(getClass().getResource("../Images/Icono.png")).getImage());
         
-        OptionPannel.add(option);
+        OptionPannel.add(main);
         ContentPannel.add(vacio);
         
         //action listener de botones de clubes
@@ -72,9 +57,9 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         reuniones.Calendario.addActionListener(this);
         
         //action listener de botones de option main pannel
-        option.Reuniones.addActionListener(this);
-        option.Clubes.addActionListener(this);
-        option.Obras.addActionListener(this);
+        main.Reuniones.addActionListener(this);
+        main.Clubes.addActionListener(this);
+        main.Obras.addActionListener(this);
         
         //action listener de home button
         HomeButton.addActionListener(this);
@@ -129,6 +114,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         HomeButton.setContentAreaFilled(false);
         HomeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         HomeButton.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        HomeButton.setFocusPainted(false);
         HomeButton.setMaximumSize(new java.awt.Dimension(70, 34));
         HomeButton.setMinimumSize(new java.awt.Dimension(70, 34));
         HomeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -182,43 +168,19 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     }// </editor-fold>//GEN-END:initComponents
 
     private void HomeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_HomeButtonActionPerformed
-    
-    /*private void HomeButtonMouseEntered(java.awt.event.MouseEvent evt) {                                        
-        // TODO add your handling code here:
-        HomeButton.setBackground(Color.yellow);
-        HomeButton.setBackground(Color.DARK_GRAY);
-    }  */                                     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
+        Alistar();
+        
+        main.setVisible(true);
+        vacio.setVisible(true);
+
+        OptionPannel.add(main);
+        Titulo.setText("Inicio");
+        ContentPannel.add(vacio);
+    }//GEN-LAST:event_HomeButtonActionPerformed
+
+    public static void main(String args[]) {
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainWindow().setVisible(true);
@@ -227,15 +189,17 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel ContentPannel;
+    public javax.swing.JPanel ContentPannel;
     private javax.swing.JButton HomeButton;
     private javax.swing.JPanel HomeButtonPannel;
-    private javax.swing.JPanel OptionPannel;
+    public javax.swing.JPanel OptionPannel;
     private javax.swing.JPanel TitlePannel;
-    private javax.swing.JLabel Titulo;
+    public javax.swing.JLabel Titulo;
     // End of variables declaration//GEN-END:variables
 
-    public void SetInvisibleContent(){
+    public void Alistar (){
+        
+        //Invisibles contenido
         vacio.setVisible(false);
         asociarclub.setVisible(false);
         eliminarclub.setVisible(false);
@@ -243,17 +207,17 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         pago.setVisible(false);
         nuevolibro.setVisible(false);
         
-        
-    }
-    
-    public void SetInvisibleMenu(){
-        
-        option.setVisible(false);
+        //Invisibles menus
+        main.setVisible(false);
         reuniones.setVisible(false);
         clubes.setVisible(false);
         obras.setVisible(false);
         libros.setVisible(false);
         miembros.setVisible(false);
+        
+        //Validsar paneles
+        reuniones.validate();
+        vacio.validate();
         
     }
     
@@ -261,62 +225,34 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         Object evt = ae.getSource();
         
-        if (evt.equals(option.Reuniones)){
+        if (evt.equals(main.Reuniones)){
 
-            SetInvisibleMenu();
-            SetInvisibleContent();
+            Alistar();
             
             reuniones.setVisible(true);
-            vacio.setVisible(true);
-            
-            OptionPannel.validate();
-            ContentPannel.validate();
+            vacio.setVisible(true); 
             
             ContentPannel.add(vacio);
             Titulo.setText("Cierre de reunión");
             OptionPannel.add(reuniones);
-            conexion.getConnection();
 
-        }else if (evt.equals(HomeButton)){
+        }else if (evt.equals(main.Obras)){
             
-            SetInvisibleMenu();
-            SetInvisibleContent();
-            
-            option.setVisible(true);
-            vacio.setVisible(true);
-            
-            OptionPannel.validate();
-            ContentPannel.validate();
-            
-            OptionPannel.add(option);
-            Titulo.setText("Inicio");
-            ContentPannel.add(vacio);
-            
-        }else if (evt.equals(option.Obras)){
-            
-            SetInvisibleMenu();
-            SetInvisibleContent();
+            Alistar();
             
             obras.setVisible(true);
             vacio.setVisible(true);
-            
-            OptionPannel.validate();
-            ContentPannel.validate();
             
             OptionPannel.add(obras);
             Titulo.setText("Administración de obras");
             ContentPannel.add(vacio);
             
-        }else if (evt.equals(option.Clubes)){
+        }else if (evt.equals(main.Clubes)){
             
-            SetInvisibleMenu();
-            SetInvisibleContent();
+            Alistar();
             
             clubes.setVisible(true);
             pago.setVisible(true);
-            
-            OptionPannel.validate();
-            ContentPannel.validate();
             
             ContentPannel.add(pago);
             Titulo.setText("Registrar pago");
@@ -324,14 +260,10 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
             
         }else if (evt.equals(clubes.NuevoClub)){
             
-            SetInvisibleMenu();
-            SetInvisibleContent();
+            Alistar();
             
             clubes.setVisible(true);
             nuevoclub.setVisible(true);
-            
-            OptionPannel.validate();
-            ContentPannel.validate();
             
             ContentPannel.add(nuevoclub);
             Titulo.setText("Nuevo club");
@@ -339,14 +271,10 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
             
         }else if (evt.equals(clubes.Eliminarclub)){
             
-            SetInvisibleMenu();
-            SetInvisibleContent();
+            Alistar();
             
             clubes.setVisible(true);
             eliminarclub.setVisible(true);
-            
-            OptionPannel.validate();
-            ContentPannel.validate();
             
             ContentPannel.add(eliminarclub);
             Titulo.setText("Eliminar club");
@@ -354,74 +282,54 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
             
         }else if (evt.equals(clubes.Miembros)){
             
-            SetInvisibleMenu();
-            SetInvisibleContent();
+            Alistar();
             
             miembros.setVisible(true);
             vacio.setVisible(true);
-            
-            OptionPannel.validate();
-            ContentPannel.validate();
-            
+                        
             ContentPannel.add(vacio);
             Titulo.setText("Registrar Miembro");
             OptionPannel.add(miembros);
             
         }else if (evt.equals(clubes.Libros)){
             
-            SetInvisibleMenu();
-            SetInvisibleContent();
-            
+            Alistar();
+                        
             libros.setVisible(true);
             nuevolibro.setVisible(true);
-            
-            OptionPannel.validate();
-            ContentPannel.validate();
-            
+                        
             ContentPannel.add(nuevolibro);
             Titulo.setText("Registrar libro");
             OptionPannel.add(libros);
             
         }else if (evt.equals(clubes.Pagos)){
             
-            SetInvisibleMenu();
-            SetInvisibleContent();
+            Alistar();
             
             clubes.setVisible(true);
             pago.setVisible(true);
-            
-            OptionPannel.validate();
-            ContentPannel.validate();
-            
+                        
             ContentPannel.add(pago);
             Titulo.setText("Registrar pago");
             OptionPannel.add(clubes);
             
         }else if (evt.equals(clubes.AsociarClub)){
             
-            SetInvisibleMenu();
-            SetInvisibleContent();
+            Alistar();
             
             clubes.setVisible(true);
             asociarclub.setVisible(true);
-            
-            OptionPannel.validate();
-            ContentPannel.validate();
-            
+                        
             ContentPannel.add(asociarclub);
             Titulo.setText("Asociar clubes");
             OptionPannel.add(clubes);
             
         }else if (evt.equals(libros.RegistrarLibro)){
             
-            SetInvisibleMenu();
-            SetInvisibleContent();
+            Alistar();
             
             libros.setVisible(true);
             nuevolibro.setVisible(true);
-            
-            OptionPannel.validate();
-            ContentPannel.validate();
             
             ContentPannel.add(nuevolibro);
             Titulo.setText("Registrar libro");

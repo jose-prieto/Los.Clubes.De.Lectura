@@ -1,8 +1,10 @@
 package Interfaces.Contenido;
 
+import Interfaces.Menu.ProcedimientosExtra;
+
 public class EliminarClub extends javax.swing.JPanel {
     
-    OpcionesExtra listen = new OpcionesExtra ();
+    ProcedimientosExtra listen = new ProcedimientosExtra ();
     
     public EliminarClub() {
         initComponents();
