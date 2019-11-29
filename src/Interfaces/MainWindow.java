@@ -5,7 +5,7 @@
  */
 package Interfaces;
 
-import ControladorBD.DBConnection;
+import ControladorBD.BDConexion;
 
 import Interfaces.Menu.ClubesPannel;
 import Interfaces.Menu.MainPannel;
@@ -33,7 +33,7 @@ import javax.swing.ImageIcon;
  */
 public class MainWindow extends javax.swing.JFrame implements ActionListener{
     
-    DBConnection conexion = new DBConnection ();
+    BDConexion conexion = new BDConexion ();
     
     //Menu pannels
     MainPannel option = new MainPannel();

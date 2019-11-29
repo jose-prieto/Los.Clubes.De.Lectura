@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 
-public class DBConnection {
+public class BDConexion {
     
     public static final String URL = "jdbc:postgresql://localhost:5432/postgres";
     public static final String USERNAME = "postgres";

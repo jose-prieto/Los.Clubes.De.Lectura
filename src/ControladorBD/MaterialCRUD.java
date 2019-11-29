@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 //import DBController.DBConnection;
 public class MaterialCRUD {
 
-    DBConnection connectivity = new DBConnection();
+    BDConexion connectivity = new BDConexion();
 
     public void AddNewMaterial() {
         try {
