@@ -1,0 +1,57 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="3D438094-593B-44F1-C9FB-7399D5B3B9DF" name="PAGO">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 03:09:11 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="pago_id" id="2D0CF991-D96A-3A8C-B0E3-DD09415A5ABD">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 03:09:24 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha" id="3B741720-F1A1-1933-B7FC-68D7D9D0D4B3">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 03:09:24 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="27E9FB8D-2BD7-DF65-27C6-10EFE7C609AD" name="PAGO PK">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 03:09:52 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>2D0CF991-D96A-3A8C-B0E3-DD09415A5ABD</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,111 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="7C89B935-2403-5CF1-C85A-577BB9613C1E" name="DIRECCION_LUGAR">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:13:30 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="dir_id" id="1A5B2B7E-3B99-FD7D-2348-A2E1C28CEC66">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:13:52 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="dir_tipo" id="2BF42442-95AF-513F-2FA0-3EC57D8A7673">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:15:06 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="dir_nombre" id="D5E3D23B-6157-5F41-F268-21A95302754F">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:15:07 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="moneda" id="706C22AE-4166-EDE4-3528-700B481F96D8">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:15:08 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nacionalidad" id="AF62B11B-28B1-4DAB-5ADF-BF2C377F742F">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:15:08 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="dir_id1" id="0434F830-16E1-6DC2-CDB6-BA18D117058D">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 03:45:18 UTC</createdTime>
+<generatorID>76FD8592-51AD-D140-BC31-2E163C61DD3C</generatorID>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>1A5B2B7E-3B99-FD7D-2348-A2E1C28CEC66</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="B789D30E-BEB0-146C-FABE-CB69FC86359B" name="DIRECCION_LUGAR PK">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:14:44 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>1A5B2B7E-3B99-FD7D-2348-A2E1C28CEC66</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

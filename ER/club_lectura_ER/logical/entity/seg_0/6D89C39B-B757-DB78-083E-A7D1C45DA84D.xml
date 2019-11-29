@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="6D89C39B-B757-DB78-083E-A7D1C45DA84D" name="TELEFONO">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-23 02:21:02 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="tel_cod" id="112D60E3-C4B3-EC1D-F846-078D49CC1D61">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-23 02:21:27 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="tel_num" id="1E410328-92E2-754E-B339-A10DA88667E4">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-23 02:21:28 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="doc_ident" id="422602B6-2122-6FEA-9182-13236A7A2934">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-23 02:23:21 UTC</createdTime>
+<generatorID>2B4DDAAD-E325-068C-D580-69E107FC26D7</generatorID>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>FBD20A70-12FC-572A-6F83-7B97332FAAD6</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="doc_id" id="24287300-F0E0-E6D9-2AB0-1CBBAA85E7F9">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-23 02:23:33 UTC</createdTime>
+<generatorID>46495051-AA7E-FAFA-4480-B2D30A1BC0FB</generatorID>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>8990C78F-0269-EE78-3C9B-B0921A0CABF7</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="9A654E29-94A0-C2E0-920C-6D9EF5E16648" name="TELEFONO PK">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-23 02:21:48 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>112D60E3-C4B3-EC1D-F846-078D49CC1D61</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

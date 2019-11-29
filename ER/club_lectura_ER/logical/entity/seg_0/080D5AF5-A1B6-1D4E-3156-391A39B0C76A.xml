@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="080D5AF5-A1B6-1D4E-3156-391A39B0C76A" name="LIBROS_PREFERIDOS">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 03:24:42 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="posicion" id="753927CF-2CA6-709A-5215-292E172B6524">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 03:25:14 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="isbn" id="0881FF95-359D-649C-1D74-466BFF35A471">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 03:26:04 UTC</createdTime>
+<generatorID>7494AFC0-98AD-DC13-836C-5B6ADE6C3276</generatorID>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>83EDC0EE-8678-A967-77FC-F16AB8B80BDA</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="doc_id" id="A753DCBB-2959-D7AF-2D25-1147AEC90199">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 03:26:10 UTC</createdTime>
+<generatorID>99E7A559-2470-E195-BBA3-0947634A191A</generatorID>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>8990C78F-0269-EE78-3C9B-B0921A0CABF7</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="2DB59F8E-E90B-CD5E-2162-D9C6A1952FEC" name="LIBROS_PREFERIDOS PK">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 03:26:04 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>0881FF95-359D-649C-1D74-466BFF35A471</attributeRef>
+<attributeRef>A753DCBB-2959-D7AF-2D25-1147AEC90199</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Arc class="oracle.dbtools.crest.model.design.logical.Arc" directorySegmentName="seg_0" id="56A1E93D-1824-A610-F36A-A90685CF9CBD" name="Arc_2">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-23 02:23:47 UTC</createdTime>
+<ownerDesignName>club_lectura</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<entity>6D89C39B-B757-DB78-083E-A7D1C45DA84D</entity>
+<relations>
+<relationID>2B4DDAAD-E325-068C-D580-69E107FC26D7</relationID>
+<relationID>46495051-AA7E-FAFA-4480-B2D30A1BC0FB</relationID>
+</relations>
+</Arc>

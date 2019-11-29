@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="91D463EA-8BC1-4381-44E3-48FBDE18EF91" name="ASOCIACION">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:07:39 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="club_id" id="31B41E9A-5059-859D-5A6C-5EB7D1037ED2">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:09:07 UTC</createdTime>
+<generatorID>416CF6C0-9EC7-6B6B-75D7-2E8EAB847C54</generatorID>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>5352EDB1-4594-5956-BD02-5F166D5E1453</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="club_id1" id="F255B7AF-C30C-97E9-A5A1-04C2AF71A10D">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:09:13 UTC</createdTime>
+<generatorID>6BA18E5A-32E8-3CEE-D55F-8933BEB61378</generatorID>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>5352EDB1-4594-5956-BD02-5F166D5E1453</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="E6720921-9C97-3EE0-46EF-5D45919F76EB" name="ASOCIACION PK">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:09:07 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>31B41E9A-5059-859D-5A6C-5EB7D1037ED2</attributeRef>
+<attributeRef>F255B7AF-C30C-97E9-A5A1-04C2AF71A10D</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

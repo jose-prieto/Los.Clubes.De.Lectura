@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="E5899B4C-2826-E151-1181-7F7ADC41E7EA" name="IDIOMA_MIEMBRO">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 02:52:50 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="doc_id" id="5E85D29C-1DD6-C945-EB3F-E55B1A4E5E11">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 03:08:42 UTC</createdTime>
+<generatorID>D184BBAC-DBA9-C878-3928-DB5692E8B774</generatorID>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>8990C78F-0269-EE78-3C9B-B0921A0CABF7</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="idio_id" id="13FDA944-94C6-487E-7AE3-5747DE193126">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 03:08:53 UTC</createdTime>
+<generatorID>5FF8DAF4-D459-137C-04A8-7CCD6531BC8C</generatorID>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>8403AA69-BB5F-9E2F-F5D8-4859956572FD</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="F8E5BD7D-8522-4F97-44AE-4E956C243F6E" name="IDIOMA_MIEMBRO PK">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-20 03:08:42 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>5E85D29C-1DD6-C945-EB3F-E55B1A4E5E11</attributeRef>
+<attributeRef>13FDA944-94C6-487E-7AE3-5747DE193126</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

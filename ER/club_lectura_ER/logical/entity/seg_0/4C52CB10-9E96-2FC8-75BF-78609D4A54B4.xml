@@ -1,0 +1,147 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="4C52CB10-9E96-2FC8-75BF-78609D4A54B4" name="G_LECTOR">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 02:57:23 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="fechai_gru" id="C0B09CAC-4B09-3D76-AC18-4CED480040B2">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 02:57:42 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fechaf_gru" id="19F45CE5-EB10-B6CF-A70A-31B442D3C980">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 02:57:42 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="grup_id" id="6B23BF0D-23F2-1DEE-433C-C21C576872C4">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 03:00:30 UTC</createdTime>
+<generatorID>1D6502F4-BAA1-623E-9716-EBDE3FEC99EC</generatorID>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>936F1118-6E57-58AB-64B9-1096FE48AC77</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="club_id" id="A39088D4-E547-AC90-28C6-8202E69EE4AB">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 03:00:30 UTC</createdTime>
+<generatorID>1D6502F4-BAA1-623E-9716-EBDE3FEC99EC</generatorID>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>181F5E0D-9187-C11D-5B71-8FE9A45D06CF</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fechai_mie" id="E62516EB-41E7-744B-28EE-5F5A6C3BEB0A">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 03:00:53 UTC</createdTime>
+<generatorID>669BF560-E7F6-2BC5-E393-E85797D605A7</generatorID>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>6EE8D692-B885-85A1-C4EC-8021D0912F2D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="club_id1" id="5CAAC17E-9EB0-6AC5-9BD4-CF532A84AD09">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 03:00:53 UTC</createdTime>
+<generatorID>669BF560-E7F6-2BC5-E393-E85797D605A7</generatorID>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>1AFD7F63-5242-6AC1-6A5E-AF617D4C1A4A</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="doc_id" id="DAFB8C20-E9F0-A67E-2A82-0FD165DE1025">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 03:00:53 UTC</createdTime>
+<generatorID>669BF560-E7F6-2BC5-E393-E85797D605A7</generatorID>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>72A4954E-853E-D62F-5F28-B7DF3AB36A36</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="pago_id" id="3B02EAD0-D0D9-95F4-7F3B-148BDA251EF1">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 03:12:46 UTC</createdTime>
+<generatorID>669BF560-E7F6-2BC5-E393-E85797D605A7</generatorID>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>ADB2D002-2C52-9F18-8E50-4C8DC0429C56</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="B774006B-CD01-75E2-3614-D200A1F0EF79" name="G_LECTOR PK">
+<createdBy>aayal</createdBy>
+<createdTime>2019-11-22 02:57:52 UTC</createdTime>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>6B23BF0D-23F2-1DEE-433C-C21C576872C4</attributeRef>
+<attributeRef>A39088D4-E547-AC90-28C6-8202E69EE4AB</attributeRef>
+<attributeRef>E62516EB-41E7-744B-28EE-5F5A6C3BEB0A</attributeRef>
+<attributeRef>5CAAC17E-9EB0-6AC5-9BD4-CF532A84AD09</attributeRef>
+<attributeRef>DAFB8C20-E9F0-A67E-2A82-0FD165DE1025</attributeRef>
+<attributeRef>3B02EAD0-D0D9-95F4-7F3B-148BDA251EF1</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
