@@ -115,7 +115,6 @@ public class MainPannel extends javax.swing.JPanel {
 
     private void ClubesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClubesActionPerformed
         // TODO add your handling code here:
-        System.out.println("hola que tal");
     }//GEN-LAST:event_ClubesActionPerformed
 
     private void ClubesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClubesMouseEntered

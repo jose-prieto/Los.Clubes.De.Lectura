@@ -14,6 +14,11 @@ import Interfaces.Contenido.NuevoClubContent;
 import Interfaces.Contenido.EliminarClub;
 import Interfaces.Contenido.Pagos;
 import Interfaces.Contenido.RegistrarLibro;
+import Interfaces.Contenido.RegistraMiembro;
+import Interfaces.Contenido.RegistraMiembro2;
+import Interfaces.Contenido.CambioClub;
+import Interfaces.Contenido.Asistencias;
+import Interfaces.Contenido.Cierre;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,7 +28,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
     int cond = 1;
 
-    //Menu pannels
+    //Menu
     MainPannel main = new MainPannel();
     ReunionesPannel reuniones = new ReunionesPannel();
     ClubesPannel clubes = new ClubesPannel();
@@ -32,13 +37,18 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
     MiembrosPannel miembros = new MiembrosPannel();
     AdmClubesPannel admclub = new AdmClubesPannel();
 
-    //Content pannels
+    //Content
+    Cierre cierre = new Cierre ();
+    Asistencias asistencia = new Asistencias ();
     RegistrarLibro nuevolibro = new RegistrarLibro();
     EliminarClub eliminarclub = new EliminarClub();
     NuevoClubContent nuevoclub = new NuevoClubContent();
     AsociarClub asociarclub = new AsociarClub();
     EmptyPannel vacio = new EmptyPannel();
     Pagos pago = new Pagos();
+    RegistraMiembro nuevomiembro = new RegistraMiembro ();
+    RegistraMiembro2 nuevomiembro2 = new RegistraMiembro2 ();
+    CambioClub cambioclub = new CambioClub ();
 
     public MainWindow() {
         initComponents();
@@ -47,6 +57,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
         OptionPannel.add(main);
         ContentPannel.add(vacio);
+        Atras.setVisible(false);
 
         //action listener de botones de clubes
         clubes.Libros.addActionListener(this);
@@ -62,6 +73,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         //action listener de botones de reuniones manager pannel
         reuniones.Asistencias.addActionListener(this);
         reuniones.Calendario.addActionListener(this);
+        reuniones.Cierre.addActionListener(this);
 
         //action listener de botones de option main pannel
         main.Reuniones.addActionListener(this);
@@ -71,8 +83,15 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         //action listener de home button
         HomeButton.addActionListener(this);
 
-        //action listener de home button
+        //action listener de libros
         libros.RegistrarLibro.addActionListener(this);
+        
+        //action listener de miembros
+        miembros.RegMiemb.addActionListener(this);
+        miembros.CambClub.addActionListener(this);
+        
+        //action listener de nuevo miembro
+        nuevomiembro.Continuar.addActionListener(this);
 
     }
 
@@ -205,6 +224,10 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         OptionPannel.add(main);
         Titulo.setText("Inicio");
         ContentPannel.add(vacio);
+        
+        cond = 1;
+        
+        Atras.setVisible(false);
 
     }//GEN-LAST:event_HomeButtonActionPerformed
 
@@ -220,6 +243,8 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             OptionPannel.add(main);
             Titulo.setText("Inicio");
             ContentPannel.add(vacio);
+            
+            Atras.setVisible(false);
 
         }else if (cond == 2){
             
@@ -264,6 +289,11 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         nuevoclub.setVisible(false);
         pago.setVisible(false);
         nuevolibro.setVisible(false);
+        nuevomiembro.setVisible(false);
+        nuevomiembro2.setVisible(false);
+        cambioclub.setVisible(false);
+        asistencia.setVisible(false);
+        cierre.setVisible(false);
 
         //Invisibles menus
         main.setVisible(false);
@@ -296,6 +326,34 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             OptionPannel.add(reuniones);
 
             cond = 1;
+            
+            Atras.setVisible(true);
+
+        } else if (evt.equals(reuniones.Asistencias)) {
+
+            Alistar();
+
+            reuniones.setVisible(true);
+            asistencia.setVisible(true);
+
+            OptionPannel.add(reuniones);
+            Titulo.setText("Registrar asistencia");
+            ContentPannel.add(asistencia);
+
+            cond = 1;
+            
+            Atras.setVisible(true);
+
+        } else if (evt.equals(reuniones.Cierre)) {
+
+            Alistar();
+
+            reuniones.setVisible(true);
+            cierre.setVisible(true);
+
+            OptionPannel.add(reuniones);
+            Titulo.setText("Cierre de discusión");
+            ContentPannel.add(cierre);
 
         } else if (evt.equals(main.Obras)) {
 
@@ -309,6 +367,8 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             ContentPannel.add(vacio);
 
             cond = 1;
+            
+            Atras.setVisible(true);
 
         } else if (evt.equals(main.Clubes)) {
 
@@ -322,6 +382,8 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             OptionPannel.add(clubes);
 
             cond = 1;
+            
+            Atras.setVisible(true);
 
         } else if (evt.equals(clubes.Club)) {
 
@@ -354,9 +416,44 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             Alistar();
 
             miembros.setVisible(true);
-            vacio.setVisible(true);
+            nuevomiembro.setVisible(true);
 
-            ContentPannel.add(vacio);
+            ContentPannel.add(nuevomiembro);
+            Titulo.setText("Registrar miembro");
+            OptionPannel.add(miembros);
+
+            cond = 2;
+
+        } else if (evt.equals(miembros.CambClub)) {
+
+            Alistar();
+
+            miembros.setVisible(true);
+            cambioclub.setVisible(true);
+
+            ContentPannel.add(cambioclub);
+            Titulo.setText("Cambiar de club");
+            OptionPannel.add(miembros);
+
+        } else if (evt.equals(miembros.RegMiemb)) {
+
+            Alistar();
+
+            miembros.setVisible(true);
+            nuevomiembro.setVisible(true);
+
+            ContentPannel.add(nuevomiembro);
+            Titulo.setText("Registrar miembro");
+            OptionPannel.add(miembros);
+
+        } else if (evt.equals(nuevomiembro.Continuar)) {
+
+            Alistar();
+
+            miembros.setVisible(true);
+            nuevomiembro2.setVisible(true);
+
+            ContentPannel.add(nuevomiembro2);
             Titulo.setText("Registrar Miembro");
             OptionPannel.add(miembros);
 
@@ -405,6 +502,17 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             ContentPannel.add(asociarclub);
             Titulo.setText("Asociar clubes");
             OptionPannel.add(admclub);
+
+        } else if (evt.equals(libros.RegistrarLibro)) {
+
+            Alistar();
+
+            libros.setVisible(true);
+            nuevolibro.setVisible(true);
+
+            ContentPannel.add(nuevolibro);
+            Titulo.setText("Registrar libro");
+            OptionPannel.add(libros);
 
         } else if (evt.equals(libros.RegistrarLibro)) {
 
