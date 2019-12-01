@@ -1,0 +1,19 @@
+CREATE TABLE `club_lectura`.`miembro` (
+  `doc_id` INT NOT NULL,
+  `miemb_nombre1` VARCHAR(45) NOT NULL,
+  `miemb_ape1` VARCHAR(45) NOT NULL,
+  `miem_genero` VARCHAR(2) NOT NULL,
+  `miemb_fecha_nac` DATETIME NOT NULL,
+  `miemb_nombre2` VARCHAR(45) NULL,
+  `miemb_apellido2` VARCHAR(45) NULL,
+
+  #FK1 miembro (representante)
+  `rep_doc_id` INT NULL,
+
+  #FK2 representante
+  `miemb_rep_id` INT NULL,
+
+  #FK3 direccion
+  `dir_id` INT NULL,
+
+  PRIMARY KEY (`doc_id`));

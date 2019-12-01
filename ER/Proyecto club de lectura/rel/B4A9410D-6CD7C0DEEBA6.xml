@@ -1,8 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<relationalModel class="oracle.dbtools.crest.model.design.relational.RelationalDesign" name="Relational_1" id="B4A9410D-CE73-CC9D-5CAE-6CD7C0DEEBA6" mainViewID="3AAC4C8F-21C5-3E9F-A254-775C8D770797">
-<createdBy>jap25</createdBy>
-<createdTime>2019-10-13 04:24:46 UTC</createdTime>
-<ownerDesignName>Proyecto club de lectura</ownerDesignName>
-<shouldBeOpen>false</shouldBeOpen>
-<selectedRDBMSSite>32076570-2523-435C-2E92-BF29817DFF70</selectedRDBMSSite>
-</relationalModel>

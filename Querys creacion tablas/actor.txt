@@ -1,0 +1,16 @@
+CREATE TABLE `club_lectura`.`actor` (
+  #FK1 FUNCION
+  `fun_fecha` DATETIME NOT NULL, 
+  `obra_id` INT NOT NULL,
+
+  #FK2 ELENCO
+  `perso_id` INT NOT NULL,
+  `obra_id` INT NOT NULL,
+  `hist_mie_fechai` DATETIME NOT NULL,
+  `miemb_doc_id` INT NOT NULL,
+  `club_id` INT NOT NULL,
+  `hist_mie_estatus` VARCHAR(45) NOT NULL,
+  `hist_mie_fechaf` DATETIME NULL,
+  `movito_retiro` VARCHAR(45) NULL,
+
+  PRIMARY KEY (`fun_fecha`,`obra_id`,`perso_id`,`obra_id`,`hist_mie_fechai`, `miemb_doc_id`, `club_id`));

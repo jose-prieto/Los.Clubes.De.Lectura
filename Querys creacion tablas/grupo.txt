@@ -1,0 +1,11 @@
+CREATE TABLE `club_lectura`.`grupo` (
+  `grup_id` INT NOT NULL,
+
+  #FK1 club
+  `club_id` INT NOT NULL,
+
+  `grup_tipo` VARCHAR(45) NOT NULL,
+  `grup_dia` DATETIME NOT NULL,
+  `grup_horai` DATETIME NOT NULL,
+  `grup_horaf` DATETIME NOT NULL,
+  PRIMARY KEY (`club_id`, `grup_id`));

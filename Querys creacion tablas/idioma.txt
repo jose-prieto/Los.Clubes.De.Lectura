@@ -1,0 +1,4 @@
+CREATE TABLE `club_lectura`.`idioma` (
+  `idio_id` INT NOT NULL AUTO_INCREMENT,
+  `idio_nombre` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idio_id`));

@@ -1,0 +1,8 @@
+CREATE TABLE `club_lectura`.`representante` (
+  `doc_id` INT NOT NULL,
+  `rep_nombre1` VARCHAR(45) NOT NULL,
+  `rep_apellido1` VARCHAR(45) NOT NULL,
+  `rep_genero` VARCHAR(2) NOT NULL,
+  `rep_nombre2` VARCHAR(45) NULL,
+  `rep_apellido2` VARCHAR(45) NULL,
+  PRIMARY KEY (`doc_id`));

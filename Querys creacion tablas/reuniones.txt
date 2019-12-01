@@ -1,0 +1,18 @@
+CREATE TABLE `club_lectura`.`reuniones` (
+  `reu_fecha` DATETIME NOT NULL,
+
+  #FK1 libro
+  `lib_isbn` INT NOT NULL,
+
+  #FK2 grupo
+  `grup_id` INT NOT NULL,
+
+  #FK3 g_lector (moderador):
+  `club_id` VARCHAR(45) NOT NULL,
+  `hist_mie_fechai` DATETIME NOT NULL,
+  `miemb_doc_id` INT NOT NULL,
+  `grup_id` INT NOT NULL,
+
+  `reu_conclusiones` VARCHAR(45) NULL,
+  `valoracion` VARCHAR(45) NULL,
+  PRIMARY KEY (`reu_fecha`,`grup_id`));

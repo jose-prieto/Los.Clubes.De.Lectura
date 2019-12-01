@@ -165,20 +165,6 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="pago_id" id="1236BB2D-B9DE-FC06-68E0-9B3AA8D269E6">
-<createdBy>aayal</createdBy>
-<createdTime>2019-11-29 15:23:59 UTC</createdTime>
-<generatorID>6771732F-B1EB-65BC-F216-4EC757F6BBD4</generatorID>
-<ownerDesignName>club_lectura_ER</ownerDesignName>
-<engineerTo>
-<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
-</engineerTo>
-<referedAttribute>3B02EAD0-D0D9-95F4-7F3B-148BDA251EF1</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="DF5868F1-EE3B-30C7-FE39-F6EE9413D63B" name="REUNION PK">
@@ -191,6 +177,8 @@
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>72A5CBC2-4CB8-528D-8752-CAAFEBA4E70E</attributeRef>
+<attributeRef>C0771503-2C85-BC58-1D5D-7FFE7C0C7A11</attributeRef>
+<attributeRef>9DB7BA88-306E-EFD5-2BD0-6DBD9A993B75</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

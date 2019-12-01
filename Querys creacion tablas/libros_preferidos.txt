@@ -1,0 +1,9 @@
+CREATE TABLE `club_lectura`.`libros_preferidos` (
+  #FK1 libro
+  `lib_isbn` INT NOT NULL,
+
+  FK2 miembro
+  `miemb_doc_id` INT NOT NULL,
+
+  `posicion` INT NOT NULL,
+  PRIMARY KEY (`lib_isbn`,`miemb_doc_id`));

@@ -39,6 +39,48 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="fechai_mie" id="430D7A43-8550-510E-2A6E-7C895247ED9E">
+<createdBy>dani_</createdBy>
+<createdTime>2019-12-01 03:17:16 UTC</createdTime>
+<generatorID>2AA897DB-0FF1-7471-5FDC-0EA58CD6DA84</generatorID>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>6EE8D692-B885-85A1-C4EC-8021D0912F2D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="club_id" id="387B12AE-B877-F329-159A-052EF84FD765">
+<createdBy>dani_</createdBy>
+<createdTime>2019-12-01 03:17:16 UTC</createdTime>
+<generatorID>2AA897DB-0FF1-7471-5FDC-0EA58CD6DA84</generatorID>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>1AFD7F63-5242-6AC1-6A5E-AF617D4C1A4A</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="doc_id" id="B3BBD389-CE90-C06F-270C-687ADD96D4C6">
+<createdBy>dani_</createdBy>
+<createdTime>2019-12-01 03:17:16 UTC</createdTime>
+<generatorID>2AA897DB-0FF1-7471-5FDC-0EA58CD6DA84</generatorID>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>72A4954E-853E-D62F-5F28-B7DF3AB36A36</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="27E9FB8D-2BD7-DF65-27C6-10EFE7C609AD" name="PAGO PK">
@@ -51,6 +93,9 @@
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>2D0CF991-D96A-3A8C-B0E3-DD09415A5ABD</attributeRef>
+<attributeRef>430D7A43-8550-510E-2A6E-7C895247ED9E</attributeRef>
+<attributeRef>387B12AE-B877-F329-159A-052EF84FD765</attributeRef>
+<attributeRef>B3BBD389-CE90-C06F-270C-687ADD96D4C6</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

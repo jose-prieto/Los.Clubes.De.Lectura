@@ -1,0 +1,10 @@
+CREATE TABLE `club_lectura`.`telefono` (
+  `tel_cod` INT NOT NULL,
+  `tel_num` INT NOT NULL,
+
+  #FK1 miembro
+  `miemb_doc_id` INT NULL,
+
+  #FK2 representante
+  `rep_doc_id` INT NULL,
+  PRIMARY KEY (`tel_cod`, `tel_num`));

@@ -1,0 +1,8 @@
+CREATE TABLE `club_lectura`.`idioma_miembro` (
+
+  #FK1 miembro
+  `miemb_doc_id` INT NOT NULL,
+
+  #FK2 idioma
+  `idio_id` INT NOT NULL,
+  PRIMARY KEY (`miemb_doc_id`, `idio_id`));

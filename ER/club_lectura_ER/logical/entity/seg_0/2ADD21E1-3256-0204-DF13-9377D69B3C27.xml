@@ -29,20 +29,6 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="fechai_gru" id="EAAFF5C8-A280-C385-0CB4-1340F9CB8494">
-<createdBy>aayal</createdBy>
-<createdTime>2019-11-22 03:20:13 UTC</createdTime>
-<generatorID>EC31E210-C02E-7D82-8B35-0AEB45D3AC0F</generatorID>
-<ownerDesignName>club_lectura_ER</ownerDesignName>
-<engineerTo>
-<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
-</engineerTo>
-<referedAttribute>C0B09CAC-4B09-3D76-AC18-4CED480040B2</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT007</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="grup_id" id="AACCF539-015E-3085-85A0-2B5F17D9CFD7">
 <createdBy>aayal</createdBy>
 <createdTime>2019-11-22 03:20:13 UTC</createdTime>
@@ -113,15 +99,29 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="pago_id" id="07030E97-67E0-E9D6-8BEB-362F98C109D0">
-<createdBy>aayal</createdBy>
-<createdTime>2019-11-22 03:20:13 UTC</createdTime>
-<generatorID>EC31E210-C02E-7D82-8B35-0AEB45D3AC0F</generatorID>
+<Attribute name="grup_id1" id="6A45AAF5-6AFF-1EA4-2AE5-2EE6E44C97D5">
+<createdBy>dani_</createdBy>
+<createdTime>2019-12-01 04:57:47 UTC</createdTime>
+<generatorID>76527548-01DD-53D7-FB27-D4213D1DD075</generatorID>
 <ownerDesignName>club_lectura_ER</ownerDesignName>
 <engineerTo>
 <item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
 </engineerTo>
-<referedAttribute>3B02EAD0-D0D9-95F4-7F3B-148BDA251EF1</referedAttribute>
+<referedAttribute>C0771503-2C85-BC58-1D5D-7FFE7C0C7A11</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="club_id2" id="596C98A1-C183-B005-91C3-73FB215E062D">
+<createdBy>dani_</createdBy>
+<createdTime>2019-12-01 04:57:47 UTC</createdTime>
+<generatorID>76527548-01DD-53D7-FB27-D4213D1DD075</generatorID>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>9DB7BA88-306E-EFD5-2BD0-6DBD9A993B75</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
@@ -144,7 +144,8 @@
 <attributeRef>30013201-E17C-C9E9-2F3C-C677EB1BE78A</attributeRef>
 <attributeRef>8B1F207C-6101-64E9-F6BF-9A2DD756E009</attributeRef>
 <attributeRef>2C8CF83C-D687-23B5-8E60-2CDB02028A51</attributeRef>
-<attributeRef>07030E97-67E0-E9D6-8BEB-362F98C109D0</attributeRef>
+<attributeRef>6A45AAF5-6AFF-1EA4-2AE5-2EE6E44C97D5</attributeRef>
+<attributeRef>596C98A1-C183-B005-91C3-73FB215E062D</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

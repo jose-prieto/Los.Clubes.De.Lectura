@@ -1,0 +1,11 @@
+CREATE TABLE `club_lectura`.`obra` (
+  `obra_id` INT NOT NULL,
+  `obra_durac` DATETIME NOT NULL,
+  `obra_status` VARCHAR(45) NOT NULL,
+  `obra_titulo` VARCHAR(45) NOT NULL,
+  `costo_entrada` INT NOT NULL,
+
+  #FK1 auditorio
+  `audi_id` INT NOT NULL,
+
+  PRIMARY KEY (`obra_id`));

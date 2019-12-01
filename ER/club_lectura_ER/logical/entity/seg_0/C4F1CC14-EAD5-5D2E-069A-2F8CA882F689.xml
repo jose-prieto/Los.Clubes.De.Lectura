@@ -93,20 +93,6 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="pago_id" id="ADB2D002-2C52-9F18-8E50-4C8DC0429C56">
-<createdBy>aayal</createdBy>
-<createdTime>2019-11-22 03:12:46 UTC</createdTime>
-<generatorID>69CE5987-B1DB-AD31-CE1F-5DC26FF5A3B9</generatorID>
-<ownerDesignName>club_lectura_ER</ownerDesignName>
-<engineerTo>
-<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
-</engineerTo>
-<referedAttribute>2D0CF991-D96A-3A8C-B0E3-DD09415A5ABD</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="C5F456FF-9D6B-7615-A7EF-095AEA922FAF" name="HIST_MIEMBRO PK">
@@ -121,7 +107,6 @@
 <attributeRef>6EE8D692-B885-85A1-C4EC-8021D0912F2D</attributeRef>
 <attributeRef>1AFD7F63-5242-6AC1-6A5E-AF617D4C1A4A</attributeRef>
 <attributeRef>72A4954E-853E-D62F-5F28-B7DF3AB36A36</attributeRef>
-<attributeRef>ADB2D002-2C52-9F18-8E50-4C8DC0429C56</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

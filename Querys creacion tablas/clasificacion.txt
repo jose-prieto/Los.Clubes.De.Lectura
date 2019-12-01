@@ -1,0 +1,9 @@
+CREATE TABLE `club_lectura`.`clasificacion` (
+  `clasi_id` INT NOT NULL,
+  `clasi_nombre` VARCHAR(45) NOT NULL,
+  `clasi_tipo` VARCHAR(45) NOT NULL,
+
+  #FK1 clasificacion
+  `clasi_padre` INT NULL,
+
+  PRIMARY KEY (`clasi_id`));

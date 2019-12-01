@@ -1,0 +1,13 @@
+CREATE TABLE `club_lectura`.`g_lector` (
+  
+  #FK1 hist_miembro
+  `hist_mie_fechai` DATETIME NOT NULL,
+  `miemb_doc_id` INT NOT NULL,
+  `club_id` INT NOT NULL,
+
+  #FK2 grupo
+  `grup_id` INT NOT NULL,
+
+  `g_lector_fechai` DATETIME NOT NULL,
+  `g_lector_fechaf` DATETIME NULL,
+  PRIMARY KEY (`club_id`, `hist_mie_fechai`, `miemb_doc_id`, `grup_id`));

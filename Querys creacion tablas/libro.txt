@@ -1,0 +1,17 @@
+CREATE TABLE `club_lectura`.`libro` (
+  `isbn` INT NOT NULL,
+  `lib_tit_original` VARCHAR(45) NOT NULL,
+  `sinopsis` VARCHAR(45) NOT NULL,
+  `lib_anio_publi` VARCHAR(45) NOT NULL,
+  `lib_pag` INT NOT NULL,
+
+  #FK1 clasificacion
+  `clasi_id` INT NOT NULL,
+
+  #FK2 editorial
+  `edi_id` INT NOT NULL,
+
+  `titulo_esp` INT NULL,
+  `tema_prin` VARCHAR(45) NULL,
+  `lib_secuela_isbn` INT NULL,
+  PRIMARY KEY (`isbn`));

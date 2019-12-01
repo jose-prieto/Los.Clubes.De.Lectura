@@ -1,0 +1,10 @@
+CREATE TABLE `club_lectura`.`auditorio` (
+  `audi_id` INT NOT NULL,
+  `audi_capacidad` INT NOT NULL,
+  `audi_nombre` VARCHAR(45) NOT NULL,
+
+  #FK1 direccion
+  `dir_id` INT NOT NULL,
+
+  `club_id` INT NULL,
+  PRIMARY KEY (`audi_id`));

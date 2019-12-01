@@ -1,0 +1,9 @@
+CREATE TABLE `club_lectura`.`capitulo_otro` (
+  `cap_id` INT NOT NULL,
+  `cap_nombre` VARCHAR(45) NOT NULL,
+
+  #FK1 libro
+  `lib_isbn` INT NOT NULL,
+
+  `cap_titulo` VARCHAR(45) NULL,
+  PRIMARY KEY (`cap_id`,`lib_isbn`));

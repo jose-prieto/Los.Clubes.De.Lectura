@@ -1,8 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="Proyecto club de lectura" id="B1A2C813-D58A-EEFE-98EE-8F4E6DE006FC" version="3.5">
-<createdBy>jap25</createdBy>
-<createdTime>2019-10-13 04:24:42 UTC</createdTime>
-<ownerDesignName>Proyecto club de lectura</ownerDesignName>
-<capitalNames>false</capitalNames>
-<designId>B1A2C813-D58A-EEFE-98EE-8F4E6DE006FC</designId>
-</OSDM_Design>

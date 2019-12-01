@@ -1,0 +1,10 @@
+CREATE TABLE `club_lectura`.`pago` (
+  `pago_id` VARCHAR(45) NOT NULL,
+
+  #FK1 hist_miembro
+  `hist_mie_fechai` DATETIME NOT NULL,
+  `miemb_doc_id` INT NOT NULL,
+  `club_id` INT NOT NULL,
+
+  `pago_fecha` DATETIME NOT NULL,
+  PRIMARY KEY (`pago_id`, `hist_mie_fechai`, `miemb_doc_id`, `club_id`));

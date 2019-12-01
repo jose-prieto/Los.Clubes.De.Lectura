@@ -1,0 +1,10 @@
+CREATE TABLE `club_lectura`.`seccion` (
+  `secc_id` INT NOT NULL,
+  `secc_nombre` VARCHAR(45) NOT NULL,
+  `secc_titulo` INT NULL,
+  
+  #FK1 capitulo_otro
+  `cap_id` INT NOT NULL,
+  `lib_isbn` INT NOT NULL,
+
+  PRIMARY KEY (`secc_id`,`cap_id`,`lib_isbn`));

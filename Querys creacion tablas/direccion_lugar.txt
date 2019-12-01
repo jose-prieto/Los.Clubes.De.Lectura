@@ -1,0 +1,9 @@
+CREATE TABLE `club_lectura`.`direccion_lugar` (
+  `dir_id` INT NOT NULL,
+  `dir_tipo` VARCHAR(45) NOT NULL,
+  `dir_nombre` INT NOT NULL,
+  `dir_moneda` INT NULL,
+
+  #FK1 direccion
+  `dir_lugar_padre` INT NULL,
+  PRIMARY KEY (`dir_id`));

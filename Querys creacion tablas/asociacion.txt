@@ -1,0 +1,8 @@
+CREATE TABLE `club_lectura`.`asociacion` (
+
+  #FK1 club
+  `club_id1` INT NOT NULL,
+
+  #FK2 club
+  `club_id2` INT NOT NULL,
+  PRIMARY KEY (`club_id1`, `club_id2`));

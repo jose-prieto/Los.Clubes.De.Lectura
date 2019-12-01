@@ -110,20 +110,6 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="pago_id" id="3B02EAD0-D0D9-95F4-7F3B-148BDA251EF1">
-<createdBy>aayal</createdBy>
-<createdTime>2019-11-22 03:12:46 UTC</createdTime>
-<generatorID>669BF560-E7F6-2BC5-E393-E85797D605A7</generatorID>
-<ownerDesignName>club_lectura_ER</ownerDesignName>
-<engineerTo>
-<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
-</engineerTo>
-<referedAttribute>ADB2D002-2C52-9F18-8E50-4C8DC0429C56</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="B774006B-CD01-75E2-3614-D200A1F0EF79" name="G_LECTOR PK">
@@ -140,7 +126,6 @@
 <attributeRef>E62516EB-41E7-744B-28EE-5F5A6C3BEB0A</attributeRef>
 <attributeRef>5CAAC17E-9EB0-6AC5-9BD4-CF532A84AD09</attributeRef>
 <attributeRef>DAFB8C20-E9F0-A67E-2A82-0FD165DE1025</attributeRef>
-<attributeRef>3B02EAD0-D0D9-95F4-7F3B-148BDA251EF1</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

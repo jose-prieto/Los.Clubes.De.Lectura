@@ -1,0 +1,10 @@
+CREATE TABLE `club_lectura`.`funcion` (
+  `fun_fecha` DATETIME NOT NULL,
+
+  #FK1 obra
+  `obra_id` VARCHAR(45) NOT NULL,
+
+  `fun_hora` DATETIME NOT NULL,
+  `fun_estatus` VARCHAR(45) NULL,
+  `fun_entradas_vend` INT NULL,
+  PRIMARY KEY (`fun_fecha`, `obra_id`));

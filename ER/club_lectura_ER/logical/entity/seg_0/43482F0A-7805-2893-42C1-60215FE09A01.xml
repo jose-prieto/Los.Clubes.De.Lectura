@@ -39,6 +39,20 @@
 <logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="dir_id" id="F232BCF4-1724-0C36-2143-F49D9D5832CF">
+<createdBy>dani_</createdBy>
+<createdTime>2019-11-30 22:17:20 UTC</createdTime>
+<generatorID>17279B8D-4112-DDA5-9DF0-D8A0C4CCA517</generatorID>
+<ownerDesignName>club_lectura_ER</ownerDesignName>
+<engineerTo>
+<item key="8A7131EC-9560-4AB6-7930-23717947BDBD" value="true"/>
+</engineerTo>
+<referedAttribute>1A5B2B7E-3B99-FD7D-2348-A2E1C28CEC66</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="D0CEC1B7-1659-0F51-6ADA-02E80FA1002C" name="EDITORIAL PK">
