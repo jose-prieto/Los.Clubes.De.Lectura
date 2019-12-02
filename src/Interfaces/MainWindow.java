@@ -19,6 +19,7 @@ import Interfaces.Contenido.RegistraMiembro2;
 import Interfaces.Contenido.CambioClub;
 import Interfaces.Contenido.Asistencias;
 import Interfaces.Contenido.Cierre;
+import Interfaces.Contenido.ActCalendario;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,6 +39,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
     AdmClubesPannel admclub = new AdmClubesPannel();
 
     //Content
+    ActCalendario actualizar = new ActCalendario ();
     Cierre cierre = new Cierre ();
     Asistencias asistencia = new Asistencias ();
     RegistrarLibro nuevolibro = new RegistrarLibro();
@@ -294,6 +296,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         cambioclub.setVisible(false);
         asistencia.setVisible(false);
         cierre.setVisible(false);
+        actualizar.setVisible(false);
 
         //Invisibles menus
         main.setVisible(false);
@@ -319,10 +322,10 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             Alistar();
 
             reuniones.setVisible(true);
-            vacio.setVisible(true);
+            actualizar.setVisible(true);
 
-            ContentPannel.add(vacio);
-            Titulo.setText("Cierre de reunión");
+            ContentPannel.add(actualizar);
+            Titulo.setText("Actualizar calendario");
             OptionPannel.add(reuniones);
 
             cond = 1;
@@ -339,6 +342,21 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             OptionPannel.add(reuniones);
             Titulo.setText("Registrar asistencia");
             ContentPannel.add(asistencia);
+
+            cond = 1;
+            
+            Atras.setVisible(true);
+
+        } else if (evt.equals(reuniones.Calendario)) {
+
+            Alistar();
+
+            reuniones.setVisible(true);
+            actualizar.setVisible(true);
+
+            OptionPannel.add(reuniones);
+            Titulo.setText("Actualizar calendario");
+            ContentPannel.add(actualizar);
 
             cond = 1;
             
