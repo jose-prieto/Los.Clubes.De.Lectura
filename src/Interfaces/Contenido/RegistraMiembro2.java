@@ -15,10 +15,8 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         listen.FieldListener (Libro1);
         listen.FieldListener (Cod1);
         listen.FieldListener (Cod2);
-        listen.FieldListener (Pais);
         listen.FieldListener (Num1);
         listen.FieldListener (Num2);
-        listen.FieldListener (Nacionalidad);
         listen.FieldListener (Ciudad);
         
     }
@@ -42,18 +40,18 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Label3 = new javax.swing.JLabel();
         Label4 = new javax.swing.JLabel();
         Label5 = new javax.swing.JLabel();
-        Pais = new javax.swing.JTextField();
         Num1 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         Num2 = new javax.swing.JTextField();
         Cod2 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         Label6 = new javax.swing.JLabel();
-        Nacionalidad = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         Label7 = new javax.swing.JLabel();
         Ciudad = new javax.swing.JTextField();
         Registrar = new javax.swing.JButton();
+        Pais = new javax.swing.JComboBox<>();
+        Pais1 = new javax.swing.JComboBox<>();
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 0, 0));
@@ -118,7 +116,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel11.setText("País");
+        jLabel11.setText("País de residencia");
 
         Label1.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         Label1.setForeground(new java.awt.Color(255, 0, 0));
@@ -184,15 +182,6 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
             }
         });
 
-        Pais.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Pais.setForeground(new java.awt.Color(204, 204, 255));
-        Pais.setText("Ej. Venezuela");
-        Pais.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PaisActionPerformed(evt);
-            }
-        });
-
         Num1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Num1.setForeground(new java.awt.Color(204, 204, 255));
         Num1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -244,18 +233,9 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
             }
         });
 
-        Nacionalidad.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Nacionalidad.setForeground(new java.awt.Color(204, 204, 255));
-        Nacionalidad.setText("Ej. Venezolana");
-        Nacionalidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NacionalidadActionPerformed(evt);
-            }
-        });
-
         jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel14.setText("Ciudad");
+        jLabel14.setText("Ciudad de residencia");
 
         Label7.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         Label7.setForeground(new java.awt.Color(255, 0, 0));
@@ -287,6 +267,12 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
             }
         });
 
+        Pais.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Pais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda", "Arabia Saudita", "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas", "Bangladés", "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Birmania", "Bolivia", "Bosnia y Herzegovina", "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután", "Cabo Verde", "Camboya", "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Ciudad del Vaticano", "Colombia", "Comoras", "Corea del Norte", "Corea del Sur", "Costa de Marfil", "Costa Rica", "Croacia", "Cuba", "Dinamarca", "Dominica", "Ecuador", "Egipto", "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Eslovaquia", "Eslovenia", "España", "Estados Unidos", "Estonia", "Etiopía", "Filipinas", "Finlandia", "Fiyi", "Francia", "Gabón", "Gambia", "Georgia", "Ghana", "Granada", "Grecia", "Guatemala", "Guyana", "Guinea", "Guinea ecuatorial", "Guinea-Bisáu", "Haití", "Honduras", "Hungría", "India", "Indonesia", "Irak", "Irán", "Irlanda", "Islandia", "Islas Marshall", "Islas Salomón", "Israel", "Italia", "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Laos", "Lesoto", "Letonia", "Líbano", "Liberia", "Libia", "Liechtenstein", "Lituania", "Luxemburgo", "Macedonia del Norte", "Madagascar", "Malasia", "Malaui", "Maldivas", "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania", "México", "Micronesia", "Moldavia", "Mónaco", "Mongolia", "Montenegro", "Mozambique", "Namibia", "Nauru", "Nepal", "Nicaragua", "Níger", "Nigeria", "Noruega", "Nueva Zelanda", "Omán", "Países Bajos", "Pakistán", "Palaos", "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Reino Unido", "República Centroafricana", "República Checa", "República del Congo", "República Democrática del Congo", "República Dominicana", "República Sudafricana", "Ruanda", "Rumanía", "Rusia", "Samoa", "San Cristóbal y Nieves", "San Marino", "San Vicente y las Granadinas", "Santa Lucía", "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles", "Sierra Leona", "Singapur", "Siria", "Somalia", "Sri Lanka", "Suazilandia", "Sudán", "Sudán del Sur", "Suecia", "Suiza", "Surinam", "Tailandia", "Tanzania", "Tayikistán", "Timor Oriental", "Togo", "Tonga", "Trinidad y Tobago", "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania", "Uganda", "Uruguay", "Uzbekistán", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue" }));
+
+        Pais1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Pais1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Afgano", "Albanes", "Aleman", "Andorrano", "Antiguano", "Argelino", "Argentino", "Armenio", "Australiano", "Austriaco", "Azerbaiyano", "Bahameno", "Bahreini", "Bangladesi", "Barbadense", "Belga", "Beliceno", "Benines", "Bielorruso", "Birmano", "Boliviano", "Bosnio", "Botsuano", "Brasilero", "Britanico", "Bruneano", "Bulgaro", "Burkines", "Burundes", "Butanes", "Caboverdiano", "Camboyano", "Camerunes", "Canadiense", "Catari", "Ceilanes", "Centroafricano", "Chadiano", "Checo", "Chileno", "Chino", "Chipriota", "Colombiano", "Comorense", "Congoleno", "Congoleno", "Costarricense", "Cristobaleno", "Croata", "Cubano", "Danes", "Dominicano", "Dominiques", "Ecuatoguineano", "Ecuatoriano", "Egipcio", "Emirati", "Eritreo", "Eslovaco", "Esloveno", "Espanol", "Estadounidense", "Estonio", "Etiope", "Filipino", "Finlandes", "Fiyiano", "Frances", "Gabones", "Gambiano", "Georgiano", "Ghanes", "Granadino", "Griego", "Guatemalteco", "Guineano", "Guyanes", "Haitiano", "Hondureno", "Hungaro", "Indio", "Indonesio", "Irani", "Iraqui", "Irlandes", "Islandes", "Israeli", "Italiano", "Jamaiquino", "Japones", "Jordano", "Kazajo", "Keniano", "Kirguiso", "Kiribatiano", "Kuwaiti", "Laosiano", "Lesotense", "Leton", "Libanes", "Liberiano", "Libio", "Liechtensteiniano", "Lituano", "Luxemburgues", "Macedonio", "Malasio", "Malaui", "Maldivo", "Malgache", "Maliense", "Maltes", "Marfileno", "Marroqui", "Marshales", "Mauriciano", "Mauritano", "Mexicano", "Micronesio", "Moldavo", "Monegasco", "Mongol", "Montenegrino", "Mozambiqueno", "Namibio", "Nauruano", "Neerlandes", "Neozelandes", "Nepales", "Nicaraguense", "Nigeriano", "Nigerino", "Norcoreano", "Noruego", "Omani", "Pakistani", "Palauano", "Panameno", "Papu", "Paraguayo", "Peruano", "Polaco", "Portugues", "Ruandes", "Rumano", "Ruso", "Salomonense", "Salvadoreno", "Samoano", "Sanmarinense", "Santalucense", "Santotomense", "Sanvicentino", "Saudi", "Senegales", "Serbio", "Seychellense", "Sierraleones", "Singapurense", "Sirio", "Somali", "Suazi", "Sudafricano", "Sudanes", "Sudsudanes", "Sueco", "Suizo", "Surcoreano", "Surinames", "Tailandes", "Tanzano", "Tayiko", "Timorense", "Togoles", "Tongano", "Trinitense", "Tunecino", "Turco", "Turcomano", "Tuvaluano", "Ucraniano", "Ugandes", "Uruguayo", "Uzbeko", "Vanuatuense", "Vaticano", "Venezolano", "Vietnamita", "Yemeni", "Yibutiano", "Zambiano", "Zimbabuense" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -304,11 +290,11 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(Pais, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Libro2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Libro3)
-                            .addComponent(Nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Libro2)
+                            .addComponent(Libro3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Pais, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Pais1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Label4)
@@ -337,7 +323,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
                             .addComponent(Ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Label7)))
-                .addGap(0, 37, Short.MAX_VALUE))
+                .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,8 +360,8 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(Nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Label6))
+                    .addComponent(Label6)
+                    .addComponent(Pais1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
@@ -403,10 +389,6 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
     private void Libro3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Libro3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Libro3ActionPerformed
-
-    private void PaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PaisActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PaisActionPerformed
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
         // TODO add your handling code here:
@@ -480,10 +462,6 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Label6.setText(st.calm);
     }//GEN-LAST:event_Label6MouseExited
 
-    private void NacionalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NacionalidadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NacionalidadActionPerformed
-
     private void Label7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label7MouseEntered
         // TODO add your handling code here:
         Label7.setText(st.pop);
@@ -517,10 +495,10 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
     private javax.swing.JTextField Libro1;
     private javax.swing.JTextField Libro2;
     private javax.swing.JTextField Libro3;
-    private javax.swing.JTextField Nacionalidad;
     private javax.swing.JTextField Num1;
     private javax.swing.JTextField Num2;
-    private javax.swing.JTextField Pais;
+    private javax.swing.JComboBox<String> Pais;
+    private javax.swing.JComboBox<String> Pais1;
     public javax.swing.JButton Registrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;

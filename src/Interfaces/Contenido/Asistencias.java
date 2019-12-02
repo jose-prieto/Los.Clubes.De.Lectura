@@ -35,7 +35,7 @@ public class Asistencias extends javax.swing.JPanel {
 
         IdGrupo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         IdGrupo.setForeground(new java.awt.Color(204, 204, 255));
-        IdGrupo.setText("Ej. Club de estudios científicos");
+        IdGrupo.setText("Ej. 1234");
         IdGrupo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IdGrupoActionPerformed(evt);
