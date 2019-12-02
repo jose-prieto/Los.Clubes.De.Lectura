@@ -20,8 +20,9 @@ import Interfaces.Contenido.CambioClub;
 import Interfaces.Contenido.Asistencias;
 import Interfaces.Contenido.Cierre;
 import Interfaces.Contenido.ActCalendario;
-import java.awt.Color;
+import Interfaces.Contenido.NuevaObra;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
@@ -52,6 +53,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
     RegistraMiembro nuevomiembro = new RegistraMiembro ();
     RegistraMiembro2 nuevomiembro2 = new RegistraMiembro2 ();
     CambioClub cambioclub = new CambioClub ();
+    NuevaObra nuevaobra = new NuevaObra ();
 
     public MainWindow() {
         initComponents();
@@ -159,7 +161,18 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         Titulo.setForeground(new java.awt.Color(51, 51, 51));
         Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Titulo.setText("Inicio");
-        Titulo.setPreferredSize(new java.awt.Dimension(85, 32));
+        Titulo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        Titulo.setPreferredSize(new java.awt.Dimension(85, 35));
+        Titulo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                TituloMouseDragged(evt);
+            }
+        });
+        Titulo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                TituloMousePressed(evt);
+            }
+        });
         TitlePannel.add(Titulo, java.awt.BorderLayout.PAGE_END);
 
         HomeButtonPannel.setBackground(new java.awt.Color(51, 51, 51));
@@ -320,7 +333,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
                         .addGap(0, 0, 0)
                         .addComponent(OptionPannel, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(TitlePannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TitlePannel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(ContentPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(5, 5, 5))))
@@ -425,6 +438,20 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         xy = evt.getY();
     }//GEN-LAST:event_VaciMousePressed
 
+    private void TituloMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TituloMousePressed
+        // TODO add your handling code here:
+        xx = evt.getX()+193;
+        xy = evt.getY()+25;
+    }//GEN-LAST:event_TituloMousePressed
+
+    private void TituloMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TituloMouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        
+        this.setLocation(x-xx, y-xy);
+    }//GEN-LAST:event_TituloMouseDragged
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -465,6 +492,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         asistencia.setVisible(false);
         cierre.setVisible(false);
         actualizar.setVisible(false);
+        nuevaobra.setVisible(false);
 
         //Invisibles menus
         main.setVisible(false);
@@ -546,15 +574,26 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             Alistar();
 
             obras.setVisible(true);
-            vacio.setVisible(true);
+            nuevaobra.setVisible(true);
 
             OptionPannel.add(obras);
-            Titulo.setText("Administración de obras");
-            ContentPannel.add(vacio);
+            Titulo.setText("Nueva obra");
+            ContentPannel.add(nuevaobra);
 
             cond = 1;
             
             Atras.setVisible(true);
+
+        } else if (evt.equals(obras.NuevaObra)) {
+
+            Alistar();
+
+            obras.setVisible(true);
+            nuevaobra.setVisible(true);
+
+            OptionPannel.add(obras);
+            Titulo.setText("Nueva obra");
+            ContentPannel.add(nuevaobra);
 
         } else if (evt.equals(main.Clubes)) {
 

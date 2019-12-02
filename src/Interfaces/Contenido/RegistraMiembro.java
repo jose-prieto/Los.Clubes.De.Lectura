@@ -36,6 +36,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
         Label5 = new javax.swing.JLabel();
         Nacimiento = new com.toedter.calendar.JCalendar();
         Genero = new javax.swing.JComboBox<>();
+        Label4 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(707, 541));
         setMinimumSize(new java.awt.Dimension(707, 541));
@@ -156,6 +157,18 @@ public class RegistraMiembro extends javax.swing.JPanel {
         Genero.setForeground(new java.awt.Color(51, 51, 51));
         Genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino" }));
 
+        Label4.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
+        Label4.setForeground(new java.awt.Color(255, 0, 0));
+        Label4.setText("(*)");
+        Label4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Label4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Label4MouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -185,7 +198,9 @@ public class RegistraMiembro extends javax.swing.JPanel {
                                     .addComponent(Nombre, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Label4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                                         .addComponent(jLabel3)
                                         .addGap(20, 20, 20)
                                         .addComponent(Genero, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -216,7 +231,8 @@ public class RegistraMiembro extends javax.swing.JPanel {
                     .addComponent(jLabel7)
                     .addComponent(Label3)
                     .addComponent(jLabel3)
-                    .addComponent(Genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Label4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
@@ -284,6 +300,16 @@ public class RegistraMiembro extends javax.swing.JPanel {
         Label5.setText(st.calm);
     }//GEN-LAST:event_Label5MouseExited
 
+    private void Label4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label4MouseEntered
+        // TODO add your handling code here:
+        Label4.setText(st.pop);
+    }//GEN-LAST:event_Label4MouseEntered
+
+    private void Label4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label4MouseExited
+        // TODO add your handling code here:
+        Label4.setText(st.calm);
+    }//GEN-LAST:event_Label4MouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellido;
@@ -293,6 +319,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label2;
     private javax.swing.JLabel Label3;
+    private javax.swing.JLabel Label4;
     private javax.swing.JLabel Label5;
     private com.toedter.calendar.JCalendar Nacimiento;
     private javax.swing.JTextField Nombre;
