@@ -34,7 +34,7 @@ public class Pagos extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("Nombre de pagador");
+        jLabel1.setText("I.D del pagador");
 
         Club.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Club.setForeground(new java.awt.Color(204, 204, 255));
@@ -76,7 +76,7 @@ public class Pagos extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(278, Short.MAX_VALUE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -84,9 +84,9 @@ public class Pagos extends javax.swing.JPanel {
                         .addGap(110, 110, 110)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(Club, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Label)))
+                        .addComponent(Club)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Label)
                 .addGap(116, 116, 116))
         );
         layout.setVerticalGroup(

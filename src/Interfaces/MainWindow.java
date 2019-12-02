@@ -20,6 +20,7 @@ import Interfaces.Contenido.CambioClub;
 import Interfaces.Contenido.Asistencias;
 import Interfaces.Contenido.Cierre;
 import Interfaces.Contenido.ActCalendario;
+import java.awt.Color;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -55,7 +56,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
     public MainWindow() {
         initComponents();
 
-        setIconImage(new ImageIcon(getClass().getResource("../Images/Icono.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("../Images/LogoApp.png")).getImage());
 
         OptionPannel.add(main);
         ContentPannel.add(vacio);
@@ -108,14 +109,21 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         HomeButtonPannel = new javax.swing.JPanel();
         HomeButton = new javax.swing.JButton();
         ContentPannel = new javax.swing.JPanel();
+        TitPannel = new javax.swing.JPanel();
+        Nombre = new javax.swing.JLabel();
+        Vacio = new javax.swing.JPanel();
+        Vaci = new javax.swing.JLabel();
+        ExitPannel = new javax.swing.JPanel();
+        Cerrar = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Clubes de lectura");
-        setBackground(new java.awt.Color(102, 102, 102));
+        setBackground(new java.awt.Color(255, 255, 255));
         setBounds(new java.awt.Rectangle(102, 102, 102, 102));
+        setForeground(java.awt.Color.white);
         setMaximizedBounds(new java.awt.Rectangle(900, 600, 0, 0));
         setMaximumSize(new java.awt.Dimension(1600, 900));
         setMinimumSize(new java.awt.Dimension(1000, 600));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(900, 700));
         setResizable(false);
         setSize(new java.awt.Dimension(900, 600));
 
@@ -125,7 +133,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
         Atras.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         Atras.setForeground(new java.awt.Color(204, 204, 204));
-        Atras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back-icon-500x500.png"))); // NOI18N
+        Atras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BotonAtras.png"))); // NOI18N
         Atras.setText("Atras");
         Atras.setAlignmentX(2.0F);
         Atras.setBorder(null);
@@ -151,14 +159,15 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         Titulo.setForeground(new java.awt.Color(51, 51, 51));
         Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Titulo.setText("Inicio");
-        TitlePannel.add(Titulo, java.awt.BorderLayout.CENTER);
+        Titulo.setPreferredSize(new java.awt.Dimension(85, 32));
+        TitlePannel.add(Titulo, java.awt.BorderLayout.PAGE_END);
 
         HomeButtonPannel.setBackground(new java.awt.Color(51, 51, 51));
         HomeButtonPannel.setPreferredSize(new java.awt.Dimension(210, 210));
 
         HomeButton.setBackground(new java.awt.Color(0, 0, 0));
         HomeButton.setForeground(new java.awt.Color(255, 255, 255));
-        HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Icono.png"))); // NOI18N
+        HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/LogoApp.png"))); // NOI18N
         HomeButton.setBorder(null);
         HomeButton.setBorderPainted(false);
         HomeButton.setContentAreaFilled(false);
@@ -182,37 +191,142 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         HomeButtonPannelLayout.setVerticalGroup(
             HomeButtonPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HomeButtonPannelLayout.createSequentialGroup()
-                .addGap(0, 4, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
                 .addComponent(HomeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         ContentPannel.setLayout(new java.awt.BorderLayout());
 
+        TitPannel.setBackground(new java.awt.Color(51, 51, 51));
+        TitPannel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+
+        Nombre.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        Nombre.setForeground(new java.awt.Color(204, 204, 204));
+        Nombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/IconApp.png"))); // NOI18N
+        Nombre.setText("Clubes de Lectura");
+        Nombre.setPreferredSize(new java.awt.Dimension(122, 22));
+        Nombre.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                NombreMouseDragged(evt);
+            }
+        });
+        Nombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                NombreMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout TitPannelLayout = new javax.swing.GroupLayout(TitPannel);
+        TitPannel.setLayout(TitPannelLayout);
+        TitPannelLayout.setHorizontalGroup(
+            TitPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(TitPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(Nombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))
+        );
+        TitPannelLayout.setVerticalGroup(
+            TitPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(TitPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE))
+        );
+
+        Vacio.setBackground(new java.awt.Color(255, 255, 255));
+
+        Vaci.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                VaciMouseDragged(evt);
+            }
+        });
+        Vaci.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                VaciMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout VacioLayout = new javax.swing.GroupLayout(Vacio);
+        Vacio.setLayout(VacioLayout);
+        VacioLayout.setHorizontalGroup(
+            VacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Vaci, javax.swing.GroupLayout.DEFAULT_SIZE, 772, Short.MAX_VALUE)
+        );
+        VacioLayout.setVerticalGroup(
+            VacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Vaci, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        ExitPannel.setBackground(new java.awt.Color(255, 255, 255));
+
+        Cerrar.setBackground(new java.awt.Color(255, 255, 255));
+        Cerrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Cerrar.setForeground(new java.awt.Color(51, 51, 51));
+        Cerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Cerrar.setText("X");
+        Cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CerrarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                CerrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                CerrarMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout ExitPannelLayout = new javax.swing.GroupLayout(ExitPannel);
+        ExitPannel.setLayout(ExitPannelLayout);
+        ExitPannelLayout.setHorizontalGroup(
+            ExitPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ExitPannelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(Cerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        ExitPannelLayout.setVerticalGroup(
+            ExitPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Cerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(HomeButtonPannel, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                    .addComponent(OptionPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(TitPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(HomeButtonPannel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                    .addComponent(OptionPannel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TitlePannel, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
-                    .addComponent(ContentPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(ContentPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TitlePannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, 0)
+                        .addComponent(Vacio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(ExitPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(HomeButtonPannel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(TitPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ExitPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Vacio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, 0)
-                .addComponent(OptionPannel, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(TitlePannel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(ContentPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(HomeButtonPannel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(OptionPannel, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(TitlePannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(ContentPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(5, 5, 5))))
         );
 
-        setSize(new java.awt.Dimension(916, 672));
+        setSize(new java.awt.Dimension(1000, 700));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -263,6 +377,54 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         }
     }//GEN-LAST:event_AtrasActionPerformed
 
+    private void CerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarMouseEntered
+        // TODO add your handling code here:
+        Cerrar.setForeground(Color.white);
+        ExitPannel.setBackground(Color.red);
+    }//GEN-LAST:event_CerrarMouseEntered
+
+    private void CerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarMouseExited
+        // TODO add your handling code here:
+        Cerrar.setForeground(new Color(51,51,51));
+        ExitPannel.setBackground(Color.white);
+    }//GEN-LAST:event_CerrarMouseExited
+
+    private void CerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_CerrarMouseClicked
+    
+    int xx, xy;
+    
+    private void NombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NombreMousePressed
+        // TODO add your handling code here:
+        xx = evt.getX();
+        xy = evt.getY();
+    }//GEN-LAST:event_NombreMousePressed
+
+    private void NombreMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NombreMouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        
+        this.setLocation(x-xx, y-xy);
+    }//GEN-LAST:event_NombreMouseDragged
+
+    private void VaciMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VaciMouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        
+        this.setLocation(x-xx, y-xy);
+
+    }//GEN-LAST:event_VaciMouseDragged
+
+    private void VaciMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VaciMousePressed
+        // TODO add your handling code here:
+        xx = evt.getX()+193;
+        xy = evt.getY();
+    }//GEN-LAST:event_VaciMousePressed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -274,12 +436,18 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atras;
+    private javax.swing.JLabel Cerrar;
     public javax.swing.JPanel ContentPannel;
+    private javax.swing.JPanel ExitPannel;
     private javax.swing.JButton HomeButton;
     private javax.swing.JPanel HomeButtonPannel;
+    private javax.swing.JLabel Nombre;
     public javax.swing.JPanel OptionPannel;
+    private javax.swing.JPanel TitPannel;
     private javax.swing.JPanel TitlePannel;
     public javax.swing.JLabel Titulo;
+    private javax.swing.JLabel Vaci;
+    private javax.swing.JPanel Vacio;
     // End of variables declaration//GEN-END:variables
 
     public void Alistar() {

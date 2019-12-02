@@ -30,7 +30,7 @@
           <Group type="102" alignment="1" attributes="0">
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="278" max="32767" attributes="0"/>
                       <Component id="jButton2" min="-2" pref="140" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" pref="140" max="-2" attributes="0"/>
@@ -39,11 +39,11 @@
                       <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="Club" pref="293" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Label" min="-2" max="-2" attributes="0"/>
+                      <Component id="Club" max="32767" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="Label" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -76,7 +76,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="33" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Nombre de pagador"/>
+        <Property name="text" type="java.lang.String" value="I.D del pagador"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Club">
