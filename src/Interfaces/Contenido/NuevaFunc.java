@@ -4,9 +4,9 @@ import java.awt.Color;
 import javax.swing.border.LineBorder;
 
 public class NuevaFunc extends javax.swing.JPanel {
-
-    AsociarClub st = new AsociarClub();
+    
     ProcedimientosExtra listen = new ProcedimientosExtra();
+    Dialogo diag = new Dialogo ();
 
     public NuevaFunc() {
 
@@ -25,7 +25,7 @@ public class NuevaFunc extends javax.swing.JPanel {
         Continuar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         Label1 = new javax.swing.JLabel();
-        Label5 = new javax.swing.JLabel();
+        Label2 = new javax.swing.JLabel();
         Nacimiento = new com.toedter.calendar.JCalendar();
         jLabel6 = new javax.swing.JLabel();
         HoraSpinn = new javax.swing.JSpinner();
@@ -74,15 +74,15 @@ public class NuevaFunc extends javax.swing.JPanel {
             }
         });
 
-        Label5.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
-        Label5.setForeground(new java.awt.Color(255, 0, 0));
-        Label5.setText("(*)");
-        Label5.addMouseListener(new java.awt.event.MouseAdapter() {
+        Label2.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
+        Label2.setForeground(new java.awt.Color(255, 0, 0));
+        Label2.setText("(*)");
+        Label2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Label5MouseEntered(evt);
+                Label2MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                Label5MouseExited(evt);
+                Label2MouseExited(evt);
             }
         });
 
@@ -155,7 +155,7 @@ public class NuevaFunc extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Label1)
-                                    .addComponent(Label5))
+                                    .addComponent(Label2))
                                 .addGap(27, 27, 27))))))
         );
         layout.setVerticalGroup(
@@ -169,7 +169,7 @@ public class NuevaFunc extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(Label5)
+                    .addComponent(Label2)
                     .addComponent(Nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,23 +197,25 @@ public class NuevaFunc extends javax.swing.JPanel {
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
         // TODO add your handling code here:
-        Label1.setText(st.pop);
+        diag.posicion(Label1.getLocationOnScreen().x-29, Label1.getLocationOnScreen().y+15);
+        diag.setVisible(true);
     }//GEN-LAST:event_Label1MouseEntered
 
     private void Label1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseExited
         // TODO add your handling code here:
-        Label1.setText(st.calm);
+        diag.setVisible(false);
     }//GEN-LAST:event_Label1MouseExited
 
-    private void Label5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label5MouseEntered
+    private void Label2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label2MouseEntered
         // TODO add your handling code here:
-        Label5.setText(st.pop);
-    }//GEN-LAST:event_Label5MouseEntered
+        diag.posicion(Label2.getLocationOnScreen().x-29, Label2.getLocationOnScreen().y+15);
+        diag.setVisible(true);
+    }//GEN-LAST:event_Label2MouseEntered
 
-    private void Label5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label5MouseExited
+    private void Label2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label2MouseExited
         // TODO add your handling code here:
-        Label5.setText(st.calm);
-    }//GEN-LAST:event_Label5MouseExited
+        diag.setVisible(false);
+    }//GEN-LAST:event_Label2MouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -222,7 +224,7 @@ public class NuevaFunc extends javax.swing.JPanel {
     private javax.swing.JSpinner HoraSpinn;
     private javax.swing.JTextField IdObra;
     private javax.swing.JLabel Label1;
-    private javax.swing.JLabel Label5;
+    private javax.swing.JLabel Label2;
     private com.toedter.calendar.JCalendar Nacimiento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;

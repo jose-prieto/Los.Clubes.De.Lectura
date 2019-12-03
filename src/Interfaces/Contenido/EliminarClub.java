@@ -6,7 +6,7 @@ import javax.swing.border.LineBorder;
 public class EliminarClub extends javax.swing.JPanel {
     
     ProcedimientosExtra listen = new ProcedimientosExtra ();
-    AsociarClub st = new AsociarClub ();
+    Dialogo diag = new Dialogo ();
     
     public EliminarClub() {
         initComponents();
@@ -111,12 +111,13 @@ public class EliminarClub extends javax.swing.JPanel {
 
     private void LabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LabelMouseEntered
         // TODO add your handling code here:
-        Label.setText(st.pop);
+        diag.posicion(Label.getLocationOnScreen().x-29, Label.getLocationOnScreen().y+15);
+        diag.setVisible(true);
     }//GEN-LAST:event_LabelMouseEntered
 
     private void LabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LabelMouseExited
         // TODO add your handling code here:
-        Label.setText(st.calm);
+        diag.setVisible(false);
     }//GEN-LAST:event_LabelMouseExited
 
 

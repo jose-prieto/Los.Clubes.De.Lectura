@@ -6,6 +6,7 @@ import javax.swing.border.LineBorder;
 public class Pagos extends javax.swing.JPanel {
 
     ProcedimientosExtra listen = new ProcedimientosExtra();
+    Dialogo diag = new Dialogo ();
 
     public Pagos() {
         initComponents();
@@ -112,12 +113,13 @@ public class Pagos extends javax.swing.JPanel {
 
     private void LabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LabelMouseEntered
         // TODO add your handling code here:
-        Label.setText("Campo oblicatorio");
+        diag.posicion(Label.getLocationOnScreen().x-29, Label.getLocationOnScreen().y+15);
+        diag.setVisible(true);
     }//GEN-LAST:event_LabelMouseEntered
 
     private void LabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LabelMouseExited
         // TODO add your handling code here:
-        Label.setText("(*)");
+        diag.setVisible(false);
     }//GEN-LAST:event_LabelMouseExited
 
 

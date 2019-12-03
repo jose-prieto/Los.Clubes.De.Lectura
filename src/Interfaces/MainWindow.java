@@ -1,5 +1,6 @@
 package Interfaces;
 
+import Interfaces.Contenido.Dialogo;
 import Interfaces.Menu.ClubesPannel;
 import Interfaces.Menu.MainPannel;
 import Interfaces.Menu.MantLibrosPannel;
@@ -28,11 +29,12 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
-import javax.swing.event.AncestorListener;
 
 public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
     int cond = 1;
+    
+    Dialogo diag = new Dialogo ();
 
     //Menu
     MainPannel main = new MainPannel();
@@ -416,6 +418,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         nuevaobra = new NuevaObra();
         cierreobra = new CierreObra();
         nuevafunc = new NuevaFunc();
+        diag = new Dialogo();
 
     }
 
