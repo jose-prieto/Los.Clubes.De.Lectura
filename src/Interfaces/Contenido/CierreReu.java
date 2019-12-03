@@ -2,13 +2,13 @@ package Interfaces.Contenido;
 
 import Interfaces.Menu.ProcedimientosExtra;
 
-public class Cierre extends javax.swing.JPanel {
+public class CierreReu extends javax.swing.JPanel {
     
     ProcedimientosExtra listen = new ProcedimientosExtra ();
     public String pop = "Campo Obligatorio";
     public String calm = "(*)";
     
-    public Cierre() {
+    public CierreReu() {
         initComponents();
         
         listen.FieldListener(IdGrupo);

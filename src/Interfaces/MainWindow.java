@@ -18,9 +18,11 @@ import Interfaces.Contenido.RegistraMiembro;
 import Interfaces.Contenido.RegistraMiembro2;
 import Interfaces.Contenido.CambioClub;
 import Interfaces.Contenido.Asistencias;
-import Interfaces.Contenido.Cierre;
+import Interfaces.Contenido.CierreReu;
 import Interfaces.Contenido.ActCalendario;
 import Interfaces.Contenido.NuevaObra;
+import Interfaces.Contenido.CierreObra;
+import Interfaces.Contenido.NuevaFunc;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -42,7 +44,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
     //Content
     ActCalendario actualizar = new ActCalendario ();
-    Cierre cierre = new Cierre ();
+    CierreReu cierre = new CierreReu ();
     Asistencias asistencia = new Asistencias ();
     RegistrarLibro nuevolibro = new RegistrarLibro();
     EliminarClub eliminarclub = new EliminarClub();
@@ -54,6 +56,8 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
     RegistraMiembro2 nuevomiembro2 = new RegistraMiembro2 ();
     CambioClub cambioclub = new CambioClub ();
     NuevaObra nuevaobra = new NuevaObra ();
+    CierreObra cierreobra = new CierreObra ();
+    NuevaFunc nuevafunc = new NuevaFunc ();
 
     public MainWindow() {
         initComponents();
@@ -97,6 +101,11 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         
         //action listener de nuevo miembro
         nuevomiembro.Continuar.addActionListener(this);
+        
+        //action listener de obras
+        obras.NuevaObra.addActionListener(this);
+        obras.CierreObra.addActionListener(this);
+        obras.Presentaciones.addActionListener(this);
 
     }
 
@@ -272,7 +281,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
         Cerrar.setBackground(new java.awt.Color(255, 255, 255));
         Cerrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Cerrar.setForeground(new java.awt.Color(51, 51, 51));
+        Cerrar.setForeground(new java.awt.Color(255, 0, 0));
         Cerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Cerrar.setText("X");
         Cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -313,7 +322,6 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
                     .addComponent(ContentPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(TitlePannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
                         .addComponent(Vacio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(ExitPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -353,6 +361,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         OptionPannel.add(main);
         Titulo.setText("Inicio");
         ContentPannel.add(vacio);
+        JFrameRestart ();
         
         cond = 1;
         
@@ -373,6 +382,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             Titulo.setText("Inicio");
             ContentPannel.add(vacio);
             
+            
             Atras.setVisible(false);
 
         }else if (cond == 2){
@@ -390,6 +400,34 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         }
     }//GEN-LAST:event_AtrasActionPerformed
 
+    private void JFrameRestart (){
+        //Menu
+        reuniones = new ReunionesPannel();
+        clubes = new ClubesPannel();
+        obras = new ObrasPannel();
+        libros = new MantLibrosPannel();
+        miembros = new MiembrosPannel();
+        admclub = new AdmClubesPannel();
+
+        //Content
+        actualizar = new ActCalendario ();
+        cierre = new CierreReu ();
+        asistencia = new Asistencias ();
+        nuevolibro = new RegistrarLibro();
+        eliminarclub = new EliminarClub();
+        nuevoclub = new NuevoClubContent();
+        asociarclub = new AsociarClub();
+        vacio = new EmptyPannel();
+        pago = new Pagos();
+        nuevomiembro = new RegistraMiembro ();
+        nuevomiembro2 = new RegistraMiembro2 ();
+        cambioclub = new CambioClub ();
+        nuevaobra = new NuevaObra ();
+        cierreobra = new CierreObra ();
+        nuevafunc = new NuevaFunc ();
+        
+    }
+    
     private void CerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarMouseEntered
         // TODO add your handling code here:
         Cerrar.setForeground(Color.white);
@@ -398,7 +436,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
     private void CerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarMouseExited
         // TODO add your handling code here:
-        Cerrar.setForeground(new Color(51,51,51));
+        Cerrar.setForeground(new Color(255,0,0));
         ExitPannel.setBackground(Color.white);
     }//GEN-LAST:event_CerrarMouseExited
 
@@ -493,6 +531,8 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         cierre.setVisible(false);
         actualizar.setVisible(false);
         nuevaobra.setVisible(false);
+        cierreobra.setVisible(false);
+        nuevafunc.setVisible(false);
 
         //Invisibles menus
         main.setVisible(false);
@@ -594,6 +634,28 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             OptionPannel.add(obras);
             Titulo.setText("Nueva obra");
             ContentPannel.add(nuevaobra);
+
+        } else if (evt.equals(obras.CierreObra)) {
+
+            Alistar();
+
+            obras.setVisible(true);
+            cierreobra.setVisible(true);
+
+            OptionPannel.add(obras);
+            Titulo.setText("Cierre de obra");
+            ContentPannel.add(cierreobra);
+
+        } else if (evt.equals(obras.Presentaciones)) {
+
+            Alistar();
+
+            obras.setVisible(true);
+            nuevafunc.setVisible(true);
+
+            OptionPannel.add(obras);
+            Titulo.setText("Nueva función");
+            ContentPannel.add(nuevafunc);
 
         } else if (evt.equals(main.Clubes)) {
 

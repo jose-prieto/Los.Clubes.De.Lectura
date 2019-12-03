@@ -150,12 +150,13 @@ public class RegistraMiembro extends javax.swing.JPanel {
 
         Nacimiento.setBackground(new java.awt.Color(153, 153, 153));
         Nacimiento.setDate(new java.util.Date(1107213663000L));
+        Nacimiento.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Nacimiento.setMaxSelectableDate(new java.util.Date(1107147663000L));
         Nacimiento.setMinSelectableDate(new java.util.Date(-2208969077000L));
 
         Genero.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Genero.setForeground(new java.awt.Color(51, 51, 51));
-        Genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino" }));
+        Genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino", "Neutro" }));
 
         Label4.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         Label4.setForeground(new java.awt.Color(255, 0, 0));
