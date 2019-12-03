@@ -1,4 +1,4 @@
-package Interfaces.Menu;
+package Interfaces.Contenido;
 
 import java.awt.Color;
 import java.awt.event.FocusEvent;

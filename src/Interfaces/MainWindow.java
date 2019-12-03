@@ -18,12 +18,17 @@ import Interfaces.Contenido.RegistraMiembro;
 import Interfaces.Contenido.RegistraMiembro2;
 import Interfaces.Contenido.CambioClub;
 import Interfaces.Contenido.Asistencias;
-import Interfaces.Contenido.Cierre;
+import Interfaces.Contenido.CierreReu;
 import Interfaces.Contenido.ActCalendario;
+import Interfaces.Contenido.NuevaObra;
+import Interfaces.Contenido.CierreObra;
+import Interfaces.Contenido.NuevaFunc;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
+import javax.swing.event.AncestorListener;
 
 public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
@@ -39,23 +44,26 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
     AdmClubesPannel admclub = new AdmClubesPannel();
 
     //Content
-    ActCalendario actualizar = new ActCalendario ();
-    Cierre cierre = new Cierre ();
-    Asistencias asistencia = new Asistencias ();
+    ActCalendario actualizar = new ActCalendario();
+    CierreReu cierre = new CierreReu();
+    Asistencias asistencia = new Asistencias();
     RegistrarLibro nuevolibro = new RegistrarLibro();
     EliminarClub eliminarclub = new EliminarClub();
     NuevoClubContent nuevoclub = new NuevoClubContent();
     AsociarClub asociarclub = new AsociarClub();
     EmptyPannel vacio = new EmptyPannel();
     Pagos pago = new Pagos();
-    RegistraMiembro nuevomiembro = new RegistraMiembro ();
-    RegistraMiembro2 nuevomiembro2 = new RegistraMiembro2 ();
-    CambioClub cambioclub = new CambioClub ();
+    RegistraMiembro nuevomiembro = new RegistraMiembro();
+    RegistraMiembro2 nuevomiembro2 = new RegistraMiembro2();
+    CambioClub cambioclub = new CambioClub();
+    NuevaObra nuevaobra = new NuevaObra();
+    CierreObra cierreobra = new CierreObra();
+    NuevaFunc nuevafunc = new NuevaFunc();
 
     public MainWindow() {
         initComponents();
 
-        setIconImage(new ImageIcon(getClass().getResource("../Images/Icono.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("../Images/LogoApp.png")).getImage());
 
         OptionPannel.add(main);
         ContentPannel.add(vacio);
@@ -87,13 +95,18 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
         //action listener de libros
         libros.RegistrarLibro.addActionListener(this);
-        
+
         //action listener de miembros
         miembros.RegMiemb.addActionListener(this);
         miembros.CambClub.addActionListener(this);
-        
+
         //action listener de nuevo miembro
         nuevomiembro.Continuar.addActionListener(this);
+
+        //action listener de obras
+        obras.NuevaObra.addActionListener(this);
+        obras.CierreObra.addActionListener(this);
+        obras.Presentaciones.addActionListener(this);
 
     }
 
@@ -108,14 +121,21 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         HomeButtonPannel = new javax.swing.JPanel();
         HomeButton = new javax.swing.JButton();
         ContentPannel = new javax.swing.JPanel();
+        TitPannel = new javax.swing.JPanel();
+        Nombre = new javax.swing.JLabel();
+        Vacio = new javax.swing.JPanel();
+        Vaci = new javax.swing.JLabel();
+        ExitPannel = new javax.swing.JPanel();
+        Cerrar = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Clubes de lectura");
-        setBackground(new java.awt.Color(102, 102, 102));
+        setBackground(new java.awt.Color(255, 255, 255));
         setBounds(new java.awt.Rectangle(102, 102, 102, 102));
+        setForeground(java.awt.Color.white);
         setMaximizedBounds(new java.awt.Rectangle(900, 600, 0, 0));
         setMaximumSize(new java.awt.Dimension(1600, 900));
         setMinimumSize(new java.awt.Dimension(1000, 600));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(900, 700));
         setResizable(false);
         setSize(new java.awt.Dimension(900, 600));
 
@@ -125,7 +145,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
         Atras.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         Atras.setForeground(new java.awt.Color(204, 204, 204));
-        Atras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back-icon-500x500.png"))); // NOI18N
+        Atras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BotonAtras.png"))); // NOI18N
         Atras.setText("Atras");
         Atras.setAlignmentX(2.0F);
         Atras.setBorder(null);
@@ -151,14 +171,26 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         Titulo.setForeground(new java.awt.Color(51, 51, 51));
         Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Titulo.setText("Inicio");
-        TitlePannel.add(Titulo, java.awt.BorderLayout.CENTER);
+        Titulo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        Titulo.setPreferredSize(new java.awt.Dimension(85, 35));
+        Titulo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                TituloMouseDragged(evt);
+            }
+        });
+        Titulo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                TituloMousePressed(evt);
+            }
+        });
+        TitlePannel.add(Titulo, java.awt.BorderLayout.PAGE_END);
 
         HomeButtonPannel.setBackground(new java.awt.Color(51, 51, 51));
         HomeButtonPannel.setPreferredSize(new java.awt.Dimension(210, 210));
 
         HomeButton.setBackground(new java.awt.Color(0, 0, 0));
         HomeButton.setForeground(new java.awt.Color(255, 255, 255));
-        HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Icono.png"))); // NOI18N
+        HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/LogoApp.png"))); // NOI18N
         HomeButton.setBorder(null);
         HomeButton.setBorderPainted(false);
         HomeButton.setContentAreaFilled(false);
@@ -182,37 +214,141 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         HomeButtonPannelLayout.setVerticalGroup(
             HomeButtonPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HomeButtonPannelLayout.createSequentialGroup()
-                .addGap(0, 4, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
                 .addComponent(HomeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         ContentPannel.setLayout(new java.awt.BorderLayout());
 
+        TitPannel.setBackground(new java.awt.Color(51, 51, 51));
+        TitPannel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+
+        Nombre.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        Nombre.setForeground(new java.awt.Color(204, 204, 204));
+        Nombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/IconApp.png"))); // NOI18N
+        Nombre.setText("Clubes de Lectura");
+        Nombre.setPreferredSize(new java.awt.Dimension(122, 22));
+        Nombre.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                NombreMouseDragged(evt);
+            }
+        });
+        Nombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                NombreMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout TitPannelLayout = new javax.swing.GroupLayout(TitPannel);
+        TitPannel.setLayout(TitPannelLayout);
+        TitPannelLayout.setHorizontalGroup(
+            TitPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(TitPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(Nombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))
+        );
+        TitPannelLayout.setVerticalGroup(
+            TitPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(TitPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE))
+        );
+
+        Vacio.setBackground(new java.awt.Color(255, 255, 255));
+
+        Vaci.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                VaciMouseDragged(evt);
+            }
+        });
+        Vaci.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                VaciMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout VacioLayout = new javax.swing.GroupLayout(Vacio);
+        Vacio.setLayout(VacioLayout);
+        VacioLayout.setHorizontalGroup(
+            VacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Vaci, javax.swing.GroupLayout.DEFAULT_SIZE, 772, Short.MAX_VALUE)
+        );
+        VacioLayout.setVerticalGroup(
+            VacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Vaci, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        ExitPannel.setBackground(new java.awt.Color(255, 255, 255));
+
+        Cerrar.setBackground(new java.awt.Color(255, 255, 255));
+        Cerrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Cerrar.setForeground(new java.awt.Color(255, 0, 0));
+        Cerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Cerrar.setText("X");
+        Cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CerrarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                CerrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                CerrarMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout ExitPannelLayout = new javax.swing.GroupLayout(ExitPannel);
+        ExitPannel.setLayout(ExitPannelLayout);
+        ExitPannelLayout.setHorizontalGroup(
+            ExitPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ExitPannelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(Cerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        ExitPannelLayout.setVerticalGroup(
+            ExitPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Cerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(HomeButtonPannel, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                    .addComponent(OptionPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(TitPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(HomeButtonPannel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                    .addComponent(OptionPannel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TitlePannel, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
-                    .addComponent(ContentPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(ContentPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TitlePannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(Vacio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(ExitPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(HomeButtonPannel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(TitPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ExitPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Vacio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, 0)
-                .addComponent(OptionPannel, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(TitlePannel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(ContentPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(HomeButtonPannel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(OptionPannel, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(TitlePannel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(ContentPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(5, 5, 5))))
         );
 
-        setSize(new java.awt.Dimension(916, 672));
+        setSize(new java.awt.Dimension(1000, 700));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -226,9 +362,11 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         OptionPannel.add(main);
         Titulo.setText("Inicio");
         ContentPannel.add(vacio);
-        
+
+        JFrameRestart();
+
         cond = 1;
-        
+
         Atras.setVisible(false);
 
     }//GEN-LAST:event_HomeButtonActionPerformed
@@ -245,11 +383,11 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             OptionPannel.add(main);
             Titulo.setText("Inicio");
             ContentPannel.add(vacio);
-            
+
             Atras.setVisible(false);
 
-        }else if (cond == 2){
-            
+        } else if (cond == 2) {
+
             Alistar();
 
             clubes.setVisible(true);
@@ -258,10 +396,90 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             ContentPannel.add(pago);
             Titulo.setText("Registrar pago");
             OptionPannel.add(clubes);
-            
+
             cond = 1;
         }
     }//GEN-LAST:event_AtrasActionPerformed
+
+    private void JFrameRestart() {
+        actualizar = new ActCalendario();
+        cierre = new CierreReu();
+        asistencia = new Asistencias();
+        nuevolibro = new RegistrarLibro();
+        eliminarclub = new EliminarClub();
+        nuevoclub = new NuevoClubContent();
+        asociarclub = new AsociarClub();
+        pago = new Pagos();
+        nuevomiembro = new RegistraMiembro();
+        nuevomiembro2 = new RegistraMiembro2();
+        cambioclub = new CambioClub();
+        nuevaobra = new NuevaObra();
+        cierreobra = new CierreObra();
+        nuevafunc = new NuevaFunc();
+
+    }
+
+    private void CerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarMouseEntered
+        // TODO add your handling code here:
+        Cerrar.setForeground(Color.white);
+        ExitPannel.setBackground(Color.red);
+    }//GEN-LAST:event_CerrarMouseEntered
+
+    private void CerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarMouseExited
+        // TODO add your handling code here:
+        Cerrar.setForeground(new Color(255, 0, 0));
+        ExitPannel.setBackground(Color.white);
+    }//GEN-LAST:event_CerrarMouseExited
+
+    private void CerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_CerrarMouseClicked
+
+    int xx, xy;
+
+    private void NombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NombreMousePressed
+        // TODO add your handling code here:
+        xx = evt.getX();
+        xy = evt.getY();
+    }//GEN-LAST:event_NombreMousePressed
+
+    private void NombreMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NombreMouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+
+        this.setLocation(x - xx, y - xy);
+    }//GEN-LAST:event_NombreMouseDragged
+
+    private void VaciMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VaciMouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+
+        this.setLocation(x - xx, y - xy);
+
+    }//GEN-LAST:event_VaciMouseDragged
+
+    private void VaciMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VaciMousePressed
+        // TODO add your handling code here:
+        xx = evt.getX() + 193;
+        xy = evt.getY();
+    }//GEN-LAST:event_VaciMousePressed
+
+    private void TituloMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TituloMousePressed
+        // TODO add your handling code here:
+        xx = evt.getX() + 193;
+        xy = evt.getY() + 25;
+    }//GEN-LAST:event_TituloMousePressed
+
+    private void TituloMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TituloMouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+
+        this.setLocation(x - xx, y - xy);
+    }//GEN-LAST:event_TituloMouseDragged
 
     public static void main(String args[]) {
 
@@ -274,12 +492,18 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atras;
+    private javax.swing.JLabel Cerrar;
     public javax.swing.JPanel ContentPannel;
+    private javax.swing.JPanel ExitPannel;
     private javax.swing.JButton HomeButton;
     private javax.swing.JPanel HomeButtonPannel;
+    private javax.swing.JLabel Nombre;
     public javax.swing.JPanel OptionPannel;
+    private javax.swing.JPanel TitPannel;
     private javax.swing.JPanel TitlePannel;
     public javax.swing.JLabel Titulo;
+    private javax.swing.JLabel Vaci;
+    private javax.swing.JPanel Vacio;
     // End of variables declaration//GEN-END:variables
 
     public void Alistar() {
@@ -297,6 +521,9 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         asistencia.setVisible(false);
         cierre.setVisible(false);
         actualizar.setVisible(false);
+        nuevaobra.setVisible(false);
+        cierreobra.setVisible(false);
+        nuevafunc.setVisible(false);
 
         //Invisibles menus
         main.setVisible(false);
@@ -307,10 +534,6 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         miembros.setVisible(false);
         admclub.setVisible(false);
 
-        //Validsar paneles
-        reuniones.validate();
-        vacio.validate();
-
     }
 
     @Override
@@ -320,6 +543,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         if (evt.equals(main.Reuniones)) {
 
             Alistar();
+            JFrameRestart();
 
             reuniones.setVisible(true);
             actualizar.setVisible(true);
@@ -329,12 +553,13 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             OptionPannel.add(reuniones);
 
             cond = 1;
-            
+
             Atras.setVisible(true);
 
         } else if (evt.equals(reuniones.Asistencias)) {
 
             Alistar();
+            JFrameRestart();
 
             reuniones.setVisible(true);
             asistencia.setVisible(true);
@@ -344,12 +569,13 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             ContentPannel.add(asistencia);
 
             cond = 1;
-            
+
             Atras.setVisible(true);
 
         } else if (evt.equals(reuniones.Calendario)) {
 
             Alistar();
+            JFrameRestart();
 
             reuniones.setVisible(true);
             actualizar.setVisible(true);
@@ -359,12 +585,13 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             ContentPannel.add(actualizar);
 
             cond = 1;
-            
+
             Atras.setVisible(true);
 
         } else if (evt.equals(reuniones.Cierre)) {
 
             Alistar();
+            JFrameRestart();
 
             reuniones.setVisible(true);
             cierre.setVisible(true);
@@ -376,21 +603,59 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(main.Obras)) {
 
             Alistar();
+            JFrameRestart();
 
             obras.setVisible(true);
-            vacio.setVisible(true);
+            nuevaobra.setVisible(true);
 
             OptionPannel.add(obras);
-            Titulo.setText("Administración de obras");
-            ContentPannel.add(vacio);
+            Titulo.setText("Nueva obra");
+            ContentPannel.add(nuevaobra);
 
             cond = 1;
-            
+
             Atras.setVisible(true);
+
+        } else if (evt.equals(obras.NuevaObra)) {
+
+            Alistar();
+            JFrameRestart();
+
+            obras.setVisible(true);
+            nuevaobra.setVisible(true);
+
+            OptionPannel.add(obras);
+            Titulo.setText("Nueva obra");
+            ContentPannel.add(nuevaobra);
+
+        } else if (evt.equals(obras.CierreObra)) {
+
+            Alistar();
+            JFrameRestart();
+
+            obras.setVisible(true);
+            cierreobra.setVisible(true);
+
+            OptionPannel.add(obras);
+            Titulo.setText("Cierre de obra");
+            ContentPannel.add(cierreobra);
+
+        } else if (evt.equals(obras.Presentaciones)) {
+
+            Alistar();
+            JFrameRestart();
+
+            obras.setVisible(true);
+            nuevafunc.setVisible(true);
+
+            OptionPannel.add(obras);
+            Titulo.setText("Nueva función");
+            ContentPannel.add(nuevafunc);
 
         } else if (evt.equals(main.Clubes)) {
 
             Alistar();
+            JFrameRestart();
 
             clubes.setVisible(true);
             pago.setVisible(true);
@@ -400,12 +665,13 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             OptionPannel.add(clubes);
 
             cond = 1;
-            
+
             Atras.setVisible(true);
 
         } else if (evt.equals(clubes.Club)) {
 
             Alistar();
+            JFrameRestart();
 
             admclub.setVisible(true);
             nuevoclub.setVisible(true);
@@ -419,6 +685,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(clubes.Libros)) {
 
             Alistar();
+            JFrameRestart();
 
             libros.setVisible(true);
             nuevolibro.setVisible(true);
@@ -432,6 +699,9 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(clubes.Miembros)) {
 
             Alistar();
+            JFrameRestart();            
+            
+            nuevomiembro.Continuar.addActionListener(this);
 
             miembros.setVisible(true);
             nuevomiembro.setVisible(true);
@@ -445,6 +715,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(miembros.CambClub)) {
 
             Alistar();
+            JFrameRestart();
 
             miembros.setVisible(true);
             cambioclub.setVisible(true);
@@ -456,6 +727,9 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(miembros.RegMiemb)) {
 
             Alistar();
+            JFrameRestart();
+            
+            nuevomiembro.Continuar.addActionListener(this);
 
             miembros.setVisible(true);
             nuevomiembro.setVisible(true);
@@ -465,21 +739,22 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             OptionPannel.add(miembros);
 
         } else if (evt.equals(nuevomiembro.Continuar)) {
+            
+            if (nuevomiembro.val1 & nuevomiembro.val2 & nuevomiembro.val3){
 
-            Alistar();
+                Alistar();
 
-            miembros.setVisible(true);
-            nuevomiembro2.setVisible(true);
+                miembros.setVisible(true);
+                nuevomiembro2.setVisible(true);
 
-            ContentPannel.add(nuevomiembro2);
-            Titulo.setText("Registrar Miembro");
-            OptionPannel.add(miembros);
-
-            cond = 2;
+                ContentPannel.add(nuevomiembro2);
+                OptionPannel.add(miembros);
+            }
 
         } else if (evt.equals(clubes.Pagos)) {
 
             Alistar();
+            JFrameRestart();
 
             clubes.setVisible(true);
             pago.setVisible(true);
@@ -491,6 +766,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(admclub.NuevoClub)) {
 
             Alistar();
+            JFrameRestart();
 
             admclub.setVisible(true);
             nuevoclub.setVisible(true);
@@ -502,6 +778,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(admclub.EliminarClub)) {
 
             Alistar();
+            JFrameRestart();
 
             admclub.setVisible(true);
             eliminarclub.setVisible(true);
@@ -513,6 +790,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(admclub.AsociarClub)) {
 
             Alistar();
+            JFrameRestart();
 
             admclub.setVisible(true);
             asociarclub.setVisible(true);
@@ -524,6 +802,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(libros.RegistrarLibro)) {
 
             Alistar();
+            JFrameRestart();
 
             libros.setVisible(true);
             nuevolibro.setVisible(true);
@@ -535,6 +814,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(libros.RegistrarLibro)) {
 
             Alistar();
+            JFrameRestart();
 
             libros.setVisible(true);
             nuevolibro.setVisible(true);
@@ -546,6 +826,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(OptionPannel)) {
 
             Alistar();
+            JFrameRestart();
 
             libros.setVisible(true);
             nuevolibro.setVisible(true);
