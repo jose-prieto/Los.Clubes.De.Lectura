@@ -1,16 +1,19 @@
 package Interfaces.Contenido;
 
-import Interfaces.Menu.ProcedimientosExtra;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class ActCalendario extends javax.swing.JPanel {
-    
-    AsociarClub st = new AsociarClub ();
-    ProcedimientosExtra listen = new ProcedimientosExtra ();
+
+    ProcedimientosExtra listen = new ProcedimientosExtra();
+    public String pop = "Campo Obligatorio";
+    public String calm = "(*)";
 
     public ActCalendario() {
-        
+
         initComponents();
-        
+
+        listen.FieldListener(IdGrup);
     }
 
     @SuppressWarnings("unchecked")
@@ -18,10 +21,11 @@ public class ActCalendario extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        IdGrup = new javax.swing.JTextField();
+        Dias = new javax.swing.JComboBox<>();
+        Hora = new javax.swing.JComboBox<>();
         Asistencia = new javax.swing.JButton();
+        Label1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(707, 541));
         setMinimumSize(new java.awt.Dimension(707, 541));
@@ -30,23 +34,41 @@ public class ActCalendario extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setText("I.D del club");
 
-        jTextField1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(204, 204, 255));
-        jTextField1.setText("Ej. 1234");
-        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+        IdGrup.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        IdGrup.setForeground(new java.awt.Color(204, 204, 255));
+        IdGrup.setText("Ej. 1234");
+        IdGrup.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        IdGrup.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField1MouseClicked(evt);
+                IdGrupMouseClicked(evt);
             }
         });
 
-        jComboBox1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes" }));
+        Dias.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Dias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes" }));
 
-        jComboBox2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5:00 pm", "5:30 pm", "6:00 pm", "6:30 pm", "7:00 pm" }));
+        Hora.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Hora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5:00 pm", "5:30 pm", "6:00 pm", "6:30 pm", "7:00 pm" }));
 
         Asistencia.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Asistencia.setText("Confirmar");
+        Asistencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AsistenciaActionPerformed(evt);
+            }
+        });
+
+        Label1.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
+        Label1.setForeground(new java.awt.Color(255, 0, 0));
+        Label1.setText("(*)");
+        Label1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Label1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Label1MouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -60,12 +82,14 @@ public class ActCalendario extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel1)
                             .addGap(18, 18, 18)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(IdGrup, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Dias, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(64, Short.MAX_VALUE))
+                            .addComponent(Hora, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Label1)
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -73,28 +97,48 @@ public class ActCalendario extends javax.swing.JPanel {
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(IdGrup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Label1))
                 .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Dias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addComponent(Asistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(288, Short.MAX_VALUE))
+                .addContainerGap(292, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
+    private void IdGrupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IdGrupMouseClicked
         // TODO add your handling code here:
         //System.out.println(jDateChooser1.);
-    }//GEN-LAST:event_jTextField1MouseClicked
+    }//GEN-LAST:event_IdGrupMouseClicked
 
+    private void AsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsistenciaActionPerformed
+        // TODO add your handling code here:
+        if (IdGrup.getText().equals("Ej. 1234")) {
+            IdGrup.setBorder(new LineBorder(Color.red));
+        } else {
+            IdGrup.setBorder(new LineBorder(Color.gray));
+        }
+    }//GEN-LAST:event_AsistenciaActionPerformed
+
+    private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
+        // TODO add your handling code here:
+        Label1.setText(pop);
+    }//GEN-LAST:event_Label1MouseEntered
+
+    private void Label1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseExited
+        // TODO add your handling code here:
+        Label1.setText(calm);
+    }//GEN-LAST:event_Label1MouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Asistencia;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> Dias;
+    private javax.swing.JComboBox<String> Hora;
+    private javax.swing.JTextField IdGrup;
+    private javax.swing.JLabel Label1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

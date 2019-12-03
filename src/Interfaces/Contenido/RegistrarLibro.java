@@ -1,6 +1,7 @@
 package Interfaces.Contenido;
 
-import Interfaces.Menu.ProcedimientosExtra;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class RegistrarLibro extends javax.swing.JPanel {
     
@@ -37,7 +38,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
         NomAutor = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        Registrar = new javax.swing.JButton();
         Reestableces = new javax.swing.JButton();
         Edit = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -70,11 +71,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
         OriTitulo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         OriTitulo.setForeground(new java.awt.Color(204, 204, 255));
         OriTitulo.setText("Ej. Romeo and Juliet");
-        OriTitulo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OriTituloActionPerformed(evt);
-            }
-        });
+        OriTitulo.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
@@ -87,11 +84,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
         ApeAutor.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         ApeAutor.setForeground(new java.awt.Color(204, 204, 255));
         ApeAutor.setText("Ej. Shakespeare");
-        ApeAutor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ApeAutorActionPerformed(evt);
-            }
-        });
+        ApeAutor.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
@@ -100,11 +93,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
         EspTitulo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         EspTitulo.setForeground(new java.awt.Color(204, 204, 255));
         EspTitulo.setText("Ej. Romeo y Julieta");
-        EspTitulo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EspTituloActionPerformed(evt);
-            }
-        });
+        EspTitulo.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
@@ -113,11 +102,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
         NomAutor.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         NomAutor.setForeground(new java.awt.Color(204, 204, 255));
         NomAutor.setText("Ej. William");
-        NomAutor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NomAutorActionPerformed(evt);
-            }
-        });
+        NomAutor.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
@@ -127,8 +112,13 @@ public class RegistrarLibro extends javax.swing.JPanel {
         jLabel10.setForeground(new java.awt.Color(51, 51, 51));
         jLabel10.setText("Sinopsis");
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton1.setText("Registrar");
+        Registrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Registrar.setText("Registrar");
+        Registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegistrarActionPerformed(evt);
+            }
+        });
 
         Reestableces.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Reestableces.setText("Restablecer");
@@ -141,11 +131,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
         Edit.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Edit.setForeground(new java.awt.Color(204, 204, 255));
         Edit.setText("Ej. Santillana");
-        Edit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditActionPerformed(evt);
-            }
-        });
+        Edit.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
@@ -158,11 +144,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
         Tema.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Tema.setForeground(new java.awt.Color(204, 204, 255));
         Tema.setText("Ej. Romeo se suicida tras perder a Julieta...");
-        Tema.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TemaActionPerformed(evt);
-            }
-        });
+        Tema.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -171,6 +153,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
         Sinopsis.setLineWrap(true);
         Sinopsis.setRows(5);
         Sinopsis.setText("Ej. Para entender el argumento de Romeo y Julieta hemos de conocer el concepto de 'tragedia', un género dramático o teatral en el cual los...");
+        Sinopsis.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         jScrollPane2.setViewportView(Sinopsis);
 
         Label1.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
@@ -260,20 +243,12 @@ public class RegistrarLibro extends javax.swing.JPanel {
         Year.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Year.setForeground(new java.awt.Color(204, 204, 255));
         Year.setText("Ej. 2019");
-        Year.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                YearActionPerformed(evt);
-            }
-        });
+        Year.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         Pag.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Pag.setForeground(new java.awt.Color(204, 204, 255));
         Pag.setText("Ej. 200");
-        Pag.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PagActionPerformed(evt);
-            }
-        });
+        Pag.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -319,7 +294,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(Reestableces, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Label1)
@@ -381,48 +356,15 @@ public class RegistrarLibro extends javax.swing.JPanel {
                         .addComponent(jLabel10)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Reestableces, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void OriTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OriTituloActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_OriTituloActionPerformed
-
-    private void ApeAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApeAutorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ApeAutorActionPerformed
-
-    private void EspTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EspTituloActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EspTituloActionPerformed
-
-    private void NomAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomAutorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NomAutorActionPerformed
-
-    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EditActionPerformed
-
-    private void TemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TemaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TemaActionPerformed
 
     private void ReestablecesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReestablecesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ReestablecesActionPerformed
-
-    private void YearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_YearActionPerformed
-
-    private void PagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PagActionPerformed
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
         // TODO add your handling code here:
@@ -494,6 +436,56 @@ public class RegistrarLibro extends javax.swing.JPanel {
         Label7.setText(st.calm);
     }//GEN-LAST:event_Label7MouseExited
 
+    private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
+        // TODO add your handling code here:
+        if(OriTitulo.getText().equals("Ej. Romeo and Juliet")){
+            OriTitulo.setBorder(new LineBorder(Color.red));
+        }else{
+            OriTitulo.setBorder(new LineBorder(Color.gray));
+        }
+        if(EspTitulo.getText().equals("Ej. Romeo y Julieta")){
+            EspTitulo.setBorder(new LineBorder(Color.red));
+        }else{
+            EspTitulo.setBorder(new LineBorder(Color.gray));
+        }
+        if(NomAutor.getText().equals("Ej. William")){
+            NomAutor.setBorder(new LineBorder(Color.red));
+        }else{
+            NomAutor.setBorder(new LineBorder(Color.gray));
+        }
+        if(ApeAutor.getText().equals("Ej. Shakespeare")){
+            ApeAutor.setBorder(new LineBorder(Color.red));
+        }else{
+            ApeAutor.setBorder(new LineBorder(Color.gray));
+        }
+        if(Edit.getText().equals("Ej. Santillana")){
+            Edit.setBorder(new LineBorder(Color.red));
+        }else{
+            Edit.setBorder(new LineBorder(Color.gray));
+        }
+        if(Year.getText().equals("Ej. 2019")){
+            Year.setBorder(new LineBorder(Color.red));
+        }else{
+            Year.setBorder(new LineBorder(Color.gray));
+        }
+        if(Pag.getText().equals("Ej. 200")){
+            Pag.setBorder(new LineBorder(Color.red));
+        }else{
+            Pag.setBorder(new LineBorder(Color.gray));
+        }
+        if(Tema.getText().equals("Ej. Romeo se suicida tras perder a Julieta...")){
+            Tema.setBorder(new LineBorder(Color.red));
+        }else{
+            Tema.setBorder(new LineBorder(Color.gray));
+        }
+        if(Sinopsis.getText().equals("Ej. Para entender el argumento de Romeo y Julieta hemos de conocer el concepto de 'tragedia', un género dramático o teatral en el cual los...")){
+            Sinopsis.setBorder(new LineBorder(Color.red));
+        }else{
+            Sinopsis.setBorder(new LineBorder(Color.gray));
+        }
+        
+    }//GEN-LAST:event_RegistrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ApeAutor;
@@ -510,10 +502,10 @@ public class RegistrarLibro extends javax.swing.JPanel {
     private javax.swing.JTextField OriTitulo;
     private javax.swing.JTextField Pag;
     private javax.swing.JButton Reestableces;
+    private javax.swing.JButton Registrar;
     private javax.swing.JTextArea Sinopsis;
     private javax.swing.JTextField Tema;
     private javax.swing.JTextField Year;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -1,5 +1,7 @@
 package Interfaces.Menu;
 
+import Interfaces.Contenido.ProcedimientosExtra;
+
 public class AdmClubesPannel extends javax.swing.JPanel {
     
     ProcedimientosExtra pro = new ProcedimientosExtra ();
@@ -167,8 +169,7 @@ public class AdmClubesPannel extends javax.swing.JPanel {
     private void AsociarClubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsociarClubActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AsociarClubActionPerformed
-
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton AsociarClub;
     public javax.swing.JButton EliminarClub;

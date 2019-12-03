@@ -1,16 +1,17 @@
 package Interfaces.Contenido;
 
-import Interfaces.Menu.ProcedimientosExtra;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class Asistencias extends javax.swing.JPanel {
-    
-    ProcedimientosExtra listen = new ProcedimientosExtra ();
+
+    ProcedimientosExtra listen = new ProcedimientosExtra();
     public String pop = "Campo Obligatorio";
     public String calm = "(*)";
-    
+
     public Asistencias() {
         initComponents();
-        
+
         listen.FieldListener(IdGrupo);
     }
 
@@ -36,6 +37,7 @@ public class Asistencias extends javax.swing.JPanel {
         IdGrupo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         IdGrupo.setForeground(new java.awt.Color(204, 204, 255));
         IdGrupo.setText("Ej. 1234");
+        IdGrupo.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         IdGrupo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IdGrupoActionPerformed(evt);
@@ -48,6 +50,11 @@ public class Asistencias extends javax.swing.JPanel {
 
         Asistencia.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Asistencia.setText("Marcar Asistencia");
+        Asistencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AsistenciaActionPerformed(evt);
+            }
+        });
 
         Label1.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         Label1.setForeground(new java.awt.Color(255, 0, 0));
@@ -100,13 +107,13 @@ public class Asistencias extends javax.swing.JPanel {
                     .addComponent(jLabel2)
                     .addComponent(Miembro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Asistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(336, Short.MAX_VALUE))
+                .addContainerGap(340, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void IdGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdGrupoActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_IdGrupoActionPerformed
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
@@ -118,6 +125,16 @@ public class Asistencias extends javax.swing.JPanel {
         // TODO add your handling code here:
         Label1.setText(calm);
     }//GEN-LAST:event_Label1MouseExited
+
+    private void AsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsistenciaActionPerformed
+        // TODO add your handling code here:
+        if (IdGrupo.getText().equals("Ej. 1234")) {
+            IdGrupo.setBorder(new LineBorder(Color.red));
+        } else {
+            IdGrupo.setBorder(new LineBorder(Color.gray));
+        }
+
+    }//GEN-LAST:event_AsistenciaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

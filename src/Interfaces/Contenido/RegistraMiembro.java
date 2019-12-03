@@ -1,20 +1,21 @@
 package Interfaces.Contenido;
 
-import Interfaces.Menu.ProcedimientosExtra;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class RegistraMiembro extends javax.swing.JPanel {
-    
-    AsociarClub st = new AsociarClub ();
-    ProcedimientosExtra listen = new ProcedimientosExtra ();
+
+    AsociarClub st = new AsociarClub();
+    ProcedimientosExtra listen = new ProcedimientosExtra();
 
     public RegistraMiembro() {
-        
+
         initComponents();
-        
-        listen.FieldListener (Nombre);
-        listen.FieldListener (Apellido);
-        listen.FieldListener (Cedula);
-        
+
+        listen.FieldListener(Nombre);
+        listen.FieldListener(Apellido);
+        listen.FieldListener(Cedula);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -49,11 +50,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
         Nombre.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Nombre.setForeground(new java.awt.Color(204, 204, 255));
         Nombre.setText("Ej. José Antonio");
-        Nombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NombreActionPerformed(evt);
-            }
-        });
+        Nombre.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
@@ -67,20 +64,12 @@ public class RegistraMiembro extends javax.swing.JPanel {
         Apellido.setForeground(new java.awt.Color(204, 204, 255));
         Apellido.setText("Ej. Prieto Quintero");
         Apellido.setToolTipText("");
-        Apellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ApellidoActionPerformed(evt);
-            }
-        });
+        Apellido.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         Cedula.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Cedula.setForeground(new java.awt.Color(204, 204, 255));
         Cedula.setText("Ej. 30698625");
-        Cedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CedulaActionPerformed(evt);
-            }
-        });
+        Cedula.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
@@ -241,25 +230,9 @@ public class RegistraMiembro extends javax.swing.JPanel {
                     .addComponent(Nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(Continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreActionPerformed
-        // TODO add your handling code here:        
-    }//GEN-LAST:event_NombreActionPerformed
-
-    private void ApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApellidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ApellidoActionPerformed
-
-    private void CedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CedulaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CedulaActionPerformed
-
-    private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ContinuarActionPerformed
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
         // TODO add your handling code here:
@@ -310,6 +283,33 @@ public class RegistraMiembro extends javax.swing.JPanel {
         // TODO add your handling code here:
         Label4.setText(st.calm);
     }//GEN-LAST:event_Label4MouseExited
+
+    public boolean val1, val2, val3 = false;
+
+    private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
+        // TODO add your handling code here:
+        if (Nombre.getText().equals("Ej. José Antonio")) {
+            Nombre.setBorder(new LineBorder(Color.red));
+            val1 = false;
+        } else {
+            Nombre.setBorder(new LineBorder(Color.gray));
+            val1 = true;
+        }
+        if (Apellido.getText().equals("Ej. Prieto Quintero")) {
+            Apellido.setBorder(new LineBorder(Color.red));
+            val2 = false;
+        } else {
+            Apellido.setBorder(new LineBorder(Color.gray));
+            val2 = true;
+        }
+        if (Cedula.getText().equals("Ej. 30698625")) {
+            Cedula.setBorder(new LineBorder(Color.red));
+            val3 = false;
+        } else {
+            Cedula.setBorder(new LineBorder(Color.gray));
+            val3 = true;
+        }
+    }//GEN-LAST:event_ContinuarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

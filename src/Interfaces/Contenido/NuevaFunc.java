@@ -1,18 +1,19 @@
 package Interfaces.Contenido;
 
-import Interfaces.Menu.ProcedimientosExtra;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class NuevaFunc extends javax.swing.JPanel {
-    
-    AsociarClub st = new AsociarClub ();
-    ProcedimientosExtra listen = new ProcedimientosExtra ();
+
+    AsociarClub st = new AsociarClub();
+    ProcedimientosExtra listen = new ProcedimientosExtra();
 
     public NuevaFunc() {
-        
+
         initComponents();
-        
-        listen.FieldListener (Nombre);
-        
+
+        listen.FieldListener(IdObra);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -20,7 +21,7 @@ public class NuevaFunc extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        Nombre = new javax.swing.JTextField();
+        IdObra = new javax.swing.JTextField();
         Continuar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         Label1 = new javax.swing.JLabel();
@@ -31,7 +32,7 @@ public class NuevaFunc extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
-        Continuar1 = new javax.swing.JButton();
+        Eliminar = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(707, 541));
         setMinimumSize(new java.awt.Dimension(707, 541));
@@ -41,14 +42,10 @@ public class NuevaFunc extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("I.D de la obra");
 
-        Nombre.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Nombre.setForeground(new java.awt.Color(204, 204, 255));
-        Nombre.setText("Ej. 123456");
-        Nombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NombreActionPerformed(evt);
-            }
-        });
+        IdObra.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        IdObra.setForeground(new java.awt.Color(204, 204, 255));
+        IdObra.setText("Ej. 123456");
+        IdObra.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         Continuar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Continuar.setForeground(new java.awt.Color(51, 51, 51));
@@ -120,14 +117,9 @@ public class NuevaFunc extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jList1);
 
-        Continuar1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Continuar1.setForeground(new java.awt.Color(51, 51, 51));
-        Continuar1.setText("EliminarFunción");
-        Continuar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Continuar1ActionPerformed(evt);
-            }
-        });
+        Eliminar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Eliminar.setForeground(new java.awt.Color(51, 51, 51));
+        Eliminar.setText("EliminarFunción");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -154,12 +146,12 @@ public class NuevaFunc extends javax.swing.JPanel {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
                                         .addComponent(Continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(Nombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(IdObra, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Nacimiento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(jScrollPane1)
                                         .addGap(18, 18, 18)
-                                        .addComponent(Continuar1)))
+                                        .addComponent(Eliminar)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Label1)
@@ -172,7 +164,7 @@ public class NuevaFunc extends javax.swing.JPanel {
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IdObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,26 +172,27 @@ public class NuevaFunc extends javax.swing.JPanel {
                     .addComponent(Label5)
                     .addComponent(Nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(HoraSpinn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(HoraSpinn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Continuar1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                    .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreActionPerformed
-        // TODO add your handling code here:        
-    }//GEN-LAST:event_NombreActionPerformed
-
     private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
         // TODO add your handling code here:
+        if (IdObra.getText().equals("Ej. 123456")) {
+            IdObra.setBorder(new LineBorder(Color.red));
+        } else {
+            IdObra.setBorder(new LineBorder(Color.gray));
+        }
     }//GEN-LAST:event_ContinuarActionPerformed
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
@@ -222,19 +215,15 @@ public class NuevaFunc extends javax.swing.JPanel {
         Label5.setText(st.calm);
     }//GEN-LAST:event_Label5MouseExited
 
-    private void Continuar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Continuar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Continuar1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton Continuar;
-    public javax.swing.JButton Continuar1;
+    public javax.swing.JButton Eliminar;
     private javax.swing.JSpinner HoraSpinn;
+    private javax.swing.JTextField IdObra;
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label5;
     private com.toedter.calendar.JCalendar Nacimiento;
-    private javax.swing.JTextField Nombre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

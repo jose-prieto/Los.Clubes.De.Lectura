@@ -1,16 +1,17 @@
 package Interfaces.Contenido;
 
-import Interfaces.Menu.ProcedimientosExtra;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class CierreObra extends javax.swing.JPanel {
-    
-    ProcedimientosExtra listen = new ProcedimientosExtra ();
+
+    ProcedimientosExtra listen = new ProcedimientosExtra();
     public String pop = "Campo Obligatorio";
     public String calm = "(*)";
-    
+
     public CierreObra() {
         initComponents();
-        
+
         listen.FieldListener(IdGrupo);
     }
 
@@ -20,7 +21,7 @@ public class CierreObra extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         IdGrupo = new javax.swing.JTextField();
-        Asistencia = new javax.swing.JButton();
+        Cierre = new javax.swing.JButton();
         Label1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(707, 541));
@@ -34,17 +35,13 @@ public class CierreObra extends javax.swing.JPanel {
         IdGrupo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         IdGrupo.setForeground(new java.awt.Color(204, 204, 255));
         IdGrupo.setText("Ej. 123456");
-        IdGrupo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IdGrupoActionPerformed(evt);
-            }
-        });
+        IdGrupo.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
-        Asistencia.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Asistencia.setText("Cierre de obra");
-        Asistencia.addActionListener(new java.awt.event.ActionListener() {
+        Cierre.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Cierre.setText("Cierre de obra");
+        Cierre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AsistenciaActionPerformed(evt);
+                CierreActionPerformed(evt);
             }
         });
 
@@ -75,7 +72,7 @@ public class CierreObra extends javax.swing.JPanel {
                         .addComponent(Label1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(Asistencia)))
+                        .addComponent(Cierre)))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -87,15 +84,10 @@ public class CierreObra extends javax.swing.JPanel {
                     .addComponent(IdGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label1))
                 .addGap(80, 80, 80)
-                .addComponent(Asistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(336, Short.MAX_VALUE))
+                .addComponent(Cierre, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(340, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void IdGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdGrupoActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_IdGrupoActionPerformed
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
         // TODO add your handling code here:
@@ -107,13 +99,18 @@ public class CierreObra extends javax.swing.JPanel {
         Label1.setText(calm);
     }//GEN-LAST:event_Label1MouseExited
 
-    private void AsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsistenciaActionPerformed
+    private void CierreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CierreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_AsistenciaActionPerformed
+        if (IdGrupo.getText().equals("Ej. 123456")) {
+            IdGrupo.setBorder(new LineBorder(Color.red));
+        } else {
+            IdGrupo.setBorder(new LineBorder(Color.gray));
+        }
+    }//GEN-LAST:event_CierreActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Asistencia;
+    private javax.swing.JButton Cierre;
     private javax.swing.JTextField IdGrupo;
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel jLabel1;

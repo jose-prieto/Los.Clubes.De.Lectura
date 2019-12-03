@@ -1,26 +1,25 @@
 package Interfaces.Contenido;
 
-import Interfaces.Menu.ProcedimientosExtra;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 
 public class NuevaObra extends javax.swing.JPanel {
-    
-    AsociarClub st = new AsociarClub ();
-    ProcedimientosExtra listen = new ProcedimientosExtra ();
+
+    AsociarClub st = new AsociarClub();
+    ProcedimientosExtra listen = new ProcedimientosExtra();
 
     public NuevaObra() {
-        
+
         initComponents();
-        
-        listen.FieldListener (TitObra);
-        listen.FieldListener (Costo);
-        listen.FieldListener (LibObra);
-        listen.FieldListener (NomAud);
-        listen.FieldListener (PersObra);
-        listen.AreaListener (Resumen);
+
+        listen.FieldListener(TitObra);
+        listen.FieldListener(Costo);
+        listen.FieldListener(LibObra);
+        listen.FieldListener(NomAud);
+        listen.FieldListener(PersObra);
+        listen.AreaListener(Resumen);
         listen.FieldListener(CiMiemb);
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -69,11 +68,6 @@ public class NuevaObra extends javax.swing.JPanel {
         TitObra.setForeground(new java.awt.Color(204, 204, 255));
         TitObra.setText("Ej. La gran tragedia");
         TitObra.setBorder(new javax.swing.border.LineBorder(java.awt.Color.gray, 1, true));
-        TitObra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TitObraActionPerformed(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
@@ -88,22 +82,12 @@ public class NuevaObra extends javax.swing.JPanel {
         Costo.setText("15000");
         Costo.setToolTipText("");
         Costo.setBorder(new javax.swing.border.LineBorder(java.awt.Color.gray, 1, true));
-        Costo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CostoActionPerformed(evt);
-            }
-        });
 
         LibObra.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         LibObra.setForeground(new java.awt.Color(204, 204, 255));
         LibObra.setText("Ej. Romeo y Julieta");
         LibObra.setToolTipText("");
         LibObra.setBorder(new javax.swing.border.LineBorder(java.awt.Color.gray, 1, true));
-        LibObra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LibObraActionPerformed(evt);
-            }
-        });
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
@@ -198,11 +182,6 @@ public class NuevaObra extends javax.swing.JPanel {
         PersObra.setForeground(new java.awt.Color(204, 204, 255));
         PersObra.setText("Ej. Romeo Montesco");
         PersObra.setBorder(new javax.swing.border.LineBorder(java.awt.Color.gray, 1, true));
-        PersObra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PersObraActionPerformed(evt);
-            }
-        });
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(51, 51, 51));
@@ -266,11 +245,6 @@ public class NuevaObra extends javax.swing.JPanel {
         CiMiemb.setForeground(new java.awt.Color(204, 204, 255));
         CiMiemb.setText("Ej. 25369875");
         CiMiemb.setBorder(new javax.swing.border.LineBorder(java.awt.Color.gray, 1, true));
-        CiMiemb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CiMiembActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -323,7 +297,7 @@ public class NuevaObra extends javax.swing.JPanel {
                     .addComponent(Label3)
                     .addComponent(Label4)
                     .addComponent(Label5))
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,21 +351,9 @@ public class NuevaObra extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void TitObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TitObraActionPerformed
-        // TODO add your handling code here:        
-    }//GEN-LAST:event_TitObraActionPerformed
-
-    private void CostoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CostoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CostoActionPerformed
-
-    private void LibObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LibObraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LibObraActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -437,10 +399,6 @@ public class NuevaObra extends javax.swing.JPanel {
         Label4.setText(st.calm);
     }//GEN-LAST:event_Label4MouseExited
 
-    private void PersObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PersObraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PersObraActionPerformed
-
     private void AgrPersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgrPersActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AgrPersActionPerformed
@@ -448,10 +406,6 @@ public class NuevaObra extends javax.swing.JPanel {
     private void AsigPersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsigPersActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AsigPersActionPerformed
-
-    private void CiMiembActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CiMiembActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CiMiembActionPerformed
 
     private void Label5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label5MouseExited
         // TODO add your handling code here:
@@ -465,39 +419,39 @@ public class NuevaObra extends javax.swing.JPanel {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        if (TitObra.getText().equals("Ej. La gran tragedia")){
+        if (TitObra.getText().equals("Ej. La gran tragedia")) {
             TitObra.setBorder(new LineBorder(Color.red));
-        }else{
+        } else {
             TitObra.setBorder(new LineBorder(Color.gray));
         }
-        if (LibObra.getText().equals("Ej. Romeo y Julieta")){
+        if (LibObra.getText().equals("Ej. Romeo y Julieta")) {
             LibObra.setBorder(new LineBorder(Color.red));
-        }else{
+        } else {
             LibObra.setBorder(new LineBorder(Color.gray));
         }
-        if (Costo.getText().equals("15000")){
+        if (Costo.getText().equals("15000")) {
             Costo.setBorder(new LineBorder(Color.red));
-        }else{
+        } else {
             Costo.setBorder(new LineBorder(Color.gray));
         }
-        if (NomAud.getText().equals("Ej. Hermanos lanz")){
+        if (NomAud.getText().equals("Ej. Hermanos lanz")) {
             NomAud.setBorder(new LineBorder(Color.red));
-        }else{
+        } else {
             NomAud.setBorder(new LineBorder(Color.gray));
         }
-        if (PersObra.getText().equals("Ej. Romeo Montesco")){
+        if (PersObra.getText().equals("Ej. Romeo Montesco")) {
             PersObra.setBorder(new LineBorder(Color.red));
-        }else{
+        } else {
             PersObra.setBorder(new LineBorder(Color.gray));
         }
-        if (CiMiemb.getText().equals("Ej. 25369875")){
+        if (CiMiemb.getText().equals("Ej. 25369875")) {
             CiMiemb.setBorder(new LineBorder(Color.red));
-        }else{
+        } else {
             CiMiemb.setBorder(new LineBorder(Color.gray));
         }
-        if (Resumen.getText().equals("Aquí se debe especificar el resumen del argumento de la obra en cuestión.")){
+        if (Resumen.getText().equals("Aquí se debe especificar el resumen del argumento de la obra en cuestión.")) {
             Resumen.setBorder(new LineBorder(Color.red));
-        }else{
+        } else {
             Resumen.setBorder(new LineBorder(Color.gray));
         }
     }//GEN-LAST:event_jButton1MouseClicked

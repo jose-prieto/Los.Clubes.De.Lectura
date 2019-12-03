@@ -28,6 +28,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
+import javax.swing.event.AncestorListener;
 
 public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
@@ -43,21 +44,21 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
     AdmClubesPannel admclub = new AdmClubesPannel();
 
     //Content
-    ActCalendario actualizar = new ActCalendario ();
-    CierreReu cierre = new CierreReu ();
-    Asistencias asistencia = new Asistencias ();
+    ActCalendario actualizar = new ActCalendario();
+    CierreReu cierre = new CierreReu();
+    Asistencias asistencia = new Asistencias();
     RegistrarLibro nuevolibro = new RegistrarLibro();
     EliminarClub eliminarclub = new EliminarClub();
     NuevoClubContent nuevoclub = new NuevoClubContent();
     AsociarClub asociarclub = new AsociarClub();
     EmptyPannel vacio = new EmptyPannel();
     Pagos pago = new Pagos();
-    RegistraMiembro nuevomiembro = new RegistraMiembro ();
-    RegistraMiembro2 nuevomiembro2 = new RegistraMiembro2 ();
-    CambioClub cambioclub = new CambioClub ();
-    NuevaObra nuevaobra = new NuevaObra ();
-    CierreObra cierreobra = new CierreObra ();
-    NuevaFunc nuevafunc = new NuevaFunc ();
+    RegistraMiembro nuevomiembro = new RegistraMiembro();
+    RegistraMiembro2 nuevomiembro2 = new RegistraMiembro2();
+    CambioClub cambioclub = new CambioClub();
+    NuevaObra nuevaobra = new NuevaObra();
+    CierreObra cierreobra = new CierreObra();
+    NuevaFunc nuevafunc = new NuevaFunc();
 
     public MainWindow() {
         initComponents();
@@ -94,14 +95,14 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
         //action listener de libros
         libros.RegistrarLibro.addActionListener(this);
-        
+
         //action listener de miembros
         miembros.RegMiemb.addActionListener(this);
         miembros.CambClub.addActionListener(this);
-        
+
         //action listener de nuevo miembro
         nuevomiembro.Continuar.addActionListener(this);
-        
+
         //action listener de obras
         obras.NuevaObra.addActionListener(this);
         obras.CierreObra.addActionListener(this);
@@ -361,10 +362,11 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         OptionPannel.add(main);
         Titulo.setText("Inicio");
         ContentPannel.add(vacio);
-        JFrameRestart ();
-        
+
+        JFrameRestart();
+
         cond = 1;
-        
+
         Atras.setVisible(false);
 
     }//GEN-LAST:event_HomeButtonActionPerformed
@@ -381,12 +383,11 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             OptionPannel.add(main);
             Titulo.setText("Inicio");
             ContentPannel.add(vacio);
-            
-            
+
             Atras.setVisible(false);
 
-        }else if (cond == 2){
-            
+        } else if (cond == 2) {
+
             Alistar();
 
             clubes.setVisible(true);
@@ -395,39 +396,29 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             ContentPannel.add(pago);
             Titulo.setText("Registrar pago");
             OptionPannel.add(clubes);
-            
+
             cond = 1;
         }
     }//GEN-LAST:event_AtrasActionPerformed
 
-    private void JFrameRestart (){
-        //Menu
-        reuniones = new ReunionesPannel();
-        clubes = new ClubesPannel();
-        obras = new ObrasPannel();
-        libros = new MantLibrosPannel();
-        miembros = new MiembrosPannel();
-        admclub = new AdmClubesPannel();
-
-        //Content
-        actualizar = new ActCalendario ();
-        cierre = new CierreReu ();
-        asistencia = new Asistencias ();
+    private void JFrameRestart() {
+        actualizar = new ActCalendario();
+        cierre = new CierreReu();
+        asistencia = new Asistencias();
         nuevolibro = new RegistrarLibro();
         eliminarclub = new EliminarClub();
         nuevoclub = new NuevoClubContent();
         asociarclub = new AsociarClub();
-        vacio = new EmptyPannel();
         pago = new Pagos();
-        nuevomiembro = new RegistraMiembro ();
-        nuevomiembro2 = new RegistraMiembro2 ();
-        cambioclub = new CambioClub ();
-        nuevaobra = new NuevaObra ();
-        cierreobra = new CierreObra ();
-        nuevafunc = new NuevaFunc ();
-        
+        nuevomiembro = new RegistraMiembro();
+        nuevomiembro2 = new RegistraMiembro2();
+        cambioclub = new CambioClub();
+        nuevaobra = new NuevaObra();
+        cierreobra = new CierreObra();
+        nuevafunc = new NuevaFunc();
+
     }
-    
+
     private void CerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarMouseEntered
         // TODO add your handling code here:
         Cerrar.setForeground(Color.white);
@@ -436,7 +427,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
     private void CerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarMouseExited
         // TODO add your handling code here:
-        Cerrar.setForeground(new Color(255,0,0));
+        Cerrar.setForeground(new Color(255, 0, 0));
         ExitPannel.setBackground(Color.white);
     }//GEN-LAST:event_CerrarMouseExited
 
@@ -444,9 +435,9 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_CerrarMouseClicked
-    
+
     int xx, xy;
-    
+
     private void NombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NombreMousePressed
         // TODO add your handling code here:
         xx = evt.getX();
@@ -457,37 +448,37 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         // TODO add your handling code here:
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        
-        this.setLocation(x-xx, y-xy);
+
+        this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_NombreMouseDragged
 
     private void VaciMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VaciMouseDragged
         // TODO add your handling code here:
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        
-        this.setLocation(x-xx, y-xy);
+
+        this.setLocation(x - xx, y - xy);
 
     }//GEN-LAST:event_VaciMouseDragged
 
     private void VaciMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VaciMousePressed
         // TODO add your handling code here:
-        xx = evt.getX()+193;
+        xx = evt.getX() + 193;
         xy = evt.getY();
     }//GEN-LAST:event_VaciMousePressed
 
     private void TituloMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TituloMousePressed
         // TODO add your handling code here:
-        xx = evt.getX()+193;
-        xy = evt.getY()+25;
+        xx = evt.getX() + 193;
+        xy = evt.getY() + 25;
     }//GEN-LAST:event_TituloMousePressed
 
     private void TituloMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TituloMouseDragged
         // TODO add your handling code here:
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        
-        this.setLocation(x-xx, y-xy);
+
+        this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_TituloMouseDragged
 
     public static void main(String args[]) {
@@ -543,10 +534,6 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         miembros.setVisible(false);
         admclub.setVisible(false);
 
-        //Validsar paneles
-        reuniones.validate();
-        vacio.validate();
-
     }
 
     @Override
@@ -556,6 +543,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         if (evt.equals(main.Reuniones)) {
 
             Alistar();
+            JFrameRestart();
 
             reuniones.setVisible(true);
             actualizar.setVisible(true);
@@ -565,12 +553,13 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             OptionPannel.add(reuniones);
 
             cond = 1;
-            
+
             Atras.setVisible(true);
 
         } else if (evt.equals(reuniones.Asistencias)) {
 
             Alistar();
+            JFrameRestart();
 
             reuniones.setVisible(true);
             asistencia.setVisible(true);
@@ -580,12 +569,13 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             ContentPannel.add(asistencia);
 
             cond = 1;
-            
+
             Atras.setVisible(true);
 
         } else if (evt.equals(reuniones.Calendario)) {
 
             Alistar();
+            JFrameRestart();
 
             reuniones.setVisible(true);
             actualizar.setVisible(true);
@@ -595,12 +585,13 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             ContentPannel.add(actualizar);
 
             cond = 1;
-            
+
             Atras.setVisible(true);
 
         } else if (evt.equals(reuniones.Cierre)) {
 
             Alistar();
+            JFrameRestart();
 
             reuniones.setVisible(true);
             cierre.setVisible(true);
@@ -612,6 +603,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(main.Obras)) {
 
             Alistar();
+            JFrameRestart();
 
             obras.setVisible(true);
             nuevaobra.setVisible(true);
@@ -621,12 +613,13 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             ContentPannel.add(nuevaobra);
 
             cond = 1;
-            
+
             Atras.setVisible(true);
 
         } else if (evt.equals(obras.NuevaObra)) {
 
             Alistar();
+            JFrameRestart();
 
             obras.setVisible(true);
             nuevaobra.setVisible(true);
@@ -638,6 +631,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(obras.CierreObra)) {
 
             Alistar();
+            JFrameRestart();
 
             obras.setVisible(true);
             cierreobra.setVisible(true);
@@ -649,6 +643,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(obras.Presentaciones)) {
 
             Alistar();
+            JFrameRestart();
 
             obras.setVisible(true);
             nuevafunc.setVisible(true);
@@ -660,6 +655,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(main.Clubes)) {
 
             Alistar();
+            JFrameRestart();
 
             clubes.setVisible(true);
             pago.setVisible(true);
@@ -669,12 +665,13 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             OptionPannel.add(clubes);
 
             cond = 1;
-            
+
             Atras.setVisible(true);
 
         } else if (evt.equals(clubes.Club)) {
 
             Alistar();
+            JFrameRestart();
 
             admclub.setVisible(true);
             nuevoclub.setVisible(true);
@@ -688,6 +685,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(clubes.Libros)) {
 
             Alistar();
+            JFrameRestart();
 
             libros.setVisible(true);
             nuevolibro.setVisible(true);
@@ -701,6 +699,9 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(clubes.Miembros)) {
 
             Alistar();
+            JFrameRestart();            
+            
+            nuevomiembro.Continuar.addActionListener(this);
 
             miembros.setVisible(true);
             nuevomiembro.setVisible(true);
@@ -714,6 +715,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(miembros.CambClub)) {
 
             Alistar();
+            JFrameRestart();
 
             miembros.setVisible(true);
             cambioclub.setVisible(true);
@@ -725,6 +727,9 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(miembros.RegMiemb)) {
 
             Alistar();
+            JFrameRestart();
+            
+            nuevomiembro.Continuar.addActionListener(this);
 
             miembros.setVisible(true);
             nuevomiembro.setVisible(true);
@@ -734,21 +739,22 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             OptionPannel.add(miembros);
 
         } else if (evt.equals(nuevomiembro.Continuar)) {
+            
+            if (nuevomiembro.val1 & nuevomiembro.val2 & nuevomiembro.val3){
 
-            Alistar();
+                Alistar();
 
-            miembros.setVisible(true);
-            nuevomiembro2.setVisible(true);
+                miembros.setVisible(true);
+                nuevomiembro2.setVisible(true);
 
-            ContentPannel.add(nuevomiembro2);
-            Titulo.setText("Registrar Miembro");
-            OptionPannel.add(miembros);
-
-            cond = 2;
+                ContentPannel.add(nuevomiembro2);
+                OptionPannel.add(miembros);
+            }
 
         } else if (evt.equals(clubes.Pagos)) {
 
             Alistar();
+            JFrameRestart();
 
             clubes.setVisible(true);
             pago.setVisible(true);
@@ -760,6 +766,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(admclub.NuevoClub)) {
 
             Alistar();
+            JFrameRestart();
 
             admclub.setVisible(true);
             nuevoclub.setVisible(true);
@@ -771,6 +778,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(admclub.EliminarClub)) {
 
             Alistar();
+            JFrameRestart();
 
             admclub.setVisible(true);
             eliminarclub.setVisible(true);
@@ -782,6 +790,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(admclub.AsociarClub)) {
 
             Alistar();
+            JFrameRestart();
 
             admclub.setVisible(true);
             asociarclub.setVisible(true);
@@ -793,6 +802,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(libros.RegistrarLibro)) {
 
             Alistar();
+            JFrameRestart();
 
             libros.setVisible(true);
             nuevolibro.setVisible(true);
@@ -804,6 +814,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(libros.RegistrarLibro)) {
 
             Alistar();
+            JFrameRestart();
 
             libros.setVisible(true);
             nuevolibro.setVisible(true);
@@ -815,6 +826,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(OptionPannel)) {
 
             Alistar();
+            JFrameRestart();
 
             libros.setVisible(true);
             nuevolibro.setVisible(true);
