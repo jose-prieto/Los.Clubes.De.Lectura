@@ -4,24 +4,27 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 
+import Interfaces.BDMensaje;
+
 public class BDConexion {
     
-    public static final String URL = "jdbc:postgresql://localhost:5432/CLUB_LECTURA";
+    BDMensaje mensaje = new BDMensaje();
+    
+    public static final String URL = "jdbc:postgresql://localhost:5432/CLUB_LECTUR";
     public static final String USERNAME = "postgres";
     public static final String PASSWORD = "24217857";
 
     public Connection getConnection() {
-        Connection con = null;
+        Connection conexion = null;
         try {
 
             Class.forName("org.postgresql.Driver");
-            con = (Connection) DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            JOptionPane.showMessageDialog(null, "Successfull Sonnection");
+            conexion = (Connection) DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, e, "Error",JOptionPane.ERROR_MESSAGE);
         }
-        return con;
+        return conexion;
     }
 
 }
