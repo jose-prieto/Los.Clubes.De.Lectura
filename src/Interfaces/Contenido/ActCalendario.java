@@ -3,9 +3,15 @@ package Interfaces.Contenido;
 import Interfaces.Menu.ProcedimientosExtra;
 
 public class ActCalendario extends javax.swing.JPanel {
+<<<<<<< HEAD
     
     AsociarClub st = new AsociarClub ();
     ProcedimientosExtra listen = new ProcedimientosExtra ();
+=======
+
+    ProcedimientosExtra listen = new ProcedimientosExtra();
+    Dialogo diag = new Dialogo();
+>>>>>>> ea7a361e3af44280c23ffb5d2434b4c3aae7a2c3
 
     public ActCalendario() {
         
@@ -89,6 +95,19 @@ public class ActCalendario extends javax.swing.JPanel {
         //System.out.println(jDateChooser1.);
     }//GEN-LAST:event_jTextField1MouseClicked
 
+<<<<<<< HEAD
+=======
+    private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
+        // TODO add your handling code here:
+        diag.posicion(Label1.getLocationOnScreen().x-29, Label1.getLocationOnScreen().y+15);
+        diag.setVisible(true);
+    }//GEN-LAST:event_Label1MouseEntered
+
+    private void Label1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseExited
+        // TODO add your handling code here:
+        diag.setVisible(false);
+    }//GEN-LAST:event_Label1MouseExited
+>>>>>>> ea7a361e3af44280c23ffb5d2434b4c3aae7a2c3
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Asistencia;

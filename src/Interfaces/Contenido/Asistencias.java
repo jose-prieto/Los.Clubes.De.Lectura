@@ -2,11 +2,18 @@ package Interfaces.Contenido;
 
 import Interfaces.Menu.ProcedimientosExtra;
 
+
 public class Asistencias extends javax.swing.JPanel {
+<<<<<<< HEAD
     
     ProcedimientosExtra listen = new ProcedimientosExtra ();
     public String pop = "Campo Obligatorio";
     public String calm = "(*)";
+=======
+
+    ProcedimientosExtra listen = new ProcedimientosExtra();
+    Dialogo diag = new Dialogo();
+>>>>>>> ea7a361e3af44280c23ffb5d2434b4c3aae7a2c3
     
     public Asistencias() {
         initComponents();
@@ -111,12 +118,13 @@ public class Asistencias extends javax.swing.JPanel {
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
         // TODO add your handling code here:
-        Label1.setText(pop);
+        diag.posicion(Label1.getLocationOnScreen().x-29, Label1.getLocationOnScreen().y+15);
+        diag.setVisible(true);
     }//GEN-LAST:event_Label1MouseEntered
 
     private void Label1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseExited
         // TODO add your handling code here:
-        Label1.setText(calm);
+        diag.setVisible(false);
     }//GEN-LAST:event_Label1MouseExited
 
 

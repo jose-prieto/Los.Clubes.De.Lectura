@@ -1,5 +1,6 @@
 package Interfaces;
 
+import Interfaces.Contenido.Dialogo;
 import Interfaces.Menu.ClubesPannel;
 import Interfaces.Menu.MainPannel;
 import Interfaces.Menu.MantLibrosPannel;
@@ -28,6 +29,8 @@ import javax.swing.ImageIcon;
 public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
     int cond = 1;
+    
+    Dialogo diag = new Dialogo ();
 
     //Menu
     MainPannel main = new MainPannel();
@@ -263,6 +266,90 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         }
     }//GEN-LAST:event_AtrasActionPerformed
 
+<<<<<<< HEAD
+=======
+    private void JFrameRestart() {
+        actualizar = new ActCalendario();
+        cierre = new CierreReu();
+        asistencia = new Asistencias();
+        nuevolibro = new RegistrarLibro();
+        eliminarclub = new EliminarClub();
+        nuevoclub = new NuevoClubContent();
+        asociarclub = new AsociarClub();
+        pago = new Pagos();
+        nuevomiembro = new RegistraMiembro();
+        nuevomiembro2 = new RegistraMiembro2();
+        cambioclub = new CambioClub();
+        nuevaobra = new NuevaObra();
+        cierreobra = new CierreObra();
+        nuevafunc = new NuevaFunc();
+        diag = new Dialogo();
+
+    }
+
+    private void CerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarMouseEntered
+        // TODO add your handling code here:
+        Cerrar.setForeground(Color.white);
+        ExitPannel.setBackground(Color.red);
+    }//GEN-LAST:event_CerrarMouseEntered
+
+    private void CerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarMouseExited
+        // TODO add your handling code here:
+        Cerrar.setForeground(new Color(255, 0, 0));
+        ExitPannel.setBackground(Color.white);
+    }//GEN-LAST:event_CerrarMouseExited
+
+    private void CerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_CerrarMouseClicked
+
+    int xx, xy;
+
+    private void NombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NombreMousePressed
+        // TODO add your handling code here:
+        xx = evt.getX();
+        xy = evt.getY();
+    }//GEN-LAST:event_NombreMousePressed
+
+    private void NombreMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NombreMouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+
+        this.setLocation(x - xx, y - xy);
+    }//GEN-LAST:event_NombreMouseDragged
+
+    private void VaciMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VaciMouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+
+        this.setLocation(x - xx, y - xy);
+
+    }//GEN-LAST:event_VaciMouseDragged
+
+    private void VaciMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VaciMousePressed
+        // TODO add your handling code here:
+        xx = evt.getX() + 193;
+        xy = evt.getY();
+    }//GEN-LAST:event_VaciMousePressed
+
+    private void TituloMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TituloMousePressed
+        // TODO add your handling code here:
+        xx = evt.getX() + 193;
+        xy = evt.getY() + 25;
+    }//GEN-LAST:event_TituloMousePressed
+
+    private void TituloMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TituloMouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+
+        this.setLocation(x - xx, y - xy);
+    }//GEN-LAST:event_TituloMouseDragged
+
+>>>>>>> ea7a361e3af44280c23ffb5d2434b4c3aae7a2c3
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {

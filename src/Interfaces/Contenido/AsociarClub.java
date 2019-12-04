@@ -2,11 +2,18 @@ package Interfaces.Contenido;
 
 import Interfaces.Menu.ProcedimientosExtra;
 
+
 public class AsociarClub extends javax.swing.JPanel {
+<<<<<<< HEAD
     
     ProcedimientosExtra listen = new ProcedimientosExtra ();
     public String pop = "Campo Obligatorio";
     public String calm = "(*)";
+=======
+
+    ProcedimientosExtra listen = new ProcedimientosExtra();
+    Dialogo diag = new Dialogo();
+>>>>>>> ea7a361e3af44280c23ffb5d2434b4c3aae7a2c3
     
     public AsociarClub() {
         initComponents();
@@ -146,22 +153,24 @@ public class AsociarClub extends javax.swing.JPanel {
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
         // TODO add your handling code here:
-        Label1.setText(pop);
+        diag.posicion(Label1.getLocationOnScreen().x-29, Label1.getLocationOnScreen().y+15);
+        diag.setVisible(true);
     }//GEN-LAST:event_Label1MouseEntered
 
     private void Label1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseExited
         // TODO add your handling code here:
-        Label1.setText(calm);
+        diag.setVisible(false);
     }//GEN-LAST:event_Label1MouseExited
 
     private void Label2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label2MouseEntered
         // TODO add your handling code here:
-        Label2.setText(pop);
+        diag.posicion(Label2.getLocationOnScreen().x-29, Label2.getLocationOnScreen().y+15);
+        diag.setVisible(true);
     }//GEN-LAST:event_Label2MouseEntered
 
     private void Label2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label2MouseExited
         // TODO add your handling code here:
-        Label2.setText(calm);
+        diag.setVisible(false);
     }//GEN-LAST:event_Label2MouseExited
 
 

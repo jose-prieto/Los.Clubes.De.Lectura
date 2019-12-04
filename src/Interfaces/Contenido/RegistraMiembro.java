@@ -4,8 +4,13 @@ import Interfaces.Menu.ProcedimientosExtra;
 
 public class RegistraMiembro extends javax.swing.JPanel {
     
+<<<<<<< HEAD
     AsociarClub st = new AsociarClub ();
     ProcedimientosExtra listen = new ProcedimientosExtra ();
+=======
+    ProcedimientosExtra listen = new ProcedimientosExtra();
+    Dialogo diag = new Dialogo ();
+>>>>>>> ea7a361e3af44280c23ffb5d2434b4c3aae7a2c3
 
     public RegistraMiembro() {
         
@@ -246,44 +251,89 @@ public class RegistraMiembro extends javax.swing.JPanel {
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
         // TODO add your handling code here:
-        Label1.setText(st.pop);
+        diag.posicion(Label1.getLocationOnScreen().x-29, Label1.getLocationOnScreen().y+15);
+        diag.setVisible(true);
     }//GEN-LAST:event_Label1MouseEntered
 
     private void Label1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseExited
         // TODO add your handling code here:
-        Label1.setText(st.calm);
+        diag.setVisible(false);
     }//GEN-LAST:event_Label1MouseExited
 
     private void Label2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label2MouseEntered
         // TODO add your handling code here:
-        Label2.setText(st.pop);
+        diag.posicion(Label2.getLocationOnScreen().x-29, Label2.getLocationOnScreen().y+15);
+        diag.setVisible(true);
     }//GEN-LAST:event_Label2MouseEntered
 
     private void Label2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label2MouseExited
         // TODO add your handling code here:
-        Label2.setText(st.calm);
+        diag.setVisible(false);
     }//GEN-LAST:event_Label2MouseExited
 
     private void Label3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label3MouseEntered
         // TODO add your handling code here:
-        Label3.setText(st.pop);
+        diag.posicion(Label3.getLocationOnScreen().x-29, Label3.getLocationOnScreen().y+15);
+        diag.setVisible(true);
     }//GEN-LAST:event_Label3MouseEntered
 
     private void Label3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label3MouseExited
         // TODO add your handling code here:
-        Label3.setText(st.calm);
+        diag.setVisible(false);
     }//GEN-LAST:event_Label3MouseExited
 
     private void Label5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label5MouseEntered
         // TODO add your handling code here:
-        Label5.setText(st.pop);
+        diag.posicion(Label5.getLocationOnScreen().x-29, Label5.getLocationOnScreen().y+15);
+        diag.setVisible(true);
     }//GEN-LAST:event_Label5MouseEntered
 
     private void Label5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label5MouseExited
         // TODO add your handling code here:
-        Label5.setText(st.calm);
+        diag.setVisible(false);
     }//GEN-LAST:event_Label5MouseExited
 
+<<<<<<< HEAD
+=======
+    private void Label4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label4MouseEntered
+        // TODO add your handling code here:
+        diag.posicion(Label4.getLocationOnScreen().x-29, Label4.getLocationOnScreen().y+15);
+        diag.setVisible(true);
+    }//GEN-LAST:event_Label4MouseEntered
+
+    private void Label4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label4MouseExited
+        // TODO add your handling code here:
+        diag.setVisible(false);
+    }//GEN-LAST:event_Label4MouseExited
+
+    public boolean val1, val2, val3 = false;
+
+    private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
+        // TODO add your handling code here:
+        if (Nombre.getText().equals("Ej. José Antonio")) {
+            Nombre.setBorder(new LineBorder(Color.red));
+            val1 = false;
+        } else {
+            Nombre.setBorder(new LineBorder(Color.gray));
+            val1 = true;
+        }
+        if (Apellido.getText().equals("Ej. Prieto Quintero")) {
+            Apellido.setBorder(new LineBorder(Color.red));
+            val2 = false;
+        } else {
+            Apellido.setBorder(new LineBorder(Color.gray));
+            val2 = true;
+        }
+        if (Cedula.getText().equals("Ej. 30698625")) {
+            Cedula.setBorder(new LineBorder(Color.red));
+            val3 = false;
+        } else {
+            Cedula.setBorder(new LineBorder(Color.gray));
+            val3 = true;
+        }
+    }//GEN-LAST:event_ContinuarActionPerformed
+
+>>>>>>> ea7a361e3af44280c23ffb5d2434b4c3aae7a2c3
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellido;
