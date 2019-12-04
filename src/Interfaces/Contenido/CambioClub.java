@@ -1,17 +1,16 @@
 package Interfaces.Contenido;
 
-import java.awt.Color;
-import javax.swing.border.LineBorder;
+import Interfaces.Menu.ProcedimientosExtra;
 
 public class CambioClub extends javax.swing.JPanel {
-
-    ProcedimientosExtra listen = new ProcedimientosExtra();
+    
+    ProcedimientosExtra listen = new ProcedimientosExtra ();
     public String pop = "Campo Obligatorio";
     public String calm = "(*)";
-
+    
     public CambioClub() {
         initComponents();
-
+        
         listen.FieldListener(Club1);
         listen.FieldListener(Club2);
     }
@@ -24,7 +23,7 @@ public class CambioClub extends javax.swing.JPanel {
         Club1 = new javax.swing.JTextField();
         Club = new javax.swing.JLabel();
         Club2 = new javax.swing.JTextField();
-        Registrar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         Label1 = new javax.swing.JLabel();
         Label2 = new javax.swing.JLabel();
@@ -40,7 +39,11 @@ public class CambioClub extends javax.swing.JPanel {
         Club1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Club1.setForeground(new java.awt.Color(204, 204, 255));
         Club1.setText("Ej. 24278596");
-        Club1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Club1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Club1ActionPerformed(evt);
+            }
+        });
 
         Club.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Club.setForeground(new java.awt.Color(51, 51, 51));
@@ -49,15 +52,14 @@ public class CambioClub extends javax.swing.JPanel {
         Club2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Club2.setForeground(new java.awt.Color(204, 204, 255));
         Club2.setText("Ej. Club de lectura de Caracas");
-        Club2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
-
-        Registrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Registrar.setText("Registrar");
-        Registrar.addActionListener(new java.awt.event.ActionListener() {
+        Club2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegistrarActionPerformed(evt);
+                Club2ActionPerformed(evt);
             }
         });
+
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton1.setText("Registrar");
 
         jButton2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jButton2.setText("Reestablecer");
@@ -96,7 +98,7 @@ public class CambioClub extends javax.swing.JPanel {
                         .addContainerGap(332, Short.MAX_VALUE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,11 +129,20 @@ public class CambioClub extends javax.swing.JPanel {
                     .addComponent(Label2))
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(309, Short.MAX_VALUE))
+                .addContainerGap(301, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Club1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Club1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_Club1ActionPerformed
+
+    private void Club2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Club2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Club2ActionPerformed
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
         // TODO add your handling code here:
@@ -153,20 +164,6 @@ public class CambioClub extends javax.swing.JPanel {
         Label2.setText(calm);
     }//GEN-LAST:event_Label2MouseExited
 
-    private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
-        // TODO add your handling code here:
-        if (Club1.getText().equals("Ej. 24278596")) {
-            Club1.setBorder(new LineBorder(Color.red));
-        } else {
-            Club1.setBorder(new LineBorder(Color.gray));
-        }
-        if (Club2.getText().equals("Ej. Club de lectura de Caracas")) {
-            Club2.setBorder(new LineBorder(Color.red));
-        } else {
-            Club2.setBorder(new LineBorder(Color.gray));
-        }
-    }//GEN-LAST:event_RegistrarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Club;
@@ -175,7 +172,7 @@ public class CambioClub extends javax.swing.JPanel {
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label2;
     private javax.swing.JLabel Miembro;
-    private javax.swing.JButton Registrar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 }

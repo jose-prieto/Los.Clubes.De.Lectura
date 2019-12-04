@@ -65,7 +65,7 @@
                   <Component id="Miembro" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Asistencia" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="340" max="32767" attributes="0"/>
+              <EmptySpace pref="336" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -91,13 +91,6 @@
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ej. 1234"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-            </LineBorder>
-          </Border>
-        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IdGrupoActionPerformed"/>
@@ -121,9 +114,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Marcar Asistencia"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AsistenciaActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="Label1">
       <Properties>

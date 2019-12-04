@@ -1,7 +1,5 @@
 package Interfaces.Menu;
 
-import Interfaces.Contenido.ProcedimientosExtra;
-
 public class AdmClubesPannel extends javax.swing.JPanel {
     
     ProcedimientosExtra pro = new ProcedimientosExtra ();
@@ -100,7 +98,7 @@ public class AdmClubesPannel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(NuevoClub, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(AsociarClub, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+            .addComponent(AsociarClub, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(EliminarClub, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -169,7 +167,8 @@ public class AdmClubesPannel extends javax.swing.JPanel {
     private void AsociarClubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsociarClubActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AsociarClubActionPerformed
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton AsociarClub;
     public javax.swing.JButton EliminarClub;

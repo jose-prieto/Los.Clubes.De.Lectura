@@ -1,7 +1,5 @@
 package Interfaces.Menu;
 
-import Interfaces.Contenido.ProcedimientosExtra;
-
 public class ObrasPannel extends javax.swing.JPanel{
     
     ProcedimientosExtra pro = new ProcedimientosExtra ();
@@ -14,78 +12,54 @@ public class ObrasPannel extends javax.swing.JPanel{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Presentaciones = new javax.swing.JButton();
-        NuevaObra = new javax.swing.JButton();
-        CierreObra = new javax.swing.JButton();
+        CrudPresentaciones = new javax.swing.JButton();
+        CrudObra = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 51, 51));
 
-        Presentaciones.setBackground(new java.awt.Color(153, 153, 153));
-        Presentaciones.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Presentaciones.setForeground(new java.awt.Color(204, 204, 204));
-        Presentaciones.setText("Presentaciones");
-        Presentaciones.setBorder(null);
-        Presentaciones.setBorderPainted(false);
-        Presentaciones.setContentAreaFilled(false);
-        Presentaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Presentaciones.setFocusPainted(false);
-        Presentaciones.addMouseListener(new java.awt.event.MouseAdapter() {
+        CrudPresentaciones.setBackground(new java.awt.Color(153, 153, 153));
+        CrudPresentaciones.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        CrudPresentaciones.setForeground(new java.awt.Color(204, 204, 204));
+        CrudPresentaciones.setText("Presentaciones");
+        CrudPresentaciones.setBorder(null);
+        CrudPresentaciones.setBorderPainted(false);
+        CrudPresentaciones.setContentAreaFilled(false);
+        CrudPresentaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        CrudPresentaciones.setFocusPainted(false);
+        CrudPresentaciones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                PresentacionesMouseEntered(evt);
+                CrudPresentacionesMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                PresentacionesMouseExited(evt);
+                CrudPresentacionesMouseExited(evt);
             }
         });
-        Presentaciones.addActionListener(new java.awt.event.ActionListener() {
+        CrudPresentaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PresentacionesActionPerformed(evt);
+                CrudPresentacionesActionPerformed(evt);
             }
         });
 
-        NuevaObra.setBackground(new java.awt.Color(153, 153, 153));
-        NuevaObra.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        NuevaObra.setForeground(new java.awt.Color(204, 204, 204));
-        NuevaObra.setText("Nueva obra");
-        NuevaObra.setBorder(null);
-        NuevaObra.setBorderPainted(false);
-        NuevaObra.setContentAreaFilled(false);
-        NuevaObra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        NuevaObra.setFocusPainted(false);
-        NuevaObra.addMouseListener(new java.awt.event.MouseAdapter() {
+        CrudObra.setBackground(new java.awt.Color(153, 153, 153));
+        CrudObra.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        CrudObra.setForeground(new java.awt.Color(204, 204, 204));
+        CrudObra.setText("Obra");
+        CrudObra.setBorder(null);
+        CrudObra.setBorderPainted(false);
+        CrudObra.setContentAreaFilled(false);
+        CrudObra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        CrudObra.setFocusPainted(false);
+        CrudObra.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                NuevaObraMouseEntered(evt);
+                CrudObraMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                NuevaObraMouseExited(evt);
+                CrudObraMouseExited(evt);
             }
         });
-        NuevaObra.addActionListener(new java.awt.event.ActionListener() {
+        CrudObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NuevaObraActionPerformed(evt);
-            }
-        });
-
-        CierreObra.setBackground(new java.awt.Color(153, 153, 153));
-        CierreObra.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        CierreObra.setForeground(new java.awt.Color(204, 204, 204));
-        CierreObra.setText("Cierre de obra");
-        CierreObra.setBorder(null);
-        CierreObra.setBorderPainted(false);
-        CierreObra.setContentAreaFilled(false);
-        CierreObra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        CierreObra.setFocusPainted(false);
-        CierreObra.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                CierreObraMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                CierreObraMouseExited(evt);
-            }
-        });
-        CierreObra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CierreObraActionPerformed(evt);
+                CrudObraActionPerformed(evt);
             }
         });
 
@@ -93,78 +67,57 @@ public class ObrasPannel extends javax.swing.JPanel{
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(NuevaObra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(Presentaciones, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-            .addComponent(CierreObra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(CrudObra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(CrudPresentaciones, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(NuevaObra, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CrudObra, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(CierreObra, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(Presentaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(377, Short.MAX_VALUE))
+                .addComponent(CrudPresentaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(417, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void PresentacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PresentacionesActionPerformed
+    private void CrudPresentacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrudPresentacionesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_PresentacionesActionPerformed
+    }//GEN-LAST:event_CrudPresentacionesActionPerformed
 
-    private void NuevaObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevaObraActionPerformed
+    private void CrudObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrudObraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NuevaObraActionPerformed
+    }//GEN-LAST:event_CrudObraActionPerformed
 
-    private void NuevaObraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevaObraMouseEntered
+    private void CrudObraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CrudObraMouseEntered
         // TODO add your handling code here:
-        NuevaObra.setContentAreaFilled(true);
-        NuevaObra.setBackground(pro.CasillaSelect);
-        NuevaObra.setForeground(pro.FuenteSelect);
-    }//GEN-LAST:event_NuevaObraMouseEntered
+        CrudObra.setContentAreaFilled(true);
+        CrudObra.setBackground(pro.CasillaSelect);
+        CrudObra.setForeground(pro.FuenteSelect);
+    }//GEN-LAST:event_CrudObraMouseEntered
 
-    private void NuevaObraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevaObraMouseExited
+    private void CrudObraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CrudObraMouseExited
         // TODO add your handling code here:
-        NuevaObra.setContentAreaFilled(false);
-        NuevaObra.setForeground(pro.FuenteNoSelect);
-    }//GEN-LAST:event_NuevaObraMouseExited
+        CrudObra.setContentAreaFilled(false);
+        CrudObra.setForeground(pro.FuenteNoSelect);
+    }//GEN-LAST:event_CrudObraMouseExited
 
-    private void PresentacionesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PresentacionesMouseEntered
+    private void CrudPresentacionesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CrudPresentacionesMouseEntered
         // TODO add your handling code here:
-        Presentaciones.setContentAreaFilled(true);
-        Presentaciones.setBackground(pro.CasillaSelect);
-        Presentaciones.setForeground(pro.FuenteSelect);
-    }//GEN-LAST:event_PresentacionesMouseEntered
+        CrudPresentaciones.setContentAreaFilled(true);
+        CrudPresentaciones.setBackground(pro.CasillaSelect);
+        CrudPresentaciones.setForeground(pro.FuenteSelect);
+    }//GEN-LAST:event_CrudPresentacionesMouseEntered
 
-    private void PresentacionesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PresentacionesMouseExited
+    private void CrudPresentacionesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CrudPresentacionesMouseExited
         // TODO add your handling code here:
-        Presentaciones.setContentAreaFilled(false);
-        Presentaciones.setForeground(pro.FuenteNoSelect);
-    }//GEN-LAST:event_PresentacionesMouseExited
-
-    private void CierreObraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CierreObraMouseEntered
-        // TODO add your handling code here:
-        CierreObra.setContentAreaFilled(true);
-        CierreObra.setBackground(pro.CasillaSelect);
-        CierreObra.setForeground(pro.FuenteSelect);
-    }//GEN-LAST:event_CierreObraMouseEntered
-
-    private void CierreObraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CierreObraMouseExited
-        // TODO add your handling code here:
-        CierreObra.setContentAreaFilled(false);
-        CierreObra.setForeground(pro.FuenteNoSelect);
-    }//GEN-LAST:event_CierreObraMouseExited
-
-    private void CierreObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CierreObraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CierreObraActionPerformed
+        CrudPresentaciones.setContentAreaFilled(false);
+        CrudPresentaciones.setForeground(pro.FuenteNoSelect);
+    }//GEN-LAST:event_CrudPresentacionesMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton CierreObra;
-    public javax.swing.JButton NuevaObra;
-    public javax.swing.JButton Presentaciones;
+    public javax.swing.JButton CrudObra;
+    public javax.swing.JButton CrudPresentaciones;
     // End of variables declaration//GEN-END:variables
 }

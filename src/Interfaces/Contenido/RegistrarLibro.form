@@ -88,7 +88,7 @@
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="Reestableces" min="-2" pref="140" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="Registrar" min="-2" pref="140" max="-2" attributes="0"/>
+                      <Component id="jButton1" min="-2" pref="140" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -166,10 +166,10 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="Registrar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="jButton1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="Reestableces" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="56" max="32767" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -195,14 +195,10 @@
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ej. Romeo and Juliet"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-            </LineBorder>
-          </Border>
-        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OriTituloActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -235,14 +231,10 @@
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ej. Shakespeare"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-            </LineBorder>
-          </Border>
-        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ApeAutorActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -264,14 +256,10 @@
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ej. Romeo y Julieta"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-            </LineBorder>
-          </Border>
-        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EspTituloActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
@@ -293,14 +281,10 @@
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ej. William"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-            </LineBorder>
-          </Border>
-        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NomAutorActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
@@ -324,16 +308,13 @@
         <Property name="text" type="java.lang.String" value="Sinopsis"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="Registrar">
+    <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Registrar"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegistrarActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Reestableces">
       <Properties>
@@ -355,14 +336,10 @@
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ej. Santillana"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-            </LineBorder>
-          </Border>
-        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
@@ -395,14 +372,10 @@
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ej. Romeo se suicida tras perder a Julieta..."/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-            </LineBorder>
-          </Border>
-        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TemaActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
       <Properties>
@@ -420,13 +393,6 @@
             <Property name="lineWrap" type="boolean" value="true"/>
             <Property name="rows" type="int" value="5"/>
             <Property name="text" type="java.lang.String" value="Ej. Para entender el argumento de Romeo y Julieta hemos de conocer el concepto de &apos;tragedia&apos;, un g&#xe9;nero dram&#xe1;tico o teatral en el cual los..."/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                <LineBorder>
-                  <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-                </LineBorder>
-              </Border>
-            </Property>
           </Properties>
         </Component>
       </SubComponents>
@@ -545,14 +511,10 @@
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ej. 2019"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-            </LineBorder>
-          </Border>
-        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="YearActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Pag">
       <Properties>
@@ -563,14 +525,10 @@
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ej. 200"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-            </LineBorder>
-          </Border>
-        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PagActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

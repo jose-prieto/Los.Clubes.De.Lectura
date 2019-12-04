@@ -1,7 +1,5 @@
 package Interfaces.Menu;
 
-import Interfaces.Contenido.ProcedimientosExtra;
-
 public class ReunionesPannel extends javax.swing.JPanel{
 
     ProcedimientosExtra pro = new ProcedimientosExtra ();

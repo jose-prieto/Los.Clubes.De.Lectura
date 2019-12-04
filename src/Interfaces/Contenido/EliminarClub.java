@@ -1,7 +1,6 @@
 package Interfaces.Contenido;
 
-import java.awt.Color;
-import javax.swing.border.LineBorder;
+import Interfaces.Menu.ProcedimientosExtra;
 
 public class EliminarClub extends javax.swing.JPanel {
     
@@ -24,7 +23,7 @@ public class EliminarClub extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         Club = new javax.swing.JTextField();
-        Eliminar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         Label = new javax.swing.JLabel();
 
@@ -39,13 +38,17 @@ public class EliminarClub extends javax.swing.JPanel {
         Club.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Club.setForeground(new java.awt.Color(204, 204, 255));
         Club.setText("Ej. Club de estudios científicos");
-        Club.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
-
-        Eliminar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Eliminar.setText("Eliminar");
-        Eliminar.addActionListener(new java.awt.event.ActionListener() {
+        Club.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EliminarActionPerformed(evt);
+                ClubActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton1.setText("Eliminar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -75,7 +78,7 @@ public class EliminarClub extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(32, 32, 32)
@@ -94,20 +97,20 @@ public class EliminarClub extends javax.swing.JPanel {
                     .addComponent(Label))
                 .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(325, Short.MAX_VALUE))
+                .addContainerGap(321, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
+    private void ClubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClubActionPerformed
         // TODO add your handling code here:
-        if(Club.getText().equals("Ej. Club de estudios científicos")){
-            Club.setBorder(new LineBorder(Color.red));
-        }else{
-            Club.setBorder(new LineBorder(Color.gray));
-        }
-    }//GEN-LAST:event_EliminarActionPerformed
+        
+    }//GEN-LAST:event_ClubActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void LabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LabelMouseEntered
         // TODO add your handling code here:
@@ -122,8 +125,8 @@ public class EliminarClub extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Club;
-    private javax.swing.JButton Eliminar;
     private javax.swing.JLabel Label;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

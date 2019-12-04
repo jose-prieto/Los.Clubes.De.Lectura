@@ -25,7 +25,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="NuevoClub" alignment="1" max="32767" attributes="0"/>
-          <Component id="AsociarClub" alignment="1" pref="185" max="32767" attributes="0"/>
+          <Component id="AsociarClub" alignment="1" max="32767" attributes="0"/>
           <Component id="EliminarClub" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>

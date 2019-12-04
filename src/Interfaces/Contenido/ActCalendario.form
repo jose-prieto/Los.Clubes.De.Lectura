@@ -35,18 +35,16 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="IdGrup" min="-2" pref="394" max="-2" attributes="0"/>
+                          <Component id="jTextField1" min="-2" pref="394" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="Dias" min="-2" pref="181" max="-2" attributes="0"/>
+                          <Component id="jComboBox1" min="-2" pref="181" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="Hora" min="-2" pref="119" max="-2" attributes="0"/>
+                          <Component id="jComboBox2" min="-2" pref="119" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="Label1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="49" max="32767" attributes="0"/>
+              <EmptySpace pref="64" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,17 +54,16 @@
               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="IdGrup" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Label1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="Dias" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Hora" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Component id="Asistencia" min="-2" pref="40" max="-2" attributes="0"/>
-              <EmptySpace pref="292" max="32767" attributes="0"/>
+              <EmptySpace pref="288" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -80,7 +77,7 @@
         <Property name="text" type="java.lang.String" value="I.D del club"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="IdGrup">
+    <Component class="javax.swing.JTextField" name="jTextField1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="1"/>
@@ -89,19 +86,12 @@
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ej. 1234"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-            </LineBorder>
-          </Border>
-        </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="IdGrupMouseClicked"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTextField1MouseClicked"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="Dias">
+    <Component class="javax.swing.JComboBox" name="jComboBox1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="1"/>
@@ -120,7 +110,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="Hora">
+    <Component class="javax.swing.JComboBox" name="jComboBox2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="1"/>
@@ -146,24 +136,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Confirmar"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AsistenciaActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="Label1">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="10" style="0"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="ff" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="(*)"/>
-      </Properties>
-      <Events>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Label1MouseEntered"/>
-        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Label1MouseExited"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

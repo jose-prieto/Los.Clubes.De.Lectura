@@ -1,7 +1,6 @@
 package Interfaces.Contenido;
 
-import java.awt.Color;
-import javax.swing.border.LineBorder;
+import Interfaces.Menu.ProcedimientosExtra;
 
 public class RegistraMiembro2 extends javax.swing.JPanel {
     
@@ -70,7 +69,11 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Cod1.setForeground(new java.awt.Color(204, 204, 255));
         Cod1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Cod1.setText("0424");
-        Cod1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Cod1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Cod1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
@@ -79,12 +82,20 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Libro2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Libro2.setForeground(new java.awt.Color(204, 204, 255));
         Libro2.setText("Ej. Cien años de soledad");
-        Libro2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Libro2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Libro2ActionPerformed(evt);
+            }
+        });
 
         Libro1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Libro1.setForeground(new java.awt.Color(204, 204, 255));
         Libro1.setText("Ej. Romeo y Julieta");
-        Libro1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Libro1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Libro1ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
@@ -93,7 +104,11 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Libro3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Libro3.setForeground(new java.awt.Color(204, 204, 255));
         Libro3.setText("Ej. Once minutos");
-        Libro3.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Libro3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Libro3ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
@@ -171,7 +186,11 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Num1.setForeground(new java.awt.Color(204, 204, 255));
         Num1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Num1.setText("1931798");
-        Num1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Num1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Num1ActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
@@ -181,13 +200,21 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Num2.setForeground(new java.awt.Color(204, 204, 255));
         Num2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Num2.setText("4424833");
-        Num2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Num2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Num2ActionPerformed(evt);
+            }
+        });
 
         Cod2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Cod2.setForeground(new java.awt.Color(204, 204, 255));
         Cod2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Cod2.setText("0212");
-        Cod2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Cod2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Cod2ActionPerformed(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(51, 51, 51));
@@ -226,7 +253,11 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Ciudad.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Ciudad.setForeground(new java.awt.Color(204, 204, 255));
         Ciudad.setText("Ej. Distrito Capital");
-        Ciudad.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Ciudad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CiudadActionPerformed(evt);
+            }
+        });
 
         Registrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Registrar.setText("Registrar");
@@ -338,9 +369,26 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
                     .addComponent(Label7))
                 .addGap(36, 36, 36)
                 .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Cod1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cod1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_Cod1ActionPerformed
+
+    private void Libro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Libro2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Libro2ActionPerformed
+
+    private void Libro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Libro1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Libro1ActionPerformed
+
+    private void Libro3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Libro3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Libro3ActionPerformed
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
         // TODO add your handling code here:
@@ -382,6 +430,18 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Label4.setText(st.calm);
     }//GEN-LAST:event_Label4MouseExited
 
+    private void Num1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Num1ActionPerformed
+
+    private void Num2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Num2ActionPerformed
+
+    private void Cod2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cod2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Cod2ActionPerformed
+
     private void Label5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label5MouseExited
         // TODO add your handling code here:
         Label5.setText(st.calm);
@@ -412,48 +472,12 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Label7.setText(st.calm);
     }//GEN-LAST:event_Label7MouseExited
 
+    private void CiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CiudadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CiudadActionPerformed
+
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
         // TODO add your handling code here:
-        if(Cod1.getText().equals("0424")){
-            Cod1.setBorder(new LineBorder(Color.red));
-        }else{
-            Cod1.setBorder(new LineBorder(Color.gray));
-        }
-        if(Num1.getText().equals("1931798")){
-            Num1.setBorder(new LineBorder(Color.red));
-        }else{
-            Num1.setBorder(new LineBorder(Color.gray));
-        }
-        if(Cod2.getText().equals("0212")){
-            Cod2.setBorder(new LineBorder(Color.red));
-        }else{
-            Cod2.setBorder(new LineBorder(Color.gray));
-        }
-        if(Num2.getText().equals("4424833")){
-            Num2.setBorder(new LineBorder(Color.red));
-        }else{
-            Num2.setBorder(new LineBorder(Color.gray));
-        }
-        if(Libro1.getText().equals("Ej. Romeo y Julieta")){
-            Libro1.setBorder(new LineBorder(Color.red));
-        }else{
-            Libro1.setBorder(new LineBorder(Color.gray));
-        }
-        if(Libro2.getText().equals("Ej. Cien años de soledad")){
-            Libro2.setBorder(new LineBorder(Color.red));
-        }else{
-            Libro2.setBorder(new LineBorder(Color.gray));
-        }
-        if(Libro3.getText().equals("Ej. Once minutos")){
-            Libro3.setBorder(new LineBorder(Color.red));
-        }else{
-            Libro3.setBorder(new LineBorder(Color.gray));
-        }
-        if(Ciudad.getText().equals("Ej. Distrito Capital")){
-            Ciudad.setBorder(new LineBorder(Color.red));
-        }else{
-            Ciudad.setBorder(new LineBorder(Color.gray));
-        }
     }//GEN-LAST:event_RegistrarActionPerformed
 
 

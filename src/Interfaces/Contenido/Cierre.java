@@ -1,17 +1,16 @@
 package Interfaces.Contenido;
 
-import java.awt.Color;
-import javax.swing.border.LineBorder;
+import Interfaces.Menu.ProcedimientosExtra;
 
-public class CierreObra extends javax.swing.JPanel {
-
-    ProcedimientosExtra listen = new ProcedimientosExtra();
+public class Cierre extends javax.swing.JPanel {
+    
+    ProcedimientosExtra listen = new ProcedimientosExtra ();
     public String pop = "Campo Obligatorio";
     public String calm = "(*)";
-
-    public CierreObra() {
+    
+    public Cierre() {
         initComponents();
-
+        
         listen.FieldListener(IdGrupo);
     }
 
@@ -21,7 +20,7 @@ public class CierreObra extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         IdGrupo = new javax.swing.JTextField();
-        Cierre = new javax.swing.JButton();
+        Asistencia = new javax.swing.JButton();
         Label1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(707, 541));
@@ -30,18 +29,22 @@ public class CierreObra extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("I.D de la obra");
+        jLabel1.setText("I.D del grupo");
 
         IdGrupo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         IdGrupo.setForeground(new java.awt.Color(204, 204, 255));
-        IdGrupo.setText("Ej. 123456");
-        IdGrupo.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
-
-        Cierre.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Cierre.setText("Cierre de obra");
-        Cierre.addActionListener(new java.awt.event.ActionListener() {
+        IdGrupo.setText("Ej. Club de estudios científicos");
+        IdGrupo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CierreActionPerformed(evt);
+                IdGrupoActionPerformed(evt);
+            }
+        });
+
+        Asistencia.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Asistencia.setText("Cierre de Discusión");
+        Asistencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AsistenciaActionPerformed(evt);
             }
         });
 
@@ -67,13 +70,13 @@ public class CierreObra extends javax.swing.JPanel {
                 .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(IdGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+                        .addComponent(IdGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Label1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(Cierre)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                        .addComponent(Asistencia)))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,10 +87,15 @@ public class CierreObra extends javax.swing.JPanel {
                     .addComponent(IdGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label1))
                 .addGap(80, 80, 80)
-                .addComponent(Cierre, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(340, Short.MAX_VALUE))
+                .addComponent(Asistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(336, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void IdGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdGrupoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_IdGrupoActionPerformed
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
         // TODO add your handling code here:
@@ -99,18 +107,13 @@ public class CierreObra extends javax.swing.JPanel {
         Label1.setText(calm);
     }//GEN-LAST:event_Label1MouseExited
 
-    private void CierreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CierreActionPerformed
+    private void AsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsistenciaActionPerformed
         // TODO add your handling code here:
-        if (IdGrupo.getText().equals("Ej. 123456")) {
-            IdGrupo.setBorder(new LineBorder(Color.red));
-        } else {
-            IdGrupo.setBorder(new LineBorder(Color.gray));
-        }
-    }//GEN-LAST:event_CierreActionPerformed
+    }//GEN-LAST:event_AsistenciaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Cierre;
+    private javax.swing.JButton Asistencia;
     private javax.swing.JTextField IdGrupo;
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel jLabel1;

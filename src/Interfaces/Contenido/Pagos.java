@@ -1,16 +1,16 @@
 package Interfaces.Contenido;
 
-import java.awt.Color;
-import javax.swing.border.LineBorder;
+import Interfaces.Menu.ProcedimientosExtra;
+
 
 public class Pagos extends javax.swing.JPanel {
-
+    
     ProcedimientosExtra listen = new ProcedimientosExtra();
-
+    
     public Pagos() {
         initComponents();
-
-        listen.FieldListener(IdPaga);
+        
+        listen.FieldListener(Club);
     }
 
     /**
@@ -23,8 +23,8 @@ public class Pagos extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        IdPaga = new javax.swing.JTextField();
-        Registrar = new javax.swing.JButton();
+        Club = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         Label = new javax.swing.JLabel();
 
@@ -34,18 +34,22 @@ public class Pagos extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("I.D del pagador");
+        jLabel1.setText("Nombre de pagador");
 
-        IdPaga.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        IdPaga.setForeground(new java.awt.Color(204, 204, 255));
-        IdPaga.setText("Ej. 58698569");
-        IdPaga.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
-
-        Registrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Registrar.setText("Registrar");
-        Registrar.addActionListener(new java.awt.event.ActionListener() {
+        Club.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Club.setForeground(new java.awt.Color(204, 204, 255));
+        Club.setText("Ej. Club de estudios científicos");
+        Club.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegistrarActionPerformed(evt);
+                ClubActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton1.setText("Registrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -72,17 +76,17 @@ public class Pagos extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(278, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(110, 110, 110)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(IdPaga)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Label)
+                        .addComponent(Club, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Label)))
                 .addGap(116, 116, 116))
         );
         layout.setVerticalGroup(
@@ -91,24 +95,24 @@ public class Pagos extends javax.swing.JPanel {
                 .addGap(86, 86, 86)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(IdPaga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Club, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label))
                 .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(326, Short.MAX_VALUE))
+                .addContainerGap(322, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
+    private void ClubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClubActionPerformed
         // TODO add your handling code here:
-        if (IdPaga.getText().equals("Ej. 58698569")) {
-            IdPaga.setBorder(new LineBorder(Color.red));
-        } else {
-            IdPaga.setBorder(new LineBorder(Color.gray));
-        }
-    }//GEN-LAST:event_RegistrarActionPerformed
+        
+    }//GEN-LAST:event_ClubActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void LabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LabelMouseEntered
         // TODO add your handling code here:
@@ -122,9 +126,9 @@ public class Pagos extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField IdPaga;
+    private javax.swing.JTextField Club;
     private javax.swing.JLabel Label;
-    private javax.swing.JButton Registrar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

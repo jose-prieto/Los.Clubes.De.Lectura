@@ -39,34 +39,35 @@
                               </Group>
                               <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="Dir2Club" max="32767" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="PostalClub" pref="123" max="32767" attributes="0"/>
-                                          <Component id="MonedaClub" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="MonedaClub" min="-2" pref="98" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                                              <Component id="Label8" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="PostalClub" min="-2" pref="123" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="Label6" min="-2" max="-2" attributes="0"/>
-                                          <Component id="Label8" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="Label6" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                                       <Component id="IdiomaClub" min="-2" pref="123" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="Dir2Club" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                              <Component id="InstClub" max="32767" attributes="0"/>
+                              <Component id="IntClub" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="jButton2" min="-2" pref="140" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="Registrar" min="-2" pref="140" max="-2" attributes="0"/>
+                              <Component id="jButton1" min="-2" pref="140" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -165,14 +166,14 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="InstClub" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="IntClub" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="Registrar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="jButton1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="jButton2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="80" max="32767" attributes="0"/>
+              <EmptySpace pref="44" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -198,14 +199,10 @@
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ej. Club de estudios cient&#xed;ficos"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-            </LineBorder>
-          </Border>
-        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NombreClubActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -239,14 +236,10 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Ej. Districo Capital"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-            </LineBorder>
-          </Border>
-        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CiudadClubActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -269,14 +262,10 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Ej. Venezuela"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-            </LineBorder>
-          </Border>
-        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PaisClubActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="PostalClub">
       <Properties>
@@ -287,14 +276,10 @@
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ej. 1020"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-            </LineBorder>
-          </Border>
-        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PostalClubActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
@@ -316,14 +301,10 @@
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ej. Bol&#xed;var"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-            </LineBorder>
-          </Border>
-        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MonedaClubActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
@@ -345,14 +326,10 @@
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ej. Venezolana"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-            </LineBorder>
-          </Border>
-        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NacionClubActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
@@ -374,14 +351,10 @@
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ej. Espa&#xf1;ol"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-            </LineBorder>
-          </Border>
-        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IdiomaClubActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">
       <Properties>
@@ -394,7 +367,7 @@
         <Property name="text" type="java.lang.String" value="Moneda"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="InstClub">
+    <Component class="javax.swing.JTextField" name="IntClub">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="1"/>
@@ -403,16 +376,12 @@
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ej. Universidad Cat&#xf3;lica Andr&#xe9;s Bello"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-            </LineBorder>
-          </Border>
-        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IntClubActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="Registrar">
+    <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="1"/>
@@ -420,7 +389,7 @@
         <Property name="text" type="java.lang.String" value="Registrar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegistrarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
@@ -440,14 +409,10 @@
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ej. Montalb&#xe1;n II, calle 5"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-            </LineBorder>
-          </Border>
-        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Dir1ClubActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
@@ -469,14 +434,10 @@
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ej. Edf. &quot;Yaracuy&quot;, piso 5, Apt. 2B"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-            </LineBorder>
-          </Border>
-        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Dir2ClubActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="Label1">
       <Properties>
