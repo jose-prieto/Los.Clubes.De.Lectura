@@ -1,25 +1,21 @@
 package Interfaces.Contenido;
 
-import Interfaces.Menu.ProcedimientosExtra;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class RegistraMiembro extends javax.swing.JPanel {
     
-<<<<<<< HEAD
-    AsociarClub st = new AsociarClub ();
-    ProcedimientosExtra listen = new ProcedimientosExtra ();
-=======
     ProcedimientosExtra listen = new ProcedimientosExtra();
     Dialogo diag = new Dialogo ();
->>>>>>> ea7a361e3af44280c23ffb5d2434b4c3aae7a2c3
 
     public RegistraMiembro() {
-        
+
         initComponents();
-        
-        listen.FieldListener (Nombre);
-        listen.FieldListener (Apellido);
-        listen.FieldListener (Cedula);
-        
+
+        listen.FieldListener(Nombre);
+        listen.FieldListener(Apellido);
+        listen.FieldListener(Cedula);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -41,6 +37,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
         Label5 = new javax.swing.JLabel();
         Nacimiento = new com.toedter.calendar.JCalendar();
         Genero = new javax.swing.JComboBox<>();
+        Label4 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(707, 541));
         setMinimumSize(new java.awt.Dimension(707, 541));
@@ -53,11 +50,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
         Nombre.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Nombre.setForeground(new java.awt.Color(204, 204, 255));
         Nombre.setText("Ej. José Antonio");
-        Nombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NombreActionPerformed(evt);
-            }
-        });
+        Nombre.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
@@ -71,20 +64,12 @@ public class RegistraMiembro extends javax.swing.JPanel {
         Apellido.setForeground(new java.awt.Color(204, 204, 255));
         Apellido.setText("Ej. Prieto Quintero");
         Apellido.setToolTipText("");
-        Apellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ApellidoActionPerformed(evt);
-            }
-        });
+        Apellido.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         Cedula.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Cedula.setForeground(new java.awt.Color(204, 204, 255));
         Cedula.setText("Ej. 30698625");
-        Cedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CedulaActionPerformed(evt);
-            }
-        });
+        Cedula.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
@@ -154,12 +139,25 @@ public class RegistraMiembro extends javax.swing.JPanel {
 
         Nacimiento.setBackground(new java.awt.Color(153, 153, 153));
         Nacimiento.setDate(new java.util.Date(1107213663000L));
+        Nacimiento.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Nacimiento.setMaxSelectableDate(new java.util.Date(1107147663000L));
         Nacimiento.setMinSelectableDate(new java.util.Date(-2208969077000L));
 
         Genero.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Genero.setForeground(new java.awt.Color(51, 51, 51));
-        Genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino" }));
+        Genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino", "Neutro" }));
+
+        Label4.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
+        Label4.setForeground(new java.awt.Color(255, 0, 0));
+        Label4.setText("(*)");
+        Label4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Label4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Label4MouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -190,7 +188,9 @@ public class RegistraMiembro extends javax.swing.JPanel {
                                     .addComponent(Nombre, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Label4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                                         .addComponent(jLabel3)
                                         .addGap(20, 20, 20)
                                         .addComponent(Genero, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -221,7 +221,8 @@ public class RegistraMiembro extends javax.swing.JPanel {
                     .addComponent(jLabel7)
                     .addComponent(Label3)
                     .addComponent(jLabel3)
-                    .addComponent(Genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Label4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
@@ -229,25 +230,9 @@ public class RegistraMiembro extends javax.swing.JPanel {
                     .addComponent(Nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(Continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreActionPerformed
-        // TODO add your handling code here:        
-    }//GEN-LAST:event_NombreActionPerformed
-
-    private void ApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApellidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ApellidoActionPerformed
-
-    private void CedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CedulaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CedulaActionPerformed
-
-    private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ContinuarActionPerformed
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
         // TODO add your handling code here:
@@ -293,8 +278,6 @@ public class RegistraMiembro extends javax.swing.JPanel {
         diag.setVisible(false);
     }//GEN-LAST:event_Label5MouseExited
 
-<<<<<<< HEAD
-=======
     private void Label4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label4MouseEntered
         // TODO add your handling code here:
         diag.posicion(Label4.getLocationOnScreen().x-29, Label4.getLocationOnScreen().y+15);
@@ -333,7 +316,6 @@ public class RegistraMiembro extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_ContinuarActionPerformed
 
->>>>>>> ea7a361e3af44280c23ffb5d2434b4c3aae7a2c3
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellido;
@@ -343,6 +325,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label2;
     private javax.swing.JLabel Label3;
+    private javax.swing.JLabel Label4;
     private javax.swing.JLabel Label5;
     private com.toedter.calendar.JCalendar Nacimiento;
     private javax.swing.JTextField Nombre;

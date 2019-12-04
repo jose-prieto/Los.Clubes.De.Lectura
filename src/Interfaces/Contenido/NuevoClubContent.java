@@ -1,33 +1,28 @@
 package Interfaces.Contenido;
 
-import Interfaces.Menu.ProcedimientosExtra;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class NuevoClubContent extends javax.swing.JPanel {
-<<<<<<< HEAD
-    
-    AsociarClub st = new AsociarClub ();
-    ProcedimientosExtra listen = new ProcedimientosExtra ();
-=======
 
     ProcedimientosExtra listen = new ProcedimientosExtra();
     Dialogo diag = new Dialogo ();
->>>>>>> ea7a361e3af44280c23ffb5d2434b4c3aae7a2c3
 
     public NuevoClubContent() {
-        
+
         initComponents();
-        
-        listen.FieldListener (NombreClub);
-        listen.FieldListener (CiudadClub);
-        listen.FieldListener (PaisClub);
-        listen.FieldListener (PostalClub);
-        listen.FieldListener (Dir1Club);
-        listen.FieldListener (Dir2Club);
-        listen.FieldListener (MonedaClub);
-        listen.FieldListener (NacionClub);
-        listen.FieldListener (IdiomaClub);
-        listen.FieldListener (IntClub);
-        
+
+        listen.FieldListener(NombreClub);
+        listen.FieldListener(CiudadClub);
+        listen.FieldListener(PaisClub);
+        listen.FieldListener(PostalClub);
+        listen.FieldListener(Dir1Club);
+        listen.FieldListener(Dir2Club);
+        listen.FieldListener(MonedaClub);
+        listen.FieldListener(NacionClub);
+        listen.FieldListener(IdiomaClub);
+        listen.FieldListener(InstClub);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -49,8 +44,8 @@ public class NuevoClubContent extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         IdiomaClub = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        IntClub = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        InstClub = new javax.swing.JTextField();
+        Registrar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         Dir1Club = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -75,11 +70,7 @@ public class NuevoClubContent extends javax.swing.JPanel {
         NombreClub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         NombreClub.setForeground(new java.awt.Color(204, 204, 255));
         NombreClub.setText("Ej. Club de estudios científicos");
-        NombreClub.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NombreClubActionPerformed(evt);
-            }
-        });
+        NombreClub.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
@@ -93,11 +84,7 @@ public class NuevoClubContent extends javax.swing.JPanel {
         CiudadClub.setForeground(new java.awt.Color(204, 204, 255));
         CiudadClub.setText("Ej. Districo Capital");
         CiudadClub.setToolTipText("");
-        CiudadClub.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CiudadClubActionPerformed(evt);
-            }
-        });
+        CiudadClub.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
@@ -107,20 +94,12 @@ public class NuevoClubContent extends javax.swing.JPanel {
         PaisClub.setForeground(new java.awt.Color(204, 204, 255));
         PaisClub.setText("Ej. Venezuela");
         PaisClub.setToolTipText("");
-        PaisClub.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PaisClubActionPerformed(evt);
-            }
-        });
+        PaisClub.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         PostalClub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         PostalClub.setForeground(new java.awt.Color(204, 204, 255));
         PostalClub.setText("Ej. 1020");
-        PostalClub.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PostalClubActionPerformed(evt);
-            }
-        });
+        PostalClub.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
@@ -129,11 +108,7 @@ public class NuevoClubContent extends javax.swing.JPanel {
         MonedaClub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         MonedaClub.setForeground(new java.awt.Color(204, 204, 255));
         MonedaClub.setText("Ej. Bolívar");
-        MonedaClub.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MonedaClubActionPerformed(evt);
-            }
-        });
+        MonedaClub.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
@@ -142,11 +117,7 @@ public class NuevoClubContent extends javax.swing.JPanel {
         NacionClub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         NacionClub.setForeground(new java.awt.Color(204, 204, 255));
         NacionClub.setText("Ej. Venezolana");
-        NacionClub.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NacionClubActionPerformed(evt);
-            }
-        });
+        NacionClub.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
@@ -155,30 +126,22 @@ public class NuevoClubContent extends javax.swing.JPanel {
         IdiomaClub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         IdiomaClub.setForeground(new java.awt.Color(204, 204, 255));
         IdiomaClub.setText("Ej. Español");
-        IdiomaClub.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IdiomaClubActionPerformed(evt);
-            }
-        });
+        IdiomaClub.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(51, 51, 51));
         jLabel10.setText("Moneda");
 
-        IntClub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        IntClub.setForeground(new java.awt.Color(204, 204, 255));
-        IntClub.setText("Ej. Universidad Católica Andrés Bello");
-        IntClub.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IntClubActionPerformed(evt);
-            }
-        });
+        InstClub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        InstClub.setForeground(new java.awt.Color(204, 204, 255));
+        InstClub.setText("Ej. Universidad Católica Andrés Bello");
+        InstClub.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton1.setText("Registrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Registrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Registrar.setText("Registrar");
+        Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                RegistrarActionPerformed(evt);
             }
         });
 
@@ -188,11 +151,7 @@ public class NuevoClubContent extends javax.swing.JPanel {
         Dir1Club.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Dir1Club.setForeground(new java.awt.Color(204, 204, 255));
         Dir1Club.setText("Ej. Montalbán II, calle 5");
-        Dir1Club.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Dir1ClubActionPerformed(evt);
-            }
-        });
+        Dir1Club.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
@@ -201,11 +160,7 @@ public class NuevoClubContent extends javax.swing.JPanel {
         Dir2Club.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Dir2Club.setForeground(new java.awt.Color(204, 204, 255));
         Dir2Club.setText("Ej. Edf. \"Yaracuy\", piso 5, Apt. 2B");
-        Dir2Club.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Dir2ClubActionPerformed(evt);
-            }
-        });
+        Dir2Club.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         Label1.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         Label1.setForeground(new java.awt.Color(255, 0, 0));
@@ -318,29 +273,28 @@ public class NuevoClubContent extends javax.swing.JPanel {
                                     .addComponent(jLabel6))
                                 .addGap(80, 80, 80)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Dir2Club)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(MonedaClub, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(3, 3, 3)
-                                                .addComponent(Label8))
-                                            .addComponent(PostalClub, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(PostalClub, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                                            .addComponent(MonedaClub))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Label6)
-                                        .addGap(98, 98, 98)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(Label6)
+                                            .addComponent(Label8))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel4)
                                         .addGap(21, 21, 21)
-                                        .addComponent(IdiomaClub, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(Dir2Club)))
+                                        .addComponent(IdiomaClub, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addGap(16, 16, 16)
-                                .addComponent(IntClub))
+                                .addComponent(InstClub))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -418,58 +372,63 @@ public class NuevoClubContent extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(IntClub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(InstClub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NombreClubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreClubActionPerformed
-        // TODO add your handling code here:        
-    }//GEN-LAST:event_NombreClubActionPerformed
-
-    private void CiudadClubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CiudadClubActionPerformed
+    private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CiudadClubActionPerformed
-
-    private void PaisClubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PaisClubActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PaisClubActionPerformed
-
-    private void PostalClubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PostalClubActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PostalClubActionPerformed
-
-    private void MonedaClubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MonedaClubActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MonedaClubActionPerformed
-
-    private void NacionClubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NacionClubActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NacionClubActionPerformed
-
-    private void IdiomaClubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdiomaClubActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_IdiomaClubActionPerformed
-
-    private void IntClubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IntClubActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_IntClubActionPerformed
-
-    private void Dir1ClubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dir1ClubActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Dir1ClubActionPerformed
-
-    private void Dir2ClubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dir2ClubActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Dir2ClubActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if (NombreClub.getText().equals("Ej. Club de estudios científicos")) {
+            NombreClub.setBorder(new LineBorder(Color.red));
+        } else {
+            NombreClub.setBorder(new LineBorder(Color.gray));
+        }
+        if (PaisClub.getText().equals("Ej. Venezuela")) {
+            PaisClub.setBorder(new LineBorder(Color.red));
+        } else {
+            PaisClub.setBorder(new LineBorder(Color.gray));
+        }
+        if (NacionClub.getText().equals("Ej. Venezolana")) {
+            NacionClub.setBorder(new LineBorder(Color.red));
+        } else {
+            NacionClub.setBorder(new LineBorder(Color.gray));
+        }
+        if (CiudadClub.getText().equals("Ej. Districo Capital")) {
+            CiudadClub.setBorder(new LineBorder(Color.red));
+        } else {
+            CiudadClub.setBorder(new LineBorder(Color.gray));
+        }
+        if (Dir1Club.getText().equals("Ej. Montalbán II, calle 5")) {
+            Dir1Club.setBorder(new LineBorder(Color.red));
+        } else {
+            Dir1Club.setBorder(new LineBorder(Color.gray));
+        }
+        if (PostalClub.getText().equals("Ej. 1020")) {
+            PostalClub.setBorder(new LineBorder(Color.red));
+        } else {
+            PostalClub.setBorder(new LineBorder(Color.gray));
+        }
+        if (IdiomaClub.getText().equals("Ej. Español")) {
+            IdiomaClub.setBorder(new LineBorder(Color.red));
+        } else {
+            IdiomaClub.setBorder(new LineBorder(Color.gray));
+        }
+        if (MonedaClub.getText().equals("Ej. Bolívar")) {
+            MonedaClub.setBorder(new LineBorder(Color.red));
+        } else {
+            MonedaClub.setBorder(new LineBorder(Color.gray));
+        }
+        if (InstClub.getText().equals("Ej. Universidad Católica Andrés Bello")) {
+            InstClub.setBorder(new LineBorder(Color.red));
+        } else {
+            InstClub.setBorder(new LineBorder(Color.gray));
+        }
+    }//GEN-LAST:event_RegistrarActionPerformed
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
         // TODO add your handling code here:
@@ -565,7 +524,7 @@ public class NuevoClubContent extends javax.swing.JPanel {
     private javax.swing.JTextField Dir1Club;
     private javax.swing.JTextField Dir2Club;
     private javax.swing.JTextField IdiomaClub;
-    private javax.swing.JTextField IntClub;
+    private javax.swing.JTextField InstClub;
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label2;
     private javax.swing.JLabel Label3;
@@ -579,7 +538,7 @@ public class NuevoClubContent extends javax.swing.JPanel {
     private javax.swing.JTextField NombreClub;
     private javax.swing.JTextField PaisClub;
     private javax.swing.JTextField PostalClub;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton Registrar;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
