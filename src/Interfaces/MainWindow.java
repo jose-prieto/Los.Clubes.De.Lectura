@@ -1,5 +1,7 @@
 package Interfaces;
 
+import ControladorBD.BDConexion;
+
 import Interfaces.Contenido.Dialogo;
 import Interfaces.Menu.ClubesPannel;
 import Interfaces.Menu.MainPannel;
@@ -35,6 +37,8 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
     int cond = 1;
     
     Dialogo diag = new Dialogo ();
+    
+    BDConexion conexion = new BDConexion();
 
     //Menu
     MainPannel main = new MainPannel();
@@ -359,6 +363,8 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
     private void HomeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeButtonActionPerformed
 
         Alistar();
+        
+        conexion.getConnection();
 
         main.setVisible(true);
         vacio.setVisible(true);
