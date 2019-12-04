@@ -5,9 +5,8 @@ import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 
 public class BDConexion {
-    //../Images/LogoApp.png
-    public static final String URL = "PGLectura.sql";
-    //public static final String URL = "jdbc:postgresql://localhost:5432/test";
+    
+    public static final String URL = "jdbc:postgresql://localhost:5432/CLUB_LECTURA";
     public static final String USERNAME = "postgres";
     public static final String PASSWORD = "24217857";
 

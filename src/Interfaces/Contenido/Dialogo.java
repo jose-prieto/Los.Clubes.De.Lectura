@@ -24,7 +24,7 @@ public class Dialogo extends javax.swing.JFrame {
         setUndecorated(true);
         setType(java.awt.Window.Type.UTILITY);
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel1.setForeground(java.awt.Color.red);
         jLabel1.setText("Campo obligatorio");
 
