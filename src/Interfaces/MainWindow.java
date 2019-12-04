@@ -159,6 +159,8 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         Atras.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         Atras.setIconTextGap(10);
         Atras.setMargin(new java.awt.Insets(40, 40, 40, 40));
+        Atras.setPreferredSize(new java.awt.Dimension(97, 50));
+        Atras.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         Atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AtrasActionPerformed(evt);
