@@ -84,7 +84,6 @@ public class QueriesJose {
             ps.setDate(5, fecha_nac);
             
             filasafectadas = ps.executeUpdate();
-            System.out.println(filasafectadas);
 
             if (filasafectadas != 0) {
                 JOptionPane.showMessageDialog(null, "Miembro creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
