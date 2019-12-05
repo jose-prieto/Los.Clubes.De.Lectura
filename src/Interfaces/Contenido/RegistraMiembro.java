@@ -333,10 +333,6 @@ public class RegistraMiembro extends javax.swing.JPanel {
     public Date getNacimiento() {
         return java.sql.Date.valueOf(sdf.format(Nacimiento.getDate()));
     }
-    
-    public void getNacimient() {
-        System.out.println(sdf.format(Nacimiento.getDate()));
-    }
 
     public String getNombre() {
         return Nombre.getText();
