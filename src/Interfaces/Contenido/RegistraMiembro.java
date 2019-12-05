@@ -1,12 +1,15 @@
 package Interfaces.Contenido;
 
 import java.awt.Color;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import javax.swing.border.LineBorder;
 
 public class RegistraMiembro extends javax.swing.JPanel {
     
     ProcedimientosExtra listen = new ProcedimientosExtra();
     Dialogo diag = new Dialogo ();
+    SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
 
     public RegistraMiembro() {
 
@@ -77,11 +80,6 @@ public class RegistraMiembro extends javax.swing.JPanel {
 
         Continuar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Continuar.setText("Continuar >");
-        Continuar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ContinuarActionPerformed(evt);
-            }
-        });
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -289,10 +287,12 @@ public class RegistraMiembro extends javax.swing.JPanel {
         diag.setVisible(false);
     }//GEN-LAST:event_Label4MouseExited
 
-    public boolean val1, val2, val3 = false;
+    boolean val1, val2, val3 = false;
 
-    private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
-        // TODO add your handling code here:
+    public boolean val() {
+
+        boolean val = false;
+
         if (Nombre.getText().equals("Ej. José Antonio")) {
             Nombre.setBorder(new LineBorder(Color.red));
             val1 = false;
@@ -314,7 +314,39 @@ public class RegistraMiembro extends javax.swing.JPanel {
             Cedula.setBorder(new LineBorder(Color.gray));
             val3 = true;
         }
-    }//GEN-LAST:event_ContinuarActionPerformed
+        if (val1 == val2 == val3 == true) {
+            val = true;
+        }
+
+        return val;
+
+    }
+
+    public String getApellido() {
+        return Apellido.getText();
+    }
+
+    public int getCedula() {
+        return Integer.parseInt(Cedula.getText());
+    }
+
+    public Date getNacimiento() {
+        return java.sql.Date.valueOf(sdf.format(Nacimiento.getDate()));
+    }
+    
+    public void getNacimient() {
+        System.out.println(sdf.format(Nacimiento.getDate()));
+    }
+
+    public String getNombre() {
+        return Nombre.getText();
+    }
+
+    public String getGenero() {
+        return Genero.getSelectedItem().toString();
+    }
+
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -327,7 +359,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
     private javax.swing.JLabel Label3;
     private javax.swing.JLabel Label4;
     private javax.swing.JLabel Label5;
-    private com.toedter.calendar.JCalendar Nacimiento;
+    public com.toedter.calendar.JCalendar Nacimiento;
     private javax.swing.JTextField Nombre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

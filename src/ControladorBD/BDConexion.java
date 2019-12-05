@@ -7,10 +7,10 @@ import javax.swing.JOptionPane;
 import Interfaces.BDMensaje;
 
 public class BDConexion {
-    
+
     BDMensaje mensaje = new BDMensaje();
-    
-    public static final String URL = "jdbc:postgresql://localhost:5432/CLUB_LECTUR";
+
+    public static final String URL = "jdbc:postgresql://localhost:5432/CLUB_LECTURA";
     public static final String USERNAME = "postgres";
     public static final String PASSWORD = "24217857";
 
@@ -22,7 +22,7 @@ public class BDConexion {
             conexion = (Connection) DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
         return conexion;
     }

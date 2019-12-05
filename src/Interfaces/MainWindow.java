@@ -32,9 +32,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 
+import ControladorBD.QueriesJose;
+
 public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
     int cond = 1;
+    
+    QueriesJose query = new QueriesJose();
     
     Dialogo diag = new Dialogo ();
     
@@ -67,53 +71,58 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
     NuevaFunc nuevafunc = new NuevaFunc();
 
     public MainWindow() {
-        initComponents();
+        
+        if (conexion.getConnection() != null){
+            
+            initComponents();
 
-        setIconImage(new ImageIcon(getClass().getResource("../Images/LogoApp.png")).getImage());
+            setIconImage(new ImageIcon(getClass().getResource("../Images/LogoApp.png")).getImage());
 
-        OptionPannel.add(main);
-        ContentPannel.add(vacio);
-        Atras.setVisible(false);
+            OptionPannel.add(main);
+            ContentPannel.add(vacio);
+            Atras.setVisible(false);
 
-        //action listener de botones de clubes
-        clubes.Libros.addActionListener(this);
-        clubes.Miembros.addActionListener(this);
-        clubes.Pagos.addActionListener(this);
-        clubes.Club.addActionListener(this);
+            //action listener de botones de clubes
+            clubes.Libros.addActionListener(this);
+            clubes.Miembros.addActionListener(this);
+            clubes.Pagos.addActionListener(this);
+            clubes.Club.addActionListener(this);
 
-        //action listener de botones admclub
-        admclub.AsociarClub.addActionListener(this);
-        admclub.EliminarClub.addActionListener(this);
-        admclub.NuevoClub.addActionListener(this);
+            //action listener de botones admclub
+            admclub.AsociarClub.addActionListener(this);
+            admclub.EliminarClub.addActionListener(this);
+            admclub.NuevoClub.addActionListener(this);
 
-        //action listener de botones de reuniones manager pannel
-        reuniones.Asistencias.addActionListener(this);
-        reuniones.Calendario.addActionListener(this);
-        reuniones.Cierre.addActionListener(this);
+            //action listener de botones de reuniones manager pannel
+            reuniones.Asistencias.addActionListener(this);
+            reuniones.Calendario.addActionListener(this);
+            reuniones.Cierre.addActionListener(this);
 
-        //action listener de botones de option main pannel
-        main.Reuniones.addActionListener(this);
-        main.Clubes.addActionListener(this);
-        main.Obras.addActionListener(this);
+            //action listener de botones de option main pannel
+            main.Reuniones.addActionListener(this);
+            main.Clubes.addActionListener(this);
+            main.Obras.addActionListener(this);
 
-        //action listener de home button
-        HomeButton.addActionListener(this);
+            //action listener de home button
+            HomeButton.addActionListener(this);
 
-        //action listener de libros
-        libros.RegistrarLibro.addActionListener(this);
+            //action listener de libros
+            libros.RegistrarLibro.addActionListener(this);
 
-        //action listener de miembros
-        miembros.RegMiemb.addActionListener(this);
-        miembros.CambClub.addActionListener(this);
+            //action listener de miembros
+            miembros.RegMiemb.addActionListener(this);
+            miembros.CambClub.addActionListener(this);
 
-        //action listener de nuevo miembro
-        nuevomiembro.Continuar.addActionListener(this);
+            //action listener de nuevo miembro
+            nuevomiembro.Continuar.addActionListener(this);
 
-        //action listener de obras
-        obras.NuevaObra.addActionListener(this);
-        obras.CierreObra.addActionListener(this);
-        obras.Presentaciones.addActionListener(this);
-
+            //action listener de obras
+            obras.NuevaObra.addActionListener(this);
+            obras.CierreObra.addActionListener(this);
+            obras.Presentaciones.addActionListener(this);
+        }else{
+            System.exit(0);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -363,8 +372,6 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
     private void HomeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeButtonActionPerformed
 
         Alistar();
-        
-        conexion.getConnection();
 
         main.setVisible(true);
         vacio.setVisible(true);
@@ -736,6 +743,8 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             OptionPannel.add(miembros);
 
         } else if (evt.equals(miembros.RegMiemb)) {
+            
+            nuevomiembro.getNacimient();
 
             Alistar();
             JFrameRestart();
@@ -751,7 +760,23 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
         } else if (evt.equals(nuevomiembro.Continuar)) {
             
-            if (nuevomiembro.val1 & nuevomiembro.val2 & nuevomiembro.val3){
+            if (nuevomiembro.val()){
+                
+                query.CrearMiembAdult(nuevomiembro.getCedula(), nuevomiembro.getNombre(), nuevomiembro.getApellido(),
+                                        nuevomiembro.getGenero(), nuevomiembro.getNacimiento());
+                Alistar();
+
+                miembros.setVisible(true);
+                nuevomiembro2.setVisible(true);
+
+                ContentPannel.add(nuevomiembro2);
+                OptionPannel.add(miembros);
+                
+            }
+
+        } else if (evt.equals(nuevomiembro2.Registrar)) {
+            
+            if (nuevomiembro.val()){
 
                 Alistar();
 
