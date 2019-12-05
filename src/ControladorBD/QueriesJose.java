@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 //import DBController.DBConnection;
-public class MaterialCRUD {
+public class QueriesJose {
 
     BDConexion connectivity = new BDConexion();
 
