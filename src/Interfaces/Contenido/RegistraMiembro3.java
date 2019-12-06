@@ -151,7 +151,6 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
 
         Cedula.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Cedula.setForeground(new java.awt.Color(51, 51, 51));
-        Cedula.setText("gikuyg");
         Cedula.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N

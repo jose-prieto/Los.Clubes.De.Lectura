@@ -39,7 +39,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         Registrar = new javax.swing.JButton();
-        Reestableces = new javax.swing.JButton();
         Edit = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -117,14 +116,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
         Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegistrarActionPerformed(evt);
-            }
-        });
-
-        Reestableces.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Reestableces.setText("Restablecer");
-        Reestableces.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReestablecesActionPerformed(evt);
             }
         });
 
@@ -292,8 +283,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
                             .addComponent(jScrollPane2)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(Reestableces, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -355,16 +344,10 @@ public class RegistrarLibro extends javax.swing.JPanel {
                         .addGap(40, 40, 40)
                         .addComponent(jLabel10)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Reestableces, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(56, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void ReestablecesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReestablecesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ReestablecesActionPerformed
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
         // TODO add your handling code here:
@@ -508,7 +491,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
     private javax.swing.JTextField NomAutor;
     private javax.swing.JTextField OriTitulo;
     private javax.swing.JTextField Pag;
-    private javax.swing.JButton Reestableces;
     private javax.swing.JButton Registrar;
     private javax.swing.JTextArea Sinopsis;
     private javax.swing.JTextField Tema;
