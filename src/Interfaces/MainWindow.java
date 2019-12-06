@@ -33,6 +33,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 
 import ControladorBD.QueriesJose;
+import javax.swing.JOptionPane;
 
 public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
@@ -69,6 +70,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
     NuevaObra nuevaobra = new NuevaObra();
     CierreObra cierreobra = new CierreObra();
     NuevaFunc nuevafunc = new NuevaFunc();
+    
 
     public MainWindow() {
         
@@ -744,8 +746,6 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
         } else if (evt.equals(miembros.RegMiemb)) {
             
-            nuevomiembro.getNacimient();
-
             Alistar();
             JFrameRestart();
             
@@ -760,10 +760,11 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
         } else if (evt.equals(nuevomiembro.Continuar)) {
             
-            if (nuevomiembro.val()){
+            if(nuevomiembro.CalcularEdad() <= 18 & nuevomiembro.val()){
                 
-                query.CrearMiembAdult(nuevomiembro.getCedula(), nuevomiembro.getNombre(), nuevomiembro.getApellido(),
-                                        nuevomiembro.getGenero(), nuevomiembro.getNacimiento());
+                
+            }else if (nuevomiembro.CalcularEdad() >= 19 & nuevomiembro.val()){
+                
                 Alistar();
 
                 miembros.setVisible(true);

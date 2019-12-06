@@ -5,15 +5,21 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import javax.swing.border.LineBorder;
 
+import ControladorBD.QueriesJose;
+
 public class RegistraMiembro extends javax.swing.JPanel {
     
     ProcedimientosExtra listen = new ProcedimientosExtra();
     Dialogo diag = new Dialogo ();
     SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
-
+    QueriesJose query = new QueriesJose();
+    
     public RegistraMiembro() {
 
         initComponents();
+        
+        Nacimiento.setMaxSelectableDate(query.fechaMax());
+        Nacimiento.setDate(query.fechaMax());
 
         listen.FieldListener(Nombre);
         listen.FieldListener(Apellido);
@@ -41,6 +47,8 @@ public class RegistraMiembro extends javax.swing.JPanel {
         Nacimiento = new com.toedter.calendar.JCalendar();
         Genero = new javax.swing.JComboBox<>();
         Label4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        CedulaRep = new javax.swing.JTextField();
 
         setMaximumSize(new java.awt.Dimension(707, 541));
         setMinimumSize(new java.awt.Dimension(707, 541));
@@ -136,9 +144,9 @@ public class RegistraMiembro extends javax.swing.JPanel {
         });
 
         Nacimiento.setBackground(new java.awt.Color(153, 153, 153));
-        Nacimiento.setDate(new java.util.Date(1107213663000L));
+        Nacimiento.setDate(new java.util.Date(1328053863000L));
         Nacimiento.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Nacimiento.setMaxSelectableDate(new java.util.Date(1107147663000L));
+        Nacimiento.setMaxSelectableDate(new java.util.Date(1296451863000L));
         Nacimiento.setMinSelectableDate(new java.util.Date(-2208969077000L));
 
         Genero.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -157,6 +165,15 @@ public class RegistraMiembro extends javax.swing.JPanel {
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setText("Cédula del representante");
+
+        CedulaRep.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        CedulaRep.setForeground(new java.awt.Color(204, 204, 255));
+        CedulaRep.setText("Ej. 30698625");
+        CedulaRep.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -165,14 +182,15 @@ public class RegistraMiembro extends javax.swing.JPanel {
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, 18)
+                        .addComponent(CedulaRep, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(564, 564, 564))
+                        .addGap(564, 672, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(13, 13, 13)
-                                .addComponent(Nacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(Continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -180,18 +198,27 @@ public class RegistraMiembro extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel7))
-                                .addGap(99, 99, 99)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Apellido, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Nombre, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGap(253, 253, 253)
                                         .addComponent(Label4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                                         .addComponent(jLabel3)
                                         .addGap(20, 20, 20)
-                                        .addComponent(Genero, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(Genero, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(137, 137, 137)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(Nombre)
+                                            .addComponent(Apellido)))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(51, 51, 51)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(Nacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Label1)
@@ -227,8 +254,12 @@ public class RegistraMiembro extends javax.swing.JPanel {
                     .addComponent(Label5)
                     .addComponent(Nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CedulaRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(18, 18, 18)
                 .addComponent(Continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -287,11 +318,9 @@ public class RegistraMiembro extends javax.swing.JPanel {
         diag.setVisible(false);
     }//GEN-LAST:event_Label4MouseExited
 
-    boolean val1, val2, val3 = false;
-
     public boolean val() {
-
-        boolean val = false;
+        boolean val, val1, val2, val3, val4;
+        val = val1 = val2 = val3 = val4 = false;
 
         if (Nombre.getText().equals("Ej. José Antonio")) {
             Nombre.setBorder(new LineBorder(Color.red));
@@ -319,11 +348,25 @@ public class RegistraMiembro extends javax.swing.JPanel {
         }
 
         return val;
-
     }
+    
+    public boolean ciExist(){
+        
+        boolean val = query.ciExist(getCedula());
+        
+        return val;
+    }
+    
+    public int CalcularEdad(){        
+        return query.Edad(getNacimiento());
+   }
 
     public String getApellido() {
         return Apellido.getText();
+    }
+    
+    public int getCedulaRep() {
+        return Integer.parseInt(CedulaRep.getText());
     }
 
     public int getCedula() {
@@ -331,7 +374,9 @@ public class RegistraMiembro extends javax.swing.JPanel {
     }
 
     public Date getNacimiento() {
+        
         return java.sql.Date.valueOf(sdf.format(Nacimiento.getDate()));
+        
     }
 
     public String getNombre() {
@@ -341,6 +386,12 @@ public class RegistraMiembro extends javax.swing.JPanel {
     public String getGenero() {
         return Genero.getSelectedItem().toString();
     }
+    
+    public void CrearAdulto() {
+    }
+    
+    /*query.CrearMiembAdult(nuevomiembro.getCedula(), nuevomiembro.getNombre(), nuevomiembro.getApellido(),
+                                        nuevomiembro.getGenero(), nuevomiembro.getNacimiento());*/
 
     
 
@@ -348,6 +399,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellido;
     private javax.swing.JTextField Cedula;
+    private javax.swing.JTextField CedulaRep;
     public javax.swing.JButton Continuar;
     private javax.swing.JComboBox<String> Genero;
     private javax.swing.JLabel Label1;
@@ -362,5 +414,6 @@ public class RegistraMiembro extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 }
