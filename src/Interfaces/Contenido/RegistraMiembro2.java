@@ -1,12 +1,14 @@
 package Interfaces.Contenido;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
 public class RegistraMiembro2 extends javax.swing.JPanel {
     
     ProcedimientosExtra listen = new ProcedimientosExtra ();
     Dialogo diag = new Dialogo ();
+    public int num;
 
     public RegistraMiembro2() {
         initComponents();
@@ -74,30 +76,35 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("Libro preferido 2");
+        jLabel3.setText("ISBN libro 2");
 
         Libro2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Libro2.setForeground(new java.awt.Color(204, 204, 255));
-        Libro2.setText("Ej. Cien años de soledad");
+        Libro2.setText("Ej. 9788877547224");
         Libro2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         Libro1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Libro1.setForeground(new java.awt.Color(204, 204, 255));
-        Libro1.setText("Ej. Romeo y Julieta");
+        Libro1.setText("Ej. 9788877547224");
         Libro1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Libro1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Libro1KeyTyped(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel7.setText("Libro preferido 1");
+        jLabel7.setText("ISBN libro 1");
 
         Libro3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Libro3.setForeground(new java.awt.Color(204, 204, 255));
-        Libro3.setText("Ej. Once minutos");
+        Libro3.setText("Ej. 9788877547224");
         Libro3.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setText("Libro preferido 3");
+        jLabel5.setText("ISBN libro 3");
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(51, 51, 51));
@@ -230,11 +237,6 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
 
         Registrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Registrar.setText("Registrar");
-        Registrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegistrarActionPerformed(evt);
-            }
-        });
 
         Pais.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Pais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda", "Arabia Saudita", "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas", "Bangladés", "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Birmania", "Bolivia", "Bosnia y Herzegovina", "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután", "Cabo Verde", "Camboya", "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Ciudad del Vaticano", "Colombia", "Comoras", "Corea del Norte", "Corea del Sur", "Costa de Marfil", "Costa Rica", "Croacia", "Cuba", "Dinamarca", "Dominica", "Ecuador", "Egipto", "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Eslovaquia", "Eslovenia", "España", "Estados Unidos", "Estonia", "Etiopía", "Filipinas", "Finlandia", "Fiyi", "Francia", "Gabón", "Gambia", "Georgia", "Ghana", "Granada", "Grecia", "Guatemala", "Guyana", "Guinea", "Guinea ecuatorial", "Guinea-Bisáu", "Haití", "Honduras", "Hungría", "India", "Indonesia", "Irak", "Irán", "Irlanda", "Islandia", "Islas Marshall", "Islas Salomón", "Israel", "Italia", "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Laos", "Lesoto", "Letonia", "Líbano", "Liberia", "Libia", "Liechtenstein", "Lituania", "Luxemburgo", "Macedonia del Norte", "Madagascar", "Malasia", "Malaui", "Maldivas", "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania", "México", "Micronesia", "Moldavia", "Mónaco", "Mongolia", "Montenegro", "Mozambique", "Namibia", "Nauru", "Nepal", "Nicaragua", "Níger", "Nigeria", "Noruega", "Nueva Zelanda", "Omán", "Países Bajos", "Pakistán", "Palaos", "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Reino Unido", "República Centroafricana", "República Checa", "República del Congo", "República Democrática del Congo", "República Dominicana", "República Sudafricana", "Ruanda", "Rumanía", "Rusia", "Samoa", "San Cristóbal y Nieves", "San Marino", "San Vicente y las Granadinas", "Santa Lucía", "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles", "Sierra Leona", "Singapur", "Siria", "Somalia", "Sri Lanka", "Suazilandia", "Sudán", "Sudán del Sur", "Suecia", "Suiza", "Surinam", "Tailandia", "Tanzania", "Tayikistán", "Timor Oriental", "Togo", "Tonga", "Trinidad y Tobago", "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania", "Uganda", "Uruguay", "Uzbekistán", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue" }));
@@ -247,7 +249,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(jLabel3)
@@ -292,7 +294,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
                             .addComponent(Ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Label7)))
-                .addGap(37, 37, 37))
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -386,28 +388,6 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         diag.setVisible(false);
     }//GEN-LAST:event_Label4MouseExited
 
-    private void Label5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label5MouseExited
-        // TODO add your handling code here:
-        diag.setVisible(false);
-    }//GEN-LAST:event_Label5MouseExited
-
-    private void Label5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label5MouseEntered
-        // TODO add your handling code here:
-        diag.posicion(Label5.getLocationOnScreen().x-29, Label5.getLocationOnScreen().y+15);
-        diag.setVisible(true);
-    }//GEN-LAST:event_Label5MouseEntered
-
-    private void Label6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label6MouseEntered
-        // TODO add your handling code here:
-        diag.posicion(Label6.getLocationOnScreen().x-29, Label6.getLocationOnScreen().y+15);
-        diag.setVisible(true);
-    }//GEN-LAST:event_Label6MouseEntered
-
-    private void Label6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label6MouseExited
-        // TODO add your handling code here:
-        diag.setVisible(false);
-    }//GEN-LAST:event_Label6MouseExited
-
     private void Label7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label7MouseEntered
         // TODO add your handling code here:
         diag.posicion(Label7.getLocationOnScreen().x-29, Label7.getLocationOnScreen().y+15);
@@ -419,49 +399,106 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         diag.setVisible(false);
     }//GEN-LAST:event_Label7MouseExited
 
-    private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
-        // TODO add your handling code here:
-        if(Cod1.getText().equals("0424")){
+    public boolean val() {
+        boolean val = true;
+        this.num = 0;
+
+        if (Cod1.getText().equals("0424")) {
             Cod1.setBorder(new LineBorder(Color.red));
-        }else{
+            val = false;
+        }else if (Cod1.getText().length() < 4) {
+            Cod1.setBorder(new LineBorder(Color.red));
+            JOptionPane.showMessageDialog(null, "Los códigos de teléfono deben tener 4 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else {
             Cod1.setBorder(new LineBorder(Color.gray));
         }
-        if(Num1.getText().equals("1931798")){
+        if (Num1.getText().equals("1931798")) {
             Num1.setBorder(new LineBorder(Color.red));
-        }else{
+            val = false;
+        }else if (Num1.getText().length() < 7) {
+            Num1.setBorder(new LineBorder(Color.red));
+            JOptionPane.showMessageDialog(null, "Los números de teléfono deben tener 7 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else {
             Num1.setBorder(new LineBorder(Color.gray));
         }
-        if(Cod2.getText().equals("0212")){
-            Cod2.setBorder(new LineBorder(Color.red));
-        }else{
-            Cod2.setBorder(new LineBorder(Color.gray));
-        }
-        if(Num2.getText().equals("4424833")){
-            Num2.setBorder(new LineBorder(Color.red));
-        }else{
-            Num2.setBorder(new LineBorder(Color.gray));
-        }
-        if(Libro1.getText().equals("Ej. Romeo y Julieta")){
+        if (Libro1.getText().equals("Ej. 9788877547224")) {
             Libro1.setBorder(new LineBorder(Color.red));
-        }else{
+            val = false;
+        } else {
             Libro1.setBorder(new LineBorder(Color.gray));
         }
-        if(Libro2.getText().equals("Ej. Cien años de soledad")){
+        if (Libro2.getText().equals("Ej. 9788877547224")) {
             Libro2.setBorder(new LineBorder(Color.red));
-        }else{
+            val = false;
+        } else {
             Libro2.setBorder(new LineBorder(Color.gray));
         }
-        if(Libro3.getText().equals("Ej. Once minutos")){
+        if (Libro3.getText().equals("Ej. 9788877547224")) {
             Libro3.setBorder(new LineBorder(Color.red));
-        }else{
+            val = false;
+        } else {
             Libro3.setBorder(new LineBorder(Color.gray));
         }
-        if(Ciudad.getText().equals("Ej. Distrito Capital")){
+        if (Ciudad.getText().equals("Ej. Distrito Capital")) {
             Ciudad.setBorder(new LineBorder(Color.red));
-        }else{
+            val = false;
+        } else {
             Ciudad.setBorder(new LineBorder(Color.gray));
         }
-    }//GEN-LAST:event_RegistrarActionPerformed
+        if (!Cod2.getText().equals("Ej. 30698625") && Cod2.getText().length() < 4) {
+            Cod2.setBorder(new LineBorder(Color.red));
+            JOptionPane.showMessageDialog(null, "Los códigos de teléfono deben tener 4 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else {
+            Cod2.setBorder(new LineBorder(Color.gray));
+        }
+        if (!Num2.getText().equals("Ej. 30698625") && Num2.getText().length() < 4) {
+            Num2.setBorder(new LineBorder(Color.red));
+            JOptionPane.showMessageDialog(null, "Los números de teléfono deben tener 7 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else {
+            Num2.setBorder(new LineBorder(Color.gray));
+        }
+        if (val == false) {
+            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos que son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        return val;
+    }
+    
+    private void Label6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label6MouseExited
+        // TODO add your handling code here:
+        diag.setVisible(false);
+    }//GEN-LAST:event_Label6MouseExited
+
+    private void Label6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label6MouseEntered
+        // TODO add your handling code here:
+        diag.posicion(Label6.getLocationOnScreen().x-29, Label6.getLocationOnScreen().y+15);
+        diag.setVisible(true);
+    }//GEN-LAST:event_Label6MouseEntered
+
+    private void Label5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label5MouseExited
+        // TODO add your handling code here:
+        diag.setVisible(false);
+    }//GEN-LAST:event_Label5MouseExited
+
+    private void Label5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label5MouseEntered
+        // TODO add your handling code here:
+        diag.posicion(Label5.getLocationOnScreen().x-29, Label5.getLocationOnScreen().y+15);
+        diag.setVisible(true);
+    }//GEN-LAST:event_Label5MouseEntered
+
+    private void Libro1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Libro1KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9' || Num1.getText().length() > 12){
+            evt.consume();
+        }
+    }//GEN-LAST:event_Libro1KeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

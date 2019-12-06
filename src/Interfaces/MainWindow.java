@@ -432,6 +432,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         pago = new Pagos();
         nuevomiembro = new RegistraMiembro();
         nuevomiembro2 = new RegistraMiembro2();
+        nuevomiembro3 = new RegistraMiembro3();
         cambioclub = new CambioClub();
         nuevaobra = new NuevaObra();
         cierreobra = new CierreObra();
@@ -538,6 +539,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         nuevolibro.setVisible(false);
         nuevomiembro.setVisible(false);
         nuevomiembro2.setVisible(false);
+        nuevomiembro3.setVisible(false);
         cambioclub.setVisible(false);
         asistencia.setVisible(false);
         cierre.setVisible(false);
@@ -801,9 +803,9 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
                 OptionPannel.add(miembros);
             }
 
-        } else if (evt.equals(nuevomiembro2.Registrar)) {
+        } else if (evt.equals(nuevomiembro3.Continuar)) {
             
-            if (nuevomiembro.val()){
+            if (nuevomiembro3.val()){
 
                 Alistar();
 
@@ -812,6 +814,12 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
                 ContentPannel.add(nuevomiembro2);
                 OptionPannel.add(miembros);
+            }
+
+        } else if (evt.equals(nuevomiembro2.Registrar)) {
+            
+            if (nuevomiembro2.val() && nuevomiembro2.num == 0){
+                                
             }
 
         } else if (evt.equals(clubes.Pagos)) {
@@ -862,7 +870,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             Titulo.setText("Asociar clubes");
             OptionPannel.add(admclub);
 
-        } else if (evt.equals(libros.RegistrarLibro)) {
+        } else if (evt.equals(libros.RegistrarLibro) || nuevomiembro2.num > 0) {
 
             Alistar();
             JFrameRestart();
