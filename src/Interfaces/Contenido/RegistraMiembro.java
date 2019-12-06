@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import javax.swing.border.LineBorder;
 
 import ControladorBD.QueriesJose;
+import javax.swing.JOptionPane;
 
 public class RegistraMiembro extends javax.swing.JPanel {
     
@@ -24,6 +25,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
         listen.FieldListener(Nombre);
         listen.FieldListener(Apellido);
         listen.FieldListener(Cedula);
+        listen.FieldListener(CedulaRep);
 
     }
 
@@ -62,6 +64,11 @@ public class RegistraMiembro extends javax.swing.JPanel {
         Nombre.setForeground(new java.awt.Color(204, 204, 255));
         Nombre.setText("Ej. José Antonio");
         Nombre.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NombreKeyTyped(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
@@ -76,11 +83,21 @@ public class RegistraMiembro extends javax.swing.JPanel {
         Apellido.setText("Ej. Prieto Quintero");
         Apellido.setToolTipText("");
         Apellido.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Apellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ApellidoKeyTyped(evt);
+            }
+        });
 
         Cedula.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Cedula.setForeground(new java.awt.Color(204, 204, 255));
         Cedula.setText("Ej. 30698625");
         Cedula.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CedulaKeyTyped(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
@@ -173,6 +190,11 @@ public class RegistraMiembro extends javax.swing.JPanel {
         CedulaRep.setForeground(new java.awt.Color(204, 204, 255));
         CedulaRep.setText("Ej. 30698625");
         CedulaRep.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        CedulaRep.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CedulaRepKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -200,9 +222,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
                                     .addComponent(jLabel7))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(253, 253, 253)
-                                        .addComponent(Label4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                                        .addGap(253, 314, Short.MAX_VALUE)
                                         .addComponent(jLabel3)
                                         .addGap(20, 20, 20)
                                         .addComponent(Genero, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -217,6 +237,8 @@ public class RegistraMiembro extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Label4)
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addComponent(Nacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -259,7 +281,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addComponent(Continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -318,43 +340,92 @@ public class RegistraMiembro extends javax.swing.JPanel {
         diag.setVisible(false);
     }//GEN-LAST:event_Label4MouseExited
 
+    private void NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if (c != ' ' && (c < 'a' || c > 'z') && (c < 'A' || c > 'Z')){
+            evt.consume();
+        }
+    }//GEN-LAST:event_NombreKeyTyped
+
+    private void ApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ApellidoKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if (c != ' ' && (c < 'a' || c > 'z') && (c < 'A' || c > 'Z')){
+            evt.consume();
+        }
+    }//GEN-LAST:event_ApellidoKeyTyped
+
+    private void CedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CedulaKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9'){
+            evt.consume();
+        }
+    }//GEN-LAST:event_CedulaKeyTyped
+
+    private void CedulaRepKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CedulaRepKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9'){
+            evt.consume();
+        }
+    }//GEN-LAST:event_CedulaRepKeyTyped
+
     public boolean val() {
-        boolean val, val1, val2, val3, val4;
-        val = val1 = val2 = val3 = val4 = false;
+        boolean val = true;
 
         if (Nombre.getText().equals("Ej. José Antonio")) {
             Nombre.setBorder(new LineBorder(Color.red));
-            val1 = false;
+            val = false;
         } else {
             Nombre.setBorder(new LineBorder(Color.gray));
-            val1 = true;
         }
         if (Apellido.getText().equals("Ej. Prieto Quintero")) {
             Apellido.setBorder(new LineBorder(Color.red));
-            val2 = false;
+            val = false;
         } else {
             Apellido.setBorder(new LineBorder(Color.gray));
-            val2 = true;
         }
         if (Cedula.getText().equals("Ej. 30698625")) {
             Cedula.setBorder(new LineBorder(Color.red));
-            val3 = false;
+            val = false;
         } else {
             Cedula.setBorder(new LineBorder(Color.gray));
-            val3 = true;
         }
-        if (val1 == val2 == val3 == true) {
-            val = true;
+        if (val == false) {
+            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos que son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
-
+        if (ciExist(getCedula(Cedula.getText()))){
+            Cedula.setBorder(new LineBorder(Color.red));
+            JOptionPane.showMessageDialog(null, "El miembro que desea ingresar ya está registrado", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (CalcularEdad() <=18){
+            if (CedulaRep.getText().equals("Ej. 30698625")){
+                CedulaRep.setBorder(new LineBorder(Color.red));
+                JOptionPane.showMessageDialog(null, "El miembro que desea ingresar es menor\npor ende necesita de un representante", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }else if (CedulaRep.getText().equals(Cedula.getText())){
+                JOptionPane.showMessageDialog(null, "El miembro y su representante no pueden\ntener la misma cedula", "Error", JOptionPane.ERROR_MESSAGE);
+                CedulaRep.setBorder(new LineBorder(Color.red));
+                Cedula.setBorder(new LineBorder(Color.red));
+                return false;
+            }else{
+                CedulaRep.setBorder(new LineBorder(Color.gray));
+            }
+        }
+        
         return val;
     }
     
-    public boolean ciExist(){
-        
-        boolean val = query.ciExist(getCedula());
-        
-        return val;
+    public boolean ciExist(int ced){        
+        return query.ciExist(ced);
     }
     
     public int CalcularEdad(){        
@@ -364,12 +435,9 @@ public class RegistraMiembro extends javax.swing.JPanel {
     public String getApellido() {
         return Apellido.getText();
     }
-    
-    public int getCedulaRep() {
-        return Integer.parseInt(CedulaRep.getText());
-    }
 
-    public int getCedula() {
+    public int getCedula(String ced) {
+        
         return Integer.parseInt(Cedula.getText());
     }
 
@@ -399,7 +467,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellido;
     private javax.swing.JTextField Cedula;
-    private javax.swing.JTextField CedulaRep;
+    public javax.swing.JTextField CedulaRep;
     public javax.swing.JButton Continuar;
     private javax.swing.JComboBox<String> Genero;
     private javax.swing.JLabel Label1;
