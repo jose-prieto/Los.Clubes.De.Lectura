@@ -40,117 +40,100 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="70" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="Continuar" min="-2" pref="140" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Libro2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="Libro3" alignment="1" max="32767" attributes="0"/>
-                          <Component id="Pais" alignment="1" max="32767" attributes="0"/>
-                          <Component id="Pais1" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Label4" min="-2" max="-2" attributes="0"/>
-                          <Component id="Label6" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Label3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Label5" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="Cod1" min="-2" pref="50" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Num1" min="-2" pref="90" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Label1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="Cod2" min="-2" pref="50" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Num2" min="-2" pref="92" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="Libro1" min="-2" pref="446" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Label2" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="Registrar" min="-2" pref="140" max="-2" attributes="0"/>
-                          <Component id="Ciudad" min="-2" pref="446" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="Apellido" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="Cedula" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="Label3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="Cod1" min="-2" pref="50" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="Num1" min="-2" pref="94" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="Label4" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="Cod2" min="-2" pref="50" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="Num2" min="-2" pref="92" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Component id="Genero" min="-2" pref="150" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Component id="Nombre" alignment="1" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Label7" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="Label2" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="Label1" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Nombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Label1" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Apellido" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Label2" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="Cedula" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Genero" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Label3" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Cod1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Label1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Label4" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Num1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Cod2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Num2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="Libro1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Label2" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="Libro2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Label3" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="Libro3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Label4" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Label5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Pais" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Label6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Pais1" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Ciudad" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Label7" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-              <Component id="Registrar" min="-2" pref="40" max="-2" attributes="0"/>
-              <EmptySpace pref="123" max="32767" attributes="0"/>
+              <Component id="Continuar" min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace pref="229" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -185,150 +168,8 @@
           </Border>
         </Property>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="18" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="33" red="33" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Libro preferido 2"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="Libro2">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="18" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="cc" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Ej. Cien a&#xf1;os de soledad"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-            </LineBorder>
-          </Border>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="Libro1">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="18" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="cc" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Ej. Romeo y Julieta"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-            </LineBorder>
-          </Border>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="18" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="33" red="33" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Libro preferido 1"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="Libro3">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="18" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="cc" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Ej. Once minutos"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
-            </LineBorder>
-          </Border>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="18" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="33" red="33" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Libro preferido 3"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel11">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="18" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="33" red="33" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Pa&#xed;s de residencia"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="Label1">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="10" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="ff" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="(*)"/>
-      </Properties>
       <Events>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Label1MouseEntered"/>
-        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Label1MouseExited"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="Label2">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="10" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="ff" type="rgb"/>
-        </Property>
-        <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="(*)"/>
-      </Properties>
-      <Events>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Label2MouseEntered"/>
-        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Label2MouseExited"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="Label3">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="10" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="ff" type="rgb"/>
-        </Property>
-        <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="(*)"/>
-      </Properties>
-      <Events>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Label3MouseEntered"/>
-        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Label3MouseExited"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Cod1KeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="Label4">
@@ -339,28 +180,11 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="ff" type="rgb"/>
         </Property>
-        <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="(*)"/>
       </Properties>
       <Events>
         <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Label4MouseEntered"/>
         <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Label4MouseExited"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="Label5">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="10" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="ff" type="rgb"/>
-        </Property>
-        <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="(*)"/>
-      </Properties>
-      <Events>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Label5MouseEntered"/>
-        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Label5MouseExited"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Num1">
@@ -381,6 +205,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Num1KeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
@@ -411,6 +238,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Num2KeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Cod2">
       <Properties>
@@ -430,8 +260,11 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Cod2KeyTyped"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel13">
+    <Component class="javax.swing.JComboBox" name="Genero">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="1"/>
@@ -439,53 +272,19 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="33" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Nacionalidad"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="3">
+            <StringItem index="0" value="Femenino"/>
+            <StringItem index="1" value="Masculino"/>
+            <StringItem index="2" value="Neutro"/>
+          </StringArray>
+        </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="Label6">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="10" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="ff" type="rgb"/>
-        </Property>
-        <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="(*)"/>
-      </Properties>
-      <Events>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Label6MouseEntered"/>
-        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Label6MouseExited"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel14">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="18" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="33" red="33" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Ciudad de residencia"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="Label7">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="10" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="ff" type="rgb"/>
-        </Property>
-        <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="(*)"/>
-      </Properties>
-      <Events>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Label7MouseEntered"/>
-        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Label7MouseExited"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="Ciudad">
+    <Component class="javax.swing.JTextField" name="Apellido">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="1"/>
@@ -493,7 +292,8 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Ej. Distrito Capital"/>
+        <Property name="text" type="java.lang.String" value="Ej. Prieto Quintero"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder>
@@ -502,433 +302,150 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ApellidoKeyTyped"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="Registrar">
+    <Component class="javax.swing.JLabel" name="Label3">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="10" style="0"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="(*)"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Label3MouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Label3MouseExited"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="Cedula">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Registrar"/>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="33" red="33" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="gikuyg"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder>
+              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
+            </LineBorder>
+          </Border>
+        </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegistrarActionPerformed"/>
-      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="Pais">
+    <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="1"/>
         </Property>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="194">
-            <StringItem index="0" value="Afganist&#xe1;n"/>
-            <StringItem index="1" value="Albania"/>
-            <StringItem index="2" value="Alemania"/>
-            <StringItem index="3" value="Andorra"/>
-            <StringItem index="4" value="Angola"/>
-            <StringItem index="5" value="Antigua y Barbuda"/>
-            <StringItem index="6" value="Arabia Saudita"/>
-            <StringItem index="7" value="Argelia"/>
-            <StringItem index="8" value="Argentina"/>
-            <StringItem index="9" value="Armenia"/>
-            <StringItem index="10" value="Australia"/>
-            <StringItem index="11" value="Austria"/>
-            <StringItem index="12" value="Azerbaiy&#xe1;n"/>
-            <StringItem index="13" value="Bahamas"/>
-            <StringItem index="14" value="Banglad&#xe9;s"/>
-            <StringItem index="15" value="Barbados"/>
-            <StringItem index="16" value="Bar&#xe9;in"/>
-            <StringItem index="17" value="B&#xe9;lgica"/>
-            <StringItem index="18" value="Belice"/>
-            <StringItem index="19" value="Ben&#xed;n"/>
-            <StringItem index="20" value="Bielorrusia"/>
-            <StringItem index="21" value="Birmania"/>
-            <StringItem index="22" value="Bolivia"/>
-            <StringItem index="23" value="Bosnia y Herzegovina"/>
-            <StringItem index="24" value="Botsuana"/>
-            <StringItem index="25" value="Brasil"/>
-            <StringItem index="26" value="Brun&#xe9;i"/>
-            <StringItem index="27" value="Bulgaria"/>
-            <StringItem index="28" value="Burkina Faso"/>
-            <StringItem index="29" value="Burundi"/>
-            <StringItem index="30" value="But&#xe1;n"/>
-            <StringItem index="31" value="Cabo Verde"/>
-            <StringItem index="32" value="Camboya"/>
-            <StringItem index="33" value="Camer&#xfa;n"/>
-            <StringItem index="34" value="Canad&#xe1;"/>
-            <StringItem index="35" value="Catar"/>
-            <StringItem index="36" value="Chad"/>
-            <StringItem index="37" value="Chile"/>
-            <StringItem index="38" value="China"/>
-            <StringItem index="39" value="Chipre"/>
-            <StringItem index="40" value="Ciudad del Vaticano"/>
-            <StringItem index="41" value="Colombia"/>
-            <StringItem index="42" value="Comoras"/>
-            <StringItem index="43" value="Corea del Norte"/>
-            <StringItem index="44" value="Corea del Sur"/>
-            <StringItem index="45" value="Costa de Marfil"/>
-            <StringItem index="46" value="Costa Rica"/>
-            <StringItem index="47" value="Croacia"/>
-            <StringItem index="48" value="Cuba"/>
-            <StringItem index="49" value="Dinamarca"/>
-            <StringItem index="50" value="Dominica"/>
-            <StringItem index="51" value="Ecuador"/>
-            <StringItem index="52" value="Egipto"/>
-            <StringItem index="53" value="El Salvador"/>
-            <StringItem index="54" value="Emiratos &#xc1;rabes Unidos"/>
-            <StringItem index="55" value="Eritrea"/>
-            <StringItem index="56" value="Eslovaquia"/>
-            <StringItem index="57" value="Eslovenia"/>
-            <StringItem index="58" value="Espa&#xf1;a"/>
-            <StringItem index="59" value="Estados Unidos"/>
-            <StringItem index="60" value="Estonia"/>
-            <StringItem index="61" value="Etiop&#xed;a"/>
-            <StringItem index="62" value="Filipinas"/>
-            <StringItem index="63" value="Finlandia"/>
-            <StringItem index="64" value="Fiyi"/>
-            <StringItem index="65" value="Francia"/>
-            <StringItem index="66" value="Gab&#xf3;n"/>
-            <StringItem index="67" value="Gambia"/>
-            <StringItem index="68" value="Georgia"/>
-            <StringItem index="69" value="Ghana"/>
-            <StringItem index="70" value="Granada"/>
-            <StringItem index="71" value="Grecia"/>
-            <StringItem index="72" value="Guatemala"/>
-            <StringItem index="73" value="Guyana"/>
-            <StringItem index="74" value="Guinea"/>
-            <StringItem index="75" value="Guinea ecuatorial"/>
-            <StringItem index="76" value="Guinea-Bis&#xe1;u"/>
-            <StringItem index="77" value="Hait&#xed;"/>
-            <StringItem index="78" value="Honduras"/>
-            <StringItem index="79" value="Hungr&#xed;a"/>
-            <StringItem index="80" value="India"/>
-            <StringItem index="81" value="Indonesia"/>
-            <StringItem index="82" value="Irak"/>
-            <StringItem index="83" value="Ir&#xe1;n"/>
-            <StringItem index="84" value="Irlanda"/>
-            <StringItem index="85" value="Islandia"/>
-            <StringItem index="86" value="Islas Marshall"/>
-            <StringItem index="87" value="Islas Salom&#xf3;n"/>
-            <StringItem index="88" value="Israel"/>
-            <StringItem index="89" value="Italia"/>
-            <StringItem index="90" value="Jamaica"/>
-            <StringItem index="91" value="Jap&#xf3;n"/>
-            <StringItem index="92" value="Jordania"/>
-            <StringItem index="93" value="Kazajist&#xe1;n"/>
-            <StringItem index="94" value="Kenia"/>
-            <StringItem index="95" value="Kirguist&#xe1;n"/>
-            <StringItem index="96" value="Kiribati"/>
-            <StringItem index="97" value="Kuwait"/>
-            <StringItem index="98" value="Laos"/>
-            <StringItem index="99" value="Lesoto"/>
-            <StringItem index="100" value="Letonia"/>
-            <StringItem index="101" value="L&#xed;bano"/>
-            <StringItem index="102" value="Liberia"/>
-            <StringItem index="103" value="Libia"/>
-            <StringItem index="104" value="Liechtenstein"/>
-            <StringItem index="105" value="Lituania"/>
-            <StringItem index="106" value="Luxemburgo"/>
-            <StringItem index="107" value="Macedonia del Norte"/>
-            <StringItem index="108" value="Madagascar"/>
-            <StringItem index="109" value="Malasia"/>
-            <StringItem index="110" value="Malaui"/>
-            <StringItem index="111" value="Maldivas"/>
-            <StringItem index="112" value="Mal&#xed;"/>
-            <StringItem index="113" value="Malta"/>
-            <StringItem index="114" value="Marruecos"/>
-            <StringItem index="115" value="Mauricio"/>
-            <StringItem index="116" value="Mauritania"/>
-            <StringItem index="117" value="M&#xe9;xico"/>
-            <StringItem index="118" value="Micronesia"/>
-            <StringItem index="119" value="Moldavia"/>
-            <StringItem index="120" value="M&#xf3;naco"/>
-            <StringItem index="121" value="Mongolia"/>
-            <StringItem index="122" value="Montenegro"/>
-            <StringItem index="123" value="Mozambique"/>
-            <StringItem index="124" value="Namibia"/>
-            <StringItem index="125" value="Nauru"/>
-            <StringItem index="126" value="Nepal"/>
-            <StringItem index="127" value="Nicaragua"/>
-            <StringItem index="128" value="N&#xed;ger"/>
-            <StringItem index="129" value="Nigeria"/>
-            <StringItem index="130" value="Noruega"/>
-            <StringItem index="131" value="Nueva Zelanda"/>
-            <StringItem index="132" value="Om&#xe1;n"/>
-            <StringItem index="133" value="Pa&#xed;ses Bajos"/>
-            <StringItem index="134" value="Pakist&#xe1;n"/>
-            <StringItem index="135" value="Palaos"/>
-            <StringItem index="136" value="Panam&#xe1;"/>
-            <StringItem index="137" value="Pap&#xfa;a Nueva Guinea"/>
-            <StringItem index="138" value="Paraguay"/>
-            <StringItem index="139" value="Per&#xfa;"/>
-            <StringItem index="140" value="Polonia"/>
-            <StringItem index="141" value="Portugal"/>
-            <StringItem index="142" value="Reino Unido"/>
-            <StringItem index="143" value="Rep&#xfa;blica Centroafricana"/>
-            <StringItem index="144" value="Rep&#xfa;blica Checa"/>
-            <StringItem index="145" value="Rep&#xfa;blica del Congo"/>
-            <StringItem index="146" value="Rep&#xfa;blica Democr&#xe1;tica del Congo"/>
-            <StringItem index="147" value="Rep&#xfa;blica Dominicana"/>
-            <StringItem index="148" value="Rep&#xfa;blica Sudafricana"/>
-            <StringItem index="149" value="Ruanda"/>
-            <StringItem index="150" value="Ruman&#xed;a"/>
-            <StringItem index="151" value="Rusia"/>
-            <StringItem index="152" value="Samoa"/>
-            <StringItem index="153" value="San Crist&#xf3;bal y Nieves"/>
-            <StringItem index="154" value="San Marino"/>
-            <StringItem index="155" value="San Vicente y las Granadinas"/>
-            <StringItem index="156" value="Santa Luc&#xed;a"/>
-            <StringItem index="157" value="Santo Tom&#xe9; y Pr&#xed;ncipe"/>
-            <StringItem index="158" value="Senegal"/>
-            <StringItem index="159" value="Serbia"/>
-            <StringItem index="160" value="Seychelles"/>
-            <StringItem index="161" value="Sierra Leona"/>
-            <StringItem index="162" value="Singapur"/>
-            <StringItem index="163" value="Siria"/>
-            <StringItem index="164" value="Somalia"/>
-            <StringItem index="165" value="Sri Lanka"/>
-            <StringItem index="166" value="Suazilandia"/>
-            <StringItem index="167" value="Sud&#xe1;n"/>
-            <StringItem index="168" value="Sud&#xe1;n del Sur"/>
-            <StringItem index="169" value="Suecia"/>
-            <StringItem index="170" value="Suiza"/>
-            <StringItem index="171" value="Surinam"/>
-            <StringItem index="172" value="Tailandia"/>
-            <StringItem index="173" value="Tanzania"/>
-            <StringItem index="174" value="Tayikist&#xe1;n"/>
-            <StringItem index="175" value="Timor Oriental"/>
-            <StringItem index="176" value="Togo"/>
-            <StringItem index="177" value="Tonga"/>
-            <StringItem index="178" value="Trinidad y Tobago"/>
-            <StringItem index="179" value="T&#xfa;nez"/>
-            <StringItem index="180" value="Turkmenist&#xe1;n"/>
-            <StringItem index="181" value="Turqu&#xed;a"/>
-            <StringItem index="182" value="Tuvalu"/>
-            <StringItem index="183" value="Ucrania"/>
-            <StringItem index="184" value="Uganda"/>
-            <StringItem index="185" value="Uruguay"/>
-            <StringItem index="186" value="Uzbekist&#xe1;n"/>
-            <StringItem index="187" value="Vanuatu"/>
-            <StringItem index="188" value="Venezuela"/>
-            <StringItem index="189" value="Vietnam"/>
-            <StringItem index="190" value="Yemen"/>
-            <StringItem index="191" value="Yibuti"/>
-            <StringItem index="192" value="Zambia"/>
-            <StringItem index="193" value="Zimbabue"/>
-          </StringArray>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="33" red="33" type="rgb"/>
         </Property>
+        <Property name="text" type="java.lang.String" value="C&#xe9;dula"/>
       </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="Pais1">
+    <Component class="javax.swing.JLabel" name="Label1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="10" style="0"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="(*)"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Label1MouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Label1MouseExited"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Label2">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="10" style="0"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="(*)"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Label2MouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Label2MouseExited"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="1"/>
         </Property>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="192">
-            <StringItem index="0" value="Afgano"/>
-            <StringItem index="1" value="Albanes"/>
-            <StringItem index="2" value="Aleman"/>
-            <StringItem index="3" value="Andorrano"/>
-            <StringItem index="4" value="Antiguano"/>
-            <StringItem index="5" value="Argelino"/>
-            <StringItem index="6" value="Argentino"/>
-            <StringItem index="7" value="Armenio"/>
-            <StringItem index="8" value="Australiano"/>
-            <StringItem index="9" value="Austriaco"/>
-            <StringItem index="10" value="Azerbaiyano"/>
-            <StringItem index="11" value="Bahameno"/>
-            <StringItem index="12" value="Bahreini"/>
-            <StringItem index="13" value="Bangladesi"/>
-            <StringItem index="14" value="Barbadense"/>
-            <StringItem index="15" value="Belga"/>
-            <StringItem index="16" value="Beliceno"/>
-            <StringItem index="17" value="Benines"/>
-            <StringItem index="18" value="Bielorruso"/>
-            <StringItem index="19" value="Birmano"/>
-            <StringItem index="20" value="Boliviano"/>
-            <StringItem index="21" value="Bosnio"/>
-            <StringItem index="22" value="Botsuano"/>
-            <StringItem index="23" value="Brasilero"/>
-            <StringItem index="24" value="Britanico"/>
-            <StringItem index="25" value="Bruneano"/>
-            <StringItem index="26" value="Bulgaro"/>
-            <StringItem index="27" value="Burkines"/>
-            <StringItem index="28" value="Burundes"/>
-            <StringItem index="29" value="Butanes"/>
-            <StringItem index="30" value="Caboverdiano"/>
-            <StringItem index="31" value="Camboyano"/>
-            <StringItem index="32" value="Camerunes"/>
-            <StringItem index="33" value="Canadiense"/>
-            <StringItem index="34" value="Catari"/>
-            <StringItem index="35" value="Ceilanes"/>
-            <StringItem index="36" value="Centroafricano"/>
-            <StringItem index="37" value="Chadiano"/>
-            <StringItem index="38" value="Checo"/>
-            <StringItem index="39" value="Chileno"/>
-            <StringItem index="40" value="Chino"/>
-            <StringItem index="41" value="Chipriota"/>
-            <StringItem index="42" value="Colombiano"/>
-            <StringItem index="43" value="Comorense"/>
-            <StringItem index="44" value="Congoleno"/>
-            <StringItem index="45" value="Congoleno"/>
-            <StringItem index="46" value="Costarricense"/>
-            <StringItem index="47" value="Cristobaleno"/>
-            <StringItem index="48" value="Croata"/>
-            <StringItem index="49" value="Cubano"/>
-            <StringItem index="50" value="Danes"/>
-            <StringItem index="51" value="Dominicano"/>
-            <StringItem index="52" value="Dominiques"/>
-            <StringItem index="53" value="Ecuatoguineano"/>
-            <StringItem index="54" value="Ecuatoriano"/>
-            <StringItem index="55" value="Egipcio"/>
-            <StringItem index="56" value="Emirati"/>
-            <StringItem index="57" value="Eritreo"/>
-            <StringItem index="58" value="Eslovaco"/>
-            <StringItem index="59" value="Esloveno"/>
-            <StringItem index="60" value="Espanol"/>
-            <StringItem index="61" value="Estadounidense"/>
-            <StringItem index="62" value="Estonio"/>
-            <StringItem index="63" value="Etiope"/>
-            <StringItem index="64" value="Filipino"/>
-            <StringItem index="65" value="Finlandes"/>
-            <StringItem index="66" value="Fiyiano"/>
-            <StringItem index="67" value="Frances"/>
-            <StringItem index="68" value="Gabones"/>
-            <StringItem index="69" value="Gambiano"/>
-            <StringItem index="70" value="Georgiano"/>
-            <StringItem index="71" value="Ghanes"/>
-            <StringItem index="72" value="Granadino"/>
-            <StringItem index="73" value="Griego"/>
-            <StringItem index="74" value="Guatemalteco"/>
-            <StringItem index="75" value="Guineano"/>
-            <StringItem index="76" value="Guyanes"/>
-            <StringItem index="77" value="Haitiano"/>
-            <StringItem index="78" value="Hondureno"/>
-            <StringItem index="79" value="Hungaro"/>
-            <StringItem index="80" value="Indio"/>
-            <StringItem index="81" value="Indonesio"/>
-            <StringItem index="82" value="Irani"/>
-            <StringItem index="83" value="Iraqui"/>
-            <StringItem index="84" value="Irlandes"/>
-            <StringItem index="85" value="Islandes"/>
-            <StringItem index="86" value="Israeli"/>
-            <StringItem index="87" value="Italiano"/>
-            <StringItem index="88" value="Jamaiquino"/>
-            <StringItem index="89" value="Japones"/>
-            <StringItem index="90" value="Jordano"/>
-            <StringItem index="91" value="Kazajo"/>
-            <StringItem index="92" value="Keniano"/>
-            <StringItem index="93" value="Kirguiso"/>
-            <StringItem index="94" value="Kiribatiano"/>
-            <StringItem index="95" value="Kuwaiti"/>
-            <StringItem index="96" value="Laosiano"/>
-            <StringItem index="97" value="Lesotense"/>
-            <StringItem index="98" value="Leton"/>
-            <StringItem index="99" value="Libanes"/>
-            <StringItem index="100" value="Liberiano"/>
-            <StringItem index="101" value="Libio"/>
-            <StringItem index="102" value="Liechtensteiniano"/>
-            <StringItem index="103" value="Lituano"/>
-            <StringItem index="104" value="Luxemburgues"/>
-            <StringItem index="105" value="Macedonio"/>
-            <StringItem index="106" value="Malasio"/>
-            <StringItem index="107" value="Malaui"/>
-            <StringItem index="108" value="Maldivo"/>
-            <StringItem index="109" value="Malgache"/>
-            <StringItem index="110" value="Maliense"/>
-            <StringItem index="111" value="Maltes"/>
-            <StringItem index="112" value="Marfileno"/>
-            <StringItem index="113" value="Marroqui"/>
-            <StringItem index="114" value="Marshales"/>
-            <StringItem index="115" value="Mauriciano"/>
-            <StringItem index="116" value="Mauritano"/>
-            <StringItem index="117" value="Mexicano"/>
-            <StringItem index="118" value="Micronesio"/>
-            <StringItem index="119" value="Moldavo"/>
-            <StringItem index="120" value="Monegasco"/>
-            <StringItem index="121" value="Mongol"/>
-            <StringItem index="122" value="Montenegrino"/>
-            <StringItem index="123" value="Mozambiqueno"/>
-            <StringItem index="124" value="Namibio"/>
-            <StringItem index="125" value="Nauruano"/>
-            <StringItem index="126" value="Neerlandes"/>
-            <StringItem index="127" value="Neozelandes"/>
-            <StringItem index="128" value="Nepales"/>
-            <StringItem index="129" value="Nicaraguense"/>
-            <StringItem index="130" value="Nigeriano"/>
-            <StringItem index="131" value="Nigerino"/>
-            <StringItem index="132" value="Norcoreano"/>
-            <StringItem index="133" value="Noruego"/>
-            <StringItem index="134" value="Omani"/>
-            <StringItem index="135" value="Pakistani"/>
-            <StringItem index="136" value="Palauano"/>
-            <StringItem index="137" value="Panameno"/>
-            <StringItem index="138" value="Papu"/>
-            <StringItem index="139" value="Paraguayo"/>
-            <StringItem index="140" value="Peruano"/>
-            <StringItem index="141" value="Polaco"/>
-            <StringItem index="142" value="Portugues"/>
-            <StringItem index="143" value="Ruandes"/>
-            <StringItem index="144" value="Rumano"/>
-            <StringItem index="145" value="Ruso"/>
-            <StringItem index="146" value="Salomonense"/>
-            <StringItem index="147" value="Salvadoreno"/>
-            <StringItem index="148" value="Samoano"/>
-            <StringItem index="149" value="Sanmarinense"/>
-            <StringItem index="150" value="Santalucense"/>
-            <StringItem index="151" value="Santotomense"/>
-            <StringItem index="152" value="Sanvicentino"/>
-            <StringItem index="153" value="Saudi"/>
-            <StringItem index="154" value="Senegales"/>
-            <StringItem index="155" value="Serbio"/>
-            <StringItem index="156" value="Seychellense"/>
-            <StringItem index="157" value="Sierraleones"/>
-            <StringItem index="158" value="Singapurense"/>
-            <StringItem index="159" value="Sirio"/>
-            <StringItem index="160" value="Somali"/>
-            <StringItem index="161" value="Suazi"/>
-            <StringItem index="162" value="Sudafricano"/>
-            <StringItem index="163" value="Sudanes"/>
-            <StringItem index="164" value="Sudsudanes"/>
-            <StringItem index="165" value="Sueco"/>
-            <StringItem index="166" value="Suizo"/>
-            <StringItem index="167" value="Surcoreano"/>
-            <StringItem index="168" value="Surinames"/>
-            <StringItem index="169" value="Tailandes"/>
-            <StringItem index="170" value="Tanzano"/>
-            <StringItem index="171" value="Tayiko"/>
-            <StringItem index="172" value="Timorense"/>
-            <StringItem index="173" value="Togoles"/>
-            <StringItem index="174" value="Tongano"/>
-            <StringItem index="175" value="Trinitense"/>
-            <StringItem index="176" value="Tunecino"/>
-            <StringItem index="177" value="Turco"/>
-            <StringItem index="178" value="Turcomano"/>
-            <StringItem index="179" value="Tuvaluano"/>
-            <StringItem index="180" value="Ucraniano"/>
-            <StringItem index="181" value="Ugandes"/>
-            <StringItem index="182" value="Uruguayo"/>
-            <StringItem index="183" value="Uzbeko"/>
-            <StringItem index="184" value="Vanuatuense"/>
-            <StringItem index="185" value="Vaticano"/>
-            <StringItem index="186" value="Venezolano"/>
-            <StringItem index="187" value="Vietnamita"/>
-            <StringItem index="188" value="Yemeni"/>
-            <StringItem index="189" value="Yibutiano"/>
-            <StringItem index="190" value="Zambiano"/>
-            <StringItem index="191" value="Zimbabuense"/>
-          </StringArray>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="33" red="33" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Nombres"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="Nombre">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="18" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="cc" red="cc" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Ej. Jos&#xe9; Antonio"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder>
+              <Color PropertyName="color" blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
+            </LineBorder>
+          </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NombreKeyTyped"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="18" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="33" red="33" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Apellidos"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel6">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="18" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="33" red="33" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="G&#xe9;nero"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="Continuar">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Continuar &gt;"/>
+      </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
   </SubComponents>

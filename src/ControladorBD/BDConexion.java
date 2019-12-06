@@ -4,11 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 
-import Interfaces.BDMensaje;
-
 public class BDConexion {
-
-    BDMensaje mensaje = new BDMensaje();
 
     public static final String URL = "jdbc:postgresql://localhost:5432/CLUB_LECTURA";
     public static final String USERNAME = "postgres";

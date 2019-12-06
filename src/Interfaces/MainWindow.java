@@ -26,6 +26,7 @@ import Interfaces.Contenido.ActCalendario;
 import Interfaces.Contenido.NuevaObra;
 import Interfaces.Contenido.CierreObra;
 import Interfaces.Contenido.NuevaFunc;
+import Interfaces.Contenido.RegistraMiembro3;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -33,7 +34,6 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 
 import ControladorBD.QueriesJose;
-import javax.swing.JOptionPane;
 
 public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
@@ -66,6 +66,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
     Pagos pago = new Pagos();
     RegistraMiembro nuevomiembro = new RegistraMiembro();
     RegistraMiembro2 nuevomiembro2 = new RegistraMiembro2();
+    RegistraMiembro3 nuevomiembro3 = new RegistraMiembro3();
     CambioClub cambioclub = new CambioClub();
     NuevaObra nuevaobra = new NuevaObra();
     CierreObra cierreobra = new CierreObra();
@@ -760,11 +761,37 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
         } else if (evt.equals(nuevomiembro.Continuar)) {
             
-            if(nuevomiembro.CalcularEdad() <= 18 & nuevomiembro.val()){
-                
-                
-            }else if (nuevomiembro.CalcularEdad() >= 19 & nuevomiembro.val()){
-                
+            if (nuevomiembro.val()){
+                if(nuevomiembro.CalcularEdad() <= 18){
+
+                    Alistar();
+
+                    miembros.setVisible(true);
+                    nuevomiembro3.setVisible(true);
+
+                    ContentPannel.add(nuevomiembro3);
+                    Titulo.setText("Registrar representante");
+                    OptionPannel.add(miembros);
+                    nuevomiembro3.Cedula.setText(nuevomiembro.CedulaRep.getText());
+                    nuevomiembro3.Cedula.setForeground(Color.gray);
+
+                }else if (nuevomiembro.CalcularEdad() >= 19){
+
+                    Alistar();
+
+                    miembros.setVisible(true);
+                    nuevomiembro2.setVisible(true);
+
+                    ContentPannel.add(nuevomiembro2);
+                    OptionPannel.add(miembros);
+
+                }
+            }
+
+        } else if (evt.equals(nuevomiembro3.Continuar)) {
+            
+            if (nuevomiembro3.val()){
+
                 Alistar();
 
                 miembros.setVisible(true);
@@ -772,7 +799,6 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
                 ContentPannel.add(nuevomiembro2);
                 OptionPannel.add(miembros);
-                
             }
 
         } else if (evt.equals(nuevomiembro2.Registrar)) {
