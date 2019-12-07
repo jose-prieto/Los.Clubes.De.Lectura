@@ -8,6 +8,7 @@ package ControladorBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,8 +20,8 @@ public class Scripts {
     
         BDConexion connectivity = new BDConexion();
        
-    public int iniciarBD() {
-         Connection con = connectivity.getConnection();
+    public int iniciarBD(){
+       try (Connection con = connectivity.getConnection()){
         PreparedStatement ps = null;
         ResultSet res = null;
         direccion_lugar(ps,res,con);
@@ -53,7 +54,10 @@ public class Scripts {
         actor(ps,res,con);
         libro_miembro(ps,res,con);
         libros_preferidos(ps,res,con);
-        return 1;    
+       }catch(Exception e){
+           JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+       }
+       return 1; 
     }  
     public void actor(PreparedStatement ps, ResultSet res,Connection con) {
         try {
@@ -168,7 +172,7 @@ public class Scripts {
     
       public void g_lector(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-        ps = con.prepareStatement("CREATE TABLE public.g_lector ( grup_id numeric(3,0) NOT NULL, club_id numeric(3,0) NOT NULL, fechai_mie date NOT NULL, doc_id numeric(10,0) NOT NULL, fechai_gru date NOT NULL, fechaf_gru date, CONSTRAINT pk_g_lector PRIMARY KEY (doc_id, fechai_mie, club_id, grup_id), CONSTRAINT fk_g_lector1 FOREIGN KEY (doc_id, fechai_mie, club_id) REFERENCES public.hist_miembro (doc_id, fechai_mie, club_id) MATCH SIMPLE, CONSTRAINT fk_g_lector2 FOREIGN KEY (grup_id, club_id) REFERENCES public.grupo (grup_id, club_id) MATCH SIMPLE)");
+        ps = con.prepareStatement("CREATE TABLE public.g_lector ( grup_id numeric(3,0) NOT NULL, club_id numeric(3,0) NOT NULL, fechai_mie date NOT NULL, clubh_id numeric(3,0) NOT NULL, doc_id numeric(10,0) NOT NULL, fechai_gru date NOT NULL, fechaf_gru date, CONSTRAINT pk_g_lector PRIMARY KEY (grup_id, club_id, fechai_mie, clubh_id, doc_id), CONSTRAINT fk_g_lector1 FOREIGN KEY (fechai_mie, clubh_id, doc_id) REFERENCES public.hist_miembro ( fechai_mie, club_id, doc_id) MATCH SIMPLE, CONSTRAINT fk_g_lector2 FOREIGN KEY (grup_id, club_id) REFERENCES public.grupo (grup_id, club_id) MATCH SIMPLE )");
         res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
@@ -211,7 +215,7 @@ public class Scripts {
     }
     public void inasistencia(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-            ps = con.prepareStatement("CREATE TABLE public.inasistencia ( reu_fecha date NOT NULL, grup_id numeric(3,0) NOT NULL, club_id numeric(3,0) NOT NULL, fechai_mie date NOT NULL, doc_id numeric(10,0) NOT NULL, CONSTRAINT pk_inasistencia PRIMARY KEY (reu_fecha, grup_id, club_id, fechai_mie, doc_id), CONSTRAINT fk_inasist1 FOREIGN KEY (grup_id, reu_fecha, club_id) REFERENCES public.reuniones (grup_id, reu_fecha, club_id) MATCH SIMPLE, CONSTRAINT fk_inasist2 FOREIGN KEY (grup_id, doc_id, fechai_mie, club_id) REFERENCES public.g_lector (grup_id, doc_id, fechai_mie, club_id) MATCH SIMPLE )");
+            ps = con.prepareStatement("CREATE TABLE public.inasistencia ( reu_fecha date NOT NULL, grupr_id numeric(3,0) NOT NULL, clubr_id numeric(3,0) NOT NULL, grup_id numeric(3,0) NOT NULL, club_id numeric(3,0) NOT NULL, fechai_mie date NOT NULL, clubh_id numeric(3,0) NOT NULL, doc_id numeric(10,0) NOT NULL, CONSTRAINT pk_inasistencia PRIMARY KEY (reu_fecha, grupr_id, clubr_id,  grup_id, club_id, fechai_mie, clubh_id, doc_id), CONSTRAINT fk_inasist1 FOREIGN KEY (reu_fecha, grupr_id, clubr_id) REFERENCES public.reuniones (reu_fecha, grup_id, club_id) MATCH SIMPLE, CONSTRAINT fk_inasist2 FOREIGN KEY (grup_id, club_id, fechai_mie, clubh_id, doc_id) REFERENCES public.g_lector (grup_id, club_id, fechai_mie, clubh_id, doc_id) MATCH SIMPLE )");
             res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
@@ -306,7 +310,7 @@ public class Scripts {
     }
     public void reuniones(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-            ps = con.prepareStatement("CREATE TABLE public.reuniones ( reu_fecha date NOT NULL, grup_id numeric(3,0) NOT NULL, club_id numeric(3,0) NOT NULL, reu_conclusiones character varying(400) COLLATE pg_catalog.\"default\", reu_valoracion numeric(1,0), isbn numeric(15,0) NOT NULL, fechai_mie date NOT NULL, doc_id numeric(10,0) NOT NULL, CONSTRAINT pk_reuniones PRIMARY KEY (reu_fecha, grup_id, club_id), CONSTRAINT fk_reu1 FOREIGN KEY (grup_id, doc_id, fechai_mie, club_id) REFERENCES public.g_lector (grup_id, doc_id, fechai_mie, club_id) MATCH SIMPLE, CONSTRAINT fk_reu2 FOREIGN KEY (grup_id, club_id) REFERENCES public.grupo (grup_id, club_id) MATCH SIMPLE, CONSTRAINT fk_reu3 FOREIGN KEY (isbn) REFERENCES public.libro (isbn) MATCH SIMPLE )");
+            ps = con.prepareStatement("CREATE TABLE public.reuniones (reu_fecha date NOT NULL, grup_id numeric(3,0) NOT NULL, club_id numeric(3,0) NOT NULL, reu_conclusiones character varying(400), reu_valoracion numeric(1,0), isbn numeric(15,0) NOT NULL, grupg_l_id numeric(3,0) NOT NULL, clubg_l_id numeric(3,0) NOT NULL, clubh_id numeric(3,0) NOT NULL, fechai_mie date NOT NULL, doc_id numeric(10,0) NOT NULL, CONSTRAINT pk_reuniones PRIMARY KEY (reu_fecha, grup_id, club_id), CONSTRAINT fk_reu1 FOREIGN KEY (grupg_l_id, clubg_l_id, fechai_mie, clubh_id, doc_id) REFERENCES public.g_lector (grup_id, club_id, fechai_mie, clubh_id, doc_id) MATCH SIMPLE, CONSTRAINT fk_reu2 FOREIGN KEY (grup_id, club_id) REFERENCES public.grupo (grup_id, club_id) MATCH SIMPLE, CONSTRAINT fk_reu3 FOREIGN KEY (isbn) REFERENCES public.libro (isbn) MATCH SIMPLE )");
             res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
