@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import java.sql.Date;
 
 //import DBController.DBConnection;
 public class QueriesAlberto {
@@ -75,7 +76,68 @@ public class QueriesAlberto {
      
  }
  
+    public void BuscarHist(int ci) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+            Date fechai;
+            int club;
+            ps = con.prepareStatement("SELECT doc_id,fechai_mie,club_id  "
+                    + "FROM hist_miembro "
+                    + "WHERE doc_id = ?;");
+            ps.setInt(1, ci);
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                fechai = res.getDate("fechai_mie");
+                club = res.getInt("club_id");
+                Pago(ci,fechai,club);
+                
+            } else {
+               
+            }
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            
+            
+        }
+        
+        
+    }
  
  
+  public void Pago(int ci, Date fechai, int club){
+      String SQL = "INSERT INTO public.pago(\n" +
+            "   pago_id, fechai_mie, club_id, doc_id, pago_fecha)\n" +
+            "	VALUES (?, ?, ?, ?, ?);";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, 1);
+            ps.setDate(2, fechai);
+            ps.setInt(3, club);
+            ps.setInt(4, ci);
+            ps.setDate(5,fechai);
+            
+     
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                JOptionPane.showMessageDialog(null, "Libro creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+     
+ }
 
 }

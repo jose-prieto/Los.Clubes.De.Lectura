@@ -1,5 +1,6 @@
 package Interfaces.Contenido;
 
+import ControladorBD.QueriesAlberto;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 
@@ -7,10 +8,12 @@ public class Pagos extends javax.swing.JPanel {
 
     ProcedimientosExtra listen = new ProcedimientosExtra();
     Dialogo diag = new Dialogo ();
+    QueriesAlberto query = new QueriesAlberto();
+    int ci;
 
     public Pagos() {
         initComponents();
-
+        
         listen.FieldListener(IdPaga);
     }
 
@@ -108,6 +111,7 @@ public class Pagos extends javax.swing.JPanel {
             IdPaga.setBorder(new LineBorder(Color.red));
         } else {
             IdPaga.setBorder(new LineBorder(Color.gray));
+ 
         }
     }//GEN-LAST:event_RegistrarActionPerformed
 

@@ -8,7 +8,7 @@ public class BDConexion {
 
     public static final String URL = "jdbc:postgresql://localhost:5432/CLUB_LECTURA";
     public static final String USERNAME = "postgres";
-    public static final String PASSWORD = "24217857";
+    public static final String PASSWORD = "2003";
 
     public Connection getConnection() {
         Connection conexion = null;
