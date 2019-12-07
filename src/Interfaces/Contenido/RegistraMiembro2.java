@@ -75,6 +75,11 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Cod1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Cod1.setText("0424");
         Cod1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Cod1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Cod1KeyTyped(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
@@ -84,6 +89,11 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Libro2.setForeground(new java.awt.Color(204, 204, 255));
         Libro2.setText("Ej. 9788877547224");
         Libro2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Libro2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Libro2KeyTyped(evt);
+            }
+        });
 
         Libro1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Libro1.setForeground(new java.awt.Color(204, 204, 255));
@@ -103,6 +113,11 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Libro3.setForeground(new java.awt.Color(204, 204, 255));
         Libro3.setText("Ej. 9788877547224");
         Libro3.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Libro3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Libro3KeyTyped(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
@@ -181,6 +196,11 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Num1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Num1.setText("1931798");
         Num1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Num1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Num1KeyTyped(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
@@ -191,12 +211,22 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Num2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Num2.setText("4424833");
         Num2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Num2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Num2KeyTyped(evt);
+            }
+        });
 
         Cod2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Cod2.setForeground(new java.awt.Color(204, 204, 255));
         Cod2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Cod2.setText("0212");
         Cod2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Cod2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Cod2KeyTyped(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(51, 51, 51));
@@ -427,7 +457,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         if (Libro1.getText().equals("Ej. 9788877547224") && !query.libroExist(Integer.parseInt(Libro1.getText()))) {
             Libro1.setBorder(new LineBorder(Color.red));
             val = false;
-        } else {
+        }else {
             Libro1.setBorder(new LineBorder(Color.gray));
         }
         if (Libro2.getText().equals("Ej. 9788877547224") && !query.libroExist(Integer.parseInt(Libro2.getText()))) {
@@ -455,7 +485,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         } else {
             Cod2.setBorder(new LineBorder(Color.gray));
         }
-        if (!Num2.getText().equals("Ej. 30698625") && Num2.getText().length() < 4) {
+        if (!Num2.getText().equals("Ej. 30698625") && Num2.getText().length() < 7) {
             Num2.setBorder(new LineBorder(Color.red));
             JOptionPane.showMessageDialog(null, "Los números de teléfono deben tener 7 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
@@ -497,8 +527,24 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
             }
         }
         
-        
-        
+        if (!query.miemPref(idmiem, num(Libro1.getText()), 1)){
+            return false;
+        }
+        if (!query.miemPref(idmiem, num(Libro2.getText()), 2)){
+            return false;
+        }
+        if (!query.miemPref(idmiem, num(Libro3.getText()), 3)){
+            return false;
+        }
+        if (!query.libMiem(idmiem, num(Libro1.getText()))){
+            return false;
+        }
+        if (!query.libMiem(idmiem, num(Libro2.getText()))){
+            return false;
+        }
+        if (!query.libMiem(idmiem, num(Libro3.getText()))){
+            return false;
+        }
         return true;
     }
     
@@ -528,10 +574,64 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         // TODO add your handling code here:
         char c = evt.getKeyChar();
         
-        if (c < '0' || c > '9' || Num1.getText().length() > 12){
+        if (c < '0' || c > '9' || Num1.getText().length() > 13){
             evt.consume();
         }
     }//GEN-LAST:event_Libro1KeyTyped
+
+    private void Cod1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Cod1KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9' || Cod1.getText().length() > 4){
+            evt.consume();
+        }
+    }//GEN-LAST:event_Cod1KeyTyped
+
+    private void Num1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Num1KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9' || Cod1.getText().length() > 7){
+            evt.consume();
+        }
+    }//GEN-LAST:event_Num1KeyTyped
+
+    private void Cod2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Cod2KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9' || Cod1.getText().length() > 4){
+            evt.consume();
+        }
+    }//GEN-LAST:event_Cod2KeyTyped
+
+    private void Num2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Num2KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9' || Cod1.getText().length() > 7){
+            evt.consume();
+        }
+    }//GEN-LAST:event_Num2KeyTyped
+
+    private void Libro2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Libro2KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9' || Num1.getText().length() > 13){
+            evt.consume();
+        }
+    }//GEN-LAST:event_Libro2KeyTyped
+
+    private void Libro3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Libro3KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9' || Num1.getText().length() > 13){
+            evt.consume();
+        }
+    }//GEN-LAST:event_Libro3KeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

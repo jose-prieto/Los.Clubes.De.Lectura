@@ -42,6 +42,61 @@ public class QueriesJose {
         return false;
     }
     
+    public boolean miemPref(int ced, int isbn, int pos) {
+        
+        String SQL = "INSERT INTO public.libros_preferidos(\n" +
+                        "	doc_id, isbn, posicion)\n" +
+                        "	VALUES (?, ?, ?);";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, ced);
+            ps.setInt(2, isbn);
+            ps.setInt(3, pos);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;
+    }
+    
+    public boolean libMiem(int ced, int isbn) {
+        
+        String SQL = "INSERT INTO public.libro_miembro(\n" +
+                        "	doc_id, isbn)\n" +
+                        "	VALUES (?, ?);";
+        
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, ced);
+            ps.setInt(2, isbn);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;
+    }
     
     
     public boolean CrearRep(int id, String nombre1, String nombre2, String apellido1, String apellido2, String genero) {
