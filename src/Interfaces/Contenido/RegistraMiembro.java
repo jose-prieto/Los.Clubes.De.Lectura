@@ -435,7 +435,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
         // TODO add your handling code here:
         char c = evt.getKeyChar();
         
-        if (c < '0' || c > '9' || Cedula.getText().length() > 11){
+        if (c < '0' || c > '9' || Cedula.getText().length() > 10){
             evt.consume();
         }
     }//GEN-LAST:event_CedulaKeyTyped
@@ -444,7 +444,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
         // TODO add your handling code here:
         char c = evt.getKeyChar();
         
-        if (c < '0' || c > '9' || CedulaRep.getText().length() > 11){
+        if (c < '0' || c > '9' || CedulaRep.getText().length() > 10){
             evt.consume();
         }
     }//GEN-LAST:event_CedulaRepKeyTyped
@@ -471,7 +471,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
         // TODO add your handling code here:
         char c = evt.getKeyChar();
         
-        if (c < '0' || c > '9' || CedulaRep.getText().length() > 3){
+        if (c < '0' || c > '9' || IdClub.getText().length() > 3){
             evt.consume();
         }
     }//GEN-LAST:event_IdClubKeyTyped

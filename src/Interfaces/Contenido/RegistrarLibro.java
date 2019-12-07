@@ -82,6 +82,11 @@ public class RegistrarLibro extends javax.swing.JPanel {
         OriTitulo.setForeground(new java.awt.Color(204, 204, 255));
         OriTitulo.setText("Ej. Romeo and Juliet");
         OriTitulo.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        OriTitulo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                OriTituloKeyTyped(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
@@ -95,6 +100,11 @@ public class RegistrarLibro extends javax.swing.JPanel {
         ApeAutor.setForeground(new java.awt.Color(204, 204, 255));
         ApeAutor.setText("Ej. Shakespeare");
         ApeAutor.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        ApeAutor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ApeAutorKeyTyped(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
@@ -104,6 +114,11 @@ public class RegistrarLibro extends javax.swing.JPanel {
         EspTitulo.setForeground(new java.awt.Color(204, 204, 255));
         EspTitulo.setText("Ej. Romeo y Julieta");
         EspTitulo.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        EspTitulo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                EspTituloKeyTyped(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
@@ -113,6 +128,11 @@ public class RegistrarLibro extends javax.swing.JPanel {
         NomAutor.setForeground(new java.awt.Color(204, 204, 255));
         NomAutor.setText("Ej. William");
         NomAutor.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        NomAutor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NomAutorKeyTyped(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
@@ -147,6 +167,11 @@ public class RegistrarLibro extends javax.swing.JPanel {
         Tema.setForeground(new java.awt.Color(204, 204, 255));
         Tema.setText("Ej. Romeo se suicida tras perder a Julieta...");
         Tema.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Tema.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TemaKeyTyped(evt);
+            }
+        });
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -156,6 +181,11 @@ public class RegistrarLibro extends javax.swing.JPanel {
         Sinopsis.setRows(5);
         Sinopsis.setText("Ej. Para entender el argumento de Romeo y Julieta hemos de conocer el concepto de 'tragedia', un género dramático o teatral en el cual los...");
         Sinopsis.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Sinopsis.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                SinopsisKeyTyped(evt);
+            }
+        });
         jScrollPane2.setViewportView(Sinopsis);
 
         Label1.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
@@ -234,11 +264,21 @@ public class RegistrarLibro extends javax.swing.JPanel {
         Year.setForeground(new java.awt.Color(204, 204, 255));
         Year.setText("Ej. 2019");
         Year.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Year.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                YearKeyTyped(evt);
+            }
+        });
 
         Pag.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Pag.setForeground(new java.awt.Color(204, 204, 255));
         Pag.setText("Ej. 200");
         Pag.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Pag.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                PagKeyTyped(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
@@ -663,12 +703,85 @@ public class RegistrarLibro extends javax.swing.JPanel {
           // TODO add your handling code here:
                   char c = evt.getKeyChar();
         
-        if (c < '0' || c > '9' || ISBN.getText().length() > 16){
+        if (c < '0' || c > '9' || ISBN.getText().length() > 14){
             evt.consume();
         }
     }//GEN-LAST:event_ISBNKeyTyped
 
+    private void OriTituloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_OriTituloKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')){
+            evt.consume();
+            } 
+    }//GEN-LAST:event_OriTituloKeyTyped
 
+    private void EspTituloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EspTituloKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')){
+            evt.consume();
+         }     
+    }//GEN-LAST:event_EspTituloKeyTyped
+
+    private void NomAutorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NomAutorKeyTyped
+        // TODO add your handling code here:
+                char c = evt.getKeyChar();
+        
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')){
+            evt.consume();
+         }     
+        
+    }//GEN-LAST:event_NomAutorKeyTyped
+
+    private void ApeAutorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ApeAutorKeyTyped
+        // TODO add your handling code here:
+                char c = evt.getKeyChar();
+        
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')){
+            evt.consume();
+         }     
+    }//GEN-LAST:event_ApeAutorKeyTyped
+
+    private void YearKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_YearKeyTyped
+        // TODO add your handling code here:
+                 char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9' || Year.getText().length() > 3){
+            evt.consume();
+        }
+    }//GEN-LAST:event_YearKeyTyped
+
+    private void PagKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PagKeyTyped
+        // TODO add your handling code here:
+                 char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9' || Pag.getText().length() > 7){
+            evt.consume();
+        }
+    }//GEN-LAST:event_PagKeyTyped
+
+    private void TemaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TemaKeyTyped
+        // TODO add your handling code here:
+                  char c = evt.getKeyChar();
+        
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')){
+            evt.consume();
+         } 
+    }//GEN-LAST:event_TemaKeyTyped
+
+    private void SinopsisKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SinopsisKeyTyped
+        // TODO add your handling code here:
+                  char c = evt.getKeyChar();
+        
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')){
+            evt.consume();
+         } 
+    }//GEN-LAST:event_SinopsisKeyTyped
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ApeAutor;
     private javax.swing.JTextField Edit;

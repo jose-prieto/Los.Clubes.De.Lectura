@@ -8,11 +8,10 @@ public class BDConexion {
 
     public static final String URL = "jdbc:postgresql://localhost:5432/club_lectura";
     public static final String USERNAME = "postgres";
-<<<<<<< Updated upstream
-    public static final String PASSWORD = "24217857";
-=======
+
     public static final String PASSWORD = "200399aa";
->>>>>>> Stashed changes
+
+
 
     public Connection getConnection() {
         Connection conexion = null;
