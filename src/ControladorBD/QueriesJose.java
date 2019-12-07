@@ -61,7 +61,8 @@ public class QueriesJose {
             
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
             
-        }        
+        }
+        
         return true;
     }
     
@@ -77,7 +78,6 @@ public class QueriesJose {
             res = ps.executeQuery();
 
             if (res.next()) {
-                
                 return res.getInt(1);
             }
 
@@ -101,7 +101,6 @@ public class QueriesJose {
             res = ps.executeQuery();
 
             if (res.next()) {
-                
                 return res.getDate(1);
             }
 

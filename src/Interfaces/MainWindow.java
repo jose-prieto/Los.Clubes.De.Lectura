@@ -126,6 +126,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         }else{
             System.exit(0);
         }
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -438,6 +439,8 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         cierreobra = new CierreObra();
         nuevafunc = new NuevaFunc();
         diag = new Dialogo();
+        
+        nuevomiembro2.num = 0;
 
     }
 
@@ -803,23 +806,19 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
                 OptionPannel.add(miembros);
             }
 
-        } else if (evt.equals(nuevomiembro3.Continuar)) {
-            
-            if (nuevomiembro3.val()){
-
-                Alistar();
-
-                miembros.setVisible(true);
-                nuevomiembro2.setVisible(true);
-
-                ContentPannel.add(nuevomiembro2);
-                OptionPannel.add(miembros);
-            }
-
         } else if (evt.equals(nuevomiembro2.Registrar)) {
             
             if (nuevomiembro2.val() && nuevomiembro2.num == 0){
-                                
+                
+            }else {
+                Alistar();
+
+                libros.setVisible(true);
+                nuevolibro.setVisible(true);
+
+                ContentPannel.add(nuevolibro);
+                Titulo.setText("Registrar libro");
+                OptionPannel.add(libros);
             }
 
         } else if (evt.equals(clubes.Pagos)) {
@@ -870,29 +869,48 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             Titulo.setText("Asociar clubes");
             OptionPannel.add(admclub);
 
-        } else if (evt.equals(libros.RegistrarLibro) || nuevomiembro2.num > 0) {
-
-            Alistar();
-            JFrameRestart();
-
-            libros.setVisible(true);
-            nuevolibro.setVisible(true);
-
-            ContentPannel.add(nuevolibro);
-            Titulo.setText("Registrar libro");
-            OptionPannel.add(libros);
-
         } else if (evt.equals(libros.RegistrarLibro)) {
+            
+            if (nuevomiembro2.num == 0){
+                Alistar();
+                JFrameRestart();
 
-            Alistar();
-            JFrameRestart();
+                libros.setVisible(true);
+                nuevolibro.setVisible(true);
 
-            libros.setVisible(true);
-            nuevolibro.setVisible(true);
+                ContentPannel.add(nuevolibro);
+                Titulo.setText("Registrar libro");
+                OptionPannel.add(libros);
+                
+            }else {
+                Alistar();
 
-            ContentPannel.add(nuevolibro);
-            Titulo.setText("Registrar libro");
-            OptionPannel.add(libros);
+                libros.setVisible(true);
+                nuevolibro.setVisible(true);
+
+                ContentPannel.add(nuevolibro);
+                Titulo.setText("Registrar libro");
+                OptionPannel.add(libros);
+            }
+
+        } else if (evt.equals(nuevolibro.Registrar)) {
+            
+            if (nuevomiembro2.val() && nuevomiembro2.num == 0){
+                
+                
+                
+            }else if (nuevomiembro2.val() && nuevomiembro2.num != 0){
+                
+                nuevolibro = new RegistrarLibro();
+                Alistar();
+
+                libros.setVisible(true);
+                nuevolibro.setVisible(true);
+
+                ContentPannel.add(nuevolibro);
+                Titulo.setText("Registrar libro");
+                OptionPannel.add(libros);
+            }
 
         } else if (evt.equals(OptionPannel)) {
 
