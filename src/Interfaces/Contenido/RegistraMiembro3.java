@@ -4,11 +4,14 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
+import ControladorBD.QueriesJose;
+
 public class RegistraMiembro3 extends javax.swing.JPanel {
     
     RegistraMiembro regi = new RegistraMiembro();
     ProcedimientosExtra listen = new ProcedimientosExtra ();
     Dialogo diag = new Dialogo ();
+    QueriesJose query = new QueriesJose();
 
     public RegistraMiembro3() {
         initComponents();
@@ -49,6 +52,8 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         Continuar = new javax.swing.JButton();
+        Nombre2 = new javax.swing.JTextField();
+        Apellido2 = new javax.swing.JTextField();
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 0, 0));
@@ -128,7 +133,7 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
 
         Apellido.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Apellido.setForeground(new java.awt.Color(204, 204, 255));
-        Apellido.setText("Ej. Prieto Quintero");
+        Apellido.setText("Ej. Prieto");
         Apellido.setToolTipText("");
         Apellido.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         Apellido.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -187,7 +192,7 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
 
         Nombre.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Nombre.setForeground(new java.awt.Color(204, 204, 255));
-        Nombre.setText("Ej. José Antonio");
+        Nombre.setText("Ej. José");
         Nombre.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         Nombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -206,6 +211,27 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         Continuar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Continuar.setText("Continuar >");
 
+        Nombre2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Nombre2.setForeground(new java.awt.Color(204, 204, 255));
+        Nombre2.setText("Ej. Antonio");
+        Nombre2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Nombre2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Nombre2KeyTyped(evt);
+            }
+        });
+
+        Apellido2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Apellido2.setForeground(new java.awt.Color(204, 204, 255));
+        Apellido2.setText("Ej. Quintero");
+        Apellido2.setToolTipText("");
+        Apellido2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Apellido2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Apellido2KeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -222,7 +248,6 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(Apellido, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -247,12 +272,21 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
                                         .addComponent(jLabel6)
                                         .addGap(18, 18, 18)
                                         .addComponent(Genero, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(Nombre))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Label2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Label1, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(50, 50, 50))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(Apellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                                    .addComponent(Nombre, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(Label1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(Nombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(Label2)
+                                        .addGap(97, 97, 97)
+                                        .addComponent(Apellido2)))))))
+                .addGap(65, 65, 65))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,12 +295,14 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Label1))
+                    .addComponent(Label1)
+                    .addComponent(Nombre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Label2))
+                    .addComponent(Label2)
+                    .addComponent(Apellido2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -387,6 +423,14 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_Num2KeyTyped
 
+    private void Nombre2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nombre2KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Nombre2KeyTyped
+
+    private void Apellido2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Apellido2KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Apellido2KeyTyped
+
     public boolean val() {
         boolean val = true;
 
@@ -423,9 +467,55 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         
         return val;
     }
+    
+    public int getCedula(String ced) {
+        
+        return Integer.parseInt(Cedula.getText());
+    }
+    
+    public String getNombre() {
+        if (Nombre.getText().equals("Ej. José")){
+            return null;
+        }else {
+            return Nombre.getText();
+        }
+    }
+    
+    public String getNombre2() {
+        
+        if (Nombre2.getText().equals("Ej. Antonio")){
+            return null;
+        }else {
+            return Nombre2.getText();
+        }
+        
+    }
+    
+    public String getApellido2() {
+        
+        if (Apellido2.getText().equals("Ej. Quintero")){
+            return null;
+        }else {
+            return Apellido2.getText();
+        }
+        
+    }
+    
+    public String getApellido() {
+        return Apellido.getText();
+    }
+    
+    public String getGenero() {
+        return Genero.getSelectedItem().toString();
+    }
+    
+    public boolean CrearRep() {
+        return query.CrearRep(getCedula(Cedula.getText()), getNombre(), getNombre2(), getApellido(), getApellido2(),getGenero());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Apellido;
+    public javax.swing.JTextField Apellido;
+    private javax.swing.JTextField Apellido2;
     public javax.swing.JTextField Cedula;
     private javax.swing.JTextField Cod1;
     private javax.swing.JTextField Cod2;
@@ -435,7 +525,8 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
     private javax.swing.JLabel Label2;
     private javax.swing.JLabel Label3;
     private javax.swing.JLabel Label4;
-    private javax.swing.JTextField Nombre;
+    public javax.swing.JTextField Nombre;
+    private javax.swing.JTextField Nombre2;
     private javax.swing.JTextField Num1;
     private javax.swing.JTextField Num2;
     private javax.swing.JLabel jLabel1;

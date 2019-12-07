@@ -39,6 +39,8 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
     int cond = 1;
     
+    boolean val = false;
+    
     QueriesJose query = new QueriesJose();
     
     Dialogo diag = new Dialogo ();
@@ -423,6 +425,15 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
     }//GEN-LAST:event_AtrasActionPerformed
 
     private void JFrameRestart() {
+        
+        if (this.val){
+            query.BorraMiembro(nuevomiembro.getCedula(nuevomiembro.Cedula.getText()));
+            if (query.repExist(Integer.parseInt(nuevomiembro3.Cedula.getText()))){
+                query.BorraRep(Integer.parseInt(nuevomiembro3.Cedula.getText()));
+            }
+            this.val = false;
+        }
+        
         actualizar = new ActCalendario();
         cierre = new CierreReu();
         asistencia = new Asistencias();
@@ -439,8 +450,6 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         cierreobra = new CierreObra();
         nuevafunc = new NuevaFunc();
         diag = new Dialogo();
-        
-        nuevomiembro2.num = 0;
 
     }
 
@@ -766,7 +775,8 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
         } else if (evt.equals(nuevomiembro.Continuar)) {
             
-            if (nuevomiembro.val()){
+            if (nuevomiembro.val() && nuevomiembro.CrearMiembro()){
+                
                 if(nuevomiembro.CalcularEdad() <= 18){
 
                     Alistar();
@@ -791,11 +801,14 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
                     OptionPannel.add(miembros);
 
                 }
+                this.val = true;
             }
 
         } else if (evt.equals(nuevomiembro3.Continuar)) {
             
             if (nuevomiembro3.val()){
+                
+                nuevomiembro3.CrearRep();
 
                 Alistar();
 
@@ -808,17 +821,21 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
         } else if (evt.equals(nuevomiembro2.Registrar)) {
             
-            if (nuevomiembro2.val() && nuevomiembro2.num == 0){
-                
-            }else {
+            if (nuevomiembro2.val() && nuevomiembro2.ActMiembro(nuevomiembro.CalcularEdad(), nuevomiembro.getCedula(nuevomiembro.Cedula.getText()), nuevomiembro.getCedula(nuevomiembro.CedulaRep.getText()))){
+                this.val = false;
                 Alistar();
+                JFrameRestart();            
 
-                libros.setVisible(true);
-                nuevolibro.setVisible(true);
+                nuevomiembro.Continuar.addActionListener(this);
 
-                ContentPannel.add(nuevolibro);
-                Titulo.setText("Registrar libro");
-                OptionPannel.add(libros);
+                miembros.setVisible(true);
+                nuevomiembro.setVisible(true);
+
+                ContentPannel.add(nuevomiembro);
+                Titulo.setText("Registrar miembro");
+                OptionPannel.add(miembros);
+
+                cond = 2;
             }
 
         } else if (evt.equals(clubes.Pagos)) {
@@ -871,7 +888,6 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
         } else if (evt.equals(libros.RegistrarLibro)) {
             
-            if (nuevomiembro2.num == 0){
                 Alistar();
                 JFrameRestart();
 
@@ -881,36 +897,9 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
                 ContentPannel.add(nuevolibro);
                 Titulo.setText("Registrar libro");
                 OptionPannel.add(libros);
-                
-            }else {
-                Alistar();
-
-                libros.setVisible(true);
-                nuevolibro.setVisible(true);
-
-                ContentPannel.add(nuevolibro);
-                Titulo.setText("Registrar libro");
-                OptionPannel.add(libros);
-            }
 
         } else if (evt.equals(nuevolibro.Registrar)) {
             
-            if (nuevomiembro2.val() && nuevomiembro2.num == 0){
-                
-                
-                
-            }else if (nuevomiembro2.val() && nuevomiembro2.num != 0){
-                
-                nuevolibro = new RegistrarLibro();
-                Alistar();
-
-                libros.setVisible(true);
-                nuevolibro.setVisible(true);
-
-                ContentPannel.add(nuevolibro);
-                Titulo.setText("Registrar libro");
-                OptionPannel.add(libros);
-            }
 
         } else if (evt.equals(OptionPannel)) {
 

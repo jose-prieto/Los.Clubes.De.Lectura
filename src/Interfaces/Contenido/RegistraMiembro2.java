@@ -2,13 +2,15 @@ package Interfaces.Contenido;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
+
 import javax.swing.border.LineBorder;
+import ControladorBD.QueriesJose;
 
 public class RegistraMiembro2 extends javax.swing.JPanel {
     
     ProcedimientosExtra listen = new ProcedimientosExtra ();
     Dialogo diag = new Dialogo ();
-    public int num;
+    QueriesJose query = new QueriesJose();
 
     public RegistraMiembro2() {
         initComponents();
@@ -401,7 +403,6 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
 
     public boolean val() {
         boolean val = true;
-        this.num = 0;
 
         if (Cod1.getText().equals("0424")) {
             Cod1.setBorder(new LineBorder(Color.red));
@@ -423,19 +424,19 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         } else {
             Num1.setBorder(new LineBorder(Color.gray));
         }
-        if (Libro1.getText().equals("Ej. 9788877547224")) {
+        if (Libro1.getText().equals("Ej. 9788877547224") && !query.libroExist(Integer.parseInt(Libro1.getText()))) {
             Libro1.setBorder(new LineBorder(Color.red));
             val = false;
         } else {
             Libro1.setBorder(new LineBorder(Color.gray));
         }
-        if (Libro2.getText().equals("Ej. 9788877547224")) {
+        if (Libro2.getText().equals("Ej. 9788877547224") && !query.libroExist(Integer.parseInt(Libro2.getText()))) {
             Libro2.setBorder(new LineBorder(Color.red));
             val = false;
         } else {
             Libro2.setBorder(new LineBorder(Color.gray));
         }
-        if (Libro3.getText().equals("Ej. 9788877547224")) {
+        if (Libro3.getText().equals("Ej. 9788877547224") && !query.libroExist(Integer.parseInt(Libro3.getText()))) {
             Libro3.setBorder(new LineBorder(Color.red));
             val = false;
         } else {
@@ -467,6 +468,38 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         }
         
         return val;
+    }
+    
+    public int num(String num) {
+        
+        return Integer.parseInt(num);
+    }
+    
+    public boolean ActMiembro(int edad, int idmiem, int idrep){
+        
+        if (edad < 19){
+            if (!query.ActMiemb1(idmiem, idrep)){
+                return false;
+            }
+        }else{
+            if (!query.ActMiemb2(idmiem, idrep)){
+                return false;
+            }
+        }
+        
+        if(!query.CrearTelMiem(num(Cod1.getText()), num(Num1.getText()), idmiem)){
+                return false;
+            }
+        
+        if (!Cod2.getText().equals("Ej. 30698625")){
+            if(!query.CrearTelMiem(num(Cod2.getText()), num(Num2.getText()), idmiem)){
+                return false;
+            }
+        }
+        
+        
+        
+        return true;
     }
     
     private void Label6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label6MouseExited
