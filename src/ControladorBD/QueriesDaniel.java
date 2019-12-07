@@ -57,7 +57,7 @@ public class QueriesDaniel {
             filasafectadas = ps.executeUpdate();
 
             if (filasafectadas != 0) {
-                JOptionPane.showMessageDialog(null, "Idioma creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Direccion_lugar creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
 
         } catch (Exception e) {
@@ -84,7 +84,7 @@ public class QueriesDaniel {
             filasafectadas = ps.executeUpdate();
 
             if (filasafectadas != 0) {
-                JOptionPane.showMessageDialog(null, "Idioma creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Institucion creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
 
         } catch (Exception e) {
@@ -95,8 +95,8 @@ public class QueriesDaniel {
         }
         public void CrearIdioma_miembro(int doc_id, int idio_id) {
         
-        String SQL = "INSERT INTO public.idioma(\n" +
-            "	idio_nombre)\n" +
+        String SQL = "INSERT INTO public.idioma_miembro(\n" +
+            "	doc_id,idio_id)\n" +
             "	VALUES (?,?);";
         int filasafectadas = 0;
 
@@ -110,7 +110,7 @@ public class QueriesDaniel {
             filasafectadas = ps.executeUpdate();
 
             if (filasafectadas != 0) {
-                JOptionPane.showMessageDialog(null, "Idioma creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Idioma_miembro creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
 
         } catch (Exception e) {
@@ -119,10 +119,10 @@ public class QueriesDaniel {
         
             
         }
-        public void CrearGrupo(int grup_id, int club_id, String grupo_tipo, Date dia, Date fechai, Date fechaf) {
+        public void CrearGrupo(int grup_id, int club_id, String grup_tipo, Date dia, Date fechai, Date fechaf) {
         
-        String SQL = "INSERT INTO public.idioma(\n" +
-            "	idio_nombre)\n" +
+        String SQL = "INSERT INTO public.grupo(\n" +
+            "	grup_id, club_id, grup_tipo, dia, fechai, fechaf)\n" +
             "	VALUES (?,?,?,?,?,?);";
         int filasafectadas = 0;
 
@@ -132,15 +132,15 @@ public class QueriesDaniel {
             
             ps.setInt(1, grup_id);
             ps.setInt(2, club_id);
-            ps.setString(3, grupo_tipo);
+            ps.setString(3, grup_tipo);
             ps.setDate(4, dia);
             ps.setDate(5, fechai);
-            ps.setDate(5, fechaf);
+            ps.setDate(6, fechaf);
             
             filasafectadas = ps.executeUpdate();
 
             if (filasafectadas != 0) {
-                JOptionPane.showMessageDialog(null, "Idioma creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Grupo creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
 
         } catch (Exception e) {
@@ -149,5 +149,95 @@ public class QueriesDaniel {
         
             
         }
+        public void CrearAsociacion(int club1, int club2) {
+        
+        String SQL = "INSERT INTO public.asociacion(\n" +
+            "	club1, club2)\n" +
+            "	VALUES (?,?);";
+        int filasafectadas = 0;
 
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, club1);
+            ps.setInt(2, club2);
+          
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                JOptionPane.showMessageDialog(null, "Asociacion creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+            
+        }
+        
+        public void CrearHist_miembro(Date fechai_mie, int club_id, int doc_id, String estatus_mie, Date fechaf_mie, String motivo_retiro) {
+        
+        String SQL = "INSERT INTO public.hist_miembro(\n" +
+            "	fechai_mie, club_id, doc_id, estatus_mie, fechaf_mie, motivo_retiro)\n" +
+            "	VALUES (?,?);";
+        int filasafectadas = 0;
+
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setDate(1, fechai_mie);
+            ps.setInt(2, club_id);
+            ps.setInt(3, doc_id);
+            ps.setString(4, estatus_mie);
+            ps.setDate(5, fechaf_mie);
+            ps.setString(6, motivo_retiro);
+          
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                JOptionPane.showMessageDialog(null, "Hist_miembro creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+            
+        }
+        
+        public void CrearPago(int pago_id,Date fechai_mie, int club_id,int doc_id,String estatus_mie,Date fechaf_mie, String motivo_retiro) {
+        
+        String SQL = "INSERT INTO public.pago(\n" +
+            "	pago_ig, fechai_mie, club_id, doc_id, estatus_mie, fechaf_mie, motivo_retiro)\n" +
+            "	VALUES (?,?,?,?,?,?,?);";
+        int filasafectadas = 0;
+
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setInt(1, pago_id);
+            ps.setDate(2, fechai_mie);
+            ps.setInt(3, club_id);
+            ps.setInt(4, doc_id);
+            ps.setString(5, estatus_mie);
+            ps.setDate(6, fechaf_mie);
+            ps.setString(7, motivo_retiro);
+          
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                JOptionPane.showMessageDialog(null, "Pago creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+            
+        }       
 }
