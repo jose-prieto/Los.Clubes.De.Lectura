@@ -2,7 +2,7 @@ package Interfaces.Contenido;
 
 import java.awt.Color;
 import javax.swing.border.LineBorder;
-
+//d
 public class RegistrarLibro extends javax.swing.JPanel {
     
     ProcedimientosExtra listen = new ProcedimientosExtra ();
