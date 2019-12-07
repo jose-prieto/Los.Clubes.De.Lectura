@@ -1,6 +1,7 @@
 package Interfaces.Contenido;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
 public class Pagos extends javax.swing.JPanel {
@@ -104,10 +105,23 @@ public class Pagos extends javax.swing.JPanel {
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
         // TODO add your handling code here:
+        int ci;
         if (IdPaga.getText().equals("Ej. 58698569")) {
             IdPaga.setBorder(new LineBorder(Color.red));
         } else {
+<<<<<<< Updated upstream
             IdPaga.setBorder(new LineBorder(Color.gray));
+=======
+            if (!ciExist(Integer.parseInt(IdPaga.getText()))){
+             IdPaga.setBorder(new LineBorder(Color.red));
+             IdPaga.setText("");   
+             JOptionPane.showMessageDialog(null, "El miembro no se encuentra registrado.", "Error", JOptionPane.ERROR_MESSAGE);
+             }else{
+                IdPaga.setBorder(new LineBorder(Color.gray));
+               query.BuscarHist(Integer.parseInt(IdPaga.getText()));
+            }
+
+>>>>>>> Stashed changes
         }
     }//GEN-LAST:event_RegistrarActionPerformed
 
@@ -122,7 +136,10 @@ public class Pagos extends javax.swing.JPanel {
         diag.setVisible(false);
     }//GEN-LAST:event_LabelMouseExited
 
-
+    public boolean ciExist(int ced){        
+        return query.ciExist(ced);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField IdPaga;
     private javax.swing.JLabel Label;

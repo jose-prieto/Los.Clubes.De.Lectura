@@ -208,36 +208,5 @@ public class QueriesDaniel {
         
             
         }
-        
-        public void CrearPago(int pago_id,Date fechai_mie, int club_id,int doc_id,String estatus_mie,Date fechaf_mie, String motivo_retiro) {
-        
-        String SQL = "INSERT INTO public.pago(\n" +
-            "	pago_ig, fechai_mie, club_id, doc_id, estatus_mie, fechaf_mie, motivo_retiro)\n" +
-            "	VALUES (?,?,?,?,?,?,?);";
-        int filasafectadas = 0;
-
-        try (Connection con = conexion.getConnection()){
-
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setInt(1, pago_id);
-            ps.setDate(2, fechai_mie);
-            ps.setInt(3, club_id);
-            ps.setInt(4, doc_id);
-            ps.setString(5, estatus_mie);
-            ps.setDate(6, fechaf_mie);
-            ps.setString(7, motivo_retiro);
-          
-            
-            filasafectadas = ps.executeUpdate();
-
-            if (filasafectadas != 0) {
-                JOptionPane.showMessageDialog(null, "Pago creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        
-            
-        }       
+              
 }

@@ -1,12 +1,14 @@
 package Interfaces.Contenido;
 
+import ControladorBD.QueriesAlberto;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
-//d
+
 public class RegistrarLibro extends javax.swing.JPanel {
     
     ProcedimientosExtra listen = new ProcedimientosExtra ();
     Dialogo diag = new Dialogo ();
+    QueriesAlberto query = new QueriesAlberto();
 
     public RegistrarLibro() {
         initComponents();
@@ -52,7 +54,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
         Label4 = new javax.swing.JLabel();
         Label6 = new javax.swing.JLabel();
         Label7 = new javax.swing.JLabel();
-        Label5 = new javax.swing.JLabel();
         Year = new javax.swing.JTextField();
         Pag = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -62,8 +63,8 @@ public class RegistrarLibro extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
         Label9 = new javax.swing.JLabel();
         Label10 = new javax.swing.JLabel();
+        comboTipo = new javax.swing.JComboBox<>();
         comboSub = new javax.swing.JComboBox<>();
-        comboTip = new javax.swing.JComboBox<>();
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 0, 0));
@@ -123,6 +124,11 @@ public class RegistrarLibro extends javax.swing.JPanel {
 
         Registrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Registrar.setText("Registrar");
+        Registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegistrarActionPerformed(evt);
+            }
+        });
 
         Edit.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Edit.setForeground(new java.awt.Color(204, 204, 255));
@@ -224,18 +230,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
             }
         });
 
-        Label5.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
-        Label5.setForeground(new java.awt.Color(255, 0, 0));
-        Label5.setText("(*)");
-        Label5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Label5MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Label5MouseExited(evt);
-            }
-        });
-
         Year.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Year.setForeground(new java.awt.Color(204, 204, 255));
         Year.setText("Ej. 2019");
@@ -254,6 +248,11 @@ public class RegistrarLibro extends javax.swing.JPanel {
         ISBN.setForeground(new java.awt.Color(204, 204, 255));
         ISBN.setText("Ej. 9788877547224");
         ISBN.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        ISBN.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ISBNKeyTyped(evt);
+            }
+        });
 
         Label8.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         Label8.setForeground(new java.awt.Color(255, 0, 0));
@@ -269,11 +268,11 @@ public class RegistrarLibro extends javax.swing.JPanel {
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel9.setText("Tipo");
+        jLabel9.setText("Subgénero");
 
         jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel13.setText("Subgénero");
+        jLabel13.setText("Tipo");
 
         Label9.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         Label9.setForeground(new java.awt.Color(255, 0, 0));
@@ -299,18 +298,18 @@ public class RegistrarLibro extends javax.swing.JPanel {
             }
         });
 
-        comboSub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        comboSub.setForeground(new java.awt.Color(51, 51, 51));
-        comboSub.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lirica", "Epica", "Prosa", "Dramatica" }));
-        comboSub.addFocusListener(new java.awt.event.FocusAdapter() {
+        comboTipo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        comboTipo.setForeground(new java.awt.Color(51, 51, 51));
+        comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lirica", "Epica", "Prosa", "Dramatica" }));
+        comboTipo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                comboSubFocusLost(evt);
+                comboTipoFocusLost(evt);
             }
         });
 
-        comboTip.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        comboTip.setForeground(new java.awt.Color(51, 51, 51));
-        comboTip.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "La oda", "la elegía", "la égloga", "la sátira", "épica", "la canción" }));
+        comboSub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        comboSub.setForeground(new java.awt.Color(51, 51, 51));
+        comboSub.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "La oda", "la elegía", "la égloga", "la sátira", "épica", "la canción" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -327,8 +326,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Year, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Label5)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(Tema, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
                             .addComponent(jScrollPane2)))
@@ -358,11 +355,11 @@ public class RegistrarLibro extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(Pag, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(comboSub, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Label10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(comboTip, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(comboSub, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -403,9 +400,9 @@ public class RegistrarLibro extends javax.swing.JPanel {
                     .addComponent(jLabel9)
                     .addComponent(Label9)
                     .addComponent(Label10)
-                    .addComponent(comboSub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboTip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                    .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboSub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NomAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
@@ -425,7 +422,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
                     .addComponent(jLabel11)
                     .addComponent(jLabel4)
                     .addComponent(Label6)
-                    .addComponent(Label5)
                     .addComponent(Year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Pag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -492,17 +488,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
         diag.setVisible(false);
     }//GEN-LAST:event_Label4MouseExited
 
-    private void Label5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label5MouseEntered
-        // TODO add your handling code here:
-        diag.posicion(Label5.getLocationOnScreen().x-29, Label5.getLocationOnScreen().y+15);
-        diag.setVisible(true);
-    }//GEN-LAST:event_Label5MouseEntered
-
-    private void Label5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label5MouseExited
-        // TODO add your handling code here:
-        diag.setVisible(false);
-    }//GEN-LAST:event_Label5MouseExited
-
     private void Label6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label6MouseEntered
         // TODO add your handling code here:
         diag.posicion(Label6.getLocationOnScreen().x-29, Label6.getLocationOnScreen().y+15);
@@ -534,11 +519,11 @@ public class RegistrarLibro extends javax.swing.JPanel {
         }else{
             OriTitulo.setBorder(new LineBorder(Color.gray));
         }
-        if(EspTitulo.getText().equals("Ej. Romeo y Julieta")){
+        /*if(EspTitulo.getText().equals("Ej. Romeo y Julieta")){
             EspTitulo.setBorder(new LineBorder(Color.red));
         }else{
             EspTitulo.setBorder(new LineBorder(Color.gray));
-        }
+        }*/
         if(NomAutor.getText().equals("Ej. William")){
             NomAutor.setBorder(new LineBorder(Color.red));
         }else{
@@ -554,29 +539,53 @@ public class RegistrarLibro extends javax.swing.JPanel {
         }else{
             Edit.setBorder(new LineBorder(Color.gray));
         }
-        if(Year.getText().equals("Ej. 2019")){
+       /* if(Year.getText().equals("Ej. 2019")){
             Year.setBorder(new LineBorder(Color.red));
         }else{
             Year.setBorder(new LineBorder(Color.gray));
-        }
+        }*/
         if(Pag.getText().equals("Ej. 200")){
             Pag.setBorder(new LineBorder(Color.red));
         }else{
             Pag.setBorder(new LineBorder(Color.gray));
         }
-        if(Tema.getText().equals("Ej. Romeo se suicida tras perder a Julieta...")){
+       /* if(Tema.getText().equals("Ej. Romeo se suicida tras perder a Julieta...")){
             Tema.setBorder(new LineBorder(Color.red));
         }else{
             Tema.setBorder(new LineBorder(Color.gray));
-        }
+        }*/
         if(Sinopsis.getText().equals("Ej. Para entender el argumento de Romeo y Julieta hemos de conocer el concepto de 'tragedia', un género dramático o teatral en el cual los...")){
             Sinopsis.setBorder(new LineBorder(Color.red));
         }else{
             Sinopsis.setBorder(new LineBorder(Color.gray));
         }
         
-        return val;
         
+        return val; 
+    }
+    
+    public int clasif(){
+        int sub = comboSub.getSelectedIndex() + 1;
+        int tipo = comboTipo.getSelectedIndex() + 1;
+        int valor=0;
+        
+        if (tipo==2){
+            switch (sub) {
+                case 1:
+                    valor=5;
+                    break;
+                case 2:
+                    valor=6;
+                    break;
+                case 3:
+                    valor=7;    
+                    break;
+                default:
+                    break;
+            }
+        }
+        
+        return valor;
     }
     
     private void Label8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label8MouseEntered
@@ -606,43 +615,58 @@ public class RegistrarLibro extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_Label10MouseExited
 
-    private void comboSubFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_comboSubFocusLost
+    private void comboTipoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_comboTipoFocusLost
         // TODO add your handling code here:
-        switch(comboSub.getSelectedIndex()) {
+        switch(comboTipo.getSelectedIndex()) {
             case 0:
-                comboTip.removeAllItems();
-                comboTip.addItem("La oda");
-                comboTip.addItem("la elegia");
-                comboTip.addItem("la egloga");
-                comboTip.addItem("la satira");
-                comboTip.addItem("epica");
-                comboTip.addItem("la cancion");
+                comboSub.removeAllItems();
+                comboSub.addItem("La Oda");
+                comboSub.addItem("La Elegia");
+                comboSub.addItem("La Egloga");
+                comboSub.addItem("La Satira");
+                comboSub.addItem("Epica");
+                comboSub.addItem("La Cancion");
               break;
             case 1:
-                comboTip.removeAllItems();
-                comboTip.addItem("La epopeya");
-                comboTip.addItem("fabula el poema epico");
-                comboTip.addItem("el romance");
+                comboSub.removeAllItems();
+                comboSub.addItem("La Epopeya");
+                comboSub.addItem("Fabula el poema epico");
+                comboSub.addItem("El Romance");
               break;
             case 2:
-                comboTip.removeAllItems();
-                comboTip.addItem("Novela");
-                comboTip.addItem("Cuento");
-                comboTip.addItem("Leyenda");
-                comboTip.addItem("Fábula");
+                comboSub.removeAllItems();
+                comboSub.addItem("Novela");
+                comboSub.addItem("Cuento");
+                comboSub.addItem("Leyenda");
+                comboSub.addItem("Fábula");
               break;
             case 3:
-                comboTip.removeAllItems();
-                comboTip.addItem("La tragedia");
-                comboTip.addItem("la comedia");
-                comboTip.addItem("el drama");
-                comboTip.addItem("la opera");
-                comboTip.addItem("la zarzuela");
+                comboSub.removeAllItems();
+                comboSub.addItem("La Tragedia");
+                comboSub.addItem("La Comedia");
+                comboSub.addItem("El Drama");
+                comboSub.addItem("La Opera");
+                comboSub.addItem("La Zarzuela");
               break;
             default:
               break;
           }
-    }//GEN-LAST:event_comboSubFocusLost
+    }//GEN-LAST:event_comboTipoFocusLost
+
+    private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
+       val();
+        query.CrearLibro(Integer.parseInt(ISBN.getText()),OriTitulo.getText(), Sinopsis.getText(), Integer.parseInt(Year.getText()), Integer.parseInt(Pag.getText()), EspTitulo.getText(), Tema.getText(), Integer.parseInt(Edit.getText()),clasif());
+        query.CrearAutorLibro(NomAutor.getText(), ApeAutor.getText(), Integer.parseInt(ISBN.getText()));
+    }//GEN-LAST:event_RegistrarActionPerformed
+
+    private void ISBNKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ISBNKeyTyped
+          // TODO add your handling code here:
+                  char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9' || ISBN.getText().length() > 16){
+            evt.consume();
+        }
+    }//GEN-LAST:event_ISBNKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -655,7 +679,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
     private javax.swing.JLabel Label2;
     private javax.swing.JLabel Label3;
     private javax.swing.JLabel Label4;
-    private javax.swing.JLabel Label5;
     private javax.swing.JLabel Label6;
     private javax.swing.JLabel Label7;
     private javax.swing.JLabel Label8;
@@ -668,7 +691,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
     private javax.swing.JTextField Tema;
     private javax.swing.JTextField Year;
     private javax.swing.JComboBox<String> comboSub;
-    private javax.swing.JComboBox<String> comboTip;
+    private javax.swing.JComboBox<String> comboTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

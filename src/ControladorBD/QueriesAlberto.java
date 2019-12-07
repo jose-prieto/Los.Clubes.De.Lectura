@@ -10,13 +10,12 @@ public class QueriesAlberto {
 
     BDConexion conexion = new BDConexion();
 
- public void CrearLibro(String OriTitulo, String Sinopsis, int Year, int Pag, String EspTitulo, String Tema, int Edit) {
+ public void CrearLibro(int isbn, String OriTitulo, String Sinopsis, int Year, int Pag, String EspTitulo, String Tema, int Edit, int clasif) {
         
         String SQL = "INSERT INTO public.libro(\n" +
             "	isbn, lib_tit_original, sinopsis, lib_pag, titulo_esp, tema_princ, clasi_id, edit_id, lib_ano)\n" +
             "	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
         int filasafectadas = 0;
-        int isbn = 3;
 
         try (Connection con = conexion.getConnection()){
 
@@ -28,7 +27,7 @@ public class QueriesAlberto {
             ps.setInt(4, Pag);
             ps.setString(5, EspTitulo);
             ps.setString(6, Tema);
-            ps.setInt(7, 1);
+            ps.setInt(7, clasif);
             ps.setInt(8, Edit);
             ps.setInt(9, Year);
             
@@ -46,13 +45,11 @@ public class QueriesAlberto {
         }
  
      
- 
- public void CrearAutorLibro(String NomAutor, String ApeAutor){
+  public void CrearAutorLibro(String NomAutor, String ApeAutor, int isbn){
       String SQL = "INSERT INTO public.autor(\n" +
             "   aut_nombre1, aut_ape1, isbn)\n" +
             "	VALUES (?, ?, ?);";
         int filasafectadas = 0;
-        int isbn = 3;
         
         try (Connection con = conexion.getConnection()){
 
@@ -65,7 +62,7 @@ public class QueriesAlberto {
             filasafectadas = ps.executeUpdate();
 
             if (filasafectadas != 0) {
-                JOptionPane.showMessageDialog(null, "Libro creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Autor creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
 
         } catch (Exception e) {
@@ -75,7 +72,127 @@ public class QueriesAlberto {
      
  }
  
+<<<<<<< Updated upstream
  
  
+=======
+  
+  public boolean ciExist(int ci) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT doc_id "
+                    + "FROM miembro "
+                    + "WHERE doc_id = ?;");
+            ps.setInt(1, ci);
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+            
+        }
+    }
+     
+ 
+  public boolean libroExist(int i) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT isbn "
+                    + "FROM libro "
+                    + "WHERE isbn = ?;");
+            ps.setInt(1, i);
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+            
+        }
+    }
+     
+  
+  public void BuscarHist(int ci) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+            Date fechai;
+            int club;
+            ps = con.prepareStatement("SELECT doc_id,fechai_mie,club_id  "
+                    + "FROM hist_miembro "
+                    + "WHERE doc_id = ?;");
+            ps.setInt(1, ci);
+            
+            res = ps.executeQuery();
+
+            res.next();
+                fechai = res.getDate("fechai_mie");
+                club = res.getInt("club_id");
+                Pago(ci,fechai,club);
+                
+           
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            
+            
+        }
+        
+        
+    }
+ 
+ 
+  public void Pago(int ci, Date fechai, int club){
+      String SQL = "INSERT INTO public.pago(\n" +
+            "   pago_id, fechai_mie, club_id, doc_id)\n" +
+            "	VALUES (?, ?, ?, ?);";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, 1);
+            ps.setDate(2, fechai);
+            ps.setInt(3, club);
+            ps.setInt(4, ci);
+            
+     
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                JOptionPane.showMessageDialog(null, "Pago creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+     
+ }
+>>>>>>> Stashed changes
 
 }
