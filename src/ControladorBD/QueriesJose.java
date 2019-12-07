@@ -130,6 +130,34 @@ public class QueriesJose {
         return false;
     }
     
+    public boolean HistIns(int clubid, int miemid, String stat) {
+        
+        String SQL = "INSERT INTO public.hist_miembro(\n" +
+                        "	fechai_mie, club_id, doc_id, estatus_mie)\n" +
+                        "	VALUES (current_date, ?, ?, ?);";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(2, clubid);
+            ps.setInt(3, miemid);
+            ps.setString(3, stat);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;
+    }
+    
     public boolean CrearTelRep(int cod, int num, int rep) {
         
         String SQL = "INSERT INTO public.telefono(\n" +

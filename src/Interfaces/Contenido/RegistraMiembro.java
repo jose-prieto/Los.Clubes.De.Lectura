@@ -28,6 +28,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
         listen.FieldListener(CedulaRep);
         listen.FieldListener(Nombre2);
         listen.FieldListener(Apellido2);
+        listen.FieldListener(IdClub);
 
     }
 
@@ -55,6 +56,9 @@ public class RegistraMiembro extends javax.swing.JPanel {
         CedulaRep = new javax.swing.JTextField();
         Nombre2 = new javax.swing.JTextField();
         Apellido2 = new javax.swing.JTextField();
+        IdClub = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        Label6 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(707, 541));
         setMinimumSize(new java.awt.Dimension(707, 541));
@@ -220,21 +224,45 @@ public class RegistraMiembro extends javax.swing.JPanel {
             }
         });
 
+        IdClub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        IdClub.setForeground(new java.awt.Color(204, 204, 255));
+        IdClub.setText("Ej. 30698625");
+        IdClub.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        IdClub.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                IdClubKeyTyped(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel9.setText("I.D del club");
+
+        Label6.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
+        Label6.setForeground(new java.awt.Color(255, 0, 0));
+        Label6.setText("(*)");
+        Label6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Label6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Label6MouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(CedulaRep, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(564, 672, Short.MAX_VALUE))
+                        .addComponent(jLabel9)
+                        .addGap(119, 119, 119)
+                        .addComponent(IdClub)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Label6))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -246,23 +274,23 @@ public class RegistraMiembro extends javax.swing.JPanel {
                                     .addComponent(jLabel7))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(253, 314, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel3)
                                         .addGap(20, 20, 20)
                                         .addComponent(Genero, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(137, 137, 137)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(Apellido, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                                            .addComponent(Nombre))
+                                            .addComponent(Apellido)
+                                            .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(Label1)
                                             .addComponent(Label2))
-                                        .addGap(18, 26, Short.MAX_VALUE)
+                                        .addGap(18, 18, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(Nombre2)
-                                            .addComponent(Apellido2, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)))))
+                                            .addComponent(Apellido2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(51, 51, 51)
@@ -276,13 +304,26 @@ public class RegistraMiembro extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Label3)
-                            .addComponent(Label5))
-                        .addGap(32, 32, 32))))
+                            .addComponent(Label5)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(18, 18, 18)
+                                .addComponent(CedulaRep, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1))
+                        .addGap(269, 269, 269)))
+                .addGap(33, 33, 33))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(IdClub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(Label6))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -313,7 +354,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addComponent(Continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(45, 45, 45))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -426,6 +467,26 @@ public class RegistraMiembro extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_Apellido2KeyTyped
 
+    private void IdClubKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IdClubKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9' || CedulaRep.getText().length() > 3){
+            evt.consume();
+        }
+    }//GEN-LAST:event_IdClubKeyTyped
+
+    private void Label6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label6MouseEntered
+        // TODO add your handling code here:
+        diag.posicion(Label6.getLocationOnScreen().x-29, Label6.getLocationOnScreen().y+15);
+        diag.setVisible(true);
+    }//GEN-LAST:event_Label6MouseEntered
+
+    private void Label6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label6MouseExited
+        // TODO add your handling code here:
+        diag.setVisible(false);
+    }//GEN-LAST:event_Label6MouseExited
+
     public boolean val() {
         boolean val = true;
 
@@ -530,7 +591,11 @@ public class RegistraMiembro extends javax.swing.JPanel {
     }
     
     public boolean CrearMiembro() {
-        return query.CrearMiemb(getCedula(Cedula.getText()), getNombre(), getNombre2(), getApellido(), getApellido2(),getGenero(), getNacimiento());
+        if (query.CrearMiemb(getCedula(Cedula.getText()), getNombre(), getNombre2(), getApellido(), getApellido2(),getGenero(), getNacimiento()) && query.HistIns(getCedula(IdClub.getText()), getCedula(Cedula.getText()), "Activo")){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -540,11 +605,13 @@ public class RegistraMiembro extends javax.swing.JPanel {
     public javax.swing.JTextField CedulaRep;
     public javax.swing.JButton Continuar;
     private javax.swing.JComboBox<String> Genero;
+    public javax.swing.JTextField IdClub;
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label2;
     private javax.swing.JLabel Label3;
     private javax.swing.JLabel Label4;
     private javax.swing.JLabel Label5;
+    private javax.swing.JLabel Label6;
     public com.toedter.calendar.JCalendar Nacimiento;
     private javax.swing.JTextField Nombre;
     private javax.swing.JTextField Nombre2;
@@ -554,5 +621,6 @@ public class RegistraMiembro extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }
