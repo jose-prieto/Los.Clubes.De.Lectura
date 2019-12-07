@@ -3,17 +3,19 @@ package Interfaces.Contenido;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 
+import ControladorBD.QueriesJose;
 
 public class CambioClub extends javax.swing.JPanel {
 
     ProcedimientosExtra listen = new ProcedimientosExtra();
     Dialogo diag = new Dialogo ();
+    QueriesJose query = new QueriesJose();    
 
     public CambioClub() {
         initComponents();
 
-        listen.FieldListener(Club1);
-        listen.FieldListener(Club2);
+        listen.FieldListener(CIMiem);
+        listen.FieldListener(IDClub);
     }
 
     @SuppressWarnings("unchecked")
@@ -21,13 +23,15 @@ public class CambioClub extends javax.swing.JPanel {
     private void initComponents() {
 
         Miembro = new javax.swing.JLabel();
-        Club1 = new javax.swing.JTextField();
+        CIMiem = new javax.swing.JTextField();
         Club = new javax.swing.JLabel();
-        Club2 = new javax.swing.JTextField();
+        IDClub = new javax.swing.JTextField();
         Registrar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         Label1 = new javax.swing.JLabel();
         Label2 = new javax.swing.JLabel();
+        Club1 = new javax.swing.JLabel();
+        Motiv = new javax.swing.JTextField();
+        Label3 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(707, 541));
         setMinimumSize(new java.awt.Dimension(707, 541));
@@ -37,19 +41,29 @@ public class CambioClub extends javax.swing.JPanel {
         Miembro.setForeground(new java.awt.Color(51, 51, 51));
         Miembro.setText("C.I del miembro");
 
-        Club1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Club1.setForeground(new java.awt.Color(204, 204, 255));
-        Club1.setText("Ej. 24278596");
-        Club1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        CIMiem.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        CIMiem.setForeground(new java.awt.Color(204, 204, 255));
+        CIMiem.setText("Ej. 24278596");
+        CIMiem.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        CIMiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CIMiemKeyTyped(evt);
+            }
+        });
 
         Club.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Club.setForeground(new java.awt.Color(51, 51, 51));
-        Club.setText("Club destino");
+        Club.setText("I.D Club destino");
 
-        Club2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Club2.setForeground(new java.awt.Color(204, 204, 255));
-        Club2.setText("Ej. Club de lectura de Caracas");
-        Club2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        IDClub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        IDClub.setForeground(new java.awt.Color(204, 204, 255));
+        IDClub.setText("Ej. 123");
+        IDClub.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        IDClub.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                IDClubKeyTyped(evt);
+            }
+        });
 
         Registrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Registrar.setText("Registrar");
@@ -58,9 +72,6 @@ public class CambioClub extends javax.swing.JPanel {
                 RegistrarActionPerformed(evt);
             }
         });
-
-        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton2.setText("Reestablecer");
 
         Label1.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         Label1.setForeground(new java.awt.Color(255, 0, 0));
@@ -86,6 +97,32 @@ public class CambioClub extends javax.swing.JPanel {
             }
         });
 
+        Club1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Club1.setForeground(new java.awt.Color(51, 51, 51));
+        Club1.setText("Motivo");
+
+        Motiv.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Motiv.setForeground(new java.awt.Color(204, 204, 255));
+        Motiv.setText("Ej. Mudanza");
+        Motiv.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Motiv.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                MotivKeyTyped(evt);
+            }
+        });
+
+        Label3.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
+        Label3.setForeground(new java.awt.Color(255, 0, 0));
+        Label3.setText("(*)");
+        Label3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Label3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Label3MouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,24 +130,25 @@ public class CambioClub extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(332, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Miembro)
-                            .addComponent(Club))
+                            .addComponent(Club)
+                            .addComponent(Club1))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Club2)
-                            .addComponent(Club1, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))))
+                            .addComponent(Motiv)
+                            .addComponent(IDClub)
+                            .addComponent(CIMiem, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Label1)
-                    .addComponent(Label2))
-                .addContainerGap(62, Short.MAX_VALUE))
+                    .addComponent(Label2)
+                    .addComponent(Label3))
+                .addGap(62, 62, 62))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,18 +156,21 @@ public class CambioClub extends javax.swing.JPanel {
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Miembro)
-                    .addComponent(Club1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CIMiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label1))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Club)
-                    .addComponent(Club2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IDClub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label2))
-                .addGap(48, 48, 48)
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(309, Short.MAX_VALUE))
+                    .addComponent(Club1)
+                    .addComponent(Motiv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Label3))
+                .addGap(36, 36, 36)
+                .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(260, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -157,27 +198,66 @@ public class CambioClub extends javax.swing.JPanel {
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
         // TODO add your handling code here:
-        if (Club1.getText().equals("Ej. 24278596")) {
-            Club1.setBorder(new LineBorder(Color.red));
+        if (CIMiem.getText().equals("Ej. 24278596")) {
+            CIMiem.setBorder(new LineBorder(Color.red));
         } else {
-            Club1.setBorder(new LineBorder(Color.gray));
+            CIMiem.setBorder(new LineBorder(Color.gray));
         }
-        if (Club2.getText().equals("Ej. Club de lectura de Caracas")) {
-            Club2.setBorder(new LineBorder(Color.red));
+        if (IDClub.getText().equals("Ej. Club de lectura de Caracas")) {
+            IDClub.setBorder(new LineBorder(Color.red));
         } else {
-            Club2.setBorder(new LineBorder(Color.gray));
+            IDClub.setBorder(new LineBorder(Color.gray));
         }
     }//GEN-LAST:event_RegistrarActionPerformed
 
+    private void CIMiemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CIMiemKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9' || CIMiem.getText().length() > 10){
+            evt.consume();
+        }
+    }//GEN-LAST:event_CIMiemKeyTyped
+
+    private void IDClubKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IDClubKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9' || IDClub.getText().length() > 10){
+            evt.consume();
+        }
+    }//GEN-LAST:event_IDClubKeyTyped
+
+    private void MotivKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MotivKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MotivKeyTyped
+
+    private void Label3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label3MouseEntered
+        // TODO add your handling code here:
+        diag.posicion(Label3.getLocationOnScreen().x-29, Label3.getLocationOnScreen().y+15);
+        diag.setVisible(true);
+    }//GEN-LAST:event_Label3MouseEntered
+
+    private void Label3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label3MouseExited
+        // TODO add your handling code here:
+        diag.setVisible(true);
+    }//GEN-LAST:event_Label3MouseExited
+    
+    public void Cambiar (){
+        query.MiemInactivo(Motiv.getText(), Integer.parseInt(CIMiem.getText()));
+        query.HistIns(Integer.parseInt(IDClub.getText()), Integer.parseInt(CIMiem.getText()));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CIMiem;
     private javax.swing.JLabel Club;
-    private javax.swing.JTextField Club1;
-    private javax.swing.JTextField Club2;
+    private javax.swing.JLabel Club1;
+    private javax.swing.JTextField IDClub;
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label2;
+    private javax.swing.JLabel Label3;
     private javax.swing.JLabel Miembro;
+    private javax.swing.JTextField Motiv;
     private javax.swing.JButton Registrar;
-    private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 }

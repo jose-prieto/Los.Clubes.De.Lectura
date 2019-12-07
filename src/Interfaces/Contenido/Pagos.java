@@ -3,6 +3,7 @@ package Interfaces.Contenido;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
+import ControladorBD.QueriesAlberto;
 
 public class Pagos extends javax.swing.JPanel {
 
@@ -109,19 +110,19 @@ public class Pagos extends javax.swing.JPanel {
         if (IdPaga.getText().equals("Ej. 58698569")) {
             IdPaga.setBorder(new LineBorder(Color.red));
         } else {
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
             IdPaga.setBorder(new LineBorder(Color.gray));
-=======
+//=======
             if (!ciExist(Integer.parseInt(IdPaga.getText()))){
              IdPaga.setBorder(new LineBorder(Color.red));
              IdPaga.setText("");   
              JOptionPane.showMessageDialog(null, "El miembro no se encuentra registrado.", "Error", JOptionPane.ERROR_MESSAGE);
              }else{
                 IdPaga.setBorder(new LineBorder(Color.gray));
-               query.BuscarHist(Integer.parseInt(IdPaga.getText()));
+                //query.BuscarHist(Integer.parseInt(IdPaga.getText()));
             }
 
->>>>>>> Stashed changes
+//>>>>>>> Stashed changes
         }
     }//GEN-LAST:event_RegistrarActionPerformed
 
@@ -137,7 +138,8 @@ public class Pagos extends javax.swing.JPanel {
     }//GEN-LAST:event_LabelMouseExited
 
     public boolean ciExist(int ced){        
-        return query.ciExist(ced);
+        //return query.ciExist(ced);
+        return true;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

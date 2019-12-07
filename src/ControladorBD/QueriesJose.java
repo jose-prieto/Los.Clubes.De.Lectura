@@ -130,11 +130,11 @@ public class QueriesJose {
         return false;
     }
     
-    public boolean HistIns(int clubid, int miemid, String stat) {
+    public boolean HistIns(int clubid, int miemid) {
         
         String SQL = "INSERT INTO public.hist_miembro(\n" +
                         "	fechai_mie, club_id, doc_id, estatus_mie)\n" +
-                        "	VALUES (current_date, ?, ?, ?);";
+                        "	VALUES (current_date, ?, ?, 'Activo');";
         int filasafectadas = 0;
         
         try (Connection con = conexion.getConnection()){
@@ -143,7 +143,33 @@ public class QueriesJose {
             
             ps.setInt(2, clubid);
             ps.setInt(3, miemid);
-            ps.setString(3, stat);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;
+    }
+    
+    public boolean MiemInactivo(String motiv, int doc) {
+        
+        String SQL = "UPDATE public.hist_miembro\n" +
+                        "	SET estatus_mie='Inactivo', fechaf_mie=current_date, motivo_retiro=?\n" +
+                        "	WHERE estatus_mie = 'Activo' and doc_id = ?;";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setString(3, motiv);
+            ps.setInt(5, doc);
             
             filasafectadas = ps.executeUpdate();
 

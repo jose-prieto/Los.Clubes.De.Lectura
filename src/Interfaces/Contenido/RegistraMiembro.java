@@ -591,7 +591,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
     }
     
     public boolean CrearMiembro() {
-        if (query.CrearMiemb(getCedula(Cedula.getText()), getNombre(), getNombre2(), getApellido(), getApellido2(),getGenero(), getNacimiento()) && query.HistIns(getCedula(IdClub.getText()), getCedula(Cedula.getText()), "Activo")){
+        if (query.CrearMiemb(getCedula(Cedula.getText()), getNombre(), getNombre2(), getApellido(), getApellido2(),getGenero(), getNacimiento()) && query.HistIns(getCedula(IdClub.getText()), getCedula(Cedula.getText()))){
             return true;
         }else{
             return false;

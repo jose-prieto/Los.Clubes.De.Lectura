@@ -1,11 +1,11 @@
 package ControladorBD;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
-//import DBController.DBConnection;
 public class QueriesAlberto {
 
     BDConexion conexion = new BDConexion();
@@ -71,11 +71,6 @@ public class QueriesAlberto {
 
      
  }
- 
-<<<<<<< Updated upstream
- 
- 
-=======
   
   public boolean ciExist(int ci) {
         try (Connection con = conexion.getConnection()){
@@ -193,6 +188,4 @@ public class QueriesAlberto {
 
      
  }
->>>>>>> Stashed changes
-
 }
