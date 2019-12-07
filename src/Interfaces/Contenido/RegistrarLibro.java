@@ -58,6 +58,12 @@ public class RegistrarLibro extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         ISBN = new javax.swing.JTextField();
         Label8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        Label9 = new javax.swing.JLabel();
+        Label10 = new javax.swing.JLabel();
+        comboSub = new javax.swing.JComboBox<>();
+        comboTip = new javax.swing.JComboBox<>();
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 0, 0));
@@ -261,12 +267,57 @@ public class RegistrarLibro extends javax.swing.JPanel {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel9.setText("Tipo");
+
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel13.setText("Subgénero");
+
+        Label9.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
+        Label9.setForeground(new java.awt.Color(255, 0, 0));
+        Label9.setText("(*)");
+        Label9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Label9MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Label9MouseExited(evt);
+            }
+        });
+
+        Label10.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
+        Label10.setForeground(new java.awt.Color(255, 0, 0));
+        Label10.setText("(*)");
+        Label10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Label10MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Label10MouseExited(evt);
+            }
+        });
+
+        comboSub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        comboSub.setForeground(new java.awt.Color(51, 51, 51));
+        comboSub.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lirica", "Epica", "Prosa", "Dramatica" }));
+        comboSub.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                comboSubFocusLost(evt);
+            }
+        });
+
+        comboTip.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        comboTip.setForeground(new java.awt.Color(51, 51, 51));
+        comboTip.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "La oda", "la elegía", "la égloga", "la sátira", "épica", "la canción" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,7 +356,18 @@ public class RegistrarLibro extends javax.swing.JPanel {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
-                                .addComponent(Pag, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(Pag, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(comboSub, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Label10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(comboTip, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel9)
+                        .addGap(152, 152, 152)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Label1)
@@ -314,13 +376,14 @@ public class RegistrarLibro extends javax.swing.JPanel {
                     .addComponent(Label4)
                     .addComponent(Label6)
                     .addComponent(Label7)
-                    .addComponent(Label8))
-                .addGap(56, 56, 56))
+                    .addComponent(Label8)
+                    .addComponent(Label9))
+                .addGap(58, 58, 58))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(ISBN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -335,6 +398,14 @@ public class RegistrarLibro extends javax.swing.JPanel {
                     .addComponent(jLabel2)
                     .addComponent(EspTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel9)
+                    .addComponent(Label9)
+                    .addComponent(Label10)
+                    .addComponent(comboSub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboTip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NomAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
@@ -373,7 +444,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
                         .addComponent(jLabel10)))
                 .addGap(18, 18, 18)
                 .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57))
+                .addGap(38, 38, 38))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -519,6 +590,60 @@ public class RegistrarLibro extends javax.swing.JPanel {
         diag.setVisible(false);
     }//GEN-LAST:event_Label8MouseExited
 
+    private void Label9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label9MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Label9MouseEntered
+
+    private void Label9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label9MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Label9MouseExited
+
+    private void Label10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label10MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Label10MouseEntered
+
+    private void Label10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label10MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Label10MouseExited
+
+    private void comboSubFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_comboSubFocusLost
+        // TODO add your handling code here:
+        switch(comboSub.getSelectedIndex()) {
+            case 0:
+                comboTip.removeAllItems();
+                comboTip.addItem("La oda");
+                comboTip.addItem("la elegia");
+                comboTip.addItem("la egloga");
+                comboTip.addItem("la satira");
+                comboTip.addItem("epica");
+                comboTip.addItem("la cancion");
+              break;
+            case 1:
+                comboTip.removeAllItems();
+                comboTip.addItem("La epopeya");
+                comboTip.addItem("fabula el poema epico");
+                comboTip.addItem("el romance");
+              break;
+            case 2:
+                comboTip.removeAllItems();
+                comboTip.addItem("Novela");
+                comboTip.addItem("Cuento");
+                comboTip.addItem("Leyenda");
+                comboTip.addItem("Fábula");
+              break;
+            case 3:
+                comboTip.removeAllItems();
+                comboTip.addItem("La tragedia");
+                comboTip.addItem("la comedia");
+                comboTip.addItem("el drama");
+                comboTip.addItem("la opera");
+                comboTip.addItem("la zarzuela");
+              break;
+            default:
+              break;
+          }
+    }//GEN-LAST:event_comboSubFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ApeAutor;
@@ -526,6 +651,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
     private javax.swing.JTextField EspTitulo;
     private javax.swing.JTextField ISBN;
     private javax.swing.JLabel Label1;
+    private javax.swing.JLabel Label10;
     private javax.swing.JLabel Label2;
     private javax.swing.JLabel Label3;
     private javax.swing.JLabel Label4;
@@ -533,6 +659,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
     private javax.swing.JLabel Label6;
     private javax.swing.JLabel Label7;
     private javax.swing.JLabel Label8;
+    private javax.swing.JLabel Label9;
     private javax.swing.JTextField NomAutor;
     private javax.swing.JTextField OriTitulo;
     private javax.swing.JTextField Pag;
@@ -540,10 +667,13 @@ public class RegistrarLibro extends javax.swing.JPanel {
     private javax.swing.JTextArea Sinopsis;
     private javax.swing.JTextField Tema;
     private javax.swing.JTextField Year;
+    private javax.swing.JComboBox<String> comboSub;
+    private javax.swing.JComboBox<String> comboTip;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -551,6 +681,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
