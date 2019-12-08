@@ -226,7 +226,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
 
         IdClub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         IdClub.setForeground(new java.awt.Color(204, 204, 255));
-        IdClub.setText("Ej. 30698625");
+        IdClub.setText("Ej. 123");
         IdClub.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         IdClub.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -318,7 +318,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(IdClub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
@@ -495,6 +495,12 @@ public class RegistraMiembro extends javax.swing.JPanel {
             val = false;
         } else {
             Nombre.setBorder(new LineBorder(Color.gray));
+        }
+        if (IdClub.getText().equals("Ej. 123")) {
+            IdClub.setBorder(new LineBorder(Color.red));
+            val = false;
+        } else {
+            IdClub.setBorder(new LineBorder(Color.gray));
         }
         if (Apellido.getText().equals("Ej. Prieto")) {
             Apellido.setBorder(new LineBorder(Color.red));
