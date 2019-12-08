@@ -1,12 +1,15 @@
 package Interfaces.Contenido;
 
+import ControladorBD.QueriesAlberto;
 import java.awt.Color;
+import java.sql.Date;
 import javax.swing.border.LineBorder;
 
 public class NuevoClubContent extends javax.swing.JPanel {
 
     ProcedimientosExtra listen = new ProcedimientosExtra();
     Dialogo diag = new Dialogo ();
+    QueriesAlberto query = new QueriesAlberto();
 
     public NuevoClubContent() {
 
@@ -378,16 +381,13 @@ public class NuevoClubContent extends javax.swing.JPanel {
         } else {
             PostalClub.setBorder(new LineBorder(Color.gray));
         }
-        if (MonedaClub.getText().equals("Ej. Bolívar")) {
-            MonedaClub.setBorder(new LineBorder(Color.red));
-        } else {
-            MonedaClub.setBorder(new LineBorder(Color.gray));
-        }
         if (InstClub.getText().equals("Ej. Universidad Católica Andrés Bello")) {
             InstClub.setBorder(new LineBorder(Color.red));
         } else {
             InstClub.setBorder(new LineBorder(Color.gray));
         }
+    
+        query.CrearClub(2, NombreClub.getText(), Dir1Club.getText(), Integer.parseInt(PostalClub.getText()), true, Integer.parseInt(CiudadClub.getText()), 1);
     }//GEN-LAST:event_RegistrarActionPerformed
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered

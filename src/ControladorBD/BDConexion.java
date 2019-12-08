@@ -6,9 +6,9 @@ import javax.swing.JOptionPane;
 
 public class BDConexion {
 
-    public static final String URL = "jdbc:postgresql://localhost:5432/CLUB_LECTURA";
+    public static final String URL = "jdbc:postgresql://localhost:5432/club_lectura";
     public static final String USERNAME = "postgres";
-    public static final String PASSWORD = "2003";
+    public static final String PASSWORD = "200399aa";
 
     public Connection getConnection() {
         Connection conexion = null;
