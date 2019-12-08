@@ -1,5 +1,6 @@
 package Interfaces.Contenido;
 
+import ControladorBD.QueriesAlberto;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
@@ -9,7 +10,8 @@ public class Pagos extends javax.swing.JPanel {
 
     ProcedimientosExtra listen = new ProcedimientosExtra();
     Dialogo diag = new Dialogo ();
-
+    QueriesAlberto query = new QueriesAlberto();
+    
     public Pagos() {
         initComponents();
 
@@ -43,6 +45,11 @@ public class Pagos extends javax.swing.JPanel {
         IdPaga.setForeground(new java.awt.Color(204, 204, 255));
         IdPaga.setText("Ej. 58698569");
         IdPaga.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        IdPaga.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                IdPagaKeyTyped(evt);
+            }
+        });
 
         Registrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Registrar.setText("Registrar");
@@ -110,9 +117,6 @@ public class Pagos extends javax.swing.JPanel {
         if (IdPaga.getText().equals("Ej. 58698569")) {
             IdPaga.setBorder(new LineBorder(Color.red));
         } else {
-//<<<<<<< Updated upstream
-            IdPaga.setBorder(new LineBorder(Color.gray));
-//=======
             if (!ciExist(Integer.parseInt(IdPaga.getText()))){
              IdPaga.setBorder(new LineBorder(Color.red));
              IdPaga.setText("");   
@@ -121,8 +125,6 @@ public class Pagos extends javax.swing.JPanel {
                 IdPaga.setBorder(new LineBorder(Color.gray));
                 //query.BuscarHist(Integer.parseInt(IdPaga.getText()));
             }
-
-//>>>>>>> Stashed changes
         }
     }//GEN-LAST:event_RegistrarActionPerformed
 
@@ -136,6 +138,15 @@ public class Pagos extends javax.swing.JPanel {
         // TODO add your handling code here:
         diag.setVisible(false);
     }//GEN-LAST:event_LabelMouseExited
+
+    private void IdPagaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IdPagaKeyTyped
+        // TODO add your handling code here:
+                          char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9' || IdPaga.getText().length() > 9){
+            evt.consume();
+        }
+    }//GEN-LAST:event_IdPagaKeyTyped
 
     public boolean ciExist(int ced){        
         //return query.ciExist(ced);
