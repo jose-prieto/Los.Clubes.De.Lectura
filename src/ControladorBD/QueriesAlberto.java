@@ -188,4 +188,37 @@ public class QueriesAlberto {
 
      
  }
+  
+  
+   public void CrearClub(String nombre, String direccion, int codp, boolean cuota, int idio, int dir) {
+        
+        String SQL = "INSERT INTO public.club(\n" +
+            "	club_id, club_nombre, club_fecha_inicio, direccion, cod_postal, cuota, idio_id, dir_id)\n" +
+            "	VALUES ('2', ?, '1999/03/20', ?, ?, ?, ?, ?);";
+        int filasafectadas = 0;
+
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setString(2, nombre);
+            ps.setString(4, direccion);
+            ps.setInt(4, codp);
+            ps.setBoolean(5, cuota);
+            ps.setInt(6, idio);
+            ps.setInt(7, dir);
+
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                JOptionPane.showMessageDialog(null, "Club creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+            
+        }
 }
