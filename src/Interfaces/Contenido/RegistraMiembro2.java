@@ -57,6 +57,8 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Registrar = new javax.swing.JButton();
         Pais = new javax.swing.JComboBox<>();
         Pais1 = new javax.swing.JComboBox<>();
+        jLabel15 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 0, 0));
@@ -276,6 +278,12 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Pais1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Pais1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Afgano", "Albanes", "Aleman", "Andorrano", "Antiguano", "Argelino", "Argentino", "Armenio", "Australiano", "Austriaco", "Azerbaiyano", "Bahameno", "Bahreini", "Bangladesi", "Barbadense", "Belga", "Beliceno", "Benines", "Bielorruso", "Birmano", "Boliviano", "Bosnio", "Botsuano", "Brasilero", "Britanico", "Bruneano", "Bulgaro", "Burkines", "Burundes", "Butanes", "Caboverdiano", "Camboyano", "Camerunes", "Canadiense", "Catari", "Ceilanes", "Centroafricano", "Chadiano", "Checo", "Chileno", "Chino", "Chipriota", "Colombiano", "Comorense", "Congoleno", "Congoleno", "Costarricense", "Cristobaleno", "Croata", "Cubano", "Danes", "Dominicano", "Dominiques", "Ecuatoguineano", "Ecuatoriano", "Egipcio", "Emirati", "Eritreo", "Eslovaco", "Esloveno", "Espanol", "Estadounidense", "Estonio", "Etiope", "Filipino", "Finlandes", "Fiyiano", "Frances", "Gabones", "Gambiano", "Georgiano", "Ghanes", "Granadino", "Griego", "Guatemalteco", "Guineano", "Guyanes", "Haitiano", "Hondureno", "Hungaro", "Indio", "Indonesio", "Irani", "Iraqui", "Irlandes", "Islandes", "Israeli", "Italiano", "Jamaiquino", "Japones", "Jordano", "Kazajo", "Keniano", "Kirguiso", "Kiribatiano", "Kuwaiti", "Laosiano", "Lesotense", "Leton", "Libanes", "Liberiano", "Libio", "Liechtensteiniano", "Lituano", "Luxemburgues", "Macedonio", "Malasio", "Malaui", "Maldivo", "Malgache", "Maliense", "Maltes", "Marfileno", "Marroqui", "Marshales", "Mauriciano", "Mauritano", "Mexicano", "Micronesio", "Moldavo", "Monegasco", "Mongol", "Montenegrino", "Mozambiqueno", "Namibio", "Nauruano", "Neerlandes", "Neozelandes", "Nepales", "Nicaraguense", "Nigeriano", "Nigerino", "Norcoreano", "Noruego", "Omani", "Pakistani", "Palauano", "Panameno", "Papu", "Paraguayo", "Peruano", "Polaco", "Portugues", "Ruandes", "Rumano", "Ruso", "Salomonense", "Salvadoreno", "Samoano", "Sanmarinense", "Santalucense", "Santotomense", "Sanvicentino", "Saudi", "Senegales", "Serbio", "Seychellense", "Sierraleones", "Singapurense", "Sirio", "Somali", "Suazi", "Sudafricano", "Sudanes", "Sudsudanes", "Sueco", "Suizo", "Surcoreano", "Surinames", "Tailandes", "Tanzano", "Tayiko", "Timorense", "Togoles", "Tongano", "Trinitense", "Tunecino", "Turco", "Turcomano", "Tuvaluano", "Ucraniano", "Ugandes", "Uruguayo", "Uzbeko", "Vanuatuense", "Vaticano", "Venezolano", "Vietnamita", "Yemeni", "Yibutiano", "Zambiano", "Zimbabuense" }));
 
+        jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel15.setText("Agregar idioma");
+
+        jComboBox1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -283,50 +291,59 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel14))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel15)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Libro2)
-                            .addComponent(Libro3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Pais, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Pais1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Label4)
-                            .addComponent(Label6)
-                            .addComponent(Label3)
-                            .addComponent(Label5)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Cod1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Num1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Label1)
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel8)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel14))
                         .addGap(18, 18, 18)
-                        .addComponent(Cod2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Num2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Libro1, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Label2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Label7)))
-                .addGap(31, 31, 31))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Libro2)
+                                    .addComponent(Libro3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(Pais, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Pais1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Label4)
+                                    .addComponent(Label6)
+                                    .addComponent(Label3)
+                                    .addComponent(Label5)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(Cod1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Num1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Label1)
+                                        .addGap(37, 37, 37)
+                                        .addComponent(jLabel8)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Cod2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Num2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(Libro1, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Label2))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Label7))
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(31, 31, 31))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -370,9 +387,13 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
                     .addComponent(jLabel14)
                     .addComponent(Ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label7))
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addGap(64, 64, 64))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -653,11 +674,13 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> Pais;
     private javax.swing.JComboBox<String> Pais1;
     public javax.swing.JButton Registrar;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
