@@ -72,6 +72,7 @@ public class QueriesAlberto {
      
  }
   
+  
   public boolean ciExist(int ci) {
         try (Connection con = conexion.getConnection()){
 
@@ -190,7 +191,7 @@ public class QueriesAlberto {
  }
   
   
-   public void CrearClub(String nombre, String direccion, int codp, boolean cuota, int idio, int dir) {
+  public void CrearClub(String nombre, String direccion, int codp, boolean cuota, int idio, int dir) {
 
         String SQL = "INSERT INTO public.club2(\n" +
             "	 club_nombre, direccion, cod_postal, cuota, idio_id, dir_id)\n" +
@@ -222,4 +223,35 @@ public class QueriesAlberto {
         
             
         }
+   
+   
+  public boolean clubExist(int club) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT club_id "
+                    + "FROM club "
+                    + "WHERE club_id = ?;");
+            ps.setInt(1, club);
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+            
+        }
+    }
+   
+   
+   
 }

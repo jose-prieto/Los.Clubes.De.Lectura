@@ -458,11 +458,6 @@ public class NuevoClubContent extends javax.swing.JPanel {
 
     private void InstClubKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InstClubKeyTyped
         // TODO add your handling code here:
-            char c = evt.getKeyChar();
-        
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')){
-            evt.consume();
-        }
     }//GEN-LAST:event_InstClubKeyTyped
 
     

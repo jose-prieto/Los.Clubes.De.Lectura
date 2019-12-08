@@ -1,6 +1,8 @@
 package Interfaces.Contenido;
 
+import ControladorBD.QueriesAlberto;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
 
@@ -8,6 +10,7 @@ public class AsociarClub extends javax.swing.JPanel {
 
     ProcedimientosExtra listen = new ProcedimientosExtra();
     Dialogo diag = new Dialogo();
+    QueriesAlberto query = new QueriesAlberto();
     
     public AsociarClub() {
         initComponents();
@@ -35,21 +38,31 @@ public class AsociarClub extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("Nombre del club 1");
+        jLabel1.setText("Id del club 1");
 
         Club1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Club1.setForeground(new java.awt.Color(204, 204, 255));
         Club1.setText("Ej. Club de estudios científicos");
         Club1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Club1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Club1KeyTyped(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Nombre del club 2");
+        jLabel2.setText("Id del club 2");
 
         Club2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Club2.setForeground(new java.awt.Color(204, 204, 255));
         Club2.setText("Ej. Club de lectura de Caracas");
         Club2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Club2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Club2KeyTyped(evt);
+            }
+        });
 
         Registrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Registrar.setText("Registrar");
@@ -105,7 +118,7 @@ public class AsociarClub extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Club2)
-                            .addComponent(Club1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE))))
+                            .addComponent(Club1, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Label1)
@@ -157,12 +170,44 @@ public class AsociarClub extends javax.swing.JPanel {
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
         // TODO add your handling code here:
-        if (Club1.getText().equals("Ej. Club de estudios científicos")) {
+        if (Club1.getText().equals("Ej. 1")) {
             Club1.setBorder(new LineBorder(Color.red));
         } else {
             Club1.setBorder(new LineBorder(Color.gray));
+            Club2.setBorder(new LineBorder(Color.gray));
+            if(!query.clubExist(Integer.parseInt(Club2.getText()))){ 
+                JOptionPane.showMessageDialog(null, "El id a asociar de club 1 no se encuentra registrado", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        if (Club2.getText().equals("Ej. 5")) {
+            Club2.setBorder(new LineBorder(Color.red));
+        } else {
+            Club2.setBorder(new LineBorder(Color.gray));
+            if(query.clubExist(Integer.parseInt(Club2.getText()))){
+                JOptionPane.showMessageDialog(null, "Pasoo", "Error", JOptionPane.ERROR_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(null, "El id a asociar del club 2 no se encuentra registrado", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_RegistrarActionPerformed
+
+    private void Club1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Club1KeyTyped
+        // TODO add your handling code here:
+                     char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9' || Club1.getText().length() > 2){
+            evt.consume();
+        }
+    }//GEN-LAST:event_Club1KeyTyped
+
+    private void Club2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Club2KeyTyped
+        // TODO add your handling code here:
+                     char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9' || Club2.getText().length() > 2){
+            evt.consume();
+        }
+    }//GEN-LAST:event_Club2KeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
