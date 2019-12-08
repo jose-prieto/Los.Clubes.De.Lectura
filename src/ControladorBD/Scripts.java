@@ -119,7 +119,7 @@ public class Scripts {
     
     public void club(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-        ps = con.prepareStatement("CREATE TABLE public.club ( club_id numeric(3,0) NOT NULL, club_nombre character varying(30) COLLATE pg_catalog.\"default\" NOT NULL, club_fecha_inicio date NOT NULL, direccion character varying(50) COLLATE pg_catalog.\"default\" NOT NULL, cod_postal numeric(10,0) NOT NULL, cuota boolean, idio_id numeric(2,0) NOT NULL, dir_id numeric(4,0) NOT NULL, inst_id numeric(3,0), CONSTRAINT pk_club PRIMARY KEY (club_id), CONSTRAINT fk_club_dir FOREIGN KEY (dir_id) REFERENCES public.direccion_lugar (dir_id) MATCH SIMPLE, CONSTRAINT fk_club_idio FOREIGN KEY (idio_id) REFERENCES public.idioma (idio_id) MATCH SIMPLE, CONSTRAINT fk_club_inst FOREIGN KEY (inst_id) REFERENCES public.institucion (inst_id) MATCH SIMPLE)");    
+        ps = con.prepareStatement("CREATE TABLE public.club ( club_id numeric(3,0) NOT NULL, club_nombre character varying(30) COLLATE pg_catalog.\"default\" NOT NULL, club_fecha_inicio timestamp without time zone NOT NULL DEFAULT CURRENT_DATE, direccion character varying(50) COLLATE pg_catalog.\"default\" NOT NULL, cod_postal numeric(10,0) NOT NULL, cuota boolean, idio_id numeric(2,0) NOT NULL, dir_id numeric(4,0) NOT NULL, inst_id numeric(3,0), CONSTRAINT pk_club PRIMARY KEY (club_id), CONSTRAINT fk_club_dir FOREIGN KEY (dir_id) REFERENCES public.direccion_lugar (dir_id) MATCH SIMPLE, CONSTRAINT fk_club_idio FOREIGN KEY (idio_id) REFERENCES public.idioma (idio_id) MATCH SIMPLE, CONSTRAINT fk_club_inst FOREIGN KEY (inst_id) REFERENCES public.institucion (inst_id) MATCH SIMPLE)");    
         res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
@@ -189,7 +189,7 @@ public class Scripts {
     }
    public void hist_miembro(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-            ps = con.prepareStatement("CREATE TABLE public.hist_miembro ( fechai_mie date NOT NULL, club_id numeric(3,0) NOT NULL, doc_id numeric(10,0) NOT NULL, estatus_mie character varying(20) COLLATE pg_catalog.\"default\" NOT NULL, fechaf_mie date, motivo_retiro character varying(20) COLLATE pg_catalog.\"default\", CONSTRAINT pk_hist_miembro PRIMARY KEY (fechai_mie, club_id, doc_id), CONSTRAINT fk_hist_club FOREIGN KEY (club_id) REFERENCES public.club (club_id) MATCH SIMPLE, CONSTRAINT fk_hist_doc FOREIGN KEY (doc_id) REFERENCES public.miembro (doc_id) MATCH SIMPLE )");
+            ps = con.prepareStatement("CREATE TABLE public.hist_miembro (fechai_mie timestamp without time zone NOT NULL DEFAULT CURRENT_DATE, club_id numeric(3,0) NOT NULL, doc_id numeric(10,0) NOT NULL, estatus_mie character varying(20) COLLATE pg_catalog.\"default\" NOT NULL, fechaf_mie date, motivo_retiro character varying(20) COLLATE pg_catalog.\"default\", CONSTRAINT pk_hist_miembro PRIMARY KEY (fechai_mie, club_id, doc_id), CONSTRAINT fk_hist_club FOREIGN KEY (club_id) REFERENCES public.club (club_id) MATCH SIMPLE, CONSTRAINT fk_hist_doc FOREIGN KEY (doc_id) REFERENCES public.miembro (doc_id) MATCH SIMPLE )");
             res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
@@ -268,7 +268,7 @@ public class Scripts {
     
     public void miembro(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-            ps = con.prepareStatement("CREATE TABLE public.miembro ( doc_id numeric(10,0) NOT NULL, miemb_nombre1 character varying(15) COLLATE pg_catalog.\"default\" NOT NULL, miemb_nombre2 character varying(15) COLLATE pg_catalog.\"default\", miemb_ape1 character varying(15) COLLATE pg_catalog.\"default\" NOT NULL, miemb_ape2 character varying(15) COLLATE pg_catalog.\"default\", miemb_genero character varying(10) COLLATE pg_catalog.\"default\" NOT NULL, miemb_fecha_nac date NOT NULL, representante1 numeric(10,0), representante2 numeric(10,0), CONSTRAINT pk_miembro PRIMARY KEY (doc_id), CONSTRAINT fk_representante1 FOREIGN KEY (representante1) REFERENCES public.representante (doc_ident) MATCH SIMPLE, CONSTRAINT fk_representante2 FOREIGN KEY (representante2) REFERENCES public.miembro (doc_id) MATCH SIMPLE )");                    
+            ps = con.prepareStatement("CREATE TABLE public.miembro ( doc_id numeric(10,0) NOT NULL, miemb_nombre1 character varying(15) COLLATE pg_catalog.\"default\" NOT NULL, miemb_nombre2 character varying(15) COLLATE pg_catalog.\"default\", miemb_ape1 character varying(15) COLLATE pg_catalog.\"default\" NOT NULL, miemb_ape2 character varying(15) COLLATE pg_catalog.\"default\", miemb_genero character varying(10) COLLATE pg_catalog.\"default\" NOT NULL, miemb_fecha_nac date NOT NULL, representante numeric(10,0), representante_m numeric(10,0), CONSTRAINT pk_miembro PRIMARY KEY (doc_id), CONSTRAINT fk_representante FOREIGN KEY (representante) REFERENCES public.representante (doc_ident) MATCH SIMPLE, CONSTRAINT fk_representante_m FOREIGN KEY (representante_m) REFERENCES public.miembro (doc_id) MATCH SIMPLE )");                    
             res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
@@ -284,7 +284,7 @@ public class Scripts {
     }
     public void pago(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-            ps = con.prepareStatement("CREATE TABLE public.pago ( pago_id numeric(3,0) NOT NULL, fechai_mie date NOT NULL, club_id numeric(3,0) NOT NULL, doc_id numeric(10,0) NOT NULL, pago_fecha date NOT NULL, CONSTRAINT pk_pago PRIMARY KEY (pago_id, fechai_mie, club_id, doc_id), CONSTRAINT fk_pago FOREIGN KEY (doc_id, fechai_mie, club_id) REFERENCES public.hist_miembro (doc_id, fechai_mie, club_id) MATCH SIMPLE )");
+            ps = con.prepareStatement("CREATE TABLE public.pago ( pago_id numeric(3,0) NOT NULL, fechai_mie date NOT NULL, club_id numeric(3,0) NOT NULL, doc_id numeric(10,0) NOT NULL, pago_fecha timestamp without time zone NOT NULL DEFAULT CURRENT_DATE, CONSTRAINT pk_pago PRIMARY KEY (pago_id, fechai_mie, club_id, doc_id), CONSTRAINT fk_pago FOREIGN KEY (doc_id, fechai_mie, club_id) REFERENCES public.hist_miembro (doc_id, fechai_mie, club_id) MATCH SIMPLE )");
             res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
