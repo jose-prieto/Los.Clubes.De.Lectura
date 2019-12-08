@@ -191,22 +191,23 @@ public class QueriesAlberto {
   
   
    public void CrearClub(String nombre, String direccion, int codp, boolean cuota, int idio, int dir) {
-        
-        String SQL = "INSERT INTO public.club(\n" +
-            "	club_id, club_nombre, club_fecha_inicio, direccion, cod_postal, cuota, idio_id, dir_id)\n" +
-            "	VALUES ('2', ?, '1999/03/20', ?, ?, ?, ?, ?);";
-        int filasafectadas = 0;
 
+        String SQL = "INSERT INTO public.club2(\n" +
+            "	 club_nombre, direccion, cod_postal, cuota, idio_id, dir_id)\n" +
+            "	VALUES (?, ?, ?, ?, ?, ?);";
+        int filasafectadas = 0;
+        
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps = con.prepareStatement(SQL);
             
-            ps.setString(2, nombre);
-            ps.setString(4, direccion);
-            ps.setInt(4, codp);
-            ps.setBoolean(5, cuota);
-            ps.setInt(6, idio);
-            ps.setInt(7, dir);
+        
+            ps.setString(1, nombre);
+            ps.setString(2, direccion);
+            ps.setInt(3, codp);
+            ps.setBoolean(4, cuota);
+            ps.setInt(5, idio);
+            ps.setInt(6, dir);
 
             
             filasafectadas = ps.executeUpdate();
