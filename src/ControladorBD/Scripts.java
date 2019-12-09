@@ -59,14 +59,14 @@ public class Scripts {
       ejecD.CrearClasificacion("tragedia", "subgenero",3);
       ejecD.CrearClasificacion("cronica", "subgenero",4);
       
-      ejecJ.CrearMiemb(27342711, "Roberto", null, "Hidalgo", null, "m");
+      /*ejecJ.CrearMiemb(27342711, "Roberto", null, "Hidalgo", null, "m");
       ejecJ.CrearMiemb(2253421, "Jose", null, "Andres", null, "m");
       ejecJ.CrearMiemb(16268735, "Carmen", null, "Delgadito", null, "f");
       ejecJ.CrearMiemb(20345678, "Alan", null, "Brito", null, "m");
       ejecJ.CrearMiemb(18234631, "Armando", null, "Casitas", null, "m");
       ejecJ.CrearMiemb(27342711, "Robert", null, "Plant", null, "m");
       ejecJ.CrearMiemb(27342711, "Gabriela", null, "Moreno", null, "f");
-      ejecJ.CrearMiemb(27342711, "Artur", null, "Rito", null, "m");
+      ejecJ.CrearMiemb(27342711, "Artur", null, "Rito", null, "m");*/
       
     return 1;
     }

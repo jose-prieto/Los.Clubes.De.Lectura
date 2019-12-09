@@ -16,7 +16,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
     Dialogo diag = new Dialogo ();
     QueriesJose query = new QueriesJose();
     
-    public int docid;
+    public int docid=0;
 
     public RegistraMiembro2() {
         initComponents();
@@ -295,6 +295,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
 
         Registrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Registrar.setText("Registrar");
+        Registrar.setEnabled(false);
         Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegistrarActionPerformed(evt);
@@ -516,20 +517,32 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         } else {
             Num1.setBorder(new LineBorder(Color.gray));
         }
-        if (Libro1.getText().equals("Ej. 9788877547224") && !query.libroExist(Integer.parseInt(Libro1.getText()))) {
+        if (Libro1.getText().equals("Ej. 9788877547224")) {
             Libro1.setBorder(new LineBorder(Color.red));
+            if (!query.libroExist(Integer.parseInt(Libro1.getText()))){
+                JOptionPane.showMessageDialog(null, "Libro 1 inexistente", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
             val = false;
         }else {
             Libro1.setBorder(new LineBorder(Color.gray));
         }
-        if (Libro2.getText().equals("Ej. 9788877547224") && !query.libroExist(Integer.parseInt(Libro2.getText()))) {
+        if (Libro2.getText().equals("Ej. 9788877547224")) {
             Libro2.setBorder(new LineBorder(Color.red));
+            if (!query.libroExist(Integer.parseInt(Libro2.getText()))){
+                JOptionPane.showMessageDialog(null, "Libro 2 inexistente", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
             val = false;
         } else {
             Libro2.setBorder(new LineBorder(Color.gray));
         }
-        if (Libro3.getText().equals("Ej. 9788877547224") && !query.libroExist(Integer.parseInt(Libro3.getText()))) {
+        if (Libro3.getText().equals("Ej. 9788877547224")) {
             Libro3.setBorder(new LineBorder(Color.red));
+            if (!query.libroExist(Integer.parseInt(Libro1.getText()))){
+                JOptionPane.showMessageDialog(null, "Libro 3 inexistente", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
             val = false;
         } else {
             Libro3.setBorder(new LineBorder(Color.gray));
@@ -567,14 +580,17 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         return Integer.parseInt(num);
     }
     
-    public boolean ActMiembro(int edad, int idmiem, int idrep){
+    public boolean ActMiembro(int edad, int idmiem, int idrep, boolean exist){
         
-        if (edad < 19){
-            if (!query.ActMiemb1(idmiem, idrep)){
+        if (edad < 19 && idrep != 0 && exist){
+            System.out.println("miemb2");
+            if (!query.ActMiemb2(idmiem, idrep)){
                 return false;
             }
-        }else{
-            if (!query.ActMiemb2(idmiem, idrep)){
+        }
+        if (edad < 19 && idrep != 0 && !exist){
+            System.out.println("miemb1");
+            if (!query.ActMiemb1(idmiem, idrep)){
                 return false;
             }
         }
@@ -705,7 +721,9 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
 
     private void addIdiomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addIdiomaActionPerformed
         // TODO add your handling code here:
-        query.addIdiom(docid, comoIdioma.getSelectedItem().toString());
+        if (query.addIdiom(docid, comoIdioma.getSelectedItem().toString())){
+            Registrar.setEnabled(true);
+        }
     }//GEN-LAST:event_addIdiomaActionPerformed
 
 

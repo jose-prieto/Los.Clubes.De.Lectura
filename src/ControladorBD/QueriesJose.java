@@ -92,9 +92,8 @@ public class QueriesJose {
     public boolean ActMiemb1(int idrep, int idmiemb) {
         
         String SQL = "UPDATE public.miembro\n" +
-                        "	SET representante1=?\n" +
-                        "	WHERE doc_id = ?;\n" +
-            "	VALUES (?, ?);";
+                        "	SET representante1 = ?\n" +
+                        "	WHERE doc_id = ?;";
         int filasafectadas = 0;
         
         try (Connection con = conexion.getConnection()){
@@ -120,9 +119,8 @@ public class QueriesJose {
     public boolean ActMiemb2(int idrep, int idmiemb) {
         
         String SQL = "UPDATE public.miembro\n" +
-                        "	SET representante2=?\n" +
-                        "	WHERE doc_id = ?;\n" +
-            "	VALUES (?, ?);";
+                        "	SET representante2 = ?\n" +
+                        "	WHERE doc_id = ?;";
         int filasafectadas = 0;
         
         try (Connection con = conexion.getConnection()){
@@ -212,8 +210,8 @@ public class QueriesJose {
 
             PreparedStatement ps = con.prepareStatement(SQL);
             
-            ps.setString(3, motiv);
-            ps.setInt(5, doc);
+            ps.setString(1, motiv);
+            ps.setInt(2, doc);
             
             filasafectadas = ps.executeUpdate();
 
@@ -335,10 +333,8 @@ public class QueriesJose {
 
             PreparedStatement ps;
             ResultSet res;
-
-            ps = con.prepareStatement("SELECT doc_ident "
-                    + "FROM representante "
-                    + "WHERE doc_ident = ?;");
+            
+            ps = con.prepareStatement("SELECT doc_id FROM public.miembro WHERE doc_id = ?;");
             ps.setInt(1, ci);
             
             res = ps.executeQuery();
@@ -357,7 +353,7 @@ public class QueriesJose {
         }
     }
     
-    //Instituciones
+    //historico
     
     public boolean HistIns(int clubid, int miemid) {
         
@@ -539,7 +535,6 @@ public class QueriesJose {
             res = ps.executeQuery();
 
             if (res.next()) {
-                JOptionPane.showMessageDialog(null, "Libro inexistente", "Error", JOptionPane.ERROR_MESSAGE);
                 return true;
             } else {
                 return false;
@@ -616,9 +611,7 @@ public class QueriesJose {
             PreparedStatement ps;
             ResultSet res;
 
-            ps = con.prepareStatement("SELECT grup_id\n" +
-                                        "	FROM public.grupo\n" +
-                                        "	WHERE grup_tipo=? AND club_id=?;");
+            ps = con.prepareStatement("SELECT grup_id FROM public.grupo WHERE grup_tipo=? AND club_id=?;");
             ps.setString(1, tipo);
             ps.setInt(2, idclub);
                    
@@ -638,7 +631,33 @@ public class QueriesJose {
         return null;
     }
     
-    public int grupCant(int idgrup) {
+    public ResultSet eleccGrupo2(int idclub, String tipo) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT grup_id FROM public.grupo WHERE grup_tipo=? AND club_id=?;");
+            ps.setString(1, tipo);
+            ps.setInt(2, idclub);
+                   
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return res;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+            
+        }
+        
+        return null;
+    }
+    
+    public int grupCant(int idclub) {
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps;
@@ -648,7 +667,7 @@ public class QueriesJose {
                                         "	FROM public.g_lector"
                                     +   "       WHERE club_id=? AND fechaf_gru is null;");
             
-            ps.setInt(1, idgrup);
+            ps.setInt(1, idclub);
                    
             res = ps.executeQuery();
 
@@ -749,17 +768,42 @@ public class QueriesJose {
     }
     
     public boolean addIdiom(int docid, String idio) {
+        
+        String SQL = "INSERT INTO public.idioma_miembro(\n" +
+                        "	doc_id, idio_id)\n" +
+                        "	VALUES (?, ?);";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, docid);
+            ps.setInt(2, idiomaSearch(idio));
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;
+    }
+    
+    
+    //clubes
+    public boolean clubExist(int clubid) {
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps;
             ResultSet res;
 
-            ps = con.prepareStatement("INSERT INTO public.idioma_miembro(\n" +
-                                        "	doc_id, idio_id)\n" +
-                                        "	VALUES (?, ?);");
-            ps.setInt(1, docid);
-            ps.setInt(2, idiomaSearch(idio));
-                   
+            ps = con.prepareStatement("SELECT club_id FROM public.club WHERE club_id = ?;");
+            ps.setInt(1, clubid);
             res = ps.executeQuery();
 
             if (res.next()) {

@@ -63,8 +63,16 @@ public class ProcedimientosExtra {
         });
 
     }
-    
-    /*public boolean OrgaAddGrup(int miemID, int clubid, Date fechaNac) throws SQLException{
+    /*if (res != null){
+            try {
+                do{
+                    comoIdioma.addItem(res.getString(1));
+                }while (res.next());
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }*/
+    /*public boolean OrgaAddGrup(int miemID, int clubid, Date fechaNac) {
         
         int edad = query.Edad(fechaNac);
         int size = 0;
@@ -72,13 +80,7 @@ public class ProcedimientosExtra {
         
         if (edad > 18){
             rs = query.eleccGrupo(clubid, "Adulto");
-            if (rs != null){
-                while (rs.next()){
-                    if (query.grupCant(rs.getInt(1)) < 15){
-                        Date date = query.fechainic();
-                        return query.grupAdd(rs.getInt(1), clubid, miemID, date);
-                    }
-                }
+            if (rs == null){
                 
             }else{
                 
@@ -88,5 +90,5 @@ public class ProcedimientosExtra {
         }else if (edad < 13){
             
         }
-    }   */ 
+    }*/
 }
