@@ -11,14 +11,65 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author dani_
- */
+
 public class Scripts {
     
     
         BDConexion connectivity = new BDConexion();
+        
+    public int llenarBD(){
+        
+              QueriesDaniel ejecD = new QueriesDaniel();
+      QueriesJose ejecJ = new QueriesJose();
+      QueriesAlberto ejecA = new QueriesAlberto();
+      
+      ejecD.CrearIdioma("mandarin");
+      ejecD.CrearIdioma("español");
+      ejecD.CrearIdioma("ingles");
+      ejecD.CrearIdioma("hindi");
+      ejecD.CrearIdioma("arabe");
+      ejecD.CrearIdioma("portugues");
+      ejecD.CrearIdioma("bengali");
+      ejecD.CrearIdioma("ruso");
+      
+      ejecD.CrearDireccion_lugar("continente", "America",null, null, 0);
+      ejecD.CrearDireccion_lugar("pais", "Uruguay","Peso uruguayo", "Uruguaya", 1);
+      ejecD.CrearDireccion_lugar("pais", "Colombia","Peso colombiano", "Colombiana", 1);
+      ejecD.CrearDireccion_lugar("ciudad", "Medellin", null, null, 3);
+      ejecD.CrearDireccion_lugar("ciudad", "Bogota", null, null, 3);
+      ejecD.CrearDireccion_lugar("ciudad", "Rivera", null, null, 2);
+      ejecD.CrearDireccion_lugar("ciudad", "Montevideo", null, null, 1);
+      ejecD.CrearDireccion_lugar("continente", "Oceania", null, null, 0);
+      
+      ejecJ.CrearRep(20111113, "Robert", null, "Serra", null, "m");
+      ejecJ.CrearRep(12345678, "Elsa", null, "Pote", null, "f");
+      ejecJ.CrearRep(2011111, "Gazpacho", "De", "Sopa", "Rodriguez", "m");
+      ejecJ.CrearRep(5962813, "Maria", null, "Panchita", null, "f");
+      ejecJ.CrearRep(2011111, "Jose", null, "Prieto", null, "m");
+      ejecJ.CrearRep(2011111, "Daniel", null, "Jaspe", null, "m");
+      ejecJ.CrearRep(2011111, "Alberto", null, "Ayala", null, "m");
+      ejecJ.CrearRep(2011111, "Ana", "Josefina", "Maldonado", "Escolar", "f");
+
+      ejecD.CrearClasificacion("narrativo", "genero",0);
+      ejecD.CrearClasificacion("lirico", "genero",0);
+      ejecD.CrearClasificacion("dramatico", "genero",0);
+      ejecD.CrearClasificacion("didactico", "genero",0);
+      ejecD.CrearClasificacion("epica", "subgenero",1);
+      ejecD.CrearClasificacion("oda", "subgenero",2);
+      ejecD.CrearClasificacion("tragedia", "subgenero",3);
+      ejecD.CrearClasificacion("cronica", "subgenero",4);
+      
+      ejecJ.CrearMiemb(27342711, "Roberto", null, "Hidalgo", null, "m");
+      ejecJ.CrearMiemb(2253421, "Jose", null, "Andres", null, "m");
+      ejecJ.CrearMiemb(16268735, "Carmen", null, "Delgadito", null, "f");
+      ejecJ.CrearMiemb(20345678, "Alan", null, "Brito", null, "m");
+      ejecJ.CrearMiemb(18234631, "Armando", null, "Casitas", null, "m");
+      ejecJ.CrearMiemb(27342711, "Robert", null, "Plant", null, "m");
+      ejecJ.CrearMiemb(27342711, "Gabriela", null, "Moreno", null, "f");
+      ejecJ.CrearMiemb(27342711, "Artur", null, "Rito", null, "m");
+      
+    return 1;
+    }
        
     public int iniciarBD(){
        try (Connection con = connectivity.getConnection()){
@@ -57,17 +108,6 @@ public class Scripts {
         actor(ps,res,con);
         libro_miembro(ps,res,con);
         libros_preferidos(ps,res,con);
-        
-        
-      QueriesDaniel ejec = new QueriesDaniel();
-      ejec.CrearIdioma("mandarin");
-      ejec.CrearIdioma("español");
-      ejec.CrearIdioma("ingles");
-      ejec.CrearIdioma("hindu");
-      ejec.CrearIdioma("arabe");
-      ejec.CrearIdioma("portugues");
-      ejec.CrearIdioma("bengali");
-      ejec.CrearIdioma("ruso");      
       
        }catch(Exception e){
            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
