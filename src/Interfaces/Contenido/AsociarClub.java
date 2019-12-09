@@ -42,7 +42,7 @@ public class AsociarClub extends javax.swing.JPanel {
 
         Club1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Club1.setForeground(new java.awt.Color(204, 204, 255));
-        Club1.setText("Ej. Club de estudios científicos");
+        Club1.setText("Ej. 1");
         Club1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         Club1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -56,7 +56,7 @@ public class AsociarClub extends javax.swing.JPanel {
 
         Club2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Club2.setForeground(new java.awt.Color(204, 204, 255));
-        Club2.setText("Ej. Club de lectura de Caracas");
+        Club2.setText("Ej. 5");
         Club2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         Club2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -174,8 +174,7 @@ public class AsociarClub extends javax.swing.JPanel {
             Club1.setBorder(new LineBorder(Color.red));
         } else {
             Club1.setBorder(new LineBorder(Color.gray));
-            Club2.setBorder(new LineBorder(Color.gray));
-            if(!query.clubExist(Integer.parseInt(Club2.getText()))){ 
+            if(!query.clubExist(Integer.parseInt(Club1.getText()))){ 
                 JOptionPane.showMessageDialog(null, "El id a asociar de club 1 no se encuentra registrado", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
@@ -183,11 +182,22 @@ public class AsociarClub extends javax.swing.JPanel {
             Club2.setBorder(new LineBorder(Color.red));
         } else {
             Club2.setBorder(new LineBorder(Color.gray));
-            if(query.clubExist(Integer.parseInt(Club2.getText()))){
-                JOptionPane.showMessageDialog(null, "Pasoo", "Error", JOptionPane.ERROR_MESSAGE);
-            }else{
+            if(!query.clubExist(Integer.parseInt(Club2.getText()))){
                 JOptionPane.showMessageDialog(null, "El id a asociar del club 2 no se encuentra registrado", "Error", JOptionPane.ERROR_MESSAGE);
             }
+        }
+        
+        
+        if(query.clubExist(Integer.parseInt(Club1.getText())) && query.clubExist(Integer.parseInt(Club2.getText()))) {
+            if(Integer.parseInt(Club1.getText()) != Integer.parseInt(Club2.getText())){
+            if(query.idiomaClub(Integer.parseInt(Club1.getText())) == query.idiomaClub(Integer.parseInt(Club2.getText()))){
+                query.CrearAsociacion(Integer.parseInt(Club1.getText()), Integer.parseInt(Club2.getText()));
+            } else {
+                JOptionPane.showMessageDialog(null, "Los clubes a asociar no hablan el mismo idioma", "Error", JOptionPane.ERROR_MESSAGE);
+                   }
+            } else {
+                    JOptionPane.showMessageDialog(null, "No se puede asociar un club con si mismo", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
         }
     }//GEN-LAST:event_RegistrarActionPerformed
 

@@ -1,12 +1,15 @@
 package Interfaces.Contenido;
 
+import ControladorBD.QueriesAlberto;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
 public class EliminarClub extends javax.swing.JPanel {
     
     ProcedimientosExtra listen = new ProcedimientosExtra ();
     Dialogo diag = new Dialogo ();
+    QueriesAlberto query = new QueriesAlberto();
     
     public EliminarClub() {
         initComponents();
@@ -40,6 +43,11 @@ public class EliminarClub extends javax.swing.JPanel {
         Club.setForeground(new java.awt.Color(204, 204, 255));
         Club.setText("Ej. Club de estudios científicos");
         Club.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Club.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ClubKeyTyped(evt);
+            }
+        });
 
         Eliminar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Eliminar.setText("Eliminar");
@@ -102,10 +110,17 @@ public class EliminarClub extends javax.swing.JPanel {
 
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
         // TODO add your handling code here:
-        if(Club.getText().equals("Ej. Club de estudios científicos")){
+        if(Club.getText().equals("Ej. 10")){
             Club.setBorder(new LineBorder(Color.red));
         }else{
             Club.setBorder(new LineBorder(Color.gray));
+            if(query.clubExist(Integer.parseInt(Club.getText()))){
+               //
+               query.EliminarAsociacion(Integer.parseInt(Club.getText()));
+                query.EliminarClub(Integer.parseInt(Club.getText()));
+            } else {
+                JOptionPane.showMessageDialog(null, "El club a eliminar no se encuentra registrado.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_EliminarActionPerformed
 
@@ -119,6 +134,15 @@ public class EliminarClub extends javax.swing.JPanel {
         // TODO add your handling code here:
         diag.setVisible(false);
     }//GEN-LAST:event_LabelMouseExited
+
+    private void ClubKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ClubKeyTyped
+        // TODO add your handling code here:
+                     char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9' || Club.getText().length() > 2){
+            evt.consume();
+        }
+    }//GEN-LAST:event_ClubKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
