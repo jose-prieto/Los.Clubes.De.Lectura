@@ -3,8 +3,13 @@ package Interfaces.Contenido;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.sql.Date;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import ControladorBD.QueriesJose;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class ProcedimientosExtra {
     
@@ -12,6 +17,8 @@ public class ProcedimientosExtra {
     public Color CasillaSelect = new Color(240,240,240);
     public Color FuenteSelect = new Color(51,51,51);
     public Color FuenteNoSelect = new Color(204,204,204);
+    
+    QueriesJose query = new QueriesJose();
     
     public void FieldListener (JTextField campo){
         String cadena = campo.getText();
@@ -57,5 +64,29 @@ public class ProcedimientosExtra {
 
     }
     
-    
+    /*public boolean OrgaAddGrup(int miemID, int clubid, Date fechaNac) throws SQLException{
+        
+        int edad = query.Edad(fechaNac);
+        int size = 0;
+        ResultSet rs,rs2;
+        
+        if (edad > 18){
+            rs = query.eleccGrupo(clubid, "Adulto");
+            if (rs != null){
+                while (rs.next()){
+                    if (query.grupCant(rs.getInt(1)) < 15){
+                        Date date = query.fechainic();
+                        return query.grupAdd(rs.getInt(1), clubid, miemID, date);
+                    }
+                }
+                
+            }else{
+                
+            }
+        }else if (edad > 12 && edad <19){
+            
+        }else if (edad < 13){
+            
+        }
+    }   */ 
 }

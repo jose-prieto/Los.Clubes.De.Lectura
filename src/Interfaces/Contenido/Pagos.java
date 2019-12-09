@@ -123,7 +123,7 @@ public class Pagos extends javax.swing.JPanel {
              JOptionPane.showMessageDialog(null, "El miembro no se encuentra registrado.", "Error", JOptionPane.ERROR_MESSAGE);
              }else{
                 IdPaga.setBorder(new LineBorder(Color.gray));
-                //query.BuscarHist(Integer.parseInt(IdPaga.getText()));
+                query.BuscarHist(Integer.parseInt(IdPaga.getText()));
             }
         }
     }//GEN-LAST:event_RegistrarActionPerformed

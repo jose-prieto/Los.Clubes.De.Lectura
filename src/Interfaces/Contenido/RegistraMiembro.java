@@ -113,6 +113,11 @@ public class RegistraMiembro extends javax.swing.JPanel {
 
         Continuar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Continuar.setText("Continuar >");
+        Continuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContinuarActionPerformed(evt);
+            }
+        });
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -487,6 +492,10 @@ public class RegistraMiembro extends javax.swing.JPanel {
         diag.setVisible(false);
     }//GEN-LAST:event_Label6MouseExited
 
+    private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ContinuarActionPerformed
+
     public boolean val() {
         boolean val = true;
 
@@ -520,7 +529,6 @@ public class RegistraMiembro extends javax.swing.JPanel {
         }
         if (ciExist(getCedula(Cedula.getText()))){
             Cedula.setBorder(new LineBorder(Color.red));
-            Cedula.setText("");
             JOptionPane.showMessageDialog(null, "El miembro que desea ingresar ya está registrado", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
@@ -597,7 +605,8 @@ public class RegistraMiembro extends javax.swing.JPanel {
     }
     
     public boolean CrearMiembro() {
-        if (query.CrearMiemb(getCedula(Cedula.getText()), getNombre(), getNombre2(), getApellido(), getApellido2(),getGenero(), getNacimiento()) && query.HistIns(getCedula(IdClub.getText()), getCedula(Cedula.getText()))){
+        if (query.CrearMiemb(getCedula(Cedula.getText()), getNombre(), getNombre2(), getApellido(), getApellido2(),getGenero(), 
+                getNacimiento()) && query.HistIns(getCedula(IdClub.getText()), getCedula(Cedula.getText()))){
             return true;
         }else{
             return false;
