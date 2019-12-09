@@ -113,7 +113,7 @@ public class Pagos extends javax.swing.JPanel {
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
         // TODO add your handling code here:
-        int ci;
+       // int ci;
         if (IdPaga.getText().equals("Ej. 58698569")) {
             IdPaga.setBorder(new LineBorder(Color.red));
         } else {

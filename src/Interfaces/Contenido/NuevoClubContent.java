@@ -441,20 +441,10 @@ public class NuevoClubContent extends javax.swing.JPanel {
 
     private void NombreClubKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreClubKeyTyped
         // TODO add your handling code here:
-         char c = evt.getKeyChar();
-        
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')){
-            evt.consume();
-        }
     }//GEN-LAST:event_NombreClubKeyTyped
 
     private void Dir1ClubKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Dir1ClubKeyTyped
         // TODO add your handling code here:
-         char c = evt.getKeyChar();
-        
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')){
-            evt.consume();
-        }
     }//GEN-LAST:event_Dir1ClubKeyTyped
 
     private void PostalClubKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PostalClubKeyTyped
@@ -468,11 +458,6 @@ public class NuevoClubContent extends javax.swing.JPanel {
 
     private void InstClubKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InstClubKeyTyped
         // TODO add your handling code here:
-            char c = evt.getKeyChar();
-        
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')){
-            evt.consume();
-        }
     }//GEN-LAST:event_InstClubKeyTyped
 
     

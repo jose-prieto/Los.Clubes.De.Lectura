@@ -44,7 +44,7 @@
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="Club2" max="32767" attributes="0"/>
-                          <Component id="Club1" pref="388" max="32767" attributes="0"/>
+                          <Component id="Club1" pref="434" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -91,7 +91,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="33" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Nombre del club 1"/>
+        <Property name="text" type="java.lang.String" value="Id del club 1"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Club1">
@@ -102,7 +102,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Ej. Club de estudios cient&#xed;ficos"/>
+        <Property name="text" type="java.lang.String" value="Ej. 1"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder>
@@ -111,6 +111,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Club1KeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -120,7 +123,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="33" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Nombre del club 2"/>
+        <Property name="text" type="java.lang.String" value="Id del club 2"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Club2">
@@ -131,7 +134,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Ej. Club de lectura de Caracas"/>
+        <Property name="text" type="java.lang.String" value="Ej. 5"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder>
@@ -140,6 +143,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Club2KeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Registrar">
       <Properties>

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 public class QueriesAlberto {
@@ -71,6 +72,7 @@ public class QueriesAlberto {
 
      
  }
+  
   
   public boolean ciExist(int ci) {
         try (Connection con = conexion.getConnection()){
@@ -190,23 +192,24 @@ public class QueriesAlberto {
  }
   
   
-   public void CrearClub(String nombre, String direccion, int codp, boolean cuota, int idio, int dir) {
-        
-        String SQL = "INSERT INTO public.club(\n" +
-            "	club_id, club_nombre, club_fecha_inicio, direccion, cod_postal, cuota, idio_id, dir_id)\n" +
-            "	VALUES ('2', ?, '1999/03/20', ?, ?, ?, ?, ?);";
-        int filasafectadas = 0;
+  public void CrearClub(String nombre, String direccion, int codp, boolean cuota, int idio, int dir) {
 
+        String SQL = "INSERT INTO public.club(\n" +
+            "	 club_nombre, direccion, cod_postal, cuota, idio_id, dir_id)\n" +
+            "	VALUES (?, ?, ?, ?, ?, ?);";
+        int filasafectadas = 0;
+        
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps = con.prepareStatement(SQL);
             
-            ps.setString(2, nombre);
-            ps.setString(4, direccion);
-            ps.setInt(4, codp);
-            ps.setBoolean(5, cuota);
-            ps.setInt(6, idio);
-            ps.setInt(7, dir);
+        
+            ps.setString(1, nombre);
+            ps.setString(2, direccion);
+            ps.setInt(3, codp);
+            ps.setBoolean(4, cuota);
+            ps.setInt(5, idio);
+            ps.setInt(6, dir);
 
             
             filasafectadas = ps.executeUpdate();
@@ -221,4 +224,116 @@ public class QueriesAlberto {
         
             
         }
+   
+   
+  public boolean clubExist(int club) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT club_id "
+                    + "FROM club "
+                    + "WHERE club_id = ?;");
+            ps.setInt(1, club);
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+            
+        }
+    }
+  
+  
+  public void EliminarClub(int club) {
+      Statement stmt = null;
+        try (Connection con = conexion.getConnection()){
+
+            stmt = con.createStatement();
+            stmt.executeUpdate("DELETE FROM public.club \n"
+                    + "WHERE club_id ="+club+";");
+      
+                JOptionPane.showMessageDialog(null, "Club eliminado satisfactoriamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
+                
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+  
+  
+  public int idiomaClub(int club) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+            int idio_id = 0;
+            ps = con.prepareStatement("SELECT idio_id "
+                    + "FROM club "
+                    + "WHERE club_id = ?;");
+            ps.setInt(1, club);
+            
+            res = ps.executeQuery();
+
+            res.next();
+                idio_id= res.getInt("idio_id");
+                return idio_id;
+            
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return 0;
+            
+        }
+    } 
+    
+    
+  public void CrearAsociacion(int club1, int club2){
+      String SQL = "INSERT INTO public.asociacion(\n" +
+            "   club1, club2)\n" +
+            "	VALUES (?, ?);";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, club1);
+            ps.setInt(2, club2);
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                JOptionPane.showMessageDialog(null, "Asociacion creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+     
+ }
+  
+  
+  public void EliminarAsociacion(int club) {
+      Statement stmt = null;
+        try (Connection con = conexion.getConnection()){
+            stmt = con.createStatement();
+            stmt.executeUpdate("DELETE FROM public.asociacion \n"
+                    + "WHERE club1 ="+club+ "or club2 ="+club+";");
+           
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+   
 }

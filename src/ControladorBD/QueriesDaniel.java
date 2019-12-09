@@ -62,10 +62,37 @@ public class QueriesDaniel {
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }   
+        }
+     
+     public void CrearClasificacion(String clasi_nombre, String clasi_tipo, int clasi_padre) {
+        
+        String SQL = "INSERT INTO public.clasificacion(\n" +
+            "	clasi_nombre, clasi_tipo, clasi_id_padre)\n" +
+            "	VALUES (?,?,?);";
+        int filasafectadas = 0;
+
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setString(1, clasi_nombre);
+            ps.setString(2, clasi_tipo);
+            ps.setInt(3, clasi_padre);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                JOptionPane.showMessageDialog(null, "Institucion creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
         
             
         }
+     
         public void CrearInstitucion(String inst_nombre, String desc, int dir_id) {
         
         String SQL = "INSERT INTO public.institucion(\n" +
@@ -208,5 +235,32 @@ public class QueriesDaniel {
         
             
         }
+        
+        public boolean clubExist(int club_id) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT club_id "
+                    + "FROM club "
+                    + "WHERE club_id = ?;");
+            ps.setInt(1, club_id);
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+            
+        }
+    }
               
 }
