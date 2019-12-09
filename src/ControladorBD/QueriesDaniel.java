@@ -208,5 +208,32 @@ public class QueriesDaniel {
         
             
         }
+        
+        public boolean clubExist(int club_id) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT club_id "
+                    + "FROM club "
+                    + "WHERE club_id = ?;");
+            ps.setInt(1, club_id);
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+            
+        }
+    }
               
 }
