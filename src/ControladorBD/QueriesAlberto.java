@@ -329,8 +329,6 @@ public class QueriesAlberto {
             stmt = con.createStatement();
             stmt.executeUpdate("DELETE FROM public.asociacion \n"
                     + "WHERE club1 ="+club+ "or club2 ="+club+";");
-             JOptionPane.showMessageDialog(null, "asociacion eliminado satisfactoriamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
-                
            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
