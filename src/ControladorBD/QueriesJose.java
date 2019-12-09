@@ -267,6 +267,84 @@ public class QueriesJose {
         }
     }
     
+    public boolean fabGruposAdult(int ci) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT doc_id FROM miembro"
+                    + "WHERE date_part('year', age(current_date, miemb_fecha_nac)) > 18;");
+            ps.setInt(1, ci);
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+            
+        }
+    }
+    
+    public boolean fabGruposJoven(int ci) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT doc_id FROM miembro"
+                    + "WHERE date_part('year', age(current_date, miemb_fecha_nac)) < 19 AND date_part('year', age(current_date, miemb_fecha_nac)) > 12;");
+            ps.setInt(1, ci);
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+            
+        }
+    }
+    
+    public boolean fabGruposNino(int ci) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT doc_id FROM miembro"
+                    + "WHERE date_part('year', age(current_date, miemb_fecha_nac)) < 13;");
+            ps.setInt(1, ci);
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+            
+        }
+    }
+    
     public boolean repExist(int ci) {
         try (Connection con = conexion.getConnection()){
 

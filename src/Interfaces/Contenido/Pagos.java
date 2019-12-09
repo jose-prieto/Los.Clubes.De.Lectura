@@ -113,7 +113,7 @@ public class Pagos extends javax.swing.JPanel {
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
         // TODO add your handling code here:
-        int ci;
+       // int ci;
         if (IdPaga.getText().equals("Ej. 58698569")) {
             IdPaga.setBorder(new LineBorder(Color.red));
         } else {
@@ -123,7 +123,7 @@ public class Pagos extends javax.swing.JPanel {
              JOptionPane.showMessageDialog(null, "El miembro no se encuentra registrado.", "Error", JOptionPane.ERROR_MESSAGE);
              }else{
                 IdPaga.setBorder(new LineBorder(Color.gray));
-                //query.BuscarHist(Integer.parseInt(IdPaga.getText()));
+                query.BuscarHist(Integer.parseInt(IdPaga.getText()));
             }
         }
     }//GEN-LAST:event_RegistrarActionPerformed
