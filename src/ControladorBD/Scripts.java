@@ -6,6 +6,7 @@
 package ControladorBD;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,7 +31,7 @@ public class Scripts {
       ejecD.CrearIdioma("arabe");
       ejecD.CrearIdioma("portugues");
       ejecD.CrearIdioma("bengali");
-      ejecD.CrearIdioma("ruso");
+      ejecD.CrearIdioma("ruso"); 
       
       ejecD.CrearDireccion_lugar("continente", "America",null, null, 0);
       ejecD.CrearDireccion_lugar("pais", "Uruguay","Peso uruguayo", "Uruguaya", 1);
@@ -43,30 +44,97 @@ public class Scripts {
       
       ejecJ.CrearRep(20111113, "Robert", null, "Serra", null, "m");
       ejecJ.CrearRep(12345678, "Elsa", null, "Pote", null, "f");
-      ejecJ.CrearRep(2011111, "Gazpacho", "De", "Sopa", "Rodriguez", "m");
-      ejecJ.CrearRep(5962813, "Maria", null, "Panchita", null, "f");
-      ejecJ.CrearRep(2011111, "Jose", null, "Prieto", null, "m");
-      ejecJ.CrearRep(2011111, "Daniel", null, "Jaspe", null, "m");
-      ejecJ.CrearRep(2011111, "Alberto", null, "Ayala", null, "m");
-      ejecJ.CrearRep(2011111, "Ana", "Josefina", "Maldonado", "Escolar", "f");
+      ejecJ.CrearRep(28093123, "Gazpacho", "De", "Sopa", "Rodriguez", "m");
+      ejecJ.CrearRep(5123789, "Maria", null, "Panchita", null, "f");
+      ejecJ.CrearRep(2432489, "Jose", null, "Prieto", null, "m");
+      ejecJ.CrearRep(1723711, "Daniel", null, "Jaspe", null, "m");
+      ejecJ.CrearRep(2893238, "Alberto", null, "Ayala", null, "m");
+      ejecJ.CrearRep(27348774, "Ana", "Josefina", "Maldonado", "Escolar", "f");
 
-      ejecD.CrearClasificacion("narrativo", "genero",0);
-      ejecD.CrearClasificacion("lirico", "genero",0);
-      ejecD.CrearClasificacion("dramatico", "genero",0);
-      ejecD.CrearClasificacion("didactico", "genero",0);
-      ejecD.CrearClasificacion("epica", "subgenero",1);
-      ejecD.CrearClasificacion("oda", "subgenero",2);
-      ejecD.CrearClasificacion("tragedia", "subgenero",3);
-      ejecD.CrearClasificacion("cronica", "subgenero",4);
+      ejecD.CrearClasificacion("epica", "genero",0);
+      ejecD.CrearClasificacion("lirica", "genero",0);
+      ejecD.CrearClasificacion("prosa", "genero",0);
+      ejecD.CrearClasificacion("dramatica", "genero",0);
+      ejecD.CrearClasificacion("la epopeya", "subgenero",1);
+      ejecD.CrearClasificacion("fabula", "subgenero",2);
+      ejecD.CrearClasificacion("romance", "subgenero",3);
+      ejecD.CrearClasificacion("tragedia", "subgenero",4);
       
-      /*ejecJ.CrearMiemb(27342711, "Roberto", null, "Hidalgo", null, "m");
-      ejecJ.CrearMiemb(2253421, "Jose", null, "Andres", null, "m");
-      ejecJ.CrearMiemb(16268735, "Carmen", null, "Delgadito", null, "f");
-      ejecJ.CrearMiemb(20345678, "Alan", null, "Brito", null, "m");
-      ejecJ.CrearMiemb(18234631, "Armando", null, "Casitas", null, "m");
-      ejecJ.CrearMiemb(27342711, "Robert", null, "Plant", null, "m");
-      ejecJ.CrearMiemb(27342711, "Gabriela", null, "Moreno", null, "f");
-      ejecJ.CrearMiemb(27342711, "Artur", null, "Rito", null, "m");*/
+      ejecJ.CrearMiemb(27342711, "Roberto", null, "Hidalgo", null, "m", new Date(99,02,01), 4);
+      ejecJ.CrearMiemb(2253421, "Jose", null, "Prado", null, "m", new Date(99,02,01), 4);
+      ejecJ.CrearMiemb(16268735, "Carmen", null, "Delgadito", null, "f", new Date(99,02,01), 5);
+      ejecJ.CrearMiemb(20345678, "Alan", null, "Brito", null, "m", new Date(99,02,01), 6);
+      ejecJ.CrearMiemb(18234631, "Armando", null, "Casitas", null, "m", new Date(99,02,01), 7);
+      ejecJ.CrearMiemb(15234557, "Robert", null, "Plant", null, "m", new Date(99,02,01), 7);
+      ejecJ.CrearMiemb(5964816, "Gabriela", null, "Moreno", null, "f", new Date(99,02,01),6);
+      ejecJ.CrearMiemb(22734126, "Artur", null, "Rito", null, "m", new Date(99,02,01), 5);
+      
+      ejecJ.CrearTelMiem(414, 1381872, 27342711);
+      ejecJ.CrearTelMiem(412, 2476721, 2253421);
+      ejecJ.CrearTelMiem(414, 8135672, 16268735);
+      ejecJ.CrearTelMiem(426, 1234567, 18234631);
+      ejecJ.CrearTelRep(426, 1871826, 27348774);
+      ejecJ.CrearTelRep(424, 1812318, 2432489);
+      ejecJ.CrearTelRep(412, 1596312, 28093123);
+      ejecJ.CrearTelRep(414, 1234567, 2893238);
+      
+      ejecD.CrearIdioma_miembro(27342711, 2);
+      ejecD.CrearIdioma_miembro(2253421, 2);
+      ejecD.CrearIdioma_miembro(16268735, 2);
+      ejecD.CrearIdioma_miembro(20345678, 2);
+      ejecD.CrearIdioma_miembro(18234631, 2);
+      ejecD.CrearIdioma_miembro(15234557, 2);
+      ejecD.CrearIdioma_miembro(5964816, 2);
+      ejecD.CrearIdioma_miembro(22734126, 2);
+      
+      ejecD.CrearInstitucion("Googlo","Empresa de desarrollo de aplicaciones", 4);
+      ejecD.CrearInstitucion("Muc Donels","Empresa de comida rapida", 6);
+      ejecD.CrearInstitucion("Wawey", "Empresa fabricante de telefonos", 7);
+      ejecD.CrearInstitucion("Mockey", "Empresa de entretenimiento", 5);
+      ejecD.CrearInstitucion("Minalbo", "Empresa de agua", 6);
+      ejecD.CrearInstitucion("Polarcita","Empresa de cervezas", 4);
+      ejecD.CrearInstitucion("Canaima","Empresa de tecnologia punta", 5);
+      ejecD.CrearInstitucion("Chorichipi","Empresa de choripanes", 7);
+      
+      ejecA.CrearClub("Lectura empedernida", "La esquna de mi casa", 1020, true, 2, 4, 2);
+      ejecA.CrearClub("Entretenimiento en papel", "Av. El Ejercito", 1012, false, 2, 4, 0);
+      ejecA.CrearClub("Lectores Anonimos", "Calle Antonio Guerrero", 1020, false, 2, 5, 0);
+      ejecA.CrearClub("Escritores frustrados", "Av. Libertador", 1020, true, 2, 5,4);
+      ejecA.CrearClub("Libros con mucho té", "Esq. Albañales", 1020, false, 2, 6, 0);
+      ejecA.CrearClub("Sonrisas estudiosas", "Bello Monte", 1020, false, 2, 6, 0);
+      ejecA.CrearClub("Detectives encubiertos", "Ronda de Outeiro", 1020, false, 2, 7, 0);
+      ejecA.CrearClub("Los ebook son mejores", "A Estrada", 1020, false, 2, 7, 0);
+      
+      ejecA.CrearAsociacion(1, 3);
+      ejecA.CrearAsociacion(2, 3);
+      ejecA.CrearAsociacion(1, 2);
+      ejecA.CrearAsociacion(5, 4);
+      ejecA.CrearAsociacion(6, 2);
+      ejecA.CrearAsociacion(4, 7);
+      ejecA.CrearAsociacion(1, 8);
+      ejecA.CrearAsociacion(7, 6);
+      
+      ejecD.CrearGrupo( 1, "niños", "4", 5 , 6);
+      ejecD.CrearGrupo( 1, "adultos", "2", 6 , 7);
+      ejecD.CrearGrupo( 3, "adultos", "5", 6 , 7);
+      ejecD.CrearGrupo( 2, "adultos", "6", 5 , 6);
+      ejecD.CrearGrupo( 4, "adultos", "4", 5 , 6);
+      ejecD.CrearGrupo( 6, "adultos", "3", 6 , 7);
+      ejecD.CrearGrupo( 2, "niños", "2", 5 , 6);
+      ejecD.CrearGrupo( 8, "niños", "3", 5 , 6);
+      
+      ejecD.CrearAuditorio(500, "Aula Magna UCAB", 5, 0);
+      ejecD.CrearAuditorio(2000, "Naranja", 4, 0);
+      ejecD.CrearAuditorio(1800, "Tobias Lasser", 6, 0);
+      ejecD.CrearAuditorio(1500, "Madre Matilde", 4, 0);
+      ejecD.CrearAuditorio(20000, "Teatro Municipal", 6, 0);
+      ejecD.CrearAuditorio(20000, "TEATREX", 7, 0);
+      ejecD.CrearAuditorio(20000, "Aula Magna UCV", 7, 0);
+      ejecD.CrearAuditorio(20000, "Luisa Rodriguez de Mendoza", 5, 0);
+      
+      ejecD.CrearEditorial("", 0);
+     
+      
       
     return 1;
     }
@@ -165,7 +233,7 @@ public class Scripts {
         
     public void clasificacion(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-        ps = con.prepareStatement("CREATE TABLE public.clasificacion ( clasi_id numeric(3,0) NOT NULL DEFAULT nextval('clasi_clasi_id_seq'::regclass), clasi_nombre character varying(30) COLLATE pg_catalog.\"default\" UNIQUE NOT NULL, clasi_tipo character varying(1) COLLATE pg_catalog.\"default\" NOT NULL, clasi_padre numeric(3,0), CONSTRAINT pk_clasificacion PRIMARY KEY (clasi_id), CONSTRAINT fk_clasi_padre FOREIGN KEY (clasi_padre) REFERENCES public.clasificacion (clasi_id) MATCH SIMPLE)");
+        ps = con.prepareStatement("CREATE TABLE public.clasificacion ( clasi_id numeric(3,0) NOT NULL DEFAULT nextval('clasi_clasi_id_seq'::regclass), clasi_nombre character varying(30) COLLATE pg_catalog.\"default\" UNIQUE NOT NULL, clasi_tipo character varying(12) COLLATE pg_catalog.\"default\" NOT NULL, clasi_padre numeric(3,0), CONSTRAINT pk_clasificacion PRIMARY KEY (clasi_id), CONSTRAINT fk_clasi_padre FOREIGN KEY (clasi_padre) REFERENCES public.clasificacion (clasi_id) MATCH SIMPLE)");
         res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
@@ -191,7 +259,7 @@ public class Scripts {
     }
     public void direccion_lugar(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-        ps = con.prepareStatement("CREATE TABLE public.direccion_lugar ( dir_id numeric(4,0) NOT NULL DEFAULT nextval('dir_dir_id_seq'::regclass), dir_tipo character varying(10) COLLATE pg_catalog.\"default\" NOT NULL, dir_nombre character varying(20) COLLATE pg_catalog.\"default\" UNIQUE NOT NULL, \"moneda \" money, nacionalidad character varying(20) COLLATE pg_catalog.\"default\", dir_id_padre numeric(4,0), CONSTRAINT pk_direccion PRIMARY KEY (dir_id), CONSTRAINT fk_direccion FOREIGN KEY (dir_id_padre) REFERENCES public.direccion_lugar (dir_id) MATCH SIMPLE)");
+        ps = con.prepareStatement("CREATE TABLE public.direccion_lugar ( dir_id numeric(4,0) NOT NULL DEFAULT nextval('dir_dir_id_seq'::regclass), dir_tipo character varying(10) COLLATE pg_catalog.\"default\" NOT NULL, dir_nombre character varying(20) COLLATE pg_catalog.\"default\" UNIQUE NOT NULL, moneda varchar(45), nacionalidad character varying(20) COLLATE pg_catalog.\"default\", dir_id_padre numeric(4,0), CONSTRAINT pk_direccion PRIMARY KEY (dir_id), CONSTRAINT fk_direccion FOREIGN KEY (dir_id_padre) REFERENCES public.direccion_lugar (dir_id) MATCH SIMPLE)");
         res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
@@ -236,7 +304,7 @@ public class Scripts {
         
     public void grupo(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-        ps = con.prepareStatement("CREATE TABLE public.grupo ( grup_id numeric(3,0) NOT NULL DEFAULT nextval('grup_grup_id_seq'::regclass), club_id numeric(3,0) NOT NULL, grup_tipo character varying(30) COLLATE pg_catalog.\"default\" NOT NULL, dia date NOT NULL, horai numeric(2,0) NOT NULL, horaf numeric(2,0) NOT NULL, CONSTRAINT pk_grupo PRIMARY KEY (club_id, grup_id), CONSTRAINT fk_grupo FOREIGN KEY (club_id) REFERENCES public.club (club_id) MATCH SIMPLE )");
+        ps = con.prepareStatement("CREATE TABLE public.grupo ( grup_id numeric(3,0) NOT NULL DEFAULT nextval('grup_grup_id_seq'::regclass), club_id numeric(3,0) NOT NULL, grup_tipo character varying(30) COLLATE pg_catalog.\"default\" NOT NULL, dia character varying(1), horai numeric(2,0), horaf numeric(2,0), CONSTRAINT pk_grupo PRIMARY KEY (club_id, grup_id), CONSTRAINT fk_grupo FOREIGN KEY (club_id) REFERENCES public.club (club_id) MATCH SIMPLE )");
         res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
@@ -323,7 +391,7 @@ public class Scripts {
     
     public void miembro(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-            ps = con.prepareStatement("CREATE TABLE public.miembro ( doc_id numeric(10,0) NOT NULL, miemb_nombre1 character varying(15) COLLATE pg_catalog.\"default\" NOT NULL, miemb_nombre2 character varying(15) COLLATE pg_catalog.\"default\", miemb_ape1 character varying(15) COLLATE pg_catalog.\"default\" NOT NULL, miemb_ape2 character varying(15) COLLATE pg_catalog.\"default\", miemb_genero character varying(10) COLLATE pg_catalog.\"default\" NOT NULL, miemb_fecha_nac date NOT NULL, representante numeric(10,0), representante_m numeric(10,0), CONSTRAINT pk_miembro PRIMARY KEY (doc_id), CONSTRAINT fk_representante FOREIGN KEY (representante) REFERENCES public.representante (doc_ident) MATCH SIMPLE, CONSTRAINT fk_representante_m FOREIGN KEY (representante_m) REFERENCES public.miembro (doc_id) MATCH SIMPLE )");                    
+            ps = con.prepareStatement("CREATE TABLE public.miembro ( doc_id numeric(10,0) NOT NULL, miemb_nombre1 character varying(15) COLLATE pg_catalog.\"default\" NOT NULL, miemb_nombre2 character varying(15) COLLATE pg_catalog.\"default\", miemb_ape1 character varying(15) COLLATE pg_catalog.\"default\" NOT NULL, miemb_ape2 character varying(15) COLLATE pg_catalog.\"default\", miemb_genero character varying(10) COLLATE pg_catalog.\"default\" NOT NULL, miemb_fecha_nac date NOT NULL, dir_id numeric(3,0) NOT NULL, representante numeric(10,0), representante_m numeric(10,0), CONSTRAINT pk_miembro PRIMARY KEY (doc_id),CONSTRAINT fk_direccion FOREIGN KEY (dir_id) REFERENCES public.direccion_lugar (dir_id) MATCH SIMPLE, CONSTRAINT fk_representante FOREIGN KEY (representante) REFERENCES public.representante (doc_ident) MATCH SIMPLE, CONSTRAINT fk_representante_m FOREIGN KEY (representante_m) REFERENCES public.miembro (doc_id) MATCH SIMPLE )");                    
             res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);

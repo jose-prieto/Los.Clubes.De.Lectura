@@ -21,9 +21,7 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         listen.FieldListener (Num1);
         listen.FieldListener (Num2);
         listen.FieldListener(Nombre);
-        listen.FieldListener(Nombre2);
         listen.FieldListener(Apellido);
-        listen.FieldListener(Apellido2);
         listen.FieldListener(Cedula);
         
         Cedula.setEnabled(false);
@@ -72,7 +70,7 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         Cod1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Cod1.setForeground(new java.awt.Color(204, 204, 255));
         Cod1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Cod1.setText("ej0424");
+        Cod1.setText("0424");
         Cod1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         Cod1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -95,7 +93,7 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         Num1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Num1.setForeground(new java.awt.Color(204, 204, 255));
         Num1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Num1.setText("ej1931798");
+        Num1.setText("1931798");
         Num1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         Num1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -110,13 +108,8 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         Num2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Num2.setForeground(new java.awt.Color(204, 204, 255));
         Num2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Num2.setText("ej4424833");
+        Num2.setText("4424833");
         Num2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
-        Num2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Num2ActionPerformed(evt);
-            }
-        });
         Num2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 Num2KeyTyped(evt);
@@ -126,7 +119,7 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         Cod2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Cod2.setForeground(new java.awt.Color(204, 204, 255));
         Cod2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Cod2.setText("ej0212");
+        Cod2.setText("0212");
         Cod2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         Cod2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -217,11 +210,6 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
 
         Continuar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Continuar.setText("Continuar >");
-        Continuar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ContinuarActionPerformed(evt);
-            }
-        });
 
         Nombre2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Nombre2.setForeground(new java.awt.Color(204, 204, 255));
@@ -437,71 +425,39 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
 
     private void Nombre2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nombre2KeyTyped
         // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        
-        if (c != ' ' && (c < 'a' || c > 'z') && (c < 'A' || c > 'Z')){
-            evt.consume();
-        }
     }//GEN-LAST:event_Nombre2KeyTyped
 
     private void Apellido2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Apellido2KeyTyped
         // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        
-        if (c != ' ' && (c < 'a' || c > 'z') && (c < 'A' || c > 'Z')){
-            evt.consume();
-        }
     }//GEN-LAST:event_Apellido2KeyTyped
-
-    private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ContinuarActionPerformed
-
-    private void Num2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Num2ActionPerformed
 
     public boolean val() {
         boolean val = true;
 
-        if (Nombre.getText().equals("Ej. José")) {
+        if (Nombre.getText().equals("Ej. José Antonio")) {
             Nombre.setBorder(new LineBorder(Color.red));
             val = false;
         } else {
             Nombre.setBorder(new LineBorder(Color.gray));
         }
-        if (Apellido.getText().equals("Ej. Prieto")) {
+        if (Apellido.getText().equals("Ej. Prieto Quintero")) {
             Apellido.setBorder(new LineBorder(Color.red));
             val = false;
         } else {
             Apellido.setBorder(new LineBorder(Color.gray));
-        }
-        if (Cod1.getText().equals("ej0424") || Cod1.getText().length() < 4) {
+        }if (Cod1.getText().equals("0424") || Num1.getText().equals("1931798")) {
             Cod1.setBorder(new LineBorder(Color.red));
-            JOptionPane.showMessageDialog(null, "Los codigos de teléfono son de 4 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
+            Num1.setBorder(new LineBorder(Color.red));
+            val = false;
         } else {
             Cod1.setBorder(new LineBorder(Color.gray));
-        }
-        if (Num1.getText().equals("ej1931798") || Num1.getText().length() < 7) {
-            Num1.setBorder(new LineBorder(Color.red));
-            JOptionPane.showMessageDialog(null, "Los números de teléfono son de 7 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        } else {
             Num1.setBorder(new LineBorder(Color.gray));
-        }
-        if (!Cod2.getText().equals("ej0212") && Cod2.getText().length() < 4 ) {
+        }if (Cod2.getText().equals("0212") || Num2.getText().equals("4424833")) {
             Cod2.setBorder(new LineBorder(Color.red));
-            JOptionPane.showMessageDialog(null, "Los codigos de teléfono son de 4 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
+            Num2.setBorder(new LineBorder(Color.red));
+            val = false;
         } else {
             Cod2.setBorder(new LineBorder(Color.gray));
-        }
-        if (!Num2.getText().equals("ej4424833") && Cod2.getText().length() < 7 ) {
-            Num2.setBorder(new LineBorder(Color.red));
-            JOptionPane.showMessageDialog(null, "Los números de teléfono son de 7 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        } else {
             Num2.setBorder(new LineBorder(Color.gray));
         }
         if (val == false) {
