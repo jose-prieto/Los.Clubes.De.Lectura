@@ -4,7 +4,6 @@ import java.awt.Color;
 import javax.swing.border.LineBorder;
 
 import ControladorBD.QueriesJose;
-import javax.swing.JOptionPane;
 
 public class CambioClub extends javax.swing.JPanel {
 
@@ -17,7 +16,6 @@ public class CambioClub extends javax.swing.JPanel {
 
         listen.FieldListener(CIMiem);
         listen.FieldListener(IDClub);
-        listen.FieldListener(Motiv);
     }
 
     @SuppressWarnings("unchecked")
@@ -242,52 +240,12 @@ public class CambioClub extends javax.swing.JPanel {
 
     private void Label3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label3MouseExited
         // TODO add your handling code here:
-        diag.setVisible(false);
+        diag.setVisible(true);
     }//GEN-LAST:event_Label3MouseExited
     
-    public boolean Cambiar (){
-        if (query.MiemInactivo(Motiv.getText(), Integer.parseInt(CIMiem.getText())) && query.HistIns(Integer.parseInt(IDClub.getText()), Integer.parseInt(CIMiem.getText()))){
-            return true;
-        }
-        return false;
-    }
-    
-    public boolean val() {
-        boolean val = true;
-
-        if (CIMiem.getText().equals("Ej. 24278596")) {
-            CIMiem.setBorder(new LineBorder(Color.red));
-            val = false;
-        } else {
-            CIMiem.setBorder(new LineBorder(Color.gray));
-        }
-        if (IDClub.getText().equals("Ej. 123")) {
-            IDClub.setBorder(new LineBorder(Color.red));
-            val = false;
-        } else {
-            IDClub.setBorder(new LineBorder(Color.gray));
-        }
-        if (Motiv.getText().equals("Ej. Mudanza")) {
-            Motiv.setBorder(new LineBorder(Color.red));
-            val = false;
-        } else {
-            Motiv.setBorder(new LineBorder(Color.gray));
-        }
-        if (!val){
-            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos que son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-        if (!query.ciExist(Integer.parseInt(CIMiem.getText()))){
-            JOptionPane.showMessageDialog(null, "El miembro no existe", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-        if (!query.clubExist(Integer.parseInt(IDClub.getText()))){
-            JOptionPane.showMessageDialog(null, "El miembo no existe", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-        
-        
-        return val;
+    public void Cambiar (){
+        query.MiemInactivo(Motiv.getText(), Integer.parseInt(CIMiem.getText()));
+        query.HistIns(Integer.parseInt(IDClub.getText()), Integer.parseInt(CIMiem.getText()));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -300,6 +258,6 @@ public class CambioClub extends javax.swing.JPanel {
     private javax.swing.JLabel Label3;
     private javax.swing.JLabel Miembro;
     private javax.swing.JTextField Motiv;
-    public javax.swing.JButton Registrar;
+    private javax.swing.JButton Registrar;
     // End of variables declaration//GEN-END:variables
 }

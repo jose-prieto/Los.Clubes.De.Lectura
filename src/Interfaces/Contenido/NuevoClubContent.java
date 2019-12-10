@@ -1,43 +1,25 @@
 package Interfaces.Contenido;
 
 import ControladorBD.QueriesAlberto;
-import ControladorBD.QueriesJose;
 import java.awt.Color;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.border.LineBorder;
 
 public class NuevoClubContent extends javax.swing.JPanel {
 
     ProcedimientosExtra listen = new ProcedimientosExtra();
     Dialogo diag = new Dialogo ();
-    QueriesAlberto query = new QueriesAlberto();
-    QueriesJose queryJ = new QueriesJose();
+     QueriesAlberto query = new QueriesAlberto();
 
     public NuevoClubContent() {
 
         initComponents();
-        ResultSet res;
 
         listen.FieldListener(NombreClub);
         listen.FieldListener(CiudadClub);
         listen.FieldListener(PostalClub);
         listen.FieldListener(Dir1Club);
         listen.FieldListener(Dir2Club);
-        listen.FieldListener(InstClub);        
-        
-        res = queryJ.idiomas();
-        if (res != null){
-            try {
-                do{
-                    comoIdioma.addItem(res.getString(1));
-                }while (res.next());
-            } catch (SQLException ex) {
-                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        listen.FieldListener(InstClub);
 
     }
 
@@ -67,7 +49,7 @@ public class NuevoClubContent extends javax.swing.JPanel {
         Label7 = new javax.swing.JLabel();
         Label6 = new javax.swing.JLabel();
         Pais = new javax.swing.JComboBox<>();
-        comoIdioma = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setMaximumSize(new java.awt.Dimension(707, 541));
         setMinimumSize(new java.awt.Dimension(707, 541));
@@ -238,7 +220,8 @@ public class NuevoClubContent extends javax.swing.JPanel {
         Pais.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Pais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda", "Arabia Saudita", "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas", "Bangladés", "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Birmania", "Bolivia", "Bosnia y Herzegovina", "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután", "Cabo Verde", "Camboya", "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Ciudad del Vaticano", "Colombia", "Comoras", "Corea del Norte", "Corea del Sur", "Costa de Marfil", "Costa Rica", "Croacia", "Cuba", "Dinamarca", "Dominica", "Ecuador", "Egipto", "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Eslovaquia", "Eslovenia", "España", "Estados Unidos", "Estonia", "Etiopía", "Filipinas", "Finlandia", "Fiyi", "Francia", "Gabón", "Gambia", "Georgia", "Ghana", "Granada", "Grecia", "Guatemala", "Guyana", "Guinea", "Guinea ecuatorial", "Guinea-Bisáu", "Haití", "Honduras", "Hungría", "India", "Indonesia", "Irak", "Irán", "Irlanda", "Islandia", "Islas Marshall", "Islas Salomón", "Israel", "Italia", "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Laos", "Lesoto", "Letonia", "Líbano", "Liberia", "Libia", "Liechtenstein", "Lituania", "Luxemburgo", "Macedonia del Norte", "Madagascar", "Malasia", "Malaui", "Maldivas", "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania", "México", "Micronesia", "Moldavia", "Mónaco", "Mongolia", "Montenegro", "Mozambique", "Namibia", "Nauru", "Nepal", "Nicaragua", "Níger", "Nigeria", "Noruega", "Nueva Zelanda", "Omán", "Países Bajos", "Pakistán", "Palaos", "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Reino Unido", "República Centroafricana", "República Checa", "República del Congo", "República Democrática del Congo", "República Dominicana", "República Sudafricana", "Ruanda", "Rumanía", "Rusia", "Samoa", "San Cristóbal y Nieves", "San Marino", "San Vicente y las Granadinas", "Santa Lucía", "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles", "Sierra Leona", "Singapur", "Siria", "Somalia", "Sri Lanka", "Suazilandia", "Sudán", "Sudán del Sur", "Suecia", "Suiza", "Surinam", "Tailandia", "Tanzania", "Tayikistán", "Timor Oriental", "Togo", "Tonga", "Trinidad y Tobago", "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania", "Uganda", "Uruguay", "Uzbekistán", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue" }));
 
-        comoIdioma.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jComboBox1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Espanol", "Ingles", "Mandarin", "Frances", "Portugues", "Italiano", "Aleman", "Japones", "Ruso", "Coreano", "Griego", "Rumano", "Sueco", "Hindi-Urdu", "Neerlandes", "Polaco", "Servo-Croata", "Checo", "Hungaro", "Bulgaro", "Ucraniano", "Vietnamita", "Arabe saidi", "Zulu", "Zhuang", "Persa", "Bengali", "Lombardo", "Arabe marroqui", "Arabe egipcio", "Malayo", "Chino Harka", "Thai", "Yotuba", "Oromo", "Chino Gan", "Arabe mesopotamico", "Chino Cantones-Yue", "Akan", "Haitiano Criollo Frances", "Nepali", "Malayo-Indonesio", "Arabe sirio", "Chino Wu", "Sunda", "Arabe Argelio", "Igbo", "Chittaginiano", "Tagalo", "Amharic", "Kazako", "Arabe sudanes", "Belarusano" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -263,8 +246,8 @@ public class NuevoClubContent extends javax.swing.JPanel {
                                         .addComponent(Label6)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel4)
-                                        .addGap(12, 12, 12)
-                                        .addComponent(comoIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(13, 13, 13)
+                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -332,7 +315,7 @@ public class NuevoClubContent extends javax.swing.JPanel {
                     .addComponent(jLabel4)
                     .addComponent(Label7)
                     .addComponent(Label6)
-                    .addComponent(comoIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -495,8 +478,8 @@ public class NuevoClubContent extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> Pais;
     private javax.swing.JTextField PostalClub;
     private javax.swing.JButton Registrar;
-    private javax.swing.JComboBox<String> comoIdioma;
     private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

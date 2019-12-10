@@ -5,22 +5,16 @@ import javax.swing.JOptionPane;
 
 import javax.swing.border.LineBorder;
 import ControladorBD.QueriesJose;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class RegistraMiembro2 extends javax.swing.JPanel {
     
     ProcedimientosExtra listen = new ProcedimientosExtra ();
     Dialogo diag = new Dialogo ();
     QueriesJose query = new QueriesJose();
-    
-    public int docid=0;
 
     public RegistraMiembro2() {
         initComponents();
-        ResultSet res;
+        
         listen.FieldListener (Libro2);
         listen.FieldListener (Libro3);
         listen.FieldListener (Libro1);
@@ -29,18 +23,6 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         listen.FieldListener (Num1);
         listen.FieldListener (Num2);
         listen.FieldListener (Ciudad);
-        res = query.idiomas();
-        if (res != null){
-            try {
-                do{
-                    comoIdioma.addItem(res.getString(1));
-                }while (res.next());
-            } catch (SQLException ex) {
-                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        
-        
         
     }
     
@@ -76,8 +58,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Pais = new javax.swing.JComboBox<>();
         Pais1 = new javax.swing.JComboBox<>();
         jLabel15 = new javax.swing.JLabel();
-        comoIdioma = new javax.swing.JComboBox<>();
-        addIdioma = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 0, 0));
@@ -94,7 +75,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Cod1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Cod1.setForeground(new java.awt.Color(204, 204, 255));
         Cod1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Cod1.setText("ej0424");
+        Cod1.setText("0424");
         Cod1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         Cod1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -215,13 +196,8 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Num1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Num1.setForeground(new java.awt.Color(204, 204, 255));
         Num1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Num1.setText("ej1931798");
+        Num1.setText("1931798");
         Num1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
-        Num1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Num1ActionPerformed(evt);
-            }
-        });
         Num1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 Num1KeyTyped(evt);
@@ -235,7 +211,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Num2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Num2.setForeground(new java.awt.Color(204, 204, 255));
         Num2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Num2.setText("ej4424833");
+        Num2.setText("4424833");
         Num2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         Num2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -246,7 +222,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Cod2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Cod2.setForeground(new java.awt.Color(204, 204, 255));
         Cod2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Cod2.setText("ej0212");
+        Cod2.setText("0212");
         Cod2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         Cod2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -295,12 +271,6 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
 
         Registrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Registrar.setText("Registrar");
-        Registrar.setEnabled(false);
-        Registrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegistrarActionPerformed(evt);
-            }
-        });
 
         Pais.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Pais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda", "Arabia Saudita", "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas", "Bangladés", "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Birmania", "Bolivia", "Bosnia y Herzegovina", "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután", "Cabo Verde", "Camboya", "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Ciudad del Vaticano", "Colombia", "Comoras", "Corea del Norte", "Corea del Sur", "Costa de Marfil", "Costa Rica", "Croacia", "Cuba", "Dinamarca", "Dominica", "Ecuador", "Egipto", "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Eslovaquia", "Eslovenia", "España", "Estados Unidos", "Estonia", "Etiopía", "Filipinas", "Finlandia", "Fiyi", "Francia", "Gabón", "Gambia", "Georgia", "Ghana", "Granada", "Grecia", "Guatemala", "Guyana", "Guinea", "Guinea ecuatorial", "Guinea-Bisáu", "Haití", "Honduras", "Hungría", "India", "Indonesia", "Irak", "Irán", "Irlanda", "Islandia", "Islas Marshall", "Islas Salomón", "Israel", "Italia", "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Laos", "Lesoto", "Letonia", "Líbano", "Liberia", "Libia", "Liechtenstein", "Lituania", "Luxemburgo", "Macedonia del Norte", "Madagascar", "Malasia", "Malaui", "Maldivas", "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania", "México", "Micronesia", "Moldavia", "Mónaco", "Mongolia", "Montenegro", "Mozambique", "Namibia", "Nauru", "Nepal", "Nicaragua", "Níger", "Nigeria", "Noruega", "Nueva Zelanda", "Omán", "Países Bajos", "Pakistán", "Palaos", "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Reino Unido", "República Centroafricana", "República Checa", "República del Congo", "República Democrática del Congo", "República Dominicana", "República Sudafricana", "Ruanda", "Rumanía", "Rusia", "Samoa", "San Cristóbal y Nieves", "San Marino", "San Vicente y las Granadinas", "Santa Lucía", "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles", "Sierra Leona", "Singapur", "Siria", "Somalia", "Sri Lanka", "Suazilandia", "Sudán", "Sudán del Sur", "Suecia", "Suiza", "Surinam", "Tailandia", "Tanzania", "Tayikistán", "Timor Oriental", "Togo", "Tonga", "Trinidad y Tobago", "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania", "Uganda", "Uruguay", "Uzbekistán", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue" }));
@@ -312,15 +282,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         jLabel15.setForeground(new java.awt.Color(51, 51, 51));
         jLabel15.setText("Agregar idioma");
 
-        comoIdioma.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-
-        addIdioma.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        addIdioma.setText("Agregar idioma");
-        addIdioma.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addIdiomaActionPerformed(evt);
-            }
-        });
+        jComboBox1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -374,15 +336,12 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(Label2))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(comoIdioma, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(addIdioma))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(Ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Label7)))
+                                        .addComponent(Label7))
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(31, 31, 31))))
         );
@@ -431,9 +390,8 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(comoIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64))
         );
@@ -497,7 +455,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
     public boolean val() {
         boolean val = true;
 
-        if (Cod1.getText().equals("ej0424")) {
+        if (Cod1.getText().equals("0424")) {
             Cod1.setBorder(new LineBorder(Color.red));
             val = false;
         }else if (Cod1.getText().length() < 4) {
@@ -507,7 +465,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         } else {
             Cod1.setBorder(new LineBorder(Color.gray));
         }
-        if (Num1.getText().equals("ej1931798")) {
+        if (Num1.getText().equals("1931798")) {
             Num1.setBorder(new LineBorder(Color.red));
             val = false;
         }else if (Num1.getText().length() < 7) {
@@ -517,32 +475,20 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         } else {
             Num1.setBorder(new LineBorder(Color.gray));
         }
-        if (Libro1.getText().equals("Ej. 9788877547224")) {
+        if (Libro1.getText().equals("Ej. 9788877547224") && !query.libroExist(Integer.parseInt(Libro1.getText()))) {
             Libro1.setBorder(new LineBorder(Color.red));
-            if (!query.libroExist(Integer.parseInt(Libro1.getText()))){
-                JOptionPane.showMessageDialog(null, "Libro 1 inexistente", "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
             val = false;
         }else {
             Libro1.setBorder(new LineBorder(Color.gray));
         }
-        if (Libro2.getText().equals("Ej. 9788877547224")) {
+        if (Libro2.getText().equals("Ej. 9788877547224") && !query.libroExist(Integer.parseInt(Libro2.getText()))) {
             Libro2.setBorder(new LineBorder(Color.red));
-            if (!query.libroExist(Integer.parseInt(Libro2.getText()))){
-                JOptionPane.showMessageDialog(null, "Libro 2 inexistente", "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
             val = false;
         } else {
             Libro2.setBorder(new LineBorder(Color.gray));
         }
-        if (Libro3.getText().equals("Ej. 9788877547224")) {
+        if (Libro3.getText().equals("Ej. 9788877547224") && !query.libroExist(Integer.parseInt(Libro3.getText()))) {
             Libro3.setBorder(new LineBorder(Color.red));
-            if (!query.libroExist(Integer.parseInt(Libro1.getText()))){
-                JOptionPane.showMessageDialog(null, "Libro 3 inexistente", "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
             val = false;
         } else {
             Libro3.setBorder(new LineBorder(Color.gray));
@@ -580,17 +526,14 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         return Integer.parseInt(num);
     }
     
-    public boolean ActMiembro(int edad, int idmiem, int idrep, boolean exist){
+    public boolean ActMiembro(int edad, int idmiem, int idrep){
         
-        if (edad < 19 && idrep != 0 && exist){
-            System.out.println("miemb2");
-            if (!query.ActMiemb2(idmiem, idrep)){
+        if (edad < 19){
+            if (!query.ActMiemb1(idmiem, idrep)){
                 return false;
             }
-        }
-        if (edad < 19 && idrep != 0 && !exist){
-            System.out.println("miemb1");
-            if (!query.ActMiemb1(idmiem, idrep)){
+        }else{
+            if (!query.ActMiemb2(idmiem, idrep)){
                 return false;
             }
         }
@@ -599,7 +542,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
                 return false;
             }
         
-        if (!Cod2.getText().equals("ej0212") && !Num2.getText().equals("ej4424833") && Cod2.getText().length() == 4 && Num2.getText().length() == 7){
+        if (!Cod2.getText().equals("Ej. 30698625")){
             if(!query.CrearTelMiem(num(Cod2.getText()), num(Num2.getText()), idmiem)){
                 return false;
             }
@@ -652,7 +595,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         // TODO add your handling code here:
         char c = evt.getKeyChar();
         
-        if (c < '0' || c > '9' || Libro1.getText().length() > 13){
+        if (c < '0' || c > '9' || Num1.getText().length() > 13){
             evt.consume();
         }
     }//GEN-LAST:event_Libro1KeyTyped
@@ -661,7 +604,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         // TODO add your handling code here:
         char c = evt.getKeyChar();
         
-        if (c < '0' || c > '9' || Cod1.getText().length() > 3){
+        if (c < '0' || c > '9' || Cod1.getText().length() > 4){
             evt.consume();
         }
     }//GEN-LAST:event_Cod1KeyTyped
@@ -670,7 +613,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         // TODO add your handling code here:
         char c = evt.getKeyChar();
         
-        if (c < '0' || c > '9' || Num1.getText().length() > 6){
+        if (c < '0' || c > '9' || Cod1.getText().length() > 7){
             evt.consume();
         }
     }//GEN-LAST:event_Num1KeyTyped
@@ -679,7 +622,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         // TODO add your handling code here:
         char c = evt.getKeyChar();
         
-        if (c < '0' || c > '9' || Cod2.getText().length() > 3){
+        if (c < '0' || c > '9' || Cod1.getText().length() > 4){
             evt.consume();
         }
     }//GEN-LAST:event_Cod2KeyTyped
@@ -688,7 +631,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         // TODO add your handling code here:
         char c = evt.getKeyChar();
         
-        if (c < '0' || c > '9' || Num2.getText().length() > 6){
+        if (c < '0' || c > '9' || Cod1.getText().length() > 7){
             evt.consume();
         }
     }//GEN-LAST:event_Num2KeyTyped
@@ -697,7 +640,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         // TODO add your handling code here:
         char c = evt.getKeyChar();
         
-        if (c < '0' || c > '9' || Libro2.getText().length() > 13){
+        if (c < '0' || c > '9' || Num1.getText().length() > 13){
             evt.consume();
         }
     }//GEN-LAST:event_Libro2KeyTyped
@@ -706,25 +649,10 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         // TODO add your handling code here:
         char c = evt.getKeyChar();
         
-        if (c < '0' || c > '9' || Libro3.getText().length() > 13){
+        if (c < '0' || c > '9' || Num1.getText().length() > 13){
             evt.consume();
         }
     }//GEN-LAST:event_Libro3KeyTyped
-
-    private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RegistrarActionPerformed
-
-    private void Num1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Num1ActionPerformed
-
-    private void addIdiomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addIdiomaActionPerformed
-        // TODO add your handling code here:
-        if (query.addIdiom(docid, comoIdioma.getSelectedItem().toString())){
-            Registrar.setEnabled(true);
-        }
-    }//GEN-LAST:event_addIdiomaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -746,8 +674,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> Pais;
     private javax.swing.JComboBox<String> Pais1;
     public javax.swing.JButton Registrar;
-    public javax.swing.JButton addIdioma;
-    private javax.swing.JComboBox<String> comoIdioma;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
