@@ -169,24 +169,93 @@ public class Scripts {
      ejecA.Pago(5964816, new Date(), 7);
      ejecA.Pago(22734126, new Date(), 8); */
      
-     ejecD.CrearLibro(1234567, "La tregua", "habla sobre un hombre viudo y, cercano a jubilarse, que se enamora perdidamente de su empleada muy joven.", new Date(59,0,0), 200, null, null, 7, 2, 0);
-     ejecD.CrearLibro(3817312, "La biblioteca de Babel", "La biblioteca de Babel es un complejo compuesto por un número indefinido de galerías hexagonales e idénticas, donde hay grandes ventilaciones en el medio, cercadas por pequeñas barandas.", new Date(41,0,0), 120, null, null, 4, 3, 0);
-     ejecD.CrearLibro(446677, "El Aleph", "Un conjunto de 17 cuentos de el escritor Jorge Luis Borges.", new Date(49,0,0), 183, null, null, 2,  5, 0);
-     ejecD.CrearLibro(4589556, "La casa de los espíritus", "narra las vivencias de cuatro generaciones de una familia y la forma en la que esta se ve afectada por las transformaciones que vive Chile, el país donde se desarrolla la obra.", new Date(82,0,0), 200, null, null, 1, 8, 0);
-     ejecD.CrearLibro(92848, "La Vorágine", "narra las peripecias del poeta Arturo Cova y su amante Alicia, historia de pasión y venganza enmarcada en la selva amazónica, donde los dos amantes huyen y que expone, las duras condiciones de vida de los colonos e indígenas esclavizados durante la fiebre del caucho", new Date(24,0,0), 116, null, null, 3, 5, 0);
-     ejecD.CrearLibro(7859665, "De amor y de sombra", "narra las desgracias que vivieron tres familias de Chile durante la dictadura, las injusticias y abusos de las fuerzas armadas contra el pueblo, y a la vez narra un nuevo amor.", new Date(84,0,0), 319, null, null, 2, 4, 0);
-     ejecD.CrearLibro(1636657, "El crimen del otro", "Un conjunto de 12 cuentos del escritor Pablo Neruda.", new Date(4,0,0), 235, null, null, 6, 3, 0);
-     ejecD.CrearLibro(3574567, "La ciudad", "El protagonista se muda a una casa prestada, provisionalmente, en un lugar indeterminado, del que tampoco se nos informa. Como la encuentra en un estado general de abandono debido a que había estado muchos años vacía, sale a buscar provisiones a un almacén sin tener una noción clara de la dirección por donde queda.", new Date(70,0,0), 118, null, null, 5, 5, 0);
+     ejecD.CrearLibro(1234567, "la tregua", "habla sobre un hombre viudo y, cercano a jubilarse, que se enamora perdidamente de su empleada muy joven.", new Date(59,0,0), 200, null, null, 7, 2, 0);
+     ejecD.CrearLibro(3817312, "la biblioteca de babel", "La biblioteca de Babel es un complejo compuesto por un número indefinido de galerías hexagonales e idénticas, donde hay grandes ventilaciones en el medio, cercadas por pequeñas barandas.", new Date(41,0,0), 120, null, null, 4, 3, 0);
+     ejecD.CrearLibro(446677, "adan buenosayres", "describen las peripecias de Adán Buenosayres en el lapso comprendido entre un jueves santo y un domingo de resurrección transcurridos desde el 27 hasta el 29 de abril de un año indeterminado sobre la década de 1920.", new Date(48,0,0), 418, null, null, 2,  5, 0);
+     ejecD.CrearLibro(4589556, "la casa de los espiritus", "narra las vivencias de cuatro generaciones de una familia y la forma en la que esta se ve afectada por las transformaciones que vive Chile, el país donde se desarrolla la obra.", new Date(82,0,0), 200, null, null, 1, 8, 0);
+     ejecD.CrearLibro(92848, "la voragine", "narra las peripecias del poeta Arturo Cova y su amante Alicia, historia de pasión y venganza enmarcada en la selva amazónica, donde los dos amantes huyen y que expone, las duras condiciones de vida de los colonos e indígenas esclavizados durante la fiebre del caucho", new Date(24,0,0), 116, null, null, 3, 5, 0);
+     ejecD.CrearLibro(7859665, "la casa verde", "narra 3 historias principales: La de Don Anselmo, la del Sargento Lituma y la del Bandido Fushia", new Date(66,0,0), 319, null, null, 2, 4, 0);
+     ejecD.CrearLibro(1636657, "el crimen del otro", "Un conjunto de 12 cuentos del escritor Pablo Neruda.", new Date(4,0,0), 235, null, null, 6, 3, 0);
+     ejecD.CrearLibro(3574567, "la ciudad", "el protagonista se muda a una casa prestada, provisionalmente, en un lugar indeterminado, del que tampoco se nos informa. Como la encuentra en un estado general de abandono debido a que había estado muchos años vacía, sale a buscar provisiones a un almacén sin tener una noción clara de la dirección por donde queda.", new Date(70,0,0), 118, null, null, 5, 5, 0);
      
-     /*ejecD.CrearAutor(1234567,"Mario", null, "Bendetti", null, 1234567);
-     ejecD.CrearAutor(1234567,"Jorge", "Luis", "Borges", null, 3817312);
-     ejecD.CrearAutor(1234567,"Isabel", null, "Allende", "Llona", 4589556);
-     ejecD.CrearAutor(1234567,"Jose", "Eustasio", "Rivera", "Salas", 92848);
-     ejecD.CrearAutor(1234567,"Horacio", "Silvestre", "Quiroga", "Forteza", 1636657);
-     ejecD.CrearAutor(1234567,"Jorge","Mario", "Varlotta", "Levrero", 1234567);
-     ejecD.CrearAutor(1234567,"Mario", null, "Bendetti", null, 1234567);
-     ejecD.CrearAutor(1234567,"Mario", null, "Bendetti", null, 1234567);*/
-
+     /*ejecD.CrearAutor("Mario", null, "Bendetti", null, 1234567);
+     ejecD.CrearAutor("Jorge", "Luis", "Borges", null, 3817312);
+     ejecD.CrearAutor("Isabel", null, "Allende", "Llona", 4589556);
+     ejecD.CrearAutor("Jose", "Eustasio", "Rivera", "Salas", 92848);
+     ejecD.CrearAutor("Horacio", "Silvestre", "Quiroga", "Forteza", 1636657);
+     ejecD.CrearAutor("Jorge","Mario", "Varlotta", "Levrero", 1234567);
+     ejecD.CrearAutor("Leopoldo", null, "Marechal", null, 446677);
+     ejecD.CrearAutor("Mario", null, "Vargas", "Llosa", 7859665);*/
+     
+     ejecA.CrearObra(3,"activa","La tregua", 5000, 1);
+     ejecA.CrearObra(1,"inactiva","La biblioteca de Babel", 3200, 2);
+     ejecA.CrearObra(2,"activa","Adam Buenosayres", 4000, 3);
+     ejecA.CrearObra(1,"activa","La casa de los espiritus", 2300, 4);
+     ejecA.CrearObra(3,"activa","La Voragine", 4800, 5);
+     ejecA.CrearObra(2,"activa","La casa verde", 1600, 6);
+     ejecA.CrearObra(3,"activa","El crimen del otro", 6500, 7);
+     ejecA.CrearObra(1,"activa","La ciudad", 2000, 8);
+    
+     
+     /*ejecD.CrearClub_obra(1,1);
+     ejecD.CrearClub_obra(2,2);
+     ejecD.CrearClub_obra(3,3);
+     ejecD.CrearClub_obra(4,4);
+     ejecD.CrearClub_obra(5,5);
+     ejecD.CrearClub_obra(6,6);
+     ejecD.CrearClub_obra(7,7);
+     ejecD.CrearClub_obra(8,8);
+     */
+          /*ejecD.CrearLibro_obra(1234567,1);
+     ejecD.CrearLibro_obra(3817312,2);
+     ejecD.CrearLibro_obra(446677,3);
+     ejecD.CrearLibro_obra(4589556,4);
+     ejecD.CrearLibro_obra(92848,5);
+     ejecD.CrearLibro_obra(7859665,6);
+     ejecD.CrearLibro_obra(1636657,7);
+     ejecD.CrearLibro_obra(3574567,8);
+     */
+     
+          /*ejecD.CrearLibro_miembro(27342711,1234567);
+     ejecD.CrearLibro_miembro(2253421,3817312);
+     ejecD.CrearLibro_miembro(16268735,446677);
+     ejecD.CrearLibro_miembro(20345678,4589556);
+     ejecD.CrearLibro_miembro(18234631,92848);
+     ejecD.CrearLibro_miembro(15234557,7859665);
+     ejecD.CrearLibro_miembro(5964816,1636657);
+     ejecD.CrearLibro_miembro(22734126,3574567);
+     */
+          
+          /*ejecD.CrearLibros_preferidos(27342711,1234567, 1);
+     ejecD.CrearLibros_preferidos(2253421,3817312, 1);
+     ejecD.CrearLibros_preferidos(16268735,446677, 1);
+     ejecD.CrearLibros_preferidos(20345678,4589556, 1);
+     ejecD.CrearLibros_preferidos(18234631,92848, 1);
+     ejecD.CrearLibros_preferidos(15234557,7859665, 1);
+     ejecD.CrearLibros_preferidos(5964816,1636657, 1);
+     ejecD.CrearLibros_preferidos(22734126,3574567, 1);
+     */
+          
+        /*ejecD.CrearFuncion(new Date(119,5,9), 1, 2, false, 0, 0);
+          ejecD.CrearFuncion(new Date(119,8,12), 2, 2, true, 4, 2137);
+          ejecD.CrearFuncion(new Date(119,4,3), 3, 1, true, 3, 812);
+          ejecD.CrearFuncion(new Date(119,1,27), 4, 3, true, 5, 2443);
+          ejecD.CrearFuncion(new Date(119,11,18), 5, 1, true, 2, 1578);
+          ejecD.CrearFuncion(new Date(119,2,25), 6, 4, false, 0, 0);
+          ejecD.CrearFuncion(new Date(119,7,4), 7, 2, false, 0, 0);
+          ejecD.CrearFuncion(new Date(119,6,13), 8, 1, false, 0, 0);
+         
+          */
+        
+        /*ejecD.CrearPersonaje(1, "Martin Santome", "personaje principal de la obra, un hombre maduro de 49 años, canoso, funcionario.");
+          ejecD.CrearPersonaje(2, "El Bibliotecario", "nuestro narrador, un bibliotecario que pasa sus días en soledad, es el único personaje de la historia.");
+          ejecD.CrearPersonaje(3, "Adan Buenosayres", "el personaje principal de la obra.");
+          ejecD.CrearPersonaje(4, "Clara Del Valle", "Clara, es la matriarca esquiva y misteriosa, quien predice las tragedias de la familia y establece el destino de la casa y de los Trueba.");
+          ejecD.CrearPersonaje(5, "Arturo Cova", "personaje principal de la obra.");
+          ejecD.CrearPersonaje(6, "Don Anselmo", " Parece ser un personaje que está más allá del tiempo, pues nadie sabe nada de su pasado y él no parece tener proyectos a futuro.");
+          ejecD.CrearPersonaje(7, "Brandimarte de Normandía", "flor de la nobleza cristiana y vástago de una gloriosa familia.");
+          ejecD.CrearPersonaje(8, "Giménez", "el simpático encargado de una estación de servicio descomunal ubicada en un pueblucho por el que jamás pasa un auto.");
+          */
       
       
      
@@ -240,13 +309,8 @@ public class Scripts {
     }  
     public void actor(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-            ps = con.prepareStatement("CREATE TABLE public.actor ( fechai_mie date NOT NULL, club_id numeric(3,0) NOT NULL, doc_id numeric(10,0) NOT NULL, obra_id numeric(3,0) NOT NULL, perso_id numeric(5,0) NOT NULL, obraf_id numeric(3,0) NOT NULL,  func_fecha date NOT NULL, CONSTRAINT pk_actor PRIMARY KEY (fechai_mie, club_id, doc_id, obra_id, perso_id, func_fecha), CONSTRAINT fk_actor_elenco FOREIGN KEY (doc_id, fechai_mie, club_id, obra_id, perso_id) REFERENCES public.elenco (doc_id, fechai_mie, club_id, obra_id, perso_id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION, CONSTRAINT fk_actor_funcion FOREIGN KEY (obraf_id, func_fecha) REFERENCES public.funcion (obra_id, func_fecha) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION )");
+            ps = con.prepareStatement("CREATE TABLE public.actor ( fechai_mie date NOT NULL, club_id numeric(3,0) NOT NULL, doc_id numeric(10,0) NOT NULL, obra_id numeric(3,0) NOT NULL, perso_id numeric(5,0) NOT NULL, obraf_id numeric(3,0) NOT NULL,  func_fecha date NOT NULL, CONSTRAINT pk_actor PRIMARY KEY (doc_id, club_id, fechai_mie, obra_id, perso_id, obraf_id, func_fecha), CONSTRAINT fk_actor_elenco FOREIGN KEY (doc_id, club_id, fechai_mie, obra_id, perso_id) REFERENCES public.elenco (doc_id, club_id, fechai_mie, obra_id, perso_id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION, CONSTRAINT fk_actor_funcion FOREIGN KEY (obraf_id, func_fecha) REFERENCES public.funcion (obra_id, func_fecha) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION )");
             res = ps.executeQuery();
-          /*  if (res.next()) {
-                JOptionPane.showMessageDialog(null, res.getString("UserName") + " ");
-            } else {
-                System.out.println("No Existen Datos");
-            }*/
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -263,7 +327,7 @@ public class Scripts {
     }
     public void auditorio(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-        ps = con.prepareStatement("CREATE TABLE public.auditorio ( audi_id numeric(3,0) NOT NULL DEFAULT nextval('audi_audi_id_seq'::regclass), audi_capacidad numeric(4,0) NOT NULL, audi_nombre character varying(30) COLLATE pg_catalog.\"default\" NOT NULL, dir_id numeric(4,0) NOT NULL, club_id numeric(3,0) NOT NULL, CONSTRAINT pk_auditorio PRIMARY KEY (audi_id), CONSTRAINT fk_aud_club FOREIGN KEY (club_id) REFERENCES public.club (club_id) MATCH SIMPLE, CONSTRAINT fk_aud_dir FOREIGN KEY (dir_id) REFERENCES public.direccion_lugar (dir_id) MATCH SIMPLE)");
+        ps = con.prepareStatement("CREATE TABLE public.auditorio ( audi_id numeric(3,0) NOT NULL DEFAULT nextval('audi_audi_id_seq'::regclass), audi_capacidad numeric(4,0) NOT NULL, audi_nombre character varying(30) COLLATE pg_catalog.\"default\" NOT NULL, dir_id numeric(4,0) NOT NULL, club_id numeric(3,0), CONSTRAINT pk_auditorio PRIMARY KEY (audi_id), CONSTRAINT fk_aud_club FOREIGN KEY (club_id) REFERENCES public.club (club_id) MATCH SIMPLE, CONSTRAINT fk_aud_dir FOREIGN KEY (dir_id) REFERENCES public.direccion_lugar (dir_id) MATCH SIMPLE)");
         res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
@@ -298,7 +362,7 @@ public class Scripts {
     
     public void club(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-        ps = con.prepareStatement("CREATE TABLE public.club ( club_id numeric(3,0) NOT NULL DEFAULT nextval('club_club_id_seq'::regclass), club_nombre character varying(30) COLLATE pg_catalog.\"default\" NOT NULL, club_fecha_inicio timestamp without time zone NOT NULL DEFAULT CURRENT_DATE, direccion character varying(50) COLLATE pg_catalog.\"default\" NOT NULL, cod_postal numeric(10,0) NOT NULL, cuota boolean, idio_id numeric(2,0) NOT NULL, dir_id numeric(4,0) NOT NULL, inst_id numeric(3,0), CONSTRAINT pk_club PRIMARY KEY (club_id), CONSTRAINT fk_club_dir FOREIGN KEY (dir_id) REFERENCES public.direccion_lugar (dir_id) MATCH SIMPLE, CONSTRAINT fk_club_idio FOREIGN KEY (idio_id) REFERENCES public.idioma (idio_id) MATCH SIMPLE, CONSTRAINT fk_club_inst FOREIGN KEY (inst_id) REFERENCES public.institucion (inst_id) MATCH SIMPLE)");    
+        ps = con.prepareStatement("CREATE TABLE public.club ( club_id numeric(3,0) NOT NULL DEFAULT nextval('club_club_id_seq'::regclass), club_nombre character varying(30) COLLATE pg_catalog.\"default\" UNIQUE NOT NULL, club_fecha_inicio timestamp without time zone NOT NULL DEFAULT CURRENT_DATE, direccion character varying(50) COLLATE pg_catalog.\"default\" NOT NULL, cod_postal numeric(10,0) NOT NULL, cuota boolean, idio_id numeric(2,0) NOT NULL, dir_id numeric(4,0) NOT NULL, inst_id numeric(3,0), CONSTRAINT pk_club PRIMARY KEY (club_id), CONSTRAINT fk_club_dir FOREIGN KEY (dir_id) REFERENCES public.direccion_lugar (dir_id) MATCH SIMPLE, CONSTRAINT fk_club_idio FOREIGN KEY (idio_id) REFERENCES public.idioma (idio_id) MATCH SIMPLE, CONSTRAINT fk_club_inst FOREIGN KEY (inst_id) REFERENCES public.institucion (inst_id) MATCH SIMPLE)");    
         res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
@@ -333,7 +397,7 @@ public class Scripts {
      
     public void elenco(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-            ps = con.prepareStatement("CREATE TABLE public.elenco ( fechai_mie date NOT NULL, club_id numeric(3,0) NOT NULL, doc_id numeric(10,0) NOT NULL, obra_id numeric(3,0) NOT NULL, perso_id numeric(5,0) NOT NULL, CONSTRAINT pk_elenco PRIMARY KEY (fechai_mie, club_id, doc_id, obra_id, perso_id), CONSTRAINT fk_elenco_hist FOREIGN KEY (doc_id, fechai_mie, club_id) REFERENCES public.hist_miembro (doc_id, fechai_mie, club_id) MATCH SIMPLE, CONSTRAINT fk_elenco_perso FOREIGN KEY (obra_id, perso_id) REFERENCES public.personaje (obra_id, perso_id) MATCH SIMPLE )");
+            ps = con.prepareStatement("CREATE TABLE public.elenco ( fechai_mie date NOT NULL, club_id numeric(3,0) NOT NULL, doc_id numeric(10,0) NOT NULL, obra_id numeric(3,0) NOT NULL, perso_id numeric(5,0) NOT NULL, CONSTRAINT pk_elenco PRIMARY KEY (doc_id, club_id, fechai_mie, obra_id, perso_id), CONSTRAINT fk_elenco_hist FOREIGN KEY (doc_id, club_id, fechai_mie) REFERENCES public.hist_miembro (doc_id, club_id, fechai_mie) MATCH SIMPLE, CONSTRAINT fk_elenco_perso FOREIGN KEY (obra_id, perso_id) REFERENCES public.personaje (obra_id, perso_id) MATCH SIMPLE )");
             res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
@@ -342,7 +406,7 @@ public class Scripts {
     
     public void funcion(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-             ps = con.prepareStatement("CREATE TABLE public.funcion ( func_fecha date NOT NULL, obra_id numeric(3,0) NOT NULL, func_hora numeric(2,0) NOT NULL, estatus_realizado boolean NOT NULL, func_valoracion numeric(1,0), func_entradas_vend numeric(4,0), CONSTRAINT pk_funcion PRIMARY KEY (func_fecha, obra_id), CONSTRAINT fk_funcion FOREIGN KEY (obra_id) REFERENCES public.obra (obra_id) MATCH SIMPLE )");
+             ps = con.prepareStatement("CREATE TABLE public.funcion ( func_fecha date NOT NULL, obra_id numeric(3,0) NOT NULL, func_hora numeric(2,0) NOT NULL, estatus_realizado boolean NOT NULL, func_valoracion numeric(1,0), func_entradas_vend numeric(4,0), CONSTRAINT pk_funcion PRIMARY KEY (obra_id, func_fecha), CONSTRAINT fk_funcion FOREIGN KEY (obra_id) REFERENCES public.obra (obra_id) MATCH SIMPLE )");
             res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
@@ -351,7 +415,7 @@ public class Scripts {
     
       public void g_lector(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-        ps = con.prepareStatement("CREATE TABLE public.g_lector ( grup_id numeric(3,0) NOT NULL, club_id numeric(3,0) NOT NULL, fechai_mie date NOT NULL, clubh_id numeric(3,0) NOT NULL, doc_id numeric(10,0) NOT NULL, fechai_gru date NOT NULL, fechaf_gru date, CONSTRAINT pk_g_lector PRIMARY KEY (grup_id, club_id, fechai_mie, clubh_id, doc_id), CONSTRAINT fk_g_lector1 FOREIGN KEY (fechai_mie, clubh_id, doc_id) REFERENCES public.hist_miembro ( fechai_mie, club_id, doc_id) MATCH SIMPLE, CONSTRAINT fk_g_lector2 FOREIGN KEY (grup_id, club_id) REFERENCES public.grupo (grup_id, club_id) MATCH SIMPLE )");
+        ps = con.prepareStatement("CREATE TABLE public.g_lector ( grup_id numeric(3,0) NOT NULL, club_id numeric(3,0) NOT NULL, fechai_mie date NOT NULL, clubh_id numeric(3,0) NOT NULL, doc_id numeric(10,0) NOT NULL, fechai_gru date NOT NULL, fechaf_gru date, CONSTRAINT pk_g_lector PRIMARY KEY (club_id, grup_id, doc_id, clubh_id, fechai_mie), CONSTRAINT fk_g_lector1 FOREIGN KEY (doc_id, clubh_id, fechai_mie) REFERENCES public.hist_miembro (doc_id, club_id, fechai_mie) MATCH SIMPLE, CONSTRAINT fk_g_lector2 FOREIGN KEY (club_id, grup_id) REFERENCES public.grupo (club_id, grup_id) MATCH SIMPLE )");
         res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
@@ -368,7 +432,7 @@ public class Scripts {
     }
    public void hist_miembro(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-            ps = con.prepareStatement("CREATE TABLE public.hist_miembro (fechai_mie timestamp without time zone NOT NULL DEFAULT CURRENT_DATE, club_id numeric(3,0) NOT NULL, doc_id numeric(10,0) NOT NULL, estatus_mie character varying(20) COLLATE pg_catalog.\"default\" NOT NULL, fechaf_mie date, motivo_retiro character varying(20) COLLATE pg_catalog.\"default\", CONSTRAINT pk_hist_miembro PRIMARY KEY (fechai_mie, club_id, doc_id), CONSTRAINT fk_hist_club FOREIGN KEY (club_id) REFERENCES public.club (club_id) MATCH SIMPLE, CONSTRAINT fk_hist_doc FOREIGN KEY (doc_id) REFERENCES public.miembro (doc_id) MATCH SIMPLE )");
+            ps = con.prepareStatement("CREATE TABLE public.hist_miembro (fechai_mie timestamp without time zone NOT NULL DEFAULT CURRENT_DATE, club_id numeric(3,0) NOT NULL, doc_id numeric(10,0) NOT NULL, estatus_mie character varying(20) COLLATE pg_catalog.\"default\" NOT NULL, fechaf_mie date, motivo_retiro character varying(20) COLLATE pg_catalog.\"default\", CONSTRAINT pk_hist_miembro PRIMARY KEY (doc_id, club_id, fechai_mie), CONSTRAINT fk_hist_club FOREIGN KEY (club_id) REFERENCES public.club (club_id) MATCH SIMPLE, CONSTRAINT fk_hist_doc FOREIGN KEY (doc_id) REFERENCES public.miembro (doc_id) MATCH SIMPLE )");
             res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
@@ -394,7 +458,7 @@ public class Scripts {
     }
     public void inasistencia(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-            ps = con.prepareStatement("CREATE TABLE public.inasistencia (reu_fecha date NOT NULL, grupr_id numeric(3,0) NOT NULL, clubr_id numeric(3,0) NOT NULL, grup_id numeric(3,0) NOT NULL, club_id numeric(3,0) NOT NULL, fechai_mie date NOT NULL, clubh_id numeric(3,0) NOT NULL, doc_id numeric(10,0) NOT NULL, CONSTRAINT pk_inasistencia PRIMARY KEY (reu_fecha, grupr_id, clubr_id,  grup_id, club_id, fechai_mie, clubh_id, doc_id), CONSTRAINT fk_inasist1 FOREIGN KEY (reu_fecha, grupr_id, clubr_id) REFERENCES public.reuniones (reu_fecha, grup_id, club_id) MATCH SIMPLE, CONSTRAINT fk_inasist2 FOREIGN KEY (grup_id, club_id, fechai_mie, clubh_id, doc_id) REFERENCES public.g_lector (grup_id, club_id, fechai_mie, clubh_id, doc_id) MATCH SIMPLE )");
+            ps = con.prepareStatement("CREATE TABLE public.inasistencia (reu_fecha date NOT NULL, grupr_id numeric(3,0) NOT NULL, clubr_id numeric(3,0) NOT NULL, grup_id numeric(3,0) NOT NULL, club_id numeric(3,0) NOT NULL, fechai_mie date NOT NULL, clubh_id numeric(3,0) NOT NULL, doc_id numeric(10,0) NOT NULL, CONSTRAINT pk_inasistencia PRIMARY KEY (clubr_id, grupr_id, reu_fecha, club_id, grup_id, doc_id, clubh_id, fechai_mie), CONSTRAINT fk_inasist1 FOREIGN KEY (clubr_id, grupr_id, reu_fecha) REFERENCES public.reuniones (club_id, grup_id, reu_fecha) MATCH SIMPLE, CONSTRAINT fk_inasist2 FOREIGN KEY (club_id, grup_id, doc_id, clubh_id, fechai_mie) REFERENCES public.g_lector (club_id, grup_id, doc_id, clubh_id, fechai_mie) MATCH SIMPLE )");
             res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
@@ -412,7 +476,7 @@ public class Scripts {
     
     public void libro(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-            ps = con.prepareStatement("CREATE TABLE public.libro ( isbn numeric(15,0) NOT NULL, lib_tit_original character varying(50) COLLATE pg_catalog.\"default\" NOT NULL, sinopsis character varying(500) COLLATE pg_catalog.\"default\" NOT NULL, lib_ano_publi date NOT NULL, lib_pag numeric(4,0) NOT NULL, titulo_esp character varying(50) COLLATE pg_catalog.\"default\", tema_princ character varying(100) COLLATE pg_catalog.\"default\", clasi_id numeric(3,0) NOT NULL, edit_id numeric(3,0) NOT NULL, isbn_padre numeric(15,0), CONSTRAINT pk_libro PRIMARY KEY (isbn), CONSTRAINT fk_libro_clasi FOREIGN KEY (clasi_id) REFERENCES public.clasificacion (clasi_id) MATCH SIMPLE, CONSTRAINT fk_libro_edit FOREIGN KEY (edit_id) REFERENCES public.editorial (edit_id) MATCH SIMPLE, CONSTRAINT fk_libro_librop FOREIGN KEY (isbn_padre) REFERENCES public.libro (isbn) MATCH SIMPLE )");
+            ps = con.prepareStatement("CREATE TABLE public.libro ( isbn numeric(15,0) NOT NULL, lib_tit_original character varying(50) COLLATE pg_catalog.\"default\" UNIQUE NOT NULL, sinopsis character varying(500) COLLATE pg_catalog.\"default\" NOT NULL, lib_ano_publi date NOT NULL, lib_pag numeric(4,0) NOT NULL, titulo_esp character varying(50) COLLATE pg_catalog.\"default\", tema_princ character varying(100) COLLATE pg_catalog.\"default\", clasi_id numeric(3,0) NOT NULL, edit_id numeric(3,0) NOT NULL, isbn_padre numeric(15,0), CONSTRAINT pk_libro PRIMARY KEY (isbn), CONSTRAINT fk_libro_clasi FOREIGN KEY (clasi_id) REFERENCES public.clasificacion (clasi_id) MATCH SIMPLE, CONSTRAINT fk_libro_edit FOREIGN KEY (edit_id) REFERENCES public.editorial (edit_id) MATCH SIMPLE, CONSTRAINT fk_libro_librop FOREIGN KEY (isbn_padre) REFERENCES public.libro (isbn) MATCH SIMPLE )");
             res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
@@ -447,7 +511,7 @@ public class Scripts {
     
     public void miembro(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-            ps = con.prepareStatement("CREATE TABLE public.miembro ( doc_id numeric(10,0) NOT NULL, miemb_nombre1 character varying(15) COLLATE pg_catalog.\"default\" NOT NULL, miemb_nombre2 character varying(15) COLLATE pg_catalog.\"default\", miemb_ape1 character varying(15) COLLATE pg_catalog.\"default\" NOT NULL, miemb_ape2 character varying(15) COLLATE pg_catalog.\"default\", miemb_genero character varying(10) COLLATE pg_catalog.\"default\" NOT NULL, miemb_fecha_nac date NOT NULL, dir_id numeric(3,0) NOT NULL, representante numeric(10,0), representante_m numeric(10,0), CONSTRAINT pk_miembro PRIMARY KEY (doc_id),CONSTRAINT fk_direccion FOREIGN KEY (dir_id) REFERENCES public.direccion_lugar (dir_id) MATCH SIMPLE, CONSTRAINT fk_representante FOREIGN KEY (representante) REFERENCES public.representante (doc_ident) MATCH SIMPLE, CONSTRAINT fk_representante_m FOREIGN KEY (representante_m) REFERENCES public.miembro (doc_id) MATCH SIMPLE )");                    
+            ps = con.prepareStatement("CREATE TABLE public.miembro ( doc_id numeric(10,0) NOT NULL, miemb_nombre1 character varying(15) COLLATE pg_catalog.\"default\" NOT NULL, miemb_nombre2 character varying(15) COLLATE pg_catalog.\"default\", miemb_ape1 character varying(15) COLLATE pg_catalog.\"default\" NOT NULL, miemb_ape2 character varying(15) COLLATE pg_catalog.\"default\", miemb_genero character varying(10) COLLATE pg_catalog.\"default\" NOT NULL, miemb_fecha_nac date NOT NULL, dir_id numeric(3,0), representante numeric(10,0), representante_m numeric(10,0), CONSTRAINT pk_miembro PRIMARY KEY (doc_id),CONSTRAINT fk_direccion FOREIGN KEY (dir_id) REFERENCES public.direccion_lugar (dir_id) MATCH SIMPLE, CONSTRAINT fk_representante FOREIGN KEY (representante) REFERENCES public.representante (doc_ident) MATCH SIMPLE, CONSTRAINT fk_representante_m FOREIGN KEY (representante_m) REFERENCES public.miembro (doc_id) MATCH SIMPLE )");                    
             res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
@@ -472,7 +536,7 @@ public class Scripts {
     
         public void personaje(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-            ps = con.prepareStatement("CREATE TABLE public.personaje ( perso_id numeric(5,0) NOT NULL DEFAULT nextval('perso_perso_id_seq'::regclass), obra_id numeric(3,0) NOT NULL, perso_nombre character varying(20) COLLATE pg_catalog.\"default\" NOT NULL, perso_desc character varying(100) COLLATE pg_catalog.\"default\" NOT NULL, CONSTRAINT pk_personaje PRIMARY KEY (perso_id, obra_id), CONSTRAINT fk_personaje FOREIGN KEY (obra_id) REFERENCES public.obra (obra_id) MATCH SIMPLE )");
+            ps = con.prepareStatement("CREATE TABLE public.personaje ( perso_id numeric(5,0) NOT NULL DEFAULT nextval('perso_perso_id_seq'::regclass), obra_id numeric(3,0) NOT NULL, perso_nombre character varying(20) COLLATE pg_catalog.\"default\" NOT NULL, perso_desc character varying(100) COLLATE pg_catalog.\"default\" NOT NULL, CONSTRAINT pk_personaje PRIMARY KEY (obra_id, perso_id), CONSTRAINT fk_personaje FOREIGN KEY (obra_id) REFERENCES public.obra (obra_id) MATCH SIMPLE )");
             res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
@@ -489,7 +553,7 @@ public class Scripts {
     }
     public void reuniones(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-            ps = con.prepareStatement("CREATE TABLE public.reuniones (reu_fecha date NOT NULL, grup_id numeric(3,0) NOT NULL, club_id numeric(3,0) NOT NULL, reu_conclusiones character varying(400), reu_valoracion numeric(1,0), isbn numeric(15,0) NOT NULL, grupg_l_id numeric(3,0) NOT NULL, clubg_l_id numeric(3,0) NOT NULL, clubh_id numeric(3,0) NOT NULL, fechai_mie date NOT NULL, doc_id numeric(10,0) NOT NULL, CONSTRAINT pk_reuniones PRIMARY KEY (reu_fecha, grup_id, club_id), CONSTRAINT fk_reu1 FOREIGN KEY (grupg_l_id, clubg_l_id, fechai_mie, clubh_id, doc_id) REFERENCES public.g_lector (grup_id, club_id, fechai_mie, clubh_id, doc_id) MATCH SIMPLE, CONSTRAINT fk_reu2 FOREIGN KEY (grup_id, club_id) REFERENCES public.grupo (grup_id, club_id) MATCH SIMPLE, CONSTRAINT fk_reu3 FOREIGN KEY (isbn) REFERENCES public.libro (isbn) MATCH SIMPLE )");
+            ps = con.prepareStatement("CREATE TABLE public.reuniones (reu_fecha date NOT NULL, grup_id numeric(3,0) NOT NULL, club_id numeric(3,0) NOT NULL, reu_conclusiones character varying(400), reu_valoracion numeric(1,0), isbn numeric(15,0) NOT NULL, grupg_l_id numeric(3,0) NOT NULL, clubg_l_id numeric(3,0) NOT NULL, clubh_id numeric(3,0) NOT NULL, fechai_mie date NOT NULL, doc_id numeric(10,0) NOT NULL, CONSTRAINT pk_reuniones PRIMARY KEY (club_id, grup_id, reu_fecha), CONSTRAINT fk_reu1 FOREIGN KEY (clubg_l_id, grupg_l_id, doc_id, clubh_id, fechai_mie) REFERENCES public.g_lector (club_id, grup_id, doc_id, clubh_id, fechai_mie) MATCH SIMPLE, CONSTRAINT fk_reu2 FOREIGN KEY ( club_id, grup_id) REFERENCES public.grupo (club_id, grup_id) MATCH SIMPLE, CONSTRAINT fk_reu3 FOREIGN KEY (isbn) REFERENCES public.libro (isbn) MATCH SIMPLE )");
             res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
@@ -498,7 +562,7 @@ public class Scripts {
     
     public void seccion(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-            ps = con.prepareStatement("CREATE TABLE public.seccion ( secc_id numeric(4,0) NOT NULL DEFAULT nextval('secc_secc_id_seq'::regclass), cap_id numeric(4,0) NOT NULL, isbn numeric(15,0) NOT NULL, secc_nombre character varying(30) COLLATE pg_catalog.\"default\" NOT NULL, secc_titulo character varying(30) COLLATE pg_catalog.\"default\", CONSTRAINT pk_seccion PRIMARY KEY (secc_id, cap_id, isbn), CONSTRAINT fk_secc FOREIGN KEY (cap_id, isbn) REFERENCES public.capitulo_otro (cap_id, isbn) MATCH FULL )");
+            ps = con.prepareStatement("CREATE TABLE public.seccion ( secc_id numeric(4,0) NOT NULL DEFAULT nextval('secc_secc_id_seq'::regclass), cap_id numeric(4,0) NOT NULL, isbn numeric(15,0) NOT NULL, secc_nombre character varying(30) COLLATE pg_catalog.\"default\" NOT NULL, secc_titulo character varying(30) COLLATE pg_catalog.\"default\", CONSTRAINT pk_seccion PRIMARY KEY (isbn, cap_id, secc_id), CONSTRAINT fk_secc FOREIGN KEY (isbn, cap_id) REFERENCES public.capitulo_otro (isbn, cap_id) MATCH FULL )");
             res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
