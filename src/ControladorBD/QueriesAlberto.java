@@ -194,7 +194,7 @@ public class QueriesAlberto {
   
   public void CrearClub(String nombre, String direccion, int codp, boolean cuota, int idio, int dir) {
 
-        String SQL = "INSERT INTO public.club2(\n" +
+        String SQL = "INSERT INTO public.club(\n" +
             "	 club_nombre, direccion, cod_postal, cuota, idio_id, dir_id)\n" +
             "	VALUES (?, ?, ?, ?, ?, ?);";
         int filasafectadas = 0;

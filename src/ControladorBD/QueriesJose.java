@@ -9,6 +9,8 @@ import javax.swing.JOptionPane;
 public class QueriesJose {
 
     BDConexion conexion = new BDConexion();
+    
+    //Miembros
 
     public boolean CrearMiemb(int id, String nombre1, String nombre2, String apellido1, String apellido2, String genero, Date fecha_nac) {
         
@@ -28,6 +30,105 @@ public class QueriesJose {
             ps.setString(5, apellido2);
             ps.setString(6, genero);
             ps.setDate(7, fecha_nac);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;
+    }
+    
+    /*public Date fechainic(int miemid) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT doc_id "
+                    + "FROM miembro "
+                    + "WHERE doc_id = ?;");
+            ps.setInt(1, ci);
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+            
+        }
+    }   */     
+            
+    public void BorraMiembro(int id) {
+        
+        String SQL = "DELETE FROM miembro WHERE doc_id = ?;";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, id);
+            
+            filasafectadas = ps.executeUpdate();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public boolean ActMiemb1(int idrep, int idmiemb) {
+        
+        String SQL = "UPDATE public.miembro\n" +
+                        "	SET representante1 = ?\n" +
+                        "	WHERE doc_id = ?;";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, idrep);
+            ps.setInt(2, idmiemb);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;
+    }
+    
+    public boolean ActMiemb2(int idrep, int idmiemb) {
+        
+        String SQL = "UPDATE public.miembro\n" +
+                        "	SET representante2 = ?\n" +
+                        "	WHERE doc_id = ?;";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, idrep);
+            ps.setInt(2, idmiemb);
             
             filasafectadas = ps.executeUpdate();
 
@@ -98,13 +199,92 @@ public class QueriesJose {
         return false;
     }
     
+    public boolean MiemInactivo(String motiv, int doc) {
+        
+        String SQL = "UPDATE public.hist_miembro\n" +
+                        "	SET estatus_mie='Inactivo', fechaf_mie=current_date, motivo_retiro=?\n" +
+                        "	WHERE estatus_mie = 'Activo' and doc_id = ?;";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setString(1, motiv);
+            ps.setInt(2, doc);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;
+    }
+    
+    public boolean ciExist(int ci) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT doc_id "
+                    + "FROM miembro "
+                    + "WHERE doc_id = ?;");
+            ps.setInt(1, ci);
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+            
+        }
+    }
+    
+    public Date fechaMax() {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT current_date - interval '9 year';");
+                   
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return res.getDate(1);
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
+            
+        }
+        
+        return null;
+    }
+    
+    //Representante
     
     public boolean CrearRep(int id, String nombre1, String nombre2, String apellido1, String apellido2, String genero) {
         
-        String SQL = "INSERT INTO public.miembro(\n" +
-            "	doc_ident, rep_nombre1, rep_nombre2, rep_ape1, rep_ape2, rep_genero)\n" +
-            "	VALUES (?, ?, ?, ?, ?, ?);";
-        int filasafectadas = 0;
+        String SQL = "INSERT INTO public.representante(\n" +
+                        "	doc_ident, rep_nombre1, rep_nombre2, rep_ape1, rep_ape2, rep_genero)\n" +
+                        "	VALUES (?, ?, ?, ?, ?, ?);";
+        int filasafectadas;
         
         try (Connection con = conexion.getConnection()){
 
@@ -130,6 +310,51 @@ public class QueriesJose {
         return false;
     }
     
+    public void BorraRep(int id) {
+        
+        String SQL = "DELETE FROM representante WHERE doc_ident = ?;";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, id);
+            
+            filasafectadas = ps.executeUpdate();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public boolean repExist(int ci) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+            
+            ps = con.prepareStatement("SELECT doc_id FROM public.miembro WHERE doc_id = ?;");
+            ps.setInt(1, ci);
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+            
+        }
+    }
+    
+    //historico
+    
     public boolean HistIns(int clubid, int miemid) {
         
         String SQL = "INSERT INTO public.hist_miembro(\n" +
@@ -141,8 +366,8 @@ public class QueriesJose {
 
             PreparedStatement ps = con.prepareStatement(SQL);
             
-            ps.setInt(2, clubid);
-            ps.setInt(3, miemid);
+            ps.setInt(1, clubid);
+            ps.setInt(2, miemid);
             
             filasafectadas = ps.executeUpdate();
 
@@ -152,37 +377,13 @@ public class QueriesJose {
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println(e.toString());
             return false;
         }
         return false;
     }
     
-    public boolean MiemInactivo(String motiv, int doc) {
-        
-        String SQL = "UPDATE public.hist_miembro\n" +
-                        "	SET estatus_mie='Inactivo', fechaf_mie=current_date, motivo_retiro=?\n" +
-                        "	WHERE estatus_mie = 'Activo' and doc_id = ?;";
-        int filasafectadas = 0;
-        
-        try (Connection con = conexion.getConnection()){
-
-            PreparedStatement ps = con.prepareStatement(SQL);
-            
-            ps.setString(3, motiv);
-            ps.setInt(5, doc);
-            
-            filasafectadas = ps.executeUpdate();
-
-            if (filasafectadas != 0) {
-                return true;
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-        return false;
-    }
+    //Teléfonos
     
     public boolean CrearTelRep(int cod, int num, int rep) {
         
@@ -238,33 +439,6 @@ public class QueriesJose {
             return false;
         }
         return false;
-    }
-    
-    public boolean ciExist(int ci) {
-        try (Connection con = conexion.getConnection()){
-
-            PreparedStatement ps;
-            ResultSet res;
-
-            ps = con.prepareStatement("SELECT doc_id "
-                    + "FROM miembro "
-                    + "WHERE doc_id = ?;");
-            ps.setInt(1, ci);
-            
-            res = ps.executeQuery();
-
-            if (res.next()) {
-                return true;
-            } else {
-                return false;
-            }
-
-        } catch (Exception e) {
-            
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-            
-        }
     }
     
     public boolean fabGruposAdult(int ci) {
@@ -345,16 +519,18 @@ public class QueriesJose {
         }
     }
     
-    public boolean repExist(int ci) {
+    //libros
+    
+    public boolean libroExist(int isbn) {
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps;
             ResultSet res;
 
-            ps = con.prepareStatement("SELECT doc_ident "
-                    + "FROM representante "
-                    + "WHERE doc_ident = ?;");
-            ps.setInt(1, ci);
+            ps = con.prepareStatement("SELECT isbn "
+                    + "FROM libro "
+                    + "WHERE isbn = ?;");
+            ps.setInt(1, isbn);
             
             res = ps.executeQuery();
 
@@ -372,33 +548,36 @@ public class QueriesJose {
         }
     }
     
-    public boolean libroExist(int isbn) {
+    //Idiomas
+    
+    public boolean IdioMiem(int idioId, int docId) {
+        
+        String SQL = "INSERT INTO public.idioma_miembro(\n" +
+                        "	doc_id, idio_id)\n" +
+                        "	VALUES (?, ?);";
+        int filasafectadas = 0;
+        
         try (Connection con = conexion.getConnection()){
 
-            PreparedStatement ps;
-            ResultSet res;
-
-            ps = con.prepareStatement("SELECT isbn "
-                    + "FROM libro "
-                    + "WHERE isbn = ?;");
-            ps.setInt(1, isbn);
+            PreparedStatement ps = con.prepareStatement(SQL);
             
-            res = ps.executeQuery();
+            ps.setInt(1, idioId);
+            ps.setInt(2, docId);
+            
+            filasafectadas = ps.executeUpdate();
 
-            if (res.next()) {
-                JOptionPane.showMessageDialog(null, "Libro inexistente", "Error", JOptionPane.ERROR_MESSAGE);
+            if (filasafectadas != 0) {
                 return true;
-            } else {
-                return false;
             }
 
         } catch (Exception e) {
-            
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
             return false;
-            
         }
+        return false;
     }
+    
+    //extra
     
     public int Edad(Date nac) {
         try (Connection con = conexion.getConnection()){
@@ -418,14 +597,96 @@ public class QueriesJose {
         } catch (Exception e) {
             
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return 0;
+        }
+        
+        return 0;
+    }
+    
+    //grupos
+    
+    public ResultSet eleccGrupo(int idclub, String tipo) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT grup_id FROM public.grupo WHERE grup_tipo=? AND club_id=?;");
+            ps.setString(1, tipo);
+            ps.setInt(2, idclub);
+                   
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return res;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
             
         }
         
-        return 40;
+        return null;
     }
     
+    public ResultSet eleccGrupo2(int idclub, String tipo) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT grup_id FROM public.grupo WHERE grup_tipo=? AND club_id=?;");
+            ps.setString(1, tipo);
+            ps.setInt(2, idclub);
+                   
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return res;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+            
+        }
+        
+        return null;
+    }
     
-    /*public boolean newGrup(int grupid, int clubid, int docid, Date date) {
+    public int grupCant(int idclub) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT doc_id\n" +
+                                        "	FROM public.g_lector"
+                                    +   "       WHERE club_id=? AND fechaf_gru is null;");
+            
+            ps.setInt(1, idclub);
+                   
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                res.last();
+                return res.getRow();
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return 0;
+            
+        }
+        
+        return 0;
+    }
+    
+    public boolean newGrup(int grupid, int clubid, int docid, Date date) {
         
         String SQL = "INSERT INTO public.g_lector(\n" +
                         "	grup_id, club_id, fechai_mie, doc_id, current_date)\n" +
@@ -444,7 +705,15 @@ public class QueriesJose {
             filasafectadas = ps.executeUpdate();
 
             if (filasafectadas != 0) {
-                return true;*/
+                return true;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;
+    }
     
     public boolean grupAdd(int grupid, int clubid, int docid, Date date) {
         
@@ -475,79 +744,70 @@ public class QueriesJose {
         return false;
     }
     
-    public Date fechaMax() {
+    //idiomas
+    
+    public ResultSet idiomas() {
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps;
             ResultSet res;
 
-            ps = con.prepareStatement("SELECT current_date - interval '9 year';");
+            ps = con.prepareStatement("SELECT idio_nombre\n" +
+                                        "	FROM public.idioma;");
                    
             res = ps.executeQuery();
 
             if (res.next()) {
-                return res.getDate(1);
+                return res;
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
             
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
             return null;
             
         }
+        
         return null;
     }
     
-    public void BorraMiembro(int id) {
-        
-        String SQL = "DELETE FROM miembro WHERE doc_id = ?;";
-        int filasafectadas = 0;
-        
+    public int idiomaSearch(String idio) {
         try (Connection con = conexion.getConnection()){
 
-            PreparedStatement ps = con.prepareStatement(SQL);
-            
-            ps.setInt(1, id);
-            
-            filasafectadas = ps.executeUpdate();
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT idio_id FROM public.idioma WHERE idio_nombre = ?;");
+            ps.setString(1, idio);
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return res.getInt(1);
+            }
 
         } catch (Exception e) {
+            
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return 0;
+            
         }
+        
+        return 0;
     }
     
-    public void BorraRep(int id) {
+    public boolean addIdiom(int docid, String idio) {
         
-        String SQL = "DELETE FROM representante WHERE doc_ident = ?;";
+        String SQL = "INSERT INTO public.idioma_miembro(\n" +
+                        "	doc_id, idio_id)\n" +
+                        "	VALUES (?, ?);";
         int filasafectadas = 0;
         
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps = con.prepareStatement(SQL);
             
-            ps.setInt(1, id);
-            
-            filasafectadas = ps.executeUpdate();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-    
-    public boolean ActMiemb1(int idrep, int idmiemb) {
-        
-        String SQL = "UPDATE public.miembro\n" +
-                        "	SET representante1=?\n" +
-                        "	WHERE doc_id = ?;\n" +
-            "	VALUES (?, ?);";
-        int filasafectadas = 0;
-        
-        try (Connection con = conexion.getConnection()){
-
-            PreparedStatement ps = con.prepareStatement(SQL);
-            
-            ps.setInt(1, idrep);
-            ps.setInt(2, idmiemb);
+            ps.setInt(1, docid);
+            ps.setInt(2, idiomaSearch(idio));
             
             filasafectadas = ps.executeUpdate();
 
@@ -562,31 +822,29 @@ public class QueriesJose {
         return false;
     }
     
-    public boolean ActMiemb2(int idrep, int idmiemb) {
-        
-        String SQL = "UPDATE public.miembro\n" +
-                        "	SET representante2=?\n" +
-                        "	WHERE doc_id = ?;\n" +
-            "	VALUES (?, ?);";
-        int filasafectadas = 0;
-        
+    
+    //clubes
+    public boolean clubExist(int clubid) {
         try (Connection con = conexion.getConnection()){
 
-            PreparedStatement ps = con.prepareStatement(SQL);
-            
-            ps.setInt(1, idrep);
-            ps.setInt(2, idmiemb);
-            
-            filasafectadas = ps.executeUpdate();
+            PreparedStatement ps;
+            ResultSet res;
 
-            if (filasafectadas != 0) {
+            ps = con.prepareStatement("SELECT club_id FROM public.club WHERE club_id = ?;");
+            ps.setInt(1, clubid);
+            res = ps.executeQuery();
+
+            if (res.next()) {
                 return true;
             }
 
         } catch (Exception e) {
+            
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
             return false;
+            
         }
+        
         return false;
     }
 }

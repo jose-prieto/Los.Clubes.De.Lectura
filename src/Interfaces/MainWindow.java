@@ -19,6 +19,7 @@ import Interfaces.Contenido.Pagos;
 import Interfaces.Contenido.RegistrarLibro;
 import Interfaces.Contenido.RegistraMiembro;
 import Interfaces.Contenido.RegistraMiembro2;
+import Interfaces.Contenido.RegistraMiembro3;
 import Interfaces.Contenido.CambioClub;
 import Interfaces.Contenido.Asistencias;
 import Interfaces.Contenido.CierreReu;
@@ -26,7 +27,6 @@ import Interfaces.Contenido.ActCalendario;
 import Interfaces.Contenido.NuevaObra;
 import Interfaces.Contenido.CierreObra;
 import Interfaces.Contenido.NuevaFunc;
-import Interfaces.Contenido.RegistraMiembro3;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -38,8 +38,6 @@ import ControladorBD.QueriesJose;
 public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
     int cond = 1;
-    
-    boolean val = false;
     
     QueriesJose query = new QueriesJose();
     
@@ -86,8 +84,17 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             OptionPannel.add(main);
             ContentPannel.add(vacio);
             Atras.setVisible(false);
+            
+            actionlist();
 
-            //action listener de botones de clubes
+        }else{
+            System.exit(0);
+        }
+        
+    }
+    
+    public void actionlist(){
+        //action listener de botones de clubes
             clubes.Libros.addActionListener(this);
             clubes.Miembros.addActionListener(this);
             clubes.Pagos.addActionListener(this);
@@ -120,15 +127,16 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
             //action listener de nuevo miembro
             nuevomiembro.Continuar.addActionListener(this);
+            nuevomiembro2.Registrar.addActionListener(this);
+            nuevomiembro3.Continuar.addActionListener(this);
 
             //action listener de obras
             obras.NuevaObra.addActionListener(this);
             obras.CierreObra.addActionListener(this);
             obras.Presentaciones.addActionListener(this);
-        }else{
-            System.exit(0);
-        }
-        
+            
+            //cambioclub action listener
+            cambioclub.Registrar.addActionListener(this);
     }
 
     @SuppressWarnings("unchecked")
@@ -422,17 +430,10 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
             cond = 1;
         }
+        JFrameRestart();
     }//GEN-LAST:event_AtrasActionPerformed
 
     private void JFrameRestart() {
-        
-        if (this.val){
-            query.BorraMiembro(nuevomiembro.getCedula(nuevomiembro.Cedula.getText()));
-            if (query.repExist(Integer.parseInt(nuevomiembro3.Cedula.getText()))){
-                query.BorraRep(Integer.parseInt(nuevomiembro3.Cedula.getText()));
-            }
-            this.val = false;
-        }
         
         actualizar = new ActCalendario();
         cierre = new CierreReu();
@@ -450,6 +451,8 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         cierreobra = new CierreObra();
         nuevafunc = new NuevaFunc();
         diag = new Dialogo();
+        
+        actionlist();
 
     }
 
@@ -517,10 +520,8 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
     public static void main(String args[]) {
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainWindow().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new MainWindow().setVisible(true);
         });
     }
 
@@ -734,9 +735,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(clubes.Miembros)) {
 
             Alistar();
-            JFrameRestart();            
-            
-            nuevomiembro.Continuar.addActionListener(this);
+            JFrameRestart();
 
             miembros.setVisible(true);
             nuevomiembro.setVisible(true);
@@ -759,6 +758,22 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             Titulo.setText("Cambiar de club");
             OptionPannel.add(miembros);
 
+        } else if (evt.equals(cambioclub.Registrar)) {
+            
+            if (cambioclub.val() && cambioclub.Cambiar()){
+                Alistar();
+                JFrameRestart();
+
+                nuevomiembro.Continuar.addActionListener(this);
+
+                miembros.setVisible(true);
+                nuevomiembro.setVisible(true);
+
+                ContentPannel.add(nuevomiembro);
+                Titulo.setText("Registrar miembro");
+                OptionPannel.add(miembros);
+            }
+
         } else if (evt.equals(miembros.RegMiemb)) {
             
             Alistar();
@@ -775,9 +790,9 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
         } else if (evt.equals(nuevomiembro.Continuar)) {
             
-            if (nuevomiembro.val() && nuevomiembro.CrearMiembro()){
-                
-                if(nuevomiembro.CalcularEdad() <= 18){
+            if (nuevomiembro.val()){
+                int edad = nuevomiembro.CalcularEdad();
+                if(edad <= 18 && !nuevomiembro.valrep){
 
                     Alistar();
 
@@ -788,9 +803,8 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
                     Titulo.setText("Registrar representante");
                     OptionPannel.add(miembros);
                     nuevomiembro3.Cedula.setText(nuevomiembro.CedulaRep.getText());
-                    nuevomiembro3.Cedula.setForeground(Color.gray);
 
-                }else if (nuevomiembro.CalcularEdad() >= 19){
+                }else if (edad >= 19 || nuevomiembro.valrep){
 
                     Alistar();
 
@@ -801,7 +815,8 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
                     OptionPannel.add(miembros);
 
                 }
-                this.val = true;
+                nuevomiembro2.docid = nuevomiembro.getCedula(nuevomiembro.Cedula.getText());
+                nuevomiembro.CrearMiembro();
             }
 
         } else if (evt.equals(nuevomiembro3.Continuar)) {
@@ -821,12 +836,11 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
         } else if (evt.equals(nuevomiembro2.Registrar)) {
             
-            if (nuevomiembro2.val() && nuevomiembro2.ActMiembro(nuevomiembro.CalcularEdad(), nuevomiembro.getCedula(nuevomiembro.Cedula.getText()), nuevomiembro.getCedula(nuevomiembro.CedulaRep.getText()))){
-                this.val = false;
+            if (nuevomiembro2.val() && nuevomiembro2.ActMiembro(nuevomiembro.CalcularEdad(), 
+                    nuevomiembro.getCedula(nuevomiembro.Cedula.getText()), nuevomiembro.getCedulaRep(), 
+                    query.repExist(nuevomiembro.getCedulaRep()))){
                 Alistar();
                 JFrameRestart();            
-
-                nuevomiembro.Continuar.addActionListener(this);
 
                 miembros.setVisible(true);
                 nuevomiembro.setVisible(true);

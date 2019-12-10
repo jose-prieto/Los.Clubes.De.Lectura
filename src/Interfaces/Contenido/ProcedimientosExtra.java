@@ -3,8 +3,13 @@ package Interfaces.Contenido;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.sql.Date;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import ControladorBD.QueriesJose;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class ProcedimientosExtra {
     
@@ -12,6 +17,8 @@ public class ProcedimientosExtra {
     public Color CasillaSelect = new Color(240,240,240);
     public Color FuenteSelect = new Color(51,51,51);
     public Color FuenteNoSelect = new Color(204,204,204);
+    
+    QueriesJose query = new QueriesJose();
     
     public void FieldListener (JTextField campo){
         String cadena = campo.getText();
@@ -56,7 +63,6 @@ public class ProcedimientosExtra {
         });
 
     }
-    
     /*if (res != null){
             try {
                 do{
@@ -90,5 +96,4 @@ public class ProcedimientosExtra {
             
         }
     }*/
-    
 }

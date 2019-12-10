@@ -14,6 +14,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
     Dialogo diag = new Dialogo ();
     SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
     QueriesJose query = new QueriesJose();
+    public boolean valrep = false;
     
     public RegistraMiembro() {
 
@@ -113,6 +114,11 @@ public class RegistraMiembro extends javax.swing.JPanel {
 
         Continuar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Continuar.setText("Continuar >");
+        Continuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContinuarActionPerformed(evt);
+            }
+        });
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -487,6 +493,10 @@ public class RegistraMiembro extends javax.swing.JPanel {
         diag.setVisible(false);
     }//GEN-LAST:event_Label6MouseExited
 
+    private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ContinuarActionPerformed
+
     public boolean val() {
         boolean val = true;
 
@@ -518,9 +528,8 @@ public class RegistraMiembro extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos que son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        if (ciExist(getCedula(Cedula.getText()))){
+        if (query.ciExist(getCedula(Cedula.getText()))){
             Cedula.setBorder(new LineBorder(Color.red));
-            Cedula.setText("");
             JOptionPane.showMessageDialog(null, "El miembro que desea ingresar ya está registrado", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
@@ -535,15 +544,13 @@ public class RegistraMiembro extends javax.swing.JPanel {
                 Cedula.setBorder(new LineBorder(Color.red));
                 return false;
             }else{
+                valrep = query.repExist(getCedulaRep());
                 CedulaRep.setBorder(new LineBorder(Color.gray));
             }
         }
         
+        
         return val;
-    }
-    
-    public boolean ciExist(int ced){        
-        return query.ciExist(ced);
     }
     
     public int CalcularEdad(){        
@@ -557,6 +564,16 @@ public class RegistraMiembro extends javax.swing.JPanel {
     public int getCedula(String ced) {
         
         return Integer.parseInt(ced);
+    }
+    
+    public int getCedulaRep() {
+        
+        if (CedulaRep.getText().equals("Ej. 30698625")){
+            return 0;
+        }else{
+            return Integer.parseInt(CedulaRep.getText());
+        }        
+        
     }
 
     public Date getNacimiento() {        
@@ -597,7 +614,8 @@ public class RegistraMiembro extends javax.swing.JPanel {
     }
     
     public boolean CrearMiembro() {
-        if (query.CrearMiemb(getCedula(Cedula.getText()), getNombre(), getNombre2(), getApellido(), getApellido2(),getGenero(), getNacimiento()) && query.HistIns(getCedula(IdClub.getText()), getCedula(Cedula.getText()))){
+        if (query.CrearMiemb(getCedula(Cedula.getText()), getNombre(), getNombre2(), getApellido(), getApellido2(),getGenero(), 
+                getNacimiento()) && query.HistIns(getCedula(IdClub.getText()), getCedula(Cedula.getText()))){
             return true;
         }else{
             return false;
