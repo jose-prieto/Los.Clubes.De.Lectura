@@ -20,7 +20,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
 
     public RegistraMiembro2() {
         initComponents();
-        ResultSet res;
+        
         listen.FieldListener (Libro2);
         listen.FieldListener (Libro3);
         listen.FieldListener (Libro1);
@@ -29,6 +29,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         listen.FieldListener (Num1);
         listen.FieldListener (Num2);
         listen.FieldListener (Ciudad);
+        ResultSet res;
         res = query.idiomas();
         if (res != null){
             try {

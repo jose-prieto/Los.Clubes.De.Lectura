@@ -404,9 +404,9 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
     private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
         // TODO add your handling code here:
+        Alistar();
+        
         if (cond == 1) {
-
-            Alistar();
 
             main.setVisible(true);
             vacio.setVisible(true);
@@ -418,8 +418,6 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             Atras.setVisible(false);
 
         } else if (cond == 2) {
-
-            Alistar();
 
             clubes.setVisible(true);
             pago.setVisible(true);

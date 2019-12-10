@@ -22,7 +22,6 @@ public class NuevoClubContent extends javax.swing.JPanel {
         ResultSet res;
 
         listen.FieldListener(NombreClub);
-        listen.FieldListener(CiudadClub);
         listen.FieldListener(PostalClub);
         listen.FieldListener(Dir1Club);
         listen.FieldListener(Dir2Club);
@@ -38,8 +37,68 @@ public class NuevoClubContent extends javax.swing.JPanel {
                 Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
+        res = queryJ.pais();
+        if (res != null){
+            try {
+                do{
+                    Pais.addItem(res.getString(1));
+                }while (res.next());
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        res = queryJ.ciudad(queryJ.paiscod(Pais.getSelectedItem().toString()));
+        if (res != null){
+            try {
+                do{
+                    Ciudad.addItem(res.getString(1));
+                }while (res.next());
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
     }
+    
+    /*private void comboTipoFocusLost(java.awt.event.FocusEvent evt) {                                    
+        // TODO add your handling code here:
+        switch(comboTipo.getSelectedIndex()) {
+            case 0:
+                comboSub.removeAllItems();
+                comboSub.addItem("La Oda");
+                comboSub.addItem("La Elegia");
+                comboSub.addItem("La Egloga");
+                comboSub.addItem("La Satira");
+                comboSub.addItem("Epica");
+                comboSub.addItem("La Cancion");
+              break;
+            case 1:
+                comboSub.removeAllItems();
+                comboSub.addItem("La Epopeya");
+                comboSub.addItem("Fabula el poema epico");
+                comboSub.addItem("El Romance");
+              break;
+            case 2:
+                comboSub.removeAllItems();
+                comboSub.addItem("Novela");
+                comboSub.addItem("Cuento");
+                comboSub.addItem("Leyenda");
+                comboSub.addItem("Fábula");
+              break;
+            case 3:
+                comboSub.removeAllItems();
+                comboSub.addItem("La Tragedia");
+                comboSub.addItem("La Comedia");
+                comboSub.addItem("El Drama");
+                comboSub.addItem("La Opera");
+                comboSub.addItem("La Zarzuela");
+              break;
+            default:
+              break;
+          }
+    }    */
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -49,7 +108,6 @@ public class NuevoClubContent extends javax.swing.JPanel {
         NombreClub = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        CiudadClub = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         PostalClub = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -68,6 +126,7 @@ public class NuevoClubContent extends javax.swing.JPanel {
         Label6 = new javax.swing.JLabel();
         Pais = new javax.swing.JComboBox<>();
         comoIdioma = new javax.swing.JComboBox<>();
+        Ciudad = new javax.swing.JComboBox<>();
 
         setMaximumSize(new java.awt.Dimension(707, 541));
         setMinimumSize(new java.awt.Dimension(707, 541));
@@ -94,12 +153,6 @@ public class NuevoClubContent extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Ciudad");
-
-        CiudadClub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        CiudadClub.setForeground(new java.awt.Color(204, 204, 255));
-        CiudadClub.setText("Ej. Districo Capital");
-        CiudadClub.setToolTipText("");
-        CiudadClub.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
@@ -236,9 +289,15 @@ public class NuevoClubContent extends javax.swing.JPanel {
         });
 
         Pais.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Pais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda", "Arabia Saudita", "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas", "Bangladés", "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Birmania", "Bolivia", "Bosnia y Herzegovina", "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután", "Cabo Verde", "Camboya", "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Ciudad del Vaticano", "Colombia", "Comoras", "Corea del Norte", "Corea del Sur", "Costa de Marfil", "Costa Rica", "Croacia", "Cuba", "Dinamarca", "Dominica", "Ecuador", "Egipto", "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Eslovaquia", "Eslovenia", "España", "Estados Unidos", "Estonia", "Etiopía", "Filipinas", "Finlandia", "Fiyi", "Francia", "Gabón", "Gambia", "Georgia", "Ghana", "Granada", "Grecia", "Guatemala", "Guyana", "Guinea", "Guinea ecuatorial", "Guinea-Bisáu", "Haití", "Honduras", "Hungría", "India", "Indonesia", "Irak", "Irán", "Irlanda", "Islandia", "Islas Marshall", "Islas Salomón", "Israel", "Italia", "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Laos", "Lesoto", "Letonia", "Líbano", "Liberia", "Libia", "Liechtenstein", "Lituania", "Luxemburgo", "Macedonia del Norte", "Madagascar", "Malasia", "Malaui", "Maldivas", "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania", "México", "Micronesia", "Moldavia", "Mónaco", "Mongolia", "Montenegro", "Mozambique", "Namibia", "Nauru", "Nepal", "Nicaragua", "Níger", "Nigeria", "Noruega", "Nueva Zelanda", "Omán", "Países Bajos", "Pakistán", "Palaos", "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Reino Unido", "República Centroafricana", "República Checa", "República del Congo", "República Democrática del Congo", "República Dominicana", "República Sudafricana", "Ruanda", "Rumanía", "Rusia", "Samoa", "San Cristóbal y Nieves", "San Marino", "San Vicente y las Granadinas", "Santa Lucía", "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles", "Sierra Leona", "Singapur", "Siria", "Somalia", "Sri Lanka", "Suazilandia", "Sudán", "Sudán del Sur", "Suecia", "Suiza", "Surinam", "Tailandia", "Tanzania", "Tayikistán", "Timor Oriental", "Togo", "Tonga", "Trinidad y Tobago", "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania", "Uganda", "Uruguay", "Uzbekistán", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue" }));
+        Pais.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                PaisItemStateChanged(evt);
+            }
+        });
 
         comoIdioma.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+
+        Ciudad.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -282,10 +341,10 @@ public class NuevoClubContent extends javax.swing.JPanel {
                                         .addGap(73, 73, 73)))
                                 .addGap(25, 25, 25)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(CiudadClub)
                                     .addComponent(Dir1Club)
                                     .addComponent(NombreClub)
-                                    .addComponent(Pais, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(Pais, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Ciudad, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Label1)
@@ -315,10 +374,10 @@ public class NuevoClubContent extends javax.swing.JPanel {
                     .addComponent(Pais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CiudadClub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(Label4))
-                .addGap(22, 22, 22)
+                    .addComponent(Label4)
+                    .addComponent(Ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Dir1Club, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
@@ -341,7 +400,7 @@ public class NuevoClubContent extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -366,12 +425,12 @@ public class NuevoClubContent extends javax.swing.JPanel {
             IdiomaClub.setBorder(new LineBorder(Color.red));
         } else {
             IdiomaClub.setBorder(new LineBorder(Color.gray));
-        }*/
+        }
         if (CiudadClub.getText().equals("Ej. Districo Capital")) {
             CiudadClub.setBorder(new LineBorder(Color.red));
         } else {
             CiudadClub.setBorder(new LineBorder(Color.gray));
-        }
+        }*/
         if (Dir1Club.getText().equals("Ej. Montalbán II, calle 5")) {
             Dir1Club.setBorder(new LineBorder(Color.red));
         } else {
@@ -387,7 +446,7 @@ public class NuevoClubContent extends javax.swing.JPanel {
         } else {
             InstClub.setBorder(new LineBorder(Color.gray));
         }
-        query.CrearClub(NombreClub.getText(), Dir1Club.getText(), Integer.parseInt(PostalClub.getText()), true, 1, Integer.parseInt(CiudadClub.getText()));
+        query.CrearClub(NombreClub.getText(), Dir1Club.getText(), Integer.parseInt(PostalClub.getText()), true, 1, Integer.parseInt(Ciudad.getSelectedItem().toString()));
     }//GEN-LAST:event_RegistrarActionPerformed
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
@@ -477,11 +536,28 @@ public class NuevoClubContent extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_InstClubKeyTyped
 
+    private void PaisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PaisItemStateChanged
+        // TODO add your handling code here:
+        ResultSet res;
+        res = queryJ.ciudad(queryJ.paiscod(Pais.getSelectedItem().toString()));
+        if (res != null){
+            try {
+                do{
+                    Ciudad.removeAllItems();
+                    Ciudad.addItem(res.getString(1));
+                }while (res.next());
+                Ciudad.setSelectedIndex(0);
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_PaisItemStateChanged
+
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField CiudadClub;
+    private javax.swing.JComboBox<String> Ciudad;
     private javax.swing.JTextField Dir1Club;
     private javax.swing.JTextField Dir2Club;
     private javax.swing.JTextField InstClub;

@@ -72,7 +72,7 @@ public class ProcedimientosExtra {
                 Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
             }
         }*/
-    /*public boolean OrgaAddGrup(int miemID, int clubid, Date fechaNac) {
+    public boolean OrgaAddGrup(int miemID, int clubid, Date fechaNac) {
         
         int edad = query.Edad(fechaNac);
         int size = 0;
@@ -81,7 +81,7 @@ public class ProcedimientosExtra {
         if (edad > 18){
             rs = query.eleccGrupo(clubid, "Adulto");
             if (rs == null){
-                
+                //creargrupo
             }else{
                 
             }
@@ -95,5 +95,5 @@ public class ProcedimientosExtra {
         }else if (edad < 13){
             
         }
-    }*/
+    }
 }

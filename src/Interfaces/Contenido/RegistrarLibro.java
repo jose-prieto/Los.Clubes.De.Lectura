@@ -341,9 +341,9 @@ public class RegistrarLibro extends javax.swing.JPanel {
         comboTipo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         comboTipo.setForeground(new java.awt.Color(51, 51, 51));
         comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lirica", "Epica", "Prosa", "Dramatica" }));
-        comboTipo.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                comboTipoFocusLost(evt);
+        comboTipo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboTipoItemStateChanged(evt);
             }
         });
 
@@ -655,44 +655,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_Label10MouseExited
 
-    private void comboTipoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_comboTipoFocusLost
-        // TODO add your handling code here:
-        switch(comboTipo.getSelectedIndex()) {
-            case 0:
-                comboSub.removeAllItems();
-                comboSub.addItem("La Oda");
-                comboSub.addItem("La Elegia");
-                comboSub.addItem("La Egloga");
-                comboSub.addItem("La Satira");
-                comboSub.addItem("Epica");
-                comboSub.addItem("La Cancion");
-              break;
-            case 1:
-                comboSub.removeAllItems();
-                comboSub.addItem("La Epopeya");
-                comboSub.addItem("Fabula el poema epico");
-                comboSub.addItem("El Romance");
-              break;
-            case 2:
-                comboSub.removeAllItems();
-                comboSub.addItem("Novela");
-                comboSub.addItem("Cuento");
-                comboSub.addItem("Leyenda");
-                comboSub.addItem("Fábula");
-              break;
-            case 3:
-                comboSub.removeAllItems();
-                comboSub.addItem("La Tragedia");
-                comboSub.addItem("La Comedia");
-                comboSub.addItem("El Drama");
-                comboSub.addItem("La Opera");
-                comboSub.addItem("La Zarzuela");
-              break;
-            default:
-              break;
-          }
-    }//GEN-LAST:event_comboTipoFocusLost
-
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
        val();
         query.CrearLibro(Integer.parseInt(ISBN.getText()),OriTitulo.getText(), Sinopsis.getText(), Integer.parseInt(Year.getText()), Integer.parseInt(Pag.getText()), EspTitulo.getText(), Tema.getText(), Integer.parseInt(Edit.getText()),clasif());
@@ -780,6 +742,44 @@ public class RegistrarLibro extends javax.swing.JPanel {
             evt.consume();
          } 
     }//GEN-LAST:event_SinopsisKeyTyped
+
+    private void comboTipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboTipoItemStateChanged
+        // TODO add your handling code here:
+        switch(comboTipo.getSelectedIndex()) {
+            case 0:
+                comboSub.removeAllItems();
+                comboSub.addItem("La Oda");
+                comboSub.addItem("La Elegia");
+                comboSub.addItem("La Egloga");
+                comboSub.addItem("La Satira");
+                comboSub.addItem("Epica");
+                comboSub.addItem("La Cancion");
+              break;
+            case 1:
+                comboSub.removeAllItems();
+                comboSub.addItem("La Epopeya");
+                comboSub.addItem("Fabula el poema epico");
+                comboSub.addItem("El Romance");
+              break;
+            case 2:
+                comboSub.removeAllItems();
+                comboSub.addItem("Novela");
+                comboSub.addItem("Cuento");
+                comboSub.addItem("Leyenda");
+                comboSub.addItem("Fábula");
+              break;
+            case 3:
+                comboSub.removeAllItems();
+                comboSub.addItem("La Tragedia");
+                comboSub.addItem("La Comedia");
+                comboSub.addItem("El Drama");
+                comboSub.addItem("La Opera");
+                comboSub.addItem("La Zarzuela");
+              break;
+            default:
+              break;
+          }
+    }//GEN-LAST:event_comboTipoItemStateChanged
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
