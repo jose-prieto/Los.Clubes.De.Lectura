@@ -28,7 +28,6 @@ public class QueriesDaniel {
             filasafectadas = ps.executeUpdate();
 
             if (filasafectadas != 0) {
-                JOptionPane.showMessageDialog(null, "Idioma creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
 
         } catch (Exception e) {
@@ -52,12 +51,15 @@ public class QueriesDaniel {
             ps.setString(2, dir_nombre);
             ps.setString(3, moneda);
             ps.setString(4, nacionalidad);
-            ps.setInt(5, dir_id_padre);
-            
+            if (dir_id_padre == 0){
+                ps.setNull(5, java.sql.Types.NUMERIC);
+            }
+            else{
+                ps.setInt(5, dir_id_padre);
+            }
             filasafectadas = ps.executeUpdate();
 
             if (filasafectadas != 0) {
-                JOptionPane.showMessageDialog(null, "Direccion_lugar creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
 
         } catch (Exception e) {
@@ -67,67 +69,72 @@ public class QueriesDaniel {
      
      public void CrearClasificacion(String clasi_nombre, String clasi_tipo, int clasi_padre) {
         
-        String SQL = "INSERT INTO public.clasificacion(\n" +
-            "	clasi_nombre, clasi_tipo, clasi_id_padre)\n" +
+            String SQL = "INSERT INTO public.clasificacion(\n" +
+            "	clasi_nombre, clasi_tipo, clasi_padre)\n" +
             "	VALUES (?,?,?);";
-        int filasafectadas = 0;
+            int filasafectadas = 0;
 
-        try (Connection con = conexion.getConnection()){
+            try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps = con.prepareStatement(SQL);
             
             ps.setString(1, clasi_nombre);
             ps.setString(2, clasi_tipo);
-            ps.setInt(3, clasi_padre);
+            if (clasi_padre == 0){
+                ps.setNull(3, java.sql.Types.NUMERIC);
+            }
+            else{
+                ps.setInt(3, clasi_padre);
+            }
+
+            
             
             filasafectadas = ps.executeUpdate();
 
             if (filasafectadas != 0) {
-                JOptionPane.showMessageDialog(null, "Institucion creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
 
-        } catch (Exception e) {
+            } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-        }
+            }
         
             
         }
      
-        public void CrearInstitucion(String inst_nombre, String desc, int dir_id) {
+        public void CrearInstitucion(String inst_nombre, String inst_desc, int dir_id) {
         
-        String SQL = "INSERT INTO public.institucion(\n" +
-            "	inst_nombre, desc, dir_id)\n" +
+            String SQL = "INSERT INTO public.institucion(\n" +
+            "	inst_nombre, inst_desc, dir_id)\n" +
             "	VALUES (?,?,?);";
-        int filasafectadas = 0;
+            int filasafectadas = 0;
 
-        try (Connection con = conexion.getConnection()){
+            try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps = con.prepareStatement(SQL);
             
             ps.setString(1, inst_nombre);
-            ps.setString(2, desc);
+            ps.setString(2, inst_desc);
             ps.setInt(3, dir_id);
             
             filasafectadas = ps.executeUpdate();
 
             if (filasafectadas != 0) {
-                JOptionPane.showMessageDialog(null, "Institucion creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
 
-        } catch (Exception e) {
+            } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-        }
+            }
         
             
         }
         public void CrearIdioma_miembro(int doc_id, int idio_id) {
         
-        String SQL = "INSERT INTO public.idioma_miembro(\n" +
+            String SQL = "INSERT INTO public.idioma_miembro(\n" +
             "	doc_id,idio_id)\n" +
             "	VALUES (?,?);";
-        int filasafectadas = 0;
+            int filasafectadas = 0;
 
-        try (Connection con = conexion.getConnection()){
+            try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps = con.prepareStatement(SQL);
             
@@ -137,53 +144,50 @@ public class QueriesDaniel {
             filasafectadas = ps.executeUpdate();
 
             if (filasafectadas != 0) {
-                JOptionPane.showMessageDialog(null, "Idioma_miembro creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
 
-        } catch (Exception e) {
+            } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-        }
+            }
         
             
         }
-        public void CrearGrupo(int grup_id, int club_id, String grup_tipo, Date dia, Date fechai, Date fechaf) {
+        public void CrearGrupo(int club_id, String grup_tipo, String dia, int horai, int horaf) {
         
-        String SQL = "INSERT INTO public.grupo(\n" +
-            "	grup_id, club_id, grup_tipo, dia, fechai, fechaf)\n" +
-            "	VALUES (?,?,?,?,?,?);";
-        int filasafectadas = 0;
+            String SQL = "INSERT INTO public.grupo(\n" +
+            " club_id, grup_tipo, dia, horai, horaf)\n" +
+            "	VALUES (?,?,?,?,?);";
+            int filasafectadas = 0;
 
-        try (Connection con = conexion.getConnection()){
+            try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps = con.prepareStatement(SQL);
             
-            ps.setInt(1, grup_id);
-            ps.setInt(2, club_id);
-            ps.setString(3, grup_tipo);
-            ps.setDate(4, dia);
-            ps.setDate(5, fechai);
-            ps.setDate(6, fechaf);
+            ps.setInt(1, club_id);
+            ps.setString(2, grup_tipo);
+            ps.setString(3, dia);
+            ps.setInt(4, horai);
+            ps.setInt(5, horaf);
             
             filasafectadas = ps.executeUpdate();
 
             if (filasafectadas != 0) {
-                JOptionPane.showMessageDialog(null, "Grupo creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
 
-        } catch (Exception e) {
+            } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-        }
+            }
         
             
-        }
+            }
         public void CrearAsociacion(int club1, int club2) {
         
-        String SQL = "INSERT INTO public.asociacion(\n" +
+            String SQL = "INSERT INTO public.asociacion(\n" +
             "	club1, club2)\n" +
             "	VALUES (?,?);";
-        int filasafectadas = 0;
+            int filasafectadas = 0;
 
-        try (Connection con = conexion.getConnection()){
+            try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps = con.prepareStatement(SQL);
             
@@ -194,47 +198,117 @@ public class QueriesDaniel {
             filasafectadas = ps.executeUpdate();
 
             if (filasafectadas != 0) {
-                JOptionPane.showMessageDialog(null, "Asociacion creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
 
-        } catch (Exception e) {
+            } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-        }
+            }
         
             
         }
+       
+        public void CrearAuditorio(int audi_capacidad, String audi_nombre, int dir_id, int club_id) {
         
-        public void CrearHist_miembro(Date fechai_mie, int club_id, int doc_id, String estatus_mie, Date fechaf_mie, String motivo_retiro) {
-        
-        String SQL = "INSERT INTO public.hist_miembro(\n" +
-            "	fechai_mie, club_id, doc_id, estatus_mie, fechaf_mie, motivo_retiro)\n" +
-            "	VALUES (?,?);";
-        int filasafectadas = 0;
+            String SQL = "INSERT INTO public.auditorio(\n" +
+            "	audi_capacidad, audi_nombre, dir_id, club_id)\n" +
+            "	VALUES (?,?,?,?);";
+            int filasafectadas = 0;
 
-        try (Connection con = conexion.getConnection()){
+            try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps = con.prepareStatement(SQL);
             
-            ps.setDate(1, fechai_mie);
-            ps.setInt(2, club_id);
-            ps.setInt(3, doc_id);
-            ps.setString(4, estatus_mie);
-            ps.setDate(5, fechaf_mie);
-            ps.setString(6, motivo_retiro);
+            ps.setInt(1, audi_capacidad);
+            ps.setString(2, audi_nombre);
+            ps.setInt(3, dir_id);
+            
+            if (club_id == 0){
+                ps.setNull(4, java.sql.Types.NUMERIC);
+            }
+            else{
+                ps.setInt(4, club_id);
+            }
+            
           
             
             filasafectadas = ps.executeUpdate();
 
             if (filasafectadas != 0) {
-                JOptionPane.showMessageDialog(null, "Hist_miembro creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
 
-        } catch (Exception e) {
+            } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-        }
+            }
         
             
         }
+        
+         public void CrearAutor(int audi_capacidad, String audi_nombre, int dir_id, int club_id) {
+        
+            String SQL = "INSERT INTO public.auditorio(\n" +
+            "	audi_capacidad, audi_nombre, dir_id, club_id)\n" +
+            "	VALUES (?,?,?,?);";
+            int filasafectadas = 0;
+
+            try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, audi_capacidad);
+            ps.setString(2, audi_nombre);
+            ps.setInt(3, dir_id);
+            
+            if (club_id == 0){
+                ps.setNull(4, java.sql.Types.NUMERIC);
+            }
+            else{
+                ps.setInt(4, club_id);
+            }
+            
+          
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        
+            
+        }
+         
+        public void CrearEditorial(String edit_nombre, int dir_id) {
+        
+            String SQL = "INSERT INTO public.editorial(\n" +
+            " edit_nombre, dir_id)\n" +
+            "	VALUES (?,?);";
+            int filasafectadas = 0;
+
+            try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setString(1, edit_nombre);
+            ps.setInt(2, dir_id);
+         
+            
+          
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        
+            
+        }
+        
+        
         
         public boolean clubExist(int club_id) {
         try (Connection con = conexion.getConnection()){
@@ -262,5 +336,6 @@ public class QueriesDaniel {
             
         }
     }
+        
               
 }
