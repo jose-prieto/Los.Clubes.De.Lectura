@@ -24,14 +24,14 @@ public class Scripts {
       QueriesJose ejecJ = new QueriesJose();
       QueriesAlberto ejecA = new QueriesAlberto();
       
-      ejecD.CrearIdioma("mandarin");
-      ejecD.CrearIdioma("español");
-      ejecD.CrearIdioma("ingles");
-      ejecD.CrearIdioma("hindi");
-      ejecD.CrearIdioma("arabe");
-      ejecD.CrearIdioma("portugues");
+      ejecD.CrearIdioma("tamil");
+      ejecD.CrearIdioma("hebreo");
+      ejecD.CrearIdioma("arameo");
+      ejecD.CrearIdioma("gaelico");
+      ejecD.CrearIdioma("latin");
+      ejecD.CrearIdioma("geonosiano");
       ejecD.CrearIdioma("bengali");
-      ejecD.CrearIdioma("ruso"); 
+      ejecD.CrearIdioma("farsi"); 
       
       ejecD.CrearDireccion_lugar("continente", "America",null, null, 0);
       ejecD.CrearDireccion_lugar("pais", "Uruguay","Peso uruguayo", "Uruguaya", 1);
@@ -115,12 +115,12 @@ public class Scripts {
       ejecA.CrearAsociacion(7, 6);
       
       ejecD.CrearGrupo( 1, "niños", "4", 5 , 6);
-      ejecD.CrearGrupo( 1, "adultos", "2", 6 , 7);
+      ejecD.CrearGrupo( 2, "adultos", "2", 6 , 7);
       ejecD.CrearGrupo( 3, "adultos", "5", 6 , 7);
-      ejecD.CrearGrupo( 2, "adultos", "6", 5 , 6);
-      ejecD.CrearGrupo( 4, "adultos", "4", 5 , 6);
+      ejecD.CrearGrupo( 4, "adultos", "6", 5 , 6);
+      ejecD.CrearGrupo( 5, "adultos", "4", 5 , 6);
       ejecD.CrearGrupo( 6, "adultos", "3", 6 , 7);
-      ejecD.CrearGrupo( 2, "niños", "2", 5 , 6);
+      ejecD.CrearGrupo( 7, "niños", "2", 5 , 6);
       ejecD.CrearGrupo( 8, "niños", "3", 5 , 6);
       
       ejecD.CrearAuditorio(500, "Aula Magna UCAB", 5, 0);
@@ -140,6 +140,53 @@ public class Scripts {
       ejecD.CrearEditorial("Unibiblos", 5);
       ejecD.CrearEditorial("Angosta Editores", 4);
       ejecD.CrearEditorial("Babel Libros", 5);
+      
+      ejecJ.HistIns(1, 27342711);
+      ejecJ.HistIns(2, 2253421);
+      ejecJ.HistIns(3, 16268735);
+      ejecJ.HistIns(4, 20345678);
+      ejecJ.HistIns(5, 18234631);
+      ejecJ.HistIns(6, 15234557);
+      ejecJ.HistIns(7, 5964816);
+      ejecJ.HistIns(8, 22734126);
+      
+     /* ejecJ.AddGrup(1, 1, new Date(), 1, 1, 'Activo');
+      ejecJ.AddGrup(2, 2, new Date(), 2, 2, 'Activo');
+      ejecJ.AddGrup(3, 3, new Date(), 3, 3, 'Activo');
+      ejecJ.AddGrup(4, 4, new Date(), 4, 4, 'Activo');
+      ejecJ.AddGrup(5, 5, new Date(), 5, 5, 'Activo');
+      ejecJ.AddGrup(6, 6, new Date(), 6, 6, 'Activo');
+      ejecJ.AddGrup(7, 7, new Date(), 7, 7, 'Activo');
+      ejecJ.AddGrup(8, 8, new Date(), 8, 8, 'Activo'); */
+     
+
+     /*ejecA.Pago(27342711, new Date(), 1);
+     ejecA.Pago(2253421, new Date() , 2);
+     ejecA.Pago(16268735, new Date(), 3);
+     ejecA.Pago(20345678, new Date(), 4);
+     ejecA.Pago(18234631, new Date(), 5);
+     ejecA.Pago(15234557, new Date(), 6);
+     ejecA.Pago(5964816, new Date(), 7);
+     ejecA.Pago(22734126, new Date(), 8); */
+     
+     ejecD.CrearLibro(1234567, "La tregua", "habla sobre un hombre viudo y, cercano a jubilarse, que se enamora perdidamente de su empleada muy joven.", new Date(59,0,0), 200, null, null, 7, 2, 0);
+     ejecD.CrearLibro(3817312, "La biblioteca de Babel", "La biblioteca de Babel es un complejo compuesto por un número indefinido de galerías hexagonales e idénticas, donde hay grandes ventilaciones en el medio, cercadas por pequeñas barandas.", new Date(41,0,0), 120, null, null, 4, 3, 0);
+     ejecD.CrearLibro(446677, "El Aleph", "Un conjunto de 17 cuentos de el escritor Jorge Luis Borges.", new Date(49,0,0), 183, null, null, 2,  5, 0);
+     ejecD.CrearLibro(4589556, "La casa de los espíritus", "narra las vivencias de cuatro generaciones de una familia y la forma en la que esta se ve afectada por las transformaciones que vive Chile, el país donde se desarrolla la obra.", new Date(82,0,0), 200, null, null, 1, 8, 0);
+     ejecD.CrearLibro(92848, "La Vorágine", "narra las peripecias del poeta Arturo Cova y su amante Alicia, historia de pasión y venganza enmarcada en la selva amazónica, donde los dos amantes huyen y que expone, las duras condiciones de vida de los colonos e indígenas esclavizados durante la fiebre del caucho", new Date(24,0,0), 116, null, null, 3, 5, 0);
+     ejecD.CrearLibro(7859665, "De amor y de sombra", "narra las desgracias que vivieron tres familias de Chile durante la dictadura, las injusticias y abusos de las fuerzas armadas contra el pueblo, y a la vez narra un nuevo amor.", new Date(84,0,0), 319, null, null, 2, 4, 0);
+     ejecD.CrearLibro(1636657, "El crimen del otro", "Un conjunto de 12 cuentos del escritor Pablo Neruda.", new Date(4,0,0), 235, null, null, 6, 3, 0);
+     ejecD.CrearLibro(3574567, "La ciudad", "El protagonista se muda a una casa prestada, provisionalmente, en un lugar indeterminado, del que tampoco se nos informa. Como la encuentra en un estado general de abandono debido a que había estado muchos años vacía, sale a buscar provisiones a un almacén sin tener una noción clara de la dirección por donde queda.", new Date(70,0,0), 118, null, null, 5, 5, 0);
+     
+     /*ejecD.CrearAutor(1234567,"Mario", null, "Bendetti", null, 1234567);
+     ejecD.CrearAutor(1234567,"Jorge", "Luis", "Borges", null, 3817312);
+     ejecD.CrearAutor(1234567,"Isabel", null, "Allende", "Llona", 4589556);
+     ejecD.CrearAutor(1234567,"Jose", "Eustasio", "Rivera", "Salas", 92848);
+     ejecD.CrearAutor(1234567,"Horacio", "Silvestre", "Quiroga", "Forteza", 1636657);
+     ejecD.CrearAutor(1234567,"Jorge","Mario", "Varlotta", "Levrero", 1234567);
+     ejecD.CrearAutor(1234567,"Mario", null, "Bendetti", null, 1234567);
+     ejecD.CrearAutor(1234567,"Mario", null, "Bendetti", null, 1234567);*/
+
       
       
      
@@ -193,7 +240,7 @@ public class Scripts {
     }  
     public void actor(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-            ps = con.prepareStatement("CREATE TABLE public.actor(fechai_mie date NOT NULL, club_id numeric(3,0) NOT NULL,doc_id numeric(10,0) NOT NULL,obra_id numeric(3,0) NOT NULL,perso_id numeric(5,0) NOT NULL,func_fecha date NOT NULL,CONSTRAINT pk_actor PRIMARY KEY (fechai_mie, club_id, doc_id, obra_id, perso_id, func_fecha),CONSTRAINT fk_actor_elenco FOREIGN KEY (doc_id, fechai_mie, obra_id, club_id, perso_id)REFERENCES public.elenco (doc_id, fechai_mie, obra_id, club_id, perso_id) MATCH SIMPLE, CONSTRAINT fk_actor_funcion FOREIGN KEY (obra_id, func_fecha) REFERENCES public.funcion (obra_id, func_fecha) MATCH SIMPLE)");
+            ps = con.prepareStatement("CREATE TABLE public.actor ( fechai_mie date NOT NULL, club_id numeric(3,0) NOT NULL, doc_id numeric(10,0) NOT NULL, obra_id numeric(3,0) NOT NULL, perso_id numeric(5,0) NOT NULL, obraf_id numeric(3,0) NOT NULL,  func_fecha date NOT NULL, CONSTRAINT pk_actor PRIMARY KEY (fechai_mie, club_id, doc_id, obra_id, perso_id, func_fecha), CONSTRAINT fk_actor_elenco FOREIGN KEY (doc_id, fechai_mie, club_id, obra_id, perso_id) REFERENCES public.elenco (doc_id, fechai_mie, club_id, obra_id, perso_id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION, CONSTRAINT fk_actor_funcion FOREIGN KEY (obraf_id, func_fecha) REFERENCES public.funcion (obra_id, func_fecha) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION )");
             res = ps.executeQuery();
           /*  if (res.next()) {
                 JOptionPane.showMessageDialog(null, res.getString("UserName") + " ");

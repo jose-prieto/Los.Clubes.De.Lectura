@@ -179,7 +179,44 @@ public class QueriesDaniel {
             }
         
             
+        }
+        
+        
+        public void CrearLibro(int isbn, String lib_tit_original, String sinopsis, Date lib_ano_publi, int lib_pag, String titulo_esp, String tema_princ, int clasi_id, int edit_id, int isbn_padre) {
+        
+            String SQL = "INSERT INTO public.libro(\n" +
+            " isbn, lib_tit_original, sinopsis, lib_ano_publi, lib_pag, titulo_esp, tema_princ, clasi_id, edit_id, isbn_padre)\n" +
+            "	VALUES (?,?,?,?,?);";
+            int filasafectadas = 0;
+
+            try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, isbn);            
+            ps.setString(2, lib_tit_original);
+            ps.setString(3, sinopsis);
+            ps.setDate(4, lib_ano_publi);
+            ps.setInt(5, lib_pag);
+            ps.setString(6, titulo_esp);
+            ps.setString(7, tema_princ);
+            ps.setInt(8, clasi_id);
+            ps.setInt(9, edit_id);
+            if (isbn_padre == 0){ps.setNull(10, java.sql.Types.NUMERIC);}
+            else{ps.setInt(10, isbn_padre);}
+           
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
             }
+
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        
+            
+        }
+        
         public void CrearAsociacion(int club1, int club2) {
         
             String SQL = "INSERT INTO public.asociacion(\n" +
