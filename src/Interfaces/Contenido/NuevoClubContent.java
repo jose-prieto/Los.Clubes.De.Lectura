@@ -370,7 +370,7 @@ public class NuevoClubContent extends javax.swing.JPanel {
         } else {
             InstClub.setBorder(new LineBorder(Color.gray));
         }
-        query.CrearClub(NombreClub.getText(), Dir1Club.getText(), Integer.parseInt(PostalClub.getText()), true, 1, Integer.parseInt(CiudadClub.getText()));
+        query.CrearClub(NombreClub.getText(), Dir1Club.getText(), Integer.parseInt(PostalClub.getText()), true, idio(), Integer.parseInt(CiudadClub.getText()));
     }//GEN-LAST:event_RegistrarActionPerformed
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
@@ -460,7 +460,10 @@ public class NuevoClubContent extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_InstClubKeyTyped
 
-    
+   private int idio(){
+        int idio = comoIdioma.getSelectedIndex() + 1;      
+        return idio;
+   } 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
