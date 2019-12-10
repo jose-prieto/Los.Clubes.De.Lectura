@@ -133,8 +133,8 @@ public class Scripts {
       ejecD.CrearAuditorio(20000, "Luisa Rodriguez de Mendoza", 5, 0);
       
       ejecD.CrearEditorial("", 0);
-      
      
+      
       
     return 1;
     }
