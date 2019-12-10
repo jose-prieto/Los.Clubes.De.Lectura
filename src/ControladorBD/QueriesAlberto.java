@@ -335,5 +335,89 @@ public class QueriesAlberto {
         }
     }
 
+  //tiene tablas #2
+  public void CrearObra(int durac, String estatus, String titulo, int costo, int audi) {
+
+        String SQL = "INSERT INTO public.obra2(\n" +
+            "	obra_duracion, obra_estatus, obra_titulo, costo_entrada, audi_id)\n" +
+            "	VALUES (?, ?, ?, ?, ?);";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+        
+            ps.setInt(1, durac);
+            ps.setString(2, estatus);
+            ps.setString(3, titulo);
+            ps.setInt(4, costo);
+            ps.setInt(5, audi);
+
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                JOptionPane.showMessageDialog(null, "Obra creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+            
+        }
+  
+  
+  public void lib_obra(int isbn){
+      String SQL = "INSERT INTO public.libro_obra2(\n" +
+            "   isbn)\n" +
+            "	VALUES (?);";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, isbn);
+     
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                JOptionPane.showMessageDialog(null, "Lib_obra creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+     
+ }
+  
+  
+  public void club_obra(int club){
+      String SQL = "INSERT INTO public.club_obra2(\n" +
+            "   club_id)\n" +
+            "	VALUES (?);";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, club);
+     
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                JOptionPane.showMessageDialog(null, "club_obra creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+     
+ }
    
 }

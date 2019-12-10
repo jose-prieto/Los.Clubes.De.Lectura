@@ -1,5 +1,6 @@
 package Interfaces.Contenido;
 
+import ControladorBD.QueriesAlberto;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 
@@ -7,6 +8,7 @@ public class NuevaObra extends javax.swing.JPanel {
 
     ProcedimientosExtra listen = new ProcedimientosExtra();
     Dialogo diag = new Dialogo ();
+    QueriesAlberto query = new QueriesAlberto();
 
     public NuevaObra() {
 
@@ -14,11 +16,11 @@ public class NuevaObra extends javax.swing.JPanel {
 
         listen.FieldListener(TitObra);
         listen.FieldListener(Costo);
-        listen.FieldListener(LibObra);
+        listen.FieldListener(isbn);
         listen.FieldListener(NomAud);
         listen.FieldListener(PersObra);
         listen.AreaListener(Resumen);
-        listen.FieldListener(CiMiemb);
+        listen.FieldListener(Club);
 
     }
 
@@ -31,7 +33,7 @@ public class NuevaObra extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         Costo = new javax.swing.JTextField();
-        LibObra = new javax.swing.JTextField();
+        isbn = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -45,7 +47,7 @@ public class NuevaObra extends javax.swing.JPanel {
         PersObra = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         AgrPers = new javax.swing.JButton();
-        HorasSpinner = new javax.swing.JSpinner();
+        hora = new javax.swing.JSpinner();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Resumen = new javax.swing.JTextArea();
@@ -54,7 +56,7 @@ public class NuevaObra extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         AsigPers = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        CiMiemb = new javax.swing.JTextField();
+        Club = new javax.swing.JTextField();
 
         setMaximumSize(new java.awt.Dimension(707, 541));
         setMinimumSize(new java.awt.Dimension(707, 541));
@@ -71,7 +73,7 @@ public class NuevaObra extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Libro de referencia");
+        jLabel2.setText("Libro referencia (ISBN)");
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
@@ -82,12 +84,22 @@ public class NuevaObra extends javax.swing.JPanel {
         Costo.setText("15000");
         Costo.setToolTipText("");
         Costo.setBorder(new javax.swing.border.LineBorder(java.awt.Color.gray, 1, true));
+        Costo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CostoKeyTyped(evt);
+            }
+        });
 
-        LibObra.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        LibObra.setForeground(new java.awt.Color(204, 204, 255));
-        LibObra.setText("Ej. Romeo y Julieta");
-        LibObra.setToolTipText("");
-        LibObra.setBorder(new javax.swing.border.LineBorder(java.awt.Color.gray, 1, true));
+        isbn.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        isbn.setForeground(new java.awt.Color(204, 204, 255));
+        isbn.setText("Ej. 123456789");
+        isbn.setToolTipText("");
+        isbn.setBorder(new javax.swing.border.LineBorder(java.awt.Color.gray, 1, true));
+        isbn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                isbnKeyTyped(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
@@ -108,6 +120,11 @@ public class NuevaObra extends javax.swing.JPanel {
 
         jButton2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jButton2.setText("Reestablecer");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         NomAud.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         NomAud.setForeground(new java.awt.Color(204, 204, 255));
@@ -196,8 +213,8 @@ public class NuevaObra extends javax.swing.JPanel {
             }
         });
 
-        HorasSpinner.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        HorasSpinner.setModel(new javax.swing.SpinnerListModel(new String[] {"1 hora", "2 horas", "3 horas", "4 horas", "5 horas", "6 horas", "7 horas", "8 horas", "9 horas"}));
+        hora.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        hora.setModel(new javax.swing.SpinnerListModel(new String[] {"1 hora", "2 horas", "3 horas", "4 horas", "5 horas", "6 horas", "7 horas", "8 horas", "9 horas"}));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
@@ -239,19 +256,19 @@ public class NuevaObra extends javax.swing.JPanel {
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel11.setText("C.I. del miembro");
+        jLabel11.setText("Id del Club");
 
-        CiMiemb.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        CiMiemb.setForeground(new java.awt.Color(204, 204, 255));
-        CiMiemb.setText("Ej. 25369875");
-        CiMiemb.setBorder(new javax.swing.border.LineBorder(java.awt.Color.gray, 1, true));
+        Club.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Club.setForeground(new java.awt.Color(204, 204, 255));
+        Club.setText("Ej. 1");
+        Club.setBorder(new javax.swing.border.LineBorder(java.awt.Color.gray, 1, true));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel4)
@@ -273,15 +290,15 @@ public class NuevaObra extends javax.swing.JPanel {
                                     .addComponent(AgrPers))
                                 .addComponent(NomAud, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(HorasSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(hora, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(jLabel5)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(Costo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(LibObra, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(isbn, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(TitObra, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(CiMiemb, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Club, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(AsigPers, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,14 +328,14 @@ public class NuevaObra extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(LibObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(isbn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Label2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(jLabel5)
                             .addComponent(Costo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(HorasSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Label3)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
@@ -340,7 +357,7 @@ public class NuevaObra extends javax.swing.JPanel {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(CiMiemb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Club, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AsigPers, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,12 +368,12 @@ public class NuevaObra extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        query.CrearObra(2,"ACTIVA", TOOL_TIP_TEXT_KEY, WIDTH, WIDTH);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
@@ -429,10 +446,10 @@ public class NuevaObra extends javax.swing.JPanel {
         } else {
             TitObra.setBorder(new LineBorder(Color.gray));
         }
-        if (LibObra.getText().equals("Ej. Romeo y Julieta")) {
-            LibObra.setBorder(new LineBorder(Color.red));
+        if (isbn.getText().equals("Ej. 123456789")) {
+            isbn.setBorder(new LineBorder(Color.red));
         } else {
-            LibObra.setBorder(new LineBorder(Color.gray));
+            isbn.setBorder(new LineBorder(Color.gray));
         }
         if (Costo.getText().equals("15000")) {
             Costo.setBorder(new LineBorder(Color.red));
@@ -449,36 +466,62 @@ public class NuevaObra extends javax.swing.JPanel {
         } else {
             PersObra.setBorder(new LineBorder(Color.gray));
         }
-        if (CiMiemb.getText().equals("Ej. 25369875")) {
-            CiMiemb.setBorder(new LineBorder(Color.red));
+        if (Club.getText().equals("Ej. 1")) {
+            Club.setBorder(new LineBorder(Color.red));
         } else {
-            CiMiemb.setBorder(new LineBorder(Color.gray));
+            Club.setBorder(new LineBorder(Color.gray));
         }
         if (Resumen.getText().equals("Aquí se debe especificar el resumen del argumento de la obra en cuestión.")) {
             Resumen.setBorder(new LineBorder(Color.red));
         } else {
             Resumen.setBorder(new LineBorder(Color.gray));
         }
+        query.CrearObra(2,"Activo", TitObra.getText(), Integer.parseInt(Costo.getText()), Integer.parseInt(NomAud.getText()));
+        query.lib_obra(Integer.parseInt(isbn.getText()));
+        query.club_obra(Integer.parseInt(Club.getText()));
+        
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void isbnKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_isbnKeyTyped
+        // TODO add your handling code here:
+             char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9' || isbn.getText().length() > 14){
+            evt.consume();
+        }
+    }//GEN-LAST:event_isbnKeyTyped
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void CostoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CostoKeyTyped
+        // TODO add your handling code here:
+            char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9' || isbn.getText().length() > 4){
+            evt.consume();
+        }
+    }//GEN-LAST:event_CostoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgrPers;
     private javax.swing.JButton AsigPers;
-    private javax.swing.JTextField CiMiemb;
+    private javax.swing.JTextField Club;
     private javax.swing.JTextField Costo;
-    private javax.swing.JSpinner HorasSpinner;
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label2;
     private javax.swing.JLabel Label3;
     private javax.swing.JLabel Label4;
     private javax.swing.JLabel Label5;
-    private javax.swing.JTextField LibObra;
     private javax.swing.JTextField NomAud;
     private javax.swing.JList<String> PersAgr;
     private javax.swing.JTextField PersObra;
     private javax.swing.JTextArea Resumen;
     private javax.swing.JTextField TitObra;
+    private javax.swing.JSpinner hora;
+    private javax.swing.JTextField isbn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
