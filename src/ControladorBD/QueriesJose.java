@@ -686,33 +686,61 @@ public class QueriesJose {
         return 0;
     }
     
-    public boolean grupAdd(int grupid, int clubid, int docid, Date date) {
+    public boolean newGrup(int grupid, int clubid, int docid, Date date) {
+        
+        String SQL = "INSERT INTO public.g_lector(\n" +
+                        "	grup_id, club_id, fechai_mie, doc_id, current_date)\n" +
+                        "	VALUES (?, ?, ?, ?);";
+        int filasafectadas = 0;
+        
         try (Connection con = conexion.getConnection()){
 
-            PreparedStatement ps;
-            ResultSet res;
-
-            ps = con.prepareStatement("INSERT INTO public.g_lector(\n" +
-                                        "	grup_id, club_id, fechai_mie, doc_id, current_date)\n" +
-                                        "	VALUES (?, ?, ?, ?);");
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
             ps.setInt(1, grupid);
             ps.setInt(2, clubid);
             ps.setDate(3, date);
             ps.setInt(4, docid);
-                   
-            res = ps.executeQuery();
+            
+            filasafectadas = ps.executeUpdate();
 
-            if (res.next()) {
+            if (filasafectadas != 0) {
                 return true;
             }
 
         } catch (Exception e) {
-            
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
             return false;
-            
         }
+        return false;
+    }
+    
+    public boolean grupAdd(int grupid, int clubid, int docid, Date date) {
         
+        String SQL = "INSERT INTO public.g_lector(\n" +
+                        "	grup_id, club_id, fechai_mie, doc_id, current_date)\n" +
+                        "	VALUES (?, ?, ?, ?);";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, grupid);
+            ps.setInt(2, clubid);
+            ps.setDate(3, date);
+            ps.setInt(4, docid);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
         return false;
     }
     

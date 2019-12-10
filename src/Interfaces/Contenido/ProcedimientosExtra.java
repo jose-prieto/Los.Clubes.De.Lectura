@@ -86,7 +86,12 @@ public class ProcedimientosExtra {
                 
             }
         }else if (edad > 12 && edad <19){
-            
+            rs = query.eleccGrupo(clubid, "Adulto");
+            if (rs == null){
+                
+            }else{
+                
+            }
         }else if (edad < 13){
             
         }
