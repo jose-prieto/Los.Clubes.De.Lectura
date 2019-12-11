@@ -635,14 +635,14 @@ public class QueriesJose {
         return null;
     }
     
-    public ResultSet miemGrupo(int idclub) {
+    public ResultSet miemGrupo(int grupid) {
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps;
             ResultSet res;
 
-            ps = con.prepareStatement("SELECT doc_id FROM public.hist_miembro WHERE fechaf_mie is null AND club_id = ?;");
-            ps.setInt(1, idclub);
+            ps = con.prepareStatement("SELECT doc_id FROM public.g_lector WHERE grup_id=? and fechaf_gru is null;");
+            ps.setInt(1, grupid);
                    
             res = ps.executeQuery();
 
@@ -660,7 +660,7 @@ public class QueriesJose {
         return null;
     }
     
-    public ResultSet bucarGrupo(int idgrup) {
+    public ResultSet bucarclub(int idgrup) {
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps;
@@ -716,7 +716,7 @@ public class QueriesJose {
         
         String SQL = "INSERT INTO public.g_lector(\n" +
 "	grup_id, club_id, fechai_mie, clubh_id, doc_id, fechai_gru)\n" +
-"	VALUES (?, ?, (SELECT fechai_mie FROM public.hist_miembro WHERE doc_id=? AND fechaf_mie is null;), ?, ?, ?, current_date);";
+"	VALUES (?, ?, (SELECT fechai_mie FROM public.hist_miembro WHERE doc_id=? AND fechaf_mie is null;), ?, ?, current_date);";
         int filasafectadas = 0;
         
         try (Connection con = conexion.getConnection()){

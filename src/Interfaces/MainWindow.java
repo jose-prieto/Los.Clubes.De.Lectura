@@ -28,6 +28,7 @@ import Interfaces.Contenido.ActCalendario;
 import Interfaces.Contenido.NuevaObra;
 import Interfaces.Contenido.CierreObra;
 import Interfaces.Contenido.NuevaFunc;
+import Interfaces.Contenido.ProcedimientosExtra;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -35,6 +36,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 
 import ControladorBD.QueriesJose;
+import java.sql.Date;
 import javax.swing.JOptionPane;
 
 public class MainWindow extends javax.swing.JFrame implements ActionListener {
@@ -48,6 +50,8 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
     BDConexion conexion = new BDConexion();
     
     Scripts ejecutar = new Scripts();
+    
+    ProcedimientosExtra proc = new ProcedimientosExtra();
 
     //Menu
     MainPannel main = new MainPannel();
@@ -790,7 +794,8 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             
             if (nuevomiembro2.val() && nuevomiembro2.ActMiembro(nuevomiembro.CalcularEdad(), 
                     nuevomiembro.getCedula(nuevomiembro.Cedula.getText()), nuevomiembro.getCedulaRep(), 
-                    nuevomiembro.valrep)){
+                    nuevomiembro.valrep) && proc.addmiemGrup(nuevomiembro.getCedula(nuevomiembro.Cedula.getText()), 
+                            query.clubid(nuevomiembro.club.getSelectedItem().toString()), nuevomiembro.getNacimiento())){
                 JOptionPane.showMessageDialog(null, "El miembro:\n"+ nuevomiembro.getCedula(nuevomiembro.Cedula.getText()) +"\nha sido registrado exitosamente", "Error", JOptionPane.INFORMATION_MESSAGE);
                 nuevomiembro.vaciar();
                 nuevomiembro2.vaciar();
