@@ -514,7 +514,9 @@ public class RegistraMiembro extends javax.swing.JPanel {
                 Cedula.setBorder(new LineBorder(Color.red));
                 return false;
             }else{
-                valrep = query.repExist(getCedulaRep());
+                if (query.repExist(getCedulaRep()) || query.ciExist(getCedulaRep())){
+                    valrep = true;
+                }
                 CedulaRep.setBorder(new LineBorder(Color.gray));
             }
         }

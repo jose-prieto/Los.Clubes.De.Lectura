@@ -123,6 +123,31 @@ public class QueriesJose {
         return false;
     }
     
+    public boolean ActAdult(int idmiemb, int dir) {
+        String SQL = "UPDATE public.miembro\n" +
+"	SET dir_id=?\n" +
+"	WHERE doc_id=?";
+ 
+        int affectedrows = 0;
+ 
+        try (Connection con = conexion.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(SQL)) {
+ 
+            pstmt.setInt(1, dir);
+            pstmt.setInt(2, idmiemb);
+            
+            affectedrows = pstmt.executeUpdate();
+            
+            if (affectedrows != 0) {
+                return true;
+            }
+ 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return false;
+    }
+    
     public boolean miemPref(int ced, int isbn, int pos) {
         
         String SQL = "INSERT INTO public.libros_preferidos(\n" +
@@ -641,7 +666,7 @@ public class QueriesJose {
             PreparedStatement ps;
             ResultSet res;
 
-            ps = con.prepareStatement("SELECT club_id, grup_tipo FROM public.grupo;");
+            ps = con.prepareStatement("SELECT club_id, grup_tipo FROM public.grupo WHERE grup_id=?;");
             ps.setInt(1, idgrup);
                    
             res = ps.executeQuery();
@@ -660,21 +685,19 @@ public class QueriesJose {
         return null;
     }
     
-    public boolean newGrup(int grupid, int clubid, int docid, Date date) {
+    public boolean newGrup(int clubid, String gruptipo) {
         
-        String SQL = "INSERT INTO public.g_lector(\n" +
-                        "	grup_id, club_id, fechai_mie, doc_id, current_date)\n" +
-                        "	VALUES (?, ?, ?, ?);";
+        String SQL = "INSERT INTO public.grupo(\n" +
+"	club_id, grup_tipo)\n" +
+"	VALUES (?, ?);";
         int filasafectadas = 0;
         
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps = con.prepareStatement(SQL);
             
-            ps.setInt(1, grupid);
-            ps.setInt(2, clubid);
-            ps.setDate(3, date);
-            ps.setInt(4, docid);
+            ps.setInt(1, clubid);
+            ps.setString(2, gruptipo);
             
             filasafectadas = ps.executeUpdate();
 
@@ -689,11 +712,11 @@ public class QueriesJose {
         return false;
     }
     
-    public boolean grupAdd(int grupid, int clubid, int docid, Date date) {
+    public boolean grupAdd(int grupid, int clubid, int docid) {
         
         String SQL = "INSERT INTO public.g_lector(\n" +
-                        "	grup_id, club_id, fechai_mie, doc_id, current_date)\n" +
-                        "	VALUES (?, ?, ?, ?);";
+"	grup_id, club_id, fechai_mie, clubh_id, doc_id, fechai_gru)\n" +
+"	VALUES (?, ?, (SELECT fechai_mie FROM public.hist_miembro WHERE doc_id=? AND fechaf_mie is null;), ?, ?, ?, current_date);";
         int filasafectadas = 0;
         
         try (Connection con = conexion.getConnection()){
@@ -702,8 +725,9 @@ public class QueriesJose {
             
             ps.setInt(1, grupid);
             ps.setInt(2, clubid);
-            ps.setDate(3, date);
-            ps.setInt(4, docid);
+            ps.setInt(3, docid);
+            ps.setInt(4, clubid);
+            ps.setInt(5, docid);
             
             filasafectadas = ps.executeUpdate();
 

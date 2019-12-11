@@ -591,23 +591,20 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
     }
     
     public boolean ActMiembro(int edad, int idmiem, int idrep, boolean exist){
-        System.out.println(edad);
-        System.out.println(idmiem);
-        System.out.println(idrep);
-        System.out.println(exist);
-        System.out.println(query.paiscod(Ciudad.getSelectedItem().toString()));
         
         if (edad < 19 && idrep != 0 && exist){
             if (!query.ActMiembM(idrep, idmiem, query.paiscod(Ciudad.getSelectedItem().toString()))){
                 return false;
             }
-        }
-        if (edad < 19 && idrep != 0 && !exist){
+        }else if (edad < 19 && idrep != 0 && !exist){
             if (!query.ActMiemb(idrep, idmiem, query.paiscod(Ciudad.getSelectedItem().toString()))){
                 return false;
             }
+        }else if (edad > 18){
+            if (!query.ActAdult(idmiem, query.paiscod(Ciudad.getSelectedItem().toString()))){
+                return false;
+            }
         }
-        System.out.println("1");
         if(!query.CrearTelMiem(num(Cod1.getText()), num(Num1.getText()), idmiem)){
                 return false;
             }

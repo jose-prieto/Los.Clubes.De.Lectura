@@ -35,6 +35,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 
 import ControladorBD.QueriesJose;
+import javax.swing.JOptionPane;
 
 public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
@@ -713,7 +714,9 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             cond = 2;
 
         } else if (evt.equals(miembros.CambClub)) {
-
+            
+            cambioclub.inicio();
+            
             Alistar();
 
             miembros.setVisible(true);
@@ -722,21 +725,6 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             ContentPannel.add(cambioclub);
             Titulo.setText("Cambiar de club");
             OptionPannel.add(miembros);
-
-        } else if (evt.equals(cambioclub.Registrar)) {
-            
-            if (cambioclub.val() && cambioclub.Cambiar()){
-                Alistar();
-
-                nuevomiembro.Continuar.addActionListener(this);
-
-                miembros.setVisible(true);
-                nuevomiembro.setVisible(true);
-
-                ContentPannel.add(nuevomiembro);
-                Titulo.setText("Registrar miembro");
-                OptionPannel.add(miembros);
-            }
 
         } else if (evt.equals(miembros.RegMiemb)) {
             
@@ -803,6 +791,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             if (nuevomiembro2.val() && nuevomiembro2.ActMiembro(nuevomiembro.CalcularEdad(), 
                     nuevomiembro.getCedula(nuevomiembro.Cedula.getText()), nuevomiembro.getCedulaRep(), 
                     nuevomiembro.valrep)){
+                JOptionPane.showMessageDialog(null, "El miembro:\n"+ nuevomiembro.getCedula(nuevomiembro.Cedula.getText()) +"\nha sido registrado exitosamente", "Error", JOptionPane.INFORMATION_MESSAGE);
                 nuevomiembro.vaciar();
                 nuevomiembro2.vaciar();
                 nuevomiembro3.vaciar();

@@ -65,99 +65,76 @@ public class ProcedimientosExtra {
         });
 
     }
-    /*if (res != null){
-            try {
-                do{
-                    comoIdioma.addItem(res.getString(1));
-                }while (res.next());
-            } catch (SQLException ex) {
-                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }*/
+    
     public boolean addmiemGrup(int miemID, int clubid, Date fechaNac) {
         
         int edad = query.Edad(fechaNac);
         int size = 0;
-        int n = 0;
-        String h = "";
+        int n;
+        String tipo;
         ResultSet rs,rs2;
         
         if (edad >= 19){
-            h = "Adulto";
+            tipo = "adulto";
             n = 15;
         }else if (edad >= 13 && edad <= 18){
-            h = "Joven";
+            tipo = "joven";
             n = 10;
         }else{
-            h = "Nino";
+            tipo = "nino";
             n = 10;
         }
         
-        rs = query.eleccGrupo(clubid, h);
+        rs = query.eleccGrupo(clubid, tipo);
         
         if (rs == null){
-            //creargrupo
-            //agregar a grupo
-            return true;
+            query.newGrup(clubid, tipo);
+            return addmiemGrup(miemID, clubid, fechaNac);
         }else{
             try {
                 do{
                     rs2 = query.miemGrupo(rs.getInt(1));
+                    size = 0;
                     try {
                         do{
                            size++;
                         }while (rs2.next());
+                        if (size < n){
+                            query.grupAdd(rs.getInt(1), clubid, miemID);
+                        }
                     } catch (SQLException ex) {
                         Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    if (size < n){
-                        //return agregarmiembro
                     }
                 }while (rs.next());
             } catch (SQLException ex) {
                 Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
             }
-            //return agregar grupo adulto
-            //return agregar miembro a grupo anterior
+            query.newGrup(clubid, tipo);
+            return addmiemGrup(miemID, clubid, fechaNac);
         }
-            
-        return false;
     }
     
     public boolean removemiemGrup(int grupo) {
         
-        String tipo = "";
-        int club;
-        int n = 0;
-        String h = "";
-        ResultSet rs = query.bucarGrupo(grupo);
+        int size = 0;
+        int n, clubid;
+        String tipo;
+        ResultSet rs,rs2;
         
+        rs2 = query.bucarGrupo(grupo);
         try {
-            
-            tipo = rs.getString(2);
-            club = rs.getInt(1);
-            
-            } catch (SQLException ex) {
-                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+            clubid = rs2.getInt(1);
+            tipo = rs2.getString(2);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
         
-        if (edad >= 19){
-            h = "Adulto";
-            n = 15;
-        }else if (edad >= 13 && edad <= 18){
-            h = "Joven";
-            n = 10;
-        }else{
-            h = "Nino";
-            n = 10;
-        }
-        
-        rs = query.eleccGrupo(clubid, h);
+        rs = query.eleccGrupo(clubid, tipo);
         
         if (rs == null){
-            //creargrupo
-            //agregar a grupo
-            return true;
+            query.newGrup(clubid, tipo);
+            return addmiemGrup(miemID, clubid, fechaNac);
         }else{
             try {
                 do{
@@ -166,20 +143,18 @@ public class ProcedimientosExtra {
                         do{
                            size++;
                         }while (rs2.next());
+                        if (size < n){
+                            query.grupAdd(rs.getInt(1), clubid, miemID);
+                        }
                     } catch (SQLException ex) {
                         Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    if (size < n){
-                        //return agregarmiembro
                     }
                 }while (rs.next());
             } catch (SQLException ex) {
                 Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
             }
-            //return agregar grupo adulto
-            //return agregar miembro a grupo anterior
+            query.newGrup(clubid, tipo);
+            return addmiemGrup(miemID, clubid, fechaNac);
         }
-            
-        return false;
     }
 }
