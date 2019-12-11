@@ -130,7 +130,7 @@ public class QueriesAlberto {
     }
      
   
-  public void BuscarHist(int ci) {
+ /* public void BuscarHist(int ci) {
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps;
@@ -159,7 +159,7 @@ public class QueriesAlberto {
         }
         
         
-    }
+    }*/
  
  
 public void Pago(int ci){
@@ -190,7 +190,7 @@ public void Pago(int ci){
  }
   
   
-  public void CrearClub(String nombre, String direccion, int codp, boolean cuota, int idio, int ciudad) {
+ public void CrearClub(String nombre, String direccion, int codp, boolean cuota, int idio, int ciudad) {
 
         String SQL = "INSERT INTO public.club(\n" +
             "	 club_nombre, direccion, cod_postal, cuota, idio_id, dir_id)\n" +
@@ -224,6 +224,40 @@ public void Pago(int ci){
         }
   
   
+ public void CrearClubI(String nombre, String direccion, int codp, boolean cuota, int idio, int ciudad) {
+
+        String SQL = "INSERT INTO public.club(\n" +
+            "	 club_nombre, direccion, cod_postal, cuota, idio_id, dir_id, inst_id)\n" +
+            "	VALUES (lower(?), lower(?), ?, ?, ?, ?, (SELECT inst_id from institucion WHERE inst_id = (SELECT MAX(inst_id) FROM institucion)));";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+        
+            ps.setString(1, nombre);
+            ps.setString(2, direccion);
+            ps.setInt(3, codp);
+            ps.setBoolean(4, cuota);
+            ps.setInt(5, idio);
+            ps.setInt(6, ciudad);
+           // ps.setInt(7, BuscarInst());
+
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                JOptionPane.showMessageDialog(null, "Club creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+            
+        }
+  
  public void CrearInstitucion(String inst_nombre, String inst_desc, int dir_id) {
         
             String SQL = "INSERT INTO public.institucion(\n" +
@@ -250,7 +284,35 @@ public void Pago(int ci){
         
             
         }
-  
+ 
+
+ public int BuscarInst() {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+            int Id=0;
+            int club;
+            ps = con.prepareStatement("SELECT inst_id  "
+                    + "FROM institucion "
+                    + "WHERE inst_id =  (SELECT MAX(inst_id) FROM institucion) ;");
+            
+            res = ps.executeQuery();
+
+            res.next();
+                Id = res.getInt("inst_id");
+
+            return Id;    
+           
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return 0;
+            
+        }
+        }
+        
   
  public int BuscarCiudad(String ciudad) {
         try (Connection con = conexion.getConnection()){
