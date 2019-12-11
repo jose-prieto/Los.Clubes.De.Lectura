@@ -433,8 +433,14 @@ public class NuevoClubContent extends javax.swing.JPanel {
         } else {
             InstClub.setBorder(new LineBorder(Color.gray));
         }
-       //query.CrearInstitucion(InstClub.getText(),"Universidad Catolica" , query.BuscarCiudad(Ciudad.getSelectedItem().toString()));
-       query.CrearClub(NombreClub.getText(), Dir1Club.getText(), Integer.parseInt(PostalClub.getText()), true, comoIdioma.getSelectedIndex() + 1, query.BuscarCiudad(Ciudad.getSelectedItem().toString()));
+        
+        if(check.isSelected()==true){
+             query.CrearInstitucion(InstClub.getText(), descInst.getText() , query.BuscarCiudad(Ciudad.getSelectedItem().toString()));
+             query.CrearClubI(NombreClub.getText(), Dir1Club.getText(), Integer.parseInt(PostalClub.getText()), true, comoIdioma.getSelectedIndex() + 1, query.BuscarCiudad(Ciudad.getSelectedItem().toString()));
+   
+        }else{
+       query.CrearClub(NombreClub.getText(), Dir1Club.getText(), Integer.parseInt(PostalClub.getText()), false, comoIdioma.getSelectedIndex() + 1, query.BuscarCiudad(Ciudad.getSelectedItem().toString()));
+       }  
     }//GEN-LAST:event_RegistrarActionPerformed
    
     

@@ -15,7 +15,7 @@ public class QueriesDaniel {
         
         String SQL = "INSERT INTO public.idioma(\n" +
             "	idio_nombre)\n" +
-            "	VALUES (?);";
+            "	VALUES (lower(?));";
         int filasafectadas = 0;
 
         try (Connection con = conexion.getConnection()){
@@ -40,7 +40,7 @@ public class QueriesDaniel {
         
         String SQL = "INSERT INTO public.direccion_lugar(\n" +
             "	dir_tipo, dir_nombre, moneda, nacionalidad, dir_id_padre)\n" +
-            "	VALUES (?,?,?,?,?);";
+            "	VALUES (lower(?),lower(?),lower(?),lower(?),?);";
         int filasafectadas = 0;
 
         try (Connection con = conexion.getConnection()){
@@ -67,11 +67,14 @@ public class QueriesDaniel {
         }   
         }
      
+         
+      
+     
      public void CrearCapitulo(int isbn, String cap_nombre,String cap_titulo) {
         
         String SQL = "INSERT INTO public.capitulo_otro(\n" +
             " isbn, cap_nombre, cap_titulo)\n" +
-            "	VALUES (?,?,?);";
+            "	VALUES (?,lower(?),lower(?));";
         int filasafectadas = 0;
 
         try (Connection con = conexion.getConnection()){
@@ -96,7 +99,7 @@ public class QueriesDaniel {
         
         String SQL = "INSERT INTO public.seccion(\n" +
             " cap_id, isbn, secc_nombre, secc_titulo)\n" +
-            "	VALUES (?,?,?,?);";
+            "	VALUES (?,?,lower(?),lower(?));";
         int filasafectadas = 0;
 
         try (Connection con = conexion.getConnection()){
@@ -123,7 +126,7 @@ public class QueriesDaniel {
         
         String SQL = "INSERT INTO public.personaje(\n" +
             " obra_id, perso_nombre, perso_desc)\n" +
-            "	VALUES (?,?,?);";
+            "	VALUES (?,lower(?),lower(?));";
         int filasafectadas = 0;
 
         try (Connection con = conexion.getConnection()){
@@ -179,7 +182,7 @@ public class QueriesDaniel {
         
             String SQL = "INSERT INTO public.clasificacion(\n" +
             "	clasi_nombre, clasi_tipo, clasi_padre)\n" +
-            "	VALUES (?,?,?);";
+            "	VALUES (lower(?),lower(?),?);";
             int filasafectadas = 0;
 
             try (Connection con = conexion.getConnection()){
@@ -213,7 +216,7 @@ public class QueriesDaniel {
         
             String SQL = "INSERT INTO public.institucion(\n" +
             "	inst_nombre, inst_desc, dir_id)\n" +
-            "	VALUES (?,?,?);";
+            "	VALUES (lower(?),lower(?),?);";
             int filasafectadas = 0;
 
             try (Connection con = conexion.getConnection()){
@@ -264,7 +267,7 @@ public class QueriesDaniel {
         
             String SQL = "INSERT INTO public.grupo(\n" +
             " club_id, grup_tipo, dia, horai, horaf)\n" +
-            "	VALUES (?,?,?,?,?);";
+            "	VALUES (?,lower(?),lower(?),?,?);";
             int filasafectadas = 0;
 
             try (Connection con = conexion.getConnection()){
@@ -294,7 +297,7 @@ public class QueriesDaniel {
         
             String SQL = "INSERT INTO public.libro(\n" +
             " isbn, lib_tit_original, sinopsis, lib_ano_publi, lib_pag, titulo_esp, tema_princ, clasi_id, edit_id, isbn_padre)\n" +
-            "	VALUES (?,?,?,?,?,?,?,?,?,?);";
+            "	VALUES (?,lower(?),lower(?),?,?,lower(?),lower(?),?,?,?);";
             int filasafectadas = 0;
 
             try (Connection con = conexion.getConnection()){
@@ -356,7 +359,7 @@ public class QueriesDaniel {
         
             String SQL = "INSERT INTO public.auditorio(\n" +
             "	audi_capacidad, audi_nombre, dir_id, club_id)\n" +
-            "	VALUES (?,?,?,?);";
+            "	VALUES (?,lower(?),?,?);";
             int filasafectadas = 0;
 
             try (Connection con = conexion.getConnection()){
@@ -392,7 +395,7 @@ public class QueriesDaniel {
         
             String SQL = "INSERT INTO public.auditorio(\n" +
             "	audi_capacidad, audi_nombre, dir_id, club_id)\n" +
-            "	VALUES (?,?,?,?);";
+            "	VALUES (?,lower(?),?,?);";
             int filasafectadas = 0;
 
             try (Connection con = conexion.getConnection()){
@@ -428,7 +431,7 @@ public class QueriesDaniel {
         
             String SQL = "INSERT INTO public.editorial(\n" +
             " edit_nombre, dir_id)\n" +
-            "	VALUES (?,?);";
+            "	VALUES (lower(?),?);";
             int filasafectadas = 0;
 
             try (Connection con = conexion.getConnection()){
@@ -453,32 +456,93 @@ public class QueriesDaniel {
             
         }
         
+         public void CrearElenco(int doc_id, String perso_nombre) {
+        
+            String SQL = "INSERT INTO public.elenco(\n" +
+            " fechai_mie,club_id, doc_id, obra_id, perso_id)\n" +
+            "	VALUES ((SELECT fechai_mie FROM public.hist_miembro WHERE doc_id=? AND fechaf_mie is null),(SELECT club_id FROM public.hist_miembro WHERE doc_id=? AND fechaf_mie is null),?, (SELECT obra_id FROM public.personaje WHERE perso_id=?),?);";
+            int filasafectadas = 0;
+
+            try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, doc_id);
+            ps.setInt(2,doc_id);
+            ps.setInt(3,doc_id);
+            ps.setInt(4, PersoId(perso_nombre));
+            ps.setInt(5, PersoId(perso_nombre));
+         
+            
+          
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        
+            
+        }
+         
+        public void CrearActor(int doc_id, String perso_nombre, Date func_fecha) {
+        
+            String SQL = "INSERT INTO public.actor(\n" +
+            " fechai_mie,club_id, doc_id, obra_id, perso_id, obraf_id, func_fecha)\n" +
+            "	VALUES ((SELECT fechai_mie FROM public.hist_miembro WHERE doc_id=? AND fechaf_mie is null),(SELECT club_id FROM public.hist_miembro WHERE doc_id=? AND fechaf_mie is null),?,(SELECT obra_id FROM public.personaje WHERE perso_id=?),?,(SELECT obra_id FROM public.personaje WHERE perso_id=?),?);";
+            int filasafectadas = 0;
+
+            try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, doc_id);
+            ps.setInt(2,doc_id);
+            ps.setInt(3,doc_id);
+            ps.setInt(4, PersoId(perso_nombre));
+            ps.setInt(5, PersoId(perso_nombre));
+            ps.setInt(6, PersoId(perso_nombre));
+            ps.setDate(7, func_fecha);
+         
+            
+          
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        
+            
+        }
         
         
-        public boolean clubExist(int club_id) {
+        public int PersoId(String perso_nombre) {
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps;
             ResultSet res;
 
-            ps = con.prepareStatement("SELECT club_id "
-                    + "FROM club "
-                    + "WHERE club_id = ?;");
-            ps.setInt(1, club_id);
+            ps = con.prepareStatement("SELECT perso_id "
+                    + "FROM personaje "
+                    + "WHERE perso_nombre = lower(?);");
+            ps.setString(1, perso_nombre);
             
             res = ps.executeQuery();
-
-            if (res.next()) {
-                return true;
-            } else {
-                return false;
-            }
+            res.next();
+            return res.getInt(1);
+            
 
         } catch (Exception e) {
             
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-            
+           return 0;
         }
     }
         
