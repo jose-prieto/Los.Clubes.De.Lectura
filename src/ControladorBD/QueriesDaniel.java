@@ -121,7 +121,7 @@ public class QueriesDaniel {
      
     public void CrearPersonaje(int obra_id, String perso_nombre,String perso_desc) {
         
-        String SQL = "INSERT INTO public.personaje\n" +
+        String SQL = "INSERT INTO public.personaje(\n" +
             " obra_id, perso_nombre, perso_desc)\n" +
             "	VALUES (?,?,?);";
         int filasafectadas = 0;
@@ -294,7 +294,7 @@ public class QueriesDaniel {
         
             String SQL = "INSERT INTO public.libro(\n" +
             " isbn, lib_tit_original, sinopsis, lib_ano_publi, lib_pag, titulo_esp, tema_princ, clasi_id, edit_id, isbn_padre)\n" +
-            "	VALUES (?,?,?,?,?);";
+            "	VALUES (?,?,?,?,?,?,?,?,?,?);";
             int filasafectadas = 0;
 
             try (Connection con = conexion.getConnection()){

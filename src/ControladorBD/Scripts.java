@@ -60,14 +60,14 @@ public class Scripts {
       ejecD.CrearClasificacion("romance", "subgenero",3);
       ejecD.CrearClasificacion("tragedia", "subgenero",4);
       
-      /*ejecJ.CrearMiemb(27342711, "Roberto", null, "Hidalgo", null, "m", new Date(99,02,01), 4);
+      ejecJ.CrearMiemb(27342711, "Roberto", null, "Hidalgo", null, "m", new Date(99,02,01), 4);
       ejecJ.CrearMiemb(2253421, "Jose", null, "Prado", null, "m", new Date(99,02,01), 4);
       ejecJ.CrearMiemb(16268735, "Carmen", null, "Delgadito", null, "f", new Date(99,02,01), 5);
       ejecJ.CrearMiemb(20345678, "Alan", null, "Brito", null, "m", new Date(99,02,01), 6);
       ejecJ.CrearMiemb(18234631, "Armando", null, "Casitas", null, "m", new Date(99,02,01), 7);
       ejecJ.CrearMiemb(15234557, "Robert", null, "Plant", null, "m", new Date(99,02,01), 7);
       ejecJ.CrearMiemb(5964816, "Gabriela", null, "Moreno", null, "f", new Date(99,02,01),6);
-      ejecJ.CrearMiemb(22734126, "Artur", null, "Rito", null, "m", new Date(99,02,01), 5);*/
+      ejecJ.CrearMiemb(22734126, "Artur", null, "Rito", null, "m", new Date(99,02,01), 5);
       
       ejecJ.CrearTelMiem(414, 1381872, 27342711);
       ejecJ.CrearTelMiem(412, 2476721, 2253421);
@@ -96,14 +96,14 @@ public class Scripts {
       ejecD.CrearInstitucion("Canaima","Empresa de tecnologia punta", 5);
       ejecD.CrearInstitucion("Chorichipi","Empresa de choripanes", 7);
       
-      /*ejecA.CrearClub("Lectura empedernida", "La esquna de mi casa", 1020, true, 2, 4, 2);
+      ejecA.CrearClub("Lectura empedernida", "La esquna de mi casa", 1020, true, 2, 4, 2);
       ejecA.CrearClub("Entretenimiento en papel", "Av. El Ejercito", 1012, false, 2, 4, 0);
       ejecA.CrearClub("Lectores Anonimos", "Calle Antonio Guerrero", 1020, false, 2, 5, 0);
       ejecA.CrearClub("Escritores frustrados", "Av. Libertador", 1020, true, 2, 5,4);
       ejecA.CrearClub("Libros con mucho té", "Esq. Albañales", 1020, false, 2, 6, 0);
       ejecA.CrearClub("Sonrisas estudiosas", "Bello Monte", 1020, false, 2, 6, 0);
       ejecA.CrearClub("Detectives encubiertos", "Ronda de Outeiro", 1020, false, 2, 7, 0);
-      ejecA.CrearClub("Los ebook son mejores", "A Estrada", 1020, false, 2, 7, 0);*/
+      ejecA.CrearClub("Los ebook son mejores", "A Estrada", 1020, false, 2, 7, 0);
       
       ejecA.CrearAsociacion(1, 3);
       ejecA.CrearAsociacion(2, 3);
@@ -127,10 +127,10 @@ public class Scripts {
       ejecD.CrearAuditorio(2000, "Naranja", 4, 0);
       ejecD.CrearAuditorio(1800, "Tobias Lasser", 6, 0);
       ejecD.CrearAuditorio(1500, "Madre Matilde", 4, 0);
-      ejecD.CrearAuditorio(20000, "Teatro Municipal", 6, 0);
-      ejecD.CrearAuditorio(20000, "TEATREX", 7, 0);
-      ejecD.CrearAuditorio(20000, "Aula Magna UCV", 7, 0);
-      ejecD.CrearAuditorio(20000, "Luisa Rodriguez de Mendoza", 5, 0);
+      ejecD.CrearAuditorio(4000, "Teatro Municipal", 6, 0);
+      ejecD.CrearAuditorio(7000, "TEATREX", 7, 0);
+      ejecD.CrearAuditorio(3000, "Aula Magna UCV", 7, 0);
+      ejecD.CrearAuditorio(1100, "Luisa Rodriguez de Mendoza", 5, 0);
       
       ejecD.CrearEditorial("Ediciones Trilce", 6);
       ejecD.CrearEditorial("Artefato", 7);
@@ -178,14 +178,14 @@ public class Scripts {
      ejecD.CrearLibro(1636657, "el crimen del otro", "Un conjunto de 12 cuentos del escritor Pablo Neruda.", new Date(4,0,0), 235, null, null, 6, 3, 0);
      ejecD.CrearLibro(3574567, "la ciudad", "el protagonista se muda a una casa prestada, provisionalmente, en un lugar indeterminado, del que tampoco se nos informa. Como la encuentra en un estado general de abandono debido a que había estado muchos años vacía, sale a buscar provisiones a un almacén sin tener una noción clara de la dirección por donde queda.", new Date(70,0,0), 118, null, null, 5, 5, 0);
      
-     /*ejecD.CrearAutor("Mario", null, "Bendetti", null, 1234567);
-     ejecD.CrearAutor("Jorge", "Luis", "Borges", null, 3817312);
-     ejecD.CrearAutor("Isabel", null, "Allende", "Llona", 4589556);
-     ejecD.CrearAutor("Jose", "Eustasio", "Rivera", "Salas", 92848);
-     ejecD.CrearAutor("Horacio", "Silvestre", "Quiroga", "Forteza", 1636657);
-     ejecD.CrearAutor("Jorge","Mario", "Varlotta", "Levrero", 1234567);
-     ejecD.CrearAutor("Leopoldo", null, "Marechal", null, 446677);
-     ejecD.CrearAutor("Mario", null, "Vargas", "Llosa", 7859665);*/
+     ejecA.CrearAutorLibro("Mario", null, "Bendetti", null, 1234567);
+     ejecA.CrearAutorLibro("Jorge", "Luis", "Borges", null, 3817312);
+     ejecA.CrearAutorLibro("Isabel", null, "Allende", "Llona", 4589556);
+     ejecA.CrearAutorLibro("Jose", "Eustasio", "Rivera", "Salas", 92848);
+     ejecA.CrearAutorLibro("Horacio", "Silvestre", "Quiroga", "Forteza", 1636657);
+     ejecA.CrearAutorLibro("Jorge","Mario", "Varlotta", "Levrero", 1234567);
+     ejecA.CrearAutorLibro("Leopoldo", null, "Marechal", null, 446677);
+     ejecA.CrearAutorLibro("Mario", null, "Vargas", "Llosa", 7859665);
      
      ejecA.CrearObra(3,"activa","La tregua", 5000, 1);
      ejecA.CrearObra(1,"inactiva","La biblioteca de Babel", 3200, 2);
@@ -574,7 +574,7 @@ public class Scripts {
     
         public void personaje(PreparedStatement ps, ResultSet res,Connection con) {
         try {
-            ps = con.prepareStatement("CREATE TABLE public.personaje ( perso_id numeric(5,0) NOT NULL DEFAULT nextval('perso_perso_id_seq'::regclass), obra_id numeric(3,0) NOT NULL, perso_nombre character varying(20) COLLATE pg_catalog.\"default\" NOT NULL, perso_desc character varying(100) COLLATE pg_catalog.\"default\" NOT NULL, CONSTRAINT pk_personaje PRIMARY KEY (obra_id, perso_id), CONSTRAINT fk_personaje FOREIGN KEY (obra_id) REFERENCES public.obra (obra_id) MATCH SIMPLE )");
+            ps = con.prepareStatement("CREATE TABLE public.personaje ( perso_id numeric(5,0) NOT NULL DEFAULT nextval('perso_perso_id_seq'::regclass), obra_id numeric(3,0) NOT NULL, perso_nombre character varying(35) COLLATE pg_catalog.\"default\" NOT NULL, perso_desc character varying(500) COLLATE pg_catalog.\"default\" NOT NULL, CONSTRAINT pk_personaje PRIMARY KEY (obra_id, perso_id), CONSTRAINT fk_personaje FOREIGN KEY (obra_id) REFERENCES public.obra (obra_id) MATCH SIMPLE )");
             res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
