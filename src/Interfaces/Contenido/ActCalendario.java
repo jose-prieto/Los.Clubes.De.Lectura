@@ -22,9 +22,13 @@ public class ActCalendario extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         IdGrup = new javax.swing.JTextField();
         Dias = new javax.swing.JComboBox<>();
-        Hora = new javax.swing.JComboBox<>();
+        HoraI = new javax.swing.JComboBox<>();
         Asistencia = new javax.swing.JButton();
         Label1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        HoraF = new javax.swing.JComboBox<>();
 
         setMaximumSize(new java.awt.Dimension(707, 541));
         setMinimumSize(new java.awt.Dimension(707, 541));
@@ -46,8 +50,13 @@ public class ActCalendario extends javax.swing.JPanel {
         Dias.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Dias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes" }));
 
-        Hora.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Hora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5:00 pm", "5:30 pm", "6:00 pm", "6:30 pm", "7:00 pm" }));
+        HoraI.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        HoraI.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5:00 pm", "5:30 pm", "6:00 pm", "6:30 pm", "7:00 pm" }));
+        HoraI.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                HoraIItemStateChanged(evt);
+            }
+        });
 
         Asistencia.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Asistencia.setText("Confirmar");
@@ -69,42 +78,69 @@ public class ActCalendario extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel2.setText("Día de reunión");
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel3.setText("Hora comienza");
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel4.setText("Hora termina");
+
+        HoraF.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        HoraF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5:30 pm", "6:00 pm", "6:30 pm", "7:00 pm" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(108, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Asistencia)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addGap(18, 18, 18)
-                            .addComponent(IdGrup, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(Dias, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(Hora, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Asistencia))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Dias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(IdGrup)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(HoraI, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(HoraF, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Label1)
-                .addGap(68, 68, 68))
+                .addGap(60, 60, 60))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addGap(81, 81, 81)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(IdGrup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label1))
-                .addGap(62, 62, 62)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Dias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(HoraI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(HoraF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(64, 64, 64)
                 .addComponent(Asistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(283, Short.MAX_VALUE))
+                .addContainerGap(240, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -133,12 +169,51 @@ public class ActCalendario extends javax.swing.JPanel {
         diag.setVisible(false);
     }//GEN-LAST:event_Label1MouseExited
 
+    private void HoraIItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_HoraIItemStateChanged
+        // TODO add your handling code here:
+        if (HoraI.getSelectedItem().toString().equals("5:00 pm")){
+            HoraF.removeAllItems();
+            HoraF.addItem("5:30 pm");
+            HoraF.addItem("6:00 pm");
+            HoraF.addItem("6:30 pm");
+            HoraF.addItem("7:00 pm");
+        }else if (HoraI.getSelectedItem().toString().equals("5:30 pm")){
+            HoraF.removeAllItems();
+            HoraF.addItem("6:00 pm");
+            HoraF.addItem("6:30 pm");
+            HoraF.addItem("7:00 pm");
+            HoraF.addItem("7:30 pm");
+        }else if (HoraI.getSelectedItem().toString().equals("6:00 pm")){
+            HoraF.removeAllItems();
+            HoraF.addItem("6:30 pm");
+            HoraF.addItem("7:00 pm");
+            HoraF.addItem("7:30 pm");
+            HoraF.addItem("8:00 pm");
+        }else if (HoraI.getSelectedItem().toString().equals("6:30 pm")){
+            HoraF.removeAllItems();
+            HoraF.addItem("7:00 pm");
+            HoraF.addItem("7:30 pm");
+            HoraF.addItem("8:00 pm");
+            HoraF.addItem("8:30 pm");
+        }else if (HoraI.getSelectedItem().toString().equals("7:00 pm")){
+            HoraF.removeAllItems();
+            HoraF.addItem("7:30 pm");
+            HoraF.addItem("8:00 pm");
+            HoraF.addItem("8:30 pm");
+            HoraF.addItem("9:00 pm");
+        }
+    }//GEN-LAST:event_HoraIItemStateChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Asistencia;
     private javax.swing.JComboBox<String> Dias;
-    private javax.swing.JComboBox<String> Hora;
+    private javax.swing.JComboBox<String> HoraF;
+    private javax.swing.JComboBox<String> HoraI;
     private javax.swing.JTextField IdGrup;
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

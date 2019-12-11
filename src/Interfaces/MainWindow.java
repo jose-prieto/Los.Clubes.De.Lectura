@@ -36,12 +36,12 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 
 import ControladorBD.QueriesJose;
-import java.sql.Date;
 import javax.swing.JOptionPane;
 
 public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
-    int cond = 1;
+    int cond = 0;
+    int cond2 = 0;
     
     QueriesJose query = new QueriesJose();
     
@@ -406,6 +406,20 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         cond = 1;
 
         Atras.setVisible(false);
+        
+        if (cond2 == 2){
+            nuevomiembro3.elimRep();
+            nuevomiembro.ElimMiem();
+            nuevomiembro3.vaciar();
+            nuevomiembro2.vaciar();
+            nuevomiembro.vaciar();
+        }
+        if (cond2 == 1){
+            nuevomiembro.ElimMiem();
+            nuevomiembro3.vaciar();
+            nuevomiembro2.vaciar();
+            nuevomiembro.vaciar();
+        }
 
     }//GEN-LAST:event_HomeButtonActionPerformed
 
@@ -435,6 +449,21 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
             cond = 1;
         }
+        
+        if (cond2 == 2){
+            nuevomiembro3.elimRep();
+            nuevomiembro.ElimMiem();
+            nuevomiembro3.vaciar();
+            nuevomiembro2.vaciar();
+            nuevomiembro.vaciar();
+        }
+        if (cond2 == 1){
+            nuevomiembro.ElimMiem();
+            nuevomiembro3.vaciar();
+            nuevomiembro2.vaciar();
+            nuevomiembro.vaciar();
+        }
+        
     }//GEN-LAST:event_AtrasActionPerformed
 
     private void CerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarMouseEntered
@@ -716,6 +745,19 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             OptionPannel.add(miembros);
 
             cond = 2;
+            if (cond2 == 2){
+                nuevomiembro3.elimRep();
+                nuevomiembro.ElimMiem();
+                nuevomiembro3.vaciar();
+                nuevomiembro2.vaciar();
+                nuevomiembro.vaciar();
+            }
+            if (cond2 == 1){
+                nuevomiembro.ElimMiem();
+                nuevomiembro3.vaciar();
+                nuevomiembro2.vaciar();
+                nuevomiembro.vaciar();
+            }
 
         } else if (evt.equals(miembros.CambClub)) {
             
@@ -729,6 +771,20 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             ContentPannel.add(cambioclub);
             Titulo.setText("Cambiar de club");
             OptionPannel.add(miembros);
+            
+            if (cond2 == 2){
+                nuevomiembro3.elimRep();
+                nuevomiembro.ElimMiem();
+                nuevomiembro3.vaciar();
+                nuevomiembro2.vaciar();
+                nuevomiembro.vaciar();
+            }
+            if (cond2 == 1){
+                nuevomiembro.ElimMiem();
+                nuevomiembro3.vaciar();
+                nuevomiembro2.vaciar();
+                nuevomiembro.vaciar();
+            }
 
         } else if (evt.equals(miembros.RegMiemb)) {
             
@@ -747,7 +803,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             
             if (nuevomiembro.val()){
                 int edad = nuevomiembro.CalcularEdad();
-                if(edad <= 18 && !nuevomiembro.valrep){
+                if(edad <= 18 && (nuevomiembro.valrep == 0)){
 
                     Alistar();
 
@@ -759,7 +815,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
                     OptionPannel.add(miembros);
                     nuevomiembro3.Cedula.setText(nuevomiembro.CedulaRep.getText());
 
-                }else if (edad >= 19 || nuevomiembro.valrep){
+                }else if (edad >= 19 || (nuevomiembro.valrep == 1 || nuevomiembro.valrep == 2)){
 
                     Alistar();
 
@@ -773,6 +829,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
                 nuevomiembro2.docid = nuevomiembro.getCedula(nuevomiembro.Cedula.getText());
                 nuevomiembro.CrearMiembro();
                 nuevomiembro2.inicio(nuevomiembro.club.getSelectedItem().toString());
+                cond2 = 1;
             }
 
         } else if (evt.equals(nuevomiembro3.Continuar)) {
@@ -788,6 +845,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
                 ContentPannel.add(nuevomiembro2);
                 OptionPannel.add(miembros);
+                cond2 = 2;
             }
 
         } else if (evt.equals(nuevomiembro2.Registrar)) {
@@ -796,7 +854,11 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
                     nuevomiembro.getCedula(nuevomiembro.Cedula.getText()), nuevomiembro.getCedulaRep(), 
                     nuevomiembro.valrep) && proc.addmiemGrup(nuevomiembro.getCedula(nuevomiembro.Cedula.getText()), 
                             query.clubid(nuevomiembro.club.getSelectedItem().toString()), nuevomiembro.getNacimiento())){
-                JOptionPane.showMessageDialog(null, "El miembro:\n"+ nuevomiembro.getCedula(nuevomiembro.Cedula.getText()) +"\nha sido registrado exitosamente", "Error", JOptionPane.INFORMATION_MESSAGE);
+                
+                JOptionPane.showMessageDialog(null, "El miembro: "+ nuevomiembro.nombres() +""
+                        + "\nHa sido registrado exitosamente al club: "+nuevomiembro.club.getSelectedItem().toString(), 
+                        "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                
                 nuevomiembro.vaciar();
                 nuevomiembro2.vaciar();
                 nuevomiembro3.vaciar();
@@ -808,8 +870,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
                 ContentPannel.add(nuevomiembro);
                 Titulo.setText("Registrar miembro");
                 OptionPannel.add(miembros);
-
-                cond = 2;
+                cond2 = 0;
             }
 
         } else if (evt.equals(clubes.Pagos)) {

@@ -44,6 +44,50 @@ public class QueriesJose {
         return false;
     }
     
+    public boolean borraMiem(int idmiem){
+        String SQL = "DELETE FROM public.miembro WHERE doc_id = ?;";
+ 
+        int affectedrows = 0;
+ 
+        try (Connection con = conexion.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(SQL)) {
+ 
+            pstmt.setInt(1, idmiem);
+            
+            affectedrows = pstmt.executeUpdate();
+            if (affectedrows != 0){
+                return true;
+            }else{
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+    
+    public boolean borraHist(int idmiem){
+        String SQL = "DELETE FROM public.hist_miembro WHERE doc_id = ?;";
+ 
+        int affectedrows = 0;
+ 
+        try (Connection con = conexion.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(SQL)) {
+ 
+            pstmt.setInt(1, idmiem);
+            
+            affectedrows = pstmt.executeUpdate();
+            if (affectedrows != 0){
+                return true;
+            }else{
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+    
     /*public Date fechainic(int miemid) {
         try (Connection con = conexion.getConnection()){
 
@@ -315,9 +359,9 @@ public class QueriesJose {
         return false;
     }
     
-    public void BorraRep(int id) {
+    public boolean BorraRep(int id) {
         
-        String SQL = "DELETE FROM representante WHERE doc_ident = ?;";
+        String SQL = "DELETE FROM public.representante WHERE doc_ident = ?;";
         int filasafectadas = 0;
         
         try (Connection con = conexion.getConnection()){
@@ -327,10 +371,38 @@ public class QueriesJose {
             ps.setInt(1, id);
             
             filasafectadas = ps.executeUpdate();
+            
+            if (filasafectadas != 0){
+                return true;
+            }
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
+        return false;
+    }
+    
+    public boolean BorraTelRep(int id) {
+        
+        String SQL = "DELETE FROM public.telefono WHERE representante = ?;";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, id);
+            
+            filasafectadas = ps.executeUpdate();
+            
+            if (filasafectadas != 0){
+                return true;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return false;
     }
     
     public boolean repExist(int ci) {
@@ -581,6 +653,29 @@ public class QueriesJose {
         return false;
     }
     
+    public boolean BorraIdioMiem(int idmiem) {
+        
+        String SQL = "DELETE FROM public.idioma_miembro WHERE doc_id = ?;";
+ 
+        int affectedrows;
+ 
+        try (Connection con = conexion.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(SQL)) {
+ 
+            pstmt.setInt(1, idmiem);
+            
+            affectedrows = pstmt.executeUpdate();
+            
+            if (affectedrows != 0){
+                return true;
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+    
     //extra
     
     public int Edad(Date nac) {
@@ -716,7 +811,7 @@ public class QueriesJose {
         
         String SQL = "INSERT INTO public.g_lector(\n" +
 "	grup_id, club_id, fechai_mie, clubh_id, doc_id, fechai_gru)\n" +
-"	VALUES (?, ?, (SELECT fechai_mie FROM public.hist_miembro WHERE doc_id=? AND fechaf_mie is null;), ?, ?, current_date);";
+"	VALUES (?, ?, (SELECT fechai_mie FROM public.hist_miembro WHERE doc_id=? AND fechaf_mie is null), ?, ?, current_date);";
         int filasafectadas = 0;
         
         try (Connection con = conexion.getConnection()){
@@ -901,7 +996,7 @@ public class QueriesJose {
             PreparedStatement ps;
             ResultSet res;
 
-            ps = con.prepareStatement("SELECT dir_nombre FROM public.direccion_lugar WHERE dir_id_padre is null;");
+            ps = con.prepareStatement("SELECT initcap(dir_nombre) FROM public.direccion_lugar WHERE dir_id_padre is null;");
             
             res = ps.executeQuery();
 

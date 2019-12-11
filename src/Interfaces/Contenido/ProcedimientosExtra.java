@@ -96,6 +96,9 @@ public class ProcedimientosExtra {
             try {
                 do{
                     rs2 = query.miemGrupo(rs.getInt(1));
+                    if (rs2 == null){
+                        return query.grupAdd(rs.getInt(1), clubid, miemID);
+                    }
                     size = 0;
                     try {
                         do{

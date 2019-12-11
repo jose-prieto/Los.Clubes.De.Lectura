@@ -32,7 +32,6 @@ public class CambioClub extends javax.swing.JPanel {
         Club = new javax.swing.JLabel();
         Registrar = new javax.swing.JButton();
         Label1 = new javax.swing.JLabel();
-        Label2 = new javax.swing.JLabel();
         Club1 = new javax.swing.JLabel();
         Motiv = new javax.swing.JTextField();
         Label3 = new javax.swing.JLabel();
@@ -77,18 +76,6 @@ public class CambioClub extends javax.swing.JPanel {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 Label1MouseExited(evt);
-            }
-        });
-
-        Label2.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
-        Label2.setForeground(new java.awt.Color(255, 0, 0));
-        Label2.setText("(*)");
-        Label2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Label2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Label2MouseExited(evt);
             }
         });
 
@@ -139,7 +126,6 @@ public class CambioClub extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Label1)
-                    .addComponent(Label2)
                     .addComponent(Label3))
                 .addGap(62, 62, 62))
         );
@@ -154,7 +140,6 @@ public class CambioClub extends javax.swing.JPanel {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Club)
-                    .addComponent(Label2)
                     .addComponent(club, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -177,17 +162,6 @@ public class CambioClub extends javax.swing.JPanel {
         // TODO add your handling code here:
         diag.setVisible(false);
     }//GEN-LAST:event_Label1MouseExited
-
-    private void Label2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label2MouseEntered
-        // TODO add your handling code here:
-        diag.posicion(Label2.getLocationOnScreen().x-29, Label2.getLocationOnScreen().y+15);
-        diag.setVisible(true);
-    }//GEN-LAST:event_Label2MouseEntered
-
-    private void Label2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label2MouseExited
-        // TODO add your handling code here:
-        diag.setVisible(false);
-    }//GEN-LAST:event_Label2MouseExited
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
         // TODO add your handling code here:
@@ -276,7 +250,6 @@ public class CambioClub extends javax.swing.JPanel {
     private javax.swing.JLabel Club;
     private javax.swing.JLabel Club1;
     private javax.swing.JLabel Label1;
-    private javax.swing.JLabel Label2;
     private javax.swing.JLabel Label3;
     private javax.swing.JLabel Miembro;
     private javax.swing.JTextField Motiv;

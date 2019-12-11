@@ -28,6 +28,149 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         
     }
     
+    public boolean val() {
+        boolean val = true;
+
+        if (Nombre.getText().equals("Ej. José")) {
+            Nombre.setBorder(new LineBorder(Color.red));
+            val = false;
+        } else {
+            Nombre.setBorder(new LineBorder(Color.gray));
+        }
+        if (Apellido.getText().equals("Ej. Prieto")) {
+            Apellido.setBorder(new LineBorder(Color.red));
+            val = false;
+        } else {
+            Apellido.setBorder(new LineBorder(Color.gray));
+        }
+        if (Cod1.getText().equals("ej.424") || Cod1.getText().length() < 3) {
+            Cod1.setBorder(new LineBorder(Color.red));
+            JOptionPane.showMessageDialog(null, "Los codigos de teléfono son de 3 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else {
+            Cod1.setBorder(new LineBorder(Color.gray));
+        }
+        if (Num1.getText().equals("ej.1931798") || Num1.getText().length() < 7) {
+            Num1.setBorder(new LineBorder(Color.red));
+            JOptionPane.showMessageDialog(null, "Los números de teléfono son de 7 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else {
+            Num1.setBorder(new LineBorder(Color.gray));
+        }
+        if (!Cod2.getText().equals("ej.212") && Cod2.getText().length() < 3 ) {
+            Cod2.setBorder(new LineBorder(Color.red));
+            JOptionPane.showMessageDialog(null, "Los codigos de teléfono son de 3 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else {
+            Cod2.setBorder(new LineBorder(Color.gray));
+        }
+        if (!Num2.getText().equals("ej.4424833") && Num2.getText().length() < 7 ) {
+            Num2.setBorder(new LineBorder(Color.red));
+            JOptionPane.showMessageDialog(null, "Los números de teléfono son de 7 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else {
+            Num2.setBorder(new LineBorder(Color.gray));
+        }
+        if (val == false) {
+            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos que son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        return val;
+    }
+    
+    public boolean CrearRep() {
+        
+        if(!query.CrearRep(getCedula(Cedula.getText()), getNombre(), getNombre2(), getApellido(), getApellido2(),getGenero())){
+            return false;
+        }
+        if(!query.CrearTelRep(num(Cod1.getText()), num(Num1.getText()), getCedula(Cedula.getText()))){
+            return false;
+        }
+        if (!Cod2.getText().equals("ej.212") && !Num2.getText().equals("ej.4424833") && Cod2.getText().length() == 3 && Num2.getText().length() == 7){
+            if(!query.CrearTelRep(num(Cod2.getText()), num(Num2.getText()), getCedula(Cedula.getText()))){
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
+    public boolean elimRep() {
+        
+        query.BorraTelRep(getCedula(Cedula.getText()));
+        if (!query.BorraRep(getCedula(Cedula.getText()))){
+            return false;
+        }
+        
+        return true;
+    }
+    
+    public void vaciar (){
+        Nombre.setText("Ej. José");
+        Nombre.setForeground(new Color(204,204,255));
+        Nombre2.setText("Ej. Antonio");
+        Nombre2.setForeground(new Color(204,204,255));
+        Apellido.setText("Ej. Prieto");
+        Apellido.setForeground(new Color(204,204,255));
+        Apellido2.setText("Ej. Quintero");
+        Apellido2.setForeground(new Color(204,204,255));
+        Cod1.setText("ej.424");
+        Cod1.setForeground(new Color(204,204,255));
+        Num1.setText("ej.1931798");
+        Num1.setForeground(new Color(204,204,255));
+        Cod2.setText("ej.212");
+        Cod2.setForeground(new Color(204,204,255));
+        Num2.setText("ej.4424833");
+        Num2.setForeground(new Color(204,204,255));
+    }
+    
+    public int getCedula(String ced) {
+        
+        return Integer.parseInt(Cedula.getText());
+    }
+    
+    public int num(String num) {
+        
+        return Integer.parseInt(num);
+    }
+    
+    public String getNombre() {
+        if (Nombre.getText().equals("Ej. José")){
+            return null;
+        }else {
+            return Nombre.getText();
+        }
+    }
+    
+    public String getNombre2() {
+        
+        if (Nombre2.getText().equals("Ej. Antonio")){
+            return null;
+        }else {
+            return Nombre2.getText();
+        }
+        
+    }
+    
+    public String getApellido2() {
+        
+        if (Apellido2.getText().equals("Ej. Quintero")){
+            return null;
+        }else {
+            return Apellido2.getText();
+        }
+        
+    }
+    
+    public String getApellido() {
+        return Apellido.getText();
+    }
+    
+    public String getGenero() {
+        return Genero.getSelectedItem().toString();
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -42,7 +185,6 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         Cod2 = new javax.swing.JTextField();
         Genero = new javax.swing.JComboBox<>();
         Apellido = new javax.swing.JTextField();
-        Label3 = new javax.swing.JLabel();
         Cedula = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         Label1 = new javax.swing.JLabel();
@@ -144,18 +286,6 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         Apellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 ApellidoKeyTyped(evt);
-            }
-        });
-
-        Label3.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
-        Label3.setForeground(new java.awt.Color(255, 0, 0));
-        Label3.setText("(*)");
-        Label3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Label3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Label3MouseExited(evt);
             }
         });
 
@@ -262,10 +392,7 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Label3))
+                                    .addComponent(Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(Cod1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -320,8 +447,7 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
                     .addComponent(Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(jLabel6)
-                    .addComponent(Genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Label3))
+                    .addComponent(Genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -347,17 +473,6 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         // TODO add your handling code here:
         diag.setVisible(false);
     }//GEN-LAST:event_Label4MouseExited
-
-    private void Label3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label3MouseEntered
-        // TODO add your handling code here:
-        diag.posicion(Label3.getLocationOnScreen().x-29, Label3.getLocationOnScreen().y+15);
-        diag.setVisible(true);
-    }//GEN-LAST:event_Label3MouseEntered
-
-    private void Label3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label3MouseExited
-        // TODO add your handling code here:
-        diag.setVisible(false);
-    }//GEN-LAST:event_Label3MouseExited
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
         // TODO add your handling code here:
@@ -461,121 +576,6 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_Num2ActionPerformed
 
-    public boolean val() {
-        boolean val = true;
-
-        if (Nombre.getText().equals("Ej. José")) {
-            Nombre.setBorder(new LineBorder(Color.red));
-            val = false;
-        } else {
-            Nombre.setBorder(new LineBorder(Color.gray));
-        }
-        if (Apellido.getText().equals("Ej. Prieto")) {
-            Apellido.setBorder(new LineBorder(Color.red));
-            val = false;
-        } else {
-            Apellido.setBorder(new LineBorder(Color.gray));
-        }
-        if (Cod1.getText().equals("ej0424") || Cod1.getText().length() < 3) {
-            Cod1.setBorder(new LineBorder(Color.red));
-            JOptionPane.showMessageDialog(null, "Los codigos de teléfono son de 3 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        } else {
-            Cod1.setBorder(new LineBorder(Color.gray));
-        }
-        if (Num1.getText().equals("ej1931798") || Num1.getText().length() < 7) {
-            Num1.setBorder(new LineBorder(Color.red));
-            JOptionPane.showMessageDialog(null, "Los números de teléfono son de 7 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        } else {
-            Num1.setBorder(new LineBorder(Color.gray));
-        }
-        if (!Cod2.getText().equals("ej0212") && Cod2.getText().length() < 3 ) {
-            Cod2.setBorder(new LineBorder(Color.red));
-            JOptionPane.showMessageDialog(null, "Los codigos de teléfono son de 3 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        } else {
-            Cod2.setBorder(new LineBorder(Color.gray));
-        }
-        if (!Num2.getText().equals("ej4424833") && Num2.getText().length() < 7 ) {
-            Num2.setBorder(new LineBorder(Color.red));
-            JOptionPane.showMessageDialog(null, "Los números de teléfono son de 7 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        } else {
-            Num2.setBorder(new LineBorder(Color.gray));
-        }
-        if (val == false) {
-            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos que son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-        
-        return val;
-    }
-    
-    public int getCedula(String ced) {
-        
-        return Integer.parseInt(Cedula.getText());
-    }
-    
-    public String getNombre() {
-        if (Nombre.getText().equals("Ej. José")){
-            return null;
-        }else {
-            return Nombre.getText();
-        }
-    }
-    
-    public String getNombre2() {
-        
-        if (Nombre2.getText().equals("Ej. Antonio")){
-            return null;
-        }else {
-            return Nombre2.getText();
-        }
-        
-    }
-    
-    public String getApellido2() {
-        
-        if (Apellido2.getText().equals("Ej. Quintero")){
-            return null;
-        }else {
-            return Apellido2.getText();
-        }
-        
-    }
-    
-    public String getApellido() {
-        return Apellido.getText();
-    }
-    
-    public String getGenero() {
-        return Genero.getSelectedItem().toString();
-    }
-    
-    public boolean CrearRep() {
-        return query.CrearRep(getCedula(Cedula.getText()), getNombre(), getNombre2(), getApellido(), getApellido2(),getGenero());
-    }
-    
-    public void vaciar (){
-        Nombre.setText("Ej. José");
-        Nombre.setForeground(new Color(204,204,255));
-        Nombre2.setText("Ej. Antonio");
-        Nombre2.setForeground(new Color(204,204,255));
-        Apellido.setText("Ej. Prieto");
-        Apellido.setForeground(new Color(204,204,255));
-        Apellido2.setText("Ej. Quintero");
-        Apellido2.setForeground(new Color(204,204,255));
-        Cod1.setText("ej.424");
-        Cod1.setForeground(new Color(204,204,255));
-        Num1.setText("ej.1931798");
-        Num1.setForeground(new Color(204,204,255));
-        Cod2.setText("ej.212");
-        Cod2.setForeground(new Color(204,204,255));
-        Num2.setText("ej.4424833");
-        Num2.setForeground(new Color(204,204,255));
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextField Apellido;
     private javax.swing.JTextField Apellido2;
@@ -586,7 +586,6 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> Genero;
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label2;
-    private javax.swing.JLabel Label3;
     private javax.swing.JLabel Label4;
     public javax.swing.JTextField Nombre;
     private javax.swing.JTextField Nombre2;

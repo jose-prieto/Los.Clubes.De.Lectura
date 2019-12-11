@@ -49,15 +49,12 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Label2 = new javax.swing.JLabel();
         Label3 = new javax.swing.JLabel();
         Label4 = new javax.swing.JLabel();
-        Label5 = new javax.swing.JLabel();
         Num1 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         Num2 = new javax.swing.JTextField();
         Cod2 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        Label6 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        Label7 = new javax.swing.JLabel();
         Registrar = new javax.swing.JButton();
         Pais1 = new javax.swing.JComboBox<>();
         jLabel15 = new javax.swing.JLabel();
@@ -186,19 +183,6 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
             }
         });
 
-        Label5.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
-        Label5.setForeground(new java.awt.Color(255, 0, 0));
-        Label5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        Label5.setText("(*)");
-        Label5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Label5MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Label5MouseExited(evt);
-            }
-        });
-
         Num1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Num1.setForeground(new java.awt.Color(204, 204, 255));
         Num1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -245,35 +229,9 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         jLabel13.setForeground(new java.awt.Color(51, 51, 51));
         jLabel13.setText("Nacionalidad");
 
-        Label6.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
-        Label6.setForeground(new java.awt.Color(255, 0, 0));
-        Label6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        Label6.setText("(*)");
-        Label6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Label6MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Label6MouseExited(evt);
-            }
-        });
-
         jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(51, 51, 51));
         jLabel14.setText("Ciudad de residencia");
-
-        Label7.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
-        Label7.setForeground(new java.awt.Color(255, 0, 0));
-        Label7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        Label7.setText("(*)");
-        Label7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Label7MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Label7MouseExited(evt);
-            }
-        });
 
         Registrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Registrar.setText("Registrar");
@@ -339,9 +297,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Label4)
-                                    .addComponent(Label6)
-                                    .addComponent(Label3)
-                                    .addComponent(Label5)))
+                                    .addComponent(Label3)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Cod1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -367,8 +323,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
                                             .addComponent(addIdioma))
                                         .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(Ciudad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Label7)))
+                                .addGap(15, 15, 15)))
                         .addGap(31, 31, 31))))
         );
         layout.setVerticalGroup(
@@ -401,17 +356,14 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(Label5)
                     .addComponent(Pais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(Label6)
                     .addComponent(Pais1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(Label7)
                     .addComponent(Ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -467,17 +419,6 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         // TODO add your handling code here:
         diag.setVisible(false);
     }//GEN-LAST:event_Label4MouseExited
-
-    private void Label7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label7MouseEntered
-        // TODO add your handling code here:
-        diag.posicion(Label7.getLocationOnScreen().x-29, Label7.getLocationOnScreen().y+15);
-        diag.setVisible(true);
-    }//GEN-LAST:event_Label7MouseEntered
-
-    private void Label7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label7MouseExited
-        // TODO add your handling code here:
-        diag.setVisible(false);
-    }//GEN-LAST:event_Label7MouseExited
 
     public boolean val() {
         boolean val = true;
@@ -590,13 +531,13 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         }
     }
     
-    public boolean ActMiembro(int edad, int idmiem, int idrep, boolean exist){
+    public boolean ActMiembro(int edad, int idmiem, int idrep, int exist){
         
-        if (edad < 19 && idrep != 0 && exist){
+        if (edad < 19 && idrep != 0 && exist == 1){
             if (!query.ActMiembM(idrep, idmiem, query.paiscod(Ciudad.getSelectedItem().toString()))){
                 return false;
             }
-        }else if (edad < 19 && idrep != 0 && !exist){
+        }else if (edad < 19 && idrep != 0 && (exist == 2 || exist == 0)){
             if (!query.ActMiemb(idrep, idmiem, query.paiscod(Ciudad.getSelectedItem().toString()))){
                 return false;
             }
@@ -609,7 +550,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
                 return false;
             }
         
-        if (!Cod2.getText().equals("ej0212") && !Num2.getText().equals("ej4424833") && Cod2.getText().length() == 3 && Num2.getText().length() == 7){
+        if (!Cod2.getText().equals("ej.212") && !Num2.getText().equals("ej.4424833") && Cod2.getText().length() == 3 && Num2.getText().length() == 7){
             if(!query.CrearTelMiem(num(Cod2.getText()), num(Num2.getText()), idmiem)){
                 return false;
             }
@@ -652,28 +593,6 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Registrar.setEnabled(false);
     }
     
-    private void Label6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label6MouseExited
-        // TODO add your handling code here:
-        diag.setVisible(false);
-    }//GEN-LAST:event_Label6MouseExited
-
-    private void Label6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label6MouseEntered
-        // TODO add your handling code here:
-        diag.posicion(Label6.getLocationOnScreen().x-29, Label6.getLocationOnScreen().y+15);
-        diag.setVisible(true);
-    }//GEN-LAST:event_Label6MouseEntered
-
-    private void Label5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label5MouseExited
-        // TODO add your handling code here:
-        diag.setVisible(false);
-    }//GEN-LAST:event_Label5MouseExited
-
-    private void Label5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label5MouseEntered
-        // TODO add your handling code here:
-        diag.posicion(Label5.getLocationOnScreen().x-29, Label5.getLocationOnScreen().y+15);
-        diag.setVisible(true);
-    }//GEN-LAST:event_Label5MouseEntered
-
     private void Libro1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Libro1KeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
@@ -761,9 +680,6 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
     private javax.swing.JLabel Label2;
     private javax.swing.JLabel Label3;
     private javax.swing.JLabel Label4;
-    private javax.swing.JLabel Label5;
-    private javax.swing.JLabel Label6;
-    private javax.swing.JLabel Label7;
     private javax.swing.JTextField Libro1;
     private javax.swing.JTextField Libro2;
     private javax.swing.JTextField Libro3;

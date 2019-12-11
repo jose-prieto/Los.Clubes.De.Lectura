@@ -18,7 +18,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
     Dialogo diag = new Dialogo ();
     SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
     QueriesJose query = new QueriesJose();
-    public boolean valrep = false;
+    public int valrep = 0;
     
     public RegistraMiembro() {
 
@@ -31,6 +31,177 @@ public class RegistraMiembro extends javax.swing.JPanel {
         listen.FieldListener(Nombre2);
         listen.FieldListener(Apellido2);
         
+    }
+    
+    public void inicio(){
+        ResultSet res = query.clubes();
+        
+        if (res != null){
+            try {
+                do{
+                    club.addItem(res.getString(1));
+                }while (res.next());
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        Nacimiento.setMaxSelectableDate(query.fechaMax());
+        Nacimiento.setDate(query.fechaMax());
+    }
+    
+    public boolean val() {
+        boolean val = true;
+
+        if (Nombre.getText().equals("Ej. José")) {
+            Nombre.setBorder(new LineBorder(Color.red));
+            val = false;
+        } else {
+            Nombre.setBorder(new LineBorder(Color.gray));
+        }
+        if (Apellido.getText().equals("Ej. Prieto")) {
+            Apellido.setBorder(new LineBorder(Color.red));
+            val = false;
+        } else {
+            Apellido.setBorder(new LineBorder(Color.gray));
+        }
+        if (Cedula.getText().equals("Ej. 30698625")) {
+            Cedula.setBorder(new LineBorder(Color.red));
+            val = false;
+        } else {
+            Cedula.setBorder(new LineBorder(Color.gray));
+        }
+        if (val == false) {
+            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos que son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (query.ciExist(getCedula(Cedula.getText()))){
+            Cedula.setBorder(new LineBorder(Color.red));
+            JOptionPane.showMessageDialog(null, "El miembro que desea ingresar ya está registrado", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (CalcularEdad() <=18){
+            if (CedulaRep.getText().equals("Ej. 30698625")){
+                CedulaRep.setBorder(new LineBorder(Color.red));
+                JOptionPane.showMessageDialog(null, "El miembro que desea ingresar es menor\npor ende necesita de un representante", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }else if (CedulaRep.getText().equals(Cedula.getText())){
+                JOptionPane.showMessageDialog(null, "El miembro y su representante no pueden\ntener la misma cedula", "Error", JOptionPane.ERROR_MESSAGE);
+                CedulaRep.setBorder(new LineBorder(Color.red));
+                Cedula.setBorder(new LineBorder(Color.red));
+                return false;
+            }else{
+                boolean rep = query.repExist(getCedulaRep());
+                boolean miem = query.ciExist(getCedulaRep());
+                if (rep && !miem){
+                    valrep = 2;
+                }else if (miem && !rep){
+                    valrep = 1;
+                }
+                CedulaRep.setBorder(new LineBorder(Color.gray));
+            }
+        }
+        
+        
+        return val;
+    }
+    
+    public void vaciar (){
+        Nombre.setText("Ej. José");
+        Nombre.setForeground(new Color(204,204,255));
+        Nombre2.setText("Ej. Antonio");
+        Nombre2.setForeground(new Color(204,204,255));
+        Apellido.setText("Ej. Prieto");
+        Apellido.setForeground(new Color(204,204,255));
+        Apellido2.setText("Ej. Quintero");
+        Apellido2.setForeground(new Color(204,204,255));
+        Cedula.setText("Ej. 30698625");
+        Cedula.setForeground(new Color(204,204,255));
+        CedulaRep.setText("Ej. 30698625");
+        CedulaRep.setForeground(new Color(204,204,255));
+        Nacimiento.setDate(query.fechaMax());
+    }
+    
+    public boolean CrearMiembro() {
+        
+        return (query.CrearMiemb(getCedula(Cedula.getText()), getNombre(), getNombre2(), getApellido(), getApellido2(), 
+                getGenero(), getNacimiento()) && query.HistIns(club.getSelectedItem().toString(), getCedula(Cedula.getText())));
+    
+    }
+    
+    public boolean ElimMiem(){
+        query.borraHist(getCedula(Cedula.getText()));
+        query.BorraIdioMiem(getCedula(Cedula.getText()));
+        if (!query.borraMiem(getCedula(Cedula.getText()))){
+            return false;
+        }
+        return true;
+    }
+    
+    public String getApellido() {
+        return Apellido.getText();
+    }
+
+    public int getCedula(String ced) {
+        
+        return Integer.parseInt(ced);
+    }
+    
+    public int getCedulaRep() {
+        
+        if (CedulaRep.getText().equals("Ej. 30698625")){
+            return 0;
+        }else{
+            return Integer.parseInt(CedulaRep.getText());
+        }        
+        
+    }
+
+    public Date getNacimiento() {        
+        return java.sql.Date.valueOf(sdf.format(Nacimiento.getDate()));
+        
+    }
+
+    public String getNombre() {
+        if (Nombre.getText().equals("Ej. José")){
+            return null;
+        }else {
+            return Nombre.getText();
+        }
+    }
+    
+    public String getNombre2() {
+        
+        if (Nombre2.getText().equals("Ej. Antonio")){
+            return null;
+        }else {
+            return Nombre2.getText();
+        }
+        
+    }
+    
+    public String getApellido2() {
+        
+        if (Apellido2.getText().equals("Ej. Quintero")){
+            return null;
+        }else {
+            return Apellido2.getText();
+        }
+        
+    }
+
+    public String getGenero() {
+        return Genero.getSelectedItem().toString();
+    }
+    
+    
+    
+    public String nombres(){
+        return Apellido.getText()+" "+Nombre.getText();
+    }
+    
+    public int CalcularEdad(){        
+        return query.Edad(getNacimiento());
     }
 
     @SuppressWarnings("unchecked")
@@ -48,8 +219,6 @@ public class RegistraMiembro extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         Label1 = new javax.swing.JLabel();
         Label2 = new javax.swing.JLabel();
-        Label3 = new javax.swing.JLabel();
-        Label5 = new javax.swing.JLabel();
         Nacimiento = new com.toedter.calendar.JCalendar();
         Genero = new javax.swing.JComboBox<>();
         Label4 = new javax.swing.JLabel();
@@ -58,7 +227,6 @@ public class RegistraMiembro extends javax.swing.JPanel {
         Nombre2 = new javax.swing.JTextField();
         Apellido2 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        Label6 = new javax.swing.JLabel();
         club = new javax.swing.JComboBox<>();
 
         setMaximumSize(new java.awt.Dimension(707, 541));
@@ -145,30 +313,6 @@ public class RegistraMiembro extends javax.swing.JPanel {
             }
         });
 
-        Label3.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
-        Label3.setForeground(new java.awt.Color(255, 0, 0));
-        Label3.setText("(*)");
-        Label3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Label3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Label3MouseExited(evt);
-            }
-        });
-
-        Label5.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
-        Label5.setForeground(new java.awt.Color(255, 0, 0));
-        Label5.setText("(*)");
-        Label5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Label5MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Label5MouseExited(evt);
-            }
-        });
-
         Nacimiento.setBackground(new java.awt.Color(153, 153, 153));
         Nacimiento.setDate(new java.util.Date(1328053863000L));
         Nacimiento.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -229,18 +373,6 @@ public class RegistraMiembro extends javax.swing.JPanel {
         jLabel9.setForeground(new java.awt.Color(51, 51, 51));
         jLabel9.setText("Club");
 
-        Label6.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
-        Label6.setForeground(new java.awt.Color(255, 0, 0));
-        Label6.setText("(*)");
-        Label6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Label6MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Label6MouseExited(evt);
-            }
-        });
-
         club.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         club.setForeground(new java.awt.Color(51, 51, 51));
 
@@ -253,8 +385,15 @@ public class RegistraMiembro extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Label6))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(18, 18, 18)
+                                .addComponent(CedulaRep, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1))
+                        .addGap(349, 349, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -264,51 +403,39 @@ public class RegistraMiembro extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel7))
+                                .addGap(137, 137, 137)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel3)
-                                        .addGap(20, 20, 20)
-                                        .addComponent(Genero, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(137, 137, 137)
+                                    .addComponent(club, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(Apellido)
+                                            .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(club, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(Apellido)
-                                                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(Label1)
                                                     .addComponent(Label2))
-                                                .addGap(18, 18, Short.MAX_VALUE)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(Nombre2)
-                                                    .addComponent(Apellido2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                                .addGap(0, 85, Short.MAX_VALUE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(Label4)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jLabel3)))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(Genero, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(Nombre2)
+                                                .addComponent(Apellido2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(51, 51, 51)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Nacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Label4)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(Nacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Label3)
-                            .addComponent(Label5)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(18, 18, 18)
-                                .addComponent(CedulaRep, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1))
-                        .addGap(269, 269, 269)))
-                .addGap(33, 33, 33))
+                                        .addComponent(Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addGap(48, 48, 48))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,7 +443,6 @@ public class RegistraMiembro extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(Label6)
                     .addComponent(club, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -334,14 +460,12 @@ public class RegistraMiembro extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(Label3)
                     .addComponent(jLabel3)
                     .addComponent(Genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(Label5)
                     .addComponent(Nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -374,28 +498,6 @@ public class RegistraMiembro extends javax.swing.JPanel {
         // TODO add your handling code here:
         diag.setVisible(false);
     }//GEN-LAST:event_Label2MouseExited
-
-    private void Label3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label3MouseEntered
-        // TODO add your handling code here:
-        diag.posicion(Label3.getLocationOnScreen().x-29, Label3.getLocationOnScreen().y+15);
-        diag.setVisible(true);
-    }//GEN-LAST:event_Label3MouseEntered
-
-    private void Label3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label3MouseExited
-        // TODO add your handling code here:
-        diag.setVisible(false);
-    }//GEN-LAST:event_Label3MouseExited
-
-    private void Label5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label5MouseEntered
-        // TODO add your handling code here:
-        diag.posicion(Label5.getLocationOnScreen().x-29, Label5.getLocationOnScreen().y+15);
-        diag.setVisible(true);
-    }//GEN-LAST:event_Label5MouseEntered
-
-    private void Label5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label5MouseExited
-        // TODO add your handling code here:
-        diag.setVisible(false);
-    }//GEN-LAST:event_Label5MouseExited
 
     private void Label4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label4MouseEntered
         // TODO add your handling code here:
@@ -462,168 +564,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_Apellido2KeyTyped
 
-    private void Label6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label6MouseEntered
-        // TODO add your handling code here:
-        diag.posicion(Label6.getLocationOnScreen().x-29, Label6.getLocationOnScreen().y+15);
-        diag.setVisible(true);
-    }//GEN-LAST:event_Label6MouseEntered
 
-    private void Label6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label6MouseExited
-        // TODO add your handling code here:
-        diag.setVisible(false);
-    }//GEN-LAST:event_Label6MouseExited
-
-    public boolean val() {
-        boolean val = true;
-
-        if (Nombre.getText().equals("Ej. José")) {
-            Nombre.setBorder(new LineBorder(Color.red));
-            val = false;
-        } else {
-            Nombre.setBorder(new LineBorder(Color.gray));
-        }
-        if (Apellido.getText().equals("Ej. Prieto")) {
-            Apellido.setBorder(new LineBorder(Color.red));
-            val = false;
-        } else {
-            Apellido.setBorder(new LineBorder(Color.gray));
-        }
-        if (Cedula.getText().equals("Ej. 30698625")) {
-            Cedula.setBorder(new LineBorder(Color.red));
-            val = false;
-        } else {
-            Cedula.setBorder(new LineBorder(Color.gray));
-        }
-        if (val == false) {
-            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos que son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-        if (query.ciExist(getCedula(Cedula.getText()))){
-            Cedula.setBorder(new LineBorder(Color.red));
-            JOptionPane.showMessageDialog(null, "El miembro que desea ingresar ya está registrado", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-        if (CalcularEdad() <=18){
-            if (CedulaRep.getText().equals("Ej. 30698625")){
-                CedulaRep.setBorder(new LineBorder(Color.red));
-                JOptionPane.showMessageDialog(null, "El miembro que desea ingresar es menor\npor ende necesita de un representante", "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }else if (CedulaRep.getText().equals(Cedula.getText())){
-                JOptionPane.showMessageDialog(null, "El miembro y su representante no pueden\ntener la misma cedula", "Error", JOptionPane.ERROR_MESSAGE);
-                CedulaRep.setBorder(new LineBorder(Color.red));
-                Cedula.setBorder(new LineBorder(Color.red));
-                return false;
-            }else{
-                if (query.repExist(getCedulaRep()) || query.ciExist(getCedulaRep())){
-                    valrep = true;
-                }
-                CedulaRep.setBorder(new LineBorder(Color.gray));
-            }
-        }
-        
-        
-        return val;
-    }
-    
-    public int CalcularEdad(){        
-        return query.Edad(getNacimiento());
-    }
-    
-    public void inicio(){
-        ResultSet res = query.clubes();
-        
-        if (res != null){
-            try {
-                do{
-                    club.addItem(res.getString(1));
-                }while (res.next());
-            } catch (SQLException ex) {
-                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        
-        Nacimiento.setMaxSelectableDate(query.fechaMax());
-        Nacimiento.setDate(query.fechaMax());
-    }
-
-    public String getApellido() {
-        return Apellido.getText();
-    }
-
-    public int getCedula(String ced) {
-        
-        return Integer.parseInt(ced);
-    }
-    
-    public int getCedulaRep() {
-        
-        if (CedulaRep.getText().equals("Ej. 30698625")){
-            return 0;
-        }else{
-            return Integer.parseInt(CedulaRep.getText());
-        }        
-        
-    }
-
-    public Date getNacimiento() {        
-        return java.sql.Date.valueOf(sdf.format(Nacimiento.getDate()));
-        
-    }
-
-    public String getNombre() {
-        if (Nombre.getText().equals("Ej. José")){
-            return null;
-        }else {
-            return Nombre.getText();
-        }
-    }
-    
-    public String getNombre2() {
-        
-        if (Nombre2.getText().equals("Ej. Antonio")){
-            return null;
-        }else {
-            return Nombre2.getText();
-        }
-        
-    }
-    
-    public String getApellido2() {
-        
-        if (Apellido2.getText().equals("Ej. Quintero")){
-            return null;
-        }else {
-            return Apellido2.getText();
-        }
-        
-    }
-
-    public String getGenero() {
-        return Genero.getSelectedItem().toString();
-    }
-    
-    public boolean CrearMiembro() {
-        
-        return (query.CrearMiemb(getCedula(Cedula.getText()), getNombre(), getNombre2(), getApellido(), getApellido2(), 
-                getGenero(), getNacimiento()) && query.HistIns(club.getSelectedItem().toString(), getCedula(Cedula.getText())));
-    
-    }
-    
-    public void vaciar (){
-        Nombre.setText("Ej. José");
-        Nombre.setForeground(new Color(204,204,255));
-        Nombre2.setText("Ej. Antonio");
-        Nombre2.setForeground(new Color(204,204,255));
-        Apellido.setText("Ej. Prieto");
-        Apellido.setForeground(new Color(204,204,255));
-        Apellido2.setText("Ej. Quintero");
-        Apellido2.setForeground(new Color(204,204,255));
-        Cedula.setText("Ej. 30698625");
-        Cedula.setForeground(new Color(204,204,255));
-        CedulaRep.setText("Ej. 30698625");
-        CedulaRep.setForeground(new Color(204,204,255));
-        Nacimiento.setDate(query.fechaMax());
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellido;
@@ -634,10 +575,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> Genero;
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label2;
-    private javax.swing.JLabel Label3;
     private javax.swing.JLabel Label4;
-    private javax.swing.JLabel Label5;
-    private javax.swing.JLabel Label6;
     public com.toedter.calendar.JCalendar Nacimiento;
     private javax.swing.JTextField Nombre;
     private javax.swing.JTextField Nombre2;
