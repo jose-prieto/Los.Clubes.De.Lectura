@@ -281,8 +281,8 @@ public class CambioClub extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "El miembro no existe", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        if (!query.clubExist(Integer.parseInt(IDClub.getText()))){
-            JOptionPane.showMessageDialog(null, "El miembo no existe", "Error", JOptionPane.ERROR_MESSAGE);
+        if (!query.clubExist(IDClub.))){
+            JOptionPane.showMessageDialog(null, "El club no existe", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         

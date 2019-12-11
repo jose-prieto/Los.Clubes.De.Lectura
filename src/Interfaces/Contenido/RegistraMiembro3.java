@@ -26,8 +26,6 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         listen.FieldListener(Apellido2);
         listen.FieldListener(Cedula);
         
-        Cedula.setEnabled(false);
-        
     }
     
     @SuppressWarnings("unchecked")
@@ -72,7 +70,7 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         Cod1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Cod1.setForeground(new java.awt.Color(204, 204, 255));
         Cod1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Cod1.setText("ej0424");
+        Cod1.setText("ej.424");
         Cod1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         Cod1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -95,7 +93,7 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         Num1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Num1.setForeground(new java.awt.Color(204, 204, 255));
         Num1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Num1.setText("ej1931798");
+        Num1.setText("ej.1931798");
         Num1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         Num1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -110,7 +108,7 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         Num2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Num2.setForeground(new java.awt.Color(204, 204, 255));
         Num2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Num2.setText("ej4424833");
+        Num2.setText("ej.4424833");
         Num2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         Num2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,7 +124,7 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         Cod2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Cod2.setForeground(new java.awt.Color(204, 204, 255));
         Cod2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Cod2.setText("ej0212");
+        Cod2.setText("ej.212");
         Cod2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         Cod2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -164,6 +162,8 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         Cedula.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Cedula.setForeground(new java.awt.Color(51, 51, 51));
         Cedula.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Cedula.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        Cedula.setEnabled(false);
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(51, 51, 51));
@@ -403,7 +403,7 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         // TODO add your handling code here:
         char c = evt.getKeyChar();
         
-        if (c < '0' || c > '9' || Cod1.getText().length() > 3){
+        if (c < '0' || c > '9' || Cod1.getText().length() > 2){
             evt.consume();
         }
     }//GEN-LAST:event_Cod1KeyTyped
@@ -421,7 +421,7 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         // TODO add your handling code here:
         char c = evt.getKeyChar();
         
-        if (c < '0' || c > '9' || Cod2.getText().length() > 3){
+        if (c < '0' || c > '9' || Cod2.getText().length() > 2){
             evt.consume();
         }
     }//GEN-LAST:event_Cod2KeyTyped
@@ -476,9 +476,9 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         } else {
             Apellido.setBorder(new LineBorder(Color.gray));
         }
-        if (Cod1.getText().equals("ej0424") || Cod1.getText().length() < 4) {
+        if (Cod1.getText().equals("ej0424") || Cod1.getText().length() < 3) {
             Cod1.setBorder(new LineBorder(Color.red));
-            JOptionPane.showMessageDialog(null, "Los codigos de teléfono son de 4 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Los codigos de teléfono son de 3 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         } else {
             Cod1.setBorder(new LineBorder(Color.gray));
@@ -490,14 +490,14 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
         } else {
             Num1.setBorder(new LineBorder(Color.gray));
         }
-        if (!Cod2.getText().equals("ej0212") && Cod2.getText().length() < 4 ) {
+        if (!Cod2.getText().equals("ej0212") && Cod2.getText().length() < 3 ) {
             Cod2.setBorder(new LineBorder(Color.red));
-            JOptionPane.showMessageDialog(null, "Los codigos de teléfono son de 4 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Los codigos de teléfono son de 3 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         } else {
             Cod2.setBorder(new LineBorder(Color.gray));
         }
-        if (!Num2.getText().equals("ej4424833") && Cod2.getText().length() < 7 ) {
+        if (!Num2.getText().equals("ej4424833") && Num2.getText().length() < 7 ) {
             Num2.setBorder(new LineBorder(Color.red));
             JOptionPane.showMessageDialog(null, "Los números de teléfono son de 7 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
@@ -555,6 +555,25 @@ public class RegistraMiembro3 extends javax.swing.JPanel {
     
     public boolean CrearRep() {
         return query.CrearRep(getCedula(Cedula.getText()), getNombre(), getNombre2(), getApellido(), getApellido2(),getGenero());
+    }
+    
+    public void vaciar (){
+        Nombre.setText("Ej. José");
+        Nombre.setForeground(new Color(204,204,255));
+        Nombre2.setText("Ej. Antonio");
+        Nombre2.setForeground(new Color(204,204,255));
+        Apellido.setText("Ej. Prieto");
+        Apellido.setForeground(new Color(204,204,255));
+        Apellido2.setText("Ej. Quintero");
+        Apellido2.setForeground(new Color(204,204,255));
+        Cod1.setText("ej.424");
+        Cod1.setForeground(new Color(204,204,255));
+        Num1.setText("ej.1931798");
+        Num1.setForeground(new Color(204,204,255));
+        Cod2.setText("ej.212");
+        Cod2.setForeground(new Color(204,204,255));
+        Num2.setText("ej.4424833");
+        Num2.setForeground(new Color(204,204,255));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

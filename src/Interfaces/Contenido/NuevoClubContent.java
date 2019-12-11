@@ -540,10 +540,10 @@ public class NuevoClubContent extends javax.swing.JPanel {
         // TODO add your handling code here:
         ResultSet res;
         res = queryJ.ciudad(queryJ.paiscod(Pais.getSelectedItem().toString()));
+        Ciudad.removeAllItems();
         if (res != null){
             try {
                 do{
-                    Ciudad.removeAllItems();
                     Ciudad.addItem(res.getString(1));
                 }while (res.next());
                 Ciudad.setSelectedIndex(0);

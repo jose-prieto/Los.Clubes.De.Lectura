@@ -16,7 +16,7 @@ public class QueriesJose {
         
         String SQL = "INSERT INTO public.miembro(\n" +
             "	doc_id, miemb_nombre1, miemb_nombre2, miemb_ape1, miemb_ape2, miemb_genero, miemb_fecha_nac)\n" +
-            "	VALUES (?, ?, ?, ?, ?, ?, ?);";
+            "	VALUES (?, lower(?), lower(?), lower(?), lower(?), lower(?), ?);";
         int filasafectadas = 0;
         
         try (Connection con = conexion.getConnection()){
@@ -69,76 +69,56 @@ public class QueriesJose {
             return false;
             
         }
-    }   */     
-            
-    public void BorraMiembro(int id) {
-        
-        String SQL = "DELETE FROM miembro WHERE doc_id = ?;";
-        int filasafectadas = 0;
-        
-        try (Connection con = conexion.getConnection()){
-
-            PreparedStatement ps = con.prepareStatement(SQL);
-            
-            ps.setInt(1, id);
-            
-            filasafectadas = ps.executeUpdate();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
+    }   */   
     
-    public boolean ActMiemb1(int idrep, int idmiemb) {
-        
+    public boolean ActMiembM(int idrep, int idmiemb, int dir) {
         String SQL = "UPDATE public.miembro\n" +
-                        "	SET representante1 = ?\n" +
-                        "	WHERE doc_id = ?;";
-        int filasafectadas = 0;
-        
-        try (Connection con = conexion.getConnection()){
-
-            PreparedStatement ps = con.prepareStatement(SQL);
+"	SET dir_id=?, representante_m=?\n" +
+"	WHERE doc_id=?";
+ 
+        int affectedrows = 0;
+ 
+        try (Connection con = conexion.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(SQL)) {
+ 
+            pstmt.setInt(1, dir);
+            pstmt.setInt(2, idrep);
+            pstmt.setInt(3, idmiemb);
             
-            ps.setInt(1, idrep);
-            ps.setInt(2, idmiemb);
+            affectedrows = pstmt.executeUpdate();
             
-            filasafectadas = ps.executeUpdate();
-
-            if (filasafectadas != 0) {
+            if (affectedrows != 0) {
                 return true;
             }
-
+ 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
         }
         return false;
     }
     
-    public boolean ActMiemb2(int idrep, int idmiemb) {
-        
+    public boolean ActMiemb(int idrep, int idmiemb, int dir) {
         String SQL = "UPDATE public.miembro\n" +
-                        "	SET representante2 = ?\n" +
-                        "	WHERE doc_id = ?;";
-        int filasafectadas = 0;
-        
-        try (Connection con = conexion.getConnection()){
-
-            PreparedStatement ps = con.prepareStatement(SQL);
+"	SET dir_id=?, representante=?\n" +
+"	WHERE doc_id=?";
+ 
+        int affectedrows = 0;
+ 
+        try (Connection con = conexion.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(SQL)) {
+ 
+            pstmt.setInt(1, dir);
+            pstmt.setInt(2, idrep);
+            pstmt.setInt(3, idmiemb);
             
-            ps.setInt(1, idrep);
-            ps.setInt(2, idmiemb);
+            affectedrows = pstmt.executeUpdate();
             
-            filasafectadas = ps.executeUpdate();
-
-            if (filasafectadas != 0) {
+            if (affectedrows != 0) {
                 return true;
             }
-
+ 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
         }
         return false;
     }
@@ -203,7 +183,7 @@ public class QueriesJose {
         
         String SQL = "UPDATE public.hist_miembro\n" +
                         "	SET estatus_mie='Inactivo', fechaf_mie=current_date, motivo_retiro=?\n" +
-                        "	WHERE estatus_mie = 'Activo' and doc_id = ?;";
+                        "	WHERE estatus_mie = 'activo' and doc_id = ?;";
         int filasafectadas = 0;
         
         try (Connection con = conexion.getConnection()){
@@ -241,8 +221,6 @@ public class QueriesJose {
 
             if (res.next()) {
                 return true;
-            } else {
-                return false;
             }
 
         } catch (Exception e) {
@@ -251,6 +229,8 @@ public class QueriesJose {
             return false;
             
         }
+        
+        return false;
     }
     
     public Date fechaMax() {
@@ -283,7 +263,7 @@ public class QueriesJose {
         
         String SQL = "INSERT INTO public.representante(\n" +
                         "	doc_ident, rep_nombre1, rep_nombre2, rep_ape1, rep_ape2, rep_genero)\n" +
-                        "	VALUES (?, ?, ?, ?, ?, ?);";
+                        "	VALUES (?, lower(?), lower(?), lower(?), lower(?), lower(?));";
         int filasafectadas;
         
         try (Connection con = conexion.getConnection()){
@@ -334,15 +314,13 @@ public class QueriesJose {
             PreparedStatement ps;
             ResultSet res;
             
-            ps = con.prepareStatement("SELECT doc_id FROM public.miembro WHERE doc_id = ?;");
+            ps = con.prepareStatement("SELECT doc_ident FROM public.representante WHERE doc_ident=?;");
             ps.setInt(1, ci);
             
             res = ps.executeQuery();
 
             if (res.next()) {
                 return true;
-            } else {
-                return false;
             }
 
         } catch (Exception e) {
@@ -351,22 +329,23 @@ public class QueriesJose {
             return false;
             
         }
+        return false;
     }
     
     //historico
     
-    public boolean HistIns(int clubid, int miemid) {
+    public boolean HistIns(String clubnom, int miemid) {
         
         String SQL = "INSERT INTO public.hist_miembro(\n" +
                         "	fechai_mie, club_id, doc_id, estatus_mie)\n" +
-                        "	VALUES (current_date, ?, ?, 'Activo');";
+                        "	VALUES (current_date, ?, ?, 'activo');";
         int filasafectadas = 0;
         
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps = con.prepareStatement(SQL);
             
-            ps.setInt(1, clubid);
+            ps.setInt(1, clubid(clubnom));
             ps.setInt(2, miemid);
             
             filasafectadas = ps.executeUpdate();
@@ -611,7 +590,7 @@ public class QueriesJose {
             PreparedStatement ps;
             ResultSet res;
 
-            ps = con.prepareStatement("SELECT grup_id FROM public.grupo WHERE grup_tipo=? AND club_id=?;");
+            ps = con.prepareStatement("SELECT grup_id, grup_tipo FROM public.grupo WHERE grup_tipo=? AND club_id=?;");
             ps.setString(1, tipo);
             ps.setInt(2, idclub);
                    
@@ -631,59 +610,54 @@ public class QueriesJose {
         return null;
     }
     
-    public ResultSet eleccGrupo2(int idclub, String tipo) {
+    public ResultSet miemGrupo(int idclub) {
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps;
             ResultSet res;
 
-            ps = con.prepareStatement("SELECT grup_id FROM public.grupo WHERE grup_tipo=? AND club_id=?;");
-            ps.setString(1, tipo);
-            ps.setInt(2, idclub);
-                   
-            res = ps.executeQuery();
-
-            if (res.next()) {
-                return res;
-            }
-
-        } catch (Exception e) {
-            
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-            return null;
-            
-        }
-        
-        return null;
-    }
-    
-    public int grupCant(int idclub) {
-        try (Connection con = conexion.getConnection()){
-
-            PreparedStatement ps;
-            ResultSet res;
-
-            ps = con.prepareStatement("SELECT doc_id\n" +
-                                        "	FROM public.g_lector"
-                                    +   "       WHERE club_id=? AND fechaf_gru is null;");
-            
+            ps = con.prepareStatement("SELECT doc_id FROM public.hist_miembro WHERE fechaf_mie is null AND club_id = ?;");
             ps.setInt(1, idclub);
                    
             res = ps.executeQuery();
 
             if (res.next()) {
-                res.last();
-                return res.getRow();
+                return res;
             }
 
         } catch (Exception e) {
             
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-            return 0;
+            return null;
             
         }
         
-        return 0;
+        return null;
+    }
+    
+    public ResultSet bucarGrupo(int idgrup) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT club_id, grup_tipo FROM public.grupo;");
+            ps.setInt(1, idgrup);
+                   
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return res;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+            
+        }
+        
+        return null;
     }
     
     public boolean newGrup(int grupid, int clubid, int docid, Date date) {
@@ -752,7 +726,7 @@ public class QueriesJose {
             PreparedStatement ps;
             ResultSet res;
 
-            ps = con.prepareStatement("SELECT idio_nombre\n" +
+            ps = con.prepareStatement("SELECT initcap(idio_nombre)\n" +
                                         "	FROM public.idioma;");
                    
             res = ps.executeQuery();
@@ -777,7 +751,7 @@ public class QueriesJose {
             PreparedStatement ps;
             ResultSet res;
 
-            ps = con.prepareStatement("SELECT idio_id FROM public.idioma WHERE idio_nombre = ?;");
+            ps = con.prepareStatement("SELECT idio_id FROM public.idioma WHERE idio_nombre=lower(?);");
             ps.setString(1, idio);
             res = ps.executeQuery();
 
@@ -824,28 +798,76 @@ public class QueriesJose {
     
     
     //clubes
-    public boolean clubExist(int clubid) {
+    
+    public int paisclub(String club) {
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps;
             ResultSet res;
 
-            ps = con.prepareStatement("SELECT club_id FROM public.club WHERE club_id = ?;");
-            ps.setInt(1, clubid);
+            ps = con.prepareStatement("SELECT dir_id_padre FROM public.direccion_lugar WHERE dir_id in (SELECT dir_id FROM public.club WHERE club_nombre=lower(?));");
+            ps.setString(1, club);
+            
             res = ps.executeQuery();
 
             if (res.next()) {
-                return true;
+                return res.getInt(1);
             }
 
         } catch (Exception e) {
             
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
+            return 0;
+            
+        }
+        return 0;
+    }
+    
+    public ResultSet clubes() {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT initcap(club_nombre) FROM public.club;");
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return res;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
             
         }
         
-        return false;
+        return null;
+    }
+    
+    public int clubid(String clubnom) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT club_id FROM public.club WHERE club_nombre=lower(?);");
+            ps.setString(1, clubnom);
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return res.getInt(1);
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return 0;
+            
+        }
+        
+        return 0;
     }
     
     //paises ciudades
@@ -879,7 +901,7 @@ public class QueriesJose {
             PreparedStatement ps;
             ResultSet res;
 
-            ps = con.prepareStatement("SELECT dir_id FROM public.direccion_lugar WHERE dir_nombre = ?;");
+            ps = con.prepareStatement("SELECT dir_id FROM public.direccion_lugar WHERE dir_nombre=lower(?);");
             ps.setString(1, pais);
             
             res = ps.executeQuery();
@@ -898,13 +920,37 @@ public class QueriesJose {
         return 0;
     }
     
+    public String paisnom(int pais) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT initcap(dir_nombre) FROM public.direccion_lugar WHERE dir_id=?;");
+            ps.setInt(1, pais);
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return res.getString(1);
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+            
+        }
+        return null;
+    }
+    
     public ResultSet ciudad(int paisId) {
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps;
             ResultSet res;
 
-            ps = con.prepareStatement("SELECT dir_nombre FROM public.direccion_lugar WHERE dir_id_padre = ?;");
+            ps = con.prepareStatement("SELECT initcap(dir_nombre) FROM public.direccion_lugar WHERE dir_id_padre=?;");
             ps.setInt(1, paisId);
             
             res = ps.executeQuery();
