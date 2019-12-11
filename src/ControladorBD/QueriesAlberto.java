@@ -162,24 +162,22 @@ public class QueriesAlberto {
     }
  
  
-  public void Pago(int ci, Date fechai, int club){
+public void Pago(int ci){
       String SQL = "INSERT INTO public.pago(\n" +
-            "   pago_id, fechai_mie, club_id, doc_id)\n" +
-            "	VALUES (?, ?, ?, ?);";
+            "     fechai_mie, club_id, doc_id)\n" +
+            "	VALUES ((SELECT fechai_mie FROM public.hist_miembro WHERE doc_id=? AND fechaf_mie is null),(SELECT club_id FROM public.hist_miembro WHERE doc_id=? AND fechaf_mie is null), ?);";
         int filasafectadas = 0;
         
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps = con.prepareStatement(SQL);
             
-            ps.setInt(1, 1);
-            ps.setDate(2, fechai);
-            ps.setInt(3, club);
-            ps.setInt(4, ci);
-            
+            ps.setInt(1,ci);
+            ps.setInt(2, ci);
+            ps.setInt(3, ci);        
      
             filasafectadas = ps.executeUpdate();
-
+            
             if (filasafectadas != 0) {
                 JOptionPane.showMessageDialog(null, "Pago creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             }

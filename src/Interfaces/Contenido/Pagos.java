@@ -117,13 +117,13 @@ public class Pagos extends javax.swing.JPanel {
         if (IdPaga.getText().equals("Ej. 58698569")) {
             IdPaga.setBorder(new LineBorder(Color.red));
         } else {
-            if (!ciExist(Integer.parseInt(IdPaga.getText()))){
+            if (!query.ciExist(Integer.parseInt(IdPaga.getText()))){
              IdPaga.setBorder(new LineBorder(Color.red));
              IdPaga.setText("");   
              JOptionPane.showMessageDialog(null, "El miembro no se encuentra registrado.", "Error", JOptionPane.ERROR_MESSAGE);
              }else{
                 IdPaga.setBorder(new LineBorder(Color.gray));
-                query.BuscarHist(Integer.parseInt(IdPaga.getText()));
+                query.Pago(Integer.parseInt(IdPaga.getText()));
             }
         }
     }//GEN-LAST:event_RegistrarActionPerformed
