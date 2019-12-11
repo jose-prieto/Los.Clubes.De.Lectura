@@ -62,43 +62,6 @@ public class NuevoClubContent extends javax.swing.JPanel {
 
     }
     
-    /*private void comboTipoFocusLost(java.awt.event.FocusEvent evt) {                                    
-        // TODO add your handling code here:
-        switch(comboTipo.getSelectedIndex()) {
-            case 0:
-                comboSub.removeAllItems();
-                comboSub.addItem("La Oda");
-                comboSub.addItem("La Elegia");
-                comboSub.addItem("La Egloga");
-                comboSub.addItem("La Satira");
-                comboSub.addItem("Epica");
-                comboSub.addItem("La Cancion");
-              break;
-            case 1:
-                comboSub.removeAllItems();
-                comboSub.addItem("La Epopeya");
-                comboSub.addItem("Fabula el poema epico");
-                comboSub.addItem("El Romance");
-              break;
-            case 2:
-                comboSub.removeAllItems();
-                comboSub.addItem("Novela");
-                comboSub.addItem("Cuento");
-                comboSub.addItem("Leyenda");
-                comboSub.addItem("Fábula");
-              break;
-            case 3:
-                comboSub.removeAllItems();
-                comboSub.addItem("La Tragedia");
-                comboSub.addItem("La Comedia");
-                comboSub.addItem("El Drama");
-                comboSub.addItem("La Opera");
-                comboSub.addItem("La Zarzuela");
-              break;
-            default:
-              break;
-          }
-    }    */
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -411,26 +374,6 @@ public class NuevoClubContent extends javax.swing.JPanel {
         } else {
             NombreClub.setBorder(new LineBorder(Color.gray));
         }
-        /*if (PaisClub.getText().equals("Ej. Venezuela")) {
-            PaisClub.setBorder(new LineBorder(Color.red));
-        } else {
-            PaisClub.setBorder(new LineBorder(Color.gray));
-        }
-        if (NacionClub.getText().equals("Ej. Venezolana")) {
-            NacionClub.setBorder(new LineBorder(Color.red));
-        } else {
-            NacionClub.setBorder(new LineBorder(Color.gray));
-        }
-        if (IdiomaClub.getText().equals("Ej. Español")) {
-            IdiomaClub.setBorder(new LineBorder(Color.red));
-        } else {
-            IdiomaClub.setBorder(new LineBorder(Color.gray));
-        }
-        if (CiudadClub.getText().equals("Ej. Districo Capital")) {
-            CiudadClub.setBorder(new LineBorder(Color.red));
-        } else {
-            CiudadClub.setBorder(new LineBorder(Color.gray));
-        }*/
         if (Dir1Club.getText().equals("Ej. Montalbán II, calle 5")) {
             Dir1Club.setBorder(new LineBorder(Color.red));
         } else {
@@ -446,9 +389,12 @@ public class NuevoClubContent extends javax.swing.JPanel {
         } else {
             InstClub.setBorder(new LineBorder(Color.gray));
         }
-        query.CrearClub(NombreClub.getText(), Dir1Club.getText(), Integer.parseInt(PostalClub.getText()), true, 1, Integer.parseInt(Ciudad.getSelectedItem().toString()));
+       //query.CrearInstitucion(InstClub.getText(),"Universidad Catolica" , query.BuscarCiudad(Ciudad.getSelectedItem().toString()));
+       query.CrearClub(NombreClub.getText(), Dir1Club.getText(), Integer.parseInt(PostalClub.getText()), true, comoIdioma.getSelectedIndex() + 1, query.BuscarCiudad(Ciudad.getSelectedItem().toString()));
     }//GEN-LAST:event_RegistrarActionPerformed
-
+   
+    
+    
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
         // TODO add your handling code here:
         diag.posicion(Label1.getLocationOnScreen().x-29, Label1.getLocationOnScreen().y+15);
