@@ -60,14 +60,14 @@ public class Scripts {
       ejecD.CrearClasificacion("romance", "subgenero",3);
       ejecD.CrearClasificacion("tragedia", "subgenero",4);
       
-      ejecJ.CrearMiemb(27342711, "Roberto", null, "Hidalgo", null, "m", new Date(99,02,01), 4);
+      /*ejecJ.CrearMiemb(27342711, "Roberto", null, "Hidalgo", null, "m", new Date(99,02,01), 4);
       ejecJ.CrearMiemb(2253421, "Jose", null, "Prado", null, "m", new Date(99,02,01), 4);
       ejecJ.CrearMiemb(16268735, "Carmen", null, "Delgadito", null, "f", new Date(99,02,01), 5);
       ejecJ.CrearMiemb(20345678, "Alan", null, "Brito", null, "m", new Date(99,02,01), 6);
       ejecJ.CrearMiemb(18234631, "Armando", null, "Casitas", null, "m", new Date(99,02,01), 7);
       ejecJ.CrearMiemb(15234557, "Robert", null, "Plant", null, "m", new Date(99,02,01), 7);
       ejecJ.CrearMiemb(5964816, "Gabriela", null, "Moreno", null, "f", new Date(99,02,01),6);
-      ejecJ.CrearMiemb(22734126, "Artur", null, "Rito", null, "m", new Date(99,02,01), 5);
+      ejecJ.CrearMiemb(22734126, "Artur", null, "Rito", null, "m", new Date(99,02,01), 5);*/
       
       ejecJ.CrearTelMiem(414, 1381872, 27342711);
       ejecJ.CrearTelMiem(412, 2476721, 2253421);
@@ -96,14 +96,14 @@ public class Scripts {
       ejecD.CrearInstitucion("Canaima","Empresa de tecnologia punta", 5);
       ejecD.CrearInstitucion("Chorichipi","Empresa de choripanes", 7);
       
-      ejecA.CrearClub("Lectura empedernida", "La esquna de mi casa", 1020, true, 2, 4, 2);
+      /*ejecA.CrearClub("Lectura empedernida", "La esquna de mi casa", 1020, true, 2, 4, 2);
       ejecA.CrearClub("Entretenimiento en papel", "Av. El Ejercito", 1012, false, 2, 4, 0);
       ejecA.CrearClub("Lectores Anonimos", "Calle Antonio Guerrero", 1020, false, 2, 5, 0);
       ejecA.CrearClub("Escritores frustrados", "Av. Libertador", 1020, true, 2, 5,4);
       ejecA.CrearClub("Libros con mucho té", "Esq. Albañales", 1020, false, 2, 6, 0);
       ejecA.CrearClub("Sonrisas estudiosas", "Bello Monte", 1020, false, 2, 6, 0);
       ejecA.CrearClub("Detectives encubiertos", "Ronda de Outeiro", 1020, false, 2, 7, 0);
-      ejecA.CrearClub("Los ebook son mejores", "A Estrada", 1020, false, 2, 7, 0);
+      ejecA.CrearClub("Los ebook son mejores", "A Estrada", 1020, false, 2, 7, 0);*/
       
       ejecA.CrearAsociacion(1, 3);
       ejecA.CrearAsociacion(2, 3);
@@ -141,14 +141,14 @@ public class Scripts {
       ejecD.CrearEditorial("Angosta Editores", 4);
       ejecD.CrearEditorial("Babel Libros", 5);
       
-      ejecJ.HistIns(1, 27342711);
+      /*ejecJ.HistIns(1, 27342711);
       ejecJ.HistIns(2, 2253421);
       ejecJ.HistIns(3, 16268735);
       ejecJ.HistIns(4, 20345678);
       ejecJ.HistIns(5, 18234631);
       ejecJ.HistIns(6, 15234557);
       ejecJ.HistIns(7, 5964816);
-      ejecJ.HistIns(8, 22734126);
+      ejecJ.HistIns(8, 22734126);*/
       
      /* ejecJ.AddGrup(1, 1, new Date(), 1, 1, 'Activo');
       ejecJ.AddGrup(2, 2, new Date(), 2, 2, 'Activo');
@@ -178,14 +178,14 @@ public class Scripts {
      ejecD.CrearLibro(1636657, "el crimen del otro", "Un conjunto de 12 cuentos del escritor Pablo Neruda.", new Date(4,0,0), 235, null, null, 6, 3, 0);
      ejecD.CrearLibro(3574567, "la ciudad", "el protagonista se muda a una casa prestada, provisionalmente, en un lugar indeterminado, del que tampoco se nos informa. Como la encuentra en un estado general de abandono debido a que había estado muchos años vacía, sale a buscar provisiones a un almacén sin tener una noción clara de la dirección por donde queda.", new Date(70,0,0), 118, null, null, 5, 5, 0);
      
-     ejecA.CrearAutorLibro("Mario", null, "Bendetti", null, 1234567);
+     /*ejecA.CrearAutorLibro("Mario", null, "Bendetti", null, 1234567);
      ejecA.CrearAutorLibro("Jorge", "Luis", "Borges", null, 3817312);
      ejecA.CrearAutorLibro("Isabel", null, "Allende", "Llona", 4589556);
      ejecA.CrearAutorLibro("Jose", "Eustasio", "Rivera", "Salas", 92848);
      ejecA.CrearAutorLibro("Horacio", "Silvestre", "Quiroga", "Forteza", 1636657);
      ejecA.CrearAutorLibro("Jorge","Mario", "Varlotta", "Levrero", 1234567);
      ejecA.CrearAutorLibro("Leopoldo", null, "Marechal", null, 446677);
-     ejecA.CrearAutorLibro("Mario", null, "Vargas", "Llosa", 7859665);
+     ejecA.CrearAutorLibro("Mario", null, "Vargas", "Llosa", 7859665);*/
      
      ejecA.CrearObra(3,"activa","La tregua", 5000, 1);
      ejecA.CrearObra(1,"inactiva","La biblioteca de Babel", 3200, 2);
