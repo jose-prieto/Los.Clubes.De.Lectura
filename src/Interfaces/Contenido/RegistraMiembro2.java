@@ -28,20 +28,6 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         listen.FieldListener (Cod2);
         listen.FieldListener (Num1);
         listen.FieldListener (Num2);
-        listen.FieldListener (Ciudad);
-        ResultSet res;
-        res = query.idiomas();
-        if (res != null){
-            try {
-                do{
-                    comoIdioma.addItem(res.getString(1));
-                }while (res.next());
-            } catch (SQLException ex) {
-                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        
-        
         
     }
     
@@ -72,13 +58,13 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Label6 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         Label7 = new javax.swing.JLabel();
-        Ciudad = new javax.swing.JTextField();
         Registrar = new javax.swing.JButton();
-        Pais = new javax.swing.JComboBox<>();
         Pais1 = new javax.swing.JComboBox<>();
         jLabel15 = new javax.swing.JLabel();
         comoIdioma = new javax.swing.JComboBox<>();
         addIdioma = new javax.swing.JButton();
+        Ciudad = new javax.swing.JComboBox<>();
+        Pais = new javax.swing.JTextField();
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 0, 0));
@@ -95,7 +81,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Cod1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Cod1.setForeground(new java.awt.Color(204, 204, 255));
         Cod1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Cod1.setText("ej0424");
+        Cod1.setText("ej.424");
         Cod1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         Cod1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -216,7 +202,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Num1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Num1.setForeground(new java.awt.Color(204, 204, 255));
         Num1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Num1.setText("ej1931798");
+        Num1.setText("ej.1931798");
         Num1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         Num1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,7 +222,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Num2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Num2.setForeground(new java.awt.Color(204, 204, 255));
         Num2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Num2.setText("ej4424833");
+        Num2.setText("ej.4424833");
         Num2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         Num2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -247,7 +233,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         Cod2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Cod2.setForeground(new java.awt.Color(204, 204, 255));
         Cod2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Cod2.setText("ej0212");
+        Cod2.setText("ej.212");
         Cod2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         Cod2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -289,11 +275,6 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
             }
         });
 
-        Ciudad.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Ciudad.setForeground(new java.awt.Color(204, 204, 255));
-        Ciudad.setText("Ej. Distrito Capital");
-        Ciudad.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
-
         Registrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Registrar.setText("Registrar");
         Registrar.setEnabled(false);
@@ -302,9 +283,6 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
                 RegistrarActionPerformed(evt);
             }
         });
-
-        Pais.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Pais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda", "Arabia Saudita", "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas", "Bangladés", "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Birmania", "Bolivia", "Bosnia y Herzegovina", "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután", "Cabo Verde", "Camboya", "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Ciudad del Vaticano", "Colombia", "Comoras", "Corea del Norte", "Corea del Sur", "Costa de Marfil", "Costa Rica", "Croacia", "Cuba", "Dinamarca", "Dominica", "Ecuador", "Egipto", "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Eslovaquia", "Eslovenia", "España", "Estados Unidos", "Estonia", "Etiopía", "Filipinas", "Finlandia", "Fiyi", "Francia", "Gabón", "Gambia", "Georgia", "Ghana", "Granada", "Grecia", "Guatemala", "Guyana", "Guinea", "Guinea ecuatorial", "Guinea-Bisáu", "Haití", "Honduras", "Hungría", "India", "Indonesia", "Irak", "Irán", "Irlanda", "Islandia", "Islas Marshall", "Islas Salomón", "Israel", "Italia", "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Laos", "Lesoto", "Letonia", "Líbano", "Liberia", "Libia", "Liechtenstein", "Lituania", "Luxemburgo", "Macedonia del Norte", "Madagascar", "Malasia", "Malaui", "Maldivas", "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania", "México", "Micronesia", "Moldavia", "Mónaco", "Mongolia", "Montenegro", "Mozambique", "Namibia", "Nauru", "Nepal", "Nicaragua", "Níger", "Nigeria", "Noruega", "Nueva Zelanda", "Omán", "Países Bajos", "Pakistán", "Palaos", "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Reino Unido", "República Centroafricana", "República Checa", "República del Congo", "República Democrática del Congo", "República Dominicana", "República Sudafricana", "Ruanda", "Rumanía", "Rusia", "Samoa", "San Cristóbal y Nieves", "San Marino", "San Vicente y las Granadinas", "Santa Lucía", "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles", "Sierra Leona", "Singapur", "Siria", "Somalia", "Sri Lanka", "Suazilandia", "Sudán", "Sudán del Sur", "Suecia", "Suiza", "Surinam", "Tailandia", "Tanzania", "Tayikistán", "Timor Oriental", "Togo", "Tonga", "Trinidad y Tobago", "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania", "Uganda", "Uruguay", "Uzbekistán", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue" }));
 
         Pais1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Pais1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Afgano", "Albanes", "Aleman", "Andorrano", "Antiguano", "Argelino", "Argentino", "Armenio", "Australiano", "Austriaco", "Azerbaiyano", "Bahameno", "Bahreini", "Bangladesi", "Barbadense", "Belga", "Beliceno", "Benines", "Bielorruso", "Birmano", "Boliviano", "Bosnio", "Botsuano", "Brasilero", "Britanico", "Bruneano", "Bulgaro", "Burkines", "Burundes", "Butanes", "Caboverdiano", "Camboyano", "Camerunes", "Canadiense", "Catari", "Ceilanes", "Centroafricano", "Chadiano", "Checo", "Chileno", "Chino", "Chipriota", "Colombiano", "Comorense", "Congoleno", "Congoleno", "Costarricense", "Cristobaleno", "Croata", "Cubano", "Danes", "Dominicano", "Dominiques", "Ecuatoguineano", "Ecuatoriano", "Egipcio", "Emirati", "Eritreo", "Eslovaco", "Esloveno", "Espanol", "Estadounidense", "Estonio", "Etiope", "Filipino", "Finlandes", "Fiyiano", "Frances", "Gabones", "Gambiano", "Georgiano", "Ghanes", "Granadino", "Griego", "Guatemalteco", "Guineano", "Guyanes", "Haitiano", "Hondureno", "Hungaro", "Indio", "Indonesio", "Irani", "Iraqui", "Irlandes", "Islandes", "Israeli", "Italiano", "Jamaiquino", "Japones", "Jordano", "Kazajo", "Keniano", "Kirguiso", "Kiribatiano", "Kuwaiti", "Laosiano", "Lesotense", "Leton", "Libanes", "Liberiano", "Libio", "Liechtensteiniano", "Lituano", "Luxemburgues", "Macedonio", "Malasio", "Malaui", "Maldivo", "Malgache", "Maliense", "Maltes", "Marfileno", "Marroqui", "Marshales", "Mauriciano", "Mauritano", "Mexicano", "Micronesio", "Moldavo", "Monegasco", "Mongol", "Montenegrino", "Mozambiqueno", "Namibio", "Nauruano", "Neerlandes", "Neozelandes", "Nepales", "Nicaraguense", "Nigeriano", "Nigerino", "Norcoreano", "Noruego", "Omani", "Pakistani", "Palauano", "Panameno", "Papu", "Paraguayo", "Peruano", "Polaco", "Portugues", "Ruandes", "Rumano", "Ruso", "Salomonense", "Salvadoreno", "Samoano", "Sanmarinense", "Santalucense", "Santotomense", "Sanvicentino", "Saudi", "Senegales", "Serbio", "Seychellense", "Sierraleones", "Singapurense", "Sirio", "Somali", "Suazi", "Sudafricano", "Sudanes", "Sudsudanes", "Sueco", "Suizo", "Surcoreano", "Surinames", "Tailandes", "Tanzano", "Tayiko", "Timorense", "Togoles", "Tongano", "Trinitense", "Tunecino", "Turco", "Turcomano", "Tuvaluano", "Ucraniano", "Ugandes", "Uruguayo", "Uzbeko", "Vanuatuense", "Vaticano", "Venezolano", "Vietnamita", "Yemeni", "Yibutiano", "Zambiano", "Zimbabuense" }));
@@ -322,6 +300,14 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
                 addIdiomaActionPerformed(evt);
             }
         });
+
+        Ciudad.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+
+        Pais.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Pais.setForeground(new java.awt.Color(204, 204, 255));
+        Pais.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        Pais.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        Pais.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -348,8 +334,8 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Libro2)
                                     .addComponent(Libro3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Pais, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(Pais1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(Pais1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Pais, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Label4)
@@ -357,34 +343,32 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
                                     .addComponent(Label3)
                                     .addComponent(Label5)))
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(Cod1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Num1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Label1)
+                                .addGap(37, 37, 37)
+                                .addComponent(jLabel8)
+                                .addGap(18, 18, 18)
+                                .addComponent(Cod2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Num2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Libro1, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Label2))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(Cod1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Num1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Label1)
-                                        .addGap(37, 37, 37)
-                                        .addComponent(jLabel8)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(Cod2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Num2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(Libro1, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Label2))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(comoIdioma, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(addIdioma))
-                                            .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(Ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Label7)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(comoIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(addIdioma))
+                                        .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(Ciudad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Label7)))
                         .addGap(31, 31, 31))))
         );
         layout.setVerticalGroup(
@@ -427,8 +411,8 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(Ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Label7))
+                    .addComponent(Label7)
+                    .addComponent(Ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
@@ -498,17 +482,17 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
     public boolean val() {
         boolean val = true;
 
-        if (Cod1.getText().equals("ej0424")) {
+        if (Cod1.getText().equals("ej.424")) {
             Cod1.setBorder(new LineBorder(Color.red));
             val = false;
-        }else if (Cod1.getText().length() < 4) {
+        }else if (Cod1.getText().length() < 3) {
             Cod1.setBorder(new LineBorder(Color.red));
-            JOptionPane.showMessageDialog(null, "Los códigos de teléfono deben tener 4 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Los códigos de teléfono deben tener 3 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         } else {
             Cod1.setBorder(new LineBorder(Color.gray));
         }
-        if (Num1.getText().equals("ej1931798")) {
+        if (Num1.getText().equals("ej.1931798")) {
             Num1.setBorder(new LineBorder(Color.red));
             val = false;
         }else if (Num1.getText().length() < 7) {
@@ -548,20 +532,14 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         } else {
             Libro3.setBorder(new LineBorder(Color.gray));
         }
-        if (Ciudad.getText().equals("Ej. Distrito Capital")) {
-            Ciudad.setBorder(new LineBorder(Color.red));
-            val = false;
-        } else {
-            Ciudad.setBorder(new LineBorder(Color.gray));
-        }
-        if (!Cod2.getText().equals("Ej. 30698625") && Cod2.getText().length() < 4) {
+        if (!Cod2.getText().equals("ej.212") && Cod2.getText().length() < 3) {
             Cod2.setBorder(new LineBorder(Color.red));
-            JOptionPane.showMessageDialog(null, "Los códigos de teléfono deben tener 4 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Los códigos de teléfono deben tener 3 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         } else {
             Cod2.setBorder(new LineBorder(Color.gray));
         }
-        if (!Num2.getText().equals("Ej. 30698625") && Num2.getText().length() < 7) {
+        if (!Num2.getText().equals("ej.4424833") && Num2.getText().length() < 7) {
             Num2.setBorder(new LineBorder(Color.red));
             JOptionPane.showMessageDialog(null, "Los números de teléfono deben tener 7 dígitos", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
@@ -581,31 +559,64 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         return Integer.parseInt(num);
     }
     
+    public void inicio(String club){
+        ResultSet res;
+        int paiscod = query.paisclub(club);
+        Pais.setText(query.paisnom(paiscod));
+        
+        res = query.ciudad(paiscod);
+        Ciudad.removeAllItems();
+        if (res != null){
+            try {
+                do{
+                    Ciudad.addItem(res.getString(1));
+                }while (res.next());
+                Ciudad.setSelectedIndex(0);
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        res = query.idiomas();
+        comoIdioma.removeAllItems();
+        if (res != null){
+            try {
+                do{
+                    comoIdioma.addItem(res.getString(1));
+                }while (res.next());
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
     public boolean ActMiembro(int edad, int idmiem, int idrep, boolean exist){
+        System.out.println(edad);
+        System.out.println(idmiem);
+        System.out.println(idrep);
+        System.out.println(exist);
+        System.out.println(query.paiscod(Ciudad.getSelectedItem().toString()));
         
         if (edad < 19 && idrep != 0 && exist){
-            System.out.println("miemb2");
-            if (!query.ActMiemb2(idmiem, idrep)){
+            if (!query.ActMiembM(idrep, idmiem, query.paiscod(Ciudad.getSelectedItem().toString()))){
                 return false;
             }
         }
         if (edad < 19 && idrep != 0 && !exist){
-            System.out.println("miemb1");
-            if (!query.ActMiemb1(idmiem, idrep)){
+            if (!query.ActMiemb(idrep, idmiem, query.paiscod(Ciudad.getSelectedItem().toString()))){
                 return false;
             }
         }
-        
+        System.out.println("1");
         if(!query.CrearTelMiem(num(Cod1.getText()), num(Num1.getText()), idmiem)){
                 return false;
             }
         
-        if (!Cod2.getText().equals("ej0212") && !Num2.getText().equals("ej4424833") && Cod2.getText().length() == 4 && Num2.getText().length() == 7){
+        if (!Cod2.getText().equals("ej0212") && !Num2.getText().equals("ej4424833") && Cod2.getText().length() == 3 && Num2.getText().length() == 7){
             if(!query.CrearTelMiem(num(Cod2.getText()), num(Num2.getText()), idmiem)){
                 return false;
             }
         }
-        
         if (!query.miemPref(idmiem, num(Libro1.getText()), 1)){
             return false;
         }
@@ -624,7 +635,24 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         if (!query.libMiem(idmiem, num(Libro3.getText()))){
             return false;
         }
+        
         return true;
+    }
+    
+    public void vaciar (){
+        Cod1.setText("ej.424");
+        Cod1.setForeground(new Color(204,204,255));
+        Num1.setText("ej.1931798");
+        Num1.setForeground(new Color(204,204,255));
+        Cod2.setText("ej.212");
+        Cod2.setForeground(new Color(204,204,255));
+        Libro1.setText("Ej. 9788877547224");
+        Libro1.setForeground(new Color(204,204,255));
+        Libro2.setText("Ej. 9788877547224");
+        Libro2.setForeground(new Color(204,204,255));
+        Libro3.setText("Ej. 9788877547224");
+        Libro3.setForeground(new Color(204,204,255));
+        Registrar.setEnabled(false);
     }
     
     private void Label6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label6MouseExited
@@ -662,7 +690,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         // TODO add your handling code here:
         char c = evt.getKeyChar();
         
-        if (c < '0' || c > '9' || Cod1.getText().length() > 3){
+        if (c < '0' || c > '9' || Cod1.getText().length() > 2){
             evt.consume();
         }
     }//GEN-LAST:event_Cod1KeyTyped
@@ -680,7 +708,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
         // TODO add your handling code here:
         char c = evt.getKeyChar();
         
-        if (c < '0' || c > '9' || Cod2.getText().length() > 3){
+        if (c < '0' || c > '9' || Cod2.getText().length() > 2){
             evt.consume();
         }
     }//GEN-LAST:event_Cod2KeyTyped
@@ -729,7 +757,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Ciudad;
+    public javax.swing.JComboBox<String> Ciudad;
     private javax.swing.JTextField Cod1;
     private javax.swing.JTextField Cod2;
     private javax.swing.JLabel Label1;
@@ -744,7 +772,7 @@ public class RegistraMiembro2 extends javax.swing.JPanel {
     private javax.swing.JTextField Libro3;
     private javax.swing.JTextField Num1;
     private javax.swing.JTextField Num2;
-    private javax.swing.JComboBox<String> Pais;
+    private javax.swing.JTextField Pais;
     private javax.swing.JComboBox<String> Pais1;
     public javax.swing.JButton Registrar;
     public javax.swing.JButton addIdioma;

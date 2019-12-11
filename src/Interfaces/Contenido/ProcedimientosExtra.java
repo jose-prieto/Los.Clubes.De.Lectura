@@ -10,6 +10,8 @@ import javax.swing.JTextField;
 import ControladorBD.QueriesJose;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ProcedimientosExtra {
     
@@ -72,28 +74,112 @@ public class ProcedimientosExtra {
                 Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
             }
         }*/
-    public boolean OrgaAddGrup(int miemID, int clubid, Date fechaNac) {
+    public boolean addmiemGrup(int miemID, int clubid, Date fechaNac) {
         
         int edad = query.Edad(fechaNac);
         int size = 0;
+        int n = 0;
+        String h = "";
         ResultSet rs,rs2;
         
-        if (edad > 18){
-            rs = query.eleccGrupo(clubid, "Adulto");
-            if (rs == null){
-                //creargrupo
-            }else{
-                
-            }
-        }else if (edad > 12 && edad <19){
-            rs = query.eleccGrupo(clubid, "Adulto");
-            if (rs == null){
-                
-            }else{
-                
-            }
-        }else if (edad < 13){
-            
+        if (edad >= 19){
+            h = "Adulto";
+            n = 15;
+        }else if (edad >= 13 && edad <= 18){
+            h = "Joven";
+            n = 10;
+        }else{
+            h = "Nino";
+            n = 10;
         }
+        
+        rs = query.eleccGrupo(clubid, h);
+        
+        if (rs == null){
+            //creargrupo
+            //agregar a grupo
+            return true;
+        }else{
+            try {
+                do{
+                    rs2 = query.miemGrupo(rs.getInt(1));
+                    try {
+                        do{
+                           size++;
+                        }while (rs2.next());
+                    } catch (SQLException ex) {
+                        Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    if (size < n){
+                        //return agregarmiembro
+                    }
+                }while (rs.next());
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            //return agregar grupo adulto
+            //return agregar miembro a grupo anterior
+        }
+            
+        return false;
+    }
+    
+    public boolean removemiemGrup(int grupo) {
+        
+        String tipo = "";
+        int club;
+        int n = 0;
+        String h = "";
+        ResultSet rs = query.bucarGrupo(grupo);
+        
+        try {
+            
+            tipo = rs.getString(2);
+            club = rs.getInt(1);
+            
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if (edad >= 19){
+            h = "Adulto";
+            n = 15;
+        }else if (edad >= 13 && edad <= 18){
+            h = "Joven";
+            n = 10;
+        }else{
+            h = "Nino";
+            n = 10;
+        }
+        
+        rs = query.eleccGrupo(clubid, h);
+        
+        if (rs == null){
+            //creargrupo
+            //agregar a grupo
+            return true;
+        }else{
+            try {
+                do{
+                    rs2 = query.miemGrupo(rs.getInt(1));
+                    try {
+                        do{
+                           size++;
+                        }while (rs2.next());
+                    } catch (SQLException ex) {
+                        Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    if (size < n){
+                        //return agregarmiembro
+                    }
+                }while (rs.next());
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            //return agregar grupo adulto
+            //return agregar miembro a grupo anterior
+        }
+            
+        return false;
     }
 }
