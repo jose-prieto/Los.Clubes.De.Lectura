@@ -67,6 +67,114 @@ public class QueriesDaniel {
         }   
         }
      
+     public void CrearCapitulo(int isbn, String cap_nombre,String cap_titulo) {
+        
+        String SQL = "INSERT INTO public.capitulo_otro(\n" +
+            " isbn, cap_nombre, cap_titulo)\n" +
+            "	VALUES (?,?,?);";
+        int filasafectadas = 0;
+
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, isbn);
+            ps.setString(2, cap_nombre);
+            ps.setString(3, cap_titulo);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }   
+        }
+     
+     public void CrearSeccion(int cap_id, int isbn, String secc_nombre,String secc_titulo) {
+        
+        String SQL = "INSERT INTO public.seccion(\n" +
+            " cap_id, isbn, secc_nombre, secc_titulo)\n" +
+            "	VALUES (?,?,?,?);";
+        int filasafectadas = 0;
+
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, cap_id);
+            ps.setInt(2, isbn);
+            ps.setString(3, secc_nombre);
+            ps.setString(4, secc_titulo);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }   
+        }
+     
+     
+    public void CrearPersonaje(int obra_id, String perso_nombre,String perso_desc) {
+        
+        String SQL = "INSERT INTO public.personaje\n" +
+            " obra_id, perso_nombre, perso_desc)\n" +
+            "	VALUES (?,?,?);";
+        int filasafectadas = 0;
+
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, obra_id);
+            ps.setString(2, perso_nombre);
+            ps.setString(3, perso_desc);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }   
+        }
+    
+    public void CrearFuncion(Date func_fecha, int obra_id,int func_hora, boolean estatus_realizado, int func_valoracion, int func_entradas_vend) {
+        
+        String SQL = "INSERT INTO public.funcion(\n" +
+            " func_fecha, obra_id, func_hora, estatus_realizado, func_valoracion, func_entradas_vend)\n" +
+            "	VALUES (?,?,?,?,?,?);";
+        int filasafectadas = 0;
+
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setDate(1, func_fecha);
+            ps.setInt(2, obra_id);
+            ps.setInt(3, func_hora);
+            ps.setBoolean(4, estatus_realizado);
+             if (func_valoracion == 0){ps.setNull(5, java.sql.Types.NUMERIC);}
+            else{ps.setInt(5, func_valoracion);}
+             if (func_entradas_vend == 0){ps.setNull(6, java.sql.Types.NUMERIC);}
+            else{ps.setInt(6, func_entradas_vend);}
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }   
+        }
+     
+     
      public void CrearClasificacion(String clasi_nombre, String clasi_tipo, int clasi_padre) {
         
             String SQL = "INSERT INTO public.clasificacion(\n" +

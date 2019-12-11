@@ -33,14 +33,14 @@ public class Scripts {
       ejecD.CrearIdioma("bengali");
       ejecD.CrearIdioma("farsi"); 
       
-      ejecD.CrearDireccion_lugar("continente", "America",null, null, 0);
-      ejecD.CrearDireccion_lugar("pais", "Uruguay","Peso uruguayo", "Uruguaya", 1);
-      ejecD.CrearDireccion_lugar("pais", "Colombia","Peso colombiano", "Colombiana", 1);
+      ejecD.CrearDireccion_lugar("pais", "Islandia",null, null, 0);
+      ejecD.CrearDireccion_lugar("pais", "Uruguay","Peso uruguayo", "Uruguaya", 0);
+      ejecD.CrearDireccion_lugar("pais", "Colombia","Peso colombiano", "Colombiana", 0);
       ejecD.CrearDireccion_lugar("ciudad", "Medellin", null, null, 3);
       ejecD.CrearDireccion_lugar("ciudad", "Bogota", null, null, 3);
       ejecD.CrearDireccion_lugar("ciudad", "Rivera", null, null, 2);
       ejecD.CrearDireccion_lugar("ciudad", "Montevideo", null, null, 2);
-      ejecD.CrearDireccion_lugar("continente", "Oceania", null, null, 0);
+      ejecD.CrearDireccion_lugar("pais", "Ginea", null, null, 0);
       
       ejecJ.CrearRep(20111113, "Robert", null, "Serra", null, "m");
       ejecJ.CrearRep(12345678, "Elsa", null, "Pote", null, "f");
@@ -196,66 +196,104 @@ public class Scripts {
      ejecA.CrearObra(3,"activa","El crimen del otro", 6500, 7);
      ejecA.CrearObra(1,"activa","La ciudad", 2000, 8);
     
+     ejecA.club_obra(1);
+     ejecA.club_obra(2);
+     ejecA.club_obra(3);
+     ejecA.club_obra(4);
+     ejecA.club_obra(5);
+     ejecA.club_obra(6);
+     ejecA.club_obra(7);
+     ejecA.club_obra(8);
      
-     /*ejecD.CrearClub_obra(1,1);
-     ejecD.CrearClub_obra(2,2);
-     ejecD.CrearClub_obra(3,3);
-     ejecD.CrearClub_obra(4,4);
-     ejecD.CrearClub_obra(5,5);
-     ejecD.CrearClub_obra(6,6);
-     ejecD.CrearClub_obra(7,7);
-     ejecD.CrearClub_obra(8,8);
-     */
-          /*ejecD.CrearLibro_obra(1234567,1);
-     ejecD.CrearLibro_obra(3817312,2);
-     ejecD.CrearLibro_obra(446677,3);
-     ejecD.CrearLibro_obra(4589556,4);
-     ejecD.CrearLibro_obra(92848,5);
-     ejecD.CrearLibro_obra(7859665,6);
-     ejecD.CrearLibro_obra(1636657,7);
-     ejecD.CrearLibro_obra(3574567,8);
-     */
+     ejecA.lib_obra(1234567);
+     ejecA.lib_obra(3817312);
+     ejecA.lib_obra(446677);
+     ejecA.lib_obra(4589556);
+     ejecA.lib_obra(92848);
+     ejecA.lib_obra(7859665);
+     ejecA.lib_obra(1636657);
+     ejecA.lib_obra(3574567);
      
-          /*ejecD.CrearLibro_miembro(27342711,1234567);
-     ejecD.CrearLibro_miembro(2253421,3817312);
-     ejecD.CrearLibro_miembro(16268735,446677);
-     ejecD.CrearLibro_miembro(20345678,4589556);
-     ejecD.CrearLibro_miembro(18234631,92848);
-     ejecD.CrearLibro_miembro(15234557,7859665);
-     ejecD.CrearLibro_miembro(5964816,1636657);
-     ejecD.CrearLibro_miembro(22734126,3574567);
-     */
+     
+     ejecJ.libMiem(27342711,1234567);
+     ejecJ.libMiem(2253421,3817312);
+     ejecJ.libMiem(16268735,446677);
+     ejecJ.libMiem(20345678,4589556);
+     ejecJ.libMiem(18234631,92848);
+     ejecJ.libMiem(15234557,7859665);
+     ejecJ.libMiem(5964816,1636657);
+     ejecJ.libMiem(22734126,3574567);
+     
           
-          /*ejecD.CrearLibros_preferidos(27342711,1234567, 1);
-     ejecD.CrearLibros_preferidos(2253421,3817312, 1);
-     ejecD.CrearLibros_preferidos(16268735,446677, 1);
-     ejecD.CrearLibros_preferidos(20345678,4589556, 1);
-     ejecD.CrearLibros_preferidos(18234631,92848, 1);
-     ejecD.CrearLibros_preferidos(15234557,7859665, 1);
-     ejecD.CrearLibros_preferidos(5964816,1636657, 1);
-     ejecD.CrearLibros_preferidos(22734126,3574567, 1);
-     */
+     ejecJ.miemPref(27342711,1234567, 1);
+     ejecJ.miemPref(2253421,3817312, 1);
+     ejecJ.miemPref(16268735,446677, 1);
+     ejecJ.miemPref(20345678,4589556, 1);
+     ejecJ.miemPref(18234631,92848, 1);
+     ejecJ.miemPref(15234557,7859665, 1);
+     ejecJ.miemPref(5964816,1636657, 1);
+     ejecJ.miemPref(22734126,3574567, 1);
+     
           
-        /*ejecD.CrearFuncion(new Date(119,5,9), 1, 2, false, 0, 0);
-          ejecD.CrearFuncion(new Date(119,8,12), 2, 2, true, 4, 2137);
-          ejecD.CrearFuncion(new Date(119,4,3), 3, 1, true, 3, 812);
-          ejecD.CrearFuncion(new Date(119,1,27), 4, 3, true, 5, 2443);
-          ejecD.CrearFuncion(new Date(119,11,18), 5, 1, true, 2, 1578);
-          ejecD.CrearFuncion(new Date(119,2,25), 6, 4, false, 0, 0);
-          ejecD.CrearFuncion(new Date(119,7,4), 7, 2, false, 0, 0);
-          ejecD.CrearFuncion(new Date(119,6,13), 8, 1, false, 0, 0);
-         
-          */
+    ejecD.CrearFuncion(new Date(119,5,9), 1, 2, false, 0, 0);
+    ejecD.CrearFuncion(new Date(119,8,12), 2, 2, true, 4, 2137);
+    ejecD.CrearFuncion(new Date(119,4,3), 3, 1, true, 3, 812);
+    ejecD.CrearFuncion(new Date(119,1,27), 4, 3, true, 5, 2443);
+    ejecD.CrearFuncion(new Date(119,11,18), 5, 1, true, 2, 1578);
+    ejecD.CrearFuncion(new Date(119,2,25), 6, 4, false, 0, 0);
+    ejecD.CrearFuncion(new Date(119,7,4), 7, 2, false, 0, 0);
+    ejecD.CrearFuncion(new Date(119,6,13), 8, 1, false, 0, 0);     
+    
         
-        /*ejecD.CrearPersonaje(1, "Martin Santome", "personaje principal de la obra, un hombre maduro de 49 años, canoso, funcionario.");
-          ejecD.CrearPersonaje(2, "El Bibliotecario", "nuestro narrador, un bibliotecario que pasa sus días en soledad, es el único personaje de la historia.");
-          ejecD.CrearPersonaje(3, "Adan Buenosayres", "el personaje principal de la obra.");
-          ejecD.CrearPersonaje(4, "Clara Del Valle", "Clara, es la matriarca esquiva y misteriosa, quien predice las tragedias de la familia y establece el destino de la casa y de los Trueba.");
-          ejecD.CrearPersonaje(5, "Arturo Cova", "personaje principal de la obra.");
-          ejecD.CrearPersonaje(6, "Don Anselmo", " Parece ser un personaje que está más allá del tiempo, pues nadie sabe nada de su pasado y él no parece tener proyectos a futuro.");
-          ejecD.CrearPersonaje(7, "Brandimarte de Normandía", "flor de la nobleza cristiana y vástago de una gloriosa familia.");
-          ejecD.CrearPersonaje(8, "Giménez", "el simpático encargado de una estación de servicio descomunal ubicada en un pueblucho por el que jamás pasa un auto.");
-          */
+    ejecD.CrearPersonaje(1, "Martin Santome", "personaje principal de la obra, un hombre maduro de 49 años, canoso, funcionario.");
+    ejecD.CrearPersonaje(2, "El Bibliotecario", "nuestro narrador, un bibliotecario que pasa sus días en soledad, es el único personaje de la historia.");
+    ejecD.CrearPersonaje(3, "Adan Buenosayres", "el personaje principal de la obra.");
+    ejecD.CrearPersonaje(4, "Clara Del Valle", "Clara, es la matriarca esquiva y misteriosa, quien predice las tragedias de la familia y establece el destino de la casa y de los Trueba.");
+    ejecD.CrearPersonaje(5, "Arturo Cova", "personaje principal de la obra.");
+    ejecD.CrearPersonaje(6, "Don Anselmo", " Parece ser un personaje que está más allá del tiempo, pues nadie sabe nada de su pasado y él no parece tener proyectos a futuro.");
+    ejecD.CrearPersonaje(7, "Brandimarte de Normandía", "flor de la nobleza cristiana y vástago de una gloriosa familia.");
+    ejecD.CrearPersonaje(8, "Giménez", "el simpático encargado de una estación de servicio descomunal ubicada en un pueblucho por el que jamás pasa un auto.");
+    
+    
+    ejecD.CrearCapitulo(7859665,"capitulo uno", null);
+    ejecD.CrearCapitulo(7859665,"capitulo dos", null);
+    ejecD.CrearCapitulo(7859665,"capitulo tres", null);
+    ejecD.CrearCapitulo(7859665,"capitulo cuatro", null);
+    ejecD.CrearCapitulo(7859665,"epilogo",null);
+    ejecD.CrearCapitulo(1636657,"capitulo uno", null);
+    ejecD.CrearCapitulo(1636657,"capitulo dos", null);
+    ejecD.CrearCapitulo(1636657,"capitulo tres", null);
+    
+    
+    ejecD.CrearSeccion(1, 7859665,"prologo", null);
+    ejecD.CrearSeccion(1, 7859665,"I", null);
+    ejecD.CrearSeccion(1, 7859665,"II", null);
+    ejecD.CrearSeccion(1, 7859665,"III", null);
+    ejecD.CrearSeccion(1, 7859665,"IV",null);
+    ejecD.CrearSeccion(2, 7859665,"prologo", null);
+    ejecD.CrearSeccion(2, 7859665,"I", null);
+    ejecD.CrearSeccion(2, 7859665,"II", null);
+    
+    
+    /*ejecD.CrearElenco(new Date(), 1, 27342711, 1, 1);
+    CrearElenco(new Date(), 2, 2253421, 2, 2);
+    CrearElenco(new Date(), 3, 16268735, 3, 3);
+    CrearElenco(new Date(), 4, 20345678, 4, 4);
+    CrearElenco(new Date(), 5, 18234631, 5, 5);
+    CrearElenco(new Date(), 6, 15234557, 6, 6);
+    CrearElenco(new Date(), 7, 5964816, 7, 7);
+    CrearElenco(new Date(), 8, 22734126, 8, 8);
+    */
+    
+    /*ejecD.CrearActor(new Date(), 1, 27342711, 1, 1, new Date(119,5,9));
+    ejecD.CrearActor(new Date(), 2, 2253421, 2, 2, 2, new Date(119,8,12));
+    ejecD.CrearActor(new Date(), 3, 16268735, 3, 3, 3, new Date(119,4,3));
+    ejecD.CrearActor(new Date(), 4, 20345678, 4, 4, 4, new Date(119,1,27));
+    ejecD.CrearActor(new Date(), 5, 18234631, 5, 5, 5, new Date(119,11,18));
+    ejecD.CrearActor(new Date(), 6, 15234557, 6, 6, 6, new Date(119,2,25));
+    ejecD.CrearActor(new Date(), 7, 5964816, 7, 7, 7, new Date(119,7,4));
+    ejecD.CrearActor(new Date(), 8, 22734126, 8, 8, 8, new Date(119,6,13));
+    */
       
       
      
