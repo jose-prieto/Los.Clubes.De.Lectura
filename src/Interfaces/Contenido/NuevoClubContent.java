@@ -55,18 +55,6 @@ public class NuevoClubContent extends javax.swing.JPanel {
                 Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
-        res = queryJ.ciudad(queryJ.paiscod(Pais.getSelectedItem().toString()));
-        if (res != null){
-            try {
-                do{
-                    Ciudad.addItem(res.getString(1));
-                }while (res.next());
-            } catch (SQLException ex) {
-                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
     }
     
 
