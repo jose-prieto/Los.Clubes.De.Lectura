@@ -162,24 +162,22 @@ public class QueriesAlberto {
     }
  
  
-  public void Pago(int ci, Date fechai, int club){
+public void Pago(int ci){
       String SQL = "INSERT INTO public.pago(\n" +
-            "   pago_id, fechai_mie, club_id, doc_id)\n" +
-            "	VALUES (?, ?, ?, ?);";
+            "     fechai_mie, club_id, doc_id)\n" +
+            "	VALUES ((SELECT fechai_mie FROM public.hist_miembro WHERE doc_id=? AND fechaf_mie is null),(SELECT club_id FROM public.hist_miembro WHERE doc_id=? AND fechaf_mie is null), ?);";
         int filasafectadas = 0;
         
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps = con.prepareStatement(SQL);
             
-            ps.setInt(1, 1);
-            ps.setDate(2, fechai);
-            ps.setInt(3, club);
-            ps.setInt(4, ci);
-            
+            ps.setInt(1,ci);
+            ps.setInt(2, ci);
+            ps.setInt(3, ci);        
      
             filasafectadas = ps.executeUpdate();
-
+            
             if (filasafectadas != 0) {
                 JOptionPane.showMessageDialog(null, "Pago creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -192,11 +190,11 @@ public class QueriesAlberto {
  }
   
   
-  public void CrearClub(String nombre, String direccion, int codp, boolean cuota, int idio, int dir) {
+  public void CrearClub(String nombre, String direccion, int codp, boolean cuota, int idio, int ciudad) {
 
         String SQL = "INSERT INTO public.club(\n" +
             "	 club_nombre, direccion, cod_postal, cuota, idio_id, dir_id)\n" +
-            "	VALUES (?, ?, ?, ?, ?, ?);";
+            "	VALUES (lower(?), lower(?), ?, ?, ?, ?);";
         int filasafectadas = 0;
         
         try (Connection con = conexion.getConnection()){
@@ -209,7 +207,7 @@ public class QueriesAlberto {
             ps.setInt(3, codp);
             ps.setBoolean(4, cuota);
             ps.setInt(5, idio);
-            ps.setInt(6, dir);
+            ps.setInt(6, ciudad);
 
             
             filasafectadas = ps.executeUpdate();
@@ -224,6 +222,65 @@ public class QueriesAlberto {
         
             
         }
+  
+  
+ public void CrearInstitucion(String inst_nombre, String inst_desc, int dir_id) {
+        
+            String SQL = "INSERT INTO public.institucion(\n" +
+            "	inst_nombre, inst_desc, dir_id)\n" +
+            "	VALUES (?,?,?);";
+            int filasafectadas = 0;
+
+            try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setString(1, inst_nombre);
+            ps.setString(2, inst_desc);
+            ps.setInt(3, dir_id);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        
+            
+        }
+  
+  
+ public int BuscarCiudad(String ciudad) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+            int dirId=0;
+            int club;
+            ps = con.prepareStatement("SELECT dir_id, dir_nombre  "
+                    + "FROM direccion_lugar "
+                    + "WHERE dir_nombre = lower(?);");
+            ps.setString(1, ciudad);
+            
+            res = ps.executeQuery();
+
+            res.next();
+                dirId = res.getInt("dir_id");
+
+            return dirId;    
+           
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return 0;
+            
+        }
+        
+       
+    }
    
    
   public boolean clubExist(int club) {
