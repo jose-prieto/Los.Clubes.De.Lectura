@@ -195,7 +195,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         Atras.setBorder(null);
         Atras.setBorderPainted(false);
         Atras.setContentAreaFilled(false);
-        Atras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Atras.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Atras.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         Atras.setFocusPainted(false);
         Atras.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -240,7 +240,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         HomeButton.setBorder(null);
         HomeButton.setBorderPainted(false);
         HomeButton.setContentAreaFilled(false);
-        HomeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        HomeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         HomeButton.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         HomeButton.setFocusPainted(false);
         HomeButton.setMaximumSize(new java.awt.Dimension(70, 34));
@@ -675,7 +675,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             Titulo.setText("Nueva obra");
             ContentPannel.add(nuevaobra);
 
-        } else if (evt.equals(nuevaobra.Continuar)) {
+        } else if (nuevaobra.val() == true) {
 
             Alistar();
 

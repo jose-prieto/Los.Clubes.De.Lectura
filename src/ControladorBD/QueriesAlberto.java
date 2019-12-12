@@ -129,37 +129,35 @@ public class QueriesAlberto {
         }
     }
      
-  
- /* public void BuscarHist(int ci) {
+   public int BuscarIsbn(String nombre) {
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps;
             ResultSet res;
-            Date fechai;
+            int isbn=0;
             int club;
-            ps = con.prepareStatement("SELECT doc_id,fechai_mie,club_id  "
-                    + "FROM hist_miembro "
-                    + "WHERE doc_id = ?;");
-            ps.setInt(1, ci);
+            ps = con.prepareStatement("SELECT isbn, lib_tit_original  "
+                    + "FROM libro "
+                    + "WHERE lib_tit_original = lower(?);");
+            ps.setString(1, nombre);
             
             res = ps.executeQuery();
 
             res.next();
-                fechai = res.getDate("fechai_mie");
-                club = res.getInt("club_id");
-                Pago(ci,fechai,club);
-                
+                isbn = res.getInt("isbn");
+
+            return isbn;    
            
             
         } catch (Exception e) {
             
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-            
+            return 0;
             
         }
         
-        
-    }*/
+       
+    }
  
  
   public void Pago(int ci){

@@ -29,7 +29,7 @@ public class NuevaObra extends javax.swing.JPanel {
         if (res != null){
             try {
                 do{
-                    Libros.addItem(res.getString(1));
+                    libro.addItem(res.getString(1));
                 }while (res.next());
             } catch (SQLException ex) {
                 Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
@@ -41,7 +41,7 @@ public class NuevaObra extends javax.swing.JPanel {
         if (res != null){
             try {
                 do{
-                    auditorios.addItem(res.getString(1));
+                    audi.addItem(res.getString(1));
                 }while (res.next());
             } catch (SQLException ex) {
                 Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
@@ -82,8 +82,8 @@ public class NuevaObra extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Resumen = new javax.swing.JTextArea();
-        Libros = new javax.swing.JComboBox<>();
-        auditorios = new javax.swing.JComboBox<>();
+        libro = new javax.swing.JComboBox<>();
+        audi = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         club = new javax.swing.JComboBox<>();
 
@@ -193,12 +193,12 @@ public class NuevaObra extends javax.swing.JPanel {
         Resumen.setBorder(new javax.swing.border.LineBorder(java.awt.Color.gray, 1, true));
         jScrollPane1.setViewportView(Resumen);
 
-        Libros.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Libros.setForeground(new java.awt.Color(51, 51, 51));
+        libro.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        libro.setForeground(new java.awt.Color(51, 51, 51));
 
-        auditorios.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        auditorios.setForeground(new java.awt.Color(51, 51, 51));
-        auditorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo auditorio" }));
+        audi.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        audi.setForeground(new java.awt.Color(51, 51, 51));
+        audi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo auditorio" }));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
@@ -230,7 +230,6 @@ public class NuevaObra extends javax.swing.JPanel {
                                 .addComponent(jLabel2)
                                 .addComponent(jLabel7)
                                 .addComponent(jLabel3))
-                            .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -242,7 +241,7 @@ public class NuevaObra extends javax.swing.JPanel {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(Costo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(TitObra, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(Libros, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(libro, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(4, 4, 4)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(Label1)
@@ -251,7 +250,7 @@ public class NuevaObra extends javax.swing.JPanel {
                                     .addGap(1, 1, 1)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(club, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(auditorios, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(audi, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap(83, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -269,7 +268,7 @@ public class NuevaObra extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(Libros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(libro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -280,7 +279,7 @@ public class NuevaObra extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(auditorios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(audi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -297,9 +296,45 @@ public class NuevaObra extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
-        //query.CrearObra(2,"ACTIVA", TOOL_TIP_TEXT_KEY, WIDTH, WIDTH);
+        
     }//GEN-LAST:event_ContinuarActionPerformed
 
+    public boolean val(){
+                boolean val = true;
+        if (TitObra.getText().equals("Ej. La gran tragedia")) {
+            TitObra.setBorder(new LineBorder(Color.red));
+            val = false;
+        } else {
+            TitObra.setBorder(new LineBorder(Color.gray));
+        }
+        if (Costo.getText().equals("ej. 15000")) {
+            Costo.setBorder(new LineBorder(Color.red));
+            val = false;
+        } else {
+            Costo.setBorder(new LineBorder(Color.gray));
+        }
+        if (Resumen.getText().equals("Aquí se debe especificar el resumen del argumento de la obra en cuestión.")) {
+            Resumen.setBorder(new LineBorder(Color.red));
+            val = false;
+        } else {
+            Resumen.setBorder(new LineBorder(Color.gray));
+        }
+        if (val == false) {
+            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos que son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }else{
+        if(audi.getSelectedIndex()!=0){
+               query.CrearObra(duracion(),"inactiva", TitObra.getText(), Integer.parseInt(Costo.getText()), audi.getSelectedIndex());
+               query.lib_obra(query.BuscarIsbn(libro.getSelectedItem().toString()));
+               query.club_obra(club.getSelectedIndex()+1);
+               
+                 }else{
+                 //Cuando sea audi nuevo
+                  }
+        return true;
+        }
+    }
+    
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
         // TODO add your handling code here:
         diag.posicion(Label1.getLocationOnScreen().x-29, Label1.getLocationOnScreen().y+15);
@@ -335,7 +370,7 @@ public class NuevaObra extends javax.swing.JPanel {
 
     private void ContinuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ContinuarMouseClicked
         // TODO add your handling code here:
-        if (TitObra.getText().equals("Ej. La gran tragedia")) {
+      /*  if (TitObra.getText().equals("Ej. La gran tragedia")) {
             TitObra.setBorder(new LineBorder(Color.red));
         } else {
             TitObra.setBorder(new LineBorder(Color.gray));
@@ -350,10 +385,16 @@ public class NuevaObra extends javax.swing.JPanel {
         } else {
             Resumen.setBorder(new LineBorder(Color.gray));
         }
+        
+           if(audi.getSelectedIndex()!=0){
+               query.CrearObra(duracion(),"inactiva", TitObra.getText(), Integer.parseInt(Costo.getText()), audi.getSelectedIndex());
+               query.lib_obra(query.BuscarIsbn(libro.getSelectedItem().toString()));
+               query.club_obra(club.getSelectedIndex()+1);
+                 }*/
     }//GEN-LAST:event_ContinuarMouseClicked
 
 public int buscarAud(){
-    return query.BuscarAudi(auditorios.getSelectedItem().toString());
+    return query.BuscarAudi(audi.getSelectedItem().toString());
 }    
   
 public int duracion(){
@@ -378,10 +419,9 @@ public int duracion(){
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label3;
     private javax.swing.JLabel Label5;
-    private javax.swing.JComboBox<String> Libros;
     private javax.swing.JTextArea Resumen;
     private javax.swing.JTextField TitObra;
-    private javax.swing.JComboBox<String> auditorios;
+    private javax.swing.JComboBox<String> audi;
     private javax.swing.JComboBox<String> club;
     private javax.swing.JSpinner hora;
     private javax.swing.JLabel jLabel1;
@@ -392,5 +432,6 @@ public int duracion(){
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> libro;
     // End of variables declaration//GEN-END:variables
 }
