@@ -2,6 +2,7 @@ package Interfaces.Contenido;
 
 import ControladorBD.QueriesAlberto;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
 public class NuevaObra extends javax.swing.JPanel {
@@ -262,6 +263,11 @@ public class NuevaObra extends javax.swing.JPanel {
         Club.setForeground(new java.awt.Color(204, 204, 255));
         Club.setText("Ej. 1");
         Club.setBorder(new javax.swing.border.LineBorder(java.awt.Color.gray, 1, true));
+        Club.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ClubKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -373,7 +379,7 @@ public class NuevaObra extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        query.CrearObra(2,"ACTIVA", TOOL_TIP_TEXT_KEY, WIDTH, WIDTH);
+        //query.CrearObra(2,"ACTIVA", TOOL_TIP_TEXT_KEY, WIDTH, WIDTH);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
@@ -476,12 +482,30 @@ public class NuevaObra extends javax.swing.JPanel {
         } else {
             Resumen.setBorder(new LineBorder(Color.gray));
         }
-        query.CrearObra(2,"Activo", TitObra.getText(), Integer.parseInt(Costo.getText()), Integer.parseInt(NomAud.getText()));
-        query.lib_obra(Integer.parseInt(isbn.getText()));
-        query.club_obra(Integer.parseInt(Club.getText()));
         
+        if (query.clubExist(Integer.parseInt(Club.getText())) ){
+            if (query.libroExist(Integer.parseInt(isbn.getText())) ){
+               query.CrearObra(duracion(),"inactiva", TitObra.getText(), Integer.parseInt(Costo.getText()), Integer.parseInt(NomAud.getText()));
+             //query.lib_obra(Integer.parseInt(isbn.getText()));
+               query.club_obra(Integer.parseInt(Club.getText()));
+               }  else {
+                   JOptionPane.showMessageDialog(null,"El libro ingresado no se encuentra registrado.", "Error", JOptionPane.ERROR_MESSAGE); 
+               }
+           }  else{
+            JOptionPane.showMessageDialog(null,  "El club ingresado no se encuentra registrado.", "Error", JOptionPane.ERROR_MESSAGE);
+         }
     }//GEN-LAST:event_jButton1MouseClicked
 
+public int buscarAud(){
+    return query.BuscarAudi(NomAud.getText());
+}    
+  
+public int duracion(){
+       String cadena = hora.getValue().toString();
+       int h = (int)(cadena.charAt(0));
+       return h-48;
+}
+    
     private void isbnKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_isbnKeyTyped
         // TODO add your handling code here:
              char c = evt.getKeyChar();
@@ -499,10 +523,19 @@ public class NuevaObra extends javax.swing.JPanel {
         // TODO add your handling code here:
             char c = evt.getKeyChar();
         
-        if (c < '0' || c > '9' || isbn.getText().length() > 4){
+        if (c < '0' || c > '9' || Costo.getText().length() > 4){
             evt.consume();
         }
     }//GEN-LAST:event_CostoKeyTyped
+
+    private void ClubKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ClubKeyTyped
+        // TODO add your handling code here:
+           char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9' || Club.getText().length() > 2){
+            evt.consume();
+        }
+    }//GEN-LAST:event_ClubKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

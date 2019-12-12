@@ -162,7 +162,7 @@ public class QueriesAlberto {
     }*/
  
  
-public void Pago(int ci){
+  public void Pago(int ci){
       String SQL = "INSERT INTO public.pago(\n" +
             "     fechai_mie, club_id, doc_id)\n" +
             "	VALUES ((SELECT fechai_mie FROM public.hist_miembro WHERE doc_id=? AND fechaf_mie is null),(SELECT club_id FROM public.hist_miembro WHERE doc_id=? AND fechaf_mie is null), ?);";
@@ -190,7 +190,7 @@ public void Pago(int ci){
  }
   
   
- public void CrearClub(String nombre, String direccion, int codp, boolean cuota, int idio, int ciudad) {
+  public void CrearClub(String nombre, String direccion, int codp, boolean cuota, int idio, int ciudad) {
 
         String SQL = "INSERT INTO public.club(\n" +
             "	 club_nombre, direccion, cod_postal, cuota, idio_id, dir_id)\n" +
@@ -224,7 +224,7 @@ public void Pago(int ci){
         }
   
   
- public void CrearClubI(String nombre, String direccion, int codp, boolean cuota, int idio, int ciudad) {
+  public void CrearClubI(String nombre, String direccion, int codp, boolean cuota, int idio, int ciudad) {
 
         String SQL = "INSERT INTO public.club(\n" +
             "	 club_nombre, direccion, cod_postal, cuota, idio_id, dir_id, inst_id)\n" +
@@ -242,7 +242,6 @@ public void Pago(int ci){
             ps.setBoolean(4, cuota);
             ps.setInt(5, idio);
             ps.setInt(6, ciudad);
-           // ps.setInt(7, BuscarInst());
 
             
             filasafectadas = ps.executeUpdate();
@@ -258,7 +257,8 @@ public void Pago(int ci){
             
         }
   
- public void CrearInstitucion(String inst_nombre, String inst_desc, int dir_id) {
+  
+  public void CrearInstitucion(String inst_nombre, String inst_desc, int dir_id) {
         
             String SQL = "INSERT INTO public.institucion(\n" +
             "	inst_nombre, inst_desc, dir_id)\n" +
@@ -286,7 +286,7 @@ public void Pago(int ci){
         }
  
 
- public int BuscarInst() {
+  public int UltiInst() {
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps;
@@ -314,7 +314,7 @@ public void Pago(int ci){
         }
         
   
- public int BuscarCiudad(String ciudad) {
+  public int BuscarCiudad(String ciudad) {
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps;
@@ -454,12 +454,12 @@ public void Pago(int ci){
         }
     }
 
-  //tiene tablas #2
+
   public void CrearObra(int durac, String estatus, String titulo, int costo, int audi) {
 
-        String SQL = "INSERT INTO public.obra2(\n" +
+        String SQL = "INSERT INTO public.obra(\n" +
             "	obra_duracion, obra_estatus, obra_titulo, costo_entrada, audi_id)\n" +
-            "	VALUES (?, ?, ?, ?, ?);";
+            "	VALUES (?, ?, lower(?), ?, ?);";
         int filasafectadas = 0;
         
         try (Connection con = conexion.getConnection()){
@@ -477,7 +477,7 @@ public void Pago(int ci){
             filasafectadas = ps.executeUpdate();
 
             if (filasafectadas != 0) {
-                JOptionPane.showMessageDialog(null, "Obra creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Obra creada satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
 
         } catch (Exception e) {
@@ -488,10 +488,41 @@ public void Pago(int ci){
         }
   
   
+  public int BuscarAudi(String audi) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+            int dirId=0;
+            int club;
+            ps = con.prepareStatement("SELECT audi_id, audi_nombre  "
+                    + "FROM auditrio "
+                    + "WHERE audi_nombre = lower(?);");
+            ps.setString(1, audi);
+            
+            res = ps.executeQuery();
+
+            res.next();
+                dirId = res.getInt("audi_id");
+
+            return dirId;    
+           
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return 0;
+            
+        }
+        
+       
+    }
+  
+  
   public void lib_obra(int isbn){
-      String SQL = "INSERT INTO public.libro_obra2(\n" +
-            "   isbn)\n" +
-            "	VALUES (?);";
+      String SQL = "INSERT INTO public.libro_obra(\n" +
+            "  isbn, obra_id)\n" +
+            "	VALUES ((?),(SELECT obra_id from obra WHERE obra_id = (SELECT MAX(obra_id) FROM obra)));";
         int filasafectadas = 0;
         
         try (Connection con = conexion.getConnection()){
@@ -515,9 +546,9 @@ public void Pago(int ci){
   
   
   public void club_obra(int club){
-      String SQL = "INSERT INTO public.club_obra2(\n" +
-            "   club_id)\n" +
-            "	VALUES (?);";
+      String SQL = "INSERT INTO public.club_obra(\n" +
+            "   obra_id , club_id)\n" +
+            "	VALUES ((SELECT obra_id from obra WHERE obra_id = (SELECT MAX(obra_id) FROM obra)), (?));";
         int filasafectadas = 0;
         
         try (Connection con = conexion.getConnection()){
