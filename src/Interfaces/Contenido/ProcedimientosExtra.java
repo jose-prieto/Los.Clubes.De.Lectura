@@ -77,13 +77,13 @@ public class ProcedimientosExtra {
         ResultSet rs,rs2;
         
         if (edad >= 19){
-            tipo = "adulto";
+            tipo = "adultos";
             max = 15;
         }else if (edad >= 13 && edad <= 18){
-            tipo = "joven";
+            tipo = "jovenes";
             max = 10;
         }else{
-            tipo = "nino";
+            tipo = "niños";
             max = 10;
         }
         
@@ -137,11 +137,11 @@ public class ProcedimientosExtra {
         }
         
         switch (tipo) {
-            case "adulto":
+            case "adultos":
                 max = 15;
                 min = 10;
                 break;
-            case "joven":
+            case "jovenes":
                 max = 10;
                 min = 5;
                 break;
@@ -181,11 +181,11 @@ public class ProcedimientosExtra {
         ResultSet rs, rs2;
         int min, max;
         switch (tipo) {
-            case "adulto":
+            case "adultos":
                 max = 15;
                 min = 10;
                 break;
-            case "joven":
+            case "jovenes":
                 max = 10;
                 min = 5;
                 break;
