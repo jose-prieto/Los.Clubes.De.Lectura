@@ -26,6 +26,7 @@ import Interfaces.Contenido.Asistencias;
 import Interfaces.Contenido.CierreReu;
 import Interfaces.Contenido.ActCalendario;
 import Interfaces.Contenido.NuevaObra;
+import Interfaces.Contenido.NuevaObra2;
 import Interfaces.Contenido.CierreObra;
 import Interfaces.Contenido.NuevaFunc;
 import Interfaces.Contenido.ProcedimientosExtra;
@@ -77,6 +78,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
     RegistraMiembro3 nuevomiembro3 = new RegistraMiembro3();
     CambioClub cambioclub = new CambioClub();
     NuevaObra nuevaobra = new NuevaObra();
+    NuevaObra2 nuevaobra2 = new NuevaObra2();
     CierreObra cierreobra = new CierreObra();
     NuevaFunc nuevafunc = new NuevaFunc();
     
@@ -146,6 +148,10 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             
             //cambioclub action listener
             cambioclub.Registrar.addActionListener(this);
+            
+            //nuevaobra action list
+            nuevaobra.Continuar.addActionListener(this);
+            nuevaobra2.Continuar.addActionListener(this);
     }
 
     @SuppressWarnings("unchecked")
@@ -568,6 +574,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         cierre.setVisible(false);
         actualizar.setVisible(false);
         nuevaobra.setVisible(false);
+        nuevaobra2.setVisible(false);
         cierreobra.setVisible(false);
         nuevafunc.setVisible(false);
 
@@ -667,6 +674,28 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             OptionPannel.add(obras);
             Titulo.setText("Nueva obra");
             ContentPannel.add(nuevaobra);
+
+        } else if (evt.equals(nuevaobra.Continuar)) {
+
+            Alistar();
+
+            obras.setVisible(true);
+            nuevaobra2.setVisible(true);
+
+            OptionPannel.add(obras);
+            Titulo.setText("Nueva obra");
+            ContentPannel.add(nuevaobra2);
+
+        } else if (evt.equals(nuevaobra2.Continuar)) {
+
+            /*Alistar();
+
+            obras.setVisible(true);
+            nuevaobra2.setVisible(true);
+
+            OptionPannel.add(obras);
+            Titulo.setText("Nueva obra");
+            ContentPannel.add(nuevaobra2);*/
 
         } else if (evt.equals(obras.CierreObra)) {
 

@@ -55,6 +55,8 @@ public class ActCalendario extends javax.swing.JPanel {
     }
     
     public boolean crearReus(){
+        ResultSet rs,rs2;
+        rs = 
         if (rs == null){
             query.newGrup(clubid, tipo);
             return addmiemGrup(miemID, clubid, fechaNac);

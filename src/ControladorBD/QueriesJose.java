@@ -1007,6 +1007,29 @@ public class QueriesJose {
         return null;
     }
     
+    public ResultSet clubesPart() {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT initcap(club_nombre) FROM public.club;");
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return res;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+            
+        }
+        
+        return null;
+    }
+    
     public int clubid(String clubnom) {
         try (Connection con = conexion.getConnection()){
 
@@ -1130,6 +1153,32 @@ public class QueriesJose {
         return null;
     }
     
+    //Auditorios
+    
+    public ResultSet auditorios() {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT audi_nombre FROM public.auditorio;");
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return res;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+            
+        }
+        
+        return null;
+    }
+    
     //reuniones
     
     public String reuAbierta(int grupId) {
@@ -1188,5 +1237,9 @@ public class QueriesJose {
             return false;
         }
         return false;
+    }
+    
+    public ResultSet Info(int grupid){
+        
     }
 }

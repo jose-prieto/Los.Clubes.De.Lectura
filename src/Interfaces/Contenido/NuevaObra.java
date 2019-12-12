@@ -1,7 +1,12 @@
 package Interfaces.Contenido;
 
 import ControladorBD.QueriesAlberto;
+import ControladorBD.QueriesJose;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
@@ -10,6 +15,7 @@ public class NuevaObra extends javax.swing.JPanel {
     ProcedimientosExtra listen = new ProcedimientosExtra();
     Dialogo diag = new Dialogo ();
     QueriesAlberto query = new QueriesAlberto();
+    QueriesJose queryJ = new QueriesJose();
 
     public NuevaObra() {
 
@@ -17,11 +23,43 @@ public class NuevaObra extends javax.swing.JPanel {
 
         listen.FieldListener(TitObra);
         listen.FieldListener(Costo);
-        listen.FieldListener(isbn);
-        listen.FieldListener(NomAud);
-        listen.FieldListener(PersObra);
         listen.AreaListener(Resumen);
-        listen.FieldListener(Club);
+        ResultSet res = queryJ.libros();
+
+        if (res != null){
+            try {
+                do{
+                    Libros.addItem(res.getString(1));
+                }while (res.next());
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        res = queryJ.auditorios() ;
+
+        if (res != null){
+            try {
+                do{
+                    auditorios.addItem(res.getString(1));
+                }while (res.next());
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        res = queryJ.clubes();
+        
+        if (res != null){
+            try {
+                do{
+                    club.addItem(res.getString(1));
+                }while (res.next());
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
 
     }
 
@@ -34,30 +72,20 @@ public class NuevaObra extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         Costo = new javax.swing.JTextField();
-        isbn = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        NomAud = new javax.swing.JTextField();
+        Continuar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         Label1 = new javax.swing.JLabel();
-        Label2 = new javax.swing.JLabel();
         Label3 = new javax.swing.JLabel();
-        Label4 = new javax.swing.JLabel();
         Label5 = new javax.swing.JLabel();
-        PersObra = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        AgrPers = new javax.swing.JButton();
         hora = new javax.swing.JSpinner();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Resumen = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        PersAgr = new javax.swing.JList<>();
-        jLabel10 = new javax.swing.JLabel();
-        AsigPers = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        Club = new javax.swing.JTextField();
+        Libros = new javax.swing.JComboBox<>();
+        auditorios = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        club = new javax.swing.JComboBox<>();
 
         setMaximumSize(new java.awt.Dimension(707, 541));
         setMinimumSize(new java.awt.Dimension(707, 541));
@@ -74,15 +102,15 @@ public class NuevaObra extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Libro referencia (ISBN)");
+        jLabel2.setText("Libro referencia");
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("Nombre del auditorio");
+        jLabel3.setText("Auditorio");
 
         Costo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Costo.setForeground(new java.awt.Color(204, 204, 255));
-        Costo.setText("15000");
+        Costo.setText("ej. 15000");
         Costo.setToolTipText("");
         Costo.setBorder(new javax.swing.border.LineBorder(java.awt.Color.gray, 1, true));
         Costo.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -91,46 +119,22 @@ public class NuevaObra extends javax.swing.JPanel {
             }
         });
 
-        isbn.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        isbn.setForeground(new java.awt.Color(204, 204, 255));
-        isbn.setText("Ej. 123456789");
-        isbn.setToolTipText("");
-        isbn.setBorder(new javax.swing.border.LineBorder(java.awt.Color.gray, 1, true));
-        isbn.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                isbnKeyTyped(evt);
-            }
-        });
-
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setText("Duración en horas");
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton1.setText("Continuar >");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        Continuar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Continuar.setText("Continuar >");
+        Continuar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                ContinuarMouseClicked(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Continuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ContinuarActionPerformed(evt);
             }
         });
-
-        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton2.setText("Reestablecer");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        NomAud.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        NomAud.setForeground(new java.awt.Color(204, 204, 255));
-        NomAud.setText("Ej. Hermanos lanz");
-        NomAud.setBorder(new javax.swing.border.LineBorder(java.awt.Color.gray, 1, true));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
@@ -148,18 +152,6 @@ public class NuevaObra extends javax.swing.JPanel {
             }
         });
 
-        Label2.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
-        Label2.setForeground(new java.awt.Color(255, 0, 0));
-        Label2.setText("(*)");
-        Label2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Label2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Label2MouseExited(evt);
-            }
-        });
-
         Label3.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         Label3.setForeground(new java.awt.Color(255, 0, 0));
         Label3.setText("(*)");
@@ -172,18 +164,6 @@ public class NuevaObra extends javax.swing.JPanel {
             }
         });
 
-        Label4.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
-        Label4.setForeground(new java.awt.Color(255, 0, 0));
-        Label4.setText("(*)");
-        Label4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Label4MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Label4MouseExited(evt);
-            }
-        });
-
         Label5.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         Label5.setForeground(new java.awt.Color(255, 0, 0));
         Label5.setText("(*)");
@@ -193,24 +173,6 @@ public class NuevaObra extends javax.swing.JPanel {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 Label5MouseExited(evt);
-            }
-        });
-
-        PersObra.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        PersObra.setForeground(new java.awt.Color(204, 204, 255));
-        PersObra.setText("Ej. Romeo Montesco");
-        PersObra.setBorder(new javax.swing.border.LineBorder(java.awt.Color.gray, 1, true));
-
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel9.setText("Personajes de la obra");
-
-        AgrPers.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        AgrPers.setForeground(new java.awt.Color(51, 51, 51));
-        AgrPers.setText("Agregar personaje");
-        AgrPers.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AgrPersActionPerformed(evt);
             }
         });
 
@@ -231,43 +193,19 @@ public class NuevaObra extends javax.swing.JPanel {
         Resumen.setBorder(new javax.swing.border.LineBorder(java.awt.Color.gray, 1, true));
         jScrollPane1.setViewportView(Resumen);
 
-        PersAgr.setBackground(new java.awt.Color(240, 240, 240));
-        PersAgr.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        PersAgr.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "rgr", "rg", "rg", "rg", "rg", "rg", "r" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        PersAgr.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        PersAgr.setToolTipText("");
-        jScrollPane2.setViewportView(PersAgr);
+        Libros.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Libros.setForeground(new java.awt.Color(51, 51, 51));
 
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel10.setText("Personajes agregados");
+        auditorios.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        auditorios.setForeground(new java.awt.Color(51, 51, 51));
+        auditorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo auditorio" }));
 
-        AsigPers.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        AsigPers.setForeground(new java.awt.Color(51, 51, 51));
-        AsigPers.setText("Asignar personaje");
-        AsigPers.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AsigPersActionPerformed(evt);
-            }
-        });
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel6.setText("Club");
 
-        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel11.setText("Id del Club");
-
-        Club.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Club.setForeground(new java.awt.Color(204, 204, 255));
-        Club.setText("Ej. 1");
-        Club.setBorder(new javax.swing.border.LineBorder(java.awt.Color.gray, 1, true));
-        Club.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                ClubKeyTyped(evt);
-            }
-        });
+        club.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        club.setForeground(new java.awt.Color(51, 51, 51));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -276,51 +214,45 @@ public class NuevaObra extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(PersObra)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(AgrPers))
-                                .addComponent(NomAud, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(hora, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(Costo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(isbn, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(TitObra, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel6)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(Club, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Continuar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(Label5))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel3))
                             .addGap(18, 18, 18)
-                            .addComponent(AsigPers, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Label1)
-                    .addComponent(Label2)
-                    .addComponent(Label3)
-                    .addComponent(Label4)
-                    .addComponent(Label5))
-                .addContainerGap(54, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(hora, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel5)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(Costo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(TitObra, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(Libros, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(4, 4, 4)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(Label1)
+                                        .addComponent(Label3)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(1, 1, 1)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(club, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(auditorios, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,57 +262,43 @@ public class NuevaObra extends javax.swing.JPanel {
                         .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(TitObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(isbn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Label2))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel5)
-                            .addComponent(Costo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Label3)))
+                            .addComponent(TitObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(Label1)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(NomAud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Label4))
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PersObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(AgrPers, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2)
+                    .addComponent(Libros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
-                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(Club, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AsigPers, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel5)
+                    .addComponent(Costo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Label3))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(auditorios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(club, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(Label5))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(157, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
         //query.CrearObra(2,"ACTIVA", TOOL_TIP_TEXT_KEY, WIDTH, WIDTH);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ContinuarActionPerformed
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
         // TODO add your handling code here:
@@ -393,17 +311,6 @@ public class NuevaObra extends javax.swing.JPanel {
         diag.setVisible(false);
     }//GEN-LAST:event_Label1MouseExited
 
-    private void Label2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label2MouseEntered
-        // TODO add your handling code here:
-        diag.posicion(Label2.getLocationOnScreen().x-29, Label2.getLocationOnScreen().y+15);
-        diag.setVisible(true);
-    }//GEN-LAST:event_Label2MouseEntered
-
-    private void Label2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label2MouseExited
-        // TODO add your handling code here:
-        diag.setVisible(false);
-    }//GEN-LAST:event_Label2MouseExited
-
     private void Label3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label3MouseEntered
         // TODO add your handling code here:
         diag.posicion(Label3.getLocationOnScreen().x-29, Label3.getLocationOnScreen().y+15);
@@ -414,25 +321,6 @@ public class NuevaObra extends javax.swing.JPanel {
         // TODO add your handling code here:
         diag.setVisible(false);
     }//GEN-LAST:event_Label3MouseExited
-
-    private void Label4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label4MouseEntered
-        // TODO add your handling code here:
-        diag.posicion(Label4.getLocationOnScreen().x-29, Label4.getLocationOnScreen().y+15);
-        diag.setVisible(true);
-    }//GEN-LAST:event_Label4MouseEntered
-
-    private void Label4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label4MouseExited
-        // TODO add your handling code here:
-        diag.setVisible(false);
-    }//GEN-LAST:event_Label4MouseExited
-
-    private void AgrPersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgrPersActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AgrPersActionPerformed
-
-    private void AsigPersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsigPersActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AsigPersActionPerformed
 
     private void Label5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label5MouseExited
         // TODO add your handling code here:
@@ -445,59 +333,27 @@ public class NuevaObra extends javax.swing.JPanel {
         diag.setVisible(true);
     }//GEN-LAST:event_Label5MouseEntered
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void ContinuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ContinuarMouseClicked
         // TODO add your handling code here:
         if (TitObra.getText().equals("Ej. La gran tragedia")) {
             TitObra.setBorder(new LineBorder(Color.red));
         } else {
             TitObra.setBorder(new LineBorder(Color.gray));
         }
-        if (isbn.getText().equals("Ej. 123456789")) {
-            isbn.setBorder(new LineBorder(Color.red));
-        } else {
-            isbn.setBorder(new LineBorder(Color.gray));
-        }
-        if (Costo.getText().equals("15000")) {
+        if (Costo.getText().equals("ej. 15000")) {
             Costo.setBorder(new LineBorder(Color.red));
         } else {
             Costo.setBorder(new LineBorder(Color.gray));
-        }
-        if (NomAud.getText().equals("Ej. Hermanos lanz")) {
-            NomAud.setBorder(new LineBorder(Color.red));
-        } else {
-            NomAud.setBorder(new LineBorder(Color.gray));
-        }
-        if (PersObra.getText().equals("Ej. Romeo Montesco")) {
-            PersObra.setBorder(new LineBorder(Color.red));
-        } else {
-            PersObra.setBorder(new LineBorder(Color.gray));
-        }
-        if (Club.getText().equals("Ej. 1")) {
-            Club.setBorder(new LineBorder(Color.red));
-        } else {
-            Club.setBorder(new LineBorder(Color.gray));
         }
         if (Resumen.getText().equals("Aquí se debe especificar el resumen del argumento de la obra en cuestión.")) {
             Resumen.setBorder(new LineBorder(Color.red));
         } else {
             Resumen.setBorder(new LineBorder(Color.gray));
         }
-        
-        if (query.clubExist(Integer.parseInt(Club.getText())) ){
-            if (query.libroExist(Integer.parseInt(isbn.getText())) ){
-               query.CrearObra(duracion(),"inactiva", TitObra.getText(), Integer.parseInt(Costo.getText()), Integer.parseInt(NomAud.getText()));
-             //query.lib_obra(Integer.parseInt(isbn.getText()));
-               query.club_obra(Integer.parseInt(Club.getText()));
-               }  else {
-                   JOptionPane.showMessageDialog(null,"El libro ingresado no se encuentra registrado.", "Error", JOptionPane.ERROR_MESSAGE); 
-               }
-           }  else{
-            JOptionPane.showMessageDialog(null,  "El club ingresado no se encuentra registrado.", "Error", JOptionPane.ERROR_MESSAGE);
-         }
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_ContinuarMouseClicked
 
 public int buscarAud(){
-    return query.BuscarAudi(NomAud.getText());
+    return query.BuscarAudi(auditorios.getSelectedItem().toString());
 }    
   
 public int duracion(){
@@ -506,19 +362,6 @@ public int duracion(){
        return h-48;
 }
     
-    private void isbnKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_isbnKeyTyped
-        // TODO add your handling code here:
-             char c = evt.getKeyChar();
-        
-        if (c < '0' || c > '9' || isbn.getText().length() > 14){
-            evt.consume();
-        }
-    }//GEN-LAST:event_isbnKeyTyped
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void CostoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CostoKeyTyped
         // TODO add your handling code here:
             char c = evt.getKeyChar();
@@ -528,45 +371,26 @@ public int duracion(){
         }
     }//GEN-LAST:event_CostoKeyTyped
 
-    private void ClubKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ClubKeyTyped
-        // TODO add your handling code here:
-           char c = evt.getKeyChar();
-        
-        if (c < '0' || c > '9' || Club.getText().length() > 2){
-            evt.consume();
-        }
-    }//GEN-LAST:event_ClubKeyTyped
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AgrPers;
-    private javax.swing.JButton AsigPers;
-    private javax.swing.JTextField Club;
+    public javax.swing.JButton Continuar;
     private javax.swing.JTextField Costo;
     private javax.swing.JLabel Label1;
-    private javax.swing.JLabel Label2;
     private javax.swing.JLabel Label3;
-    private javax.swing.JLabel Label4;
     private javax.swing.JLabel Label5;
-    private javax.swing.JTextField NomAud;
-    private javax.swing.JList<String> PersAgr;
-    private javax.swing.JTextField PersObra;
+    private javax.swing.JComboBox<String> Libros;
     private javax.swing.JTextArea Resumen;
     private javax.swing.JTextField TitObra;
+    private javax.swing.JComboBox<String> auditorios;
+    private javax.swing.JComboBox<String> club;
     private javax.swing.JSpinner hora;
-    private javax.swing.JTextField isbn;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
