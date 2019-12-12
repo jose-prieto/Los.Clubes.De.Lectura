@@ -40,7 +40,9 @@ public class Scripts {
       ejecD.CrearDireccion_lugar("ciudad", "Bogota", null, null, 3);
       ejecD.CrearDireccion_lugar("ciudad", "Rivera", null, null, 2);
       ejecD.CrearDireccion_lugar("ciudad", "Montevideo", null, null, 2);
-      ejecD.CrearDireccion_lugar("pais", "Ginea", null, null, 0);
+      ejecD.CrearDireccion_lugar("pais", "Ginea", "franco guineano", "guineana", 0);
+      ejecD.CrearDireccion_lugar("ciudad", "Akureyri", null, null, 1);
+      ejecD.CrearDireccion_lugar("ciudad", "Conakri", null, null, 8);
       
       ejecJ.CrearRep(20111113, "Robert", null, "Serra", null, "m");
       ejecJ.CrearRep(12345678, "Elsa", null, "Pote", null, "f");
