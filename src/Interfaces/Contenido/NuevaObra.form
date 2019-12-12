@@ -49,7 +49,6 @@
                               <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
@@ -63,7 +62,7 @@
                                           </Group>
                                           <Component id="TitObra" alignment="0" min="-2" pref="456" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="Libros" min="-2" pref="457" max="-2" attributes="0"/>
+                                      <Component id="libro" min="-2" pref="457" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -75,7 +74,7 @@
                                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="club" min="-2" pref="457" max="-2" attributes="0"/>
-                                      <Component id="auditorios" min="-2" pref="457" max="-2" attributes="0"/>
+                                      <Component id="audi" min="-2" pref="457" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -105,7 +104,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Libros" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="libro" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -118,7 +117,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="auditorios" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="audi" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -362,7 +361,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JComboBox" name="Libros">
+    <Component class="javax.swing.JComboBox" name="libro">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="1"/>
@@ -378,7 +377,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="auditorios">
+    <Component class="javax.swing.JComboBox" name="audi">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="1"/>
