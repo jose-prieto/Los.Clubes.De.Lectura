@@ -96,14 +96,14 @@ public class Scripts {
       ejecD.CrearInstitucion("Canaima","Empresa de tecnologia punta", 5);
       ejecD.CrearInstitucion("Chorichipi","Empresa de choripanes", 7);
       
-      /*ejecA.CrearClub("Lectura empedernida", "La esquna de mi casa", 1020, true, 2, 4, 2);
-      ejecA.CrearClub("Entretenimiento en papel", "Av. El Ejercito", 1012, false, 2, 4, 0);
-      ejecA.CrearClub("Lectores Anonimos", "Calle Antonio Guerrero", 1020, false, 2, 5, 0);
-      ejecA.CrearClub("Escritores frustrados", "Av. Libertador", 1020, true, 2, 5,4);
-      ejecA.CrearClub("Libros con mucho té", "Esq. Albañales", 1020, false, 2, 6, 0);
-      ejecA.CrearClub("Sonrisas estudiosas", "Bello Monte", 1020, false, 2, 6, 0);
-      ejecA.CrearClub("Detectives encubiertos", "Ronda de Outeiro", 1020, false, 2, 7, 0);
-      ejecA.CrearClub("Los ebook son mejores", "A Estrada", 1020, false, 2, 7, 0);*/
+      ejecA.CrearClub("Lectura empedernida", "La esquna de mi casa", 1020, true, 2, 4);
+      ejecA.CrearClub("Entretenimiento en papel", "Av. El Ejercito", 1012, false, 2, 4);
+      ejecA.CrearClub("Lectores Anonimos", "Calle Antonio Guerrero", 1020, false, 2, 5);
+      ejecA.CrearClub("Escritores frustrados", "Av. Libertador", 1020, true, 2, 5);
+      ejecA.CrearClub("Libros con mucho té", "Esq. Albañales", 1020, false, 2, 6);
+      ejecA.CrearClub("Sonrisas estudiosas", "Bello Monte", 1020, false, 2, 6);
+      ejecA.CrearClub("Detectives encubiertos", "Ronda de Outeiro", 1020, false, 2, 7);
+      ejecA.CrearClub("Los ebook son mejores", "A Estrada", 1020, false, 2, 7);
       
       ejecA.CrearAsociacion(1, 3);
       ejecA.CrearAsociacion(2, 3);
@@ -490,7 +490,7 @@ public class Scripts {
         try (Connection con = connectivity.getConnection()){
         PreparedStatement ps = null;
         ResultSet res = null;
-        ps = con.prepareStatement("CREATE TABLE public.grupo ( grup_id numeric(3,0) NOT NULL DEFAULT nextval('grup_grup_id_seq'::regclass), club_id numeric(3,0) NOT NULL, grup_tipo character varying(30) COLLATE pg_catalog.\"default\" NOT NULL, dia character varying(1), horai numeric(2,0), horaf numeric(2,0), CONSTRAINT pk_grupo PRIMARY KEY (club_id, grup_id), CONSTRAINT fk_grupo FOREIGN KEY (club_id) REFERENCES public.club (club_id) MATCH SIMPLE )");
+        ps = con.prepareStatement("CREATE TABLE public.grupo ( grup_id numeric(3,0) NOT NULL DEFAULT nextval('grup_grup_id_seq'::regclass), club_id numeric(3,0) NOT NULL, grup_tipo character varying(30) COLLATE pg_catalog.\"default\" NOT NULL, dia character varying(10), horai numeric(2,0), horaf numeric(2,0), CONSTRAINT pk_grupo PRIMARY KEY (club_id, grup_id), CONSTRAINT fk_grupo FOREIGN KEY (club_id) REFERENCES public.club (club_id) MATCH SIMPLE )");
         res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
