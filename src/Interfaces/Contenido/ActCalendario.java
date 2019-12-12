@@ -3,6 +3,7 @@ package Interfaces.Contenido;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 import ControladorBD.QueriesJose;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -15,6 +16,7 @@ public class ActCalendario extends javax.swing.JPanel {
     Dialogo diag = new Dialogo();
     QueriesJose query = new QueriesJose();
     int val = 1;
+    int val2 = 0;
 
     public ActCalendario() {
 
@@ -54,41 +56,39 @@ public class ActCalendario extends javax.swing.JPanel {
                 getGrup());
     }
     
-    public boolean crearReus(){
-        ResultSet rs,rs2;
-        rs = 
-        if (rs == null){
-            query.newGrup(clubid, tipo);
-            return addmiemGrup(miemID, clubid, fechaNac);
-        }else{
+    public boolean crearReuN(){
+        ResultSet rs;
+        rs = query.Info(getGrup());
+        
+        if (rs != null){
             try {
                 do{
-                    rs2 = query.miemGrupo(rs.getInt(1));
-                    if (rs2 == null){
-                        return query.grupAdd(rs.getInt(1), clubid, miemID);
-                    }
-                    size = 0;
-                    try {
-                        do{
-                           size++;
-                        }while (rs2.next());
-                        if (size < max){
-                            return query.grupAdd(rs.getInt(1), clubid, miemID);
-                        }
-                    } catch (SQLException ex) {
-                        Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    query.crearReuN(indexFecha(), getGrup(), rs.getInt(1), Libro.getSelectedItem().toString(), rs.getDate(2), rs.getInt(3));
+                    query.Inasistencia(indexFecha(), getGrup(), rs.getInt(1), rs.getDate(2), rs.getInt(3));
                 }while (rs.next());
             } catch (SQLException ex) {
                 Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
             }
-            query.newGrup(clubid, tipo);
-            return addmiemGrup(miemID, clubid, fechaNac);
         }
+        
+        return false;
+    }
+    
+    public boolean actReu(){
+        return (query.actReu(indexFecha(), getGrup()));
     }
     
     public int indexFecha(){
         return Dias.getSelectedIndex() + 8;
+    }
+    
+    public void vaciar(){
+        HoraI.setEnabled(false);
+        HoraF.setEnabled(false);
+        Libro.setVisible(false);
+        libro.setVisible(false);
+        IdGrup.setForeground(new Color(204,204,255));
+        IdGrup.setText("Ej. 123");
     }
 
     @SuppressWarnings("unchecked")
@@ -250,9 +250,17 @@ public class ActCalendario extends javax.swing.JPanel {
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
         // TODO add your handling code here:
-        if (val() && Actualizar()){
-            
+        
+        if (val2 == 1){
+            if (val() && Actualizar() && crearReuN()){
+                vaciar();
+            }
+        }else{
+            if (val() && Actualizar() && actReu()){
+                vaciar();
+            }
         }
+        
     }//GEN-LAST:event_RegistrarActionPerformed
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
@@ -277,7 +285,6 @@ public class ActCalendario extends javax.swing.JPanel {
 
     private void IdGrupFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IdGrupFocusLost
         // TODO add your handling code here:
-        System.out.println();
         if (getGrup() != 0){
             
             ResultSet res = query.bucarclub(getGrup());
@@ -301,7 +308,7 @@ public class ActCalendario extends javax.swing.JPanel {
                         
                     }
                     if (query.reuAbierta(getGrup()) == null){
-
+                        val2 = 1;
                         res = query.libros();
                         libro.setVisible(true);
                         Libro.setVisible(true);
@@ -319,6 +326,7 @@ public class ActCalendario extends javax.swing.JPanel {
                     }else{
                         libro.setVisible(false);
                         Libro.setVisible(false);
+                        val2 = 0;
                     }
                 }else{
                     JOptionPane.showMessageDialog(null, "Club ingresado inexistente", "Error", JOptionPane.ERROR_MESSAGE);

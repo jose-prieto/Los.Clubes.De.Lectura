@@ -1187,7 +1187,7 @@ public class QueriesJose {
             PreparedStatement ps;
             ResultSet res;
 
-            ps = con.prepareStatement("SELECT isbn FROM public.reuniones WHERE grup_id=? AND reu_conclusiones is null;");
+            ps = con.prepareStatement("SELECT isbn FROM public.reuniones WHERE grup_id=?;");
             ps.setInt(1, grupId);
             
             res = ps.executeQuery();
@@ -1209,7 +1209,7 @@ public class QueriesJose {
         
         String SQL = "INSERT INTO public.reuniones(\n" +
 "	reu_fecha, grup_id, club_id, isbn, grupg_l_id, clubg_l_id, clubh_id, fechai_mie, doc_id)\n" +
-"	VALUES (current_date + ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+"	VALUES (current_date + ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         int filasafectadas = 0;
         
         try (Connection con = conexion.getConnection()){
@@ -1223,8 +1223,8 @@ public class QueriesJose {
             ps.setInt(5, grup);
             ps.setInt(6, club);
             ps.setInt(7, club);
-            ps.setDate(7, fechai);
-            ps.setInt(8, docid);
+            ps.setDate(8, fechai);
+            ps.setInt(9, docid);
             
             filasafectadas = ps.executeUpdate();
 
@@ -1239,7 +1239,87 @@ public class QueriesJose {
         return false;
     }
     
-    public ResultSet Info(int grupid){
+    public ResultSet Info(int idgrup) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT club_id, fechai_mie, doc_id FROM public.g_lector WHERE grup_id = ? AND fechaf_gru is null;");
+            ps.setInt(1, idgrup);
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return res;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+            
+        }
         
+        return null;
+    }
+    
+    public boolean actReu(int index, int grupid) {
+        String SQL = "UPDATE public.reuniones\n" +
+"	SET reu_fecha=(current_date + ?)\n" +
+"	WHERE (reu_fecha-current_date > 0) AND grup_id=?;";
+ 
+        int affectedrows = 0;
+ 
+        try (Connection con = conexion.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(SQL)) {
+ 
+            pstmt.setInt(1, index);
+            pstmt.setInt(2, grupid);
+            
+            affectedrows = pstmt.executeUpdate();
+            
+            if (affectedrows != 0) {
+                return true;
+            }
+ 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return false;
+    }
+    
+    
+    public boolean Inasistencia(int dia, int grup, int club, Date fechai, int docid) {
+        
+        String SQL = "INSERT INTO public.inasistencia(\n" +
+"	reu_fecha, grupr_id, clubr_id, grup_id, club_id, fechai_mie, clubh_id, doc_id)\n" +
+"	VALUES (current_date + ?, ?, ?, ?, ?, ?, ?, ?);";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, dia);
+            ps.setInt(2, grup);
+            ps.setInt(3, club);
+            ps.setInt(4, grup);
+            ps.setInt(5, club);
+            ps.setDate(6, fechai);
+            ps.setInt(7, club);
+            ps.setInt(8, docid);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;
     }
 }
