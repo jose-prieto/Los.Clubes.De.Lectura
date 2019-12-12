@@ -88,33 +88,6 @@ public class QueriesJose {
         return false;
     }
     
-    /*public Date fechainic(int miemid) {
-        try (Connection con = conexion.getConnection()){
-
-            PreparedStatement ps;
-            ResultSet res;
-
-            ps = con.prepareStatement("SELECT doc_id "
-                    + "FROM miembro "
-                    + "WHERE doc_id = ?;");
-            ps.setInt(1, ci);
-            
-            res = ps.executeQuery();
-
-            if (res.next()) {
-                return true;
-            } else {
-                return false;
-            }
-
-        } catch (Exception e) {
-            
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-            
-        }
-    }   */   
-    
     public boolean ActMiembM(int idrep, int idmiemb, int dir) {
         String SQL = "UPDATE public.miembro\n" +
 "	SET dir_id=?, representante_m=?\n" +
@@ -597,6 +570,30 @@ public class QueriesJose {
     
     //libros
     
+    public int isbn(String libro) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT isbn\n" +
+"	FROM public.libro\n" +
+"	WHERE lib_tit_original = lower(?);");
+            ps.setString(1, libro);
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return res.getInt(1);
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return 0;
+    }
+        
     public boolean libroExist(int isbn) {
         try (Connection con = conexion.getConnection()){
 
@@ -624,7 +621,105 @@ public class QueriesJose {
         }
     }
     
+    public ResultSet libros() {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT initcap(lib_tit_original) FROM public.libro;");
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return res;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            
+        }
+        return null;
+    }
+    
     //Idiomas
+    
+    public ResultSet idiomas() {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT initcap(idio_nombre)\n" +
+                                        "	FROM public.idioma;");
+                   
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return res;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+            
+        }
+        
+        return null;
+    }
+    
+    public int idiomaSearch(String idio) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT idio_id FROM public.idioma WHERE idio_nombre=lower(?);");
+            ps.setString(1, idio);
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return res.getInt(1);
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return 0;
+            
+        }
+        
+        return 0;
+    }
+    
+    public boolean addIdiom(int docid, String idio) {
+        
+        String SQL = "INSERT INTO public.idioma_miembro(\n" +
+                        "	doc_id, idio_id)\n" +
+                        "	VALUES (?, ?);";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, docid);
+            ps.setInt(2, idiomaSearch(idio));
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;
+    }
     
     public boolean IdioMiem(int idioId, int docId) {
         
@@ -704,6 +799,33 @@ public class QueriesJose {
     
     //grupos
     
+    public boolean grupAct(String dia, int horaI, int horaF, int grupid) {
+        String SQL = "UPDATE public.grupo\n" +
+"	SET dia=lower(?), horai=?, horaf=?\n" +
+"	WHERE grup_id=?";
+ 
+        int affectedrows;
+ 
+        try (Connection con = conexion.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(SQL)) {
+ 
+            pstmt.setString(1, dia);
+            pstmt.setInt(2, horaI);
+            pstmt.setInt(3, horaF);
+            pstmt.setInt(4, grupid);
+            
+            affectedrows = pstmt.executeUpdate();
+            
+            if (affectedrows != 0) {
+                return true;
+            }
+ 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return false;
+    }
+    
     public ResultSet eleccGrupo(int idclub, String tipo) {
         try (Connection con = conexion.getConnection()){
 
@@ -738,31 +860,6 @@ public class QueriesJose {
 
             ps = con.prepareStatement("SELECT doc_id FROM public.g_lector WHERE grup_id=? and fechaf_gru is null;");
             ps.setInt(1, grupid);
-                   
-            res = ps.executeQuery();
-
-            if (res.next()) {
-                return res;
-            }
-
-        } catch (Exception e) {
-            
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-            return null;
-            
-        }
-        
-        return null;
-    }
-    
-    public ResultSet bucarclub(int idgrup) {
-        try (Connection con = conexion.getConnection()){
-
-            PreparedStatement ps;
-            ResultSet res;
-
-            ps = con.prepareStatement("SELECT club_id, grup_tipo FROM public.grupo WHERE grup_id=?;");
-            ps.setInt(1, idgrup);
                    
             res = ps.executeQuery();
 
@@ -835,21 +932,20 @@ public class QueriesJose {
             return false;
         }
         return false;
-    }
+    }    
     
-    //idiomas
+    //clubes
     
-    public ResultSet idiomas() {
+    public ResultSet bucarclub(int idgrup) {
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps;
             ResultSet res;
 
-            ps = con.prepareStatement("SELECT initcap(idio_nombre)\n" +
-                                        "	FROM public.idioma;");
+            ps = con.prepareStatement("SELECT club_id, grup_tipo FROM public.grupo WHERE grup_id=?;");
+            ps.setInt(1, idgrup);
                    
             res = ps.executeQuery();
-
             if (res.next()) {
                 return res;
             }
@@ -863,60 +959,6 @@ public class QueriesJose {
         
         return null;
     }
-    
-    public int idiomaSearch(String idio) {
-        try (Connection con = conexion.getConnection()){
-
-            PreparedStatement ps;
-            ResultSet res;
-
-            ps = con.prepareStatement("SELECT idio_id FROM public.idioma WHERE idio_nombre=lower(?);");
-            ps.setString(1, idio);
-            res = ps.executeQuery();
-
-            if (res.next()) {
-                return res.getInt(1);
-            }
-
-        } catch (Exception e) {
-            
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-            return 0;
-            
-        }
-        
-        return 0;
-    }
-    
-    public boolean addIdiom(int docid, String idio) {
-        
-        String SQL = "INSERT INTO public.idioma_miembro(\n" +
-                        "	doc_id, idio_id)\n" +
-                        "	VALUES (?, ?);";
-        int filasafectadas = 0;
-        
-        try (Connection con = conexion.getConnection()){
-
-            PreparedStatement ps = con.prepareStatement(SQL);
-            
-            ps.setInt(1, docid);
-            ps.setInt(2, idiomaSearch(idio));
-            
-            filasafectadas = ps.executeUpdate();
-
-            if (filasafectadas != 0) {
-                return true;
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-        return false;
-    }
-    
-    
-    //clubes
     
     public int paisclub(String club) {
         try (Connection con = conexion.getConnection()){
@@ -1086,5 +1128,65 @@ public class QueriesJose {
         }
         
         return null;
+    }
+    
+    //reuniones
+    
+    public String reuAbierta(int grupId) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT isbn FROM public.reuniones WHERE grup_id=? AND reu_conclusiones is null;");
+            ps.setInt(1, grupId);
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return "hola";
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            
+        }
+        
+        return null;
+    }
+    
+    public boolean crearReuN(int dia, int grup, int club, String libro, Date fechai, int docid) {
+        
+        String SQL = "INSERT INTO public.reuniones(\n" +
+"	reu_fecha, grup_id, club_id, isbn, grupg_l_id, clubg_l_id, clubh_id, fechai_mie, doc_id)\n" +
+"	VALUES (current_date + ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, dia);
+            ps.setInt(2, grup);
+            ps.setInt(3, club);
+            ps.setInt(4, isbn(libro));
+            ps.setInt(5, grup);
+            ps.setInt(6, club);
+            ps.setInt(7, club);
+            ps.setDate(7, fechai);
+            ps.setInt(8, docid);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;
     }
 }
