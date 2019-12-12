@@ -13,5 +13,6 @@ public class Lanzador {
     public static void main(String[] args){
         Scripts iniciar = new Scripts();
         int init = iniciar.iniciarBD(); 
+        init = iniciar.llenarBD();
     }
 }

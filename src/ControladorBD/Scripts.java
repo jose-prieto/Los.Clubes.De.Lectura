@@ -188,31 +188,29 @@ public class Scripts {
      ejecA.CrearAutorLibro("Mario", null, "Vargas", "Llosa", 7859665);*/
      
      ejecA.CrearObra(3,"activa","La tregua", 5000, 1);
+      ejecA.club_obra(1);
+      ejecA.lib_obra(1234567);
      ejecA.CrearObra(1,"inactiva","La biblioteca de Babel", 3200, 2);
+      ejecA.club_obra(2);
+      ejecA.lib_obra(3817312);
      ejecA.CrearObra(2,"activa","Adam Buenosayres", 4000, 3);
+      ejecA.club_obra(3);
+      ejecA.lib_obra(446677);
      ejecA.CrearObra(1,"activa","La casa de los espiritus", 2300, 4);
+      ejecA.club_obra(4);
+      ejecA.lib_obra(4589556);
      ejecA.CrearObra(3,"activa","La Voragine", 4800, 5);
+      ejecA.club_obra(5);
+      ejecA.lib_obra(92848);
      ejecA.CrearObra(2,"activa","La casa verde", 1600, 6);
+      ejecA.club_obra(6);
+      ejecA.lib_obra(7859665);
      ejecA.CrearObra(3,"activa","El crimen del otro", 6500, 7);
+      ejecA.club_obra(7);
+      ejecA.lib_obra(1636657);
      ejecA.CrearObra(1,"activa","La ciudad", 2000, 8);
-    
-     ejecA.club_obra(1);
-     ejecA.club_obra(2);
-     ejecA.club_obra(3);
-     ejecA.club_obra(4);
-     ejecA.club_obra(5);
-     ejecA.club_obra(6);
-     ejecA.club_obra(7);
-     ejecA.club_obra(8);
-     
-     ejecA.lib_obra(1234567);
-     ejecA.lib_obra(3817312);
-     ejecA.lib_obra(446677);
-     ejecA.lib_obra(4589556);
-     ejecA.lib_obra(92848);
-     ejecA.lib_obra(7859665);
-     ejecA.lib_obra(1636657);
-     ejecA.lib_obra(3574567);
+      ejecA.club_obra(8);
+      ejecA.lib_obra(3574567);
      
      
      ejecJ.libMiem(27342711,1234567);
