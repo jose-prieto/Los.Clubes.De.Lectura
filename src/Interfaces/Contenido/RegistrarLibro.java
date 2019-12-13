@@ -22,6 +22,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
 
     public RegistrarLibro() {
         initComponents();
+        ResultSet res;
         
         listen.FieldListener (ISBN);
         listen.FieldListener (ApeAutor);
@@ -30,7 +31,30 @@ public class RegistrarLibro extends javax.swing.JPanel {
         listen.FieldListener (OriTitulo);
         listen.FieldListener (Pag);
         listen.FieldListener (Tema);
+        listen.FieldListener (NomAutor2);
+        listen.FieldListener (ApeAutor2);
         listen.AreaListener (Sinopsis);
+        
+        try {
+            String date = "1994-10-25";
+            java.util.Date date2 = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+            Publicado.setDate(date2);
+        } catch (Exception ex) {
+            Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        res = queryJ.tipos();
+        comboTipo.removeAllItems();
+        if (res != null){
+            try {
+                do{
+                    comboTipo.addItem(res.getString(1));
+                }while (res.next());
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        System.out.println(queryJ.clasid(comboSub.getSelectedItem().toString()));
     }
     
     public Date getNacimiento() {
@@ -64,6 +88,36 @@ public class RegistrarLibro extends javax.swing.JPanel {
             } catch (SQLException ex) {
                 Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+        
+    }
+    
+    public String getEspa(){
+        if (!EspTitulo.getText().equals("Ej. Romeo y Julieta")){
+            return EspTitulo.getText();
+        }else{
+            return null;
+        }
+    }
+    public String getTema(){
+        if (!Tema.getText().equals("Ej. Romeo se suicida tras perder a Julieta...")){
+            return Tema.getText();
+        }else{
+            return null;
+        }
+    }
+    public String getNombre2(){
+        if (!NomAutor2.getText().equals("Ej. Antonio")){
+            return NomAutor2.getText();
+        }else{
+            return null;
+        }
+    }
+    public String getApe2(){
+        if (!ApeAutor2.getText().equals("Ej. Quintero")){
+            return ApeAutor2.getText();
+        }else{
+            return null;
         }
     }
     
@@ -106,6 +160,9 @@ public class RegistrarLibro extends javax.swing.JPanel {
         jLabel14 = new javax.swing.JLabel();
         Libros = new javax.swing.JComboBox<>();
         Publicado = new com.toedter.calendar.JDateChooser();
+        Label4 = new javax.swing.JLabel();
+        NomAutor2 = new javax.swing.JTextField();
+        ApeAutor2 = new javax.swing.JTextField();
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 0, 0));
@@ -123,11 +180,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
         OriTitulo.setForeground(new java.awt.Color(204, 204, 255));
         OriTitulo.setText("Ej. Romeo and Juliet");
         OriTitulo.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
-        OriTitulo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                OriTituloKeyTyped(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
@@ -139,7 +191,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
 
         ApeAutor.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         ApeAutor.setForeground(new java.awt.Color(204, 204, 255));
-        ApeAutor.setText("Ej. Shakespeare");
+        ApeAutor.setText("Ej. Prieto");
         ApeAutor.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         ApeAutor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -155,11 +207,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
         EspTitulo.setForeground(new java.awt.Color(204, 204, 255));
         EspTitulo.setText("Ej. Romeo y Julieta");
         EspTitulo.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
-        EspTitulo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                EspTituloKeyTyped(evt);
-            }
-        });
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
@@ -167,7 +214,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
 
         NomAutor.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         NomAutor.setForeground(new java.awt.Color(204, 204, 255));
-        NomAutor.setText("Ej. William");
+        NomAutor.setText("Ej. Jose");
         NomAutor.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
         NomAutor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -203,11 +250,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
         Tema.setForeground(new java.awt.Color(204, 204, 255));
         Tema.setText("Ej. Romeo se suicida tras perder a Julieta...");
         Tema.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
-        Tema.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                TemaKeyTyped(evt);
-            }
-        });
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -217,11 +259,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
         Sinopsis.setRows(5);
         Sinopsis.setText("Ej. Para entender el argumento de Romeo y Julieta hemos de conocer el concepto de 'tragedia', un género dramático o teatral en el cual los...");
         Sinopsis.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
-        Sinopsis.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                SinopsisKeyTyped(evt);
-            }
-        });
         jScrollPane2.setViewportView(Sinopsis);
 
         Label1.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
@@ -330,7 +367,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
 
         comboTipo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         comboTipo.setForeground(new java.awt.Color(51, 51, 51));
-        comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lirica", "Epica", "Prosa", "Dramatica" }));
         comboTipo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboTipoItemStateChanged(evt);
@@ -339,7 +375,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
 
         comboSub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         comboSub.setForeground(new java.awt.Color(51, 51, 51));
-        comboSub.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "La oda", "la elegía", "la égloga", "la sátira", "épica", "la canción" }));
 
         Editorial.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Editorial.setForeground(new java.awt.Color(51, 51, 51));
@@ -361,6 +396,38 @@ public class RegistrarLibro extends javax.swing.JPanel {
             }
         });
 
+        Label4.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
+        Label4.setForeground(new java.awt.Color(255, 0, 0));
+        Label4.setText("(*)");
+        Label4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Label4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Label4MouseExited(evt);
+            }
+        });
+
+        NomAutor2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        NomAutor2.setForeground(new java.awt.Color(204, 204, 255));
+        NomAutor2.setText("Ej. Antonio");
+        NomAutor2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        NomAutor2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NomAutor2KeyTyped(evt);
+            }
+        });
+
+        ApeAutor2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        ApeAutor2.setForeground(new java.awt.Color(204, 204, 255));
+        ApeAutor2.setText("Ej. Quintero");
+        ApeAutor2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        ApeAutor2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ApeAutor2KeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -374,7 +441,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
                             .addComponent(jLabel10))
                         .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Tema, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
+                            .addComponent(Tema)
                             .addComponent(jScrollPane2)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -395,8 +462,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
                                     .addComponent(ISBN)
                                     .addComponent(OriTitulo, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(EspTitulo, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(NomAutor, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(ApeAutor)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -409,13 +474,27 @@ public class RegistrarLibro extends javax.swing.JPanel {
                                                 .addComponent(jLabel9)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(comboSub, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addComponent(Libros, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(Libros, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(NomAutor)
+                                            .addComponent(ApeAutor, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(Label2)
+                                            .addComponent(Label3))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(NomAutor2)
+                                            .addComponent(ApeAutor2, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Editorial, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(Publicado, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Label4)
                                         .addGap(0, 0, Short.MAX_VALUE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -425,8 +504,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Label1)
-                    .addComponent(Label2)
-                    .addComponent(Label3)
                     .addComponent(Label6)
                     .addComponent(Label7)
                     .addComponent(Label8))
@@ -435,7 +512,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(ISBN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -463,12 +540,14 @@ public class RegistrarLibro extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NomAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(Label2))
+                    .addComponent(Label2)
+                    .addComponent(NomAutor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ApeAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(Label3))
+                    .addComponent(Label3)
+                    .addComponent(ApeAutor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -479,8 +558,9 @@ public class RegistrarLibro extends javax.swing.JPanel {
                         .addComponent(jLabel11)
                         .addComponent(jLabel4)
                         .addComponent(Label6)
-                        .addComponent(Pag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Publicado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Pag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Label4))
+                    .addComponent(Publicado, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -491,13 +571,12 @@ public class RegistrarLibro extends javax.swing.JPanel {
                         .addComponent(Label7))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel10)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -603,30 +682,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
         return val; 
     }
     
-    public int clasif(){
-        int sub = comboSub.getSelectedIndex() + 1;
-        int tipo = comboTipo.getSelectedIndex() + 1;
-        int valor=0;
-        
-        if (tipo==2){
-            switch (sub) {
-                case 1:
-                    valor=5;
-                    break;
-                case 2:
-                    valor=6;
-                    break;
-                case 3:
-                    valor=7;    
-                    break;
-                default:
-                    break;
-            }
-        }
-        
-        return valor;
-    }
-    
     private void Label8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label8MouseEntered
         // TODO add your handling code here:
         diag.posicion(Label8.getLocationOnScreen().x-29, Label8.getLocationOnScreen().y+15);
@@ -639,12 +694,13 @@ public class RegistrarLibro extends javax.swing.JPanel {
     }//GEN-LAST:event_Label8MouseExited
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
-        if (val() && query.CrearLibro(Integer.parseInt(ISBN.getText()),OriTitulo.getText(), Sinopsis.getText(), 
-                    getNacimiento(), Integer.parseInt(Pag.getText()), EspTitulo.getText(), Tema.getText(), 
-                    Editorial.getSelectedItem().toString(),clasif()) && query.CrearAutorLibro(NomAutor.getText(), 
-                            ApeAutor.getText(), Integer.parseInt(ISBN.getText()))){
+        if (val() && query.CrearLibro(Long.parseLong(ISBN.getText()),OriTitulo.getText(), Sinopsis.getText(), 
+                    getNacimiento(), Integer.parseInt(Pag.getText()), getEspa(), getTema(), 
+                    Editorial.getSelectedItem().toString(), queryJ.clasid(comboSub.getSelectedItem().toString())) && 
+                query.CrearAutorLibro(NomAutor.getText(), getNombre2(), ApeAutor.getText(), getApe2(), 
+                        Long.parseLong(ISBN.getText()))){
             if (!Libros.getSelectedItem().toString().equals(" ")){
-                queryJ.addPadreLibro(Libros.getSelectedItem().toString(), Integer.parseInt(ISBN.getText()));
+                queryJ.addPadreLibro(Libros.getSelectedItem().toString(), Long.parseLong(ISBN.getText()));
             }
             JOptionPane.showMessageDialog(null, "Libro registrado con éxito", "Información", JOptionPane.INFORMATION_MESSAGE);
 
@@ -655,28 +711,10 @@ public class RegistrarLibro extends javax.swing.JPanel {
           // TODO add your handling code here:
                   char c = evt.getKeyChar();
         
-        if (c < '0' || c > '9' || ISBN.getText().length() > 14){
+        if (c < '0' || c > '9' || ISBN.getText().length() > 12){
             evt.consume();
         }
     }//GEN-LAST:event_ISBNKeyTyped
-
-    private void OriTituloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_OriTituloKeyTyped
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')){
-            evt.consume();
-            } 
-    }//GEN-LAST:event_OriTituloKeyTyped
-
-    private void EspTituloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EspTituloKeyTyped
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')){
-            evt.consume();
-         }     
-    }//GEN-LAST:event_EspTituloKeyTyped
 
     private void NomAutorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NomAutorKeyTyped
         // TODO add your handling code here:
@@ -706,60 +744,20 @@ public class RegistrarLibro extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_PagKeyTyped
 
-    private void TemaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TemaKeyTyped
-        // TODO add your handling code here:
-                  char c = evt.getKeyChar();
-        
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')){
-            evt.consume();
-         } 
-    }//GEN-LAST:event_TemaKeyTyped
-
-    private void SinopsisKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SinopsisKeyTyped
-        // TODO add your handling code here:
-                  char c = evt.getKeyChar();
-        
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')){
-            evt.consume();
-         } 
-    }//GEN-LAST:event_SinopsisKeyTyped
-
     private void comboTipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboTipoItemStateChanged
         // TODO add your handling code here:
-        switch(comboTipo.getSelectedIndex()) {
-            case 0:
-                comboSub.removeAllItems();
-                comboSub.addItem("La Oda");
-                comboSub.addItem("La Elegia");
-                comboSub.addItem("La Egloga");
-                comboSub.addItem("La Satira");
-                comboSub.addItem("Epica");
-                comboSub.addItem("La Cancion");
-              break;
-            case 1:
-                comboSub.removeAllItems();
-                comboSub.addItem("La Epopeya");
-                comboSub.addItem("Fabula el poema epico");
-                comboSub.addItem("El Romance");
-              break;
-            case 2:
-                comboSub.removeAllItems();
-                comboSub.addItem("Novela");
-                comboSub.addItem("Cuento");
-                comboSub.addItem("Leyenda");
-                comboSub.addItem("Fábula");
-              break;
-            case 3:
-                comboSub.removeAllItems();
-                comboSub.addItem("La Tragedia");
-                comboSub.addItem("La Comedia");
-                comboSub.addItem("El Drama");
-                comboSub.addItem("La Opera");
-                comboSub.addItem("La Zarzuela");
-              break;
-            default:
-              break;
-          }
+        ResultSet res;
+        res = queryJ.subge(comboTipo.getSelectedItem().toString());
+        comboSub.removeAllItems();
+        if (res != null){
+            try {
+                do{
+                    comboSub.addItem(res.getString(1));
+                }while (res.next());
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_comboTipoItemStateChanged
 
     private void EditorialItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EditorialItemStateChanged
@@ -770,20 +768,52 @@ public class RegistrarLibro extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_LibrosItemStateChanged
 
+    private void Label4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label4MouseEntered
+        // TODO add your handling code here:
+        diag.posicion(Label4.getLocationOnScreen().x-29, Label4.getLocationOnScreen().y+15);
+        diag.setVisible(true);
+    }//GEN-LAST:event_Label4MouseEntered
+
+    private void Label4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label4MouseExited
+        // TODO add your handling code here:
+        diag.setVisible(false);
+    }//GEN-LAST:event_Label4MouseExited
+
+    private void NomAutor2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NomAutor2KeyTyped
+        // TODO add your handling code here:
+                char c = evt.getKeyChar();
+        
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')){
+            evt.consume();
+         } 
+    }//GEN-LAST:event_NomAutor2KeyTyped
+
+    private void ApeAutor2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ApeAutor2KeyTyped
+        // TODO add your handling code here:
+                char c = evt.getKeyChar();
+        
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')){
+            evt.consume();
+         } 
+    }//GEN-LAST:event_ApeAutor2KeyTyped
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ApeAutor;
+    private javax.swing.JTextField ApeAutor2;
     private javax.swing.JComboBox<String> Editorial;
     private javax.swing.JTextField EspTitulo;
     private javax.swing.JTextField ISBN;
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label2;
     private javax.swing.JLabel Label3;
+    private javax.swing.JLabel Label4;
     private javax.swing.JLabel Label6;
     private javax.swing.JLabel Label7;
     private javax.swing.JLabel Label8;
     private javax.swing.JComboBox<String> Libros;
     private javax.swing.JTextField NomAutor;
+    private javax.swing.JTextField NomAutor2;
     private javax.swing.JTextField OriTitulo;
     private javax.swing.JTextField Pag;
     private com.toedter.calendar.JDateChooser Publicado;

@@ -35,7 +35,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
     
     public void inicio(){
         ResultSet res = query.clubes();
-        
+        club.removeAllItems();
         if (res != null){
             try {
                 do{

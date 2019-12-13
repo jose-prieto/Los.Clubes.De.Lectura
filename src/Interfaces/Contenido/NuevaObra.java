@@ -561,7 +561,6 @@ public int duracion(){
         }
     }//GEN-LAST:event_clubItemStateChanged
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox AudClub;
     private javax.swing.JTextField AudiNombre;

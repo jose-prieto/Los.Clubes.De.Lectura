@@ -11,7 +11,7 @@ public class QueriesAlberto {
 
     BDConexion conexion = new BDConexion();
 
-    public boolean CrearLibro(int isbn, String OriTitulo, String Sinopsis, Date Year, int Pag, String EspTitulo, String Tema, String Edit, int clasif) {
+    public boolean CrearLibro(long isbn, String OriTitulo, String Sinopsis, Date Year, int Pag, String EspTitulo, String Tema, String Edit, int clasif) {
         
         String SQL = "INSERT INTO public.libro(\n" +
             "	isbn, lib_tit_original, sinopsis, lib_pag, titulo_esp, tema_princ, clasi_id, edit_id, lib_ano_publi)\n" +
@@ -22,7 +22,7 @@ public class QueriesAlberto {
 
             PreparedStatement ps = con.prepareStatement(SQL);
             
-            ps.setInt(1, isbn);
+            ps.setLong(1, isbn);
             ps.setString(2, OriTitulo);
             ps.setString(3, Sinopsis);
             ps.setInt(4, Pag);
@@ -52,7 +52,7 @@ public class QueriesAlberto {
             ResultSet res;
 
             ps = con.prepareStatement("SELECT edit_id\n" +
-"	FROM public.editorial WHERE edit_nombre=?;");
+"	FROM public.editorial WHERE edit_nombre=lower(?);");
             ps.setString(1, edit);
             
             res = ps.executeQuery();
@@ -71,10 +71,10 @@ public class QueriesAlberto {
     }
  
      
-    public boolean CrearAutorLibro(String NomAutor, String ApeAutor, int isbn){
+    public boolean CrearAutorLibro(String NomAutor, String NomAutor2, String ApeAutor, String ApeAutor2, long isbn){
         String SQL = "INSERT INTO public.autor(\n" +
-                "   aut_nombre1, aut_ape1, isbn)\n" +
-                "	VALUES (?, ?, ?);";
+                "   aut_nombre1, aut_nombre2, aut_ape1, aut_ape2, isbn)\n" +
+                "	VALUES (?, ?, ?, ?, ?);";
             int filasafectadas = 0;
 
             try (Connection con = conexion.getConnection()){
@@ -82,8 +82,10 @@ public class QueriesAlberto {
                 PreparedStatement ps = con.prepareStatement(SQL);
 
                 ps.setString(1, NomAutor);
-                ps.setString(2, ApeAutor);
-                ps.setInt(3, isbn);
+                ps.setString(2, NomAutor2);
+                ps.setString(3, ApeAutor);
+                ps.setString(4, ApeAutor2);
+                ps.setLong(5, isbn);
 
                 filasafectadas = ps.executeUpdate();
 
