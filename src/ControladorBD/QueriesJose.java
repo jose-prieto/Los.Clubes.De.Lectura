@@ -1120,6 +1120,30 @@ public class QueriesJose {
         return 0;
     }
     
+    public int ciudadclub(String club) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT dir_id FROM public.club WHERE club_nombre=lower(?);");
+            ps.setString(1, club);
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return res.getInt(1);
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return 0;
+            
+        }
+        return 0;
+    }
+    
     public ResultSet clubes() {
         try (Connection con = conexion.getConnection()){
 
@@ -1323,6 +1347,31 @@ public class QueriesJose {
             ResultSet res;
 
             ps = con.prepareStatement("SELECT audi_nombre FROM public.auditorio;");
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return res;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+            
+        }
+        
+        return null;
+    }
+    
+    public ResultSet auditorios2(String club) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT initcap(audi_nombre) FROM public.auditorio WHERE dir_id = ? order by audi_nombre;");
+            ps.setInt(1, ciudadclub(club));
             
             res = ps.executeQuery();
 

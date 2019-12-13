@@ -194,6 +194,11 @@ public class NuevaObra extends javax.swing.JPanel {
 
         club.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         club.setForeground(new java.awt.Color(51, 51, 51));
+        club.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                clubItemStateChanged(evt);
+            }
+        });
 
         NuevoAuditorio.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         NuevoAuditorio.setForeground(new java.awt.Color(51, 51, 51));
@@ -510,6 +515,21 @@ public int duracion(){
             PertClub.setVisible(false);
         }
     }//GEN-LAST:event_NuevoAuditorioItemStateChanged
+
+    private void clubItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_clubItemStateChanged
+        // TODO add your handling code here:
+        ResultSet res = queryJ.auditorios2(club.getSelectedItem().toString());
+        audi.removeAllItems();
+        if (res != null){
+            try {
+                do{
+                    audi.addItem(res.getString(1));
+                }while (res.next());
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_clubItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
