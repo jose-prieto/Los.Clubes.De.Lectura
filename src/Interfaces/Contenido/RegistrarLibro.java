@@ -1,7 +1,15 @@
 package Interfaces.Contenido;
 
 import ControladorBD.QueriesAlberto;
+import ControladorBD.QueriesJose;
 import java.awt.Color;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
 public class RegistrarLibro extends javax.swing.JPanel {
@@ -9,20 +17,54 @@ public class RegistrarLibro extends javax.swing.JPanel {
     ProcedimientosExtra listen = new ProcedimientosExtra ();
     Dialogo diag = new Dialogo ();
     QueriesAlberto query = new QueriesAlberto();
+    QueriesJose queryJ = new QueriesJose();
+    SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
 
     public RegistrarLibro() {
         initComponents();
         
         listen.FieldListener (ISBN);
         listen.FieldListener (ApeAutor);
-        listen.FieldListener (Edit);
         listen.FieldListener (EspTitulo);
         listen.FieldListener (NomAutor);
         listen.FieldListener (OriTitulo);
         listen.FieldListener (Pag);
         listen.FieldListener (Tema);
-        listen.FieldListener (Year);
         listen.AreaListener (Sinopsis);
+    }
+    
+    public Date getNacimiento() {
+        
+        return java.sql.Date.valueOf(sdf.format(Publicado.getDate()));
+        
+    }
+    
+    public void inicio(){
+        ResultSet res;
+        res = queryJ.libros();
+        Libros.removeAllItems();
+        Libros.addItem(" ");
+        if (res != null){
+            try {
+                do{
+                    Libros.addItem(res.getString(1));
+                }while (res.next());
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        res = queryJ.editoriales();
+        Editorial.removeAllItems();
+        if (res != null){
+            try {
+                do{
+                    Editorial.addItem(res.getString(1));
+                }while (res.next());
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
     
     @SuppressWarnings("unchecked")
@@ -42,7 +84,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         Registrar = new javax.swing.JButton();
-        Edit = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         Tema = new javax.swing.JTextField();
@@ -51,20 +92,20 @@ public class RegistrarLibro extends javax.swing.JPanel {
         Label1 = new javax.swing.JLabel();
         Label2 = new javax.swing.JLabel();
         Label3 = new javax.swing.JLabel();
-        Label4 = new javax.swing.JLabel();
         Label6 = new javax.swing.JLabel();
         Label7 = new javax.swing.JLabel();
-        Year = new javax.swing.JTextField();
         Pag = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         ISBN = new javax.swing.JTextField();
         Label8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        Label9 = new javax.swing.JLabel();
-        Label10 = new javax.swing.JLabel();
         comboTipo = new javax.swing.JComboBox<>();
         comboSub = new javax.swing.JComboBox<>();
+        Editorial = new javax.swing.JComboBox<>();
+        jLabel14 = new javax.swing.JLabel();
+        Libros = new javax.swing.JComboBox<>();
+        Publicado = new com.toedter.calendar.JDateChooser();
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 0, 0));
@@ -150,11 +191,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
             }
         });
 
-        Edit.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Edit.setForeground(new java.awt.Color(204, 204, 255));
-        Edit.setText("Ej. Santillana");
-        Edit.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
-
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Editorial");
@@ -224,18 +260,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
             }
         });
 
-        Label4.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
-        Label4.setForeground(new java.awt.Color(255, 0, 0));
-        Label4.setText("(*)");
-        Label4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Label4MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Label4MouseExited(evt);
-            }
-        });
-
         Label6.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         Label6.setForeground(new java.awt.Color(255, 0, 0));
         Label6.setText("(*)");
@@ -257,16 +281,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 Label7MouseExited(evt);
-            }
-        });
-
-        Year.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Year.setForeground(new java.awt.Color(204, 204, 255));
-        Year.setText("Ej. 2019");
-        Year.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
-        Year.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                YearKeyTyped(evt);
             }
         });
 
@@ -314,30 +328,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
         jLabel13.setForeground(new java.awt.Color(51, 51, 51));
         jLabel13.setText("Tipo");
 
-        Label9.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
-        Label9.setForeground(new java.awt.Color(255, 0, 0));
-        Label9.setText("(*)");
-        Label9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Label9MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Label9MouseExited(evt);
-            }
-        });
-
-        Label10.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
-        Label10.setForeground(new java.awt.Color(255, 0, 0));
-        Label10.setText("(*)");
-        Label10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Label10MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Label10MouseExited(evt);
-            }
-        });
-
         comboTipo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         comboTipo.setForeground(new java.awt.Color(51, 51, 51));
         comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lirica", "Epica", "Prosa", "Dramatica" }));
@@ -350,6 +340,26 @@ public class RegistrarLibro extends javax.swing.JPanel {
         comboSub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         comboSub.setForeground(new java.awt.Color(51, 51, 51));
         comboSub.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "La oda", "la elegía", "la égloga", "la sátira", "épica", "la canción" }));
+
+        Editorial.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Editorial.setForeground(new java.awt.Color(51, 51, 51));
+        Editorial.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                EditorialItemStateChanged(evt);
+            }
+        });
+
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel14.setText("Libro padre");
+
+        Libros.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Libros.setForeground(new java.awt.Color(51, 51, 51));
+        Libros.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                LibrosItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -364,10 +374,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
                             .addComponent(jLabel10))
                         .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Year, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(Tema, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
+                            .addComponent(Tema, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
                             .addComponent(jScrollPane2)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -381,40 +388,48 @@ public class RegistrarLibro extends javax.swing.JPanel {
                             .addComponent(jLabel5)
                             .addComponent(jLabel1)
                             .addComponent(jLabel8))
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ISBN)
-                            .addComponent(Edit, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(OriTitulo, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(EspTitulo, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(NomAutor, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(ApeAutor)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
-                                .addComponent(Pag, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ISBN)
+                                    .addComponent(OriTitulo, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(EspTitulo, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(NomAutor, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(ApeAutor)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel4)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(Pag, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel9)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(comboSub, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(Libros, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Label10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(comboSub, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Editorial, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(Publicado, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel9)
-                        .addGap(152, 152, 152)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel14))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Label1)
                     .addComponent(Label2)
                     .addComponent(Label3)
-                    .addComponent(Label4)
                     .addComponent(Label6)
                     .addComponent(Label7)
-                    .addComponent(Label8)
-                    .addComponent(Label9))
+                    .addComponent(Label8))
                 .addGap(58, 58, 58))
         );
         layout.setVerticalGroup(
@@ -425,6 +440,10 @@ public class RegistrarLibro extends javax.swing.JPanel {
                     .addComponent(jLabel8)
                     .addComponent(ISBN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label8))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(Libros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -438,11 +457,9 @@ public class RegistrarLibro extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jLabel9)
-                    .addComponent(Label9)
-                    .addComponent(Label10)
                     .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboSub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NomAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
@@ -452,18 +469,18 @@ public class RegistrarLibro extends javax.swing.JPanel {
                     .addComponent(ApeAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(Label3))
-                .addGap(22, 22, 22)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(Label4))
+                    .addComponent(Editorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel4)
-                    .addComponent(Label6)
-                    .addComponent(Year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Pag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel11)
+                        .addComponent(jLabel4)
+                        .addComponent(Label6)
+                        .addComponent(Pag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Publicado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -480,7 +497,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
                         .addComponent(jLabel10)))
                 .addGap(18, 18, 18)
                 .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -517,17 +534,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
         diag.setVisible(false);
     }//GEN-LAST:event_Label3MouseExited
 
-    private void Label4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label4MouseEntered
-        // TODO add your handling code here:
-        diag.posicion(Label4.getLocationOnScreen().x-29, Label4.getLocationOnScreen().y+15);
-        diag.setVisible(true);
-    }//GEN-LAST:event_Label4MouseEntered
-
-    private void Label4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label4MouseExited
-        // TODO add your handling code here:
-        diag.setVisible(false);
-    }//GEN-LAST:event_Label4MouseExited
-
     private void Label6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label6MouseEntered
         // TODO add your handling code here:
         diag.posicion(Label6.getLocationOnScreen().x-29, Label6.getLocationOnScreen().y+15);
@@ -556,50 +562,43 @@ public class RegistrarLibro extends javax.swing.JPanel {
         
         if(OriTitulo.getText().equals("Ej. Romeo and Juliet")){
             OriTitulo.setBorder(new LineBorder(Color.red));
+            val = false;
         }else{
             OriTitulo.setBorder(new LineBorder(Color.gray));
         }
-        /*if(EspTitulo.getText().equals("Ej. Romeo y Julieta")){
-            EspTitulo.setBorder(new LineBorder(Color.red));
-        }else{
-            EspTitulo.setBorder(new LineBorder(Color.gray));
-        }*/
         if(NomAutor.getText().equals("Ej. William")){
             NomAutor.setBorder(new LineBorder(Color.red));
+            val = false;
         }else{
             NomAutor.setBorder(new LineBorder(Color.gray));
         }
         if(ApeAutor.getText().equals("Ej. Shakespeare")){
             ApeAutor.setBorder(new LineBorder(Color.red));
+            val = false;
         }else{
             ApeAutor.setBorder(new LineBorder(Color.gray));
         }
-        if(Edit.getText().equals("Ej. Santillana")){
-            Edit.setBorder(new LineBorder(Color.red));
-        }else{
-            Edit.setBorder(new LineBorder(Color.gray));
-        }
-       /* if(Year.getText().equals("Ej. 2019")){
-            Year.setBorder(new LineBorder(Color.red));
-        }else{
-            Year.setBorder(new LineBorder(Color.gray));
-        }*/
         if(Pag.getText().equals("Ej. 200")){
             Pag.setBorder(new LineBorder(Color.red));
+            val = false;
         }else{
             Pag.setBorder(new LineBorder(Color.gray));
         }
-       /* if(Tema.getText().equals("Ej. Romeo se suicida tras perder a Julieta...")){
-            Tema.setBorder(new LineBorder(Color.red));
-        }else{
-            Tema.setBorder(new LineBorder(Color.gray));
-        }*/
         if(Sinopsis.getText().equals("Ej. Para entender el argumento de Romeo y Julieta hemos de conocer el concepto de 'tragedia', un género dramático o teatral en el cual los...")){
             Sinopsis.setBorder(new LineBorder(Color.red));
+            val = false;
         }else{
             Sinopsis.setBorder(new LineBorder(Color.gray));
         }
-        
+        if(ISBN.getText().equals("Ej. 9788877547224")){
+            ISBN.setBorder(new LineBorder(Color.red));
+            val = false;
+        }else{
+            ISBN.setBorder(new LineBorder(Color.gray));
+        }
+        if (!val){
+            JOptionPane.showMessageDialog(null, "Debe llenar los campos obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+        }
         
         return val; 
     }
@@ -639,26 +638,17 @@ public class RegistrarLibro extends javax.swing.JPanel {
         diag.setVisible(false);
     }//GEN-LAST:event_Label8MouseExited
 
-    private void Label9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label9MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Label9MouseEntered
-
-    private void Label9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label9MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Label9MouseExited
-
-    private void Label10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label10MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Label10MouseEntered
-
-    private void Label10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label10MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Label10MouseExited
-
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
-       val();
-        query.CrearLibro(Integer.parseInt(ISBN.getText()),OriTitulo.getText(), Sinopsis.getText(), Integer.parseInt(Year.getText()), Integer.parseInt(Pag.getText()), EspTitulo.getText(), Tema.getText(), Integer.parseInt(Edit.getText()),clasif());
-        query.CrearAutorLibro(NomAutor.getText(), ApeAutor.getText(), Integer.parseInt(ISBN.getText()));
+        if (val() && query.CrearLibro(Integer.parseInt(ISBN.getText()),OriTitulo.getText(), Sinopsis.getText(), 
+                    getNacimiento(), Integer.parseInt(Pag.getText()), EspTitulo.getText(), Tema.getText(), 
+                    Editorial.getSelectedItem().toString(),clasif()) && query.CrearAutorLibro(NomAutor.getText(), 
+                            ApeAutor.getText(), Integer.parseInt(ISBN.getText()))){
+            if (!Libros.getSelectedItem().toString().equals(" ")){
+                queryJ.addPadreLibro(Libros.getSelectedItem().toString(), Integer.parseInt(ISBN.getText()));
+            }
+            JOptionPane.showMessageDialog(null, "Libro registrado con éxito", "Información", JOptionPane.INFORMATION_MESSAGE);
+
+        }
     }//GEN-LAST:event_RegistrarActionPerformed
 
     private void ISBNKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ISBNKeyTyped
@@ -706,15 +696,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
             evt.consume();
          }     
     }//GEN-LAST:event_ApeAutorKeyTyped
-
-    private void YearKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_YearKeyTyped
-        // TODO add your handling code here:
-                 char c = evt.getKeyChar();
-        
-        if (c < '0' || c > '9' || Year.getText().length() > 3){
-            evt.consume();
-        }
-    }//GEN-LAST:event_YearKeyTyped
 
     private void PagKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PagKeyTyped
         // TODO add your handling code here:
@@ -781,28 +762,34 @@ public class RegistrarLibro extends javax.swing.JPanel {
           }
     }//GEN-LAST:event_comboTipoItemStateChanged
 
+    private void EditorialItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EditorialItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EditorialItemStateChanged
+
+    private void LibrosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LibrosItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LibrosItemStateChanged
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ApeAutor;
-    private javax.swing.JTextField Edit;
+    private javax.swing.JComboBox<String> Editorial;
     private javax.swing.JTextField EspTitulo;
     private javax.swing.JTextField ISBN;
     private javax.swing.JLabel Label1;
-    private javax.swing.JLabel Label10;
     private javax.swing.JLabel Label2;
     private javax.swing.JLabel Label3;
-    private javax.swing.JLabel Label4;
     private javax.swing.JLabel Label6;
     private javax.swing.JLabel Label7;
     private javax.swing.JLabel Label8;
-    private javax.swing.JLabel Label9;
+    private javax.swing.JComboBox<String> Libros;
     private javax.swing.JTextField NomAutor;
     private javax.swing.JTextField OriTitulo;
     private javax.swing.JTextField Pag;
+    private com.toedter.calendar.JDateChooser Publicado;
     public javax.swing.JButton Registrar;
     private javax.swing.JTextArea Sinopsis;
     private javax.swing.JTextField Tema;
-    private javax.swing.JTextField Year;
     private javax.swing.JComboBox<String> comboSub;
     private javax.swing.JComboBox<String> comboTipo;
     private javax.swing.JLabel jLabel1;
@@ -810,6 +797,7 @@ public class RegistrarLibro extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

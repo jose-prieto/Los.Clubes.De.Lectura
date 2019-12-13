@@ -727,6 +727,31 @@ public class QueriesJose {
         return null;
     }
     
+    public boolean addPadreLibro(String isbn, int isbn2) {
+        String SQL = "UPDATE public.libro\n" +
+"	SET isbn_padre=?\n" +
+"	WHERE isbn=?";
+ 
+        int affectedrows = 0;
+ 
+        try (Connection con = conexion.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(SQL)) {
+ 
+            pstmt.setInt(1, isbn(isbn));
+            pstmt.setInt(2, isbn2);
+            
+            affectedrows = pstmt.executeUpdate();
+            
+            if (affectedrows != 0) {
+                return true;
+            }
+ 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return false;
+    }
+    
     //Idiomas
     
     public ResultSet idiomas() {
@@ -1693,5 +1718,32 @@ public class QueriesJose {
         }
         System.out.println("hola3");
         return false;
+    }
+    
+    //editorial
+    
+    public ResultSet editoriales() {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT initcap(edit_nombre)\n" +
+"	FROM public.editorial;");
+            
+            res = ps.executeQuery();
+            
+            if (res.next()) {
+                return res;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+            
+        }
+        
+        return null;
     }
 }

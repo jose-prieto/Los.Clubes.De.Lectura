@@ -142,7 +142,7 @@ public class RegistraMiembro extends javax.swing.JPanel {
     public boolean ElimMiem(){
         query.borraHist(getCedula(Cedula.getText()));
         query.BorraIdioMiem(getCedula(Cedula.getText()));
-        query.BorraPago();
+        query.BorraPago(Integer.parseInt(Cedula.getText()), club.getSelectedItem().toString());
         if (!query.borraMiem(getCedula(Cedula.getText()))){
             return false;
         }

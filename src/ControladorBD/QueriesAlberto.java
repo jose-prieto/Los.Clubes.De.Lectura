@@ -11,10 +11,10 @@ public class QueriesAlberto {
 
     BDConexion conexion = new BDConexion();
 
- public void CrearLibro(int isbn, String OriTitulo, String Sinopsis, int Year, int Pag, String EspTitulo, String Tema, int Edit, int clasif) {
+    public boolean CrearLibro(int isbn, String OriTitulo, String Sinopsis, Date Year, int Pag, String EspTitulo, String Tema, String Edit, int clasif) {
         
         String SQL = "INSERT INTO public.libro(\n" +
-            "	isbn, lib_tit_original, sinopsis, lib_pag, titulo_esp, tema_princ, clasi_id, edit_id, lib_ano)\n" +
+            "	isbn, lib_tit_original, sinopsis, lib_pag, titulo_esp, tema_princ, clasi_id, edit_id, lib_ano_publi)\n" +
             "	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
         int filasafectadas = 0;
 
@@ -29,49 +29,74 @@ public class QueriesAlberto {
             ps.setString(5, EspTitulo);
             ps.setString(6, Tema);
             ps.setInt(7, clasif);
-            ps.setInt(8, Edit);
-            ps.setInt(9, Year);
+            ps.setInt(8, editid(Edit));
+            ps.setDate(9, Year);
             
             filasafectadas = ps.executeUpdate();
 
             if (filasafectadas != 0) {
-                JOptionPane.showMessageDialog(null, "Libro creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+                return true;
             }
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
+        return false;
             
-        }
+    }
  
-     
-  public void CrearAutorLibro(String NomAutor, String ApeAutor, int isbn){
-      String SQL = "INSERT INTO public.autor(\n" +
-            "   aut_nombre1, aut_ape1, isbn)\n" +
-            "	VALUES (?, ?, ?);";
-        int filasafectadas = 0;
-        
+    public int editid(String edit) {
         try (Connection con = conexion.getConnection()){
 
-            PreparedStatement ps = con.prepareStatement(SQL);
-            
-            ps.setString(1, NomAutor);
-            ps.setString(2, ApeAutor);
-            ps.setInt(3, isbn);
-     
-            filasafectadas = ps.executeUpdate();
+            PreparedStatement ps;
+            ResultSet res;
 
-            if (filasafectadas != 0) {
-                JOptionPane.showMessageDialog(null, "Autor creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            ps = con.prepareStatement("SELECT edit_id\n" +
+"	FROM public.editorial WHERE edit_nombre=?;");
+            ps.setString(1, edit);
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return res.getInt(1);
             }
 
         } catch (Exception e) {
+            
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            
+            
         }
-
+        return 0;
+    }
+ 
      
- }
+    public boolean CrearAutorLibro(String NomAutor, String ApeAutor, int isbn){
+        String SQL = "INSERT INTO public.autor(\n" +
+                "   aut_nombre1, aut_ape1, isbn)\n" +
+                "	VALUES (?, ?, ?);";
+            int filasafectadas = 0;
+
+            try (Connection con = conexion.getConnection()){
+
+                PreparedStatement ps = con.prepareStatement(SQL);
+
+                ps.setString(1, NomAutor);
+                ps.setString(2, ApeAutor);
+                ps.setInt(3, isbn);
+
+                filasafectadas = ps.executeUpdate();
+
+                if (filasafectadas != 0) {
+                    return true;
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+        return false;
+    }
   
   
   public boolean ciExist(int ci) {

@@ -765,6 +765,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         } else if (evt.equals(clubes.Libros)) {
 
             Alistar();
+            nuevolibro.inicio();
 
             libros.setVisible(true);
             nuevolibro.setVisible(true);
