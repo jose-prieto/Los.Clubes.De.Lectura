@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
 public class NuevoClubContent extends javax.swing.JPanel {
@@ -413,37 +414,63 @@ public class NuevoClubContent extends javax.swing.JPanel {
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
         // TODO add your handling code here:
+          boolean val = true; 
         if (NombreClub.getText().equals("Ej. Club de estudios científicos")) {
             NombreClub.setBorder(new LineBorder(Color.red));
+            val = false;
         } else {
             NombreClub.setBorder(new LineBorder(Color.gray));
         }
         if (Dir1Club.getText().equals("Ej. Montalbán II, calle 5")) {
             Dir1Club.setBorder(new LineBorder(Color.red));
+             val = false;
         } else {
             Dir1Club.setBorder(new LineBorder(Color.gray));
         }
         if (PostalClub.getText().equals("Ej. 1020")) {
             PostalClub.setBorder(new LineBorder(Color.red));
+             val = false;
         } else {
             PostalClub.setBorder(new LineBorder(Color.gray));
-        }
-        if (InstClub.getText().equals("Ej. Universidad Católica Andrés Bello")) {
-            InstClub.setBorder(new LineBorder(Color.red));
-        } else {
-            InstClub.setBorder(new LineBorder(Color.gray));
-        }
+        }   
+            if(val == false) {
+            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos que son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+            }else{
         
         if(check.isSelected()==true){
+             if (descInst.getText().equals("Ej. 1020")) {
+             descInst.setBorder(new LineBorder(Color.red));
+             val = false;
+              } else {
+               descInst.setBorder(new LineBorder(Color.gray));
+                }
+             if (InstClub.getText().equals("Ej. Universidad Católica Andrés Bello")) {
+              InstClub.setBorder(new LineBorder(Color.red));
+              val = false;
+               } else {
+            InstClub.setBorder(new LineBorder(Color.gray));
+              }   
+                if(val == false) {
+                JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos que son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+
+                }else{
              query.CrearInstitucion(InstClub.getText(), descInst.getText() , query.BuscarCiudad(Ciudad.getSelectedItem().toString()));
              query.CrearClubI(NombreClub.getText(), Dir1Club.getText(), Integer.parseInt(PostalClub.getText()), false, comoIdioma.getSelectedIndex() + 1, query.BuscarCiudad(Ciudad.getSelectedItem().toString()));
-   
-        }else{
-       query.CrearClub(NombreClub.getText(), Dir1Club.getText(), Integer.parseInt(PostalClub.getText()), true, comoIdioma.getSelectedIndex() + 1, query.BuscarCiudad(Ciudad.getSelectedItem().toString()));
-       }  
+             NombreClub.setText("");
+             Dir1Club.setText("");
+             PostalClub.setText("");
+             InstClub.setText("");
+             descInst.setText("");
+              }
+            }else{
+            query.CrearClub(NombreClub.getText(), Dir1Club.getText(), Integer.parseInt(PostalClub.getText()), true, comoIdioma.getSelectedIndex() + 1, query.BuscarCiudad(Ciudad.getSelectedItem().toString()));
+             NombreClub.setText("");
+             Dir1Club.setText("");
+             PostalClub.setText("");
+        }
+       }
     }//GEN-LAST:event_RegistrarActionPerformed
-   
-    
+  
     
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
         // TODO add your handling code here:

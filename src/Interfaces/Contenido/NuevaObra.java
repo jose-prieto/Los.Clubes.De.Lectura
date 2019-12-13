@@ -32,7 +32,7 @@ public class NuevaObra extends javax.swing.JPanel {
         jLabel8.setVisible(false);
         Cap.setVisible(false);
         Label4.setVisible(false);
-        PertClub.setVisible(false);
+        AudClub.setVisible(false);
         
         ResultSet res = queryJ.libros();
 
@@ -100,7 +100,7 @@ public class NuevaObra extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         Cap = new javax.swing.JTextField();
         Label4 = new javax.swing.JLabel();
-        PertClub = new javax.swing.JCheckBox();
+        AudClub = new javax.swing.JCheckBox();
 
         setMaximumSize(new java.awt.Dimension(707, 541));
         setMinimumSize(new java.awt.Dimension(707, 541));
@@ -256,9 +256,9 @@ public class NuevaObra extends javax.swing.JPanel {
             }
         });
 
-        PertClub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        PertClub.setForeground(new java.awt.Color(51, 51, 51));
-        PertClub.setText("Este auditorio pertenece al club en cuestión");
+        AudClub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        AudClub.setForeground(new java.awt.Color(51, 51, 51));
+        AudClub.setText("Este auditorio pertenece al club en cuestión");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -295,7 +295,7 @@ public class NuevaObra extends javax.swing.JPanel {
                         .addContainerGap(53, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(PertClub)
+                            .addComponent(AudClub)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(Continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -357,7 +357,7 @@ public class NuevaObra extends javax.swing.JPanel {
                             .addComponent(Cap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Label4))))
                 .addGap(18, 18, 18)
-                .addComponent(PertClub)
+                .addComponent(AudClub)
                 .addGap(18, 18, 18)
                 .addComponent(Continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(70, Short.MAX_VALUE))
@@ -386,15 +386,47 @@ public class NuevaObra extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos que son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }else{
-        if(audi.getSelectedIndex()!=0){
-               query.CrearObra(duracion(),"inactiva", TitObra.getText(), Integer.parseInt(Costo.getText()), audi.getSelectedIndex());
+        if((audi.getItemAt(0)==null) && (NuevoAuditorio.isSelected()==false)){
+                JOptionPane.showMessageDialog(null, "Por favor agregue un nuevo auditorio.", "Error", JOptionPane.ERROR_MESSAGE);  
+                return false;
+        }else if((NuevoAuditorio.isSelected()==true)){
+                  if (AudiNombre.getText().equals("Ej. Teresa Carreño")) {
+                  AudiNombre.setBorder(new LineBorder(Color.red));
+                  val = false;
+                    } else {
+                       AudiNombre.setBorder(new LineBorder(Color.gray));
+                        }
+                  if (Cap.getText().equals("Ej. 20000")) {
+                  Cap.setBorder(new LineBorder(Color.red));
+                  val = false;
+                    } else {
+                       Cap.setBorder(new LineBorder(Color.gray));
+                        }
+                  if (val == false) {
+                   JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos que son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+                    return false;
+                  }else if ((AudClub.isSelected()==true)){
+                   query.CrearAuditorio(Integer.parseInt(Cap.getText()), AudiNombre.getText(), query.BuscarCiudad2(club.getSelectedItem().toString()), query.BuscarClub(club.getSelectedItem().toString()));
+                    }else{
+                   query.CrearAuditorio(Integer.parseInt(Cap.getText()), AudiNombre.getText(), query.BuscarCiudad2(club.getSelectedItem().toString()),0);
+               }
+               query.CrearObra(duracion(),"inactiva", TitObra.getText(), Integer.parseInt(Costo.getText()));
                query.lib_obra(query.BuscarIsbn(libro.getSelectedItem().toString()));
-               query.club_obra(club.getSelectedIndex()+1);
-               
-                 }else{
-                 //Cuando sea audi nuevo
+               query.club_obra(query.BuscarClub(club.getSelectedItem().toString()));
+               TitObra.setText("");
+               Costo.setText("");
+               AudiNombre.setText("");
+               Cap.setText("");
                   }
+        else if((audi.getItemAt(0)!=null) && (NuevoAuditorio.isSelected()==false)){
+               query.CrearObra2(duracion(),"inactiva", TitObra.getText(), Integer.parseInt(Costo.getText()),query.BuscarAudi(audi.getSelectedItem().toString()));
+               query.lib_obra(query.BuscarIsbn(libro.getSelectedItem().toString()));
+               query.club_obra(query.BuscarClub(club.getSelectedItem().toString()));
+               TitObra.setText("");
+               Costo.setText("");
+                           }
         return true;
+        
         }
     }
     
@@ -445,9 +477,7 @@ public class NuevaObra extends javax.swing.JPanel {
                  }*/
     }//GEN-LAST:event_ContinuarMouseClicked
 
-public int buscarAud(){
-    return query.BuscarAudi(audi.getSelectedItem().toString());
-}    
+
   
 public int duracion(){
        String cadena = hora.getValue().toString();
@@ -504,7 +534,7 @@ public int duracion(){
             jLabel8.setVisible(true);
             Cap.setVisible(true);
             Label4.setVisible(true);
-            PertClub.setVisible(true);
+            AudClub.setVisible(true);
         }else{
             jLabel4.setVisible(false);
             AudiNombre.setVisible(false);
@@ -512,7 +542,7 @@ public int duracion(){
             jLabel8.setVisible(false);
             Cap.setVisible(false);
             Label4.setVisible(false);
-            PertClub.setVisible(false);
+            AudClub.setVisible(false);
         }
     }//GEN-LAST:event_NuevoAuditorioItemStateChanged
 
@@ -532,6 +562,7 @@ public int duracion(){
     }//GEN-LAST:event_clubItemStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox AudClub;
     private javax.swing.JTextField AudiNombre;
     private javax.swing.JTextField Cap;
     public javax.swing.JButton Continuar;
@@ -541,7 +572,6 @@ public int duracion(){
     private javax.swing.JLabel Label3;
     private javax.swing.JLabel Label4;
     private javax.swing.JCheckBox NuevoAuditorio;
-    private javax.swing.JCheckBox PertClub;
     private javax.swing.JTextField TitObra;
     private javax.swing.JComboBox<String> audi;
     private javax.swing.JComboBox<String> club;

@@ -156,7 +156,8 @@ public class QueriesAlberto {
         }
     }
      
-   public int BuscarIsbn(String nombre) {
+  
+  public int BuscarIsbn(String nombre) {
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps;
@@ -480,7 +481,39 @@ public class QueriesAlberto {
     }
 
 
-  public void CrearObra(int durac, String estatus, String titulo, int costo, int audi) {
+  public void CrearObra(int durac, String estatus, String titulo, int costo) {
+
+        String SQL = "INSERT INTO public.obra(\n" +
+            "	obra_duracion, obra_estatus, obra_titulo, costo_entrada, audi_id)\n" +
+            "	VALUES (?, ?, lower(?), ?, (SELECT audi_id from auditorio WHERE audi_id = (SELECT MAX(audi_id) FROM auditorio)));";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+        
+            ps.setInt(1, durac);
+            ps.setString(2, estatus);
+            ps.setString(3, titulo);
+            ps.setInt(4, costo);
+
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                JOptionPane.showMessageDialog(null, "Obra creada satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+            
+        }
+  
+  
+  public void CrearObra2(int durac, String estatus, String titulo, int costo, int audi) {
 
         String SQL = "INSERT INTO public.obra(\n" +
             "	obra_duracion, obra_estatus, obra_titulo, costo_entrada, audi_id)\n" +
@@ -518,19 +551,19 @@ public class QueriesAlberto {
 
             PreparedStatement ps;
             ResultSet res;
-            int dirId=0;
+            int auId=0;
             int club;
             ps = con.prepareStatement("SELECT audi_id, audi_nombre  "
-                    + "FROM auditrio "
+                    + "FROM auditorio "
                     + "WHERE audi_nombre = lower(?);");
             ps.setString(1, audi);
             
             res = ps.executeQuery();
 
             res.next();
-                dirId = res.getInt("audi_id");
+                auId = res.getInt("audi_id");
 
-            return dirId;    
+            return auId;    
            
             
         } catch (Exception e) {
@@ -594,5 +627,100 @@ public class QueriesAlberto {
 
      
  }
+  
+  
+  public void CrearAuditorio(int audi_capacidad, String audi_nombre, int dir_id, int club_id) {
+        
+            String SQL = "INSERT INTO public.auditorio(\n" +
+            "	audi_capacidad, audi_nombre, dir_id, club_id)\n" +
+            "	VALUES (?,lower(?),?,?);";
+            int filasafectadas = 0;
+
+            try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, audi_capacidad);
+            ps.setString(2, audi_nombre);
+            ps.setInt(3, dir_id);
+            
+            if (club_id == 0){
+                ps.setNull(4, java.sql.Types.NUMERIC);
+            }
+            else{
+                ps.setInt(4, club_id);
+            }
+            
+          
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        
+            
+        }
    
+  
+  public int BuscarCiudad2(String club) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+            int dirId=0;
+            ps = con.prepareStatement("SELECT dir_id  "
+                    + "FROM club "
+                    + "WHERE club_nombre = lower(?);");
+            ps.setString(1, club);
+            
+            res = ps.executeQuery();
+
+            res.next();
+                dirId = res.getInt("dir_id");
+
+            return dirId;    
+           
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return 0;
+            
+        }
+        
+       
+    }
+  
+  
+  public int BuscarClub(String club) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+            int dirId=0;
+            ps = con.prepareStatement("SELECT club_id,club_nombre "
+                    + "FROM club "
+                    + "WHERE club_nombre = lower(?);");
+            ps.setString(1, club);
+            
+            res = ps.executeQuery();
+
+            res.next();
+                dirId = res.getInt("club_id");
+
+            return dirId;    
+           
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return 0;
+            
+        }
+  }   
+  
 }

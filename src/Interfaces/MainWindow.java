@@ -690,7 +690,9 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             Titulo.setText("Nueva obra");
             ContentPannel.add(nuevaobra);
 
-        }/* else if (nuevaobra.val() == true) {
+        } else if (evt.equals(nuevaobra.Continuar)){
+            
+            if(nuevaobra.val() == true) {
 
             Alistar();
 
@@ -700,8 +702,9 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             OptionPannel.add(obras);
             Titulo.setText("Nueva obra");
             ContentPannel.add(nuevaobra2);
-
-        }*/ else if (evt.equals(nuevaobra2.Continuar)) {
+        }
+        }
+    else if (evt.equals(nuevaobra2.Continuar)) {
 
             /*Alistar();
 
@@ -762,7 +765,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
             cond = 2;
 
-        } else if (evt.equals(clubes.Libros)) {
+        }else if (evt.equals(clubes.Libros)) {
 
             Alistar();
             nuevolibro.inicio();
