@@ -192,10 +192,16 @@ public class CambioClub extends javax.swing.JPanel {
     }//GEN-LAST:event_Label3MouseExited
     
     public boolean Cambiar (){
-        int grup = query.grupAct(Integer.parseInt(CIMiem.getText()));
+        int grup = query.grupIdMiem(Integer.parseInt(CIMiem.getText()));
         if (grup != 0){
-            if (query.MiemInactivo(Motiv.getText(), Integer.parseInt(CIMiem.getText())) && query.HistIns(club.getSelectedItem().toString(), Integer.parseInt(CIMiem.getText()))){
+            if (query.MiemInactivo(Motiv.getText(), Integer.parseInt(CIMiem.getText())) && 
+                    query.HistIns(club.getSelectedItem().toString(), Integer.parseInt(CIMiem.getText())) && 
+                    query.borraMiemGrup(Integer.parseInt(CIMiem.getText()))){
+                pro.addmiemGrup(Integer.parseInt(CIMiem.getText()), query.clubid(club.getSelectedItem().toString()), 
+                        query.fechaHoy());
                 pro.removemiemGrup(grup);
+                JOptionPane.showMessageDialog(null, "Miembro cambiado con exito al club: "+club.getSelectedItem().toString(), 
+                        "Información", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             }
         }

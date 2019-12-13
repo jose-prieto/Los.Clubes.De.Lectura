@@ -15,7 +15,7 @@ public class ActCalendario extends javax.swing.JPanel {
     ProcedimientosExtra listen = new ProcedimientosExtra();
     Dialogo diag = new Dialogo();
     QueriesJose query = new QueriesJose();
-    int val = 7;
+    int val = 5;
     int val2 = 0;
     int cont = 0;
 
@@ -369,6 +369,7 @@ public class ActCalendario extends javax.swing.JPanel {
                         
                         HoraI.setEnabled(true);
                         HoraF.setEnabled(true);
+                        HoraI.removeItem("7:00 pm");
                     }else {
                         HoraI.setEnabled(true);
                         HoraF.setEnabled(true);
@@ -395,6 +396,7 @@ public class ActCalendario extends javax.swing.JPanel {
                         Moderador.removeAllItems();
                         
                         res = query.libros();
+                        Libro.removeAllItems();
                         if (res != null){
                             try {
                                 do{
@@ -406,6 +408,7 @@ public class ActCalendario extends javax.swing.JPanel {
                         }
                         
                         res = query.miemGrupo(getGrup());
+                        Moderador.removeAllItems();
                         if (res != null){
                             try {
                                 do{
