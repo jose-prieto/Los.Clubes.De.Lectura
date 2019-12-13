@@ -16,6 +16,7 @@ public class NuevaObra extends javax.swing.JPanel {
     Dialogo diag = new Dialogo ();
     QueriesAlberto query = new QueriesAlberto();
     QueriesJose queryJ = new QueriesJose();
+    int val = 1;
 
     public NuevaObra() {
 
@@ -25,6 +26,8 @@ public class NuevaObra extends javax.swing.JPanel {
         listen.FieldListener(Costo);
         listen.FieldListener(AudiNombre);
         listen.FieldListener(Cap);
+        listen.FieldListener(Personajes);
+        listen.FieldListener(Descripcion);
         
         jLabel4.setVisible(false);
         AudiNombre.setVisible(false);
@@ -33,6 +36,13 @@ public class NuevaObra extends javax.swing.JPanel {
         Cap.setVisible(false);
         Label4.setVisible(false);
         AudClub.setVisible(false);
+        jLabel10.setVisible(false);
+        Personajes.setVisible(false);
+        Agregar.setVisible(false);
+        Label5.setVisible(false);
+        jLabel11.setVisible(false);
+        Descripcion.setVisible(false);
+        Label6.setVisible(false);
         
         ResultSet res = queryJ.libros();
 
@@ -101,6 +111,13 @@ public class NuevaObra extends javax.swing.JPanel {
         Cap = new javax.swing.JTextField();
         Label4 = new javax.swing.JLabel();
         AudClub = new javax.swing.JCheckBox();
+        jLabel10 = new javax.swing.JLabel();
+        Personajes = new javax.swing.JTextField();
+        Agregar = new javax.swing.JButton();
+        Label5 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        Descripcion = new javax.swing.JTextField();
+        Label6 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(707, 541));
         setMinimumSize(new java.awt.Dimension(707, 541));
@@ -139,7 +156,7 @@ public class NuevaObra extends javax.swing.JPanel {
         jLabel7.setText("Duración en horas");
 
         Continuar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Continuar.setText("Continuar >");
+        Continuar.setText("Continuar ");
         Continuar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ContinuarMouseClicked(evt);
@@ -260,12 +277,75 @@ public class NuevaObra extends javax.swing.JPanel {
         AudClub.setForeground(new java.awt.Color(51, 51, 51));
         AudClub.setText("Este auditorio pertenece al club en cuestión");
 
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel10.setText("Personaje");
+
+        Personajes.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Personajes.setForeground(new java.awt.Color(204, 204, 255));
+        Personajes.setText("Ej. Caperucita roja");
+        Personajes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PersonajesActionPerformed(evt);
+            }
+        });
+
+        Agregar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Agregar.setText("Agregar");
+        Agregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AgregarMouseClicked(evt);
+            }
+        });
+        Agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarActionPerformed(evt);
+            }
+        });
+
+        Label5.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
+        Label5.setForeground(new java.awt.Color(255, 0, 0));
+        Label5.setText("(*)");
+        Label5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Label5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Label5MouseExited(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel11.setText("Descripción");
+
+        Descripcion.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Descripcion.setForeground(new java.awt.Color(204, 204, 255));
+        Descripcion.setText("Breve descripción del personaje");
+        Descripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DescripcionActionPerformed(evt);
+            }
+        });
+
+        Label6.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
+        Label6.setForeground(new java.awt.Color(255, 0, 0));
+        Label6.setText("(*)");
+        Label6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Label6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Label6MouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(72, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,32 +371,45 @@ public class NuevaObra extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Label3)
-                            .addComponent(Label1))
-                        .addContainerGap(53, Short.MAX_VALUE))
+                            .addComponent(Label1)))
+                    .addComponent(AudClub)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AudClub)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel8))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(AudiNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
-                                            .addComponent(Cap))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Label2)
-                                    .addComponent(Label4))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel11)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Label6))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel10)
+                                        .addGap(33, 33, 33)
+                                        .addComponent(Personajes, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Label5)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel8))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(AudiNombre)
+                                    .addComponent(Cap, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Label2)
+                            .addComponent(Label4))))
+                .addGap(72, 72, 72))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(TitObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -358,13 +451,74 @@ public class NuevaObra extends javax.swing.JPanel {
                             .addComponent(Label4))))
                 .addGap(18, 18, 18)
                 .addComponent(AudClub)
-                .addGap(18, 18, 18)
+                .addGap(1, 1, 1)
                 .addComponent(Continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(Personajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Label5))
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Label6))))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+/*ResultSet rs, rs2;
+Miembros.removeAllItems();
+int clubid = queryJ.clubid(club.getSelectedItem().toString());
 
+try {
+    rs2 = queryJ.miemGrupo(clubid);
+    if (rs2 == null){
+        //aqui debes eliminar la obra porque el club no tiene miembros
+    }else{
+
+        try {
+            do{
+                Miembros.addItem(queryJ.ciToNom(rs2.getInt(1)));
+            }while (rs2.next());
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    } catch (Exception ex) {
+        Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
+try {
+    rs = queryJ.clubHijo(queryJ.clubid(club.getSelectedItem().toString()));
+        if (rs != null){
+            do{
+                rs2 = queryJ.miemClub(rs.getInt(1));
+                if (rs2 != null){
+                    try {
+                        do{
+                            Miembros.addItem(queryJ.ciToNom(rs2.getInt(1)));
+                        }while (rs2.next());
+                    } catch (SQLException ex) {
+                        Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }while (rs.next());
+        }
+} catch (Exception ex) {
+    Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+}*/
     private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
+        
+        if(val() == true) {
+            mostrar();
+            val = 0;
+        }
         
     }//GEN-LAST:event_ContinuarActionPerformed
 
@@ -428,6 +582,36 @@ public class NuevaObra extends javax.swing.JPanel {
         return true;
         
         }
+    }
+    
+    public boolean val2(){
+        boolean val = true;
+        if (Personajes.getText().equals("Ej. Caperucita roja")){
+            Personajes.setBorder(new LineBorder(Color.red));
+            val = false;
+        }else{
+            Personajes.setBorder(new LineBorder(Color.gray));
+        }
+        if (Descripcion.getText().equals("Breve descripción del personaje")){
+            Descripcion.setBorder(new LineBorder(Color.red));
+            val = false;
+        }else{
+            Descripcion.setBorder(new LineBorder(Color.gray));
+        }
+        if (!val){
+            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos que son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return val;
+    }
+    
+    public void mostrar(){
+        jLabel10.setVisible(true);
+        Personajes.setVisible(true);
+        Agregar.setVisible(true);
+        Label5.setVisible(true);
+        Label6.setVisible(true);
+        jLabel11.setVisible(true);
+        Descripcion.setVisible(true);
     }
     
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
@@ -561,22 +745,72 @@ public int duracion(){
         }
     }//GEN-LAST:event_clubItemStateChanged
 
+    private void PersonajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PersonajesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PersonajesActionPerformed
+
+    private void AgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AgregarMouseClicked
+
+    private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
+        // TODO add your handling code here:
+        if (val2() && queryJ.addPersonaje(Personajes.getText(), Descripcion.getText())){
+            JOptionPane.showMessageDialog(null, "Personaje agregado correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            val = 1;
+        }
+        
+    }//GEN-LAST:event_AgregarActionPerformed
+
+    private void Label5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label5MouseEntered
+        // TODO add your handling code here:
+        diag.posicion(Label5.getLocationOnScreen().x-29, Label5.getLocationOnScreen().y+15);
+        diag.setVisible(true);
+    }//GEN-LAST:event_Label5MouseEntered
+
+    private void Label5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label5MouseExited
+        // TODO add your handling code here:
+        diag.setVisible(false);
+    }//GEN-LAST:event_Label5MouseExited
+
+    private void DescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DescripcionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DescripcionActionPerformed
+
+    private void Label6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label6MouseEntered
+        // TODO add your handling code here:
+        diag.posicion(Label6.getLocationOnScreen().x-29, Label6.getLocationOnScreen().y+15);
+        diag.setVisible(true);
+    }//GEN-LAST:event_Label6MouseEntered
+
+    private void Label6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label6MouseExited
+        // TODO add your handling code here:
+        diag.setVisible(false);
+    }//GEN-LAST:event_Label6MouseExited
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton Agregar;
     private javax.swing.JCheckBox AudClub;
     private javax.swing.JTextField AudiNombre;
     private javax.swing.JTextField Cap;
     public javax.swing.JButton Continuar;
     private javax.swing.JTextField Costo;
+    private javax.swing.JTextField Descripcion;
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label2;
     private javax.swing.JLabel Label3;
     private javax.swing.JLabel Label4;
+    private javax.swing.JLabel Label5;
+    private javax.swing.JLabel Label6;
     private javax.swing.JCheckBox NuevoAuditorio;
+    private javax.swing.JTextField Personajes;
     private javax.swing.JTextField TitObra;
     private javax.swing.JComboBox<String> audi;
     private javax.swing.JComboBox<String> club;
     private javax.swing.JSpinner hora;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

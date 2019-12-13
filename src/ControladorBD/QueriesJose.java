@@ -537,6 +537,35 @@ public class QueriesJose {
         return false;
     }
     
+    /*SELECT doc_id
+	FROM public.hist_miembro
+	WHERE club_id = 1 AND doc_id =27896541 AND estatus_mie='activo';*/
+    
+    public ResultSet miemClub(int clubid) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+            
+            ps = con.prepareStatement("SELECT doc_id\n" +
+"	FROM public.hist_miembro\n" +
+"	WHERE club_id = 1 AND estatus_mie='activo';");
+            ps.setInt(1, clubid);
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return res;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            
+        }
+        return null;
+    }
+    
     public boolean BorraPago(int docid, String clubnom) {
         
         String SQL = "DELETE FROM public.pago\n" +
@@ -1126,6 +1155,32 @@ public class QueriesJose {
 
             ps = con.prepareStatement("SELECT club_id, grup_tipo FROM public.grupo WHERE grup_id=?;");
             ps.setInt(1, idgrup);
+                   
+            res = ps.executeQuery();
+            if (res.next()) {
+                return res;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+            
+        }
+        
+        return null;
+    }
+    
+    public ResultSet clubHijo(int idPadre) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT club1\n" +
+"	FROM public.asociacion\n" +
+"	WHERE club2 = ?;");
+            ps.setInt(1, idPadre);
                    
             res = ps.executeQuery();
             if (res.next()) {
@@ -1922,5 +1977,35 @@ public class QueriesJose {
         }
         
         return 0;
+    }
+    
+    //obras queries
+    
+    public boolean addPersonaje(String nombre, String desc) {
+        
+        String SQL = "INSERT INTO public.personaje(\n" +
+"	obra_id, perso_nombre, perso_desc)\n" +
+"	VALUES ((SELECT MAX(obra_id)\n" +
+"	FROM public.obra), ?, ?);";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setString(1, nombre);
+            ps.setString(2, desc);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;
     }
 }

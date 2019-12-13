@@ -690,21 +690,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             Titulo.setText("Nueva obra");
             ContentPannel.add(nuevaobra);
 
-        } else if (evt.equals(nuevaobra.Continuar)){
-            
-            if(nuevaobra.val() == true) {
-
-            Alistar();
-
-            obras.setVisible(true);
-            nuevaobra2.setVisible(true);
-
-            OptionPannel.add(obras);
-            Titulo.setText("Nueva obra");
-            ContentPannel.add(nuevaobra2);
-        }
-        }
-    else if (evt.equals(nuevaobra2.Continuar)) {
+        }else if (evt.equals(nuevaobra2.Continuar)) {
 
             /*Alistar();
 
