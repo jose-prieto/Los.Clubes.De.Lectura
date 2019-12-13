@@ -200,7 +200,7 @@ public class QueriesJose {
             PreparedStatement ps = con.prepareStatement(SQL);
             
             ps.setInt(1, ced);
-            ps.setInt(2, isbn(isbn));
+            ps.setLong(2, isbn(isbn));
             ps.setInt(3, pos);
             
             filasafectadas = ps.executeUpdate();
@@ -229,7 +229,7 @@ public class QueriesJose {
             PreparedStatement ps = con.prepareStatement(SQL);
             
             ps.setInt(1, ced);
-            ps.setInt(2, isbn(isbn));
+            ps.setLong(2, isbn(isbn));
             
             filasafectadas = ps.executeUpdate();
 
@@ -700,7 +700,7 @@ public class QueriesJose {
     
     //libros
     
-    public int isbn(String libro) {
+    public long isbn(String libro) {
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps;
@@ -714,7 +714,7 @@ public class QueriesJose {
             res = ps.executeQuery();
 
             if (res.next()) {
-                return res.getInt(1);
+                return res.getLong(1);
             }
 
         } catch (Exception e) {
@@ -783,7 +783,7 @@ public class QueriesJose {
         try (Connection con = conexion.getConnection();
                 PreparedStatement pstmt = con.prepareStatement(SQL)) {
  
-            pstmt.setInt(1, isbn(isbn));
+            pstmt.setLong(1, isbn(isbn));
             pstmt.setLong(2, isbn2);
             
             affectedrows = pstmt.executeUpdate();
@@ -1499,7 +1499,7 @@ public class QueriesJose {
             ps.setInt(1, dia);
             ps.setInt(2, grup);
             ps.setInt(3, club);
-            ps.setInt(4, isbn(libro));
+            ps.setLong(4, isbn(libro));
             ps.setInt(5, grup);
             ps.setInt(6, club);
             ps.setInt(7, club);
@@ -1629,7 +1629,7 @@ public class QueriesJose {
         try (Connection con = conexion.getConnection();
                 PreparedStatement pstmt = con.prepareStatement(SQL)) {
  
-            pstmt.setInt(1, isbn(isbn));
+            pstmt.setLong(1, isbn(isbn));
             pstmt.setInt(2, grupid);
             
             affectedrows = pstmt.executeUpdate();
