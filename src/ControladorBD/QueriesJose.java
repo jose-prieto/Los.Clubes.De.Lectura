@@ -88,6 +88,29 @@ public class QueriesJose {
         return false;
     }
     
+    public boolean borraMiemGrup(int idmiem){
+        String SQL = "DELETE FROM public.g_lector\n" +
+"	WHERE doc_id=?;";
+ 
+        int affectedrows = 0;
+ 
+        try (Connection con = conexion.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(SQL)) {
+ 
+            pstmt.setInt(1, idmiem);
+            
+            affectedrows = pstmt.executeUpdate();
+            if (affectedrows != 0){
+                return true;
+            }else{
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+    
     public boolean ActMiembM(int idrep, int idmiemb, int dir) {
         String SQL = "UPDATE public.miembro\n" +
 "	SET dir_id=?, representante_m=?\n" +
@@ -224,8 +247,8 @@ public class QueriesJose {
     public boolean MiemInactivo(String motiv, int doc) {
         
         String SQL = "UPDATE public.hist_miembro\n" +
-                        "	SET estatus_mie='Inactivo', fechaf_mie=current_date, motivo_retiro=?\n" +
-                        "	WHERE estatus_mie = 'activo' and doc_id = ?;";
+                        "	SET estatus_mie='inactivo', fechaf_mie=current_date, motivo_retiro=?\n" +
+                        "	WHERE estatus_mie = 'activo' AND doc_id = ?;";
         int filasafectadas = 0;
         
         try (Connection con = conexion.getConnection()){
@@ -313,6 +336,30 @@ public class QueriesJose {
             ResultSet res;
 
             ps = con.prepareStatement("SELECT current_date - interval '9 year';");
+                   
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return res.getDate(1);
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
+            
+        }
+        
+        return null;
+    }
+    
+    public Date fechaHoy() {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT current_date;");
                    
             res = ps.executeQuery();
 
@@ -438,9 +485,9 @@ public class QueriesJose {
     public boolean HistIns(String clubnom, int miemid) {
         
         String SQL = "INSERT INTO public.hist_miembro(\n" +
-                        "	fechai_mie, club_id, doc_id, estatus_mie)\n" +
-                        "	VALUES (current_date, ?, ?, 'activo');";
-        int filasafectadas = 0;
+"	fechai_mie, club_id, doc_id, estatus_mie)\n" +
+"	VALUES (current_date, ?, ?, 'activo');";
+        int filasafectadas;
         
         try (Connection con = conexion.getConnection()){
 
@@ -457,7 +504,6 @@ public class QueriesJose {
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-            System.out.println(e.toString());
             return false;
         }
         return false;
@@ -1043,7 +1089,7 @@ public class QueriesJose {
         return false;
     }
     
-    public int grupAct(int docid) {
+    public int grupIdMiem(int docid) {
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps;
@@ -1051,13 +1097,13 @@ public class QueriesJose {
 
             ps = con.prepareStatement("SELECT grup_id\n" +
 "	FROM public.g_lector\n" +
-"	WHERE doc_id=24217857 AND fechaf_gru is null;");
+"	WHERE doc_id=? AND fechaf_gru is null;");
             ps.setInt(1, docid);
                    
             res = ps.executeQuery();
 
             if (res.next()) {
-                return res.getInt(1);
+                return 1;
             }
 
         } catch (Exception e) {

@@ -16,7 +16,6 @@ public class ClubesPannel extends javax.swing.JPanel {
 
         Libros = new javax.swing.JButton();
         Miembros = new javax.swing.JButton();
-        Grupos = new javax.swing.JButton();
         Pagos = new javax.swing.JButton();
         Club = new javax.swing.JButton();
 
@@ -66,29 +65,6 @@ public class ClubesPannel extends javax.swing.JPanel {
         Miembros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MiembrosActionPerformed(evt);
-            }
-        });
-
-        Grupos.setBackground(new java.awt.Color(153, 153, 153));
-        Grupos.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Grupos.setForeground(new java.awt.Color(204, 204, 204));
-        Grupos.setText("Grupos");
-        Grupos.setBorder(null);
-        Grupos.setBorderPainted(false);
-        Grupos.setContentAreaFilled(false);
-        Grupos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Grupos.setFocusPainted(false);
-        Grupos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                GruposMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                GruposMouseExited(evt);
-            }
-        });
-        Grupos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GruposActionPerformed(evt);
             }
         });
 
@@ -150,7 +126,6 @@ public class ClubesPannel extends javax.swing.JPanel {
             .addComponent(Libros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Miembros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Pagos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(Grupos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Club, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -164,9 +139,7 @@ public class ClubesPannel extends javax.swing.JPanel {
                 .addComponent(Libros, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(Miembros, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(Grupos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addContainerGap(295, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -218,23 +191,6 @@ public class ClubesPannel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_PagosActionPerformed
 
-    private void GruposMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GruposMouseEntered
-        // TODO add your handling code here:
-        Grupos.setContentAreaFilled(true);
-        Grupos.setBackground(pro.CasillaSelect);
-        Grupos.setForeground(pro.FuenteSelect);
-    }//GEN-LAST:event_GruposMouseEntered
-
-    private void GruposMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GruposMouseExited
-        // TODO add your handling code here:
-        Grupos.setContentAreaFilled(false);
-        Grupos.setForeground(pro.FuenteNoSelect);
-    }//GEN-LAST:event_GruposMouseExited
-
-    private void GruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GruposActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_GruposActionPerformed
-
     private void MiembrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiembrosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MiembrosActionPerformed
@@ -259,7 +215,6 @@ public class ClubesPannel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton Club;
-    public javax.swing.JButton Grupos;
     public javax.swing.JButton Libros;
     public javax.swing.JButton Miembros;
     public javax.swing.JButton Pagos;
