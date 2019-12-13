@@ -125,13 +125,24 @@ public class RegistraMiembro extends javax.swing.JPanel {
     public boolean CrearMiembro() {
         
         return (query.CrearMiemb(getCedula(Cedula.getText()), getNombre(), getNombre2(), getApellido(), getApellido2(), 
-                getGenero(), getNacimiento()) && query.HistIns(club.getSelectedItem().toString(), getCedula(Cedula.getText())));
+                getGenero(), getNacimiento()) && query.HistIns(club.getSelectedItem().toString(), getCedula(Cedula.getText())) &&
+                pago());
     
+    }
+    
+    public boolean pago(){
+        if (query.clubInst(club.getSelectedItem().toString())){
+            if (query.HistPago(club.getSelectedItem().toString(), Integer.parseInt(Cedula.getText()))){
+                return true;
+            }
+        }
+        return false;
     }
     
     public boolean ElimMiem(){
         query.borraHist(getCedula(Cedula.getText()));
         query.BorraIdioMiem(getCedula(Cedula.getText()));
+        query.BorraPago();
         if (!query.borraMiem(getCedula(Cedula.getText()))){
             return false;
         }
@@ -457,12 +468,13 @@ public class RegistraMiembro extends javax.swing.JPanel {
                     .addComponent(Label2)
                     .addComponent(Apellido2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel3)
-                    .addComponent(Genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Label4))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7)
+                        .addComponent(Genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Label4)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)

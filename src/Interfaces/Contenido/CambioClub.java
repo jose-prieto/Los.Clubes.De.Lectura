@@ -15,6 +15,7 @@ public class CambioClub extends javax.swing.JPanel {
     ProcedimientosExtra listen = new ProcedimientosExtra();
     Dialogo diag = new Dialogo ();
     QueriesJose query = new QueriesJose();    
+    ProcedimientosExtra pro = new ProcedimientosExtra();
 
     public CambioClub() {
         initComponents();
@@ -191,8 +192,12 @@ public class CambioClub extends javax.swing.JPanel {
     }//GEN-LAST:event_Label3MouseExited
     
     public boolean Cambiar (){
-        if (query.MiemInactivo(Motiv.getText(), Integer.parseInt(CIMiem.getText())) && query.HistIns(club.getSelectedItem().toString(), Integer.parseInt(CIMiem.getText()))){
-            return true;
+        int grup = query.grupAct(Integer.parseInt(CIMiem.getText()));
+        if (grup != 0){
+            if (query.MiemInactivo(Motiv.getText(), Integer.parseInt(CIMiem.getText())) && query.HistIns(club.getSelectedItem().toString(), Integer.parseInt(CIMiem.getText()))){
+                pro.removemiemGrup(grup);
+                return true;
+            }
         }
         return false;
     }
@@ -206,7 +211,7 @@ public class CambioClub extends javax.swing.JPanel {
     
     public void inicio(){
         ResultSet res = query.clubes();
-        
+        club.removeAllItems();
         if (res != null){
             try {
                 do{

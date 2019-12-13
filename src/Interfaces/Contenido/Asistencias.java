@@ -1,18 +1,61 @@
 package Interfaces.Contenido;
 
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
+
+import ControladorBD.QueriesJose;
 
 
 public class Asistencias extends javax.swing.JPanel {
 
     ProcedimientosExtra listen = new ProcedimientosExtra();
     Dialogo diag = new Dialogo();
+    QueriesJose query = new QueriesJose();
     
     public Asistencias() {
         initComponents();
 
         listen.FieldListener(IdGrupo);
+    }
+    
+    public void vaciar(){
+        IdGrupo.setText("");
+    }
+    
+    public int getGrup(){
+        if (IdGrupo.getText().equals("Ej. 123") || IdGrupo.getText().equals("")){
+            return 0;
+        }else {
+            return Integer.parseInt(IdGrupo.getText());
+        }
+    }
+    
+    public boolean val(){
+        ResultSet rs;
+        rs = query.inasistentes(getGrup());
+        
+        if (IdGrupo.getText().equals("Ej. 1234")){
+            IdGrupo.setBorder(new LineBorder(Color.red));
+            JOptionPane.showMessageDialog(null, "Debe rellenar los campos obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }else{
+            IdGrupo.setBorder(new LineBorder(Color.gray));
+        }
+        if (rs == null){
+            IdGrupo.setBorder(new LineBorder(Color.red));
+            JOptionPane.showMessageDialog(null, "No existe reunion pautada para hoy del grupo"+getGrup(), "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }else{
+            IdGrupo.setBorder(new LineBorder(Color.gray));
+        }
+            
+        
+        return true;
     }
 
     @SuppressWarnings("unchecked")
@@ -38,9 +81,14 @@ public class Asistencias extends javax.swing.JPanel {
         IdGrupo.setForeground(new java.awt.Color(204, 204, 255));
         IdGrupo.setText("Ej. 1234");
         IdGrupo.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
-        IdGrupo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IdGrupoActionPerformed(evt);
+        IdGrupo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                IdGrupoFocusLost(evt);
+            }
+        });
+        IdGrupo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                IdGrupoKeyTyped(evt);
             }
         });
 
@@ -69,52 +117,50 @@ public class Asistencias extends javax.swing.JPanel {
         });
 
         Miembro.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Miembro.setForeground(new java.awt.Color(204, 204, 255));
+        Miembro.setForeground(new java.awt.Color(51, 51, 51));
         Miembro.setMaximumRowCount(15);
-        Miembro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Miembro" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(IdGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Label1))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Asistencia))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Miembro, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Asistencia)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                        .addGap(58, 58, 58)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(80, 80, 80)
+                                .addComponent(IdGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(Miembro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Label1)
+                .addGap(59, 59, 59))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addGap(104, 104, 104)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(IdGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label1))
-                .addGap(80, 80, 80)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(Miembro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Asistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(340, Short.MAX_VALUE))
+                    .addComponent(Miembro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(112, 112, 112)
+                .addComponent(Asistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(201, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void IdGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdGrupoActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_IdGrupoActionPerformed
 
     private void Label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label1MouseEntered
         // TODO add your handling code here:
@@ -129,14 +175,39 @@ public class Asistencias extends javax.swing.JPanel {
 
     private void AsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsistenciaActionPerformed
         // TODO add your handling code here:
-        if (IdGrupo.getText().equals("Ej. 1234")) {
-            IdGrupo.setBorder(new LineBorder(Color.red));
-        } else {
-            IdGrupo.setBorder(new LineBorder(Color.gray));
+        if (val() && query.asistentes(Integer.parseInt(Miembro.getSelectedItem().toString()))){
+            JOptionPane.showMessageDialog(null, "El miembro: "+query.ciToNom(Integer.parseInt(Miembro.getSelectedItem().toString()))+"\nMarcado como asistente.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
         }
 
     }//GEN-LAST:event_AsistenciaActionPerformed
 
+    private void IdGrupoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IdGrupoFocusLost
+        // TODO add your handling code here:
+        Miembro.removeAllItems();
+        if (getGrup() != 0){
+            ResultSet rs;
+            rs = query.inasistentes(getGrup());
+
+            if (rs != null){
+                try {
+                    do{
+                        Miembro.addItem(String.valueOf(rs.getInt(1)));
+                    }while (rs.next());
+                } catch (SQLException ex) {
+                    Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }//GEN-LAST:event_IdGrupoFocusLost
+
+    private void IdGrupoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IdGrupoKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9' || IdGrupo.getText().length() > 2){
+            evt.consume();
+        }
+    }//GEN-LAST:event_IdGrupoKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Asistencia;

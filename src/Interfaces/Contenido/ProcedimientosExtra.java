@@ -229,4 +229,20 @@ public class ProcedimientosExtra {
         }
         return true;
     }
+    
+    public void reuProxSem(){
+        ResultSet res = query.ReusHoy();
+        
+        if (res != null){
+            try {
+                do{
+                    if (!query.reuProxSem(res.getInt(1))){
+                        query.crearReuProxSem(res.getInt(1), res.getInt(2), res.getInt(3), res.getDate(4), res.getInt(5));
+                    }
+                }while (res.next());
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
 }

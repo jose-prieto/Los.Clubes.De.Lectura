@@ -69,7 +69,7 @@ public class ReunionesPannel extends javax.swing.JPanel{
         Cierre.setBackground(new java.awt.Color(153, 153, 153));
         Cierre.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Cierre.setForeground(new java.awt.Color(204, 204, 204));
-        Cierre.setText("Cierre de reunión");
+        Cierre.setText("Cierre de discusión");
         Cierre.setBorder(null);
         Cierre.setBorderPainted(false);
         Cierre.setContentAreaFilled(false);

@@ -30,7 +30,6 @@ public class Pagos extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         IdPaga = new javax.swing.JTextField();
         Registrar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         Label = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(707, 541));
@@ -59,9 +58,6 @@ public class Pagos extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton2.setText("Reestablecer");
-
         Label.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         Label.setForeground(new java.awt.Color(255, 0, 0));
         Label.setText("(*)");
@@ -82,15 +78,13 @@ public class Pagos extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(278, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(110, 110, 110)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(IdPaga)))
+                        .addComponent(IdPaga, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Label)
                 .addGap(116, 116, 116))
@@ -104,9 +98,7 @@ public class Pagos extends javax.swing.JPanel {
                     .addComponent(IdPaga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label))
                 .addGap(65, 65, 65)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(326, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -157,7 +149,6 @@ public class Pagos extends javax.swing.JPanel {
     private javax.swing.JTextField IdPaga;
     private javax.swing.JLabel Label;
     private javax.swing.JButton Registrar;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

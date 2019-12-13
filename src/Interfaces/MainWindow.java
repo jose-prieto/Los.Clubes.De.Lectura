@@ -88,13 +88,13 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         if (conexion.getConnection() != null){
             
             initComponents();
-            ejecutar.iniciarBD();
 
             setIconImage(new ImageIcon(getClass().getResource("../Images/LogoApp.png")).getImage());
 
             OptionPannel.add(main);
             ContentPannel.add(vacio);
             Atras.setVisible(false);
+            proc.reuProxSem();
             
             actionlist();
 
@@ -153,6 +153,14 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             nuevaobra.Continuar.addActionListener(this);
             nuevaobra2.Continuar.addActionListener(this);
     }
+    
+    public void vaciar(){
+        nuevomiembro3.vaciar();
+        nuevomiembro2.vaciar();
+        nuevomiembro.vaciar();
+        actualizar.vaciar();
+        asistencia.vaciar();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -195,7 +203,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         Atras.setBorder(null);
         Atras.setBorderPainted(false);
         Atras.setContentAreaFilled(false);
-        Atras.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Atras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Atras.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         Atras.setFocusPainted(false);
         Atras.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -240,7 +248,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         HomeButton.setBorder(null);
         HomeButton.setBorderPainted(false);
         HomeButton.setContentAreaFilled(false);
-        HomeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        HomeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         HomeButton.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         HomeButton.setFocusPainted(false);
         HomeButton.setMaximumSize(new java.awt.Dimension(70, 34));
@@ -416,16 +424,13 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         if (cond2 == 2){
             nuevomiembro3.elimRep();
             nuevomiembro.ElimMiem();
-            nuevomiembro3.vaciar();
-            nuevomiembro2.vaciar();
-            nuevomiembro.vaciar();
         }
         if (cond2 == 1){
             nuevomiembro.ElimMiem();
-            nuevomiembro3.vaciar();
-            nuevomiembro2.vaciar();
-            nuevomiembro.vaciar();
         }
+        cond2 = 0;
+        
+        vaciar();
 
     }//GEN-LAST:event_HomeButtonActionPerformed
 
@@ -459,16 +464,12 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         if (cond2 == 2){
             nuevomiembro3.elimRep();
             nuevomiembro.ElimMiem();
-            nuevomiembro3.vaciar();
-            nuevomiembro2.vaciar();
-            nuevomiembro.vaciar();
         }
         if (cond2 == 1){
             nuevomiembro.ElimMiem();
-            nuevomiembro3.vaciar();
-            nuevomiembro2.vaciar();
-            nuevomiembro.vaciar();
         }
+        cond2 = 0;
+        vaciar();
         
     }//GEN-LAST:event_AtrasActionPerformed
 
@@ -486,6 +487,13 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
     private void CerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarMouseClicked
         // TODO add your handling code here:
+        if (cond2 == 2){
+            nuevomiembro3.elimRep();
+            nuevomiembro.ElimMiem();
+        }
+        if (cond2 == 1){
+            nuevomiembro.ElimMiem();
+        }
         System.exit(0);
     }//GEN-LAST:event_CerrarMouseClicked
 
@@ -622,6 +630,8 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             cond = 1;
 
             Atras.setVisible(true);
+            actualizar.vaciar();
+            asistencia.vaciar();
 
         } else if (evt.equals(reuniones.Calendario)) {
 
@@ -637,10 +647,13 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             cond = 1;
 
             Atras.setVisible(true);
+            actualizar.vaciar();
+            asistencia.vaciar();
 
         } else if (evt.equals(reuniones.Cierre)) {
 
             Alistar();
+            cierre.inicio();
 
             reuniones.setVisible(true);
             cierre.setVisible(true);
@@ -648,6 +661,8 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             OptionPannel.add(reuniones);
             Titulo.setText("Cierre de discusión");
             ContentPannel.add(cierre);
+            actualizar.vaciar();
+            asistencia.vaciar();
 
         } else if (evt.equals(main.Obras)) {
 
@@ -675,7 +690,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             Titulo.setText("Nueva obra");
             ContentPannel.add(nuevaobra);
 
-        } else if (nuevaobra.val() == true) {
+        }/* else if (nuevaobra.val() == true) {
 
             Alistar();
 
@@ -686,7 +701,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             Titulo.setText("Nueva obra");
             ContentPannel.add(nuevaobra2);
 
-        } else if (evt.equals(nuevaobra2.Continuar)) {
+        }*/ else if (evt.equals(nuevaobra2.Continuar)) {
 
             /*Alistar();
 

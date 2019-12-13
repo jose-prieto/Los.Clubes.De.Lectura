@@ -15,8 +15,9 @@ public class ActCalendario extends javax.swing.JPanel {
     ProcedimientosExtra listen = new ProcedimientosExtra();
     Dialogo diag = new Dialogo();
     QueriesJose query = new QueriesJose();
-    int val = 1;
+    int val = 7;
     int val2 = 0;
+    int cont = 0;
 
     public ActCalendario() {
 
@@ -26,11 +27,27 @@ public class ActCalendario extends javax.swing.JPanel {
         
         Libro.setVisible(false);
         libro.setVisible(false);
+        Moderador.setVisible(false);
+        moderador.setVisible(false);
     }
     
     public boolean val (){
+        ResultSet rs;
+        rs = query.Info2(getGrup());
+        
+        if (rs != null){
+            cont = 0;
+            try {
+                do{
+                    cont++;
+                }while (rs.next());
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         if (IdGrup.getText().equals("Ej. 123")){
             IdGrup.setBorder(new LineBorder(Color.red));
+            JOptionPane.showMessageDialog(null, "Debe rellenar los campos obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }else if (query.bucarclub(getGrup()) == null){
             IdGrup.setBorder(new LineBorder(Color.red));
@@ -38,10 +55,24 @@ public class ActCalendario extends javax.swing.JPanel {
         }else{
             IdGrup.setBorder(new LineBorder(Color.gray));
         }
+        if (cont < val){
+            JOptionPane.showMessageDialog(null, "El grupo: "+getGrup()+"\nDebe tener un mínimo de: "+val+
+                    " personas\nPara organizar una reunión\nY el grupo solo cuenta con: "+cont+
+                    " personas", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
         return true;
     }
     
     public int getGrup(){
+        if (IdGrup.getText().equals("Ej. 123") || IdGrup.getText().equals("")){
+            return 0;
+        }else {
+            return Integer.parseInt(IdGrup.getText());
+        }
+    }
+    
+    public int getMod(){
         if (IdGrup.getText().equals("Ej. 123") || IdGrup.getText().equals("")){
             return 0;
         }else {
@@ -57,13 +88,24 @@ public class ActCalendario extends javax.swing.JPanel {
     }
     
     public boolean crearReuN(){
-        ResultSet rs;
-        rs = query.Info(getGrup());
+        ResultSet rs, rs2;
+        rs = query.Info2(getGrup());
+        rs2 = query.Info(getGrup(), Integer.parseInt(Moderador.getSelectedItem().toString()));
+        
+        if (rs2 != null){
+            try {
+                query.crearReuN(indexFecha(), getGrup(), rs2.getInt(1), Libro.getSelectedItem().toString(),
+                        rs2.getDate(2), Integer.parseInt(Moderador.getSelectedItem().toString()));
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         
         if (rs != null){
+            cont = 0;
             try {
                 do{
-                    query.crearReuN(indexFecha(), getGrup(), rs.getInt(1), Libro.getSelectedItem().toString(), rs.getDate(2), rs.getInt(3));
+                    cont++;
                     query.Inasistencia(indexFecha(), getGrup(), rs.getInt(1), rs.getDate(2), rs.getInt(3));
                 }while (rs.next());
             } catch (SQLException ex) {
@@ -87,6 +129,8 @@ public class ActCalendario extends javax.swing.JPanel {
         HoraF.setEnabled(false);
         Libro.setVisible(false);
         libro.setVisible(false);
+        Moderador.setVisible(false);
+        moderador.setVisible(false);
         IdGrup.setForeground(new Color(204,204,255));
         IdGrup.setText("Ej. 123");
     }
@@ -107,6 +151,8 @@ public class ActCalendario extends javax.swing.JPanel {
         HoraF = new javax.swing.JComboBox<>();
         Libro = new javax.swing.JComboBox<>();
         libro = new javax.swing.JLabel();
+        Moderador = new javax.swing.JComboBox<>();
+        moderador = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(707, 541));
         setMinimumSize(new java.awt.Dimension(707, 541));
@@ -185,17 +231,31 @@ public class ActCalendario extends javax.swing.JPanel {
         libro.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         libro.setText("Libro a leer");
 
+        Moderador.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Moderador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModeradorActionPerformed(evt);
+            }
+        });
+
+        moderador.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        moderador.setText("Moderador");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(moderador)
+                        .addGap(48, 48, 48)
+                        .addComponent(Moderador, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 475, Short.MAX_VALUE)
                         .addComponent(Registrar))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
@@ -203,7 +263,7 @@ public class ActCalendario extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Dias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(IdGrup)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(libro))
@@ -212,7 +272,7 @@ public class ActCalendario extends javax.swing.JPanel {
                             .addComponent(Libro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(HoraI, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
                                 .addComponent(HoraF, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -243,8 +303,12 @@ public class ActCalendario extends javax.swing.JPanel {
                     .addComponent(Libro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(libro))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Moderador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(moderador))
+                .addGap(18, 18, 18)
                 .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(240, Short.MAX_VALUE))
+                .addContainerGap(194, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -252,12 +316,20 @@ public class ActCalendario extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         if (val2 == 1){
-            if (val() && Actualizar() && crearReuN()){
+            if (val() && Actualizar()){
+                crearReuN();
                 vaciar();
+                JOptionPane.showMessageDialog(null, "Próxima reunión pautada para el dia: "+Dias.getSelectedItem().toString()+
+                        "\nDesde las "+HoraI.getSelectedItem().toString()+" a las "+HoraF.getSelectedItem().toString(), 
+                        "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             }
         }else{
-            if (val() && Actualizar() && actReu()){
+            if (val() && Actualizar()){
+                actReu();
                 vaciar();
+                JOptionPane.showMessageDialog(null, "Próxima reunión pautada para el dia: "+Dias.getSelectedItem().toString()+
+                        "\nDesde las "+HoraI.getSelectedItem().toString()+" a las "+HoraF.getSelectedItem().toString(), 
+                        "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             }
         }
         
@@ -291,8 +363,8 @@ public class ActCalendario extends javax.swing.JPanel {
 
             try {
                 if (res != null){
-                    if (res.getString(2).equals("nino")){
-                        val = 2;
+                    if (res.getString(2).equals("niños")){
+                        val = 7;
                         HoraI.removeItemAt(2);
                         
                         HoraI.setEnabled(true);
@@ -301,19 +373,28 @@ public class ActCalendario extends javax.swing.JPanel {
                         HoraI.setEnabled(true);
                         HoraF.setEnabled(true);
                         
-                        if (val == 2){
+                        if (val == 7){
                             HoraI.addItem("7:00 pm");
                         }
-                        val = 1;
+                        if (res.getString(2).equals("jovenes")){
+                            val = 5;
+                        }
+                        if (res.getString(2).equals("adultos")){
+                            val = 10;
+                        }
                         
                     }
                     if (query.reuAbierta(getGrup()) == null){
                         val2 = 1;
-                        res = query.libros();
+                        
                         libro.setVisible(true);
                         Libro.setVisible(true);
+                        Moderador.setVisible(true);
+                        moderador.setVisible(true);
                         Libro.removeAllItems();
-
+                        Moderador.removeAllItems();
+                        
+                        res = query.libros();
                         if (res != null){
                             try {
                                 do{
@@ -323,9 +404,22 @@ public class ActCalendario extends javax.swing.JPanel {
                                 Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
                             }
                         }
+                        
+                        res = query.miemGrupo(getGrup());
+                        if (res != null){
+                            try {
+                                do{
+                                    Moderador.addItem(res.getString(1));
+                                }while (res.next());
+                            } catch (SQLException ex) {
+                                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
                     }else{
                         libro.setVisible(false);
                         Libro.setVisible(false);
+                        Moderador.setVisible(false);
+                        moderador.setVisible(false);
                         val2 = 0;
                     }
                 }else{
@@ -346,7 +440,16 @@ public class ActCalendario extends javax.swing.JPanel {
     private void HoraIItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_HoraIItemStateChanged
         // TODO add your handling code here:
         
-        if (val == 1){
+        if (val == 7){
+            if (HoraI.getSelectedItem().toString().equals("5:00 pm")){
+                HoraF.removeAllItems();
+                HoraF.addItem("6:00 pm");
+                HoraF.addItem("7:00 pm");
+            }else if (HoraI.getSelectedItem().toString().equals("6:00 pm")){
+                HoraF.removeAllItems();
+                HoraF.addItem("7:00 pm");
+            }
+        }else{
             if (HoraI.getSelectedItem().toString().equals("5:00 pm")){
                 HoraF.removeAllItems();
                 HoraF.addItem("6:00 pm");
@@ -360,17 +463,12 @@ public class ActCalendario extends javax.swing.JPanel {
                 HoraF.addItem("8:00 pm");
                 HoraF.addItem("9:00 pm");
             }
-        }else{
-            if (HoraI.getSelectedItem().toString().equals("5:00 pm")){
-                HoraF.removeAllItems();
-                HoraF.addItem("6:00 pm");
-                HoraF.addItem("7:00 pm");
-            }else if (HoraI.getSelectedItem().toString().equals("6:00 pm")){
-                HoraF.removeAllItems();
-                HoraF.addItem("7:00 pm");
-            }
         }
     }//GEN-LAST:event_HoraIItemStateChanged
+
+    private void ModeradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModeradorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ModeradorActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Dias;
@@ -379,11 +477,13 @@ public class ActCalendario extends javax.swing.JPanel {
     private javax.swing.JTextField IdGrup;
     private javax.swing.JLabel Label1;
     private javax.swing.JComboBox<String> Libro;
+    private javax.swing.JComboBox<String> Moderador;
     private javax.swing.JButton Registrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel libro;
+    private javax.swing.JLabel moderador;
     // End of variables declaration//GEN-END:variables
 }
