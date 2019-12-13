@@ -44,14 +44,14 @@ public class Scripts {
       ejecD.CrearDireccion_lugar("ciudad", "Akureyri", null, null, 1);
       ejecD.CrearDireccion_lugar("ciudad", "Conakri", null, null, 8);
       
-      ejecJ.CrearRep(20111113, "Robert", null, "Serra", null, "m");
-      ejecJ.CrearRep(12345678, "Elsa", null, "Pote", null, "f");
-      ejecJ.CrearRep(28093123, "Gazpacho", "De", "Sopa", "Rodriguez", "m");
-      ejecJ.CrearRep(5123789, "Maria", null, "Panchita", null, "f");
-      ejecJ.CrearRep(2432489, "Jose", null, "Prieto", null, "m");
-      ejecJ.CrearRep(1723711, "Daniel", null, "Jaspe", null, "m");
-      ejecJ.CrearRep(2893238, "Alberto", null, "Ayala", null, "m");
-      ejecJ.CrearRep(27348774, "Ana", "Josefina", "Maldonado", "Escolar", "f");
+      ejecJ.CrearRep(20111113, "Robert", null, "Serra", null, "masculino");
+      ejecJ.CrearRep(12345678, "Elsa", null, "Pote", null, "femenino");
+      ejecJ.CrearRep(28093123, "Gazpacho", "De", "Sopa", "Rodriguez", "masculino");
+      ejecJ.CrearRep(5123789, "Maria", null, "Panchita", null, "femenino");
+      ejecJ.CrearRep(2432489, "Jose", null, "Prieto", null, "masculino");
+      ejecJ.CrearRep(1723711, "Daniel", null, "Jaspe", null, "masculino");
+      ejecJ.CrearRep(2893238, "Alberto", null, "Ayala", null, "masculino");
+      ejecJ.CrearRep(27348774, "Ana", "Josefina", "Maldonado", "Escolar", "femenino");
 
       ejecD.CrearClasificacion("epica", "genero",0);
       ejecD.CrearClasificacion("lirica", "genero",0);
@@ -62,14 +62,14 @@ public class Scripts {
       ejecD.CrearClasificacion("romance", "subgenero",3);
       ejecD.CrearClasificacion("tragedia", "subgenero",4);
       
-      ejecJ.CrearMiemb(27342711, "Roberto", null, "Hidalgo", null, "m", new Date(99,02,01));
-      ejecJ.CrearMiemb(2253421, "Jose", null, "Prado", null, "m", new Date(99,02,01));
-      ejecJ.CrearMiemb(16268735, "Carmen", null, "Delgadito", null, "f", new Date(99,02,01));
-      ejecJ.CrearMiemb(20345678, "Alan", null, "Brito", null, "m", new Date(99,02,01));
-      ejecJ.CrearMiemb(18234631, "Armando", null, "Casitas", null, "m", new Date(99,02,01));
-      ejecJ.CrearMiemb(15234557, "Robert", null, "Plant", null, "m", new Date(99,02,01));
-      ejecJ.CrearMiemb(5964816, "Gabriela", null, "Moreno", null, "f", new Date(99,02,01));
-      ejecJ.CrearMiemb(22734126, "Artur", null, "Rito", null, "m", new Date(99,02,01));
+      ejecJ.CrearMiemb(27342711, "Roberto", null, "Hidalgo", null, "masculino", new Date(99,02,01));
+      ejecJ.CrearMiemb(2253421, "Jose", null, "Prado", null, "masculino", new Date(99,02,01));
+      ejecJ.CrearMiemb(16268735, "Carmen", null, "Delgadito", null, "femenino", new Date(99,02,01));
+      ejecJ.CrearMiemb(20345678, "Alan", null, "Brito", null, "masculino", new Date(99,02,01));
+      ejecJ.CrearMiemb(18234631, "Armando", null, "Casitas", null, "masculino", new Date(99,02,01));
+      ejecJ.CrearMiemb(15234557, "Robert", null, "Plant", null, "masculino", new Date(99,02,01));
+      ejecJ.CrearMiemb(5964816, "Gabriela", null, "Moreno", null, "femenino", new Date(99,02,01));
+      ejecJ.CrearMiemb(22734126, "Artur", null, "Rito", null, "masculino", new Date(99,02,01));
       
       ejecJ.CrearTelMiem(414, 1381872, 27342711);
       ejecJ.CrearTelMiem(412, 2476721, 2253421);
@@ -98,7 +98,7 @@ public class Scripts {
       ejecD.CrearInstitucion("Canaima","Empresa de tecnologia punta", 5);
       ejecD.CrearInstitucion("Chorichipi","Empresa de choripanes", 7);
       
-      ejecA.CrearClub("Lectura empedernida", "La esquna de mi casa", 1020, true, 2, 4);
+      ejecA.CrearClub("Lectura empedernida", "La esquina de mi casa", 1020, true, 2, 4);
       ejecA.CrearClub("Entretenimiento en papel", "Av. El Ejercito", 1012, false, 2, 4);
       ejecA.CrearClub("Lectores Anonimos", "Calle Antonio Guerrero", 1020, false, 2, 5);
       ejecA.CrearClub("Escritores frustrados", "Av. Libertador", 1020, true, 2, 5);
@@ -116,23 +116,23 @@ public class Scripts {
       ejecA.CrearAsociacion(1, 8);
       ejecA.CrearAsociacion(7, 6);
       
-      ejecD.CrearGrupo( 1, "niños", "4", 5 , 6);
-      ejecD.CrearGrupo( 2, "adultos", "2", 6 , 7);
-      ejecD.CrearGrupo( 3, "adultos", "5", 6 , 7);
-      ejecD.CrearGrupo( 4, "adultos", "6", 5 , 6);
-      ejecD.CrearGrupo( 5, "adultos", "4", 5 , 6);
-      ejecD.CrearGrupo( 6, "adultos", "3", 6 , 7);
-      ejecD.CrearGrupo( 7, "niños", "2", 5 , 6);
-      ejecD.CrearGrupo( 8, "niños", "3", 5 , 6);
+      ejecD.CrearGrupo( 1, "adulto", "miercoles", 5 , 6);
+      ejecD.CrearGrupo( 2, "adulto", "lunes", 6 , 7);
+      ejecD.CrearGrupo( 3, "adulto", "jueves", 6 , 7);
+      ejecD.CrearGrupo( 4, "adulto", "viernes", 5 , 6);
+      ejecD.CrearGrupo( 5, "adulto", "miercoles", 5 , 6);
+      ejecD.CrearGrupo( 6, "adulto", "martes", 6 , 7);
+      ejecD.CrearGrupo( 7, "adulto", "lunes", 5 , 6);
+      ejecD.CrearGrupo( 8, "adulto", "martes", 5 , 6);
       
-      ejecD.CrearAuditorio(500, "Aula Magna UCAB", 5, 0);
-      ejecD.CrearAuditorio(2000, "Naranja", 4, 0);
-      ejecD.CrearAuditorio(1800, "Tobias Lasser", 6, 0);
-      ejecD.CrearAuditorio(1500, "Madre Matilde", 4, 0);
-      ejecD.CrearAuditorio(4000, "Teatro Municipal", 6, 0);
-      ejecD.CrearAuditorio(7000, "TEATREX", 7, 0);
-      ejecD.CrearAuditorio(3000, "Aula Magna UCV", 7, 0);
-      ejecD.CrearAuditorio(1100, "Luisa Rodriguez de Mendoza", 5, 0);
+      ejecD.CrearAuditorio(500, "Reykjavik City Theatre", 9, 0);
+      ejecD.CrearAuditorio(2000, "Edificio Harpa", 9, 0);
+      ejecD.CrearAuditorio(1800, "Solís", 6, 0);
+      ejecD.CrearAuditorio(1500, "Miguel Young", 7, 0);
+      ejecD.CrearAuditorio(4000, "Pablo Tobon Uribe", 4, 0);
+      ejecD.CrearAuditorio(7000, "Lido", 5, 0);
+      ejecD.CrearAuditorio(3000, "Colon Bogota", 5, 0);
+      ejecD.CrearAuditorio(1100, "Libre Chapinero", 4, 0);
       
       ejecD.CrearEditorial("Ediciones Trilce", 6);
       ejecD.CrearEditorial("Artefato", 7);
@@ -163,7 +163,7 @@ public class Scripts {
      
 
      ejecA.Pago(27342711);
-     ejecA.Pago(2253421 );
+     ejecA.Pago(2253421);
      ejecA.Pago(16268735);
      ejecA.Pago(20345678);
      ejecA.Pago(18234631);
