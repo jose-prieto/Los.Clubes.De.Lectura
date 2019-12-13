@@ -727,7 +727,7 @@ public class QueriesJose {
         return null;
     }
     
-    public boolean addPadreLibro(String isbn, int isbn2) {
+    public boolean addPadreLibro(String isbn, long isbn2) {
         String SQL = "UPDATE public.libro\n" +
 "	SET isbn_padre=?\n" +
 "	WHERE isbn=?";
@@ -738,7 +738,7 @@ public class QueriesJose {
                 PreparedStatement pstmt = con.prepareStatement(SQL)) {
  
             pstmt.setInt(1, isbn(isbn));
-            pstmt.setInt(2, isbn2);
+            pstmt.setLong(2, isbn2);
             
             affectedrows = pstmt.executeUpdate();
             
@@ -1794,5 +1794,87 @@ public class QueriesJose {
         }
         
         return null;
+    }
+    
+    // clasificaciones
+    
+    public ResultSet tipos() {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT initcap(clasi_nombre)\n" +
+"	FROM public.clasificacion\n" +
+"	WHERE clasi_padre is null\n" +
+"	ORDER BY clasi_nombre;");
+            
+            res = ps.executeQuery();
+            
+            if (res.next()) {
+                return res;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+            
+        }
+        
+        return null;
+    }
+    
+    public ResultSet subge(String padre) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT initcap(clasi_nombre)\n" +
+"	FROM public.clasificacion\n" +
+"	WHERE clasi_padre=?;");
+            ps.setInt(1, clasid(padre));
+            
+            res = ps.executeQuery();
+            
+            if (res.next()) {
+                return res;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+            
+        }
+        
+        return null;
+    }
+    
+    public int clasid(String tipo) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT clasi_id\n" +
+"	FROM public.clasificacion\n" +
+"	WHERE clasi_nombre=lower(?);");
+            ps.setString(1, tipo);
+            
+            res = ps.executeQuery();
+            
+            if (res.next()) {
+                return res.getInt(1);
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            
+        }
+        
+        return 0;
     }
 }

@@ -531,7 +531,6 @@ public int duracion(){
         }
     }//GEN-LAST:event_clubItemStateChanged
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AudiNombre;
     private javax.swing.JTextField Cap;
