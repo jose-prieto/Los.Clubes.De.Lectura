@@ -9,7 +9,6 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 
@@ -116,14 +115,14 @@ public class Scripts {
       ejecA.CrearAsociacion(1, 8);
       ejecA.CrearAsociacion(7, 6);
       
-      ejecD.CrearGrupo( 1, "adulto", "miercoles", 5 , 6);
-      ejecD.CrearGrupo( 2, "adulto", "lunes", 6 , 7);
-      ejecD.CrearGrupo( 3, "adulto", "jueves", 6 , 7);
-      ejecD.CrearGrupo( 4, "adulto", "viernes", 5 , 6);
-      ejecD.CrearGrupo( 5, "adulto", "miercoles", 5 , 6);
-      ejecD.CrearGrupo( 6, "adulto", "martes", 6 , 7);
-      ejecD.CrearGrupo( 7, "adulto", "lunes", 5 , 6);
-      ejecD.CrearGrupo( 8, "adulto", "martes", 5 , 6);
+      ejecD.CrearGrupo( 1, "adultos", "miercoles", 5 , 6);
+      ejecD.CrearGrupo( 2, "adultos", "lunes", 6 , 7);
+      ejecD.CrearGrupo( 3, "adultos", "jueves", 6 , 7);
+      ejecD.CrearGrupo( 4, "adultos", "viernes", 5 , 6);
+      ejecD.CrearGrupo( 5, "adultos", "miercoles", 5 , 6);
+      ejecD.CrearGrupo( 6, "adultos", "martes", 6 , 7);
+      ejecD.CrearGrupo( 7, "adultos", "lunes", 5 , 6);
+      ejecD.CrearGrupo( 8, "adultos", "martes", 5 , 6);
       
       ejecD.CrearAuditorio(500, "Reykjavik City Theatre", 9, 0);
       ejecD.CrearAuditorio(2000, "Edificio Harpa", 9, 0);
@@ -180,37 +179,37 @@ public class Scripts {
      ejecD.CrearLibro(1636657, "el crimen del otro", "Un conjunto de 12 cuentos del escritor Pablo Neruda.", new Date(4,0,1), 235, null, null, 6, 3, 0);
      ejecD.CrearLibro(3574567, "la ciudad", "el protagonista se muda a una casa prestada, provisionalmente, en un lugar indeterminado, del que tampoco se nos informa. Como la encuentra en un estado general de abandono debido a que había estado muchos años vacía, sale a buscar provisiones a un almacén sin tener una noción clara de la dirección por donde queda.", new Date(70,0,1), 118, null, null, 5, 5, 0);
      
-     /*ejecA.CrearAutorLibro("Mario", null, "Bendetti", null, 1234567);
+     ejecA.CrearAutorLibro("Mario", null, "Bendetti", null, 1234567);
      ejecA.CrearAutorLibro("Jorge", "Luis", "Borges", null, 3817312);
      ejecA.CrearAutorLibro("Isabel", null, "Allende", "Llona", 4589556);
      ejecA.CrearAutorLibro("Jose", "Eustasio", "Rivera", "Salas", 92848);
      ejecA.CrearAutorLibro("Horacio", "Silvestre", "Quiroga", "Forteza", 1636657);
      ejecA.CrearAutorLibro("Jorge","Mario", "Varlotta", "Levrero", 1234567);
      ejecA.CrearAutorLibro("Leopoldo", null, "Marechal", null, 446677);
-     ejecA.CrearAutorLibro("Mario", null, "Vargas", "Llosa", 7859665);*/
+     ejecA.CrearAutorLibro("Mario", null, "Vargas", "Llosa", 7859665);
      
-     ejecA.CrearObra(3,"activa","La tregua", 5000, 1);
+     ejecA.CrearObra2(3,"activa","La tregua", 5000, 1);
       ejecA.club_obra(1);
       ejecA.lib_obra(1234567);
-     ejecA.CrearObra(1,"inactiva","La biblioteca de Babel", 3200, 2);
+     ejecA.CrearObra2(1,"inactiva","La biblioteca de Babel", 3200, 2);
       ejecA.club_obra(2);
       ejecA.lib_obra(3817312);
-     ejecA.CrearObra(2,"activa","Adam Buenosayres", 4000, 3);
+     ejecA.CrearObra2(2,"activa","Adam Buenosayres", 4000, 3);
       ejecA.club_obra(3);
       ejecA.lib_obra(446677);
-     ejecA.CrearObra(1,"activa","La casa de los espiritus", 2300, 4);
+     ejecA.CrearObra2(1,"activa","La casa de los espiritus", 2300, 4);
       ejecA.club_obra(4);
       ejecA.lib_obra(4589556);
-     ejecA.CrearObra(3,"activa","La Voragine", 4800, 5);
+     ejecA.CrearObra2(3,"activa","La Voragine", 4800, 5);
       ejecA.club_obra(5);
       ejecA.lib_obra(92848);
-     ejecA.CrearObra(2,"activa","La casa verde", 1600, 6);
+     ejecA.CrearObra2(2,"activa","La casa verde", 1600, 6);
       ejecA.club_obra(6);
       ejecA.lib_obra(7859665);
-     ejecA.CrearObra(3,"activa","El crimen del otro", 6500, 7);
+     ejecA.CrearObra2(3,"activa","El crimen del otro", 6500, 7);
       ejecA.club_obra(7);
       ejecA.lib_obra(1636657);
-     ejecA.CrearObra(1,"activa","La ciudad", 2000, 8);
+     ejecA.CrearObra2(1,"activa","La ciudad", 2000, 8);
       ejecA.club_obra(8);
       ejecA.lib_obra(3574567);
      
@@ -234,15 +233,34 @@ ejecJ.libMiem(27342711,"la tregua");
      ejecJ.miemPref(5964816,"el crimen del otro", 1);
      ejecJ.miemPref(22734126,"la ciudad", 1);
      
-          
-    ejecD.CrearFuncion(new Date(119,5,9), 1, 2, false, 0, 0);
-    ejecD.CrearFuncion(new Date(119,8,12), 2, 2, true, 4, 2137);
-    ejecD.CrearFuncion(new Date(119,4,3), 3, 1, true, 3, 812);
-    ejecD.CrearFuncion(new Date(119,1,27), 4, 3, true, 5, 2443);
-    ejecD.CrearFuncion(new Date(119,11,18), 5, 1, true, 2, 1578);
-    ejecD.CrearFuncion(new Date(119,2,25), 6, 4, false, 0, 0);
-    ejecD.CrearFuncion(new Date(119,7,4), 7, 2, false, 0, 0);
-    ejecD.CrearFuncion(new Date(119,6,13), 8, 1, false, 0, 0);     
+    /* ejecJ.crearReuN(6, 1, 1, "la tregua", ,27342711);
+     ejecJ.crearReuN(3, 1, 1, "la biblioteca de babel", ,2253421 );
+     ejecJ.crearReuN(2, 1, 1, "adan buenosayres", , 16268735);
+     ejecJ.crearReuN(4, 1, 1, "la casa de los espiritus", , 20345678);
+     ejecJ.crearReuN(5, 1, 1, "la voragine", ,18234631 );
+     ejecJ.crearReuN(6, 1, 1, "la casa verde", ,15234557 );
+     ejecJ.crearReuN(3, 1, 1, "el crimen del otro", ,5964816 );
+     ejecJ.crearReuN(3, 1, 1, "la ciudad", ,22734126 );
+     
+             
+     ejecJ.Inasistencia(6, 1, 1, ,27342711);
+     ejecJ.Inasistencia(3, 1, 1, ,2253421);
+     ejecJ.Inasistencia(2, 1, 1, ,16268735);
+     ejecJ.Inasistencia(4, 1, 1, ,20345678);
+     ejecJ.Inasistencia(5, 1, 1, ,18234631);
+     ejecJ.Inasistencia(6, 1, 1, ,15234557);
+     ejecJ.Inasistencia(3, 1, 1, ,5964816);
+     ejecJ.Inasistencia(3, 1, 1, ,22734126);*/
+              
+              
+    ejecD.CrearFuncion(new Date(119,5,9), 1, 2);
+    ejecD.CrearFuncion(new Date(119,8,12), 2, 2);
+    ejecD.CrearFuncion(new Date(119,4,3), 3, 1);
+    ejecD.CrearFuncion(new Date(119,1,27), 4, 3);
+    ejecD.CrearFuncion(new Date(119,11,18), 5, 2);
+    ejecD.CrearFuncion(new Date(119,2,25), 6, 4);
+    ejecD.CrearFuncion(new Date(119,7,4), 7, 2);
+    ejecD.CrearFuncion(new Date(119,6,13), 8, 1);     
     
         
     ejecD.CrearPersonaje(1, "Martin Santome", "personaje principal de la obra, un hombre maduro de 49 años, canoso, funcionario.");
@@ -293,6 +311,9 @@ ejecJ.libMiem(27342711,"la tregua");
     ejecD.CrearActor(15234557,"Don Anselmo", new Date(119,2,25));
     ejecD.CrearActor(5964816, "Brandimarte de Normandía",new Date(119,7,4));
     ejecD.CrearActor(22734126,"Giménez", new Date(119,6,13));
+    
+    
+   
     
       
       

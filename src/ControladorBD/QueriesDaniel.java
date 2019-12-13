@@ -147,11 +147,11 @@ public class QueriesDaniel {
         }   
         }
     
-    public void CrearFuncion(Date func_fecha, int obra_id,int func_hora, boolean estatus_realizado, int func_valoracion, int func_entradas_vend) {
+    public void CrearFuncion(Date func_fecha, int obra_id, int func_hora) {
         
         String SQL = "INSERT INTO public.funcion(\n" +
             " func_fecha, obra_id, func_hora, estatus_realizado, func_valoracion, func_entradas_vend)\n" +
-            "	VALUES (?,?,?,?,?,?);";
+            "	VALUES (?,?,?,FALSE);";
         int filasafectadas = 0;
 
         try (Connection con = conexion.getConnection()){
@@ -161,11 +161,36 @@ public class QueriesDaniel {
             ps.setDate(1, func_fecha);
             ps.setInt(2, obra_id);
             ps.setInt(3, func_hora);
-            ps.setBoolean(4, estatus_realizado);
-             if (func_valoracion == 0){ps.setNull(5, java.sql.Types.NUMERIC);}
-            else{ps.setInt(5, func_valoracion);}
-             if (func_entradas_vend == 0){ps.setNull(6, java.sql.Types.NUMERIC);}
-            else{ps.setInt(6, func_entradas_vend);}
+          
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }   
+        }
+    
+      public void ActualizarFuncion(Date func_fecha, int obra_id, int func_valoracion, int func_entradas_vend) {
+        
+        String SQL = "UPDATE public.funcion\n" +
+            "  SET estatus_realizado = TRUE, func_valoracion = ?, func_entradas_vend = ? \n" +
+            "  WHERE func_fecha = ? and obra_id = ? ;";
+        int filasafectadas = 0;
+
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, func_valoracion);
+            ps.setInt(2, func_entradas_vend);
+            ps.setDate(3, func_fecha);
+            ps.setInt(4, obra_id);
+
+            
+           
             
             filasafectadas = ps.executeUpdate();
 
