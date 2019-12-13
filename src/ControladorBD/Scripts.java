@@ -171,14 +171,14 @@ public class Scripts {
      ejecA.Pago(5964816);
      ejecA.Pago(22734126); 
      
-     ejecD.CrearLibro(1234567, "la tregua", "habla sobre un hombre viudo y, cercano a jubilarse, que se enamora perdidamente de su empleada muy joven.", new Date(59,0,0), 200, null, null, 7, 2, 0);
-     ejecD.CrearLibro(3817312, "la biblioteca de babel", "La biblioteca de Babel es un complejo compuesto por un número indefinido de galerías hexagonales e idénticas, donde hay grandes ventilaciones en el medio, cercadas por pequeñas barandas.", new Date(41,0,0), 120, null, null, 4, 3, 0);
-     ejecD.CrearLibro(446677, "adan buenosayres", "describen las peripecias de Adán Buenosayres en el lapso comprendido entre un jueves santo y un domingo de resurrección transcurridos desde el 27 hasta el 29 de abril de un año indeterminado sobre la década de 1920.", new Date(48,0,0), 418, null, null, 2,  5, 0);
-     ejecD.CrearLibro(4589556, "la casa de los espiritus", "narra las vivencias de cuatro generaciones de una familia y la forma en la que esta se ve afectada por las transformaciones que vive Chile, el país donde se desarrolla la obra.", new Date(82,0,0), 200, null, null, 1, 8, 0);
-     ejecD.CrearLibro(92848, "la voragine", "narra las peripecias del poeta Arturo Cova y su amante Alicia, historia de pasión y venganza enmarcada en la selva amazónica, donde los dos amantes huyen y que expone, las duras condiciones de vida de los colonos e indígenas esclavizados durante la fiebre del caucho", new Date(24,0,0), 116, null, null, 3, 5, 0);
-     ejecD.CrearLibro(7859665, "la casa verde", "narra 3 historias principales: La de Don Anselmo, la del Sargento Lituma y la del Bandido Fushia", new Date(66,0,0), 319, null, null, 2, 4, 0);
-     ejecD.CrearLibro(1636657, "el crimen del otro", "Un conjunto de 12 cuentos del escritor Pablo Neruda.", new Date(4,0,0), 235, null, null, 6, 3, 0);
-     ejecD.CrearLibro(3574567, "la ciudad", "el protagonista se muda a una casa prestada, provisionalmente, en un lugar indeterminado, del que tampoco se nos informa. Como la encuentra en un estado general de abandono debido a que había estado muchos años vacía, sale a buscar provisiones a un almacén sin tener una noción clara de la dirección por donde queda.", new Date(70,0,0), 118, null, null, 5, 5, 0);
+     ejecD.CrearLibro(1234567, "la tregua", "habla sobre un hombre viudo y, cercano a jubilarse, que se enamora perdidamente de su empleada muy joven.", new Date(59,0,1), 200, null, null, 7, 2, 0);
+     ejecD.CrearLibro(3817312, "la biblioteca de babel", "La biblioteca de Babel es un complejo compuesto por un número indefinido de galerías hexagonales e idénticas, donde hay grandes ventilaciones en el medio, cercadas por pequeñas barandas.", new Date(41,0,1), 120, null, null, 4, 3, 0);
+     ejecD.CrearLibro(446677, "adan buenosayres", "describen las peripecias de Adán Buenosayres en el lapso comprendido entre un jueves santo y un domingo de resurrección transcurridos desde el 27 hasta el 29 de abril de un año indeterminado sobre la década de 1920.", new Date(48,0,1), 418, null, null, 2,  5, 0);
+     ejecD.CrearLibro(4589556, "la casa de los espiritus", "narra las vivencias de cuatro generaciones de una familia y la forma en la que esta se ve afectada por las transformaciones que vive Chile, el país donde se desarrolla la obra.", new Date(82,0,1), 200, null, null, 1, 8, 0);
+     ejecD.CrearLibro(92848, "la voragine", "narra las peripecias del poeta Arturo Cova y su amante Alicia, historia de pasión y venganza enmarcada en la selva amazónica, donde los dos amantes huyen y que expone, las duras condiciones de vida de los colonos e indígenas esclavizados durante la fiebre del caucho", new Date(24,0,1), 116, null, null, 3, 5, 0);
+     ejecD.CrearLibro(7859665, "la casa verde", "narra 3 historias principales: La de Don Anselmo, la del Sargento Lituma y la del Bandido Fushia", new Date(66,0,1), 319, null, null, 2, 4, 0);
+     ejecD.CrearLibro(1636657, "el crimen del otro", "Un conjunto de 12 cuentos del escritor Pablo Neruda.", new Date(4,0,1), 235, null, null, 6, 3, 0);
+     ejecD.CrearLibro(3574567, "la ciudad", "el protagonista se muda a una casa prestada, provisionalmente, en un lugar indeterminado, del que tampoco se nos informa. Como la encuentra en un estado general de abandono debido a que había estado muchos años vacía, sale a buscar provisiones a un almacén sin tener una noción clara de la dirección por donde queda.", new Date(70,0,1), 118, null, null, 5, 5, 0);
      
      /*ejecA.CrearAutorLibro("Mario", null, "Bendetti", null, 1234567);
      ejecA.CrearAutorLibro("Jorge", "Luis", "Borges", null, 3817312);
@@ -215,24 +215,24 @@ public class Scripts {
       ejecA.lib_obra(3574567);
      
      
-     ejecJ.libMiem(27342711,1234567);
-     ejecJ.libMiem(2253421,3817312);
-     ejecJ.libMiem(16268735,446677);
-     ejecJ.libMiem(20345678,4589556);
-     ejecJ.libMiem(18234631,92848);
-     ejecJ.libMiem(15234557,7859665);
-     ejecJ.libMiem(5964816,1636657);
-     ejecJ.libMiem(22734126,3574567);
+ejecJ.libMiem(27342711,"la tregua");
+     ejecJ.libMiem(2253421,"la biblioteca de babel");
+     ejecJ.libMiem(16268735,"adan buenosayres");
+     ejecJ.libMiem(20345678,"la casa de los espiritus");
+     ejecJ.libMiem(18234631,"la voragine");
+     ejecJ.libMiem(15234557,"la casa verde");
+     ejecJ.libMiem(5964816,"el crimen del otro");
+     ejecJ.libMiem(22734126,"la ciudad");
      
           
-     ejecJ.miemPref(27342711,1234567, 1);
-     ejecJ.miemPref(2253421,3817312, 1);
-     ejecJ.miemPref(16268735,446677, 1);
-     ejecJ.miemPref(20345678,4589556, 1);
-     ejecJ.miemPref(18234631,92848, 1);
-     ejecJ.miemPref(15234557,7859665, 1);
-     ejecJ.miemPref(5964816,1636657, 1);
-     ejecJ.miemPref(22734126,3574567, 1);
+       ejecJ.miemPref(27342711,"la tregua", 1);
+     ejecJ.miemPref(2253421,"la biblioteca de babel", 1);
+     ejecJ.miemPref(16268735,"adan buenosayres", 1);
+     ejecJ.miemPref(20345678,"la casa de los espiritus", 1);
+     ejecJ.miemPref(18234631,"la voragine", 1);
+     ejecJ.miemPref(15234557,"la casa verde", 1);
+     ejecJ.miemPref(5964816,"el crimen del otro", 1);
+     ejecJ.miemPref(22734126,"la ciudad", 1);
      
           
     ejecD.CrearFuncion(new Date(119,5,9), 1, 2, false, 0, 0);
@@ -617,7 +617,7 @@ public class Scripts {
         try (Connection con = connectivity.getConnection()){
         PreparedStatement ps = null;
         ResultSet res = null;
-            ps = con.prepareStatement("CREATE TABLE public.pago ( pago_id numeric(3,0) NOT NULL DEFAULT nextval('pago_pago_id_seq'::regclass), fechai_mie date NOT NULL, club_id numeric(3,0) NOT NULL, doc_id numeric(10,0) NOT NULL, pago_fecha timestamp without time zone NOT NULL DEFAULT CURRENT_DATE, CONSTRAINT pk_pago PRIMARY KEY (pago_id, fechai_mie, club_id, doc_id), CONSTRAINT fk_pago FOREIGN KEY (doc_id, fechai_mie, club_id) REFERENCES public.hist_miembro (doc_id, fechai_mie, club_id) MATCH SIMPLE )");
+            ps = con.prepareStatement("CREATE TABLE public.pago ( pago_id numeric(3,0) NOT NULL DEFAULT nextval('pago_pago_id_seq'::regclass), fechai_mie date NOT NULL, club_id numeric(3,0) NOT NULL, doc_id numeric(10,0) NOT NULL, pago_fecha date DEFAULT CURRENT_DATE, CONSTRAINT pk_pago PRIMARY KEY (pago_id, fechai_mie, club_id, doc_id), CONSTRAINT fk_pago FOREIGN KEY (doc_id, fechai_mie, club_id) REFERENCES public.hist_miembro (doc_id, fechai_mie, club_id) MATCH SIMPLE )");
             res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
