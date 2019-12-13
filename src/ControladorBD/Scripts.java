@@ -233,24 +233,25 @@ ejecJ.libMiem(27342711,"la tregua");
      ejecJ.miemPref(5964816,"el crimen del otro", 1);
      ejecJ.miemPref(22734126,"la ciudad", 1);
      
-    /* ejecJ.crearReuN(6, 1, 1, "la tregua", ,27342711);
-     ejecJ.crearReuN(3, 1, 1, "la biblioteca de babel", ,2253421 );
-     ejecJ.crearReuN(2, 1, 1, "adan buenosayres", , 16268735);
-     ejecJ.crearReuN(4, 1, 1, "la casa de los espiritus", , 20345678);
-     ejecJ.crearReuN(5, 1, 1, "la voragine", ,18234631 );
-     ejecJ.crearReuN(6, 1, 1, "la casa verde", ,15234557 );
-     ejecJ.crearReuN(3, 1, 1, "el crimen del otro", ,5964816 );
-     ejecJ.crearReuN(3, 1, 1, "la ciudad", ,22734126 );
+  ejecD.crearReu(6, 1, 1, "la tregua",27342711);
+     ejecD.crearReu(3, 2, 2, "la biblioteca de babel", 2253421 );
+     ejecD.crearReu(2, 3, 3, "adan buenosayres" , 16268735);
+     ejecD.crearReu(4, 4, 4, "la casa de los espiritus" , 20345678);
+     ejecD.crearReu(5, 5, 5, "la voragine" ,18234631 );
+     ejecD.crearReu(6, 6, 6, "la casa verde" ,15234557 );
+     ejecD.crearReu(3, 7, 7, "el crimen del otro" ,5964816 );
+     ejecD.crearReu(3, 8, 8, "la ciudad" ,22734126 );
      
              
-     ejecJ.Inasistencia(6, 1, 1, ,27342711);
-     ejecJ.Inasistencia(3, 1, 1, ,2253421);
-     ejecJ.Inasistencia(2, 1, 1, ,16268735);
-     ejecJ.Inasistencia(4, 1, 1, ,20345678);
-     ejecJ.Inasistencia(5, 1, 1, ,18234631);
-     ejecJ.Inasistencia(6, 1, 1, ,15234557);
-     ejecJ.Inasistencia(3, 1, 1, ,5964816);
-     ejecJ.Inasistencia(3, 1, 1, ,22734126);*/
+     ejecD.Inasistencia(6, 1, 1, 27342711);
+     ejecD.Inasistencia(3, 2, 2, 2253421);
+     ejecD.Inasistencia(2, 3, 3, 16268735);
+     ejecD.Inasistencia(4, 4, 4, 20345678);
+     ejecD.Inasistencia(5, 5, 5, 18234631);
+     ejecD.Inasistencia(6, 6, 6, 15234557);
+     ejecD.Inasistencia(3, 7, 7, 5964816);
+     ejecD.Inasistencia(3, 8, 8, 22734126);
+     
               
               
     ejecD.CrearFuncion(new Date(119,5,9), 1, 2);
