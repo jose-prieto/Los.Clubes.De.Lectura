@@ -147,10 +147,11 @@ public class QueriesDaniel {
         }   
         }
     
+    
     public void CrearFuncion(Date func_fecha, int obra_id, int func_hora) {
         
         String SQL = "INSERT INTO public.funcion(\n" +
-            " func_fecha, obra_id, func_hora, estatus_realizado, func_valoracion, func_entradas_vend)\n" +
+            " func_fecha, obra_id, func_hora, estatus_realizado)\n" +
             "	VALUES (?,?,?,FALSE);";
         int filasafectadas = 0;
 
@@ -173,7 +174,35 @@ public class QueriesDaniel {
         }   
         }
     
-      public void ActualizarFuncion(Date func_fecha, int obra_id, int func_valoracion, int func_entradas_vend) {
+    
+    
+       public void TerminarObra(int obra_id) {
+        
+        String SQL = "UPDATE public.obra\n" +
+            "  SET obra_estatus = 'inactiva' \n" +
+            "  WHERE obra_id = ? ;";
+        int filasafectadas = 0;
+
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, obra_id);
+          
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }   
+        }
+       
+       
+       
+      public void CerrarFuncion(Date func_fecha, int obra_id, int func_valoracion, int func_entradas_vend) {
         
         String SQL = "UPDATE public.funcion\n" +
             "  SET estatus_realizado = TRUE, func_valoracion = ?, func_entradas_vend = ? \n" +
@@ -316,6 +345,72 @@ public class QueriesDaniel {
         
             
         }
+        
+        public void crearReu(int dia, int grup, int club, String libro, int docid) {
+        
+        String SQL = "INSERT INTO public.reuniones(\n" +
+"	reu_fecha, grup_id, club_id, isbn, grupg_l_id, clubg_l_id, clubh_id, fechai_mie, doc_id)\n" +
+"	VALUES (current_date + ? - cast(date_part('dow',current_date) as int), ?, ?, ?, ?, ?, ?, (SELECT fechai_mie FROM public.hist_miembro WHERE doc_id=? AND fechaf_mie is null), ?);";
+        int filasafectadas;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+           QueriesJose qj = new QueriesJose(); 
+            ps.setInt(1, dia);
+            ps.setInt(2, grup);
+            ps.setInt(3, club);
+            ps.setLong(4, qj.isbn(libro));
+            ps.setInt(5, grup);
+            ps.setInt(6, club);
+            ps.setInt(7, club);
+            ps.setInt(8, docid);
+            ps.setInt(9, docid);
+            
+            filasafectadas = ps.executeUpdate();
+            
+           
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            
+        }
+        
+    }
+        
+        
+    public boolean Inasistencia(int dia, int grup, int club, int docid) {
+        
+        String SQL = "INSERT INTO public.inasistencia(\n" +
+"	reu_fecha, grupr_id, clubr_id, grup_id, club_id, fechai_mie, clubh_id, doc_id)\n" +
+"	VALUES (current_date + ? - cast(date_part('dow',current_date) as int), ?, ?, ?, ?, (SELECT fechai_mie FROM public.hist_miembro WHERE doc_id=? AND fechaf_mie is null), ?, ?);";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, dia);
+            ps.setInt(2, grup);
+            ps.setInt(3, club);
+            ps.setInt(4, grup);
+            ps.setInt(5, club);
+            ps.setInt(6, docid);
+            ps.setInt(7, club);
+            ps.setInt(8, docid);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;
+    }
         
         
         public void CrearLibro(int isbn, String lib_tit_original, String sinopsis, Date lib_ano_publi, int lib_pag, String titulo_esp, String tema_princ, int clasi_id, int edit_id, int isbn_padre) {
