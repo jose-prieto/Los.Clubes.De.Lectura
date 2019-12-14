@@ -1625,7 +1625,7 @@ public class QueriesJose {
     
     public boolean actReu(int index, int grupid) {
         String SQL = "UPDATE public.reuniones\n" +
-"	SET reu_fecha=(current_date + ?)\n" +
+"	SET reu_fecha=(current_date + ? - cast(date_part('dow',current_date) as int))\n" +
 "	WHERE (reu_fecha-current_date > 0) AND grup_id=?;";
  
         int affectedrows = 0;
