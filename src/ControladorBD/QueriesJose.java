@@ -549,7 +549,7 @@ public class QueriesJose {
             
             ps = con.prepareStatement("SELECT doc_id\n" +
 "	FROM public.hist_miembro\n" +
-"	WHERE club_id = 1 AND estatus_mie='activo';");
+"	WHERE club_id = ? AND estatus_mie='activo';");
             ps.setInt(1, clubid);
             
             res = ps.executeQuery();
@@ -1177,23 +1177,19 @@ public class QueriesJose {
             PreparedStatement ps;
             ResultSet res;
 
-            ps = con.prepareStatement("SELECT club1\n" +
-"	FROM public.asociacion\n" +
-"	WHERE club2 = ?;");
+            ps = con.prepareStatement("SELECT club1 FROM public.asociacion WHERE club2 = ?;");
             ps.setInt(1, idPadre);
                    
             res = ps.executeQuery();
-            if (res.next()) {
+            if (res.next()){
                 return res;
             }
 
         } catch (Exception e) {
             
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-            return null;
             
         }
-        
         return null;
     }
     
@@ -2008,4 +2004,58 @@ public class QueriesJose {
         }
         return false;
     }
+    
+    public ResultSet personajes(int obraid){
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT initcap(perso_nombre)\n" +
+"	FROM public.personaje\n" +
+"	WHERE obra_id = ?;");
+            ps.setInt(1, obraid);
+            
+            res = ps.executeQuery();
+            
+            if (res.next()) {
+                return res;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+            
+        }
+        
+        return null;
+    }
+    
+    public int clubDeObra(int obra) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT club_id\n" +
+"	FROM public.club_obra\n" +
+"	WHERE obra_id = ?;");
+            ps.setInt(1, obra);
+            
+            res = ps.executeQuery();
+            
+            if (res.next()) {
+                return res.getInt(1);
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            
+        }
+        
+        return 0;
+    }
+    
 }

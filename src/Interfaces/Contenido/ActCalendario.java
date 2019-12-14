@@ -324,6 +324,7 @@ public class ActCalendario extends javax.swing.JPanel {
             if (val() && Actualizar()){
                 crearReuN();
                 vaciar();
+                query.Inasistencia(indexFecha(), getGrup(), clubid, int docid)
                 JOptionPane.showMessageDialog(null, "Próxima reunión pautada para el dia: "+Dias.getSelectedItem().toString()+
                         "\nDesde las "+HoraI.getSelectedItem().toString()+" a las "+HoraF.getSelectedItem().toString(), 
                         "Mensaje", JOptionPane.INFORMATION_MESSAGE);
@@ -337,6 +338,7 @@ public class ActCalendario extends javax.swing.JPanel {
                         "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             }
         }
+        
         
     }//GEN-LAST:event_RegistrarActionPerformed
 
