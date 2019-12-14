@@ -271,7 +271,7 @@ public class NuevaFunc extends javax.swing.JPanel {
         // TODO add your handling code here:
         query.CrearElenco(Integer.parseInt((Actor.getSelectedItem().toString())), Personaje.getSelectedItem().toString(), Integer.parseInt(IdObra.getText()));
         query.CrearFuncion(getNacimiento(), Integer.parseInt(IdObra.getText()), hora());
-        query.CrearActor(Integer.parseInt((String) Actor.getSelectedItem()), Personaje.getSelectedItem().toString(), getNacimiento(), Integer.parseInt(IdObra.getText()));
+       query.CrearActor(Integer.parseInt((String) Actor.getSelectedItem()), Personaje.getSelectedItem().toString(), getNacimiento(), Integer.parseInt(IdObra.getText()));
     }//GEN-LAST:event_AgregarActionPerformed
 
     private void IdObraFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IdObraFocusLost
