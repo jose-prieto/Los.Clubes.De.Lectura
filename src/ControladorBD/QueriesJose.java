@@ -2112,4 +2112,60 @@ public class QueriesJose {
         return 0;
     }
     
+    public boolean addCap(String isbn, String capN, String capT){
+        String SQL = "INSERT INTO public.capitulo_otro(\n" +
+"	isbn, cap_nombre, cap_titulo)\n" +
+"	VALUES (?, ?, ?);";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setLong(1, isbn(isbn));
+            ps.setString(2, capN);
+            ps.setString(3, capT);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;
+    }
+    
+    public boolean addSecc(String isbn, String secN, String secT){
+        String SQL = "INSERT INTO public.seccion(\n" +
+"	cap_id, isbn, secc_nombre, secc_titulo)\n" +
+"	VALUES ((SELECT MAX(cap_id)\n" +
+"	FROM public.capitulo_otro WHERE isbn=?), ?, ?, ?);";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setLong(1, isbn(isbn));
+            ps.setLong(2, isbn(isbn));
+            ps.setString(3, secN);
+            ps.setString(4, secT);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;
+    }
+    
 }
