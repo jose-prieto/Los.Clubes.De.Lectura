@@ -231,13 +231,26 @@ public class ProcedimientosExtra {
     }
     
     public void reuProxSem(){
-        ResultSet res = query.ReusHoy();
+        ResultSet res,rs;
+        res = query.ReusHoy();
         
         if (res != null){
             try {
                 do{
                     if (!query.reuProxSem(res.getInt(1))){
                         query.crearReuProxSem(res.getInt(1), res.getInt(2), res.getInt(3), res.getDate(4), res.getInt(5));
+                        rs = query.Info2(res.getInt(1));
+                        if (rs != null){
+                            try {
+                                do{
+                                    /*grup_id, club_id, isbn, fechai_mie, doc_id*/
+                                    /*int grup, int club, Date fechai, int docid*/
+                                    query.InasistenciaProx(res.getInt(1), res.getInt(2), res.getDate(4), res.getInt(5));
+                                }while (rs.next());
+                            } catch (SQLException ex) {
+                                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
                     }
                 }while (res.next());
             } catch (SQLException ex) {

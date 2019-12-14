@@ -99,7 +99,7 @@ public class ActCalendario extends javax.swing.JPanel {
             } catch (SQLException ex) {
                 Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+        }else
         
         if (rs != null){
             cont = 0;
@@ -319,19 +319,34 @@ public class ActCalendario extends javax.swing.JPanel {
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
         // TODO add your handling code here:
+        ResultSet rs,rs2;
         
         if (val2 == 1){
             if (val() && Actualizar()){
-                crearReuN();
+                crearReuN();                
                 vaciar();
-                query.Inasistencia(indexFecha(), getGrup(), clubid, int docid)
+                
                 JOptionPane.showMessageDialog(null, "Próxima reunión pautada para el dia: "+Dias.getSelectedItem().toString()+
                         "\nDesde las "+HoraI.getSelectedItem().toString()+" a las "+HoraF.getSelectedItem().toString(), 
                         "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             }
         }else{
             if (val() && Actualizar()){
+                
+                query.BorraInasist(Integer.parseInt(IdGrup.getText()));
                 actReu();
+                rs = query.Info2(Integer.parseInt(IdGrup.getText()));
+                if (rs != null){
+                    cont = 0;
+                    try {
+                        do{
+                            cont++;
+                            query.Inasistencia(indexFecha(), getGrup(), rs.getInt(1), rs.getDate(2), rs.getInt(3));
+                        }while (rs.next());
+                    } catch (SQLException ex) {
+                        Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
                 vaciar();
                 JOptionPane.showMessageDialog(null, "Próxima reunión pautada para el dia: "+Dias.getSelectedItem().toString()+
                         "\nDesde las "+HoraI.getSelectedItem().toString()+" a las "+HoraF.getSelectedItem().toString(), 
