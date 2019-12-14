@@ -116,7 +116,7 @@ public class EliminarClub extends javax.swing.JPanel {
             Club.setBorder(new LineBorder(Color.gray));
             if(query.clubExist(Integer.parseInt(Club.getText()))){
                //
-               query.EliminarAsociacion(Integer.parseInt(Club.getText()));
+                query.EliminarAsociacion(Integer.parseInt(Club.getText()));
                 query.EliminarClub(Integer.parseInt(Club.getText()));
             } else {
                 JOptionPane.showMessageDialog(null, "El club a eliminar no se encuentra registrado.", "Error", JOptionPane.ERROR_MESSAGE);
