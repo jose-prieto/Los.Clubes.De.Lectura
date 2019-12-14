@@ -512,7 +512,7 @@ ejecJ.libMiem(27342711,"la tregua");
         try (Connection con = connectivity.getConnection()){
         PreparedStatement ps = null;
         ResultSet res = null;
-        ps = con.prepareStatement("CREATE TABLE public.grupo ( grup_id numeric(3,0) NOT NULL DEFAULT nextval('grup_grup_id_seq'::regclass), club_id numeric(3,0) NOT NULL, grup_tipo character varying(30) COLLATE pg_catalog.\"default\" NOT NULL, dia character varying(10), horai numeric(2,0), horaf numeric(2,0), CONSTRAINT pk_grupo PRIMARY KEY (club_id, grup_id), CONSTRAINT fk_grupo FOREIGN KEY (club_id) REFERENCES public.club (club_id) MATCH SIMPLE )");
+        ps = con.prepareStatement("CREATE TABLE public.grupo ( grup_id numeric(3,0) NOT NULL DEFAULT nextval('grup_grup_id_seq'::regclass), club_id numeric(3,0) NOT NULL, grup_tipo character varying(30) COLLATE pg_catalog.\"default\" NOT NULL, dia character varying(10), horai numeric(2,0), horaf numeric(2,0), CONSTRAINT pk_grupo PRIMARY KEY (club_id, grup_id), CONSTRAINT fk_grupo FOREIGN KEY (club_id) REFERENCES public.club (club_id) MATCH SIMPLE, CONSTRAINT grup_tipo CHECK (grup_tipo = 'niños' OR grup_tipo = 'adultos' OR grup_tipo = 'jovenes') )");
         res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
@@ -619,7 +619,7 @@ ejecJ.libMiem(27342711,"la tregua");
         try (Connection con = connectivity.getConnection()){
         PreparedStatement ps = null;
         ResultSet res = null;
-            ps = con.prepareStatement("CREATE TABLE public.miembro ( doc_id numeric(10,0) NOT NULL, miemb_nombre1 character varying(15) COLLATE pg_catalog.\"default\" NOT NULL, miemb_nombre2 character varying(15) COLLATE pg_catalog.\"default\", miemb_ape1 character varying(15) COLLATE pg_catalog.\"default\" NOT NULL, miemb_ape2 character varying(15) COLLATE pg_catalog.\"default\", miemb_genero character varying(10) COLLATE pg_catalog.\"default\" NOT NULL, miemb_fecha_nac date NOT NULL, dir_id numeric(3,0), representante numeric(10,0), representante_m numeric(10,0), CONSTRAINT pk_miembro PRIMARY KEY (doc_id),CONSTRAINT fk_direccion FOREIGN KEY (dir_id) REFERENCES public.direccion_lugar (dir_id) MATCH SIMPLE, CONSTRAINT fk_representante FOREIGN KEY (representante) REFERENCES public.representante (doc_ident) MATCH SIMPLE, CONSTRAINT fk_representante_m FOREIGN KEY (representante_m) REFERENCES public.miembro (doc_id) MATCH SIMPLE )");                    
+            ps = con.prepareStatement("CREATE TABLE public.miembro ( doc_id numeric(10,0) NOT NULL, miemb_nombre1 character varying(15) COLLATE pg_catalog.\"default\" NOT NULL, miemb_nombre2 character varying(15) COLLATE pg_catalog.\"default\", miemb_ape1 character varying(15) COLLATE pg_catalog.\"default\" NOT NULL, miemb_ape2 character varying(15) COLLATE pg_catalog.\"default\", miemb_genero character varying(10) COLLATE pg_catalog.\"default\" NOT NULL, miemb_fecha_nac date NOT NULL, dir_id numeric(3,0), representante numeric(10,0), representante_m numeric(10,0), CONSTRAINT pk_miembro PRIMARY KEY (doc_id),CONSTRAINT fk_direccion FOREIGN KEY (dir_id) REFERENCES public.direccion_lugar (dir_id) MATCH SIMPLE, CONSTRAINT fk_representante FOREIGN KEY (representante) REFERENCES public.representante (doc_ident) MATCH SIMPLE, CONSTRAINT fk_representante_m FOREIGN KEY (representante_m) REFERENCES public.miembro (doc_id) MATCH SIMPLE, CONSTRAINT sex_check CHECK (miemb_genero = 'masculino' OR miemb_genero = 'femenino' OR miemb_genero = 'neutro') )");                    
             res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
@@ -661,7 +661,7 @@ ejecJ.libMiem(27342711,"la tregua");
         try (Connection con = connectivity.getConnection()){
         PreparedStatement ps = null;
         ResultSet res = null;
-            ps = con.prepareStatement("CREATE TABLE public.representante ( doc_ident numeric(10,0) NOT NULL, rep_nombre1 character varying(15) COLLATE pg_catalog.\"default\" NOT NULL, rep_nombre2 character varying(15) COLLATE pg_catalog.\"default\", rep_ape1 character varying(15) COLLATE pg_catalog.\"default\" NOT NULL, rep_ape2 character varying(15) COLLATE pg_catalog.\"default\", rep_genero character varying(10) COLLATE pg_catalog.\"default\" NOT NULL, CONSTRAINT pk_representante PRIMARY KEY (doc_ident) )");
+            ps = con.prepareStatement("CREATE TABLE public.representante ( doc_ident numeric(10,0) NOT NULL, rep_nombre1 character varying(15) COLLATE pg_catalog.\"default\" NOT NULL, rep_nombre2 character varying(15) COLLATE pg_catalog.\"default\", rep_ape1 character varying(15) COLLATE pg_catalog.\"default\" NOT NULL, rep_ape2 character varying(15) COLLATE pg_catalog.\"default\", rep_genero character varying(10) COLLATE pg_catalog.\"default\" NOT NULL, CONSTRAINT pk_representante PRIMARY KEY (doc_ident), CONSTRAINT repsex_check CHECK (rep_genero = 'masculino' OR rep_genero = 'femenino' OR rep_genero = 'neutro') )");
             res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
