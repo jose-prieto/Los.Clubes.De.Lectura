@@ -1,17 +1,20 @@
 package Interfaces.Contenido;
 
+import ControladorBD.QueriesAlberto;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
 public class CierreObra extends javax.swing.JPanel {
 
     ProcedimientosExtra listen = new ProcedimientosExtra();
+     QueriesAlberto query = new QueriesAlberto();
     Dialogo diag = new Dialogo();
     
     public CierreObra() {
         initComponents();
 
-        listen.FieldListener(IdGrupo);
+        listen.FieldListener(obra);
     }
 
     @SuppressWarnings("unchecked")
@@ -19,7 +22,7 @@ public class CierreObra extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        IdGrupo = new javax.swing.JTextField();
+        obra = new javax.swing.JTextField();
         Cierre = new javax.swing.JButton();
         Label1 = new javax.swing.JLabel();
 
@@ -31,10 +34,15 @@ public class CierreObra extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("I.D de la obra");
 
-        IdGrupo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        IdGrupo.setForeground(new java.awt.Color(204, 204, 255));
-        IdGrupo.setText("Ej. 123456");
-        IdGrupo.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        obra.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        obra.setForeground(new java.awt.Color(204, 204, 255));
+        obra.setText("Ej. 123456");
+        obra.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        obra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                obraKeyTyped(evt);
+            }
+        });
 
         Cierre.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Cierre.setText("Cierre de obra");
@@ -66,7 +74,7 @@ public class CierreObra extends javax.swing.JPanel {
                 .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(IdGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+                        .addComponent(obra, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Label1))
                     .addGroup(layout.createSequentialGroup()
@@ -80,7 +88,7 @@ public class CierreObra extends javax.swing.JPanel {
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(IdGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(obra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label1))
                 .addGap(80, 80, 80)
                 .addComponent(Cierre, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -101,18 +109,37 @@ public class CierreObra extends javax.swing.JPanel {
 
     private void CierreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CierreActionPerformed
         // TODO add your handling code here:
-        if (IdGrupo.getText().equals("Ej. 123456")) {
-            IdGrupo.setBorder(new LineBorder(Color.red));
+        if (obra.getText().equals("Ej. 123")) {
+            obra.setBorder(new LineBorder(Color.red));
+             JOptionPane.showMessageDialog(null, "Por favor ingrese el id de la obra.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            IdGrupo.setBorder(new LineBorder(Color.gray));
+            obra.setBorder(new LineBorder(Color.gray));
+           if ( query.obraExist(Integer.parseInt(obra.getText()))){
+               if (query.estadoObra(Integer.parseInt(obra.getText()))){
+                    query.ActualizarObra(Integer.parseInt(obra.getText()));  
+                      }else{
+                       JOptionPane.showMessageDialog(null, "Ya esta obra se encuentra inactiva.", "Error", JOptionPane.ERROR_MESSAGE); 
+                    }  
+           }else {              
+               JOptionPane.showMessageDialog(null, "No existe una obra con el id ingresado.", "Error", JOptionPane.ERROR_MESSAGE);  
+               }
         }
     }//GEN-LAST:event_CierreActionPerformed
+
+    private void obraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_obraKeyTyped
+        // TODO add your handling code here:
+         char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9' || obra.getText().length() > 2){
+            evt.consume();
+        }
+    }//GEN-LAST:event_obraKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cierre;
-    private javax.swing.JTextField IdGrupo;
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField obra;
     // End of variables declaration//GEN-END:variables
 }

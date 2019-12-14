@@ -564,7 +564,7 @@ try {
                     }else{
                    query.CrearAuditorio(Integer.parseInt(Cap.getText()), AudiNombre.getText(), query.BuscarCiudad2(club.getSelectedItem().toString()),0);
                }
-               query.CrearObra(duracion(),"inactiva", TitObra.getText(), Integer.parseInt(Costo.getText()));
+               query.CrearObra(duracion(),"activa", TitObra.getText(), Integer.parseInt(Costo.getText()));
                query.lib_obra(query.BuscarIsbn(libro.getSelectedItem().toString()));
                query.club_obra(query.BuscarClub(club.getSelectedItem().toString()));
                TitObra.setText("");
@@ -573,7 +573,7 @@ try {
                Cap.setText("");
                   }
         else if((audi.getItemAt(0)!=null) && (NuevoAuditorio.isSelected()==false)){
-               query.CrearObra2(duracion(),"inactiva", TitObra.getText(), Integer.parseInt(Costo.getText()),query.BuscarAudi(audi.getSelectedItem().toString()));
+               query.CrearObra2(duracion(),"activa", TitObra.getText(), Integer.parseInt(Costo.getText()),query.BuscarAudi(audi.getSelectedItem().toString()));
                query.lib_obra(query.BuscarIsbn(libro.getSelectedItem().toString()));
                query.club_obra(query.BuscarClub(club.getSelectedItem().toString()));
                TitObra.setText("");

@@ -723,4 +723,81 @@ public class QueriesAlberto {
         }
   }   
   
+  
+    public boolean obraExist(int i) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT obra_id "
+                    + "FROM obra "
+                    + "WHERE obra_id = ?;");
+            ps.setInt(1, i);
+            
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+            
+        }
+    }
+    
+      public void ActualizarObra(int obra) {
+      Statement stmt = null;
+        try (Connection con = conexion.getConnection()){
+
+            stmt = con.createStatement();
+            stmt.executeUpdate("UPDATE obra \n"
+                    + "SET  obra_estatus= 'inactiva' \n"
+                    + "WHERE obra_id ="+obra+";");
+      
+                JOptionPane.showMessageDialog(null, "Estatus de obra cambiado a inactiva satisfactoriamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
+                
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+      
+      public boolean estadoObra(int obra) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+            String cadena;
+            ps = con.prepareStatement("SELECT obra_estatus "
+                    + "FROM obra "
+                    + "WHERE obra_id = ?;");
+            ps.setInt(1, obra);
+            
+            res = ps.executeQuery();
+
+            res.next();
+                cadena = res.getString("obra_estatus");
+                
+                if (!cadena.equals("inactiva")){
+                  return true;
+                }else {
+                    return false;
+                }
+               
+           
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+            
+        }
+  }     
+    
+  
 }
