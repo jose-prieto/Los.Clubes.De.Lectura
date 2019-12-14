@@ -1,11 +1,14 @@
 package Interfaces.Contenido;
 
+import ControladorBD.QueriesAlberto;
 import java.awt.Color;
 import java.sql.ResultSet;
 import javax.swing.border.LineBorder;
 
 import ControladorBD.QueriesJose;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,7 +16,10 @@ public class NuevaFunc extends javax.swing.JPanel {
     
     ProcedimientosExtra listen = new ProcedimientosExtra();
     Dialogo diag = new Dialogo ();
+    SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
     QueriesJose queryJ = new QueriesJose();
+    QueriesAlberto query = new QueriesAlberto();
+    
 
     public NuevaFunc() {
 
@@ -35,7 +41,7 @@ public class NuevaFunc extends javax.swing.JPanel {
         Label2 = new javax.swing.JLabel();
         Nacimiento = new com.toedter.calendar.JCalendar();
         jLabel6 = new javax.swing.JLabel();
-        HoraSpinn = new javax.swing.JSpinner();
+        Hora = new javax.swing.JSpinner();
         Actor = new javax.swing.JComboBox<>();
         Personaje = new javax.swing.JComboBox<>();
         Agregar = new javax.swing.JButton();
@@ -57,6 +63,11 @@ public class NuevaFunc extends javax.swing.JPanel {
         IdObra.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 IdObraFocusLost(evt);
+            }
+        });
+        IdObra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                IdObraKeyTyped(evt);
             }
         });
 
@@ -112,10 +123,15 @@ public class NuevaFunc extends javax.swing.JPanel {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Hora de la función");
 
-        HoraSpinn.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        HoraSpinn.setModel(new javax.swing.SpinnerListModel(new String[] {"06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "00:00"}));
+        Hora.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Hora.setModel(new javax.swing.SpinnerListModel(new String[] {"06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "00:00"}));
 
         Actor.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Actor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActorActionPerformed(evt);
+            }
+        });
 
         Personaje.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
 
@@ -167,7 +183,7 @@ public class NuevaFunc extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(HoraSpinn, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Hora, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -199,7 +215,7 @@ public class NuevaFunc extends javax.swing.JPanel {
                     .addComponent(Nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(HoraSpinn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -253,6 +269,9 @@ public class NuevaFunc extends javax.swing.JPanel {
 
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
         // TODO add your handling code here:
+        query.CrearElenco(Integer.parseInt((Actor.getSelectedItem().toString())), Personaje.getSelectedItem().toString(), Integer.parseInt(IdObra.getText()));
+        query.CrearFuncion(getNacimiento(), Integer.parseInt(IdObra.getText()), hora());
+        query.CrearActor(Integer.parseInt((String) Actor.getSelectedItem()), Personaje.getSelectedItem().toString(), getNacimiento(), Integer.parseInt(IdObra.getText()));
     }//GEN-LAST:event_AgregarActionPerformed
 
     private void IdObraFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IdObraFocusLost
@@ -269,7 +288,7 @@ public class NuevaFunc extends javax.swing.JPanel {
 
                     try {
                         do{
-                            Actor.addItem(queryJ.ciToNom(rs2.getInt(1)));
+                            Actor.addItem(Integer.toString(rs2.getInt(1)));
                         }while (rs2.next());
                     } catch (SQLException ex) {
                         Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
@@ -290,7 +309,7 @@ public class NuevaFunc extends javax.swing.JPanel {
                             if (rs2 != null){
                                 try {
                                     do{
-                                        Actor.addItem(queryJ.ciToNom(rs2.getInt(1)));
+                                        Actor.addItem(Integer.toString(rs2.getInt(1)));
                                     }while (rs2.next());
                                 } catch (SQLException ex) {
                                     Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
@@ -315,11 +334,42 @@ public class NuevaFunc extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_IdObraFocusLost
 
+    public Date getNacimiento() {        
+        return java.sql.Date.valueOf(sdf.format(Nacimiento.getDate()));
+        
+    } 
+    
+    public int hora(){
+       String cadena = Hora.getValue().toString();
+       int h = (int)(cadena.charAt(0));
+       int i = (int)(cadena.charAt(1));
+             if(h==48){
+                 return i-48;
+             }else if(h==49){
+                 return i-38;
+             }
+        return 0;
+             
+}
+    
+    private void IdObraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IdObraKeyTyped
+        // TODO add your handling code here:
+         char c = evt.getKeyChar();
+        
+        if (c < '0' || c > '9' || IdObra.getText().length() > 2){
+            evt.consume();
+        }
+    }//GEN-LAST:event_IdObraKeyTyped
+
+    private void ActorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ActorActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Actor;
     public javax.swing.JButton Agregar;
     public javax.swing.JButton Continuar;
-    private javax.swing.JSpinner HoraSpinn;
+    private javax.swing.JSpinner Hora;
     private javax.swing.JTextField IdObra;
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label2;

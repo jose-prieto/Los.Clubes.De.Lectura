@@ -834,5 +834,149 @@ public class QueriesAlberto {
         }
     }
     
+     public void CrearElenco(int doc_id, String perso_nombre,int obra) {
+        
+            String SQL = "INSERT INTO public.elenco(\n" +
+            " fechai_mie,club_id, doc_id, obra_id, perso_id)\n" +
+            "	VALUES ((SELECT fechai_mie FROM public.hist_miembro WHERE doc_id=? AND fechaf_mie is null),(SELECT club_id FROM public.hist_miembro WHERE doc_id=? AND fechaf_mie is null),?, ?,(SELECT perso_id FROM public.personaje WHERE perso_nombre=? AND obra_id =?));";
+            int filasafectadas = 0;
+
+            try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, doc_id);
+            ps.setInt(2,doc_id);
+            ps.setInt(3,doc_id);
+            ps.setInt(4, obra);
+            ps.setString(5, perso_nombre);
+            ps.setInt(6, obra);
+         
+            
+          
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+     }
+            
+   public int PersoId(String perso_nombre, int obra) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+
+            ps = con.prepareStatement("SELECT perso_id "
+                    + "FROM personaje "
+                    + "WHERE perso_nombre = ? and obra_id =(?);");
+            ps.setString(1, perso_nombre);
+            ps.setInt(2, obra);
+            res = ps.executeQuery();
+            res.next();
+            return res.getInt(1);
+            
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+           return 0;
+        }
+    }
+            
+   
+     public int BuscarDoc(String club) {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+            int dirId=0;
+            ps = con.prepareStatement("SELECT doc_id "
+                    + "FROM miembro "
+                    + "WHERE  = lower(?);");
+            ps.setString(1, club);
+            
+            res = ps.executeQuery();
+
+            res.next();
+                dirId = res.getInt("club_id");
+
+            return dirId;    
+           
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return 0;
+            
+        }
+  }  
+     
+   public void CrearFuncion(Date func_fecha, int obra_id, int func_hora) {
+        
+        String SQL = "INSERT INTO public.funcion(\n" +
+            " func_fecha, obra_id, func_hora, estatus_realizado)\n" +
+            "	VALUES (?,?,?,false);";
+        int filasafectadas = 0;
+
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setDate(1, func_fecha);
+            ps.setInt(2, obra_id);
+            ps.setInt(3, func_hora);
+          
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }   
+        }
+   
+   
+       public void CrearActor(int doc_id, String perso_nombre, Date func_fecha, int obra) {
+        
+            String SQL = "INSERT INTO public.actor(\n" +
+            " fechai_mie,club_id, doc_id, obra_id, perso_id, func_fecha)\n" +
+            "	VALUES ((SELECT fechai_mie FROM public.elenco WHERE doc_id=? and obra_id=? ),(SELECT club_id FROM public.elenco WHERE doc_id=? AND obra_id=?), ? , ? , (SELECT perso_id FROM public.personaje WHERE perso_nombre=? AND obra_id =?), ?);";
+            int filasafectadas = 0;
+
+            try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, doc_id);
+            ps.setInt(2, obra);
+            ps.setInt(3,doc_id);
+            ps.setInt(4, obra);
+            ps.setInt(5, doc_id);
+            ps.setInt(6, obra);
+            ps.setString(7, perso_nombre);
+            ps.setInt(8, obra);
+            ps.setDate(9, func_fecha);
+         
+            
+          
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        
+            
+        }
   
 }
