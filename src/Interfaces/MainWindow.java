@@ -203,7 +203,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         Atras.setBorder(null);
         Atras.setBorderPainted(false);
         Atras.setContentAreaFilled(false);
-        Atras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Atras.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Atras.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         Atras.setFocusPainted(false);
         Atras.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -248,7 +248,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         HomeButton.setBorder(null);
         HomeButton.setBorderPainted(false);
         HomeButton.setContentAreaFilled(false);
-        HomeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        HomeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         HomeButton.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         HomeButton.setFocusPainted(false);
         HomeButton.setMaximumSize(new java.awt.Dimension(70, 34));
@@ -430,6 +430,11 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         }
         cond2 = 0;
         
+        if (nuevaobra.valp==0){
+            nuevaobra.eliminaO();
+            nuevaobra.valp=1;
+        }
+        
         vaciar();
 
     }//GEN-LAST:event_HomeButtonActionPerformed
@@ -468,6 +473,12 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         if (cond2 == 1){
             nuevomiembro.ElimMiem();
         }
+        
+        if (nuevaobra.valp==0){
+            nuevaobra.eliminaO();
+            nuevaobra.valp=1;
+        }
+        
         cond2 = 0;
         vaciar();
         
@@ -493,6 +504,10 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         }
         if (cond2 == 1){
             nuevomiembro.ElimMiem();
+        }
+        if (nuevaobra.valp==0){
+            nuevaobra.eliminaO();
+            nuevaobra.valp=1;
         }
         System.exit(0);
     }//GEN-LAST:event_CerrarMouseClicked
@@ -680,15 +695,18 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             Atras.setVisible(true);
 
         } else if (evt.equals(obras.NuevaObra)) {
-
+            if (nuevaobra.valp==0){
+            nuevaobra.eliminaO();
+            nuevaobra.valp=1;
+                         }
             Alistar();
 
             obras.setVisible(true);
             nuevaobra.setVisible(true);
-
             OptionPannel.add(obras);
             Titulo.setText("Nueva obra");
             ContentPannel.add(nuevaobra);
+       
 
         }else if (evt.equals(nuevaobra2.Continuar)) {
 
@@ -702,7 +720,12 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             ContentPannel.add(nuevaobra2);*/
 
         } else if (evt.equals(obras.CierreObra)) {
-
+             
+            if(nuevaobra.valp==0){
+            nuevaobra.eliminaO();
+            nuevaobra.valp=1;
+            }
+                
             Alistar();
 
             obras.setVisible(true);
@@ -713,7 +736,11 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             ContentPannel.add(cierreobra);
 
         } else if (evt.equals(obras.Presentaciones)) {
-
+            
+            if (nuevaobra.valp==0){
+            nuevaobra.eliminaO();
+            nuevaobra.valp=1;
+                   }
             Alistar();
 
             obras.setVisible(true);

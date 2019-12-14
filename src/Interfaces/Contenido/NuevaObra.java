@@ -16,7 +16,7 @@ public class NuevaObra extends javax.swing.JPanel {
     Dialogo diag = new Dialogo ();
     QueriesAlberto query = new QueriesAlberto();
     QueriesJose queryJ = new QueriesJose();
-    int val = 1;
+    public int valp = 1;
 
     public NuevaObra() {
 
@@ -517,7 +517,7 @@ try {
         
         if(val() == true) {
             mostrar();
-            val = 0;
+            valp = 0;
         }
         
     }//GEN-LAST:event_ContinuarActionPerformed
@@ -582,6 +582,12 @@ try {
         return true;
         
         }
+    }
+    
+    public void eliminaO(){
+        query.EliminarCO();
+        query.EliminarLO();
+        query.EliminarObra();      
     }
     
     public boolean val2(){
@@ -757,7 +763,7 @@ public int duracion(){
         // TODO add your handling code here:
         if (val2() && queryJ.addPersonaje(Personajes.getText(), Descripcion.getText())){
             JOptionPane.showMessageDialog(null, "Personaje agregado correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
-            val = 1;
+            valp = 1;
         }
         
     }//GEN-LAST:event_AgregarActionPerformed

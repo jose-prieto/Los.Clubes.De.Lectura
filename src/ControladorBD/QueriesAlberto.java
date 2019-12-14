@@ -591,9 +591,6 @@ public class QueriesAlberto {
      
             filasafectadas = ps.executeUpdate();
 
-            if (filasafectadas != 0) {
-                JOptionPane.showMessageDialog(null, "Lib_obra creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
-            }
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
@@ -617,9 +614,7 @@ public class QueriesAlberto {
      
             filasafectadas = ps.executeUpdate();
 
-            if (filasafectadas != 0) {
-                JOptionPane.showMessageDialog(null, "club_obra creado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
-            }
+            
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
@@ -751,7 +746,7 @@ public class QueriesAlberto {
         }
     }
     
-      public void ActualizarObra(int obra) {
+  public void ActualizarObra(int obra) {
       Statement stmt = null;
         try (Connection con = conexion.getConnection()){
 
@@ -766,8 +761,9 @@ public class QueriesAlberto {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+  
       
-      public boolean estadoObra(int obra) {
+  public boolean estadoObra(int obra) {
         try (Connection con = conexion.getConnection()){
 
             PreparedStatement ps;
@@ -798,6 +794,45 @@ public class QueriesAlberto {
             
         }
   }     
+  
+      
+  public void EliminarCO() {
+      Statement stmt = null;
+        try (Connection con = conexion.getConnection()){
+            stmt = con.createStatement();
+            stmt.executeUpdate("DELETE FROM public.club_obra \n"
+                    + "WHERE obra_id =(SELECT obra_id from obra WHERE obra_id = (SELECT MAX(obra_id) FROM obra));");
+           
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+                  
+    
+  public void EliminarLO() {
+      Statement stmt = null;
+        try (Connection con = conexion.getConnection()){
+            stmt = con.createStatement();
+            stmt.executeUpdate("DELETE FROM public.libro_obra \n"
+                    + "WHERE obra_id =(SELECT obra_id from obra WHERE obra_id = (SELECT MAX(obra_id) FROM obra));");
+           
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+  
+  
+  public void EliminarObra(){
+      Statement stmt = null;
+        try (Connection con = conexion.getConnection()){
+            stmt = con.createStatement();
+            stmt.executeUpdate("DELETE FROM public.obra \n"
+                    + "WHERE obra_id =(SELECT obra_id from obra WHERE obra_id = (SELECT MAX(obra_id) FROM obra));");
+           
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     
   
 }
