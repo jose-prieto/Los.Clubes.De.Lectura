@@ -609,6 +609,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         libros.setVisible(false);
         miembros.setVisible(false);
         admclub.setVisible(false);
+        nuevafunc.val = 0;
 
     }
 

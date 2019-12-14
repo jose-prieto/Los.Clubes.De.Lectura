@@ -2036,7 +2036,7 @@ public class QueriesJose {
         String SQL = "INSERT INTO public.personaje(\n" +
 "	obra_id, perso_nombre, perso_desc)\n" +
 "	VALUES ((SELECT MAX(obra_id)\n" +
-"	FROM public.obra), ?, ?);";
+"	FROM public.obra), lower(?), ?);";
         int filasafectadas = 0;
         
         try (Connection con = conexion.getConnection()){

@@ -19,7 +19,7 @@ public class NuevaFunc extends javax.swing.JPanel {
     SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
     QueriesJose queryJ = new QueriesJose();
     QueriesAlberto query = new QueriesAlberto();
-    int val  = 0;
+    public int val = 0;
     
 
     public NuevaFunc() {
@@ -27,7 +27,7 @@ public class NuevaFunc extends javax.swing.JPanel {
         initComponents();
         Nacimiento.setDate(query.fechamin());
         Nacimiento.setMaxSelectableDate(query.fechamax());
-        Nacimiento.setDate(query.fechamax());
+        Nacimiento.setDate(query.fechamin());
         listen.FieldListener(IdObra);
 
     }
@@ -119,6 +119,11 @@ public class NuevaFunc extends javax.swing.JPanel {
         Nacimiento.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Nacimiento.setMaxSelectableDate(new java.util.Date(1107147663000L));
         Nacimiento.setMinSelectableDate(new java.util.Date(-2208969077000L));
+        Nacimiento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                NacimientoMouseEntered(evt);
+            }
+        });
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -274,12 +279,12 @@ public class NuevaFunc extends javax.swing.JPanel {
         // TODO add your handling code here:
         if(val==0){
            query.CrearFuncion(getNacimiento(), Integer.parseInt(IdObra.getText()), hora());  
-        query.CrearElenco(Integer.parseInt((Actor.getSelectedItem().toString())), Personaje.getSelectedItem().toString(), Integer.parseInt(IdObra.getText()));
-       query.CrearActor(Integer.parseInt((String) Actor.getSelectedItem()), Personaje.getSelectedItem().toString(), getNacimiento(), Integer.parseInt(IdObra.getText()));
-       val=1;
+           query.CrearElenco(Integer.parseInt((Actor.getSelectedItem().toString())), Personaje.getSelectedItem().toString(), Integer.parseInt(IdObra.getText()));
+           query.CrearActor(Integer.parseInt((String) Actor.getSelectedItem()), Personaje.getSelectedItem().toString(), getNacimiento(), Integer.parseInt(IdObra.getText()));
+           val=1;
         }else{
             query.CrearElenco(Integer.parseInt((Actor.getSelectedItem().toString())), Personaje.getSelectedItem().toString(), Integer.parseInt(IdObra.getText()));
-           query.CrearActor(Integer.parseInt((String) Actor.getSelectedItem()), Personaje.getSelectedItem().toString(), getNacimiento(), Integer.parseInt(IdObra.getText()));
+            query.CrearActor(Integer.parseInt((String) Actor.getSelectedItem()), Personaje.getSelectedItem().toString(), getNacimiento(), Integer.parseInt(IdObra.getText()));
        
         }
     }//GEN-LAST:event_AgregarActionPerformed
@@ -374,6 +379,11 @@ public class NuevaFunc extends javax.swing.JPanel {
     private void ActorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ActorActionPerformed
+
+    private void NacimientoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NacimientoMouseEntered
+        // TODO add your handling code here:
+        val = 0;
+    }//GEN-LAST:event_NacimientoMouseEntered
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Actor;
