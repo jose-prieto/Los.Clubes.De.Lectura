@@ -19,12 +19,15 @@ public class NuevaFunc extends javax.swing.JPanel {
     SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
     QueriesJose queryJ = new QueriesJose();
     QueriesAlberto query = new QueriesAlberto();
+    int val  = 0;
     
 
     public NuevaFunc() {
 
         initComponents();
-
+        Nacimiento.setDate(query.fechamin());
+        Nacimiento.setMaxSelectableDate(query.fechamax());
+        Nacimiento.setDate(query.fechamax());
         listen.FieldListener(IdObra);
 
     }
@@ -269,9 +272,16 @@ public class NuevaFunc extends javax.swing.JPanel {
 
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
         // TODO add your handling code here:
+        if(val==0){
+           query.CrearFuncion(getNacimiento(), Integer.parseInt(IdObra.getText()), hora());  
         query.CrearElenco(Integer.parseInt((Actor.getSelectedItem().toString())), Personaje.getSelectedItem().toString(), Integer.parseInt(IdObra.getText()));
-        query.CrearFuncion(getNacimiento(), Integer.parseInt(IdObra.getText()), hora());
        query.CrearActor(Integer.parseInt((String) Actor.getSelectedItem()), Personaje.getSelectedItem().toString(), getNacimiento(), Integer.parseInt(IdObra.getText()));
+       val=1;
+        }else{
+            query.CrearElenco(Integer.parseInt((Actor.getSelectedItem().toString())), Personaje.getSelectedItem().toString(), Integer.parseInt(IdObra.getText()));
+           query.CrearActor(Integer.parseInt((String) Actor.getSelectedItem()), Personaje.getSelectedItem().toString(), getNacimiento(), Integer.parseInt(IdObra.getText()));
+       
+        }
     }//GEN-LAST:event_AgregarActionPerformed
 
     private void IdObraFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IdObraFocusLost

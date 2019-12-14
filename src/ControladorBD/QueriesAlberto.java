@@ -957,6 +957,54 @@ public void CrearActor(int doc_id, String perso_nombre, Date func_fecha, int obr
             
         }
 
+
+public Date fechamin() {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+            int dirId=0;
+            ps = con.prepareStatement("SELECT current_date + 1;");
+            
+            res = ps.executeQuery();
+
+            if (res.next()){
+                return res.getDate(1);
+            }
+           
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            
+            
+        }
+        return null;
+    }
+
+    public Date fechamax() {
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps;
+            ResultSet res;
+            int dirId=0;
+            ps = con.prepareStatement("SELECT current_date + 10000;");
+            
+            res = ps.executeQuery();
+
+            if (res.next()){
+                return res.getDate(1);
+            }
+           
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            
+            
+        }
+        return null;
+    }
          
   
 }
