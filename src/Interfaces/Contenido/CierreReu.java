@@ -239,7 +239,7 @@ public class CierreReu extends javax.swing.JPanel {
 
     private void CerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarActionPerformed
         // TODO add your handling code here:
-        if (val() && query.actReu2(getGrup(), Conclusiones.getText(), Integer.parseInt(Valor.toString())) 
+        if (val() && query.actReu2(getGrup(), Conclusiones.getText(), (Integer)Valor.getValue()) 
                 && query.actReu3(Libros.getSelectedItem().toString(), getGrup())){
             JOptionPane.showMessageDialog(null, "Discusión cerrada exitosamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
         }

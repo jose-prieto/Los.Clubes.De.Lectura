@@ -1,12 +1,19 @@
 package Interfaces.Contenido;
 
 import java.awt.Color;
+import java.sql.ResultSet;
 import javax.swing.border.LineBorder;
+
+import ControladorBD.QueriesJose;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class NuevaFunc extends javax.swing.JPanel {
     
     ProcedimientosExtra listen = new ProcedimientosExtra();
     Dialogo diag = new Dialogo ();
+    QueriesJose queryJ = new QueriesJose();
 
     public NuevaFunc() {
 
@@ -29,10 +36,11 @@ public class NuevaFunc extends javax.swing.JPanel {
         Nacimiento = new com.toedter.calendar.JCalendar();
         jLabel6 = new javax.swing.JLabel();
         HoraSpinn = new javax.swing.JSpinner();
+        Actor = new javax.swing.JComboBox<>();
+        Personaje = new javax.swing.JComboBox<>();
+        Agregar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        Eliminar = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(707, 541));
         setMinimumSize(new java.awt.Dimension(707, 541));
@@ -46,10 +54,15 @@ public class NuevaFunc extends javax.swing.JPanel {
         IdObra.setForeground(new java.awt.Color(204, 204, 255));
         IdObra.setText("Ej. 123456");
         IdObra.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        IdObra.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                IdObraFocusLost(evt);
+            }
+        });
 
         Continuar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Continuar.setForeground(new java.awt.Color(51, 51, 51));
-        Continuar.setText("Continuar >");
+        Continuar.setText("Listo");
         Continuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ContinuarActionPerformed(evt);
@@ -102,24 +115,30 @@ public class NuevaFunc extends javax.swing.JPanel {
         HoraSpinn.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         HoraSpinn.setModel(new javax.swing.SpinnerListModel(new String[] {"06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "00:00"}));
 
+        Actor.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+
+        Personaje.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+
+        Agregar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Agregar.setForeground(new java.awt.Color(51, 51, 51));
+        Agregar.setText("Agregar actor");
+        Agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarActionPerformed(evt);
+            }
+        });
+
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Hora de la función");
+        jLabel7.setText("Actor");
 
-        jList1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jList1.setForeground(new java.awt.Color(51, 51, 51));
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
-
-        Eliminar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Eliminar.setForeground(new java.awt.Color(51, 51, 51));
-        Eliminar.setText("EliminarFunción");
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Personaje");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -129,7 +148,16 @@ public class NuevaFunc extends javax.swing.JPanel {
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel7))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(Personaje, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(Actor, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,15 +171,13 @@ public class NuevaFunc extends javax.swing.JPanel {
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(IdObra, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Nacimiento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(Continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(IdObra, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Nacimiento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jScrollPane1)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(Eliminar)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(Continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Label1)
@@ -175,14 +201,22 @@ public class NuevaFunc extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(HoraSpinn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Actor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Personaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52))
+                .addGap(46, 46, 46))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -217,20 +251,84 @@ public class NuevaFunc extends javax.swing.JPanel {
         diag.setVisible(false);
     }//GEN-LAST:event_Label2MouseExited
 
+    private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AgregarActionPerformed
+
+    private void IdObraFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IdObraFocusLost
+        // TODO add your handling code here:
+        if (!IdObra.getText().equals("Ej. 123456")){
+            ResultSet rs, rs2;
+            Actor.removeAllItems();
+
+            try {
+                rs2 = queryJ.miemGrupo(queryJ.clubDeObra(Integer.parseInt(IdObra.getText())));
+                if (rs2 == null){
+                    //aqui debes eliminar la obra porque el club no tiene miembros
+                }else{
+
+                    try {
+                        do{
+                            Actor.addItem(queryJ.ciToNom(rs2.getInt(1)));
+                        }while (rs2.next());
+                    } catch (SQLException ex) {
+                        Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                } catch (Exception ex) {
+                    Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            try {
+                
+                rs = queryJ.clubHijo(queryJ.clubDeObra(Integer.parseInt(IdObra.getText())));
+                    if (rs != null){
+                        
+                        do{
+                            System.out.println(rs.getInt(1));
+                            rs2 = queryJ.miemClub(rs.getInt(1));
+                            if (rs2 != null){
+                                try {
+                                    do{
+                                        Actor.addItem(queryJ.ciToNom(rs2.getInt(1)));
+                                    }while (rs2.next());
+                                } catch (SQLException ex) {
+                                    Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
+                        }while (rs.next());
+                    }
+            } catch (Exception ex) {
+                Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            rs2 = queryJ.personajes(Integer.parseInt(IdObra.getText()));
+            if (rs2 != null){
+                try {
+                    do{
+                        Personaje.addItem(rs2.getString(1));
+                    }while (rs2.next());
+                } catch (SQLException ex) {
+                    Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }//GEN-LAST:event_IdObraFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> Actor;
+    public javax.swing.JButton Agregar;
     public javax.swing.JButton Continuar;
-    public javax.swing.JButton Eliminar;
     private javax.swing.JSpinner HoraSpinn;
     private javax.swing.JTextField IdObra;
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label2;
     private com.toedter.calendar.JCalendar Nacimiento;
+    private javax.swing.JComboBox<String> Personaje;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 }

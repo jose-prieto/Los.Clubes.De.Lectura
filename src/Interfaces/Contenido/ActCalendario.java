@@ -55,12 +55,12 @@ public class ActCalendario extends javax.swing.JPanel {
         }else{
             IdGrup.setBorder(new LineBorder(Color.gray));
         }
-        if (cont < val){
+        /*if (cont < val){
             JOptionPane.showMessageDialog(null, "El grupo: "+getGrup()+"\nDebe tener un mínimo de: "+val+
                     " personas\nPara organizar una reunión\nY el grupo solo cuenta con: "+cont+
                     " personas", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
-        }
+        }*/
         return true;
     }
     
@@ -168,6 +168,11 @@ public class ActCalendario extends javax.swing.JPanel {
         IdGrup.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 IdGrupFocusLost(evt);
+            }
+        });
+        IdGrup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IdGrupActionPerformed(evt);
             }
         });
         IdGrup.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -319,6 +324,7 @@ public class ActCalendario extends javax.swing.JPanel {
             if (val() && Actualizar()){
                 crearReuN();
                 vaciar();
+                query.Inasistencia(indexFecha(), getGrup(), clubid, int docid)
                 JOptionPane.showMessageDialog(null, "Próxima reunión pautada para el dia: "+Dias.getSelectedItem().toString()+
                         "\nDesde las "+HoraI.getSelectedItem().toString()+" a las "+HoraF.getSelectedItem().toString(), 
                         "Mensaje", JOptionPane.INFORMATION_MESSAGE);
@@ -332,6 +338,7 @@ public class ActCalendario extends javax.swing.JPanel {
                         "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             }
         }
+        
         
     }//GEN-LAST:event_RegistrarActionPerformed
 
@@ -472,6 +479,10 @@ public class ActCalendario extends javax.swing.JPanel {
     private void ModeradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModeradorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ModeradorActionPerformed
+
+    private void IdGrupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdGrupActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IdGrupActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Dias;
