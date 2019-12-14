@@ -26,10 +26,10 @@ import Interfaces.Contenido.Asistencias;
 import Interfaces.Contenido.CierreReu;
 import Interfaces.Contenido.ActCalendario;
 import Interfaces.Contenido.NuevaObra;
-import Interfaces.Contenido.NuevaObra2;
 import Interfaces.Contenido.CierreObra;
 import Interfaces.Contenido.NuevaFunc;
 import Interfaces.Contenido.ProcedimientosExtra;
+import Interfaces.Contenido.Capitulos;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -78,9 +78,9 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
     RegistraMiembro3 nuevomiembro3 = new RegistraMiembro3();
     CambioClub cambioclub = new CambioClub();
     NuevaObra nuevaobra = new NuevaObra();
-    NuevaObra2 nuevaobra2 = new NuevaObra2();
     CierreObra cierreobra = new CierreObra();
     NuevaFunc nuevafunc = new NuevaFunc();
+    Capitulos capitulo = new Capitulos();
     
 
     public MainWindow() {
@@ -131,6 +131,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
             //action listener de libros
             libros.RegistrarLibro.addActionListener(this);
+            libros.Secciones.addActionListener(this);
 
             //action listener de miembros
             miembros.RegMiemb.addActionListener(this);
@@ -151,7 +152,6 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             
             //nuevaobra action list
             nuevaobra.Continuar.addActionListener(this);
-            nuevaobra2.Continuar.addActionListener(this);
     }
     
     public void vaciar(){
@@ -597,9 +597,9 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         cierre.setVisible(false);
         actualizar.setVisible(false);
         nuevaobra.setVisible(false);
-        nuevaobra2.setVisible(false);
         cierreobra.setVisible(false);
         nuevafunc.setVisible(false);
+        capitulo.setVisible(false);
 
         //Invisibles menus
         main.setVisible(false);
@@ -708,17 +708,6 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             ContentPannel.add(nuevaobra);
        
 
-        }else if (evt.equals(nuevaobra2.Continuar)) {
-
-            /*Alistar();
-
-            obras.setVisible(true);
-            nuevaobra2.setVisible(true);
-
-            OptionPannel.add(obras);
-            Titulo.setText("Nueva obra");
-            ContentPannel.add(nuevaobra2);*/
-
         } else if (evt.equals(obras.CierreObra)) {
              
             if(nuevaobra.valp==0){
@@ -775,6 +764,20 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             ContentPannel.add(nuevoclub);
             Titulo.setText("Nuevo club");
             OptionPannel.add(admclub);
+
+            cond = 2;
+
+        }else if (evt.equals(clubes.Libros)) {
+
+            Alistar();
+            nuevolibro.inicio();
+
+            libros.setVisible(true);
+            nuevolibro.setVisible(true);
+
+            ContentPannel.add(nuevolibro);
+            Titulo.setText("Registrar libro");
+            OptionPannel.add(libros);
 
             cond = 2;
 
@@ -989,8 +992,17 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
                 Titulo.setText("Registrar libro");
                 OptionPannel.add(libros);
 
-        } else if (evt.equals(nuevolibro.Registrar)) {
+        } else if (evt.equals(libros.Secciones)) {
             
+                Alistar();
+                capitulo.inicio();
+
+                libros.setVisible(true);
+                capitulo.setVisible(true);
+
+                ContentPannel.add(capitulo);
+                Titulo.setText("Añadir Capítulos");
+                OptionPannel.add(libros);
 
         } else if (evt.equals(OptionPannel)) {
 

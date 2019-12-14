@@ -1729,6 +1729,60 @@ public class QueriesJose {
         return false;
     }
     
+    public boolean InasistenciaProx(int grup, int club, Date fechai, int docid) {
+        
+        String SQL = "INSERT INTO public.inasistencia(\n" +
+"	reu_fecha, grupr_id, clubr_id, grup_id, club_id, fechai_mie, clubh_id, doc_id)\n" +
+"	VALUES (current_date+7, ?, ?, ?, ?, ?, ?, ?);";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, grup);
+            ps.setInt(2, club);
+            ps.setInt(3, grup);
+            ps.setInt(4, club);
+            ps.setDate(5, fechai);
+            ps.setInt(6, club);
+            ps.setInt(7, docid);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;
+    }
+    
+    public boolean BorraInasist(int grupid) {
+        
+        String SQL = "DELETE FROM public.inasistencia WHERE grup_id=? AND (reu_fecha - current_date)>0;";
+ 
+        int affectedrows = 0;
+ 
+        try (Connection con = conexion.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(SQL)) {
+ 
+            pstmt.setInt(1, grupid);
+            
+            affectedrows = pstmt.executeUpdate();
+            if (affectedrows != 0){
+                return true;
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+    
     public ResultSet ReusHoy() {
         try (Connection con = conexion.getConnection()){
 
@@ -2056,6 +2110,62 @@ public class QueriesJose {
         }
         
         return 0;
+    }
+    
+    public boolean addCap(String isbn, String capN, String capT){
+        String SQL = "INSERT INTO public.capitulo_otro(\n" +
+"	isbn, cap_nombre, cap_titulo)\n" +
+"	VALUES (?, ?, ?);";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setLong(1, isbn(isbn));
+            ps.setString(2, capN);
+            ps.setString(3, capT);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;
+    }
+    
+    public boolean addSecc(String isbn, String secN, String secT){
+        String SQL = "INSERT INTO public.seccion(\n" +
+"	cap_id, isbn, secc_nombre, secc_titulo)\n" +
+"	VALUES ((SELECT MAX(cap_id)\n" +
+"	FROM public.capitulo_otro WHERE isbn=?), ?, ?, ?);";
+        int filasafectadas = 0;
+        
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setLong(1, isbn(isbn));
+            ps.setLong(2, isbn(isbn));
+            ps.setString(3, secN);
+            ps.setString(4, secT);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;
     }
     
 }

@@ -410,7 +410,7 @@ public class QueriesAlberto {
                 JOptionPane.showMessageDialog(null, "Club eliminado satisfactoriamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
                 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Club no eliminado porque posee información importante", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
   
