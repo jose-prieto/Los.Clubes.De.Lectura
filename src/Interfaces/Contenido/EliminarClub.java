@@ -28,7 +28,6 @@ public class EliminarClub extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         Club = new javax.swing.JTextField();
         Eliminar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         Label = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(707, 541));
@@ -57,9 +56,6 @@ public class EliminarClub extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton2.setText("Reestablecer");
-
         Label.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         Label.setForeground(new java.awt.Color(255, 0, 0));
         Label.setText("(*)");
@@ -80,9 +76,7 @@ public class EliminarClub extends javax.swing.JPanel {
                 .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 411, Short.MAX_VALUE)
                         .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -101,9 +95,7 @@ public class EliminarClub extends javax.swing.JPanel {
                     .addComponent(Club, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label))
                 .addGap(66, 66, 66)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(325, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -149,7 +141,6 @@ public class EliminarClub extends javax.swing.JPanel {
     private javax.swing.JTextField Club;
     private javax.swing.JButton Eliminar;
     private javax.swing.JLabel Label;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

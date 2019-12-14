@@ -55,12 +55,12 @@ public class ActCalendario extends javax.swing.JPanel {
         }else{
             IdGrup.setBorder(new LineBorder(Color.gray));
         }
-        /*if (cont < val){
+        if (cont < val){
             JOptionPane.showMessageDialog(null, "El grupo: "+getGrup()+"\nDebe tener un mínimo de: "+val+
                     " personas\nPara organizar una reunión\nY el grupo solo cuenta con: "+cont+
                     " personas", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
-        }*/
+        }
         return true;
     }
     
