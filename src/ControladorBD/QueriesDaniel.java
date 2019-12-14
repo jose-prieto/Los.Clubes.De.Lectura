@@ -5,11 +5,74 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-
-//import DBController.DBConnection;
 public class QueriesDaniel {
 
      BDConexion conexion = new BDConexion();
+     
+     //Clubes y lugares
+     
+     public void CrearAsociacion(int club1, int club2) {
+        
+            String SQL = "INSERT INTO public.asociacion(\n" +
+            "	club1, club2)\n" +
+            "	VALUES (?,?);";
+            int filasafectadas = 0;
+
+            try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, club1);
+            ps.setInt(2, club2);
+          
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        
+            
+        }
+       
+        public void CrearAuditorio(int audi_capacidad, String audi_nombre, int dir_id, int club_id) {
+        
+            String SQL = "INSERT INTO public.auditorio(\n" +
+            "	audi_capacidad, audi_nombre, dir_id, club_id)\n" +
+            "	VALUES (?,lower(?),?,?);";
+            int filasafectadas = 0;
+
+            try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, audi_capacidad);
+            ps.setString(2, audi_nombre);
+            ps.setInt(3, dir_id);
+            
+            if (club_id == 0){
+                ps.setNull(4, java.sql.Types.NUMERIC);
+            }
+            else{
+                ps.setInt(4, club_id);
+            }
+            
+          
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        
+            
+        }
 
      public void CrearIdioma(String idio_nombre) {
         
@@ -70,201 +133,7 @@ public class QueriesDaniel {
          
       
      
-     public void CrearCapitulo(int isbn, String cap_nombre,String cap_titulo) {
-        
-        String SQL = "INSERT INTO public.capitulo_otro(\n" +
-            " isbn, cap_nombre, cap_titulo)\n" +
-            "	VALUES (?,lower(?),lower(?));";
-        int filasafectadas = 0;
 
-        try (Connection con = conexion.getConnection()){
-
-            PreparedStatement ps = con.prepareStatement(SQL);
-            
-            ps.setInt(1, isbn);
-            ps.setString(2, cap_nombre);
-            ps.setString(3, cap_titulo);
-            
-            filasafectadas = ps.executeUpdate();
-
-            if (filasafectadas != 0) {
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-        }   
-        }
-     
-     public void CrearSeccion(int cap_id, int isbn, String secc_nombre,String secc_titulo) {
-        
-        String SQL = "INSERT INTO public.seccion(\n" +
-            " cap_id, isbn, secc_nombre, secc_titulo)\n" +
-            "	VALUES (?,?,lower(?),lower(?));";
-        int filasafectadas = 0;
-
-        try (Connection con = conexion.getConnection()){
-
-            PreparedStatement ps = con.prepareStatement(SQL);
-            
-            ps.setInt(1, cap_id);
-            ps.setInt(2, isbn);
-            ps.setString(3, secc_nombre);
-            ps.setString(4, secc_titulo);
-            
-            filasafectadas = ps.executeUpdate();
-
-            if (filasafectadas != 0) {
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-        }   
-        }
-     
-     
-    public void CrearPersonaje(int obra_id, String perso_nombre,String perso_desc) {
-        
-        String SQL = "INSERT INTO public.personaje(\n" +
-            " obra_id, perso_nombre, perso_desc)\n" +
-            "	VALUES (?,lower(?),lower(?));";
-        int filasafectadas = 0;
-
-        try (Connection con = conexion.getConnection()){
-
-            PreparedStatement ps = con.prepareStatement(SQL);
-            
-            ps.setInt(1, obra_id);
-            ps.setString(2, perso_nombre);
-            ps.setString(3, perso_desc);
-            
-            filasafectadas = ps.executeUpdate();
-
-            if (filasafectadas != 0) {
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-        }   
-        }
-    
-    
-    public void CrearFuncion(Date func_fecha, int obra_id, int func_hora) {
-        
-        String SQL = "INSERT INTO public.funcion(\n" +
-            " func_fecha, obra_id, func_hora, estatus_realizado)\n" +
-            "	VALUES (?,?,?,FALSE);";
-        int filasafectadas = 0;
-
-        try (Connection con = conexion.getConnection()){
-
-            PreparedStatement ps = con.prepareStatement(SQL);
-            
-            ps.setDate(1, func_fecha);
-            ps.setInt(2, obra_id);
-            ps.setInt(3, func_hora);
-          
-            
-            filasafectadas = ps.executeUpdate();
-
-            if (filasafectadas != 0) {
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-        }   
-        }
-    
-    
-    
-       public void TerminarObra(int obra_id) {
-        
-        String SQL = "UPDATE public.obra\n" +
-            "  SET obra_estatus = 'inactiva' \n" +
-            "  WHERE obra_id = ? ;";
-        int filasafectadas = 0;
-
-        try (Connection con = conexion.getConnection()){
-
-            PreparedStatement ps = con.prepareStatement(SQL);
-            
-            ps.setInt(1, obra_id);
-          
-            
-            filasafectadas = ps.executeUpdate();
-
-            if (filasafectadas != 0) {
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-        }   
-        }
-       
-       
-       
-      public void CerrarFuncion(Date func_fecha, int obra_id, int func_valoracion, int func_entradas_vend) {
-        
-        String SQL = "UPDATE public.funcion\n" +
-            "  SET estatus_realizado = TRUE, func_valoracion = ?, func_entradas_vend = ? \n" +
-            "  WHERE func_fecha = ? and obra_id = ? ;";
-        int filasafectadas = 0;
-
-        try (Connection con = conexion.getConnection()){
-
-            PreparedStatement ps = con.prepareStatement(SQL);
-            
-            ps.setInt(1, func_valoracion);
-            ps.setInt(2, func_entradas_vend);
-            ps.setDate(3, func_fecha);
-            ps.setInt(4, obra_id);
-
-            
-           
-            
-            filasafectadas = ps.executeUpdate();
-
-            if (filasafectadas != 0) {
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-        }   
-        }
-     
-     
-     public void CrearClasificacion(String clasi_nombre, String clasi_tipo, int clasi_padre) {
-        
-            String SQL = "INSERT INTO public.clasificacion(\n" +
-            "	clasi_nombre, clasi_tipo, clasi_padre)\n" +
-            "	VALUES (lower(?),lower(?),?);";
-            int filasafectadas = 0;
-
-            try (Connection con = conexion.getConnection()){
-
-            PreparedStatement ps = con.prepareStatement(SQL);
-            
-            ps.setString(1, clasi_nombre);
-            ps.setString(2, clasi_tipo);
-            if (clasi_padre == 0){
-                ps.setNull(3, java.sql.Types.NUMERIC);
-            }
-            else{
-                ps.setInt(3, clasi_padre);
-            }
-
-            
-            
-            filasafectadas = ps.executeUpdate();
-
-            if (filasafectadas != 0) {
-            }
-
-            } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        
-            
-        }
      
         public void CrearInstitucion(String inst_nombre, String inst_desc, int dir_id) {
         
@@ -317,6 +186,9 @@ public class QueriesDaniel {
         
             
         }
+        
+        //Grupos y reuniones 
+        
         public void CrearGrupo(int club_id, String grup_tipo, String dia, int horai, int horaf) {
         
             String SQL = "INSERT INTO public.grupo(\n" +
@@ -413,6 +285,96 @@ public class QueriesDaniel {
     }
         
         
+        
+        //Libros
+        
+             public void CrearCapitulo(int isbn, String cap_nombre,String cap_titulo) {
+        
+        String SQL = "INSERT INTO public.capitulo_otro(\n" +
+            " isbn, cap_nombre, cap_titulo)\n" +
+            "	VALUES (?,lower(?),lower(?));";
+        int filasafectadas = 0;
+
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, isbn);
+            ps.setString(2, cap_nombre);
+            ps.setString(3, cap_titulo);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }   
+        }
+     
+     public void CrearSeccion(int cap_id, int isbn, String secc_nombre,String secc_titulo) {
+        
+        String SQL = "INSERT INTO public.seccion(\n" +
+            " cap_id, isbn, secc_nombre, secc_titulo)\n" +
+            "	VALUES (?,?,lower(?),lower(?));";
+        int filasafectadas = 0;
+
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, cap_id);
+            ps.setInt(2, isbn);
+            ps.setString(3, secc_nombre);
+            ps.setString(4, secc_titulo);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }   
+        }
+     
+
+     
+     public void CrearClasificacion(String clasi_nombre, String clasi_tipo, int clasi_padre) {
+        
+            String SQL = "INSERT INTO public.clasificacion(\n" +
+            "	clasi_nombre, clasi_tipo, clasi_padre)\n" +
+            "	VALUES (lower(?),lower(?),?);";
+            int filasafectadas = 0;
+
+            try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setString(1, clasi_nombre);
+            ps.setString(2, clasi_tipo);
+            if (clasi_padre == 0){
+                ps.setNull(3, java.sql.Types.NUMERIC);
+            }
+            else{
+                ps.setInt(3, clasi_padre);
+            }
+
+            
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        
+            
+        }
+        
         public void CrearLibro(int isbn, String lib_tit_original, String sinopsis, Date lib_ano_publi, int lib_pag, String titulo_esp, String tema_princ, int clasi_id, int edit_id, int isbn_padre) {
         
             String SQL = "INSERT INTO public.libro(\n" +
@@ -436,69 +398,6 @@ public class QueriesDaniel {
             if (isbn_padre == 0){ps.setNull(10, java.sql.Types.NUMERIC);}
             else{ps.setInt(10, isbn_padre);}
            
-            filasafectadas = ps.executeUpdate();
-
-            if (filasafectadas != 0) {
-            }
-
-            } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        
-            
-        }
-        
-        public void CrearAsociacion(int club1, int club2) {
-        
-            String SQL = "INSERT INTO public.asociacion(\n" +
-            "	club1, club2)\n" +
-            "	VALUES (?,?);";
-            int filasafectadas = 0;
-
-            try (Connection con = conexion.getConnection()){
-
-            PreparedStatement ps = con.prepareStatement(SQL);
-            
-            ps.setInt(1, club1);
-            ps.setInt(2, club2);
-          
-            
-            filasafectadas = ps.executeUpdate();
-
-            if (filasafectadas != 0) {
-            }
-
-            } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        
-            
-        }
-       
-        public void CrearAuditorio(int audi_capacidad, String audi_nombre, int dir_id, int club_id) {
-        
-            String SQL = "INSERT INTO public.auditorio(\n" +
-            "	audi_capacidad, audi_nombre, dir_id, club_id)\n" +
-            "	VALUES (?,lower(?),?,?);";
-            int filasafectadas = 0;
-
-            try (Connection con = conexion.getConnection()){
-
-            PreparedStatement ps = con.prepareStatement(SQL);
-            
-            ps.setInt(1, audi_capacidad);
-            ps.setString(2, audi_nombre);
-            ps.setInt(3, dir_id);
-            
-            if (club_id == 0){
-                ps.setNull(4, java.sql.Types.NUMERIC);
-            }
-            else{
-                ps.setInt(4, club_id);
-            }
-            
-          
-            
             filasafectadas = ps.executeUpdate();
 
             if (filasafectadas != 0) {
@@ -575,6 +474,8 @@ public class QueriesDaniel {
         
             
         }
+        
+        //Obras
         
          public void CrearElenco(int doc_id, String perso_nombre) {
         
@@ -665,6 +566,186 @@ public class QueriesDaniel {
            return 0;
         }
     }
+    
+          public void EliminarLibro_obra(int obra_id, String lib_nombre) {
+        
+        String SQL = "DELETE FROM public.libro_obra WHERE obra_id = ? AND isbn = ? ;";
+        int filasafectadas = 0;
+
+        try (Connection con = conexion.getConnection()){
+            
+            QueriesJose qj = new QueriesJose();
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, obra_id);
+            ps.setLong(2, qj.isbn(lib_nombre));
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }   
+        }
+          
+          
+    
+    public void EliminarClub_obra(int obra_id, String club_nombre) {
+        
+        String SQL = "DELETE FROM public.club_obra WHERE obra_id = ? AND club_id = ? ;";
+        int filasafectadas = 0;
+
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            QueriesJose qj = new QueriesJose();
+            ps.setInt(1, obra_id);
+            ps.setInt(2, qj.clubid(club_nombre));
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }   
+        }
+    
+    public void CrearPersonaje(int obra_id, String perso_nombre,String perso_desc) {
+        
+        String SQL = "INSERT INTO public.personaje(\n" +
+            " obra_id, perso_nombre, perso_desc)\n" +
+            "	VALUES (?,lower(?),lower(?));";
+        int filasafectadas = 0;
+
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, obra_id);
+            ps.setString(2, perso_nombre);
+            ps.setString(3, perso_desc);
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }   
+        }
+    
+    
+    public void CrearFuncion(Date func_fecha, int obra_id, int func_hora) {
+        
+        String SQL = "INSERT INTO public.funcion(\n" +
+            " func_fecha, obra_id, func_hora, estatus_realizado)\n" +
+            "	VALUES (?,?,?,FALSE);";
+        int filasafectadas = 0;
+
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setDate(1, func_fecha);
+            ps.setInt(2, obra_id);
+            ps.setInt(3, func_hora);
+          
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }   
+        }
+    
+    
+    
+       public void TerminarObra(int obra_id) {
+        
+        String SQL = "UPDATE public.obra\n" +
+            "  SET obra_estatus = 'inactiva' \n" +
+            "  WHERE obra_id = ? ;";
+        int filasafectadas = 0;
+
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, obra_id);
+          
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }   
+        }
+       
+              public void EliminarObra(int obra_id) {
+        
+        String SQL = "DELETE FROM public.obra WHERE obra_id = ?";
+        int filasafectadas = 0;
+
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, obra_id);
+          
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }   
+        }
+       
+       
+       
+      public void CerrarFuncion(Date func_fecha, int obra_id, int func_valoracion, int func_entradas_vend) {
+        
+        String SQL = "UPDATE public.funcion\n" +
+            "  SET estatus_realizado = TRUE, func_valoracion = ?, func_entradas_vend = ? \n" +
+            "  WHERE func_fecha = ? and obra_id = ? ;";
+        int filasafectadas = 0;
+
+        try (Connection con = conexion.getConnection()){
+
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ps.setInt(1, func_valoracion);
+            ps.setInt(2, func_entradas_vend);
+            ps.setDate(3, func_fecha);
+            ps.setInt(4, obra_id);
+
+            
+           
+            
+            filasafectadas = ps.executeUpdate();
+
+            if (filasafectadas != 0) {
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }   
+        }
+         
         
               
 }
