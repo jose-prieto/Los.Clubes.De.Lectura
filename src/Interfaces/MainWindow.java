@@ -30,6 +30,7 @@ import Interfaces.Contenido.CierreObra;
 import Interfaces.Contenido.NuevaFunc;
 import Interfaces.Contenido.ProcedimientosExtra;
 import Interfaces.Contenido.Capitulos;
+import Interfaces.Contenido.FichaLibro;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -81,6 +82,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
     CierreObra cierreobra = new CierreObra();
     NuevaFunc nuevafunc = new NuevaFunc();
     Capitulos capitulo = new Capitulos();
+    FichaLibro fichlib = new FichaLibro();
     
 
     public MainWindow() {
@@ -132,6 +134,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             //action listener de libros
             libros.RegistrarLibro.addActionListener(this);
             libros.Secciones.addActionListener(this);
+            libros.FichaLibro.addActionListener(this);
 
             //action listener de miembros
             miembros.RegMiemb.addActionListener(this);
@@ -203,7 +206,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         Atras.setBorder(null);
         Atras.setBorderPainted(false);
         Atras.setContentAreaFilled(false);
-        Atras.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Atras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Atras.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         Atras.setFocusPainted(false);
         Atras.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -248,7 +251,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         HomeButton.setBorder(null);
         HomeButton.setBorderPainted(false);
         HomeButton.setContentAreaFilled(false);
-        HomeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        HomeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         HomeButton.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         HomeButton.setFocusPainted(false);
         HomeButton.setMaximumSize(new java.awt.Dimension(70, 34));
@@ -600,6 +603,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         cierreobra.setVisible(false);
         nuevafunc.setVisible(false);
         capitulo.setVisible(false);
+        fichlib.setVisible(false);
 
         //Invisibles menus
         main.setVisible(false);
@@ -1004,6 +1008,19 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
                 ContentPannel.add(capitulo);
                 Titulo.setText("Añadir Capítulos");
                 OptionPannel.add(libros);
+
+        } else if (evt.equals(libros.FichaLibro)) {
+
+            Alistar();
+            
+            fichlib.inicio();
+
+            libros.setVisible(true);
+            fichlib.setVisible(true);
+
+            ContentPannel.add(fichlib);
+            Titulo.setText("Generador de ficha de libro");
+            OptionPannel.add(libros);
 
         } else if (evt.equals(OptionPannel)) {
 

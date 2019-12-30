@@ -24,6 +24,7 @@ public class MantLibrosPannel extends javax.swing.JPanel implements ActionListen
 
         RegistrarLibro = new javax.swing.JButton();
         Secciones = new javax.swing.JButton();
+        FichaLibro = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 51, 51));
 
@@ -73,12 +74,36 @@ public class MantLibrosPannel extends javax.swing.JPanel implements ActionListen
             }
         });
 
+        FichaLibro.setBackground(new java.awt.Color(153, 153, 153));
+        FichaLibro.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        FichaLibro.setForeground(new java.awt.Color(204, 204, 204));
+        FichaLibro.setText("Ficha de libro");
+        FichaLibro.setBorder(null);
+        FichaLibro.setBorderPainted(false);
+        FichaLibro.setContentAreaFilled(false);
+        FichaLibro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        FichaLibro.setFocusPainted(false);
+        FichaLibro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                FichaLibroMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                FichaLibroMouseExited(evt);
+            }
+        });
+        FichaLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FichaLibroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(RegistrarLibro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
             .addComponent(Secciones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(FichaLibro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,7 +112,9 @@ public class MantLibrosPannel extends javax.swing.JPanel implements ActionListen
                 .addComponent(RegistrarLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(Secciones, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(417, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(FichaLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(377, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -125,8 +152,26 @@ public class MantLibrosPannel extends javax.swing.JPanel implements ActionListen
         // TODO add your handling code here:
     }//GEN-LAST:event_SeccionesActionPerformed
 
+    private void FichaLibroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FichaLibroMouseEntered
+        // TODO add your handling code here:
+        FichaLibro.setContentAreaFilled(true);
+        FichaLibro.setBackground(pro.CasillaSelect);
+        FichaLibro.setForeground(pro.FuenteSelect);
+    }//GEN-LAST:event_FichaLibroMouseEntered
+
+    private void FichaLibroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FichaLibroMouseExited
+        // TODO add your handling code here:
+        FichaLibro.setContentAreaFilled(false);
+        FichaLibro.setForeground(pro.FuenteNoSelect);
+    }//GEN-LAST:event_FichaLibroMouseExited
+
+    private void FichaLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FichaLibroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FichaLibroActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton FichaLibro;
     public javax.swing.JButton RegistrarLibro;
     public javax.swing.JButton Secciones;
     // End of variables declaration//GEN-END:variables
