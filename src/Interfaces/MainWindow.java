@@ -31,6 +31,7 @@ import Interfaces.Contenido.NuevaFunc;
 import Interfaces.Contenido.ProcedimientosExtra;
 import Interfaces.Contenido.Capitulos;
 import Interfaces.Contenido.FichaLibro;
+import Interfaces.Contenido.ReportGen;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -83,6 +84,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
     NuevaFunc nuevafunc = new NuevaFunc();
     Capitulos capitulo = new Capitulos();
     FichaLibro fichlib = new FichaLibro();
+    ReportGen reportgen = new ReportGen();
     
 
     public MainWindow() {
@@ -139,6 +141,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             //action listener de miembros
             miembros.RegMiemb.addActionListener(this);
             miembros.CambClub.addActionListener(this);
+            miembros.ReportGen.addActionListener(this);
 
             //action listener de nuevo miembro
             nuevomiembro.Continuar.addActionListener(this);
@@ -604,6 +607,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         nuevafunc.setVisible(false);
         capitulo.setVisible(false);
         fichlib.setVisible(false);
+        reportgen.setVisible(false);
 
         //Invisibles menus
         main.setVisible(false);
@@ -866,6 +870,17 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
             ContentPannel.add(nuevomiembro);
             Titulo.setText("Registrar miembro");
+            OptionPannel.add(miembros);
+
+        } else if (evt.equals(miembros.ReportGen)) {
+            
+            Alistar();
+
+            miembros.setVisible(true);
+            reportgen.setVisible(true);
+
+            ContentPannel.add(reportgen);
+            Titulo.setText("Reporte general de miembro");
             OptionPannel.add(miembros);
 
         } else if (evt.equals(nuevomiembro.Continuar)) {

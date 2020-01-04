@@ -5,6 +5,8 @@ import ControladorBD.QueriesJose;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -19,7 +21,7 @@ public class FichaLibro extends javax.swing.JPanel {
 
     ProcedimientosExtra listen = new ProcedimientosExtra();
     Dialogo diag = new Dialogo ();
-    QueriesJose queryJ = new QueriesJose();
+    QueriesJose query = new QueriesJose();
     BDConexion conexion = new BDConexion();
 
     public FichaLibro() {
@@ -82,7 +84,7 @@ public class FichaLibro extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     public void inicio(){
-        ResultSet res = queryJ.libros();
+        ResultSet res = query.libros();
         
         libro.addItem(" ");
 
@@ -117,9 +119,12 @@ public class FichaLibro extends javax.swing.JPanel {
                 JasperReport reporte = null;
                 String path = "src\\Reportes\\FichaLibro.jasper";
                 
+                Map parametro = new HashMap();
+                parametro.put("isbn", query.isbn(libro.getSelectedItem().toString()));
+                
                 reporte =  (JasperReport) JRLoader.loadObjectFromFile(path);
                 
-                JasperPrint jprint = JasperFillManager.fillReport(path, null, con);
+                JasperPrint jprint = JasperFillManager.fillReport(path, parametro, con);
                 
                 JasperViewer view = new JasperViewer(jprint, false);
                 

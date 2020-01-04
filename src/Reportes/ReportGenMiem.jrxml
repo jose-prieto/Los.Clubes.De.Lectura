@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="650" leftMargin="71" rightMargin="71" topMargin="71" bottomMargin="56" uuid="41f9a72a-f58a-4b91-a46a-5646a7d65268">
+	<property name="ireport.zoom" value="1.2100000000000075"/>
+	<property name="ireport.x" value="30"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[852]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select TO_CHAR(NOW() :: DATE, 'DD "de" TMMonth "del" yyyy') as fecha_hoy,
+
+concat(initcap(mi.miemb_ape1), '  ', COALESCE (initcap(mi.miemb_ape2), '')) as apellidos,
+
+concat(initcap(mi.miemb_nombre1), '  ', COALESCE (initcap(mi.miemb_nombre2), '')) as nombres,
+
+mi.doc_id as cedula,
+
+mi.miemb_genero as genero,
+
+TO_CHAR(mi.miemb_fecha_nac :: DATE, 'DD "de" TMMonth "del" yyyy') as fecha_nacimiento,
+
+(select concat(extract(year from age(mi.miemb_fecha_nac)),' años')
+	from miembro mie
+		where mie.doc_id = mi.doc_id) as edad,
+
+COALESCE ((select concat(COALESCE (initcap(rep_ape1),'---------- ----------'), '  ',COALESCE (initcap(rep_ape2),''))
+	from representante rep
+		where rep.doc_ident = mi.doc_id),'---------- ----------') as apellido_rep,
+
+COALESCE ((select concat(COALESCE (initcap(rep_nombre1),'---------- ----------'), '  ',COALESCE (initcap(rep_nombre2),''))
+	from representante rep
+		where rep.doc_ident = mi.doc_id),'---------- ----------') as nombre_rep,
+
+lib_pref.posicion as posicion,
+
+lib_pref.isbn as isbn,
+
+CONCAT(COALESCE (INITCAP(lib.titulo_esp),''), ' (', COALESCE (INITCAP(lib.lib_tit_original),''), ') - ', DATE_PART('YEAR', lib.lib_ano_publi)) as libro_tirulo,
+
+(Select concat('(', hist.club_id, ') ', initcap(cl.club_nombre))
+	from hist_miembro hist, club cl
+		where hist.doc_id = mi.doc_id and hist.fechaf_mie is null and hist.club_id = cl.club_id) as club_id,
+
+(Select g_l.grup_id
+	from g_lector g_l
+		where g_l.doc_id = mi.doc_id and g_l.fechaf_gru is null) as grup_id
+	
+from miembro mi, libros_preferidos lib_pref, libro lib
+
+where mi.doc_id = $P!{id} and lib_pref.doc_id = mi.doc_id and lib.isbn = lib_pref.isbn
+
+order by lib_pref.posicion asc]]>
+	</queryString>
+	<field name="fecha_hoy" class="java.lang.String"/>
+	<field name="apellidos" class="java.lang.String"/>
+	<field name="nombres" class="java.lang.String"/>
+	<field name="cedula" class="java.math.BigDecimal"/>
+	<field name="genero" class="java.lang.String"/>
+	<field name="fecha_nacimiento" class="java.lang.String"/>
+	<field name="edad" class="java.lang.String"/>
+	<field name="apellido_rep" class="java.lang.String"/>
+	<field name="nombre_rep" class="java.lang.String"/>
+	<field name="posicion" class="java.math.BigDecimal"/>
+	<field name="isbn" class="java.math.BigDecimal"/>
+	<field name="libro_tirulo" class="java.lang.String"/>
+	<field name="club_id" class="java.lang.String"/>
+	<field name="grup_id" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="333" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="206" width="90" height="14" uuid="49ab0d5f-5475-4c17-91f4-5f5c2bd65bf2"/>
+				<box leftPadding="7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[representante:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="520" y="0" width="130" height="30" uuid="8db6e5ea-98e5-4a57-a468-9cb720d6f029"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_hoy}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="190" width="247" height="30" uuid="822b885b-74f8-4517-ad49-8ed01b86ced6"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apellido_rep}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="160" width="90" height="30" uuid="aae093db-5289-433d-9fb9-d3286423bb30"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Edad:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="369" y="0" width="151" height="30" uuid="3644a5e4-e3cb-43b4-a131-005112d90f76"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de emisión de reporte:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="190" width="90" height="16" uuid="b4a900c3-6325-4516-9808-556627f3b772"/>
+				<box leftPadding="7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellidos del]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="337" y="130" width="91" height="30" uuid="8a453115-b177-4d0e-aa65-ec97aed30fe9"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Género:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="337" y="100" width="91" height="30" uuid="86d9f5f7-234c-4d99-a82a-bfea0b69d943"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombres:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="42" width="650" height="44" uuid="2e1f7c13-763a-4b91-b488-73015b373cd8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte general de miembro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="297" height="30" uuid="c8f2e45c-6dae-4c4e-8b9e-1af672f56a19"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Clubes de lectura]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="428" y="190" width="222" height="30" uuid="ce2d8f14-fcbe-4398-be26-a97e57a20531"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_rep}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="271" width="649" height="44" uuid="357f9c28-10ea-47e8-a421-1725fdc595f2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Preferencias literarias]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="337" y="190" width="91" height="14" uuid="bdea376b-c13b-4492-b978-9d15bdaebd62"/>
+				<box leftPadding="7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombres del]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="100" width="90" height="30" uuid="ed3bdc0b-7668-42d5-a800-fd7a3309662e"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellidos:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="428" y="100" width="222" height="30" uuid="33fda61f-6455-43aa-bac9-9887c865d8ef"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="428" y="160" width="222" height="30" uuid="7c1dab0c-ff82-4bcf-b56e-bbe50339f15d"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_nacimiento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="130" width="90" height="30" uuid="c3241f61-ec0a-4be0-bb38-6e7ec82def8b"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cédula:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="130" width="247" height="30" uuid="56fbcda4-cb76-4f17-b3e0-bf8dda2e621b"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cedula}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="337" y="204" width="91" height="16" uuid="0b3debab-26df-4d3a-bb4e-3be5d6130bce"/>
+				<box leftPadding="7"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[representante:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="428" y="130" width="222" height="30" uuid="2b9ad22c-05de-4d13-bb6e-9f400c710da5"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{genero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="160" width="247" height="30" uuid="187d78ea-07bc-4d61-b7f4-b9f77ea87147"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{edad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="100" width="247" height="30" uuid="6c849780-af5b-401a-b405-ca83df85eaa6"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apellidos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="337" y="160" width="91" height="15" uuid="513128aa-60c1-4fd3-bc02-327972ec23c7"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[echa de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="337" y="175" width="91" height="15" uuid="2cb7337a-6aea-4bf4-82b0-759782becbb5"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Top">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[nacimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="220" width="90" height="30" uuid="36c70ff6-7e84-45df-a715-9a4e29d6bde8"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Club actual:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="337" y="220" width="91" height="30" uuid="c11431b9-d77e-4a4a-8ad9-43c8c4ab4206"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grupo actual:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="220" width="247" height="30" uuid="b876579f-3a7d-4abe-a355-e4506521ac9a"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{club_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="428" y="220" width="222" height="30" uuid="4ad9b737-0d2b-40f7-a3e4-0c04863425e7"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{grup_id}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-1" y="190" width="1" height="30" uuid="ea72a069-d37b-4c39-96f2-ca7f493467b0"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="101" height="30" uuid="a0a633d4-41e4-44c8-84ae-7a89c26ac840"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Posición]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="0" width="130" height="30" uuid="dd81cb6a-26ca-457f-a7eb-0f8cb24990ba"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ISBN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="0" width="419" height="30" uuid="685a1a6f-92d0-434b-a5da-e2d5ea02dff5"/>
+				<box leftPadding="4">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Información del libro]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="101" height="30" uuid="caf4e548-d0ea-4547-af5d-52ebe072565e"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{posicion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="0" width="130" height="30" uuid="66a3d068-18d8-4dd4-b185-c21edd469528"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{isbn}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="231" y="0" width="419" height="30" uuid="0635b9da-a74b-40b9-9ae9-9a474724d334"/>
+				<box leftPadding="4">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libro_tirulo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

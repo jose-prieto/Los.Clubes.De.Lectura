@@ -4,17 +4,28 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 import ControladorBD.QueriesAlberto;
+import ControladorBD.BDConexion;
+import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
-public class Pagos extends javax.swing.JPanel {
+public class ReportGen extends javax.swing.JPanel {
 
     ProcedimientosExtra listen = new ProcedimientosExtra();
     Dialogo diag = new Dialogo ();
     QueriesAlberto query = new QueriesAlberto();
+    BDConexion conexion = new BDConexion();
     
-    public Pagos() {
+    public ReportGen() {
         initComponents();
 
-        listen.FieldListener(IdPaga);
+        listen.FieldListener(IdMiem);
     }
 
     /**
@@ -27,7 +38,7 @@ public class Pagos extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        IdPaga = new javax.swing.JTextField();
+        IdMiem = new javax.swing.JTextField();
         Label = new javax.swing.JLabel();
         GenRep = new javax.swing.JButton();
 
@@ -39,13 +50,13 @@ public class Pagos extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("I.D del miembro");
 
-        IdPaga.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        IdPaga.setForeground(new java.awt.Color(204, 204, 255));
-        IdPaga.setText("Ej. 58698569");
-        IdPaga.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
-        IdPaga.addKeyListener(new java.awt.event.KeyAdapter() {
+        IdMiem.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        IdMiem.setForeground(new java.awt.Color(204, 204, 255));
+        IdMiem.setText("Ej. 58698569");
+        IdMiem.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.gray));
+        IdMiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                IdPagaKeyTyped(evt);
+                IdMiemKeyTyped(evt);
             }
         });
 
@@ -84,7 +95,7 @@ public class Pagos extends javax.swing.JPanel {
                         .addGap(110, 110, 110)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(IdPaga, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                        .addComponent(IdMiem, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Label)))
                 .addGap(116, 116, 116))
@@ -95,7 +106,7 @@ public class Pagos extends javax.swing.JPanel {
                 .addGap(86, 86, 86)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(IdPaga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IdMiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label))
                 .addGap(101, 101, 101)
                 .addComponent(GenRep, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -114,14 +125,26 @@ public class Pagos extends javax.swing.JPanel {
         diag.setVisible(false);
     }//GEN-LAST:event_LabelMouseExited
 
-    private void IdPagaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IdPagaKeyTyped
+    private void IdMiemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IdMiemKeyTyped
         // TODO add your handling code here:
                           char c = evt.getKeyChar();
         
-        if (c < '0' || c > '9' || IdPaga.getText().length() > 9){
+        if (c < '0' || c > '9' || IdMiem.getText().length() > 9){
             evt.consume();
         }
-    }//GEN-LAST:event_IdPagaKeyTyped
+    }//GEN-LAST:event_IdMiemKeyTyped
+
+    public boolean val(){
+        if (IdMiem.getText().equals("Ej. 58698569")){
+            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos que son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (!query.ciExist(Integer.parseInt(IdMiem.getText()))){
+            JOptionPane.showMessageDialog(null, "Dicho miembro no existe", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
     
     private void GenRepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenRepActionPerformed
         // TODO add your handling code here:
@@ -129,10 +152,10 @@ public class Pagos extends javax.swing.JPanel {
             try (Connection con = conexion.getConnection()){
 
                 JasperReport reporte = null;
-                String path = "src\\Reportes\\FichaLibro.jasper";
+                String path = "src\\Reportes\\ReportGenMiem.jasper";
 
                 Map parametro = new HashMap();
-                parametro.put("isbn", query.isbn(libro.getSelectedItem().toString()));
+                parametro.put("isbn", Integer.parseInt(IdMiem.getText()));
 
                 reporte =  (JasperReport) JRLoader.loadObjectFromFile(path);
 
@@ -159,7 +182,7 @@ public class Pagos extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton GenRep;
-    private javax.swing.JTextField IdPaga;
+    private javax.swing.JTextField IdMiem;
     private javax.swing.JLabel Label;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

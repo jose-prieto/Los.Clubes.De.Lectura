@@ -1,29 +1,208 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="612" pageHeight="792" columnWidth="470" leftMargin="71" rightMargin="71" topMargin="71" bottomMargin="71" uuid="be89c6c9-248e-4e1d-82fb-f4f0a18ffdc8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="New Dataset 1" uuid="e196c5dc-9cfa-4077-b494-3f659ec0716e"/>
+	<parameter name="isbn" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     CONCAT(COALESCE (INITCAP(lib.titulo_esp),''), ' (', COALESCE (INITCAP(lib.lib_tit_original),''), ') - ', DATE_PART('YEAR', lib.lib_ano_publi)) AS titulo,
 
-<jasperReport name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-    <background>
-        <band/>
-    </background>
-    <title>
-        <band height="79"/>
-    </title>
-    <pageHeader>
-        <band height="35"/>
-    </pageHeader>
-    <columnHeader>
-        <band height="61"/>
-    </columnHeader>
-    <detail>
-        <band height="125"/>
-    </detail>
-    <columnFooter>
-        <band height="45"/>
-    </columnFooter>
-    <pageFooter>
-        <band height="54"/>
-    </pageFooter>
-    <summary>
-        <band height="42"/>
-    </summary>
+     COALESCE (CONCAT(INITCAP(edit.edit_nombre), ',
+', DATE_PART('YEAR', lib.lib_ano_publi)), 'N/A') AS editorial,
+
+     COALESCE (lib.sinopsis, 'N/A') AS libro_sinopsis,
+
+     COALESCE (INITCAP(lib.lib_tit_original),'N/A') AS tit_original,
+
+     lib.lib_ano_publi,9999 AS libro_lib_ano_publi,
+
+     lib.lib_pag AS libro_lib_pag,
+
+     COALESCE (lib.tema_princ,'') AS libro_tema_princ,
+
+     CONCAT(COALESCE (INITCAP(cla.clasi_nombre),''), ', ', COALESCE (INITCAP(clas.clasi_nombre))) AS clasificacion,
+
+     concat('       ', cap.cap_nombre, ' ', cap.cap_titulo) as capitulo, 
+	 
+    (select COALESCE (array_to_string(array_agg('             ' || COALESCE (sec.secc_nombre,'') || ' ' || COALESCE (sec.secc_titulo,'') || '
+'),''), '')
+		from seccion sec
+			where sec.cap_id = cap.cap_id) as estructura
+FROM
+     capitulo_otro cap, seccion secc, libro lib, editorial edit, clasificacion cla, clasificacion clas
+where lib.isbn = $P!{isbn} and edit.edit_id = lib.edit_id and cap.isbn = lib.isbn and clas.clasi_padre = cla.clasi_id 
+	and lib.clasi_id = cla.clasi_id
+     group by lib.titulo_esp, lib.lib_tit_original, lib.lib_ano_publi, edit.edit_nombre, lib.sinopsis, lib.lib_pag, 
+	 lib.tema_princ, cla.clasi_nombre, cap.cap_nombre, cap.cap_titulo, cap.cap_id, cap.cap_nombre, cap.cap_titulo, clas.clasi_padre, clas.clasi_nombre
+	order by cap.cap_id]]>
+	</queryString>
+	<field name="titulo" class="java.lang.String"/>
+	<field name="editorial" class="java.lang.String"/>
+	<field name="libro_sinopsis" class="java.lang.String"/>
+	<field name="tit_original" class="java.lang.String"/>
+	<field name="lib_ano_publi" class="java.sql.Date"/>
+	<field name="libro_lib_ano_publi" class="java.lang.Integer"/>
+	<field name="libro_lib_pag" class="java.math.BigDecimal"/>
+	<field name="libro_tema_princ" class="java.lang.String"/>
+	<field name="clasificacion" class="java.lang.String"/>
+	<field name="capitulo" class="java.lang.String"/>
+	<field name="estructura" class="java.lang.String"/>
+	<group name="i">
+		<groupExpression><![CDATA[$F{titulo}]]></groupExpression>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="467" splitType="Stretch">
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="470" height="41" forecolor="#990033" uuid="37580c89-e7ef-42e4-a2f4-d0c32b8b737d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="18" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{titulo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="124" y="367" width="346" height="50" uuid="f86f3ddc-a2be-457c-8060-6fd60208dcb4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="13" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libro_lib_pag}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="108" width="470" height="109" uuid="e9593ce9-1b6e-4d52-80dc-33ccf4effcd0"/>
+				<box topPadding="3" leftPadding="3" bottomPadding="5" rightPadding="3">
+					<pen lineWidth="2.0" lineStyle="Double" lineColor="#990033"/>
+					<topPen lineWidth="2.0" lineStyle="Double" lineColor="#990033"/>
+					<leftPen lineWidth="2.0" lineStyle="Double" lineColor="#990033"/>
+					<bottomPen lineWidth="2.0" lineStyle="Double" lineColor="#990033"/>
+					<rightPen lineWidth="2.0" lineStyle="Double" lineColor="#990033"/>
+				</box>
+				<textElement verticalAlignment="Top">
+					<font fontName="Times New Roman" size="13" isStrikeThrough="false"/>
+					<paragraph firstLineIndent="1" leftIndent="1" rightIndent="1" spacingBefore="1" spacingAfter="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libro_sinopsis}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="317" width="89" height="50" uuid="3711a90e-b0f5-4e59-9dc1-c8be9fe5bd41"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Editorial]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="124" y="217" width="346" height="50" uuid="5623293c-bd10-466f-b40a-013dcbdb120c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="13" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clasificacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="124" y="267" width="346" height="50" uuid="18c52017-3c4e-41bf-8b5a-5f2c7ad92a5b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="13" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tit_original}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="417" width="470" height="50" uuid="c400a2aa-44e1-4f73-8dd6-ad37951c7e25"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estructura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="267" width="89" height="50" uuid="7b0464b3-afc3-4ab0-9f51-db6392d47599"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Título original]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="124" y="41" width="346" height="50" uuid="61e128ed-8a79-4f6a-95a0-8e0e96459957"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="13" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libro_tema_princ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="124" y="317" width="346" height="50" uuid="b3e0aa81-d67e-49e8-b3cb-51b2bc053a60"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="13" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{editorial}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="91" width="470" height="17" uuid="be7a86c1-0066-41fc-8013-92381f45f81f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Argumento-Sinopsis]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="41" width="89" height="50" uuid="327fbe1a-c498-460b-ad0e-1bb8cbce9c86"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tema principal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="217" width="89" height="50" uuid="37d70051-9c71-41be-8fe0-b76d9b3aa1be"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Clasificación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="367" width="89" height="50" uuid="b91ced8c-4094-4040-ac68-91c8258455c5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Páginas]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement positionType="Float" x="0" y="0" width="470" height="50" uuid="e5e140e5-903c-4b47-b373-ab35a504e383"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{capitulo}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="50">
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="470" height="50" uuid="58919e69-50bc-460e-a248-266b9e72d331"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="13" isBold="false" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estructura}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
 </jasperReport>

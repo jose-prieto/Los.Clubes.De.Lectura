@@ -54,7 +54,6 @@ public class RegistrarLibro extends javax.swing.JPanel {
                 Logger.getLogger(RegistraMiembro2.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        System.out.println(queryJ.clasid(comboSub.getSelectedItem().toString()));
     }
     
     public Date getNacimiento() {

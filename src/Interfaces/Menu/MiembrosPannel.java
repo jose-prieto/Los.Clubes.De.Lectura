@@ -16,6 +16,7 @@ public class MiembrosPannel extends javax.swing.JPanel {
 
         CambClub = new javax.swing.JButton();
         RegMiemb = new javax.swing.JButton();
+        ReportGen = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 51, 51));
         setMaximumSize(new java.awt.Dimension(193, 512));
@@ -71,12 +72,36 @@ public class MiembrosPannel extends javax.swing.JPanel {
             }
         });
 
+        ReportGen.setBackground(new java.awt.Color(153, 153, 153));
+        ReportGen.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        ReportGen.setForeground(new java.awt.Color(204, 204, 204));
+        ReportGen.setText("Reporte general");
+        ReportGen.setBorder(null);
+        ReportGen.setBorderPainted(false);
+        ReportGen.setContentAreaFilled(false);
+        ReportGen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ReportGen.setFocusPainted(false);
+        ReportGen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ReportGenMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ReportGenMouseExited(evt);
+            }
+        });
+        ReportGen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReportGenActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(RegMiemb, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(CambClub, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+            .addComponent(ReportGen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,7 +110,9 @@ public class MiembrosPannel extends javax.swing.JPanel {
                 .addComponent(RegMiemb, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(CambClub, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(417, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(ReportGen, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(377, Short.MAX_VALUE))
         );
 
         RegMiemb.getAccessibleContext().setAccessibleDescription("");
@@ -126,9 +153,27 @@ public class MiembrosPannel extends javax.swing.JPanel {
         CambClub.setForeground(pro.FuenteNoSelect);
     }//GEN-LAST:event_CambClubMouseExited
 
+    private void ReportGenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReportGenMouseEntered
+        // TODO add your handling code here:
+        ReportGen.setContentAreaFilled(true);
+        ReportGen.setBackground(pro.CasillaSelect);
+        ReportGen.setForeground(pro.FuenteSelect);
+    }//GEN-LAST:event_ReportGenMouseEntered
+
+    private void ReportGenMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReportGenMouseExited
+        // TODO add your handling code here:
+        ReportGen.setContentAreaFilled(false);
+        ReportGen.setForeground(pro.FuenteNoSelect);
+    }//GEN-LAST:event_ReportGenMouseExited
+
+    private void ReportGenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportGenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ReportGenActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton CambClub;
     public javax.swing.JButton RegMiemb;
+    public javax.swing.JButton ReportGen;
     // End of variables declaration//GEN-END:variables
 }
