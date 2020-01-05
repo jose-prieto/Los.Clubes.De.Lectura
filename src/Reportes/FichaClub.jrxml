@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FichaClub" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e5c7513f-7562-4d8f-9d6c-6869d1ae91c0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="242"/>
+	<parameter name="idClub" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     (select INITCAP(idioma.idio_nombre) from idioma 
+                      where idio_id = club.idio_id) AS idioma_idio_nombre,
+
+     INITCAP(club.club_nombre) AS club_club_nombre,
+
+     INITCAP(club.direccion) AS club_direccion,
+
+     (select INITCAP(direccion_lugar.dir_nombre) from direccion_lugar
+                      where dir_id =club.dir_id) AS direccion_lugar_dir_nombre,
+
+     (select INITCAP(direccion_lugar.dir_nombre) from direccion_lugar
+                      where dir_id =( select direccion_lugar.dir_id_padre from direccion_lugar
+                                      where dir_id=club.dir_id )) AS direccion_lugar_A_dir_nombre,
+     club.club_fecha_inicio AS club_club_fecha_inicio,
+
+     club.cod_postal AS club_cod_postal,
+
+     club.cuota AS club_cuota,
+
+     club.inst_id AS club_inst_id,
+
+     (select grupo.grup_id from grupo
+               where grupo.club_id= club.club_id) AS grupo_grup_id,
+
+     (select grupo.grup_tipo from grupo
+               where grupo.club_id = club.club_id) AS grupo_grup_tipo,
+
+     (select grupo.dia from grupo
+               where grupo.club_id = club.club_id) AS grupo_dia,
+
+     (select grupo.horai from grupo
+               where grupo.club_id = club.club_id) AS grupo_horai
+
+     
+
+from club
+where club.club_id=$P!{idClub}]]>
+	</queryString>
+	<field name="idioma_idio_nombre" class="java.lang.String"/>
+	<field name="club_club_nombre" class="java.lang.String"/>
+	<field name="club_direccion" class="java.lang.String"/>
+	<field name="direccion_lugar_dir_nombre" class="java.lang.String"/>
+	<field name="direccion_lugar_a_dir_nombre" class="java.lang.String"/>
+	<field name="club_club_fecha_inicio" class="java.sql.Timestamp"/>
+	<field name="club_cod_postal" class="java.math.BigDecimal"/>
+	<field name="club_cuota" class="java.lang.Boolean"/>
+	<field name="club_inst_id" class="java.math.BigDecimal"/>
+	<field name="grupo_grup_id" class="java.math.BigDecimal"/>
+	<field name="grupo_grup_tipo" class="java.lang.String"/>
+	<field name="grupo_dia" class="java.lang.String"/>
+	<field name="grupo_horai" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="43" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="474" splitType="Stretch">
+			<staticText>
+				<reportElement x="41" y="118" width="129" height="20" uuid="a16a7f0f-d3c9-4b03-821e-6962c21c9b84"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Inicio del Club]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="211" y="118" width="306" height="20" uuid="5e599394-392b-4aa3-bc5d-cab07f8cc2a4"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{club_club_fecha_inicio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="41" y="148" width="100" height="20" uuid="d9265ece-4890-46f7-aa59-67f20c942c3b"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Direccion:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="211" y="148" width="306" height="20" uuid="549f86e4-a608-481e-8db3-e9f17877d7e7"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{club_direccion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="41" y="179" width="100" height="20" uuid="61e2cf2e-f5ac-4f14-9dc1-3e4a83259cd9"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo Postal]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="211" y="179" width="306" height="20" uuid="e50a3d67-0cca-4e25-8d79-7746b0f8b0ac"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{club_cod_postal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="41" y="210" width="100" height="20" uuid="b51d3ad6-1d04-4914-8e91-d22da0691ca5"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cuota ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="211" y="210" width="100" height="20" uuid="f01bdc94-f9af-4577-9d73-b54edc1a4524"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{club_cuota}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="41" y="332" width="100" height="20" uuid="61182be6-5941-41e2-a3cc-bd5f2bc71a92"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Institución:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="211" y="332" width="127" height="20" uuid="4c51326b-053f-4798-b4be-76f022e24c18"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{club_inst_id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="872" y="150" width="100" height="20" uuid="7f3b6b74-6e16-497e-b564-ac0fd6739b8a"/>
+				<text><![CDATA[grupo_horaf]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="211" y="271" width="306" height="20" uuid="5eb99322-ae07-4c9c-bd24-66f031589a15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{direccion_lugar_dir_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="41" y="271" width="100" height="20" uuid="2266ac6e-4fb9-4440-aea4-5d462419a28e"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ciudad:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="211" y="241" width="306" height="20" uuid="60b0b5f1-84d3-4cfc-b4d2-9bd3b3c9787f"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{direccion_lugar_a_dir_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="41" y="241" width="100" height="20" uuid="6cd55f85-723a-487e-8993-779f4959142b"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pais:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="73" width="129" height="20" uuid="6f6b2d9e-fb50-4315-9b92-39a96a0d8b5a"/>
+				<textElement>
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre del Club:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="211" y="73" width="306" height="20" uuid="ab147398-63d2-4858-8ce0-6c9ab3f43cfe"/>
+				<textElement>
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{club_club_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="41" y="442" width="100" height="20" uuid="018fe239-1b9a-4e5c-871e-80b36938b977"/>
+				<text><![CDATA[Id del grupo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="187" y="442" width="100" height="20" uuid="c447b1cf-eec7-4944-9c0e-86aef6f9e87a"/>
+				<text><![CDATA[Tipo de grupo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="311" y="442" width="100" height="20" uuid="f706d647-82be-4899-95e0-6a8deb347602"/>
+				<text><![CDATA[Dia semanal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="438" y="442" width="100" height="20" uuid="12808ea5-602a-43a1-b63e-46f649c8c649"/>
+				<text><![CDATA[Hora de inicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="187" y="398" width="200" height="20" uuid="5b41012c-54c7-4ac4-836a-c03c5188d1d0"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grupos Pertenecientes al Club]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="211" y="301" width="200" height="20" uuid="e2ec124a-4cd8-49ab-9c26-8214379e07c3"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idioma_idio_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="41" y="301" width="100" height="20" uuid="8b40d3b2-786c-4d01-99e2-73e269a37ad0"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Idioma:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="0" width="100" height="30" uuid="1837d503-e4f9-45cd-8c35-0c608310dfed"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Clubes de lectura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="272" y="0" width="151" height="30" uuid="bcbe84a3-e46b-4a97-a41c-22f5408ff38d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de emisión de reporte:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="428" y="0" width="144" height="30" uuid="ca8c1fe3-3632-487b-82c7-f9d372a67a26"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="428" y="301" width="127" height="20" uuid="0de3cb4f-af16-4621-9739-631334833767"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Clubes Asociados]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<textField>
+				<reportElement x="41" y="20" width="100" height="20" uuid="0cec8527-cb96-4213-8995-fddba4daea96"/>
+				<textFieldExpression><![CDATA[$F{grupo_grup_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="187" y="20" width="100" height="20" uuid="b4bcb9e4-faaa-4160-8b29-2ee7cdb8971b"/>
+				<textFieldExpression><![CDATA[$F{grupo_grup_tipo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="20" width="100" height="20" uuid="39e3073d-27a8-4da8-9ea5-0c202747ca20"/>
+				<textFieldExpression><![CDATA[$F{grupo_dia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="438" y="20" width="100" height="20" uuid="fd3c674e-d483-4333-adf0-3df9d8f38f3f"/>
+				<textFieldExpression><![CDATA[$F{grupo_horai}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="55"/>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="50"/>
+	</summary>
+</jasperReport>
