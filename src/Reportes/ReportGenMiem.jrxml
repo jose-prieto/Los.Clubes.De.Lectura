@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="650" leftMargin="71" rightMargin="71" topMargin="71" bottomMargin="56" uuid="41f9a72a-f58a-4b91-a46a-5646a7d65268">
-	<property name="ireport.zoom" value="1.2100000000000075"/>
-	<property name="ireport.x" value="30"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="5.054470284992975"/>
+	<property name="ireport.x" value="247"/>
+	<property name="ireport.y" value="973"/>
 	<parameter name="id" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[852]]></defaultValueExpression>
 	</parameter>
@@ -71,7 +71,7 @@ order by lib_pref.posicion asc]]>
 	<title>
 		<band height="333" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="206" width="90" height="14" uuid="49ab0d5f-5475-4c17-91f4-5f5c2bd65bf2"/>
+				<reportElement x="0" y="205" width="90" height="14" uuid="49ab0d5f-5475-4c17-91f4-5f5c2bd65bf2"/>
 				<box leftPadding="7"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12" isBold="true"/>
@@ -322,25 +322,25 @@ order by lib_pref.posicion asc]]>
 			<staticText>
 				<reportElement x="337" y="160" width="91" height="15" uuid="513128aa-60c1-4fd3-bc02-327972ec23c7"/>
 				<box leftPadding="7">
-					<pen lineWidth="0.75"/>
-					<topPen lineWidth="0.75"/>
-					<leftPen lineWidth="0.75"/>
-					<bottomPen lineWidth="0.75"/>
-					<rightPen lineWidth="0.75"/>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[echa de]]></text>
+				<text><![CDATA[Fecha de]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="337" y="175" width="91" height="15" uuid="2cb7337a-6aea-4bf4-82b0-759782becbb5"/>
 				<box leftPadding="7">
-					<pen lineWidth="0.75"/>
-					<topPen lineWidth="0.75"/>
-					<leftPen lineWidth="0.75"/>
-					<bottomPen lineWidth="0.75"/>
-					<rightPen lineWidth="0.75"/>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement verticalAlignment="Top">
 					<font fontName="Times New Roman" size="12" isBold="true"/>
@@ -405,6 +405,9 @@ order by lib_pref.posicion asc]]>
 			</textField>
 			<line>
 				<reportElement x="-1" y="190" width="1" height="30" uuid="ea72a069-d37b-4c39-96f2-ca7f493467b0"/>
+			</line>
+			<line>
+				<reportElement x="337" y="190" width="91" height="1" uuid="a1d17210-8dce-4807-970d-71b6ac5cdde5"/>
 			</line>
 		</band>
 	</title>
