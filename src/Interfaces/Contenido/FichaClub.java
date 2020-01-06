@@ -1,17 +1,28 @@
 package Interfaces.Contenido;
 
 import ControladorBD.QueriesJose;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import ControladorBD.BDConexion;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class FichaClub extends javax.swing.JPanel {
 
     ProcedimientosExtra listen = new ProcedimientosExtra();
     Dialogo diag = new Dialogo ();
     QueriesJose query = new QueriesJose();    
+    BDConexion conexion = new BDConexion();
     ProcedimientosExtra pro = new ProcedimientosExtra();
 
     public FichaClub() {
@@ -38,6 +49,11 @@ public class FichaClub extends javax.swing.JPanel {
 
         club.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         club.setForeground(new java.awt.Color(51, 51, 51));
+        club.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clubActionPerformed(evt);
+            }
+        });
 
         GenFicha.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         GenFicha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Icono-PDF.png"))); // NOI18N
@@ -80,9 +96,36 @@ public class FichaClub extends javax.swing.JPanel {
     private void GenFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenFichaActionPerformed
         // TODO add your handling code here:
         if (val()){
+            try (Connection con = conexion.getConnection()){
+
+                JasperReport reporte = null;
+                String path = "src\\Reportes\\FichaClub.jasper";
+
+                Map parametro = new HashMap();
+                parametro.put("idClub", 1);
+
+                reporte =  (JasperReport) JRLoader.loadObjectFromFile(path);
+
+                JasperPrint jprint = JasperFillManager.fillReport(reporte, parametro, con);
+
+                JasperViewer view = new JasperViewer(jprint, false);
+
+                view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+                view.setVisible(true);
+
+            }  catch (Exception e) {
+
+                JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+
+            }
             
         }
     }//GEN-LAST:event_GenFichaActionPerformed
+
+    private void clubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clubActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_clubActionPerformed
 
     public void inicio(){
         ResultSet res = query.clubes();
