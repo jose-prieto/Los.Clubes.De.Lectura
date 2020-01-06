@@ -155,7 +155,7 @@ public class ReportGen extends javax.swing.JPanel {
                 String path = "src\\Reportes\\ReportGenMiem.jasper";
 
                 Map parametro = new HashMap();
-                parametro.put("isbn", Integer.parseInt(IdMiem.getText()));
+                parametro.put("cedula", Integer.parseInt(IdMiem.getText()));
 
                 reporte =  (JasperReport) JRLoader.loadObjectFromFile(path);
 

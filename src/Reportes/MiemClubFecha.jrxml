@@ -3,7 +3,7 @@
 	<property name="ireport.zoom" value="1.4641000000000044"/>
 	<property name="ireport.x" value="65"/>
 	<property name="ireport.y" value="0"/>
-	<parameter name="fecha" class="java.util.Date">
+	<parameter name="fecha" class="java.sql.Date">
 		<defaultValueExpression><![CDATA[2019-10-25]]></defaultValueExpression>
 	</parameter>
 	<parameter name="id" class="java.lang.Integer">
@@ -21,20 +21,19 @@ mi.doc_id as cedula,
 (select concat(extract(year from age(mi.miemb_fecha_nac)),' años')
 	from miembro mie
 		where mie.doc_id = mi.doc_id) as edad,
+(select club_nombre
+	from club cl
+		where (select ))
 
 from miembro mi, reuniones reu
 
-where mi.doc_id = $P{id} and ($P{fecha} - reu.reu_fecha) > 0]]>
+where mi.doc_id = $P!{id}]]>
 	</queryString>
 	<field name="fecha_hoy" class="java.lang.String"/>
 	<field name="apellidos" class="java.lang.String"/>
 	<field name="nombres" class="java.lang.String"/>
 	<field name="cedula" class="java.math.BigDecimal"/>
-	<field name="genero" class="java.lang.String"/>
-	<field name="fecha_nacimiento" class="java.lang.String"/>
 	<field name="edad" class="java.lang.String"/>
-	<field name="apellido_rep" class="java.lang.String"/>
-	<field name="nombre_rep" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
