@@ -32,6 +32,7 @@ import Interfaces.Contenido.ProcedimientosExtra;
 import Interfaces.Contenido.Capitulos;
 import Interfaces.Contenido.FichaLibro;
 import Interfaces.Contenido.ReportGen;
+import Interfaces.Contenido.FichaClub;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -85,6 +86,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
     Capitulos capitulo = new Capitulos();
     FichaLibro fichlib = new FichaLibro();
     ReportGen reportgen = new ReportGen();
+    FichaClub fichaclub = new FichaClub();
     
 
     public MainWindow() {
@@ -119,6 +121,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
             admclub.AsociarClub.addActionListener(this);
             admclub.EliminarClub.addActionListener(this);
             admclub.NuevoClub.addActionListener(this);
+            admclub.FichaClub.addActionListener(this);
 
             //action listener de botones de reuniones manager pannel
             reuniones.Asistencias.addActionListener(this);
@@ -608,6 +611,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
         capitulo.setVisible(false);
         fichlib.setVisible(false);
         reportgen.setVisible(false);
+        fichaclub.setVisible(false);
 
         //Invisibles menus
         main.setVisible(false);
@@ -999,6 +1003,19 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener {
 
             ContentPannel.add(asociarclub);
             Titulo.setText("Asociar clubes");
+            OptionPannel.add(admclub);
+
+        } else if (evt.equals(admclub.FichaClub)) {
+
+            Alistar();
+            
+            fichaclub.inicio();
+
+            admclub.setVisible(true);
+            fichaclub.setVisible(true);
+
+            ContentPannel.add(fichaclub);
+            Titulo.setText("Crear ficha de club");
             OptionPannel.add(admclub);
 
         } else if (evt.equals(libros.RegistrarLibro)) {
