@@ -509,11 +509,11 @@ public class QueriesDaniel {
             
         }
          
-        public void CrearActor(int doc_id, String perso_nombre, Date func_fecha) {
+        public void CrearActor(int doc_id, String perso_nombre, Date func_fecha, int valoracion) {
         
             String SQL = "INSERT INTO public.actor(\n" +
-            " fechai_mie,club_id, doc_id, obra_id, perso_id, obraf_id, func_fecha)\n" +
-            "	VALUES ((SELECT fechai_mie FROM public.hist_miembro WHERE doc_id=? AND fechaf_mie is null),(SELECT club_id FROM public.hist_miembro WHERE doc_id=? AND fechaf_mie is null),?,(SELECT obra_id FROM public.personaje WHERE perso_id=?),?,(SELECT obra_id FROM public.personaje WHERE perso_id=?),?);";
+            " fechai_mie,club_id, doc_id, obra_id, perso_id, obraf_id, func_fecha, valoracion)\n" +
+            "	VALUES ((SELECT fechai_mie FROM public.hist_miembro WHERE doc_id=? AND fechaf_mie is null),(SELECT club_id FROM public.hist_miembro WHERE doc_id=? AND fechaf_mie is null),?,(SELECT obra_id FROM public.personaje WHERE perso_id=?),?,(SELECT obra_id FROM public.personaje WHERE perso_id=?),?,?);";
             int filasafectadas = 0;
 
             try (Connection con = conexion.getConnection()){
@@ -527,6 +527,7 @@ public class QueriesDaniel {
             ps.setInt(5, PersoId(perso_nombre));
             ps.setInt(6, PersoId(perso_nombre));
             ps.setDate(7, func_fecha);
+            ps.setInt(8, valoracion);
          
             
           

@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d945783a-fa54-476c-973a-05f3329a2864">
+	<property name="ireport.zoom" value="1.1000000000000005"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="483"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#C66377">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#E6CFD3">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#E67373">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#E6CFCF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#E67373">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#E6CFCF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#E67373">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#E6CFCF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TH" mode="Opaque" backcolor="#E673E6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_CH" mode="Opaque" backcolor="#E6CFE6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TH" mode="Opaque" backcolor="#E67373">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_CH" mode="Opaque" backcolor="#E6CFCF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TH" mode="Opaque" backcolor="#A05050">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_CH" mode="Opaque" backcolor="#E6CFCF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_TH" mode="Opaque" backcolor="#A05050">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_CH" mode="Opaque" backcolor="#E6CFCF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_TH" mode="Opaque" backcolor="#A05050">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_CH" mode="Opaque" backcolor="#E6CFCF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10_TH" mode="Opaque" backcolor="#A05050">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10_CH" mode="Opaque" backcolor="#E6CFCF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Funciones" uuid="3507b6a3-43e8-48a7-9881-8e59092cbd80">
+		<parameter name="obra_id" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT
+     funcion."func_fecha" AS funcion_func_fecha,
+     funcion."func_hora" AS funcion_func_hora
+FROM
+     "public"."funcion" funcion
+WHERE funcion.obra_id = $P!{obra_id}]]>
+		</queryString>
+		<field name="funcion_func_fecha" class="java.sql.Date"/>
+		<field name="funcion_func_hora" class="java.math.BigDecimal"/>
+		<group name="funcion_func_fecha">
+			<groupExpression><![CDATA[$F{funcion_func_fecha}]]></groupExpression>
+		</group>
+		<group name="funcion_func_hora">
+			<groupExpression><![CDATA[$F{funcion_func_hora}]]></groupExpression>
+		</group>
+	</subDataset>
+	<subDataset name="Libros" uuid="b8b69936-cfac-48cb-a450-51b9a40cf2ba"/>
+	<subDataset name="Clubes" uuid="c7a5fae1-a6cd-4318-892c-fa6977d26f2f">
+		<parameter name="obra_id" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT
+     initcap(club."club_nombre") AS club_club_nombre
+FROM
+     "public"."club" club INNER JOIN "public"."club_obra" club_obra ON club."club_id" = club_obra."club_id"
+WHERE club_obra.obra_id = $P!{obra_id}]]>
+		</queryString>
+		<field name="club_club_nombre" class="java.lang.String"/>
+		<group name="club_club_nombre">
+			<groupExpression><![CDATA[$F{club_club_nombre}]]></groupExpression>
+		</group>
+	</subDataset>
+	<subDataset name="Personajes" uuid="d916e731-f9fd-47f0-a429-c1895ec6f521">
+		<parameter name="obra_id" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT
+     initcap(personaje."perso_nombre") AS personaje_perso_nombre,
+     personaje."perso_desc" AS personaje_perso_desc
+FROM
+     "public"."personaje" personaje
+WHERE personaje.obra_id = $P!{obra_id}]]>
+		</queryString>
+		<field name="personaje_perso_nombre" class="java.lang.String"/>
+		<field name="personaje_perso_desc" class="java.lang.String"/>
+		<group name="personaje_perso_nombre">
+			<groupExpression><![CDATA[$F{personaje_perso_nombre}]]></groupExpression>
+		</group>
+		<group name="personaje_perso_desc">
+			<groupExpression><![CDATA[$F{personaje_perso_desc}]]></groupExpression>
+		</group>
+	</subDataset>
+	<parameter name="obra_id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     initcap(obra."obra_titulo") AS obra_obra_titulo,
+     initcap(libro."lib_tit_original") AS libro_lib_tit_original,
+     obra."obra_duracion" AS obra_obra_duracion,
+     obra."obra_estatus" AS obra_obra_estatus,
+     obra."costo_entrada" AS obra_costo_entrada,
+     funcion."func_fecha" AS funcion_func_fecha,
+     funcion."func_hora" AS funcion_func_hora,
+     initcap(auditorio."audi_nombre") AS auditorio_audi_nombre,
+     club_obra."club_id" AS club_obra_club_id,
+     obra."obra_id" AS obra_obra_id,
+     libro."sinopsis" AS libro_sinopsis
+FROM
+     "public"."obra" obra INNER JOIN "public"."funcion" funcion ON obra."obra_id" = funcion."obra_id"
+     INNER JOIN "public"."auditorio" auditorio ON obra."audi_id" = auditorio."audi_id"
+     INNER JOIN "public"."club_obra" club_obra ON obra."obra_id" = club_obra."obra_id"
+     INNER JOIN "public"."libro_obra" libro_obra ON obra."obra_id" = libro_obra."obra_id"
+     INNER JOIN "public"."libro" libro ON libro_obra."isbn" = libro."isbn"
+WHERE
+     obra.obra_id = $P!{obra_id}]]>
+	</queryString>
+	<field name="obra_obra_titulo" class="java.lang.String"/>
+	<field name="libro_lib_tit_original" class="java.lang.String"/>
+	<field name="obra_obra_duracion" class="java.math.BigDecimal"/>
+	<field name="obra_obra_estatus" class="java.lang.String"/>
+	<field name="obra_costo_entrada" class="java.math.BigDecimal"/>
+	<field name="funcion_func_fecha" class="java.sql.Date"/>
+	<field name="funcion_func_hora" class="java.math.BigDecimal"/>
+	<field name="auditorio_audi_nombre" class="java.lang.String"/>
+	<field name="club_obra_club_id" class="java.math.BigDecimal"/>
+	<field name="obra_obra_id" class="java.math.BigDecimal"/>
+	<field name="libro_sinopsis" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="684" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="455" y="0" width="100" height="20" uuid="8773f80c-51a6-4a87-9db7-b576c26a4cc1"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="-176" width="200" height="34" uuid="60ed76c6-01fa-434a-8406-a5bfb221a9c6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{obra_obra_titulo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="269" width="342" height="36" uuid="22b861a4-dfaa-4521-b6bd-0caa9ce34d75"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Fecha de las presentaciones pendientes:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="89" y="26" width="348" height="33" forecolor="#990033" uuid="54904b9a-0f70-49d1-9e6c-39d57c979ca2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="22"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{obra_obra_titulo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="403" width="222" height="32" uuid="39bc810a-c33e-4af0-a787-8f68090545a5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Información del libro: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="89" width="236" height="36" uuid="52347bdc-0930-4c7c-8a44-20c8edccdec6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Será presentada en el auditorio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="148" width="250" height="36" uuid="4bd04f9e-17fe-427f-b404-39fc2b1e00d1"/>
+				<textElement verticalAlignment="Top">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Patrocinada por los clubes:]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table 7" style="table 7" x="109" y="305" width="360" height="50" uuid="0881d7e7-860a-4bfd-b7a7-6d3fe52ce5b6"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Funciones" uuid="d80b40f6-2d77-4fd6-95b2-5d150c766d03">
+						<datasetParameter name="obra_id">
+							<datasetParameterExpression><![CDATA[$P{obra_id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="e1541f8d-cbae-4d3b-a06c-98707b29428e">
+						<jr:tableHeader style="table 7_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="3284e43b-feed-498c-956a-20f87a16d66f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14"/>
+								</textElement>
+								<text><![CDATA[Fecha]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="ee7125d9-806c-48c6-bd6b-4b0b4d716b6e"/>
+								<textElement>
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{funcion_func_fecha}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="f1abe78f-5bf9-43d2-81fc-310e3d3daac9">
+						<jr:tableHeader style="table 7_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="ee913e26-9c12-4ecb-87a0-feeb30de6585"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14"/>
+								</textElement>
+								<text><![CDATA[Duracion]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="25b4fd0d-106e-4f48-918c-62eb93a5a244"/>
+								<textElement textAlignment="Center">
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{funcion_func_hora}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table 8" style="table 8" x="109" y="184" width="360" height="58" uuid="68e06bde-5c22-435b-9c89-babbef7bf2f3"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Clubes" uuid="b274bcbd-ccc4-4c9d-b188-24ffb7e1d352">
+						<datasetParameter name="obra_id">
+							<datasetParameterExpression><![CDATA[$P{obra_id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="177" uuid="61feeb49-3d4e-44d4-8a6f-63087d4cadd9">
+						<jr:detailCell style="table 8_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="177" height="20" uuid="709b280a-5be0-4ede-92c2-73ec1761afbc"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{club_club_nombre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<textField>
+				<reportElement x="236" y="89" width="207" height="36" uuid="366a5799-5e6e-4f5e-a648-d502c527466a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{auditorio_audi_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="89" y="452" width="157" height="20" uuid="7cfe0469-45f4-45c6-9f4f-8e0df47e089a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libro_lib_tit_original}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="26" y="452" width="63" height="21" uuid="8e8396a7-e32b-40ed-9f8f-c54bb075bb9e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="485" width="74" height="21" uuid="9916a49c-d000-4d00-a252-952bac11102c"/>
+				<textElement>
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Sinopsis:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="26" y="506" width="454" height="82" uuid="1e362ef3-6b0a-4d17-8492-0c7e0bb15073"/>
+				<box>
+					<pen lineWidth="2.0" lineStyle="Double" lineColor="#990033"/>
+					<topPen lineWidth="2.0" lineStyle="Double" lineColor="#990033"/>
+					<leftPen lineWidth="2.0" lineStyle="Double" lineColor="#990033"/>
+					<bottomPen lineWidth="2.0" lineStyle="Double" lineColor="#990033"/>
+					<rightPen lineWidth="2.0" lineStyle="Double" lineColor="#990033"/>
+				</box>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libro_sinopsis}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="26" y="600" width="74" height="21" uuid="f2d1d866-b834-4289-a99b-7bd29c92db70"/>
+				<textElement>
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Personajes:]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table 10" style="table 10" x="26" y="621" width="378" height="50" uuid="70616c59-5031-4966-8843-e5252133b654"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Personajes" uuid="1cb131e2-5162-42b8-8589-be481effbf40">
+						<datasetParameter name="obra_id">
+							<datasetParameterExpression><![CDATA[$P{obra_id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="190" uuid="efe7b1e2-f430-4f3a-bb73-1f414a230ac1">
+						<jr:tableHeader style="table 10_TH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 10_TD" height="52" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="190" height="52" uuid="425fec62-3988-488c-a4c1-e0fdf1e3d7dc"/>
+								<textElement>
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{personaje_perso_nombre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="312" uuid="66aa2ef6-d439-42bc-b5cd-0ce4126ed2c8">
+						<jr:tableHeader style="table 10_TH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 10_TD" height="52" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="312" height="52" uuid="fd6aee93-b6f5-431d-a878-9ffb915c0b0a"/>
+								<textElement>
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{personaje_perso_desc}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+		<band/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="39" splitType="Stretch">
+			<textField>
+				<reportElement x="222" y="9" width="80" height="20" uuid="19b4e4a7-8164-40dc-a278-a73260b3b35d"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="302" y="9" width="40" height="20" uuid="1a42a739-1e8a-434e-bfab-8bf73189ddef"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

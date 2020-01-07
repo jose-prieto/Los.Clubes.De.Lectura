@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c0b12cca-9442-4675-a9c9-505e7f88b7eb">
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="61"/>
+	<parameter name="obra_id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     actor."valoracion" AS actor_valoracion,
+     personaje."perso_nombre" AS personaje_perso_nombre,
+     personaje."perso_desc" AS personaje_perso_desc,
+     funcion."func_fecha" AS funcion_func_fecha,
+     funcion."func_hora" AS funcion_func_hora,
+     funcion."func_valoracion" AS funcion_func_valoracion,
+     funcion."func_entradas_vend" AS funcion_func_entradas_vend,
+     miembro."miemb_nombre1" AS miembro_miemb_nombre1,
+     miembro."miemb_ape1" AS miembro_miemb_ape1,
+     obra."obra_titulo" AS obra_obra_titulo
+FROM
+     "public"."funcion" funcion INNER JOIN "public"."actor" actor ON funcion."obra_id" = actor."obraf_id"
+     AND funcion."func_fecha" = actor."func_fecha"
+     INNER JOIN "public"."elenco" elenco ON actor."doc_id" = elenco."doc_id"
+     AND elenco."club_id" = actor."club_id"
+     AND elenco."fechai_mie" = actor."fechai_mie"
+     AND elenco."obra_id" = actor."obra_id"
+     AND elenco."perso_id" = actor."perso_id"
+     INNER JOIN "public"."personaje" personaje ON elenco."obra_id" = personaje."obra_id"
+     AND personaje."perso_id" = elenco."perso_id"
+     INNER JOIN "public"."hist_miembro" hist_miembro ON elenco."doc_id" = hist_miembro."doc_id"
+     AND hist_miembro."club_id" = elenco."club_id"
+     AND hist_miembro."fechai_mie" = elenco."fechai_mie"
+     INNER JOIN "public"."miembro" miembro ON hist_miembro."doc_id" = miembro."doc_id"
+     INNER JOIN "public"."obra" obra ON personaje."obra_id" = obra."obra_id"
+     AND obra."obra_id" = funcion."obra_id"
+WHERE obra.obra_id = $P!{obra_id}]]>
+	</queryString>
+	<field name="actor_valoracion" class="java.math.BigDecimal"/>
+	<field name="personaje_perso_nombre" class="java.lang.String"/>
+	<field name="personaje_perso_desc" class="java.lang.String"/>
+	<field name="funcion_func_fecha" class="java.sql.Date"/>
+	<field name="funcion_func_hora" class="java.math.BigDecimal"/>
+	<field name="funcion_func_valoracion" class="java.math.BigDecimal"/>
+	<field name="funcion_func_entradas_vend" class="java.math.BigDecimal"/>
+	<field name="miembro_miemb_nombre1" class="java.lang.String"/>
+	<field name="miembro_miemb_ape1" class="java.lang.String"/>
+	<field name="obra_obra_titulo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="107" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="455" y="0" width="100" height="20" uuid="523f2a16-8626-42ee-a50f-79029c1cd121"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="192" y="36" width="201" height="40" uuid="48986427-4f11-42df-9927-82bb04fafcf3"/>
+				<textFieldExpression><![CDATA[$F{obra_obra_titulo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="137" splitType="Stretch">
+			<textField>
+				<reportElement x="22" y="6" width="100" height="40" uuid="593d64a6-a707-4eb7-b302-b38282ba747c"/>
+				<textFieldExpression><![CDATA[$F{funcion_func_hora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="6" width="122" height="70" uuid="2fe1c28b-854c-449f-bd24-48a66a761c1a"/>
+				<textFieldExpression><![CDATA[$F{funcion_func_valoracion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="277" y="6" width="116" height="51" uuid="91297579-f12b-4b1f-9dc7-4dd474013ee0"/>
+				<textFieldExpression><![CDATA[$F{funcion_func_entradas_vend}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="411" y="6" width="121" height="40" uuid="240e4c94-a587-4f56-a44c-a18b26e24b1d"/>
+				<textFieldExpression><![CDATA[$F{funcion_func_fecha}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="117">
+			<textField>
+				<reportElement x="177" y="12" width="100" height="20" uuid="b545e7c1-0585-4897-b31b-62a141261367"/>
+				<textFieldExpression><![CDATA[$F{personaje_perso_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="12" width="100" height="20" uuid="b87295d0-328c-4dd7-97fd-a756113058f4"/>
+				<textFieldExpression><![CDATA[$F{miembro_miemb_ape1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="177" y="57" width="100" height="20" uuid="db9c7964-7718-419a-86a7-a1e0326d2cd8"/>
+				<textFieldExpression><![CDATA[$F{miembro_miemb_nombre1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="216" y="18" width="80" height="20" uuid="3cda17e1-647b-4605-b078-a1dd4c434c15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="296" y="18" width="40" height="20" uuid="892b2a02-a146-45de-ad64-fe3913b24654"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
