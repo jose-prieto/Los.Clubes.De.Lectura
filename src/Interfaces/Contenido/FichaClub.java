@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import ControladorBD.BDConexion;
+import ControladorBD.QueriesAlberto;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -21,7 +22,8 @@ public class FichaClub extends javax.swing.JPanel {
 
     ProcedimientosExtra listen = new ProcedimientosExtra();
     Dialogo diag = new Dialogo ();
-    QueriesJose query = new QueriesJose();    
+    QueriesJose query = new QueriesJose();   
+    QueriesAlberto querys = new QueriesAlberto();
     BDConexion conexion = new BDConexion();
     ProcedimientosExtra pro = new ProcedimientosExtra();
 
@@ -102,7 +104,7 @@ public class FichaClub extends javax.swing.JPanel {
                 String path = "src\\Reportes\\FichaClub.jasper";
 
                 Map parametro = new HashMap();
-                parametro.put("idClub", 1);
+                parametro.put("idClub", querys.BuscarClub(club.getSelectedItem().toString()));
 
                 reporte =  (JasperReport) JRLoader.loadObjectFromFile(path);
 

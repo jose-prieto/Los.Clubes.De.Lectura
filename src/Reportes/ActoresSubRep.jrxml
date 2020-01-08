@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f02bb0dc-13ef-4bdd-abd7-9e119dc09418">
+	<property name="ireport.zoom" value="1.3310000000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="obra_id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     initcap(miembro."miemb_nombre1") AS miembro_miemb_nombre1,
+     initcap(miembro."miemb_ape1") AS miembro_miemb_ape1,
+     initcap(personaje."perso_nombre") AS personaje_perso_nombre,
+     actor."valoracion" AS actor_valoracion
+FROM
+     "public"."obra" obra INNER JOIN "public"."funcion" funcion ON obra."obra_id" = funcion."obra_id"
+     INNER JOIN "public"."personaje" personaje ON obra."obra_id" = personaje."obra_id"
+     INNER JOIN "public"."elenco" elenco ON personaje."obra_id" = elenco."obra_id"
+     AND personaje."perso_id" = elenco."perso_id"
+     INNER JOIN "public"."hist_miembro" hist_miembro ON elenco."doc_id" = hist_miembro."doc_id"
+     AND hist_miembro."club_id" = elenco."club_id"
+     AND hist_miembro."fechai_mie" = elenco."fechai_mie"
+     INNER JOIN "public"."actor" actor ON elenco."doc_id" = actor."doc_id"
+     AND elenco."fechai_mie" = actor."fechai_mie"
+     AND elenco."perso_id" = actor."perso_id"
+     AND elenco."obra_id" = actor."obra_id"
+     AND elenco."club_id" = actor."club_id"
+     AND funcion."obra_id" = actor."obraf_id"
+     AND funcion."func_fecha" = actor."func_fecha"
+     INNER JOIN "public"."miembro" miembro ON hist_miembro."doc_id" = miembro."doc_id"
+WHERE
+     funcion.obra_id = $P!{obra_id}]]>
+	</queryString>
+	<field name="miembro_miemb_nombre1" class="java.lang.String"/>
+	<field name="miembro_miemb_ape1" class="java.lang.String"/>
+	<field name="personaje_perso_nombre" class="java.lang.String"/>
+	<field name="actor_valoracion" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="140" height="20" uuid="c6073ad9-1b37-4bc0-b12e-a01f966c30e9"/>
+				<box>
+					<pen lineWidth="2.0" lineStyle="Double" lineColor="#9B0033"/>
+					<topPen lineWidth="2.0" lineStyle="Double" lineColor="#9B0033"/>
+					<leftPen lineWidth="2.0" lineStyle="Double" lineColor="#9B0033"/>
+					<bottomPen lineWidth="2.0" lineStyle="Double" lineColor="#9B0033"/>
+					<rightPen lineWidth="2.0" lineStyle="Double" lineColor="#9B0033"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="0" width="126" height="20" uuid="571ce9b5-d80e-4c65-9caa-316570f98541"/>
+				<box>
+					<pen lineWidth="2.0" lineStyle="Double" lineColor="#9B0033"/>
+					<topPen lineWidth="2.0" lineStyle="Double" lineColor="#9B0033"/>
+					<leftPen lineWidth="2.0" lineStyle="Double" lineColor="#9B0033"/>
+					<bottomPen lineWidth="2.0" lineStyle="Double" lineColor="#9B0033"/>
+					<rightPen lineWidth="2.0" lineStyle="Double" lineColor="#9B0033"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="266" y="0" width="140" height="20" backcolor="#9B0033" uuid="b501d3e2-79be-45cb-b536-12ec63360c1f"/>
+				<box>
+					<pen lineWidth="2.0" lineStyle="Double" lineColor="#9B0033"/>
+					<topPen lineWidth="2.0" lineStyle="Double" lineColor="#9B0033"/>
+					<leftPen lineWidth="2.0" lineStyle="Double" lineColor="#9B0033"/>
+					<bottomPen lineWidth="2.0" lineStyle="Double" lineColor="#9B0033"/>
+					<rightPen lineWidth="2.0" lineStyle="Double" lineColor="#9B0033"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Personaje]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="406" y="0" width="100" height="20" uuid="a99fbf35-020d-45a0-b77c-610601e2c826"/>
+				<box>
+					<pen lineWidth="2.0" lineStyle="Double" lineColor="#9B0033"/>
+					<topPen lineWidth="2.0" lineStyle="Double" lineColor="#9B0033"/>
+					<leftPen lineWidth="2.0" lineStyle="Double" lineColor="#9B0033"/>
+					<bottomPen lineWidth="2.0" lineStyle="Double" lineColor="#9B0033"/>
+					<rightPen lineWidth="2.0" lineStyle="Double" lineColor="#9B0033"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Valoracion]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="140" height="20" uuid="96030e1c-39d4-462d-ac78-a0d5bf81bb41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{miembro_miemb_nombre1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="0" width="126" height="20" uuid="613ce094-65c6-4e6f-8354-c4b3398aafd7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{miembro_miemb_ape1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="266" y="0" width="140" height="20" uuid="5cc96eab-a31c-433b-88e2-2596f99fc51b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personaje_perso_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="406" y="0" width="100" height="20" uuid="89566722-32e1-42b5-8b9a-17ca3ffc711a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{actor_valoracion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
