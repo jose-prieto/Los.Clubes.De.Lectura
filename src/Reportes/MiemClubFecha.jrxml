@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="650" leftMargin="71" rightMargin="71" topMargin="71" bottomMargin="71" uuid="93c92bfd-0bdf-4722-acf9-6c89c6705267">
-	<property name="ireport.zoom" value="1.4641000000000044"/>
-	<property name="ireport.x" value="65"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="612" pageHeight="792" columnWidth="470" leftMargin="71" rightMargin="71" topMargin="71" bottomMargin="71" uuid="93c92bfd-0bdf-4722-acf9-6c89c6705267">
+	<property name="ireport.zoom" value="1.331000000000004"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<parameter name="fecha" class="java.sql.Date">
-		<defaultValueExpression><![CDATA[2019-10-25]]></defaultValueExpression>
-	</parameter>
 	<parameter name="id" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[2253421]]></defaultValueExpression>
+	</parameter>
+	<parameter name="desde" class="java.lang.String">
+		<defaultValueExpression><![CDATA["2005-10-25"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="hasta" class="java.lang.String">
+		<defaultValueExpression><![CDATA["2020-06-25"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[select TO_CHAR(NOW() :: DATE, 'DD "de" TMMonth "del" yyyy') as fecha_hoy,
@@ -21,47 +24,49 @@ mi.doc_id as cedula,
 (select concat(extract(year from age(mi.miemb_fecha_nac)),' años')
 	from miembro mie
 		where mie.doc_id = mi.doc_id) as edad,
-(select club_nombre
-	from club cl
-		where (select ))
 
-from miembro mi, reuniones reu
+concat('Nombre del club:  ', initcap(club.club_nombre), '  ---  Antigüedad:  ', extract(year from age(coalesce(to_date($P{hasta}, 'yyyy-mm-dd'), to_date($P{desde}, 'yyyy-mm-dd')))), '  Años') as club,
 
-where mi.doc_id = $P!{id}]]>
+(select array_to_string(array_agg(CONCAT(COALESCE (INITCAP(lib.titulo_esp),''), ' (', COALESCE (INITCAP(lib.lib_tit_original),''), ')
+            Analizado el: ', to_char(reu.reu_fecha, 'DD "de" TMMonth "del" yyyy'))), '
+')
+		          	from libro lib
+				where lib.isbn = reu.isbn) as libros,
+
+to_char(hist.fechai_mie, 'DD "de" TMMonth "del" yyyy') as fechai,
+
+coalesce(to_char(hist.fechaf_mie, 'DD "de" TMMonth "del" yyyy'), 'Actualmente activo en este club') as fechaf
+
+from miembro mi, reuniones reu, hist_miembro hist, club
+
+where mi.doc_id = $P!{id} and reu.doc_id = mi.doc_id and hist.doc_id = mi.doc_id and hist.club_id = club.club_id and hist.fechai_mie >= to_date($P{desde}, 'yyyy-mm-dd') and hist.fechai_mie <= to_date($P{hasta}, 'yyyy-mm-dd') and reu.reu_fecha >= to_date($P{desde}, 'yyyy-mm-dd') and reu.reu_fecha <= to_date($P{hasta}, 'yyyy-mm-dd') and reu.reu_conclusiones is not null
+
+group by club, hist.fechaf_mie, reu.reu_fecha, mi.miemb_ape1, mi.miemb_ape2, mi.miemb_nombre1, mi.miemb_nombre2, mi.doc_id, reu.isbn, hist.fechai_mie
+order by hist.fechaf_mie asc, reu.reu_fecha asc ]]>
 	</queryString>
 	<field name="fecha_hoy" class="java.lang.String"/>
 	<field name="apellidos" class="java.lang.String"/>
 	<field name="nombres" class="java.lang.String"/>
 	<field name="cedula" class="java.math.BigDecimal"/>
 	<field name="edad" class="java.lang.String"/>
+	<field name="club" class="java.lang.String"/>
+	<field name="libros" class="java.lang.String"/>
+	<field name="fechai" class="java.lang.String"/>
+	<field name="fechaf" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
 		<band height="220" splitType="Stretch">
-			<staticText>
-				<reportElement x="0" y="160" width="90" height="30" uuid="c8044e45-ae7d-44d9-9765-cc8420da69f6"/>
-				<box leftPadding="7">
-					<pen lineWidth="0.75"/>
-					<topPen lineWidth="0.75"/>
-					<leftPen lineWidth="0.75"/>
-					<bottomPen lineWidth="0.75"/>
-					<rightPen lineWidth="0.75"/>
-				</box>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Times New Roman" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Club:]]></text>
-			</staticText>
 			<textField>
-				<reportElement x="520" y="0" width="130" height="30" uuid="63e1c490-3227-422d-8ac4-10c784bfbcd0"/>
+				<reportElement x="340" y="0" width="130" height="30" uuid="63e1c490-3227-422d-8ac4-10c784bfbcd0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha_hoy}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="100" width="90" height="30" uuid="cc77d6e3-9f25-49e1-a970-34dd768de53c"/>
+				<reportElement x="0" y="100" width="60" height="30" uuid="cc77d6e3-9f25-49e1-a970-34dd768de53c"/>
 				<box leftPadding="7">
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -75,14 +80,14 @@ where mi.doc_id = $P!{id}]]>
 				<text><![CDATA[Apellidos:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="369" y="0" width="151" height="30" uuid="69d8c7e5-477b-4081-8b8b-d3e7b9d13195"/>
+				<reportElement x="189" y="0" width="151" height="30" uuid="69d8c7e5-477b-4081-8b8b-d3e7b9d13195"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha de emisión de reporte:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="317" y="130" width="91" height="30" uuid="70602047-ea74-48f9-9f0e-110cb81652b1"/>
+				<reportElement x="235" y="130" width="60" height="30" uuid="70602047-ea74-48f9-9f0e-110cb81652b1"/>
 				<box leftPadding="7">
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -96,7 +101,7 @@ where mi.doc_id = $P!{id}]]>
 				<text><![CDATA[Edad:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="408" y="100" width="242" height="30" uuid="b112bebd-a3e1-41ba-9fb0-93fed40d7405"/>
+				<reportElement x="295" y="100" width="175" height="30" uuid="b112bebd-a3e1-41ba-9fb0-93fed40d7405"/>
 				<box leftPadding="7">
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -110,21 +115,21 @@ where mi.doc_id = $P!{id}]]>
 				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="42" width="650" height="44" uuid="b3af7888-2ff2-4201-9274-d5e5e256441a"/>
+				<reportElement x="0" y="42" width="470" height="44" uuid="b3af7888-2ff2-4201-9274-d5e5e256441a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="16" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Reporte general de miembro]]></text>
+				<text><![CDATA[Reporte de histórico de miembro en clubes]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="0" width="297" height="30" uuid="6a8b62d8-fe63-489b-8931-99fa9e39e5d6"/>
+				<reportElement x="0" y="0" width="117" height="30" uuid="6a8b62d8-fe63-489b-8931-99fa9e39e5d6"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Clubes de lectura]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="90" y="130" width="227" height="30" uuid="1fda7dad-c864-473e-9a10-155249eaa5b2"/>
+				<reportElement x="60" y="130" width="175" height="30" uuid="1fda7dad-c864-473e-9a10-155249eaa5b2"/>
 				<box leftPadding="7">
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -138,7 +143,7 @@ where mi.doc_id = $P!{id}]]>
 				<textFieldExpression><![CDATA[$F{cedula}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="408" y="130" width="242" height="30" uuid="bd0d1faa-374d-4ba9-8b06-85c15ee2d997"/>
+				<reportElement x="295" y="130" width="175" height="30" uuid="bd0d1faa-374d-4ba9-8b06-85c15ee2d997"/>
 				<box leftPadding="7">
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -152,7 +157,7 @@ where mi.doc_id = $P!{id}]]>
 				<textFieldExpression><![CDATA[$F{edad}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="130" width="90" height="30" uuid="05f2b35d-32de-461c-a14e-001c8b359a24"/>
+				<reportElement x="0" y="130" width="60" height="30" uuid="05f2b35d-32de-461c-a14e-001c8b359a24"/>
 				<box leftPadding="7">
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -166,7 +171,7 @@ where mi.doc_id = $P!{id}]]>
 				<text><![CDATA[Cédula:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="90" y="100" width="227" height="30" uuid="038e4c42-c896-4932-959d-d4d0bbd68c12"/>
+				<reportElement x="60" y="100" width="175" height="30" uuid="038e4c42-c896-4932-959d-d4d0bbd68c12"/>
 				<box leftPadding="7">
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -180,7 +185,7 @@ where mi.doc_id = $P!{id}]]>
 				<textFieldExpression><![CDATA[$F{apellidos}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="317" y="100" width="91" height="30" uuid="63221859-4699-41c0-ae76-79d7a424a721"/>
+				<reportElement x="235" y="100" width="60" height="30" uuid="63221859-4699-41c0-ae76-79d7a424a721"/>
 				<box leftPadding="7">
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -193,31 +198,88 @@ where mi.doc_id = $P!{id}]]>
 				</textElement>
 				<text><![CDATA[Nombres:]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="0" y="176" width="470" height="44" uuid="f0b32323-542b-4631-a4f7-845b64cd0d18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Libros analizados ordenados cronológicamente]]></text>
+			</staticText>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="35" splitType="Stretch"/>
-	</pageHeader>
 	<columnHeader>
-		<band height="27" splitType="Stretch"/>
+		<band height="14" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="28" splitType="Stretch"/>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="470" height="20" uuid="a4796203-85b2-418d-8b89-c3ad74687874"/>
+				<box leftPadding="2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{club}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="35">
+			<textField>
+				<reportElement x="77" y="0" width="170" height="20" uuid="996d33c6-daad-4d60-b22e-6cba5bf8daca"/>
+				<box leftPadding="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="286" y="0" width="184" height="20" uuid="e5d8e97c-959c-4462-af31-165f402e0220"/>
+				<box leftPadding="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechaf}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="77" height="20" uuid="45b27fcd-0aaa-4ec1-bbaf-771d6cf35364"/>
+				<box leftPadding="10"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Activo desde:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="247" y="0" width="39" height="20" uuid="483884da-f00d-491b-aaf3-8eabf47e5225"/>
+				<box leftPadding="10"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[hasta:]]></text>
+			</staticText>
+		</band>
+		<band height="20">
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="470" height="20" uuid="588d4061-8d26-48da-8f80-dd6fe60d796b"/>
+				<box leftPadding="50"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libros}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
 	<columnFooter>
-		<band height="23" splitType="Stretch"/>
+		<band height="20" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
 		<band height="14" splitType="Stretch">
 			<textField>
-				<reportElement x="530" y="0" width="80" height="14" uuid="e0ec57cd-17c0-4663-9578-9eb937eb9dae"/>
+				<reportElement x="370" y="0" width="80" height="14" uuid="e0ec57cd-17c0-4663-9578-9eb937eb9dae"/>
 				<textElement textAlignment="Right">
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Pág "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement x="610" y="0" width="40" height="14" uuid="7f341c41-4e5a-47d2-9cbe-2937b5e91025"/>
+				<reportElement x="450" y="0" width="20" height="14" uuid="7f341c41-4e5a-47d2-9cbe-2937b5e91025"/>
 				<textElement>
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
