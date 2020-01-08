@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d945783a-fa54-476c-973a-05f3329a2864">
 	<property name="ireport.zoom" value="1.1000000000000005"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="483"/>
+	<property name="ireport.y" value="484"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -227,6 +227,26 @@
 			<pen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
+	<style name="table 11">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 11_TH" mode="Opaque" backcolor="#A05050">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 11_CH" mode="Opaque" backcolor="#E6CFCF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 11_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
 	<subDataset name="Funciones" uuid="3507b6a3-43e8-48a7-9881-8e59092cbd80">
 		<parameter name="obra_id" class="java.lang.String"/>
 		<queryString>
@@ -266,13 +286,23 @@ WHERE club_obra.obra_id = $P!{obra_id}]]>
 		<queryString>
 			<![CDATA[SELECT
      initcap(personaje."perso_nombre") AS personaje_perso_nombre,
-     personaje."perso_desc" AS personaje_perso_desc
+     personaje."perso_desc" AS personaje_perso_desc,
+     initcap(miembro."miemb_nombre1") AS miembro_miemb_nombre1,
+     initcap(miembro."miemb_ape1") AS miembro_miemb_ape1
 FROM
-     "public"."personaje" personaje
-WHERE personaje.obra_id = $P!{obra_id}]]>
+     "public"."personaje" personaje INNER JOIN "public"."elenco" elenco ON personaje."obra_id" = elenco."obra_id"
+     AND personaje."perso_id" = elenco."perso_id"
+     INNER JOIN "public"."hist_miembro" hist_miembro ON elenco."doc_id" = hist_miembro."doc_id"
+     AND hist_miembro."club_id" = elenco."club_id"
+     AND hist_miembro."fechai_mie" = elenco."fechai_mie"
+     INNER JOIN "public"."miembro" miembro ON hist_miembro."doc_id" = miembro."doc_id"
+WHERE
+     elenco.obra_id = $P!{obra_id}]]>
 		</queryString>
 		<field name="personaje_perso_nombre" class="java.lang.String"/>
 		<field name="personaje_perso_desc" class="java.lang.String"/>
+		<field name="miembro_miemb_nombre1" class="java.lang.String"/>
+		<field name="miembro_miemb_ape1" class="java.lang.String"/>
 		<group name="personaje_perso_nombre">
 			<groupExpression><![CDATA[$F{personaje_perso_nombre}]]></groupExpression>
 		</group>
@@ -487,38 +517,94 @@ WHERE
 				<textElement>
 					<font size="14" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Personajes:]]></text>
+				<text><![CDATA[Elenco:]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement key="table 10" style="table 10" x="26" y="621" width="378" height="50" uuid="70616c59-5031-4966-8843-e5252133b654"/>
+				<reportElement key="table 11" style="table 11" x="0" y="621" width="325" height="50" uuid="10c62e78-4353-4ee1-939b-4ae9ca447cd6"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Personajes" uuid="1cb131e2-5162-42b8-8589-be481effbf40">
+					<datasetRun subDataset="Personajes" uuid="7fa41088-a857-426e-a7be-f15107bde7a7">
 						<datasetParameter name="obra_id">
 							<datasetParameterExpression><![CDATA[$P{obra_id}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column width="190" uuid="efe7b1e2-f430-4f3a-bb73-1f414a230ac1">
-						<jr:tableHeader style="table 10_TH" height="30" rowSpan="1"/>
-						<jr:detailCell style="table 10_TD" height="52" rowSpan="1">
+					<jr:column width="120" uuid="439ee6c7-6ab6-4b19-ad98-9a56a1c64d5e">
+						<jr:tableHeader style="table 11_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="120" height="30" uuid="bccfcf92-e438-4a70-ad42-afbff07d47c9"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14"/>
+								</textElement>
+								<text><![CDATA[Personaje]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 11_TD" height="70" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="190" height="52" uuid="425fec62-3988-488c-a4c1-e0fdf1e3d7dc"/>
-								<textElement>
+								<reportElement x="0" y="0" width="120" height="70" uuid="cd87b801-4dd3-4a73-9c34-a770e80048ed"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{personaje_perso_nombre}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="312" uuid="66aa2ef6-d439-42bc-b5cd-0ce4126ed2c8">
-						<jr:tableHeader style="table 10_TH" height="30" rowSpan="1"/>
-						<jr:detailCell style="table 10_TD" height="52" rowSpan="1">
+					<jr:column width="225" uuid="17af07c7-8990-4622-ad91-f5fdcab85c27">
+						<jr:tableHeader style="table 11_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="225" height="30" uuid="cc064d65-8746-439a-b5a5-f36a1ff16cac"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14"/>
+								</textElement>
+								<text><![CDATA[Descripcion]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 11_TD" height="70" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="312" height="52" uuid="fd6aee93-b6f5-431d-a878-9ffb915c0b0a"/>
-								<textElement>
+								<reportElement x="0" y="0" width="225" height="70" uuid="9a0fd7a3-a5c1-4f68-b8b6-41392040afa9"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{personaje_perso_desc}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="107" uuid="0862a684-a960-41fb-a623-37800d1cdbb1">
+						<jr:tableHeader style="table 11_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="107" height="30" uuid="9cbd8837-cddc-4cc8-b2e2-87f24d1301ec"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14"/>
+								</textElement>
+								<text><![CDATA[Nombre Actor]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 11_TD" height="70" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="107" height="70" uuid="0e47546a-415b-4cc4-9cd9-ab681dab3907"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{miembro_miemb_nombre1}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="105" uuid="e01eaa4c-26ae-489b-aa76-5a3df1c4bd24">
+						<jr:tableHeader style="table 11_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="105" height="30" uuid="713add67-1ad3-405b-b2e7-f04592f6df56"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14"/>
+								</textElement>
+								<text><![CDATA[Apellido Actor]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 11_TD" height="70" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="105" height="70" uuid="733b83da-6cb3-4884-a9ac-223fcc27afe2"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{miembro_miemb_ape1}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
