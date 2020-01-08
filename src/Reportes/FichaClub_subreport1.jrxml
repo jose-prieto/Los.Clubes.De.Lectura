@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FichaClub_subreport1" pageWidth="572" pageHeight="752" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f147082b-e08a-41db-9fd7-0651d4d28a1d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idClub" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     g_lector."doc_id" AS g_lector_doc_id,
+    INITCAP(miembro."miemb_nombre1") AS miembro_miemb_nombre1,
+     INITCAP(miembro."miemb_ape1") AS miembro_miemb_ape1
+FROM
+     "public"."club" club INNER JOIN "public"."grupo" grupo ON club."club_id" = grupo."club_id"
+     INNER JOIN "public"."g_lector" g_lector ON grupo."club_id" = g_lector."club_id"
+     INNER JOIN "public"."hist_miembro" hist_miembro ON g_lector."doc_id" = hist_miembro."doc_id"
+     AND hist_miembro."fechai_mie" = g_lector."fechai_mie"
+     AND hist_miembro."club_id" = g_lector."clubh_id"
+     AND club."club_id" = hist_miembro."club_id"
+     INNER JOIN "public"."miembro" miembro ON hist_miembro."doc_id" = miembro."doc_id"
+WHERE
+     club.club_id =$P!{idClub}
+ AND hist_miembro.fechaf_mie IS NULL]]>
+	</queryString>
+	<field name="g_lector_doc_id" class="java.math.BigDecimal"/>
+	<field name="miembro_miemb_nombre1" class="java.lang.String"/>
+	<field name="miembro_miemb_ape1" class="java.lang.String"/>
+	<group name="g_lector_doc_id">
+		<groupExpression><![CDATA[$F{g_lector_doc_id}]]></groupExpression>
+	</group>
+	<columnHeader>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="46" y="11" width="163" height="20" uuid="9de60172-7cc4-47f8-9480-b44a56d2240d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Miembros Activos del Grupo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="11" width="117" height="20" uuid="2ca215e4-1cde-4dad-85c9-6bf923eb9ab1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre del Miembro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="382" y="11" width="134" height="20" uuid="667a2747-cedb-4d97-9275-d862f4a797fa"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellido del Miembro]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="36" splitType="Stretch">
+			<textField>
+				<reportElement x="46" y="0" width="163" height="20" uuid="d10fd05f-ddb7-4891-b1c5-46eff95e14cc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{g_lector_doc_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="231" y="0" width="117" height="20" uuid="3d3a64c7-4cdf-4ec2-87ae-bcc346d4b4f4"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{miembro_miemb_nombre1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="382" y="0" width="134" height="20" uuid="c32f4d4a-d2fc-4d89-adc9-28cfc3b4d1ce"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{miembro_miemb_ape1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
