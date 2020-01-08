@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="29b59803-beab-4be3-ad54-325b3e83ff0d">
+	<property name="ireport.zoom" value="1.2100000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="27"/>
+	<parameter name="obra_id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\dani_\\OneDrive\\Documentos\\GitHub\\Los.Clubes.De.Lectura\\src\\Reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     obra."obra_id" AS obra_obra_id,
+     obra."obra_duracion" AS obra_obra_duracion,
+     obra."obra_estatus" AS obra_obra_estatus,
+     initcap(obra."obra_titulo") AS obra_obra_titulo,
+     obra."costo_entrada" AS obra_costo_entrada,
+     obra."audi_id" AS obra_audi_id,
+     funcion."func_fecha" AS funcion_func_fecha,
+     funcion."obra_id" AS funcion_obra_id,
+     funcion."func_hora" AS funcion_func_hora,
+     funcion."estatus_realizado" AS funcion_estatus_realizado,
+     funcion."func_valoracion" AS funcion_func_valoracion,
+     funcion."func_entradas_vend" AS funcion_func_entradas_vend
+FROM
+     "public"."obra" obra INNER JOIN "public"."funcion" funcion ON obra."obra_id" = funcion."obra_id"
+WHERE obra.obra_id = $P!{obra_id}]]>
+	</queryString>
+	<field name="obra_obra_id" class="java.math.BigDecimal"/>
+	<field name="obra_obra_duracion" class="java.math.BigDecimal"/>
+	<field name="obra_obra_estatus" class="java.lang.String"/>
+	<field name="obra_obra_titulo" class="java.lang.String"/>
+	<field name="obra_costo_entrada" class="java.math.BigDecimal"/>
+	<field name="obra_audi_id" class="java.math.BigDecimal"/>
+	<field name="funcion_func_fecha" class="java.sql.Date"/>
+	<field name="funcion_obra_id" class="java.math.BigDecimal"/>
+	<field name="funcion_func_hora" class="java.math.BigDecimal"/>
+	<field name="funcion_estatus_realizado" class="java.lang.Boolean"/>
+	<field name="funcion_func_valoracion" class="java.math.BigDecimal"/>
+	<field name="funcion_func_entradas_vend" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="68" splitType="Stretch">
+			<textField>
+				<reportElement x="96" y="20" width="359" height="48" forecolor="#990033" uuid="1819f9b0-322b-4809-8df4-81923b17d970"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="22"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{obra_obra_titulo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="455" y="0" width="100" height="20" uuid="1b399ac2-d390-44e5-8fdc-e31c24f5bc96"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="296" splitType="Stretch">
+			<textField>
+				<reportElement x="187" y="21" width="192" height="36" uuid="8432492a-c0d6-4fdc-b066-a50ed1c79f48"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{funcion_func_fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="187" y="57" width="192" height="36" uuid="e0edc965-d9cc-4f5a-87d2-77ed3979f787"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{funcion_func_hora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="187" y="93" width="192" height="36" uuid="203aaf37-8aec-4ed0-9217-ee00f37a5f2f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{funcion_func_valoracion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="21" width="187" height="36" uuid="acde8142-ed58-49d3-8c9d-9e85914ee13a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Fecha que se presentó:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="93" width="187" height="36" uuid="d0bd6a94-84ae-4a32-862b-9cd04ce4b902"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Valoración:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="57" width="187" height="36" uuid="058b9541-6a4e-4b9b-a08f-6b9957d5364a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Hora:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="145" width="187" height="26" uuid="520bdea0-db80-4987-b343-1ba5f071a45d"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Elenco:]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="0" y="171" width="200" height="100" uuid="6d2833ae-b625-4736-af48-849a3e322599"/>
+				<subreportParameter name="obra_id">
+					<subreportParameterExpression><![CDATA[$P{obra_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="func_fecha">
+					<subreportParameterExpression><![CDATA[$F{funcion_func_fecha}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ActoresSubRep.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="200" y="12" width="80" height="20" uuid="90e70b01-cd2c-4b14-a8db-12e74a22c14a"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="280" y="12" width="40" height="20" uuid="072003e7-8a72-45bf-8a43-8259188c474f"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

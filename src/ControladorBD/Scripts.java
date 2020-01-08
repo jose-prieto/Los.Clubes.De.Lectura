@@ -304,14 +304,14 @@ ejecJ.libMiem(27342711,"la tregua");
     ejecD.CrearElenco(22734126, "Giménez");
     
     
-    ejecD.CrearActor(27342711, "Martin Santome", new Date(119,5,9));
-    ejecD.CrearActor(2253421, "El Bibliotecario", new Date(119,8,12));
-    ejecD.CrearActor(16268735,"Adan Buenosayres", new Date(119,4,3));
-    ejecD.CrearActor(20345678,"Clara Del Valle", new Date(119,1,27));
-    ejecD.CrearActor(18234631,"Arturo Cova", new Date(119,11,18));
-    ejecD.CrearActor(15234557,"Don Anselmo", new Date(119,2,25));
-    ejecD.CrearActor(5964816, "Brandimarte de Normandía",new Date(119,7,4));
-    ejecD.CrearActor(22734126,"Giménez", new Date(119,6,13));
+    ejecD.CrearActor(27342711, "Martin Santome", new Date(119,5,9),3);
+    ejecD.CrearActor(2253421, "El Bibliotecario", new Date(119,8,12),1);
+    ejecD.CrearActor(16268735,"Adan Buenosayres", new Date(119,4,3),4);
+    ejecD.CrearActor(20345678,"Clara Del Valle", new Date(119,1,27),2);
+    ejecD.CrearActor(18234631,"Arturo Cova", new Date(119,11,18),5);
+    ejecD.CrearActor(15234557,"Don Anselmo", new Date(119,2,25),3);
+    ejecD.CrearActor(5964816, "Brandimarte de Normandía",new Date(119,7,4),4);
+    ejecD.CrearActor(22734126,"Giménez", new Date(119,6,13),5);
     
     
    
@@ -371,7 +371,7 @@ ejecJ.libMiem(27342711,"la tregua");
         try (Connection con = connectivity.getConnection()){
         PreparedStatement ps = null;
         ResultSet res = null;
-            ps = con.prepareStatement("CREATE TABLE public.actor ( fechai_mie date NOT NULL, club_id numeric(3,0) NOT NULL, doc_id numeric(10,0) NOT NULL, obra_id numeric(3,0) NOT NULL, perso_id numeric(5,0) NOT NULL, obraf_id numeric(3,0) NOT NULL,  func_fecha date NOT NULL, CONSTRAINT pk_actor PRIMARY KEY (doc_id, club_id, fechai_mie, obra_id, perso_id, obraf_id, func_fecha), CONSTRAINT fk_actor_elenco FOREIGN KEY (doc_id, club_id, fechai_mie, obra_id, perso_id) REFERENCES public.elenco (doc_id, club_id, fechai_mie, obra_id, perso_id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION, CONSTRAINT fk_actor_funcion FOREIGN KEY (obraf_id, func_fecha) REFERENCES public.funcion (obra_id, func_fecha) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION )");
+            ps = con.prepareStatement("CREATE TABLE public.actor ( fechai_mie date NOT NULL, club_id numeric(3,0) NOT NULL, doc_id numeric(10,0) NOT NULL, obra_id numeric(3,0) NOT NULL, perso_id numeric(5,0) NOT NULL, obraf_id numeric(3,0) NOT NULL,  func_fecha date NOT NULL, valoracion numeric (1,0) NOT NULL, CONSTRAINT pk_actor PRIMARY KEY (doc_id, club_id, fechai_mie, obra_id, perso_id, obraf_id, func_fecha), CONSTRAINT fk_actor_elenco FOREIGN KEY (doc_id, club_id, fechai_mie, obra_id, perso_id) REFERENCES public.elenco (doc_id, club_id, fechai_mie, obra_id, perso_id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION, CONSTRAINT fk_actor_funcion FOREIGN KEY (obraf_id, func_fecha) REFERENCES public.funcion (obra_id, func_fecha) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION )");
             res = ps.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
