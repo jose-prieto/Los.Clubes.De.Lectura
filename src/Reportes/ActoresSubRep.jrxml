@@ -6,6 +6,7 @@
 	<parameter name="obra_id" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="func_fecha" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      initcap(miembro."miemb_nombre1") AS miembro_miemb_nombre1,
@@ -29,7 +30,8 @@ FROM
      AND funcion."func_fecha" = actor."func_fecha"
      INNER JOIN "public"."miembro" miembro ON hist_miembro."doc_id" = miembro."doc_id"
 WHERE
-     funcion.obra_id = $P!{obra_id}]]>
+     funcion.obra_id = $P!{obra_id} AND funcion.func_fecha =  to_date($P{func_fecha}, 'yyyy-mm-dd')
+order by actor_valoracion desc]]>
 	</queryString>
 	<field name="miembro_miemb_nombre1" class="java.lang.String"/>
 	<field name="miembro_miemb_ape1" class="java.lang.String"/>

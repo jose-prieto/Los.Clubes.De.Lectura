@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d945783a-fa54-476c-973a-05f3329a2864">
 	<property name="ireport.zoom" value="1.1000000000000005"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="484"/>
+	<property name="ireport.y" value="125"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -364,36 +364,36 @@ WHERE
 			</textField>
 			<staticText>
 				<reportElement x="0" y="269" width="342" height="36" uuid="22b861a4-dfaa-4521-b6bd-0caa9ce34d75"/>
-				<textElement>
-					<font size="16"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Fecha de las presentaciones pendientes:]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="89" y="26" width="348" height="33" forecolor="#990033" uuid="54904b9a-0f70-49d1-9e6c-39d57c979ca2"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="22"/>
+					<font size="22" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{obra_obra_titulo}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="403" width="222" height="32" uuid="39bc810a-c33e-4af0-a787-8f68090545a5"/>
 				<textElement verticalAlignment="Middle">
-					<font size="16"/>
+					<font size="16" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Información del libro: ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="89" width="236" height="36" uuid="52347bdc-0930-4c7c-8a44-20c8edccdec6"/>
 				<textElement verticalAlignment="Middle">
-					<font size="16"/>
+					<font size="16" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Será presentada en el auditorio:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="148" width="250" height="36" uuid="4bd04f9e-17fe-427f-b404-39fc2b1e00d1"/>
-				<textElement verticalAlignment="Top">
-					<font size="16"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Patrocinada por los clubes:]]></text>
 			</staticText>
@@ -513,9 +513,9 @@ WHERE
 				<textFieldExpression><![CDATA[$F{libro_sinopsis}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="26" y="600" width="74" height="21" uuid="f2d1d866-b834-4289-a99b-7bd29c92db70"/>
-				<textElement>
-					<font size="14" isBold="false"/>
+				<reportElement x="0" y="600" width="74" height="21" uuid="f2d1d866-b834-4289-a99b-7bd29c92db70"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16" isBold="false" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Elenco:]]></text>
 			</staticText>

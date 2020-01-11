@@ -1,56 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1fc4d29b-caa3-4184-81cf-0a4b9f15f7aa">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.3310000000000004"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#A05050">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#E6CFCF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#A05050">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#E6CFCF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Inasistencia" uuid="8f3b5675-fec4-4e17-a135-7033954ba035">
+		<parameter name="grup_id" class="java.lang.String"/>
+		<parameter name="reu_fecha" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT
+     initcap(miembro."miemb_nombre1") AS miembro_miemb_nombre1,
+     initcap(miembro."miemb_ape1") AS miembro_miemb_ape1
+FROM
+     "public"."miembro" miembro INNER JOIN "public"."hist_miembro" hist_miembro ON miembro."doc_id" = hist_miembro."doc_id"
+     INNER JOIN "public"."g_lector" g_lector ON hist_miembro."doc_id" = g_lector."doc_id"
+     AND hist_miembro."club_id" = g_lector."clubh_id"
+     AND hist_miembro."fechai_mie" = g_lector."fechai_mie"
+     INNER JOIN "public"."inasistencia" inasistencia ON g_lector."club_id" = inasistencia."club_id"
+     AND g_lector."fechai_mie" = inasistencia."fechai_mie"
+     AND g_lector."grup_id" = inasistencia."grup_id"
+     AND g_lector."clubh_id" = inasistencia."clubh_id"
+     AND g_lector."doc_id" = inasistencia."doc_id"
+WHERE
+     inasistencia.grupr_id = $P!{grup_id} AND inasistencia.reu_fecha = to_date($P{reu_fecha}, 'yyyy-mm-dd')]]>
+		</queryString>
+		<field name="miembro_miemb_nombre1" class="java.lang.String"/>
+		<field name="miembro_miemb_ape1" class="java.lang.String"/>
+		<group name="miembro_miemb_nombre1">
+			<groupExpression><![CDATA[$F{miembro_miemb_nombre1}]]></groupExpression>
+		</group>
+		<group name="miembro_miemb_ape1">
+			<groupExpression><![CDATA[$F{miembro_miemb_ape1}]]></groupExpression>
+		</group>
+	</subDataset>
+	<parameter name="grup_id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="reu_fecha" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
-     reuniones."reu_conclusiones" AS reuniones_reu_conclusiones,
-     reuniones."reu_valoracion" AS reuniones_reu_valoracion,
-     reuniones."clubg_l_id" AS reuniones_clubg_l_id,
-     reuniones."clubh_id" AS reuniones_clubh_id,
-     reuniones."fechai_mie" AS reuniones_fechai_mie,
-     reuniones."doc_id" AS reuniones_doc_id,
+     COALESCE(reuniones."reu_conclusiones",'No hay conclusiones') AS reuniones_reu_conclusiones,
+     COALESCE(to_char(reuniones."reu_valoracion",''),'No hay valoraciones') AS reuniones_reu_valoracion,
+     initcap(club."club_nombre") AS club_club_nombre,
+     initcap(libro."lib_tit_original") AS libro_lib_tit_original,
+     concat(initcap(miembro."miemb_nombre1"),' ',initcap(miembro."miemb_ape1")) AS nombrecompleto,
      reuniones."reu_fecha" AS reuniones_reu_fecha,
-     club."club_nombre" AS club_club_nombre,
-     grupo."grup_id" AS grupo_grup_id,
-     grupo."dia" AS grupo_dia,
+     reuniones."grup_id" AS reuniones_grup_id,
      grupo."horai" AS grupo_horai,
      grupo."horaf" AS grupo_horaf
 FROM
      "public"."hist_miembro" hist_miembro INNER JOIN "public"."g_lector" g_lector ON hist_miembro."doc_id" = g_lector."doc_id"
-     AND hist_miembro."fechai_mie" = g_lector."fechai_mie"
      AND hist_miembro."club_id" = g_lector."clubh_id"
+     AND hist_miembro."fechai_mie" = g_lector."fechai_mie"
      INNER JOIN "public"."reuniones" reuniones ON g_lector."club_id" = reuniones."clubg_l_id"
-     AND g_lector."fechai_mie" = reuniones."fechai_mie"
      AND g_lector."grup_id" = reuniones."grupg_l_id"
-     AND g_lector."clubh_id" = reuniones."clubh_id"
      AND g_lector."doc_id" = reuniones."doc_id"
+     AND g_lector."clubh_id" = reuniones."clubh_id"
+     AND g_lector."fechai_mie" = reuniones."fechai_mie"
      INNER JOIN "public"."grupo" grupo ON g_lector."club_id" = grupo."club_id"
      AND grupo."grup_id" = g_lector."grup_id"
      AND grupo."club_id" = reuniones."club_id"
      AND grupo."grup_id" = reuniones."grup_id"
      INNER JOIN "public"."club" club ON grupo."club_id" = club."club_id"
      AND club."club_id" = hist_miembro."club_id"
-     INNER JOIN "public"."miembro" miembro ON hist_miembro."doc_id" = miembro."doc_id"]]>
+     INNER JOIN "public"."miembro" miembro ON hist_miembro."doc_id" = miembro."doc_id"
+     INNER JOIN "public"."libro" libro ON reuniones."isbn" = libro."isbn"
+WHERE
+     reuniones.grup_id = $P!{grup_id}
+ AND reuniones.reu_fecha = to_date($P{reu_fecha},'yyyy-mm-dd')]]>
 	</queryString>
 	<field name="reuniones_reu_conclusiones" class="java.lang.String"/>
-	<field name="reuniones_reu_valoracion" class="java.math.BigDecimal"/>
-	<field name="reuniones_clubg_l_id" class="java.math.BigDecimal"/>
-	<field name="reuniones_clubh_id" class="java.math.BigDecimal"/>
-	<field name="reuniones_fechai_mie" class="java.sql.Date"/>
-	<field name="reuniones_doc_id" class="java.math.BigDecimal"/>
-	<field name="reuniones_reu_fecha" class="java.sql.Date"/>
+	<field name="reuniones_reu_valoracion" class="java.lang.String"/>
 	<field name="club_club_nombre" class="java.lang.String"/>
-	<field name="grupo_grup_id" class="java.math.BigDecimal"/>
-	<field name="grupo_dia" class="java.lang.String"/>
+	<field name="libro_lib_tit_original" class="java.lang.String"/>
+	<field name="nombrecompleto" class="java.lang.String"/>
+	<field name="reuniones_reu_fecha" class="java.sql.Date"/>
+	<field name="reuniones_grup_id" class="java.math.BigDecimal"/>
 	<field name="grupo_horai" class="java.math.BigDecimal"/>
 	<field name="grupo_horaf" class="java.math.BigDecimal"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="34" splitType="Stretch">
 			<textField pattern="dd/MM/yyyy">
 				<reportElement x="455" y="0" width="100" height="20" uuid="a4e51dd7-cefb-4b3e-9638-dddea29c7dd9"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
@@ -61,10 +134,198 @@ FROM
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="388" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="90" width="132" height="30" uuid="28f95476-6784-4131-a355-687cce605c84"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Conclusiones:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="132" y="90" width="148" height="30" uuid="9d4e3e7a-5136-4d83-a7dd-7619b9a80a1b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reuniones_reu_conclusiones}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="120" width="132" height="24" uuid="e71c329e-d56e-4e57-8ead-087181e014d4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Valoración Final:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="132" y="120" width="148" height="24" uuid="c803121c-db1d-4c83-b966-4a7bf7d6aaf9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reuniones_reu_valoracion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="132" height="30" uuid="0538e34f-55e4-4427-9706-6294ee50227f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de reunión:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="132" y="0" width="148" height="30" uuid="775e2932-09ff-4ab4-9b0e-68c40d61440b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reuniones_reu_fecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="63" y="203" width="89" height="26" uuid="020413f7-e12e-4ec1-840d-079eada6057f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Moderador:]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table 1" style="table 1" x="95" y="294" width="360" height="50" uuid="3833bcd3-9420-4c2c-a9f8-83af230933cc"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Inasistencia" uuid="fa4cabd8-e203-486a-867c-c982beb49e22">
+						<datasetParameter name="grup_id">
+							<datasetParameterExpression><![CDATA[$F{reuniones_grup_id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="reu_fecha">
+							<datasetParameterExpression><![CDATA[$F{reuniones_reu_fecha}.toString()]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="164" uuid="5b15f0bf-33b1-43f3-8b20-f4a106ca8373">
+						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="164" height="30" uuid="48e7b88f-f673-4dd1-b6f2-3ed978d6471a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14"/>
+								</textElement>
+								<text><![CDATA[Nombre]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 1_TD" height="33" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="164" height="33" uuid="c1c5b358-dd34-47ce-a88a-cd8b54a35165"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{miembro_miemb_nombre1}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="165" uuid="d9a7b107-cdb8-4e2a-a91e-d5c4bcaf86d1">
+						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="165" height="30" uuid="e269ace9-645e-4e52-88ef-73e67e21c79a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14"/>
+								</textElement>
+								<text><![CDATA[Apellido]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 1_TD" height="33" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="165" height="33" uuid="c3842b22-6d09-40c6-a7ab-221d42e47d33"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{miembro_miemb_ape1}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="95" y="270" width="117" height="24" uuid="60a44d0c-476e-455c-b5a1-f85ee295f2c0"/>
+				<textElement>
+					<font size="16" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Inasistencias:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="394" y="0" width="107" height="44" forecolor="#990033" uuid="f01da369-a5f3-4abc-822a-75c4ee4874b1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="22" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Reuniones]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="337" y="44" width="218" height="40" uuid="39422cd2-fc17-4c27-b9f5-e5654385ae45"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{club_club_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="63" y="179" width="121" height="24" uuid="43d4c3a0-c4c4-4861-851a-a8612afc117b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Libro a analizar:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="184" y="179" width="176" height="24" uuid="0ed3cb7d-fd84-4700-90e0-882695eac13a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libro_lib_tit_original}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="184" y="203" width="158" height="26" uuid="db42da76-db85-4c2e-950b-cb6e28b9594f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombrecompleto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="30" width="88" height="30" uuid="8fc88d5e-ae0e-4ba2-9a1c-4912bae8b048"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Hora inicio:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="88" y="30" width="30" height="30" uuid="30dd9a80-93c1-45b2-816f-67c06bbbcd6c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{grupo_horai}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="118" y="30" width="66" height="30" uuid="2825b3b2-7934-4cac-8f85-9d48f7b22f7c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Hora fin:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="184" y="30" width="31" height="30" uuid="26dd3bd9-a377-4d31-824b-730ac6c9fb61"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{grupo_horaf}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="372" y="81" width="113" height="29" uuid="15018832-aba2-4b49-804e-22cef738e2d6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Grupo número:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="485" y="81" width="36" height="29" uuid="cb500272-250d-4dcf-a230-e820184a9bb8"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reuniones_grup_id}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch">
