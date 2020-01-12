@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="31f9548f-3de9-4812-adb0-38544ee6f33c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\aayal\\OneDrive\\Documentos\\Proyecto Bases\\Los.Clubes.De.Lectura\\src\\Reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="idClub" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     club."club_id" AS club_club_id,
+     INITCAP(club."club_nombre") AS club_club_nombre
+FROM
+     "public"."club" club
+WHERE club."club_id" = $P!{idClub}]]>
+	</queryString>
+	<field name="club_club_id" class="java.math.BigDecimal"/>
+	<field name="club_club_nombre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="225" splitType="Stretch">
+			<staticText>
+				<reportElement x="43" y="91" width="100" height="20" uuid="a5f7e45b-d075-4e99-827e-e259ee5536ed"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Club Id:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="164" y="91" width="186" height="20" uuid="dd2f4669-fc3e-4af3-82d1-132ef155a2f8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{club_club_id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="43" y="128" width="100" height="20" uuid="d3d25255-8593-44df-b948-213b1e122a70"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre del Club:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="164" y="128" width="186" height="20" uuid="0482d438-683b-4b54-92b7-f7f2a937038c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{club_club_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="236" y="178" width="100" height="20" uuid="04360680-e2d7-4911-a8b7-2f961d15b08d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Obras Actuadas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="0" width="100" height="30" uuid="6e4d3bc3-8988-46df-a89d-db863c8e59aa"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Clubes de lectura]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="405" y="0" width="144" height="30" uuid="e27e7de8-0443-4a8a-aea9-3cc1d82233f9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="249" y="0" width="151" height="30" uuid="61fcc53e-f9c5-4fe6-8d83-83fbbfe04f9b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de emisión de reporte:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="59" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="43" height="39" uuid="712d6384-a54b-4ab9-8c2c-3c01a84dd4ac"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="idClub">
+					<subreportParameterExpression><![CDATA[$F{club_club_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ReporteClubObra_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

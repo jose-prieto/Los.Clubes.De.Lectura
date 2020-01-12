@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteClubObra_subreport1" language="groovy" pageWidth="572" pageHeight="752" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f5c9263d-5063-4512-a975-db7835d553b7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idClub" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     INITCAP(libro."lib_tit_original") AS libro_lib_tit_original,
+     funcion."func_fecha" AS funcion_func_fecha,
+     club_obra."obra_id" AS club_obra_obra_id,
+     INITCAP(obra."obra_titulo") AS obra_obra_titulo,
+     (funcion.func_entradas_vend * obra.costo_entrada) AS funcion_total,
+     funcion."func_valoracion" AS funcion_func_valoracion
+FROM
+     "public"."club" club INNER JOIN "public"."club_obra" club_obra ON club."club_id" = club_obra."club_id"
+     INNER JOIN "public"."obra" obra ON club_obra."obra_id" = obra."obra_id"
+     INNER JOIN "public"."libro_obra" libro_obra ON obra."obra_id" = libro_obra."obra_id"
+     INNER JOIN "public"."funcion" funcion ON obra."obra_id" = funcion."obra_id"
+     INNER JOIN "public"."libro" libro ON libro_obra."isbn" = libro."isbn"
+where club_obra.club_id=$P!{idClub} and funcion."func_valoracion" is not null and funcion.func_entradas_vend is not null and funcion.estatus_realizado is true]]>
+	</queryString>
+	<field name="libro_lib_tit_original" class="java.lang.String"/>
+	<field name="funcion_func_fecha" class="java.sql.Date"/>
+	<field name="club_obra_obra_id" class="java.math.BigDecimal"/>
+	<field name="obra_obra_titulo" class="java.lang.String"/>
+	<field name="funcion_total" class="java.math.BigDecimal"/>
+	<field name="funcion_func_valoracion" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="72" height="20" uuid="47410a44-56fd-40cb-8fbf-febf7312f231"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Obra Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="2" width="117" height="20" uuid="b3c28801-85e7-476d-a2cc-54a24900d096"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Titulo de la Obra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="189" y="2" width="106" height="20" uuid="44d0043f-72ca-4abf-923a-9dd66d0e4591"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Titulo del Libro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="467" y="2" width="105" height="20" uuid="e10fcfbc-2caa-444c-9f05-3962561ef70c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Funcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="295" y="2" width="72" height="20" uuid="a1e4174b-2819-463d-b571-de8818055a2d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valoracion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="367" y="2" width="100" height="20" uuid="fdd7f714-d8b6-4e7c-8674-b51441036e67"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Recaudado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="3" width="72" height="20" uuid="c4c81693-68d5-404c-a180-f33659385a55"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{club_obra_obra_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="72" y="3" width="117" height="20" uuid="5a4654f4-14de-401d-be53-7f3e9606912a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{obra_obra_titulo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="189" y="3" width="106" height="20" uuid="51b37677-dabc-4cc0-a7b2-52e2a0830e96"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libro_lib_tit_original}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="467" y="3" width="105" height="20" uuid="fbebc5f7-4ecc-475c-a68a-76bbd37c1f73"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{funcion_func_fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="295" y="3" width="72" height="20" uuid="72d79f52-b89e-47ff-ad79-b63a67d3532c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{funcion_func_valoracion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="367" y="3" width="100" height="20" uuid="0939d8b4-f121-4e38-ae2e-6dd42e3ce120"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{funcion_total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
