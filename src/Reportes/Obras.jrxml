@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d945783a-fa54-476c-973a-05f3329a2864">
 	<property name="ireport.zoom" value="1.1000000000000005"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="394"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -350,7 +350,7 @@ WHERE
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="270" splitType="Stretch">
+		<band height="640" splitType="Stretch">
 			<textField pattern="dd/MM/yyyy">
 				<reportElement x="455" y="0" width="100" height="20" uuid="8773f80c-51a6-4a87-9db7-b576c26a4cc1"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
@@ -413,32 +413,15 @@ WHERE
 				<textFieldExpression><![CDATA[$F{auditorio_audi_nombre}]]></textFieldExpression>
 			</textField>
 			<elementGroup/>
-		</band>
-	</title>
-	<pageHeader>
-		<band splitType="Stretch"/>
-	</pageHeader>
-	<columnHeader>
-		<band splitType="Stretch"/>
-	</columnHeader>
-	<detail>
-		<band height="397" splitType="Stretch">
 			<staticText>
-				<reportElement x="10" y="283" width="342" height="36" uuid="12719899-475d-42c7-9a20-ee8640a7bda0"/>
-				<textElement verticalAlignment="Middle">
-					<font size="16" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Fecha de las presentaciones pendientes:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="10" y="10" width="74" height="21" uuid="4a79da37-85d8-4ab5-9838-5728ff878772"/>
+				<reportElement x="0" y="274" width="74" height="21" uuid="4a79da37-85d8-4ab5-9838-5728ff878772"/>
 				<textElement verticalAlignment="Middle">
 					<font size="16" isBold="false" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Elenco:]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement key="table 11" style="table 11" x="10" y="31" width="555" height="228" uuid="f7267a5b-d7c9-4204-b2f5-bb243c8b26d0"/>
+				<reportElement key="table 11" style="table 11" x="0" y="295" width="555" height="228" uuid="f7267a5b-d7c9-4204-b2f5-bb243c8b26d0"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="Personajes" uuid="27ea5287-30ed-4a08-a1e9-81c871057cd7">
 						<datasetParameter name="obra_id">
@@ -528,8 +511,15 @@ WHERE
 					</jr:column>
 				</jr:table>
 			</componentElement>
+			<staticText>
+				<reportElement x="0" y="554" width="342" height="36" uuid="12719899-475d-42c7-9a20-ee8640a7bda0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de las presentaciones pendientes:]]></text>
+			</staticText>
 			<componentElement>
-				<reportElement key="table 7" style="table 7" x="119" y="319" width="360" height="50" uuid="3cd9db0d-9337-469a-ad33-9b1db0988b85"/>
+				<reportElement key="table 7" style="table 7" x="109" y="590" width="360" height="50" uuid="3cd9db0d-9337-469a-ad33-9b1db0988b85"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="Funciones" uuid="369eb9db-0be2-4019-b509-dc72d40c8253">
 						<datasetParameter name="obra_id">
@@ -580,6 +570,15 @@ WHERE
 				</jr:table>
 			</componentElement>
 		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
 		<band/>
 	</detail>
 	<columnFooter>
