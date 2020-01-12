@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d945783a-fa54-476c-973a-05f3329a2864">
 	<property name="ireport.zoom" value="1.1000000000000005"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="125"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -350,7 +350,7 @@ WHERE
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="684" splitType="Stretch">
+		<band height="640" splitType="Stretch">
 			<textField pattern="dd/MM/yyyy">
 				<reportElement x="455" y="0" width="100" height="20" uuid="8773f80c-51a6-4a87-9db7-b576c26a4cc1"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
@@ -362,13 +362,6 @@ WHERE
 				</textElement>
 				<textFieldExpression><![CDATA[$F{obra_obra_titulo}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="0" y="269" width="342" height="36" uuid="22b861a4-dfaa-4521-b6bd-0caa9ce34d75"/>
-				<textElement verticalAlignment="Middle">
-					<font size="16" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Fecha de las presentaciones pendientes:]]></text>
-			</staticText>
 			<textField>
 				<reportElement x="89" y="26" width="348" height="33" forecolor="#990033" uuid="54904b9a-0f70-49d1-9e6c-39d57c979ca2"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -376,13 +369,6 @@ WHERE
 				</textElement>
 				<textFieldExpression><![CDATA[$F{obra_obra_titulo}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="0" y="403" width="222" height="32" uuid="39bc810a-c33e-4af0-a787-8f68090545a5"/>
-				<textElement verticalAlignment="Middle">
-					<font size="16" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Información del libro: ]]></text>
-			</staticText>
 			<staticText>
 				<reportElement x="0" y="89" width="236" height="36" uuid="52347bdc-0930-4c7c-8a44-20c8edccdec6"/>
 				<textElement verticalAlignment="Middle">
@@ -398,58 +384,7 @@ WHERE
 				<text><![CDATA[Patrocinada por los clubes:]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement key="table 7" style="table 7" x="109" y="305" width="360" height="50" uuid="0881d7e7-860a-4bfd-b7a7-6d3fe52ce5b6"/>
-				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Funciones" uuid="d80b40f6-2d77-4fd6-95b2-5d150c766d03">
-						<datasetParameter name="obra_id">
-							<datasetParameterExpression><![CDATA[$P{obra_id}]]></datasetParameterExpression>
-						</datasetParameter>
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-					</datasetRun>
-					<jr:column width="90" uuid="e1541f8d-cbae-4d3b-a06c-98707b29428e">
-						<jr:tableHeader style="table 7_TH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="3284e43b-feed-498c-956a-20f87a16d66f"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="14"/>
-								</textElement>
-								<text><![CDATA[Fecha]]></text>
-							</staticText>
-						</jr:tableHeader>
-						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="ee7125d9-806c-48c6-bd6b-4b0b4d716b6e"/>
-								<textElement>
-									<font size="14"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{funcion_func_fecha}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="f1abe78f-5bf9-43d2-81fc-310e3d3daac9">
-						<jr:tableHeader style="table 7_TH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="ee913e26-9c12-4ecb-87a0-feeb30de6585"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="14"/>
-								</textElement>
-								<text><![CDATA[Duracion]]></text>
-							</staticText>
-						</jr:tableHeader>
-						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="25b4fd0d-106e-4f48-918c-62eb93a5a244"/>
-								<textElement textAlignment="Center">
-									<font size="14"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{funcion_func_hora}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-				</jr:table>
-			</componentElement>
-			<componentElement>
-				<reportElement key="table 8" style="table 8" x="109" y="184" width="360" height="58" uuid="68e06bde-5c22-435b-9c89-babbef7bf2f3"/>
+				<reportElement key="table 8" style="table 8" x="109" y="184" width="328" height="69" uuid="68e06bde-5c22-435b-9c89-babbef7bf2f3"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="Clubes" uuid="b274bcbd-ccc4-4c9d-b188-24ffb7e1d352">
 						<datasetParameter name="obra_id">
@@ -477,61 +412,27 @@ WHERE
 				</textElement>
 				<textFieldExpression><![CDATA[$F{auditorio_audi_nombre}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="89" y="452" width="157" height="20" uuid="7cfe0469-45f4-45c6-9f4f-8e0df47e089a"/>
-				<textElement verticalAlignment="Middle">
-					<font size="14"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{libro_lib_tit_original}]]></textFieldExpression>
-			</textField>
+			<elementGroup/>
 			<staticText>
-				<reportElement x="26" y="452" width="63" height="21" uuid="8e8396a7-e32b-40ed-9f8f-c54bb075bb9e"/>
-				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Nombre:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="26" y="485" width="74" height="21" uuid="9916a49c-d000-4d00-a252-952bac11102c"/>
-				<textElement>
-					<font size="14" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Sinopsis:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="26" y="506" width="454" height="82" uuid="1e362ef3-6b0a-4d17-8492-0c7e0bb15073"/>
-				<box>
-					<pen lineWidth="2.0" lineStyle="Double" lineColor="#990033"/>
-					<topPen lineWidth="2.0" lineStyle="Double" lineColor="#990033"/>
-					<leftPen lineWidth="2.0" lineStyle="Double" lineColor="#990033"/>
-					<bottomPen lineWidth="2.0" lineStyle="Double" lineColor="#990033"/>
-					<rightPen lineWidth="2.0" lineStyle="Double" lineColor="#990033"/>
-				</box>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{libro_sinopsis}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="600" width="74" height="21" uuid="f2d1d866-b834-4289-a99b-7bd29c92db70"/>
+				<reportElement x="0" y="274" width="74" height="21" uuid="4a79da37-85d8-4ab5-9838-5728ff878772"/>
 				<textElement verticalAlignment="Middle">
 					<font size="16" isBold="false" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Elenco:]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement key="table 11" style="table 11" x="0" y="621" width="325" height="50" uuid="10c62e78-4353-4ee1-939b-4ae9ca447cd6"/>
+				<reportElement key="table 11" style="table 11" x="0" y="295" width="555" height="228" uuid="f7267a5b-d7c9-4204-b2f5-bb243c8b26d0"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Personajes" uuid="7fa41088-a857-426e-a7be-f15107bde7a7">
+					<datasetRun subDataset="Personajes" uuid="27ea5287-30ed-4a08-a1e9-81c871057cd7">
 						<datasetParameter name="obra_id">
 							<datasetParameterExpression><![CDATA[$P{obra_id}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column width="120" uuid="439ee6c7-6ab6-4b19-ad98-9a56a1c64d5e">
+					<jr:column width="120" uuid="55e80dcf-abda-478b-bd41-3b6d7bf36cc1">
 						<jr:tableHeader style="table 11_TH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="120" height="30" uuid="bccfcf92-e438-4a70-ad42-afbff07d47c9"/>
+								<reportElement x="0" y="0" width="120" height="30" uuid="21338245-ae55-45ec-b9b4-f7e814986f7d"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="14"/>
 								</textElement>
@@ -540,7 +441,7 @@ WHERE
 						</jr:tableHeader>
 						<jr:detailCell style="table 11_TD" height="70" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="120" height="70" uuid="cd87b801-4dd3-4a73-9c34-a770e80048ed"/>
+								<reportElement x="0" y="0" width="120" height="70" uuid="51b5b003-9943-4916-ac69-a38116dd932c"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12"/>
 								</textElement>
@@ -548,10 +449,10 @@ WHERE
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="225" uuid="17af07c7-8990-4622-ad91-f5fdcab85c27">
+					<jr:column width="225" uuid="bfc6cc3e-e349-4495-8af3-573e7084ebb7">
 						<jr:tableHeader style="table 11_TH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="225" height="30" uuid="cc064d65-8746-439a-b5a5-f36a1ff16cac"/>
+								<reportElement x="0" y="0" width="225" height="30" uuid="976a692d-b310-4545-9dd6-20126e0bad9f"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="14"/>
 								</textElement>
@@ -560,7 +461,7 @@ WHERE
 						</jr:tableHeader>
 						<jr:detailCell style="table 11_TD" height="70" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="225" height="70" uuid="9a0fd7a3-a5c1-4f68-b8b6-41392040afa9"/>
+								<reportElement x="0" y="0" width="225" height="70" uuid="4052cfea-de1d-437a-8342-34e17de9290b"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12"/>
 								</textElement>
@@ -568,10 +469,10 @@ WHERE
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="107" uuid="0862a684-a960-41fb-a623-37800d1cdbb1">
+					<jr:column width="107" uuid="2cbea056-cfe4-42f7-bde4-8724b6076407">
 						<jr:tableHeader style="table 11_TH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="107" height="30" uuid="9cbd8837-cddc-4cc8-b2e2-87f24d1301ec"/>
+								<reportElement x="0" y="0" width="107" height="30" uuid="5f4b0da9-f9d3-4513-ae8a-183e0ba2bdea"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="14"/>
 								</textElement>
@@ -580,7 +481,7 @@ WHERE
 						</jr:tableHeader>
 						<jr:detailCell style="table 11_TD" height="70" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="107" height="70" uuid="0e47546a-415b-4cc4-9cd9-ab681dab3907"/>
+								<reportElement x="0" y="0" width="107" height="70" uuid="988d0f6f-4b3a-45d2-b919-cede857efa27"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12"/>
 								</textElement>
@@ -588,10 +489,10 @@ WHERE
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="105" uuid="e01eaa4c-26ae-489b-aa76-5a3df1c4bd24">
+					<jr:column width="105" uuid="7fda09e5-11b2-470a-af22-367c12413f2f">
 						<jr:tableHeader style="table 11_TH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="105" height="30" uuid="713add67-1ad3-405b-b2e7-f04592f6df56"/>
+								<reportElement x="0" y="0" width="105" height="30" uuid="77007960-4821-4a3e-932c-5eb9dc191e90"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="14"/>
 								</textElement>
@@ -600,11 +501,69 @@ WHERE
 						</jr:tableHeader>
 						<jr:detailCell style="table 11_TD" height="70" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="105" height="70" uuid="733b83da-6cb3-4884-a9ac-223fcc27afe2"/>
+								<reportElement x="0" y="0" width="105" height="70" uuid="1bca6606-0c69-4104-ba3d-c24598cf7ad1"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{miembro_miemb_ape1}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="0" y="554" width="342" height="36" uuid="12719899-475d-42c7-9a20-ee8640a7bda0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de las presentaciones pendientes:]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table 7" style="table 7" x="109" y="590" width="360" height="50" uuid="3cd9db0d-9337-469a-ad33-9b1db0988b85"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Funciones" uuid="369eb9db-0be2-4019-b509-dc72d40c8253">
+						<datasetParameter name="obra_id">
+							<datasetParameterExpression><![CDATA[$P{obra_id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="09fdbd5f-9974-4e3a-bb2c-0ae5c42785ab">
+						<jr:tableHeader style="table 7_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="f69b9d1f-b82f-4380-bcd8-a051e36340c1"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14"/>
+								</textElement>
+								<text><![CDATA[Fecha]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="f50bd685-a0d1-4431-8aa6-2347b8953c1e"/>
+								<textElement>
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{funcion_func_fecha}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="9d3b5368-c248-43b2-99b1-bfbca19ce18f">
+						<jr:tableHeader style="table 7_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="3603b982-b4a0-4577-aca3-ebe6dce0fa8b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14"/>
+								</textElement>
+								<text><![CDATA[Duracion]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="abf915e3-c9b5-4be5-b709-87467d20eac4"/>
+								<textElement textAlignment="Center">
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{funcion_func_hora}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>

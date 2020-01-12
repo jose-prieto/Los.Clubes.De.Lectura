@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FichaClub_subreport2" language="groovy" pageWidth="572" pageHeight="752" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="6f7cd4b6-45ed-44d2-9298-bc1727b85aea">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idClub" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     asociacion."club1"  as asociacion_club1,
+     asociacion."club2"  as asociacion_club2
+FROM
+       asociacion
+WHERE asociacion."club1"=1 OR asociacion."club2" =1]]>
+	</queryString>
+	<field name="asociacion_club1" class="java.math.BigDecimal"/>
+	<field name="asociacion_club2" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="169" y="0" width="273" height="20" uuid="b7a427b8-3b1e-4869-9db9-f453b6e08c5e"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{asociacion_club1} + "-" +  $F{asociacion_club2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="143" height="20" uuid="c6d380f6-e94b-46e2-ae8f-5ac2569c522d"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Clubes Asociados (id's):]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50">
+			<staticText>
+				<reportElement x="159" y="18" width="200" height="20" uuid="04af6b05-7ed0-4952-b3c0-63994fd800da"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grupos Pertenecientes al Club]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>
