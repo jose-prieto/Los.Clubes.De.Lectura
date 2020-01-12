@@ -190,7 +190,7 @@ where mi.doc_id = $P!{id} and club.club_id = $P!{club} and club.club_id = hist.c
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="192" splitType="Stretch">
+		<band height="285" splitType="Stretch">
 			<textField>
 				<reportElement x="340" y="0" width="130" height="30" uuid="63e1c490-3227-422d-8ac4-10c784bfbcd0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -339,15 +339,8 @@ where mi.doc_id = $P!{id} and club.club_id = $P!{club} and club.club_id = hist.c
 				</textElement>
 				<textFieldExpression><![CDATA[$F{club}]]></textFieldExpression>
 			</textField>
-		</band>
-	</title>
-	<columnHeader>
-		<band splitType="Stretch"/>
-	</columnHeader>
-	<detail>
-		<band height="80" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="390" height="30" uuid="a2868dcc-4e0f-4d93-86fb-c08c7a8e7a5b"/>
+				<reportElement x="0" y="192" width="390" height="30" uuid="a2868dcc-4e0f-4d93-86fb-c08c7a8e7a5b"/>
 				<box leftPadding="2">
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="0.0"/>
@@ -361,7 +354,7 @@ where mi.doc_id = $P!{id} and club.club_id = $P!{club} and club.club_id = hist.c
 				<text><![CDATA[Reuniones y asistencias del miembro en ese club en el rango de fechas dado]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement key="table 3" style="table 3" x="0" y="30" width="460" height="50" uuid="c8dd7dae-5917-4d68-a62a-fd149c0785ea"/>
+				<reportElement key="table 3" style="table 3" x="0" y="222" width="460" height="50" uuid="c8dd7dae-5917-4d68-a62a-fd149c0785ea"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="Pago" uuid="fbc83149-7667-4487-bc8b-463d73e79073">
 						<datasetParameter name="id">
@@ -422,8 +415,9 @@ where mi.doc_id = $P!{id} and club.club_id = $P!{club} and club.club_id = hist.c
 				</jr:table>
 			</componentElement>
 		</band>
-		<band/>
-		<band height="80">
+	</title>
+	<pageHeader>
+		<band height="82">
 			<staticText>
 				<reportElement x="0" y="0" width="390" height="30" uuid="24bbaa94-1597-4881-a6b9-333caf04cf3e"/>
 				<box leftPadding="2">
@@ -499,6 +493,14 @@ where mi.doc_id = $P!{id} and club.club_id = $P!{club} and club.club_id = hist.c
 				</jr:table>
 			</componentElement>
 		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+		<band/>
+		<band/>
 	</detail>
 	<columnFooter>
 		<band splitType="Stretch"/>
