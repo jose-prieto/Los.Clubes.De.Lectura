@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FichaClub" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e5c7513f-7562-4d8f-9d6c-6869d1ae91c0">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="82"/>
+	<property name="ireport.y" value="0"/>
 	<subDataset name="dataset1" uuid="1a8ff30b-2082-45fa-b5ff-276f06c7f2a5"/>
 	<parameter name="idClub" class="java.math.BigDecimal">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -43,8 +43,8 @@
 
 
 
-from club, grupo
-where club.club_id=$P!{idClub} and grupo.club_id=$P!{idClub}]]>
+from club, grupo, g_lector
+where club.club_id=$P!{idClub} and grupo.club_id=$P!{idClub} and grupo.grup_id= g_lector.grup_id and g_lector.fechaf_gru is null]]>
 	</queryString>
 	<field name="idioma_idio_nombre" class="java.lang.String"/>
 	<field name="club_club_nombre" class="java.lang.String"/>
@@ -63,234 +63,197 @@ where club.club_id=$P!{idClub} and grupo.club_id=$P!{idClub}]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="43" splitType="Stretch"/>
-	</title>
-	<pageHeader>
-		<band height="421" splitType="Stretch">
+		<band height="426" splitType="Stretch">
 			<staticText>
-				<reportElement x="41" y="118" width="129" height="20" uuid="a16a7f0f-d3c9-4b03-821e-6962c21c9b84"/>
+				<reportElement x="41" y="88" width="129" height="20" uuid="6f6b2d9e-fb50-4315-9b92-39a96a0d8b5a"/>
 				<textElement>
-					<font fontName="Times New Roman" size="12" isBold="true"/>
+					<font fontName="Times New Roman" size="16" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Fecha de Inicio del Club]]></text>
+				<text><![CDATA[Nombre del Club:]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="211" y="118" width="306" height="20" uuid="5e599394-392b-4aa3-bc5d-cab07f8cc2a4"/>
-				<textElement>
-					<font fontName="Times New Roman" size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{club_club_fecha_inicio}]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement x="41" y="148" width="100" height="20" uuid="d9265ece-4890-46f7-aa59-67f20c942c3b"/>
-				<textElement>
-					<font fontName="Times New Roman" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Direccion:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="211" y="148" width="306" height="20" uuid="549f86e4-a608-481e-8db3-e9f17877d7e7"/>
-				<textElement>
-					<font fontName="Times New Roman" size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{club_direccion}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="41" y="179" width="100" height="20" uuid="61e2cf2e-f5ac-4f14-9dc1-3e4a83259cd9"/>
-				<textElement>
-					<font fontName="Times New Roman" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Codigo Postal]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="211" y="179" width="306" height="20" uuid="e50a3d67-0cca-4e25-8d79-7746b0f8b0ac"/>
-				<textElement>
-					<font fontName="Times New Roman" size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{club_cod_postal}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="41" y="210" width="100" height="20" uuid="b51d3ad6-1d04-4914-8e91-d22da0691ca5"/>
-				<textElement>
-					<font fontName="Times New Roman" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Cuota ]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="211" y="210" width="100" height="20" uuid="f01bdc94-f9af-4577-9d73-b54edc1a4524"/>
-				<textElement>
-					<font fontName="Times New Roman" size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{club_cuota}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="41" y="332" width="158" height="20" uuid="61182be6-5941-41e2-a3cc-bd5f2bc71a92"/>
-				<textElement>
-					<font fontName="Times New Roman" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Institución Perteneciente (id):]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="211" y="332" width="127" height="20" uuid="4c51326b-053f-4798-b4be-76f022e24c18"/>
-				<textElement>
-					<font fontName="Times New Roman" size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{club_inst_id}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="872" y="150" width="100" height="20" uuid="7f3b6b74-6e16-497e-b564-ac0fd6739b8a"/>
-				<text><![CDATA[grupo_horaf]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="211" y="271" width="306" height="20" uuid="5eb99322-ae07-4c9c-bd24-66f031589a15"/>
-				<textElement>
-					<font fontName="Times New Roman" size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{direccion_lugar_dir_nombre}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="41" y="271" width="100" height="20" uuid="2266ac6e-4fb9-4440-aea4-5d462419a28e"/>
+				<reportElement x="41" y="286" width="100" height="20" uuid="2266ac6e-4fb9-4440-aea4-5d462419a28e"/>
 				<textElement>
 					<font fontName="Times New Roman" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Ciudad:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="211" y="241" width="306" height="20" uuid="60b0b5f1-84d3-4cfc-b4d2-9bd3b3c9787f"/>
-				<textElement>
-					<font fontName="Times New Roman" size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{direccion_lugar_a_dir_nombre}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="41" y="241" width="100" height="20" uuid="6cd55f85-723a-487e-8993-779f4959142b"/>
-				<textElement>
-					<font fontName="Times New Roman" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Pais:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="41" y="73" width="129" height="20" uuid="6f6b2d9e-fb50-4315-9b92-39a96a0d8b5a"/>
-				<textElement>
-					<font fontName="Times New Roman" size="16" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Nombre del Club:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="211" y="73" width="306" height="20" uuid="ab147398-63d2-4858-8ce0-6c9ab3f43cfe"/>
-				<textElement>
-					<font fontName="Times New Roman" size="16" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{club_club_nombre}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="181" y="383" width="200" height="20" uuid="5b41012c-54c7-4ac4-836a-c03c5188d1d0"/>
-				<textElement>
-					<font fontName="Times New Roman" size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Grupos Pertenecientes al Club]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="211" y="301" width="200" height="20" uuid="e2ec124a-4cd8-49ab-9c26-8214379e07c3"/>
+				<reportElement x="211" y="316" width="200" height="20" uuid="e2ec124a-4cd8-49ab-9c26-8214379e07c3"/>
 				<textElement>
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{idioma_idio_nombre}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="41" y="301" width="100" height="20" uuid="8b40d3b2-786c-4d01-99e2-73e269a37ad0"/>
+				<reportElement x="41" y="194" width="100" height="20" uuid="61e2cf2e-f5ac-4f14-9dc1-3e4a83259cd9"/>
 				<textElement>
 					<font fontName="Times New Roman" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Idioma:]]></text>
+				<text><![CDATA[Codigo Postal]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="211" y="286" width="306" height="20" uuid="5eb99322-ae07-4c9c-bd24-66f031589a15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{direccion_lugar_dir_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="41" y="163" width="100" height="20" uuid="d9265ece-4890-46f7-aa59-67f20c942c3b"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Direccion:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="41" y="0" width="100" height="30" uuid="1837d503-e4f9-45cd-8c35-0c608310dfed"/>
+				<reportElement x="41" y="133" width="129" height="20" uuid="a16a7f0f-d3c9-4b03-821e-6962c21c9b84"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Inicio del Club]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="211" y="133" width="306" height="20" uuid="5e599394-392b-4aa3-bc5d-cab07f8cc2a4"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{club_club_fecha_inicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="211" y="347" width="127" height="20" uuid="4c51326b-053f-4798-b4be-76f022e24c18"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{club_inst_id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="41" y="347" width="158" height="20" uuid="61182be6-5941-41e2-a3cc-bd5f2bc71a92"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Institución Perteneciente (id):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="256" width="100" height="20" uuid="6cd55f85-723a-487e-8993-779f4959142b"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pais:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="211" y="88" width="306" height="20" uuid="ab147398-63d2-4858-8ce0-6c9ab3f43cfe"/>
+				<textElement>
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{club_club_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="211" y="194" width="306" height="20" uuid="e50a3d67-0cca-4e25-8d79-7746b0f8b0ac"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{club_cod_postal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="272" y="15" width="151" height="30" uuid="bcbe84a3-e46b-4a97-a41c-22f5408ff38d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de emisión de reporte:]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="41" y="377" width="47" height="41" uuid="848e99c9-4b03-4b41-b18d-4f2ff27f7b4b"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "FichaClub_subreport2.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="211" y="163" width="306" height="20" uuid="549f86e4-a608-481e-8db3-e9f17877d7e7"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{club_direccion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="428" y="15" width="144" height="30" uuid="ca8c1fe3-3632-487b-82c7-f9d372a67a26"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="41" y="15" width="100" height="30" uuid="1837d503-e4f9-45cd-8c35-0c608310dfed"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Clubes de lectura]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="272" y="0" width="151" height="30" uuid="bcbe84a3-e46b-4a97-a41c-22f5408ff38d"/>
-				<textElement verticalAlignment="Middle">
+				<reportElement x="41" y="225" width="100" height="20" uuid="b51d3ad6-1d04-4914-8e91-d22da0691ca5"/>
+				<textElement>
 					<font fontName="Times New Roman" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Fecha de emisión de reporte:]]></text>
+				<text><![CDATA[Cuota ]]></text>
 			</staticText>
-			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="428" y="0" width="144" height="30" uuid="ca8c1fe3-3632-487b-82c7-f9d372a67a26"/>
-				<textElement verticalAlignment="Middle">
+			<textField>
+				<reportElement x="211" y="256" width="306" height="20" uuid="60b0b5f1-84d3-4cfc-b4d2-9bd3b3c9787f"/>
+				<textElement>
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{direccion_lugar_a_dir_nombre}]]></textFieldExpression>
 			</textField>
-		</band>
-	</pageHeader>
-	<columnHeader>
-		<band height="25">
-			<staticText>
-				<reportElement x="41" y="0" width="64" height="20" uuid="018fe239-1b9a-4e5c-871e-80b36938b977"/>
-				<textElement>
-					<font fontName="Times New Roman" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Id del grupo]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="127" y="0" width="84" height="20" uuid="c447b1cf-eec7-4944-9c0e-86aef6f9e87a"/>
-				<textElement>
-					<font fontName="Times New Roman" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Tipo de grupo]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="227" y="0" width="73" height="20" uuid="f706d647-82be-4899-95e0-6a8deb347602"/>
-				<textElement>
-					<font fontName="Times New Roman" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Dia semanal]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="323" y="0" width="100" height="20" uuid="12808ea5-602a-43a1-b63e-46f649c8c649"/>
-				<textElement>
-					<font fontName="Times New Roman" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Hora de inicio]]></text>
-			</staticText>
-		</band>
-	</columnHeader>
-	<detail>
-		<band height="70" splitType="Stretch">
 			<textField>
-				<reportElement x="41" y="0" width="64" height="20" uuid="0cec8527-cb96-4213-8995-fddba4daea96"/>
-				<textElement verticalAlignment="Top">
+				<reportElement x="211" y="225" width="100" height="20" uuid="f01bdc94-f9af-4577-9d73-b54edc1a4524"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{club_cuota}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="872" y="150" width="100" height="20" uuid="7f3b6b74-6e16-497e-b564-ac0fd6739b8a"/>
+				<text><![CDATA[grupo_horaf]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="316" width="100" height="20" uuid="8b40d3b2-786c-4d01-99e2-73e269a37ad0"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Idioma:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="126" splitType="Stretch">
+			<textField>
+				<reportElement x="106" y="52" width="64" height="20" uuid="0cec8527-cb96-4213-8995-fddba4daea96"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{grupo_grup_id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="127" y="0" width="84" height="20" uuid="b4bcb9e4-faaa-4160-8b29-2ee7cdb8971b"/>
-				<textElement>
+				<reportElement x="186" y="52" width="84" height="20" uuid="b4bcb9e4-faaa-4160-8b29-2ee7cdb8971b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{grupo_grup_tipo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="227" y="0" width="73" height="20" uuid="39e3073d-27a8-4da8-9ea5-0c202747ca20"/>
-				<textElement>
+				<reportElement x="293" y="52" width="73" height="20" uuid="39e3073d-27a8-4da8-9ea5-0c202747ca20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{grupo_dia}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="323" y="0" width="100" height="20" uuid="fd3c674e-d483-4333-adf0-3df9d8f38f3f"/>
-				<textElement>
+				<reportElement x="383" y="52" width="100" height="20" uuid="fd3c674e-d483-4333-adf0-3df9d8f38f3f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{grupo_horai}]]></textFieldExpression>
 			</textField>
 			<subreport>
-				<reportElement x="41" y="20" width="44" height="41" uuid="6c18a835-392c-4406-ae82-cad36222e0e3"/>
+				<reportElement x="23" y="83" width="44" height="41" uuid="6c18a835-392c-4406-ae82-cad36222e0e3"/>
 				<subreportParameter name="SUBREPORT_DIR">
 					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -300,17 +263,45 @@ where club.club_id=$P!{idClub} and grupo.club_id=$P!{idClub}]]>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "FichaClub_subreport1.jasper"]]></subreportExpression>
 			</subreport>
+			<staticText>
+				<reportElement x="106" y="10" width="64" height="20" forecolor="#FF0000" uuid="018fe239-1b9a-4e5c-871e-80b36938b977"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Id del grupo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="186" y="10" width="84" height="20" forecolor="#FF0000" uuid="c447b1cf-eec7-4944-9c0e-86aef6f9e87a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de grupo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="293" y="10" width="73" height="20" forecolor="#FF0000" uuid="f706d647-82be-4899-95e0-6a8deb347602"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dia semanal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="383" y="10" width="100" height="20" forecolor="#FF0000" uuid="12808ea5-602a-43a1-b63e-46f649c8c649"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hora de inicio]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="54" splitType="Stretch">
+		<band height="26" splitType="Stretch">
 			<textField>
-				<reportElement x="211" y="34" width="80" height="20" uuid="66fb4278-b35a-414b-b13b-11c2877a19b7"/>
+				<reportElement x="211" y="0" width="80" height="20" uuid="66fb4278-b35a-414b-b13b-11c2877a19b7"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement x="291" y="34" width="40" height="20" uuid="f09d3214-9232-4e76-8145-70f3dd4cc8ff"/>
+				<reportElement x="291" y="0" width="40" height="20" uuid="f09d3214-9232-4e76-8145-70f3dd4cc8ff"/>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>

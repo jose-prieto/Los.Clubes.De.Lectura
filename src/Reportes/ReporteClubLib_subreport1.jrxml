@@ -8,7 +8,7 @@
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
-     reuniones."reu_valoracion" AS reuniones_reu_valoracion,
+     cast(avg(reuniones."reu_valoracion") as decimal (3,2)) AS reuniones_reu_valoracion,
      reuniones."isbn" AS reuniones_isbn,
      INITCAP(libro."lib_tit_original") AS libro_lib_tit_original
 FROM
@@ -29,7 +29,8 @@ FROM
      INNER JOIN "public"."miembro" miembro ON hist_miembro."doc_id" = miembro."doc_id"
      INNER JOIN "public"."libro" libro ON reuniones."isbn" = libro."isbn"
 where reuniones.club_id = $P!{idClub} and reuniones.clubg_l_Id =$P!{idClub} 
-     and reuniones.clubh_id =$P!{idClub}]]>
+     and reuniones.clubh_id =$P!{idClub}
+GROUP BY reuniones.isbn , libro.lib_tit_original]]>
 	</queryString>
 	<field name="reuniones_reu_valoracion" class="java.math.BigDecimal"/>
 	<field name="reuniones_isbn" class="java.math.BigDecimal"/>
@@ -46,22 +47,22 @@ where reuniones.club_id = $P!{idClub} and reuniones.clubg_l_Id =$P!{idClub}
 	<columnHeader>
 		<band height="61" splitType="Stretch">
 			<staticText>
-				<reportElement x="81" y="22" width="100" height="20" uuid="2d6496a4-568c-478d-952c-65fe0f56fe52"/>
-				<textElement verticalAlignment="Middle">
+				<reportElement x="43" y="22" width="100" height="20" uuid="2d6496a4-568c-478d-952c-65fe0f56fe52"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ISBN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="387" y="22" width="135" height="20" uuid="7c3ce40d-39ce-48f1-b7ea-2f82966aa322"/>
-				<textElement verticalAlignment="Middle">
+				<reportElement x="403" y="22" width="135" height="20" uuid="7c3ce40d-39ce-48f1-b7ea-2f82966aa322"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Valoracion de Reunines]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="201" y="22" width="100" height="20" uuid="2556bbf2-f9db-42bf-b006-658caaac35c4"/>
-				<textElement verticalAlignment="Middle">
+				<reportElement x="184" y="22" width="186" height="20" uuid="2556bbf2-f9db-42bf-b006-658caaac35c4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Titulo del Libro]]></text>
@@ -71,22 +72,22 @@ where reuniones.club_id = $P!{idClub} and reuniones.clubg_l_Id =$P!{idClub}
 	<detail>
 		<band height="38" splitType="Stretch">
 			<textField>
-				<reportElement x="81" y="3" width="100" height="20" uuid="a87262a8-a3b9-469a-9360-41bc773b27d6"/>
-				<textElement verticalAlignment="Middle">
+				<reportElement x="43" y="3" width="100" height="20" uuid="a87262a8-a3b9-469a-9360-41bc773b27d6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{reuniones_isbn}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="411" y="3" width="111" height="20" uuid="fde096d7-226a-4e6c-9324-50d9910fcc7d"/>
-				<textElement verticalAlignment="Middle">
+				<reportElement x="403" y="3" width="135" height="20" uuid="fde096d7-226a-4e6c-9324-50d9910fcc7d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{reuniones_reu_valoracion}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="201" y="3" width="186" height="20" uuid="8f0cebf2-0196-4814-96c0-98a02f30ddae"/>
-				<textElement verticalAlignment="Middle">
+				<reportElement x="184" y="3" width="186" height="20" uuid="8f0cebf2-0196-4814-96c0-98a02f30ddae"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{libro_lib_tit_original}]]></textFieldExpression>
