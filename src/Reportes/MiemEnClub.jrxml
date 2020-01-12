@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="612" pageHeight="792" columnWidth="470" leftMargin="71" rightMargin="71" topMargin="71" bottomMargin="71" uuid="93c92bfd-0bdf-4722-acf9-6c89c6705267">
+	<property name="ireport.zoom" value="1.331000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#A52A2A">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#A52A2A">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Pago" uuid="eee4348c-7bef-41c6-9dc3-0fc82c4ff518">
+		<parameter name="id" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="hasta" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="club" class="java.lang.String"/>
+		<parameter name="desde" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[select 
+   pago_id as id,
+   TO_CHAR(pago_fecha :: DATE, 'DD "de" TMMonth "del" yyyy') as fecha
+from
+   pago
+where
+   pago_fecha >= to_date($P{desde}, 'yyyy-mm-dd') and pago_fecha <= to_date($P{hasta}, 'yyyy-mm-dd') and pago.doc_id = $P!{id} and club_id = $P!{club}
+   group by
+      pago_fecha, pago_id
+	order by
+	   pago_fecha asc]]>
+		</queryString>
+		<field name="id" class="java.math.BigDecimal"/>
+		<field name="fecha" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="GrupAsist" uuid="10451768-f597-4ec2-9f49-6b85d273d87f">
+		<parameter name="id" class="java.lang.Integer"/>
+		<parameter name="club" class="java.lang.Integer"/>
+		<parameter name="desde" class="java.lang.String"/>
+		<parameter name="hasta" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[select
+   i.grup_id as Grupo,
+   concat(((count(r.*)-count(i.*))/count(r.*))*100, '%') as Asistencia
+from
+   inasistencia i, reuniones r
+where
+   i.reu_fecha = r.reu_fecha and i.club_id = r.club_id and i.grup_id = r.grup_id and i.doc_id = r.doc_id and r.reu_fecha >= to_date($P{desde}, 'yyyy-mm-dd') and r.reu_fecha <= to_date($P{hasta}, 'yyyy-mm-dd') and i.club_id = $P{club}
+   group by
+      i.reu_fecha, i.grup_id
+      order by
+         i.reu_fecha]]>
+		</queryString>
+		<field name="grupo" class="java.math.BigDecimal"/>
+		<field name="asistencia" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[4554]]></defaultValueExpression>
+	</parameter>
+	<parameter name="desde" class="java.lang.String">
+		<defaultValueExpression><![CDATA["2005-10-25"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="hasta" class="java.lang.String">
+		<defaultValueExpression><![CDATA["2020-06-25"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="club" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[10]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select TO_CHAR(NOW() :: DATE, 'DD "de" TMMonth "del" yyyy') as fecha_hoy,
+
+concat(initcap(mi.miemb_ape1), '  ', COALESCE (initcap(mi.miemb_ape2), '')) as apellidos,
+
+concat(initcap(mi.miemb_nombre1), '  ', COALESCE (initcap(mi.miemb_nombre2), '')) as nombres,
+
+mi.doc_id as cedula,
+
+(select concat(extract(year from age(mi.miemb_fecha_nac)),' años')
+	from miembro mie
+		where mie.doc_id = mi.doc_id) as edad,
+
+concat('Nombre del club:  ', initcap(club.club_nombre)) as club
+
+from miembro mi, club, hist_miembro hist
+
+where mi.doc_id = $P!{id} and club.club_id = $P!{club} and club.club_id = hist.club_id]]>
+	</queryString>
+	<field name="fecha_hoy" class="java.lang.String"/>
+	<field name="apellidos" class="java.lang.String"/>
+	<field name="nombres" class="java.lang.String"/>
+	<field name="cedula" class="java.math.BigDecimal"/>
+	<field name="edad" class="java.lang.String"/>
+	<field name="club" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="192" splitType="Stretch">
+			<textField>
+				<reportElement x="340" y="0" width="130" height="30" uuid="63e1c490-3227-422d-8ac4-10c784bfbcd0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_hoy}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="100" width="60" height="30" uuid="cc77d6e3-9f25-49e1-a970-34dd768de53c"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellidos:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="189" y="0" width="151" height="30" uuid="69d8c7e5-477b-4081-8b8b-d3e7b9d13195"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de emisión de reporte:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="235" y="130" width="60" height="30" uuid="70602047-ea74-48f9-9f0e-110cb81652b1"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Edad:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="295" y="100" width="175" height="30" uuid="b112bebd-a3e1-41ba-9fb0-93fed40d7405"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="42" width="470" height="44" uuid="b3af7888-2ff2-4201-9274-d5e5e256441a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de histórico de miembro en clubes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="117" height="30" uuid="6a8b62d8-fe63-489b-8931-99fa9e39e5d6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Clubes de lectura]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="130" width="175" height="30" uuid="1fda7dad-c864-473e-9a10-155249eaa5b2"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cedula}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="295" y="130" width="175" height="30" uuid="bd0d1faa-374d-4ba9-8b06-85c15ee2d997"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{edad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="130" width="60" height="30" uuid="05f2b35d-32de-461c-a14e-001c8b359a24"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cédula:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="100" width="175" height="30" uuid="038e4c42-c896-4932-959d-d4d0bbd68c12"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apellidos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="235" y="100" width="60" height="30" uuid="63221859-4699-41c0-ae76-79d7a424a721"/>
+				<box leftPadding="7">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombres:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="172" width="470" height="20" uuid="a4796203-85b2-418d-8b89-c3ad74687874"/>
+				<box leftPadding="2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{club}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="390" height="30" uuid="a2868dcc-4e0f-4d93-86fb-c08c7a8e7a5b"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reuniones y asistencias del miembro en ese club en el rango de fechas dado]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table 3" style="table 3" x="0" y="30" width="460" height="50" uuid="c8dd7dae-5917-4d68-a62a-fd149c0785ea"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Pago" uuid="fbc83149-7667-4487-bc8b-463d73e79073">
+						<datasetParameter name="id">
+							<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="hasta">
+							<datasetParameterExpression><![CDATA[$P{hasta}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="club">
+							<datasetParameterExpression><![CDATA[$P{club}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="desde">
+							<datasetParameterExpression><![CDATA[$P{desde}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="53" uuid="ac507d19-4876-4a48-9058-1666d9f45ca2">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="53" height="30" uuid="9c322f78-ea07-42c4-8620-a8251e79f5d0"/>
+								<box leftPadding="0"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="12" isBold="true" isStrikeThrough="false"/>
+								</textElement>
+								<text><![CDATA[Id]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="53" height="29" uuid="ebc91aeb-328b-4737-b18c-71af30aa6b3f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="12" isStrikeThrough="false"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="167" uuid="b9b07c9e-139c-4555-a407-3b90e6bde364">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="167" height="30" uuid="7a866a72-83ad-4271-aaa3-8c0d00a0eb49"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="12" isBold="true" isStrikeThrough="false"/>
+								</textElement>
+								<text><![CDATA[Fecha]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="167" height="29" uuid="1bf24249-96cb-4a3d-b308-6bf4af9cd4a5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="12" isStrikeThrough="false"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band/>
+		<band height="80">
+			<staticText>
+				<reportElement x="0" y="0" width="390" height="30" uuid="24bbaa94-1597-4881-a6b9-333caf04cf3e"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pagos realizados por el miembro en ese club en el rango de fechas dado]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table 4" style="table 4" x="0" y="30" width="460" height="50" uuid="26dfe88c-e31c-4b26-b262-17ad9b679f3a"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="GrupAsist" uuid="1f360a02-ba54-4017-87c5-90b1ce46cb07">
+						<datasetParameter name="id">
+							<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="club">
+							<datasetParameterExpression><![CDATA[$P{club}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="desde">
+							<datasetParameterExpression><![CDATA[$P{desde}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="hasta">
+							<datasetParameterExpression><![CDATA[$P{hasta}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="51" uuid="d0479a76-927d-46a4-bd82-bbd692b4c474">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="51" height="30" uuid="8350a75f-5866-4441-887e-6aaf8d9243e3"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Grupo]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 4_TD" height="31" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="51" height="31" uuid="800ada8a-5f5d-4b2a-a7ad-fbfd54d9ba7d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{grupo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="3b113744-3a22-4c07-8aa4-6f84960f9154">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="a9e27e10-5320-4ff7-bd2b-a33bb2888f9a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Asistencia]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 4_TD" height="31" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="31" uuid="6c8ee1a3-87d2-4420-b5bb-70fb59b67258"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{asistencia}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="14" splitType="Stretch">
+			<textField>
+				<reportElement x="370" y="0" width="80" height="14" uuid="e0ec57cd-17c0-4663-9578-9eb937eb9dae"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pág "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="450" y="0" width="20" height="14" uuid="7f341c41-4e5a-47d2-9cbe-2937b5e91025"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

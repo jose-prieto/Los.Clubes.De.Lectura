@@ -4,7 +4,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="id" class="java.lang.Integer">
-		<defaultValueExpression><![CDATA[2253421]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[5964816]]></defaultValueExpression>
 	</parameter>
 	<parameter name="desde" class="java.lang.String">
 		<defaultValueExpression><![CDATA["2005-10-25"]]></defaultValueExpression>
@@ -25,7 +25,7 @@ mi.doc_id as cedula,
 	from miembro mie
 		where mie.doc_id = mi.doc_id) as edad,
 
-concat('Nombre del club:  ', initcap(club.club_nombre), '  ---  Antigüedad:  ', extract(year from age(coalesce(to_date($P{hasta}, 'yyyy-mm-dd'), to_date($P{desde}, 'yyyy-mm-dd')))), '  Años') as club,
+concat('Nombre del club:  ', initcap(club.club_nombre), '  ---  Antigüedad:  ', extract(year from age(hist.fechai_mie ,coalesce(fechaf_mie, current_date))),',',extract(month from age(hist.fechai_mie ,coalesce(fechaf_mie, current_date))), '  Años') as club,
 
 (select array_to_string(array_agg(CONCAT(COALESCE (INITCAP(lib.titulo_esp),''), ' (', COALESCE (INITCAP(lib.lib_tit_original),''), ')
             Analizado el: ', to_char(reu.reu_fecha, 'DD "de" TMMonth "del" yyyy'))), '
@@ -39,10 +39,10 @@ coalesce(to_char(hist.fechaf_mie, 'DD "de" TMMonth "del" yyyy'), 'Actualmente ac
 
 from miembro mi, reuniones reu, hist_miembro hist, club
 
-where mi.doc_id = $P!{id} and reu.doc_id = mi.doc_id and hist.doc_id = mi.doc_id and hist.club_id = club.club_id and hist.fechai_mie >= to_date($P{desde}, 'yyyy-mm-dd') and hist.fechai_mie <= to_date($P{hasta}, 'yyyy-mm-dd') and reu.reu_fecha >= to_date($P{desde}, 'yyyy-mm-dd') and reu.reu_fecha <= to_date($P{hasta}, 'yyyy-mm-dd') and reu.reu_conclusiones is not null
+where mi.doc_id = $P!{id} and reu.doc_id = mi.doc_id and hist.doc_id = mi.doc_id and hist.club_id = club.club_id and hist.fechai_mie >= to_date($P{desde}, 'yyyy-mm-dd') and hist.fechai_mie <= to_date($P{hasta}, 'yyyy-mm-dd') and reu.reu_fecha >= to_date($P{desde}, 'yyyy-mm-dd') and reu.reu_fecha <= to_date($P{hasta}, 'yyyy-mm-dd')/* and reu.reu_conclusiones is not null*/
 
 group by club, hist.fechaf_mie, reu.reu_fecha, mi.miemb_ape1, mi.miemb_ape2, mi.miemb_nombre1, mi.miemb_nombre2, mi.doc_id, reu.isbn, hist.fechai_mie
-order by hist.fechaf_mie asc, reu.reu_fecha asc ]]>
+order by hist.fechaf_mie asc, reu.reu_fecha asc]]>
 	</queryString>
 	<field name="fecha_hoy" class="java.lang.String"/>
 	<field name="apellidos" class="java.lang.String"/>
@@ -221,40 +221,7 @@ order by hist.fechaf_mie asc, reu.reu_fecha asc ]]>
 				<textFieldExpression><![CDATA[$F{club}]]></textFieldExpression>
 			</textField>
 		</band>
-		<band height="35">
-			<textField>
-				<reportElement x="77" y="0" width="170" height="20" uuid="996d33c6-daad-4d60-b22e-6cba5bf8daca"/>
-				<box leftPadding="20"/>
-				<textElement>
-					<font fontName="Times New Roman" size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{fechai}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="286" y="0" width="184" height="20" uuid="e5d8e97c-959c-4462-af31-165f402e0220"/>
-				<box leftPadding="20"/>
-				<textElement>
-					<font fontName="Times New Roman" size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{fechaf}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="0" width="77" height="20" uuid="45b27fcd-0aaa-4ec1-bbaf-771d6cf35364"/>
-				<box leftPadding="10"/>
-				<textElement>
-					<font fontName="Times New Roman" size="12"/>
-				</textElement>
-				<text><![CDATA[Activo desde:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="247" y="0" width="39" height="20" uuid="483884da-f00d-491b-aaf3-8eabf47e5225"/>
-				<box leftPadding="10"/>
-				<textElement>
-					<font fontName="Times New Roman" size="12"/>
-				</textElement>
-				<text><![CDATA[hasta:]]></text>
-			</staticText>
-		</band>
+		<band/>
 		<band height="20">
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="470" height="20" uuid="588d4061-8d26-48da-8f80-dd6fe60d796b"/>
