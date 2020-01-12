@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="650" leftMargin="71" rightMargin="71" topMargin="71" bottomMargin="56" uuid="41f9a72a-f58a-4b91-a46a-5646a7d65268">
-	<property name="ireport.zoom" value="1.3310000000000095"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="1.464100000000014"/>
+	<property name="ireport.x" value="6"/>
+	<property name="ireport.y" value="63"/>
 	<parameter name="id" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[852]]></defaultValueExpression>
 	</parameter>
@@ -23,13 +23,21 @@ TO_CHAR(mi.miemb_fecha_nac :: DATE, 'DD "de" TMMonth "del" yyyy') as fecha_nacim
 	from miembro mie
 		where mie.doc_id = mi.doc_id) as edad,
 
-COALESCE ((select concat(COALESCE (initcap(rep_ape1),'---------- ----------'), '  ',COALESCE (initcap(rep_ape2),''))
+COALESCE ((select concat(COALESCE (initcap(rep.rep_ape1),''), '  ',COALESCE (initcap(rep.rep_ape2),''))
 	from representante rep
-		where rep.doc_ident = mi.doc_id),'---------- ----------') as apellido_rep,
+		where rep.doc_ident = mi.representante),'') as apellido_rep,
 
-COALESCE ((select concat(COALESCE (initcap(rep_nombre1),'---------- ----------'), '  ',COALESCE (initcap(rep_nombre2),''))
+COALESCE ((select concat(COALESCE (initcap(rep.rep_nombre1),''), '  ',COALESCE (initcap(rep.rep_nombre2),''))
 	from representante rep
-		where rep.doc_ident = mi.doc_id),'---------- ----------') as nombre_rep,
+		where rep.doc_ident = mi.representante),'') as nombre_rep,
+
+COALESCE ((select concat(COALESCE (initcap(rep.miemb_ape1),''), '  ',COALESCE (initcap(rep.miemb_ape2),''))
+	from miembro rep
+		where mi.representante_m = rep.doc_id),'') as apellido_rep2,
+
+COALESCE ((select concat(COALESCE (initcap(rep.miemb_nombre1),''), '  ',COALESCE (initcap(rep.miemb_nombre2),''))
+	from miembro rep
+		where mi.representante_m = rep.doc_id),'') as nombre_rep2,
 
 lib_pref.posicion as posicion,
 
@@ -60,6 +68,8 @@ order by lib_pref.posicion asc]]>
 	<field name="edad" class="java.lang.String"/>
 	<field name="apellido_rep" class="java.lang.String"/>
 	<field name="nombre_rep" class="java.lang.String"/>
+	<field name="apellido_rep2" class="java.lang.String"/>
+	<field name="nombre_rep2" class="java.lang.String"/>
 	<field name="posicion" class="java.math.BigDecimal"/>
 	<field name="isbn" class="java.math.BigDecimal"/>
 	<field name="libro_tirulo" class="java.lang.String"/>
@@ -71,7 +81,7 @@ order by lib_pref.posicion asc]]>
 	<title>
 		<band height="333" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="205" width="90" height="14" uuid="49ab0d5f-5475-4c17-91f4-5f5c2bd65bf2"/>
+				<reportElement x="0" y="235" width="90" height="14" uuid="49ab0d5f-5475-4c17-91f4-5f5c2bd65bf2"/>
 				<box leftPadding="7"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12" isBold="true"/>
@@ -86,7 +96,7 @@ order by lib_pref.posicion asc]]>
 				<textFieldExpression><![CDATA[$F{fecha_hoy}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="90" y="190" width="247" height="30" uuid="822b885b-74f8-4517-ad49-8ed01b86ced6"/>
+				<reportElement x="90" y="220" width="247" height="30" uuid="822b885b-74f8-4517-ad49-8ed01b86ced6"/>
 				<box leftPadding="7">
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -121,7 +131,7 @@ order by lib_pref.posicion asc]]>
 				<text><![CDATA[Fecha de emisión de reporte:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="190" width="90" height="16" uuid="b4a900c3-6325-4516-9808-556627f3b772"/>
+				<reportElement x="0" y="220" width="90" height="16" uuid="b4a900c3-6325-4516-9808-556627f3b772"/>
 				<box leftPadding="7"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12" isBold="true"/>
@@ -171,7 +181,7 @@ order by lib_pref.posicion asc]]>
 				<text><![CDATA[Clubes de lectura]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="428" y="190" width="222" height="30" uuid="ce2d8f14-fcbe-4398-be26-a97e57a20531"/>
+				<reportElement x="428" y="220" width="222" height="30" uuid="ce2d8f14-fcbe-4398-be26-a97e57a20531"/>
 				<box leftPadding="7">
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -185,14 +195,14 @@ order by lib_pref.posicion asc]]>
 				<textFieldExpression><![CDATA[$F{nombre_rep}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="1" y="271" width="649" height="44" uuid="357f9c28-10ea-47e8-a421-1725fdc595f2"/>
+				<reportElement x="-1" y="270" width="649" height="44" uuid="357f9c28-10ea-47e8-a421-1725fdc595f2"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="16" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Preferencias literarias]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="337" y="190" width="91" height="14" uuid="bdea376b-c13b-4492-b978-9d15bdaebd62"/>
+				<reportElement x="337" y="220" width="91" height="14" uuid="bdea376b-c13b-4492-b978-9d15bdaebd62"/>
 				<box leftPadding="7"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12" isBold="true"/>
@@ -270,7 +280,7 @@ order by lib_pref.posicion asc]]>
 				<textFieldExpression><![CDATA[$F{cedula}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="337" y="204" width="91" height="16" uuid="0b3debab-26df-4d3a-bb4e-3be5d6130bce"/>
+				<reportElement x="337" y="234" width="91" height="16" uuid="0b3debab-26df-4d3a-bb4e-3be5d6130bce"/>
 				<box leftPadding="7"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Times New Roman" size="12" isBold="true"/>
@@ -348,7 +358,7 @@ order by lib_pref.posicion asc]]>
 				<text><![CDATA[nacimiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="220" width="90" height="30" uuid="36c70ff6-7e84-45df-a715-9a4e29d6bde8"/>
+				<reportElement x="0" y="190" width="90" height="30" uuid="36c70ff6-7e84-45df-a715-9a4e29d6bde8"/>
 				<box leftPadding="7">
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -362,7 +372,7 @@ order by lib_pref.posicion asc]]>
 				<text><![CDATA[Club actual:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="337" y="220" width="91" height="30" uuid="c11431b9-d77e-4a4a-8ad9-43c8c4ab4206"/>
+				<reportElement x="337" y="190" width="91" height="30" uuid="c11431b9-d77e-4a4a-8ad9-43c8c4ab4206"/>
 				<box leftPadding="7">
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -376,7 +386,7 @@ order by lib_pref.posicion asc]]>
 				<text><![CDATA[Grupo actual:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="90" y="220" width="247" height="30" uuid="b876579f-3a7d-4abe-a355-e4506521ac9a"/>
+				<reportElement x="90" y="190" width="247" height="30" uuid="b876579f-3a7d-4abe-a355-e4506521ac9a"/>
 				<box leftPadding="7">
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -390,7 +400,7 @@ order by lib_pref.posicion asc]]>
 				<textFieldExpression><![CDATA[$F{club_id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="428" y="220" width="222" height="30" uuid="4ad9b737-0d2b-40f7-a3e4-0c04863425e7"/>
+				<reportElement x="428" y="190" width="222" height="30" uuid="4ad9b737-0d2b-40f7-a3e4-0c04863425e7"/>
 				<box leftPadding="7">
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -404,11 +414,30 @@ order by lib_pref.posicion asc]]>
 				<textFieldExpression><![CDATA[$F{grup_id}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="-1" y="190" width="1" height="30" uuid="ea72a069-d37b-4c39-96f2-ca7f493467b0"/>
+				<reportElement x="-1" y="220" width="1" height="30" uuid="ea72a069-d37b-4c39-96f2-ca7f493467b0"/>
 			</line>
 			<line>
-				<reportElement x="337" y="190" width="91" height="1" uuid="a1d17210-8dce-4807-970d-71b6ac5cdde5"/>
+				<reportElement x="-1" y="250" width="91" height="1" uuid="7f6881c7-c472-4243-bb48-c2ff87fd7f72"/>
 			</line>
+			<line>
+				<reportElement x="337" y="250" width="91" height="1" uuid="209ad02d-3b98-4dd5-a743-e6e1ece62d3e"/>
+			</line>
+			<textField>
+				<reportElement x="90" y="220" width="247" height="29" uuid="fb43fb09-6601-481c-8a3e-9beda4a7782e"/>
+				<box leftPadding="7"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apellido_rep2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="428" y="220" width="222" height="30" uuid="edaba497-8204-4e30-9d2e-439563bdae09"/>
+				<box leftPadding="7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_rep2}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
